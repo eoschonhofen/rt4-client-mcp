@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static251 {
 
 	@OriginalMember(owner = "client!ug", name = "d", descriptor = "[I")
-	public static int[] anIntArray479;
+	public static int[] comtot;
 
 	@OriginalMember(owner = "client!ug", name = "h", descriptor = "I")
 	public static int anInt5449;
@@ -20,7 +20,7 @@ public final class Static251 {
 	public static int anInt5447 = 0;
 
 	@OriginalMember(owner = "client!ug", name = "f", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1044 = Static28.method790("weiss:");
+	public static final JagString aClass100_1044 = JagString.wrap("weiss:");
 
 	@OriginalMember(owner = "client!ug", name = "m", descriptor = "I")
 	public static int anInt5454 = 0;
@@ -33,7 +33,7 @@ public final class Static251 {
 
 	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(B)V")
 	public static void method4274() {
-		for (@Pc(10) Class3_Sub7 local10 = (Class3_Sub7) Static26.aClass69_27.method2289(); local10 != null; local10 = (Class3_Sub7) Static26.aClass69_27.method2288()) {
+		for (@Pc(10) LocChange local10 = (LocChange) Static26.aClass69_27.head(); local10 != null; local10 = (LocChange) Static26.aClass69_27.method2288()) {
 			if (local10.anInt924 > 0) {
 				local10.anInt924--;
 			}
@@ -45,14 +45,14 @@ public final class Static251 {
 					Static79.method1698(local10.anInt929, local10.anInt928, local10.anInt918, local10.anInt922, local10.anInt916, local10.anInt926, local10.anInt927);
 					local10.anInt925 = -1;
 					if (local10.anInt921 == local10.anInt929 && local10.anInt921 == -1) {
-						local10.method4658();
+						local10.unlink();
 					} else if (local10.anInt929 == local10.anInt921 && local10.anInt922 == local10.anInt923 && local10.anInt920 == local10.anInt926) {
-						local10.method4658();
+						local10.unlink();
 					}
 				}
 			} else if (local10.anInt921 < 0 || Static113.method3557(local10.anInt921, local10.anInt920)) {
 				Static79.method1698(local10.anInt921, local10.anInt928, local10.anInt918, local10.anInt923, local10.anInt916, local10.anInt920, local10.anInt927);
-				local10.method4658();
+				local10.unlink();
 			}
 		}
 	}
@@ -64,10 +64,10 @@ public final class Static251 {
 
 	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(I)V")
 	public static void method4277() {
-		if (Static93.aClass150_1 != null) {
-			@Pc(5) Class150 local5 = Static93.aClass150_1;
-			synchronized (Static93.aClass150_1) {
-				Static93.aClass150_1 = null;
+		if (ClientMouseListener.aClass150_1 != null) {
+			@Pc(5) ClientMouseListener local5 = ClientMouseListener.aClass150_1;
+			synchronized (ClientMouseListener.aClass150_1) {
+				ClientMouseListener.aClass150_1 = null;
 			}
 		}
 	}
@@ -81,7 +81,7 @@ public final class Static251 {
 
 	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(IB)V")
 	public static void method4279(@OriginalArg(0) int arg0) {
-		@Pc(14) Class3_Sub2_Sub8 local14 = Static238.method4143(9, arg0);
+		@Pc(14) DelayedStateChange local14 = Static238.method4143(9, arg0);
 		local14.method1007();
 	}
 }

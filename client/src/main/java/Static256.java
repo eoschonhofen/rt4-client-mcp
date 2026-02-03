@@ -5,9 +5,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static256 {
 
-	@OriginalMember(owner = "client!um", name = "U", descriptor = "Lclient!dd;")
-	public static Class3_Sub2_Sub9_Sub1 aClass3_Sub2_Sub9_Sub1_1;
-
 	@OriginalMember(owner = "client!um", name = "V", descriptor = "Ljava/math/BigInteger;")
 	public static final BigInteger aBigInteger2 = GlobalConfig.RSA_MODULUS;
 	// new BigInteger("7162900525229798032761816791230527296329313291232324290237849263501208207972894053929065636522363163621000728841182238772712427862772219676577293600221789");
@@ -97,18 +94,4 @@ public final class Static256 {
 		return false;
 	}
 
-	@OriginalMember(owner = "client!um", name = "a", descriptor = "(BI)Lclient!wl;")
-	public static Class164 method4395(@OriginalArg(1) int arg0) {
-		@Pc(6) Class164 local6 = (Class164) Static233.aClass99_31.method3106((long) arg0);
-		if (local6 != null) {
-			return local6;
-		}
-		@Pc(30) byte[] local30 = Static35.aClass153_22.method4495(4, arg0);
-		local6 = new Class164();
-		if (local30 != null) {
-			local6.method4669(new Class3_Sub15(local30), arg0);
-		}
-		Static233.aClass99_31.method3095(local6, (long) arg0);
-		return local6;
-	}
 }

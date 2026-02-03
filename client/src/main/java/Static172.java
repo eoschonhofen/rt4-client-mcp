@@ -4,26 +4,20 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static172 {
 
-	@OriginalMember(owner = "client!nj", name = "c", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_69;
-
 	@OriginalMember(owner = "client!nj", name = "e", descriptor = "Lclient!va;")
-	public static Class3_Sub3_Sub4 aClass3_Sub3_Sub4_2;
+	public static MidiPlayer midiPlayer;
 
 	@OriginalMember(owner = "client!nj", name = "f", descriptor = "Lclient!en;")
-	public static Class38 aClass38_4;
+	public static BufferedRandomAccessFile aClass38_4;
 
 	@OriginalMember(owner = "client!nj", name = "g", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_70;
+	public static Js5 midis;
 
 	@OriginalMember(owner = "client!nj", name = "j", descriptor = "[I")
 	public static int[] anIntArray366;
 
 	@OriginalMember(owner = "client!nj", name = "k", descriptor = "I")
 	public static int anInt4165;
-
-	@OriginalMember(owner = "client!nj", name = "l", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_71;
 
 	@OriginalMember(owner = "client!nj", name = "m", descriptor = "[[S")
 	public static short[][] aShortArrayArray7;
@@ -32,7 +26,7 @@ public final class Static172 {
 	public static boolean aBoolean199 = false;
 
 	@OriginalMember(owner = "client!nj", name = "h", descriptor = "Lclient!ih;")
-	public static final Class69 aClass69_97 = new Class69();
+	public static final LinkList aClass69_97 = new LinkList();
 
 	@OriginalMember(owner = "client!nj", name = "i", descriptor = "I")
 	public static int anInt4164 = 0;

@@ -9,7 +9,7 @@ public final class Static158 {
 	public static int anInt3846;
 
 	@OriginalMember(owner = "client!mh", name = "hb", descriptor = "Lclient!bn;")
-	public static Class3_Sub2_Sub4 aClass3_Sub2_Sub4_3;
+	public static Map aClass3_Sub2_Sub4_3;
 
 	@OriginalMember(owner = "client!mh", name = "X", descriptor = "I")
 	public static int anInt3851 = -1;
@@ -27,9 +27,9 @@ public final class Static158 {
 		}
 		try {
 			if (++Static226.anInt5079 > 2000) {
-				if (Static124.aClass95_2 != null) {
-					Static124.aClass95_2.method2834();
-					Static124.aClass95_2 = null;
+				if (Static124.loginStream != null) {
+					Static124.loginStream.close();
+					Static124.loginStream = null;
 				}
 				if (Static57.anInt1758 >= 1) {
 					Static223.anInt5034 = -5;
@@ -46,68 +46,68 @@ public final class Static158 {
 				}
 			}
 			if (Static179.anInt4261 == 1) {
-				Static72.aClass212_3 = Static71.aClass213_3.method5120(Static60.aString1, Static209.anInt4794);
+				Static72.aClass212_3 = GameShell.signlink.socketreq(Static60.aString1, Static209.anInt4794);
 				Static179.anInt4261 = 2;
 			}
 			@Pc(120) int local120;
 			if (Static179.anInt4261 == 2) {
-				if (Static72.aClass212_3.anInt5925 == 2) {
+				if (Static72.aClass212_3.status == 2) {
 					throw new IOException();
 				}
-				if (Static72.aClass212_3.anInt5925 != 1) {
+				if (Static72.aClass212_3.status != 1) {
 					return;
 				}
-				Static124.aClass95_2 = new Class95((Socket) Static72.aClass212_3.anObject6, Static71.aClass213_3);
+				Static124.loginStream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
 				Static72.aClass212_3 = null;
-				Static124.aClass95_2.method2830(Static6.aClass3_Sub15_Sub1_1.aByteArray40, Static6.aClass3_Sub15_Sub1_1.anInt2792);
-				if (Static11.aClass62_1 != null) {
-					Static11.aClass62_1.method3571();
+				Static124.loginStream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				if (client.midiPcmPlayer != null) {
+					client.midiPcmPlayer.method3571();
 				}
-				if (Static147.aClass62_2 != null) {
-					Static147.aClass62_2.method3571();
+				if (client.soundPcmPlayer != null) {
+					client.soundPcmPlayer.method3571();
 				}
-				local120 = Static124.aClass95_2.method2828();
-				if (Static11.aClass62_1 != null) {
-					Static11.aClass62_1.method3571();
+				local120 = Static124.loginStream.method2828();
+				if (client.midiPcmPlayer != null) {
+					client.midiPcmPlayer.method3571();
 				}
-				if (Static147.aClass62_2 != null) {
-					Static147.aClass62_2.method3571();
+				if (client.soundPcmPlayer != null) {
+					client.soundPcmPlayer.method3571();
 				}
 				if (local120 != 21) {
 					Static223.anInt5034 = local120;
 					Static179.anInt4261 = 0;
-					Static124.aClass95_2.method2834();
-					Static124.aClass95_2 = null;
+					Static124.loginStream.close();
+					Static124.loginStream = null;
 					return;
 				}
 				Static179.anInt4261 = 3;
 			}
 			if (Static179.anInt4261 == 3) {
-				if (Static124.aClass95_2.method2831() < 1) {
+				if (Static124.loginStream.available() < 1) {
 					return;
 				}
-				Static229.aClass100Array156 = new Class100[Static124.aClass95_2.method2828()];
+				Static229.aClass100Array156 = new JagString[Static124.loginStream.method2828()];
 				Static179.anInt4261 = 4;
 			}
 			if (Static179.anInt4261 == 4) {
-				if (Static124.aClass95_2.method2831() < Static229.aClass100Array156.length * 8) {
+				if (Static124.loginStream.available() < Static229.aClass100Array156.length * 8) {
 					return;
 				}
-				Static57.aClass3_Sub15_Sub1_3.anInt2792 = 0;
-				Static124.aClass95_2.method2827(0, Static229.aClass100Array156.length * 8, Static57.aClass3_Sub15_Sub1_3.aByteArray40);
+				Static4.in.pos = 0;
+				Static124.loginStream.read(0, Static229.aClass100Array156.length * 8, Static4.in.data);
 				for (local120 = 0; local120 < Static229.aClass100Array156.length; local120++) {
-					Static229.aClass100Array156[local120] = Static79.method1702(Static57.aClass3_Sub15_Sub1_3.method2182());
+					Static229.aClass100Array156[local120] = Static79.toBaseDisplayName(Static4.in.g8());
 				}
 				Static223.anInt5034 = 21;
 				Static179.anInt4261 = 0;
-				Static124.aClass95_2.method2834();
-				Static124.aClass95_2 = null;
+				Static124.loginStream.close();
+				Static124.loginStream = null;
 				return;
 			}
 		} catch (@Pc(238) IOException local238) {
-			if (Static124.aClass95_2 != null) {
-				Static124.aClass95_2.method2834();
-				Static124.aClass95_2 = null;
+			if (Static124.loginStream != null) {
+				Static124.loginStream.close();
+				Static124.loginStream = null;
 			}
 			if (Static57.anInt1758 < 1) {
 				Static57.anInt1758++;
@@ -147,19 +147,19 @@ public final class Static158 {
 					local25 = Static157.anInt3811++;
 				}
 				@Pc(67) int local67 = 0;
-				@Pc(74) Class3_Sub15 local74 = new Class3_Sub15(Static191.aByteArrayArray15[local16]);
-				while (local74.anInt2792 < Static191.aByteArrayArray15[local16].length && local67 < 511) {
+				@Pc(74) Packet local74 = new Packet(Static191.aByteArrayArray15[local16]);
+				while (local74.pos < Static191.aByteArrayArray15[local16].length && local67 < 511) {
 					@Pc(97) int local97 = local67++ << 6 | local25;
-					@Pc(103) int local103 = local74.method2163();
+					@Pc(103) int local103 = local74.g2();
 					@Pc(107) int local107 = local103 >> 14;
 					@Pc(113) int local113 = local103 >> 7 & 0x3F;
 					@Pc(125) int local125 = local113 + (Static238.anIntArray470[local16] >> 8) * 64 - Static225.anInt5068;
 					@Pc(129) int local129 = local103 & 0x3F;
 					@Pc(142) int local142 = local129 + (Static238.anIntArray470[local16] & 0xFF) * 64 - Static142.anInt3483;
-					@Pc(148) Class96 local148 = Static214.method4363(local74.method2163());
+					@Pc(148) NPCType local148 = NPCType.list(local74.g2());
 					if (Static175.aClass8_Sub4_Sub2Array1[local97] == null && (local148.aByte10 & 0x1) > 0 && local107 == Static41.anInt1316 && local125 >= 0 && local148.anInt3713 + local125 < 104 && local142 >= 0 && local142 + local148.anInt3713 < 104) {
-						Static175.aClass8_Sub4_Sub2Array1[local97] = new Class8_Sub4_Sub2();
-						@Pc(198) Class8_Sub4_Sub2 local198 = Static175.aClass8_Sub4_Sub2Array1[local97];
+						Static175.aClass8_Sub4_Sub2Array1[local97] = new ClientNPC();
+						@Pc(198) ClientNPC local198 = Static175.aClass8_Sub4_Sub2Array1[local97];
 						Static33.anIntArray79[Static272.anInt5214++] = local97;
 						local198.anInt3430 = Static83.anInt372;
 						local198.method2698(local148);

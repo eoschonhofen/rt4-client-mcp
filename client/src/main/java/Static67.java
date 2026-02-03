@@ -6,20 +6,17 @@ public final class Static67 {
 	public static int anInt3356;
 
 	@OriginalMember(owner = "client!fe", name = "lc", descriptor = "[Lclient!qf;")
-	public static Class3_Sub2_Sub1[] aClass3_Sub2_Sub1Array4;
+	public static AbstractPix32[] aClass3_Sub2_Sub1Array4;
 
 	@OriginalMember(owner = "client!fe", name = "I", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_639 = Static28.method790(" ");
+	public static final JagString aClass100_639 = JagString.wrap(" ");
 
 	@OriginalMember(owner = "client!fe", name = "R", descriptor = "Z")
 	public static boolean aBoolean168 = true;
-
-	@OriginalMember(owner = "client!fe", name = "jb", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_20 = new Class99(64);
 
 	@OriginalMember(owner = "client!fe", name = "lb", descriptor = "[I")
 	public static final int[] anIntArray320 = new int[100];
 
 	@OriginalMember(owner = "client!fe", name = "nc", descriptor = "[Lclient!hj;")
-	public static final Class61[] aClass61Array3 = new Class61[50];
+	public static final ClientGosubFrame[] aClass61Array3 = new ClientGosubFrame[50];
 }

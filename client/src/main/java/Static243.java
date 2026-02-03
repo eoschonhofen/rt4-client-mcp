@@ -4,37 +4,25 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static243 {
 
-	@OriginalMember(owner = "client!tk", name = "j", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_97;
-
 	@OriginalMember(owner = "client!tk", name = "o", descriptor = "Lclient!ok;")
-	public static Class36 aClass36_1;
-
-	@OriginalMember(owner = "client!tk", name = "s", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_98;
+	public static Pix8 aClass36_1;
 
 	@OriginalMember(owner = "client!tk", name = "D", descriptor = "[Lclient!ec;")
-	public static Class31[] aClass31Array3;
-
-	@OriginalMember(owner = "client!tk", name = "c", descriptor = "J")
-	public static volatile long aLong178 = 0L;
-
-	@OriginalMember(owner = "client!tk", name = "v", descriptor = "I")
-	public static int anInt5359 = 0;
+	public static Sprite[] aClass31Array3;
 
 	@OriginalMember(owner = "client!tk", name = "x", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1012 = Static28.method790(" steht bereits auf Ihrer Freunde)2Liste(Q");
+	public static final JagString aClass100_1012 = JagString.wrap(" steht bereits auf Ihrer Freunde)2Liste(Q");
 
 	@OriginalMember(owner = "client!tk", name = "K", descriptor = "[I")
 	public static int[] anIntArray476 = new int[2];
 
 	@OriginalMember(owner = "client!tk", name = "a", descriptor = "(Lclient!sc;ZLclient!wl;)Lclient!hg;")
-	public static Class3_Sub14 method4212(@OriginalArg(0) Class133 arg0, @OriginalArg(2) Class164 arg1) {
+	public static GlSquare method4212(@OriginalArg(0) HashTable arg0, @OriginalArg(2) FloType arg1) {
 		@Pc(23) long local23 = (long) ((arg1.anInt5892 + 1 << 16) + arg1.anInt5885) + ((long) arg1.anInt5897 << 56) + ((long) arg1.anInt5889 << 32);
-		@Pc(38) Class3_Sub14 local38 = (Class3_Sub14) arg0.method3863(local23);
+		@Pc(38) GlSquare local38 = (GlSquare) arg0.find(local23);
 		if (local38 == null) {
-			local38 = new Class3_Sub14(arg1.anInt5892, (float) arg1.anInt5885, true, false, arg1.anInt5889);
-			arg0.method3862(local38, local23);
+			local38 = new GlSquare(arg1.anInt5892, (float) arg1.anInt5885, true, false, arg1.anInt5889);
+			arg0.put(local38, local23);
 		}
 		return local38;
 	}
@@ -44,18 +32,18 @@ public final class Static243 {
 		Static204.anInt4762 = 0;
 		Static67.aBoolean168 = true;
 		Static183.aLong139 = 0L;
-		Static178.aClass74_1.anInt2990 = 0;
-		Static26.aBoolean59 = true;
+		client.mouseTracking.length = 0;
+		GameShell.focus = true;
 		Static114.method4625();
 		Static49.anInt1462 = -1;
 		Static5.anInt45 = -1;
 		Static164.anInt3985 = -1;
 		Static267.anInt5775 = 0;
 		Static60.anInt1894 = 0;
-		Static6.aClass3_Sub15_Sub1_1.anInt2792 = 0;
+		Static6.aClass3_Sub15_Sub1_1.pos = 0;
 		Static230.anInt5152 = -1;
 		Static201.anInt1862 = 0;
-		Static57.aClass3_Sub15_Sub1_3.anInt2792 = 0;
+		Static4.in.pos = 0;
 		@Pc(3506) int local3506;
 		for (local3506 = 0; local3506 < Static143.aClass102Array1.length; local3506++) {
 			Static143.aClass102Array1[local3506] = null;
@@ -89,7 +77,7 @@ public final class Static243 {
 		for (local3506 = 0; local3506 < 32768; local3506++) {
 			Static175.aClass8_Sub4_Sub2Array1[local3506] = null;
 		}
-		Static173.aClass8_Sub4_Sub1_2 = Static159.aClass8_Sub4_Sub1Array1[2047] = new Class8_Sub4_Sub1();
+		Static173.aClass8_Sub4_Sub1_2 = Static159.aClass8_Sub4_Sub1Array1[2047] = new ClientPlayer();
 		Static217.aClass69_116.method2278();
 		Static99.aClass69_64.method2278();
 		if (Static159.aClass69ArrayArrayArray1 != null) {
@@ -101,7 +89,7 @@ public final class Static243 {
 				}
 			}
 		}
-		Static26.aClass69_27 = new Class69();
+		Static26.aClass69_27 = new LinkList();
 		Static166.anInt4054 = 0;
 		Static9.anInt178 = 0;
 		Static8.method121();
@@ -122,11 +110,11 @@ public final class Static243 {
 		if (Static154.anInt3711 != -1) {
 			Static109.method2275(Static154.anInt3711);
 		}
-		for (@Pc(3755) Class3_Sub31 local3755 = (Class3_Sub31) Static119.aClass133_9.method3859(); local3755 != null; local3755 = (Class3_Sub31) Static119.aClass133_9.method3861()) {
+		for (@Pc(3755) SubInterface local3755 = (SubInterface) Static119.aClass133_9.method3859(); local3755 != null; local3755 = (SubInterface) Static119.aClass133_9.method3861()) {
 			Static132.method2605(true, local3755);
 		}
 		Static154.anInt3711 = -1;
-		Static119.aClass133_9 = new Class133(8);
+		Static119.aClass133_9 = new HashTable(8);
 		Static52.method1287();
 		Static39.aClass13_10 = null;
 		Static60.aBoolean108 = false;
@@ -146,14 +134,14 @@ public final class Static243 {
 		Static199.aClass3_Sub22Array1 = null;
 		Static15.aClass100_87 = null;
 		for (local3506 = 0; local3506 < 6; local3506++) {
-			Static229.aClass136Array1[local3506] = new Class136();
+			Static229.aClass136Array1[local3506] = new StockMarketOffer();
 		}
 		for (local3506 = 0; local3506 < 25; local3506++) {
 			Static99.anIntArray240[local3506] = 0;
 			Static141.anIntArray326[local3506] = 0;
 			Static227.anIntArray446[local3506] = 0;
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static86.method1799();
 		}
 		Static197.aBoolean228 = true;

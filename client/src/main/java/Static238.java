@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static238 {
 
-	@OriginalMember(owner = "client!te", name = "y", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_96;
-
 	@OriginalMember(owner = "client!te", name = "H", descriptor = "[I")
 	public static int[] anIntArray470;
 
@@ -18,21 +15,21 @@ public final class Static238 {
 
 	@OriginalMember(owner = "client!te", name = "a", descriptor = "(IZ)V")
 	public static void method4142() {
-		Static67.aClass99_20.method3102(5);
+		IdkType.recentUse.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!te", name = "a", descriptor = "(III)Lclient!da;")
-	public static Class3_Sub2_Sub8 method4143(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(13) Class3_Sub2_Sub8 local13 = (Class3_Sub2_Sub8) Static36.aClass133_3.method3863((long) arg1 | (long) arg0 << 32);
+	public static DelayedStateChange method4143(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
+		@Pc(13) DelayedStateChange local13 = (DelayedStateChange) Static36.aClass133_3.find((long) arg1 | (long) arg0 << 32);
 		if (local13 == null) {
-			local13 = new Class3_Sub2_Sub8(arg0, arg1);
-			Static36.aClass133_3.method3862(local13, local13.aLong192);
+			local13 = new DelayedStateChange(arg0, arg1);
+			Static36.aClass133_3.put(local13, local13.key);
 		}
 		return local13;
 	}
 
 	@OriginalMember(owner = "client!te", name = "b", descriptor = "(Lclient!na;I)Z")
-	public static boolean method4144(@OriginalArg(0) Class100 arg0) {
+	public static boolean method4144(@OriginalArg(0) JagString arg0) {
 		if (arg0 == null) {
 			return false;
 		}
@@ -47,12 +44,12 @@ public final class Static238 {
 	@OriginalMember(owner = "client!te", name = "e", descriptor = "(I)V")
 	public static void method4145() {
 		Static151.method2809();
-		Static2.anInterface4Array1 = new Interface4[7];
-		Static2.anInterface4Array1[1] = new Class158();
-		Static2.anInterface4Array1[2] = new Class130();
-		Static2.anInterface4Array1[3] = new Class161();
-		Static2.anInterface4Array1[4] = new Class119();
-		Static2.anInterface4Array1[5] = new Class112();
-		Static2.anInterface4Array1[6] = new Class148();
+		Static2.anInterface4Array1 = new MaterialRenderer[7];
+		Static2.anInterface4Array1[1] = new SpecularMaterialRenderer();
+		Static2.anInterface4Array1[2] = new LiquidMaterialRenderer();
+		Static2.anInterface4Array1[3] = new UnderwaterMaterialRenderer();
+		Static2.anInterface4Array1[4] = new WaterMaterialRenderer();
+		Static2.anInterface4Array1[5] = new WaterfallMaterialRenderer();
+		Static2.anInterface4Array1[6] = new UnlitMaterialRenderer();
 	}
 }

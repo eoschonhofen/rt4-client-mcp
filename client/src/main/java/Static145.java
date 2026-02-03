@@ -11,29 +11,26 @@ public final class Static145 {
 	public static final int[][] anIntArrayArray25 = new int[104][104];
 
 	@OriginalMember(owner = "client!lf", name = "c", descriptor = "Lclient!ih;")
-	public static final Class69 aClass69_84 = new Class69();
+	public static final LinkList aClass69_84 = new LinkList();
 
 	@OriginalMember(owner = "client!lf", name = "d", descriptor = "[I")
 	public static final int[] anIntArray331 = new int[1000];
-
-	@OriginalMember(owner = "client!lf", name = "f", descriptor = "I")
-	public static int anInt3497 = 0;
 
 	@OriginalMember(owner = "client!lf", name = "k", descriptor = "I")
 	public static int anInt3502 = -1;
 
 	@OriginalMember(owner = "client!lf", name = "a", descriptor = "(I)V")
 	public static void method2742() {
-		if (Static244.anInt5370 == 10 && Static239.aBoolean269) {
+		if (client.state == 10 && GameShell.glRenderer) {
 			Static196.method3534(28);
 		}
-		if (Static244.anInt5370 == 30) {
+		if (client.state == 30) {
 			Static196.method3534(25);
 		}
 	}
 
 	@OriginalMember(owner = "client!lf", name = "a", descriptor = "(ILclient!ve;)V")
-	public static void method2743(@OriginalArg(1) Class153 arg0) {
+	public static void method2743(@OriginalArg(1) Js5 arg0) {
 		Static233.aClass36_Sub1Array1 = Static162.method3088(Static138.anInt3443, arg0);
 		Static96.anIntArray235 = new int[256];
 		@Pc(15) int local15;
@@ -62,7 +59,7 @@ public final class Static145 {
 		Static69.method1545(null);
 		Static103.anIntArray254 = new int[32768];
 		Static216.anIntArray188 = new int[32768];
-		Static167.aClass3_Sub2_Sub1_Sub1_3 = new Class3_Sub2_Sub1_Sub1(128, 254);
+		Static167.aClass3_Sub2_Sub1_Sub1_3 = new Pix32(128, 254);
 	}
 
 	@OriginalMember(owner = "client!lf", name = "b", descriptor = "(I)V")
@@ -71,7 +68,7 @@ public final class Static145 {
 		@Pc(9) int local9 = Static24.anInt761;
 		@Pc(11) int local11 = Static183.anInt4271;
 		@Pc(15) int local15 = Static13.anInt436;
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static46.method1186(local11, local3, local9, local15, 6116423);
 			Static46.method1186(local11 + 1, local3 + 1, local9 - 2, 16, 0);
 			Static46.method1179(local11 + 1, local3 + 18, local9 - 2, local15 + -19, 0);
@@ -81,8 +78,8 @@ public final class Static145 {
 			Static129.method2483(local11 + 1, local3 + 18, local9 - 2, local15 + -19, 0);
 		}
 		Static280.aClass3_Sub2_Sub9_43.method2857(Static234.aClass100_998, local11 + 3, local3 + 14, 6116423, -1);
-		@Pc(96) int local96 = Static223.anInt5032;
-		@Pc(98) int local98 = Static215.anInt4873;
+		@Pc(96) int local96 = Static223.mouseY;
+		@Pc(98) int local98 = Static215.mouseX;
 		for (@Pc(107) int local107 = 0; local107 < Static231.anInt5204; local107++) {
 			@Pc(127) int local127 = (Static231.anInt5204 - local107 - 1) * 15 + local3 + 31;
 			@Pc(129) int local129 = 16777215;
@@ -96,7 +93,7 @@ public final class Static145 {
 
 	@OriginalMember(owner = "client!lf", name = "a", descriptor = "(IIIIB)V")
 	public static void method2745(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		@Pc(8) Class3_Sub2_Sub8 local8 = Static238.method4143(10, arg0);
+		@Pc(8) DelayedStateChange local8 = Static238.method4143(10, arg0);
 		local8.method1017();
 		local8.anInt1270 = arg2;
 		local8.anInt1271 = arg3;
@@ -105,6 +102,6 @@ public final class Static145 {
 
 	@OriginalMember(owner = "client!lf", name = "c", descriptor = "(I)I")
 	public static int method2746() {
-		return ((Static99.aBoolean143 ? 1 : 0) << 19) + (((Static71.aBoolean107 ? 1 : 0) << 16) + ((Static220.aBoolean244 ? 1 : 0) << 15) + ((Static178.aBoolean202 ? 1 : 0) << 13) + ((Static209.aBoolean240 ? 1 : 0) << 10) + ((Static159.aBoolean189 ? 1 : 0) << 9) + ((Static15.aBoolean33 ? 1 : 0) << 7) + ((Static53.aBoolean99 ? 1 : 0) << 6) + ((Static250.aBoolean283 ? 1 : 0) << 5) + (((Static162.aBoolean190 ? 1 : 0) << 3) + (Static113.anInt4609 & 0x7) - (-((Static80.aBoolean231 ? 1 : 0) << 4) + -((Static11.aBoolean15 ? 1 : 0) << 8)) - (-((Static139.anInt3451 & 0x3) << 11) + -((Static125.anInt3104 == 0 ? 0 : 1) << 20) - (((Static12.anInt391 == 0 ? 0 : 1) << 21) + ((Static30.anInt978 == 0 ? 0 : 1) << 22)))) + (Static76.method1644() << 23));
+		return ((client.lowMem ? 1 : 0) << 19) + (((Static71.aBoolean107 ? 1 : 0) << 16) + ((Static220.aBoolean244 ? 1 : 0) << 15) + ((Static178.highDetailLighting ? 1 : 0) << 13) + ((Static209.aBoolean240 ? 1 : 0) << 10) + ((Static159.aBoolean189 ? 1 : 0) << 9) + ((Static15.aBoolean33 ? 1 : 0) << 7) + ((Static53.aBoolean99 ? 1 : 0) << 6) + ((Static250.aBoolean283 ? 1 : 0) << 5) + (((Static162.aBoolean190 ? 1 : 0) << 3) + (Static113.anInt4609 & 0x7) - (-((Static80.aBoolean231 ? 1 : 0) << 4) + -((Static11.aBoolean15 ? 1 : 0) << 8)) - (-((Static139.anInt3451 & 0x3) << 11) + -((Static125.anInt3104 == 0 ? 0 : 1) << 20) - (((Static12.anInt391 == 0 ? 0 : 1) << 21) + ((Static30.anInt978 == 0 ? 0 : 1) << 22)))) + (Static76.method1644() << 23));
 	}
 }

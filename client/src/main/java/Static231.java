@@ -10,20 +10,14 @@ public final class Static231 {
 	@OriginalMember(owner = "client!sk", name = "mb", descriptor = "I")
 	public static int anInt5205;
 
-	@OriginalMember(owner = "client!sk", name = "bb", descriptor = "Lclient!gn;")
-	public static final Class54 aClass54_13 = new Class54(64);
-
 	@OriginalMember(owner = "client!sk", name = "cb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_984 = Static28.method790("Untersuchen");
+	public static final JagString aClass100_984 = JagString.wrap("Untersuchen");
 
 	@OriginalMember(owner = "client!sk", name = "eb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_985 = Static28.method790("Musik)2Engine vorbereitet)3");
+	public static final JagString aClass100_985 = JagString.wrap("Musik)2Engine vorbereitet)3");
 
 	@OriginalMember(owner = "client!sk", name = "gb", descriptor = "J")
 	public static long aLong174 = 0L;
-
-	@OriginalMember(owner = "client!sk", name = "hb", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_29 = new Class99(64);
 
 	@OriginalMember(owner = "client!sk", name = "ib", descriptor = "I")
 	public static int anInt5202 = 0;
@@ -35,19 +29,19 @@ public final class Static231 {
 	public static boolean aBoolean252 = false;
 
 	@OriginalMember(owner = "client!sk", name = "a", descriptor = "(ILclient!wa;)V")
-	public static void method3980(@OriginalArg(1) Class3_Sub15 arg0) {
+	public static void method3980(@OriginalArg(1) Packet arg0) {
 		label83: while (true) {
-			if (arg0.anInt2792 < arg0.aByteArray40.length) {
+			if (arg0.pos < arg0.data.length) {
 				@Pc(23) int local23 = 0;
 				@Pc(25) boolean local25 = false;
 				@Pc(27) int local27 = 0;
-				if (arg0.method2229() == 1) {
+				if (arg0.g1() == 1) {
 					local25 = true;
-					local23 = arg0.method2229();
-					local27 = arg0.method2229();
+					local23 = arg0.g1();
+					local27 = arg0.g1();
 				}
-				@Pc(46) int local46 = arg0.method2229();
-				@Pc(50) int local50 = arg0.method2229();
+				@Pc(46) int local46 = arg0.g1();
+				@Pc(50) int local50 = arg0.g1();
 				@Pc(57) int local57 = local46 * 64 - Static158.anInt3846;
 				@Pc(68) int local68 = Static181.anInt4296 + Static2.anInt13 - local50 * 64 - 1;
 				@Pc(146) byte local146;
@@ -62,13 +56,13 @@ public final class Static231 {
 						}
 						for (@Pc(107) int local107 = 0; local107 < 64; local107++) {
 							if (!local25 || local23 * 8 <= local102 && local23 * 8 + 8 > local102 && local107 >= local27 * 8 && local27 * 8 + 8 > local107) {
-								local146 = arg0.method2186();
+								local146 = arg0.g1b();
 								if (local146 != 0) {
 									if (Static229.aByteArrayArrayArray12[local96][local100] == null) {
 										Static229.aByteArrayArrayArray12[local96][local100] = new byte[4096];
 									}
 									Static229.aByteArrayArrayArray12[local96][local100][(63 - local107 << 6) + local102] = local146;
-									@Pc(182) byte local182 = arg0.method2186();
+									@Pc(182) byte local182 = arg0.g1b();
 									if (Static125.aByteArrayArrayArray10[local96][local100] == null) {
 										Static125.aByteArrayArrayArray10[local96][local100] = new byte[4096];
 									}
@@ -84,9 +78,9 @@ public final class Static231 {
 					if (local96 >= (local25 ? 64 : 4096)) {
 						continue label83;
 					}
-					local146 = arg0.method2186();
+					local146 = arg0.g1b();
 					if (local146 != 0) {
-						arg0.anInt2792++;
+						arg0.pos++;
 					}
 					local96++;
 				}
@@ -276,7 +270,7 @@ public final class Static231 {
 	}
 
 	@OriginalMember(owner = "client!sk", name = "a", descriptor = "(JI)V")
-	public static void method3983(@OriginalArg(0) long arg0) {
+	public static void sleepPrecise(@OriginalArg(0) long arg0) {
 		if (arg0 <= 0L) {
 			return;
 		}
@@ -302,7 +296,7 @@ public final class Static231 {
 	}
 
 	@OriginalMember(owner = "client!sk", name = "a", descriptor = "(Lclient!ve;I)Z")
-	public static boolean method3986(@OriginalArg(0) Class153 arg0) {
+	public static boolean method3986(@OriginalArg(0) Js5 arg0) {
 		return arg0.method4506(Static138.anInt3443);
 	}
 }

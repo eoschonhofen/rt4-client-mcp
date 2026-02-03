@@ -5,41 +5,38 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static153 {
 
 	@OriginalMember(owner = "client!mc", name = "Q", descriptor = "Lclient!na;")
-	public static Class100 aClass100_724;
+	public static JagString aClass100_724;
 
 	@OriginalMember(owner = "client!mc", name = "S", descriptor = "Lclient!mm;")
-	public static Class3_Sub2_Sub1_Sub1 aClass3_Sub2_Sub1_Sub1_2;
-
-	@OriginalMember(owner = "client!mc", name = "Z", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_57;
+	public static Pix32 aClass3_Sub2_Sub1_Sub1_2;
 
 	@OriginalMember(owner = "client!mc", name = "Y", descriptor = "[Lclient!na;")
-	public static final Class100[] aClass100Array112 = new Class100[100];
+	public static final JagString[] aClass100Array112 = new JagString[100];
 
 	@OriginalMember(owner = "client!mc", name = "ab", descriptor = "[I")
 	public static final int[] anIntArray351 = new int[] { 7, 8, 9, 10, 11, 12, 13, 15 };
 
 	@OriginalMember(owner = "client!mc", name = "fb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_725 = Static28.method790("pt");
+	private static final JagString aClass100_725 = JagString.wrap("pt");
 
 	@OriginalMember(owner = "client!mc", name = "mb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_726 = Static28.method790("en");
+	private static final JagString aClass100_726 = JagString.wrap("en");
 
 	@OriginalMember(owner = "client!mc", name = "vb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_728 = Static28.method790("de");
+	private static final JagString aClass100_728 = JagString.wrap("de");
 
 	@OriginalMember(owner = "client!mc", name = "pb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_727 = Static28.method790("fr");
+	private static final JagString aClass100_727 = JagString.wrap("fr");
 
 	@OriginalMember(owner = "client!mc", name = "ob", descriptor = "[Lclient!na;")
-	public static final Class100[] aClass100Array113 = new Class100[] { aClass100_726, aClass100_728, aClass100_727, aClass100_725 };
+	public static final JagString[] aClass100Array113 = new JagString[] { aClass100_726, aClass100_728, aClass100_727, aClass100_725 };
 
 	@OriginalMember(owner = "client!mc", name = "tb", descriptor = "S")
 	public static short aShort22 = 1;
 
 	@OriginalMember(owner = "client!mc", name = "c", descriptor = "(III)V")
 	public static void method2905(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(14) Class3_Sub2_Sub8 local14 = Static238.method4143(7, arg0);
+		@Pc(14) DelayedStateChange local14 = Static238.method4143(7, arg0);
 		local14.method1017();
 		local14.anInt1271 = arg1;
 	}
@@ -67,8 +64,8 @@ public final class Static153 {
 
 	@OriginalMember(owner = "client!mc", name = "f", descriptor = "(B)V")
 	public static void method2909() {
-		Static6.aClass3_Sub15_Sub1_1.method2242(184);
-		for (@Pc(18) Class3_Sub31 local18 = (Class3_Sub31) Static119.aClass133_9.method3859(); local18 != null; local18 = (Class3_Sub31) Static119.aClass133_9.method3861()) {
+		Static6.aClass3_Sub15_Sub1_1.p1Enc(184);
+		for (@Pc(18) SubInterface local18 = (SubInterface) Static119.aClass133_9.method3859(); local18 != null; local18 = (SubInterface) Static119.aClass133_9.method3861()) {
 			if (local18.anInt5879 == 0) {
 				Static132.method2605(true, local18);
 			}
@@ -81,7 +78,7 @@ public final class Static153 {
 
 	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(BI)V")
 	public static void method2910(@OriginalArg(1) int arg0) {
-		@Pc(4) Class3_Sub2_Sub8 local4 = Static238.method4143(8, arg0);
+		@Pc(4) DelayedStateChange local4 = Static238.method4143(8, arg0);
 		local4.method1007();
 	}
 }

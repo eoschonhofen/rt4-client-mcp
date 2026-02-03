@@ -10,7 +10,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static97 {
 
 	@OriginalMember(owner = "client!hi", name = "g", descriptor = "I")
-	public static int anInt2508;
+	public static int loginJs5Port;
 
 	@OriginalMember(owner = "client!hi", name = "a", descriptor = "I")
 	public static int anInt2503 = -1;
@@ -19,7 +19,7 @@ public final class Static97 {
 	public static long aLong89 = 0L;
 
 	@OriginalMember(owner = "client!hi", name = "h", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_523 = Static28.method790("Chargement de l(W-Bcran)2titre )2 ");
+	public static final JagString aClass100_523 = JagString.wrap("Chargement de l(W-Bcran)2titre )2 ");
 
 	@OriginalMember(owner = "client!hi", name = "a", descriptor = "(BI)I")
 	public static int method1959(@OriginalArg(1) int arg0) {
@@ -27,7 +27,7 @@ public final class Static97 {
 	}
 
 	@OriginalMember(owner = "client!hi", name = "a", descriptor = "(IIIIILclient!be;Z)V")
-	public static void method1960(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) Class13 arg5) {
+	public static void method1960(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) IfType arg5) {
 		@Pc(13) int local13 = arg3 * arg3 + arg4 * arg4;
 		if (local13 > 360000) {
 			return;
@@ -39,8 +39,8 @@ public final class Static97 {
 		}
 		local30 -= 10;
 		@Pc(58) int local58 = Static59.anInt1814 + Static57.anInt1747 & 0x7FF;
-		@Pc(62) int local62 = Class58.anIntArray225[local58];
-		@Pc(66) int local66 = Class58.anIntArray223[local58];
+		@Pc(62) int local62 = Pix3D.cosTable[local58];
+		@Pc(66) int local66 = Pix3D.sinTable[local58];
 		@Pc(74) int local74 = local66 * 256 / (Static273.anInt4130 + 256);
 		@Pc(82) int local82 = local62 * 256 / (Static273.anInt4130 + 256);
 		@Pc(93) int local93 = arg4 * local74 + local82 * arg3 >> 16;
@@ -48,20 +48,20 @@ public final class Static97 {
 		@Pc(110) double local110 = Math.atan2((double) local93, (double) local104);
 		@Pc(117) int local117 = (int) (Math.sin(local110) * (double) local30);
 		@Pc(124) int local124 = (int) (Math.cos(local110) * (double) local30);
-		if (Static239.aBoolean269) {
-			((Class3_Sub2_Sub1_Sub2) Static277.aClass3_Sub2_Sub1Array12[arg0]).method1428((arg5.anInt445 / 2 + arg2 + local117) * 16, (arg5.anInt459 / 2 + arg1 - local124) * 16, (int) (local110 * 10430.378D));
+		if (GameShell.glRenderer) {
+			((GlPix32) Static277.aClass3_Sub2_Sub1Array12[arg0]).method1428((arg5.anInt445 / 2 + arg2 + local117) * 16, (arg5.anInt459 / 2 + arg1 - local124) * 16, (int) (local110 * 10430.378D));
 		} else {
-			((Class3_Sub2_Sub1_Sub1) Static277.aClass3_Sub2_Sub1Array12[arg0]).method306(local117 + arg5.anInt445 / 2 + arg2 - 10, arg5.anInt459 / 2 + -10 + arg1 + -local124, local110);
+			((Pix32) Static277.aClass3_Sub2_Sub1Array12[arg0]).method306(local117 + arg5.anInt445 / 2 + arg2 - 10, arg5.anInt459 / 2 + -10 + arg1 + -local124, local110);
 		}
 	}
 
 	@OriginalMember(owner = "client!hi", name = "a", descriptor = "(ILjava/lang/Throwable;)Ljava/lang/String;")
 	public static String method1961(@OriginalArg(1) Throwable arg0) throws IOException {
 		@Pc(24) String local24;
-		if (arg0 instanceof RuntimeException_Sub1) {
-			@Pc(11) RuntimeException_Sub1 local11 = (RuntimeException_Sub1) arg0;
-			arg0 = local11.aThrowable1;
-			local24 = local11.aString3 + " | ";
+		if (arg0 instanceof JagException) {
+			@Pc(11) JagException local11 = (JagException) arg0;
+			arg0 = local11.cause;
+			local24 = local11.message + " | ";
 		} else {
 			local24 = "";
 		}
@@ -100,40 +100,40 @@ public final class Static97 {
 	}
 
 	@OriginalMember(owner = "client!hi", name = "a", descriptor = "(Lclient!wa;I)V")
-	public static void method1962(@OriginalArg(0) Class3_Sub15 arg0) {
+	public static void method1962(@OriginalArg(0) Packet arg0) {
 		@Pc(9) int local9 = arg0.method2204();
-		Static203.aClass32Array1 = new Class32[local9];
+		Static203.aClass32Array1 = new WorldInfo[local9];
 		@Pc(14) int local14;
 		for (local14 = 0; local14 < local9; local14++) {
-			Static203.aClass32Array1[local14] = new Class32();
+			Static203.aClass32Array1[local14] = new WorldInfo();
 			Static203.aClass32Array1[local14].anInt1739 = arg0.method2204();
-			Static203.aClass32Array1[local14].aClass100_378 = arg0.method2187();
+			Static203.aClass32Array1[local14].aClass100_378 = arg0.gjstr2();
 		}
 		Static19.anInt636 = arg0.method2204();
 		Static171.anInt4157 = arg0.method2204();
 		Static106.anInt2871 = arg0.method2204();
-		Static196.aClass10_Sub1Array2 = new Class10_Sub1[Static171.anInt4157 + 1 - Static19.anInt636];
+		Static196.aClass10_Sub1Array2 = new GWCWorld[Static171.anInt4157 + 1 - Static19.anInt636];
 		for (local14 = 0; local14 < Static106.anInt2871; local14++) {
 			@Pc(77) int local77 = arg0.method2204();
-			@Pc(85) Class10_Sub1 local85 = Static196.aClass10_Sub1Array2[local77] = new Class10_Sub1();
-			local85.anInt377 = arg0.method2229();
-			local85.anInt381 = arg0.method2174();
+			@Pc(85) GWCWorld local85 = Static196.aClass10_Sub1Array2[local77] = new GWCWorld();
+			local85.anInt377 = arg0.g1();
+			local85.anInt381 = arg0.g4();
 			local85.anInt382 = local77 + Static19.anInt636;
-			local85.aClass100_69 = arg0.method2187();
-			local85.aClass100_71 = arg0.method2187();
+			local85.aClass100_69 = arg0.gjstr2();
+			local85.aClass100_71 = arg0.gjstr2();
 		}
-		Static80.anInt4702 = arg0.method2174();
+		Static80.anInt4702 = arg0.g4();
 		Static61.aBoolean109 = true;
 	}
 
 	@OriginalMember(owner = "client!hi", name = "a", descriptor = "(Lclient!be;B)Lclient!na;")
-	public static Class100 method1963(@OriginalArg(0) Class13 arg0) {
+	public static JagString method1963(@OriginalArg(0) IfType arg0) {
 		if (Static36.method940(arg0).method512() == 0) {
 			return null;
-		} else if (arg0.aClass100_86 == null || arg0.aClass100_86.method3144().method3120() == 0) {
+		} else if (arg0.targetVerb == null || arg0.targetVerb.method3144().length() == 0) {
 			return Static121.aBoolean154 ? Static143.aClass100_668 : null;
 		} else {
-			return arg0.aClass100_86;
+			return arg0.targetVerb;
 		}
 	}
 }

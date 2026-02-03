@@ -5,13 +5,13 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static118 {
 
 	@OriginalMember(owner = "client!jd", name = "d", descriptor = "[[[B")
-	public static byte[][][] aByteArrayArrayArray9;
+	public static byte[][][] shadow;
 
 	@OriginalMember(owner = "client!jd", name = "i", descriptor = "Lclient!be;")
-	public static Class13 aClass13_15;
+	public static IfType aClass13_15;
 
 	@OriginalMember(owner = "client!jd", name = "c", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_16 = new Class99(100);
+	public static final SoftLruCache aClass99_16 = new SoftLruCache(100);
 
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(B)I")
 	public static int method2352() {
@@ -21,54 +21,54 @@ public final class Static118 {
 
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(IB)V")
 	public static void method2353(@OriginalArg(0) int arg0) {
-		@Pc(12) Class3_Sub2_Sub8 local12 = Static238.method4143(12, arg0);
+		@Pc(12) DelayedStateChange local12 = Static238.method4143(12, arg0);
 		local12.method1007();
 	}
 
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(II[Lclient!be;)V")
-	public static void method2354(@OriginalArg(1) int arg0, @OriginalArg(2) Class13[] arg1) {
+	public static void method2354(@OriginalArg(1) int arg0, @OriginalArg(2) IfType[] arg1) {
 		for (@Pc(7) int local7 = 0; local7 < arg1.length; local7++) {
-			@Pc(15) Class13 local15 = arg1[local7];
-			if (local15 != null && local15.anInt456 == arg0 && (!local15.aBoolean32 || !Static36.method947(local15))) {
-				if (local15.anInt452 == 0) {
-					if (!local15.aBoolean32 && Static36.method947(local15) && local15 != Static180.aClass13_22) {
+			@Pc(15) IfType local15 = arg1[local7];
+			if (local15 != null && local15.layerId == arg0 && (!local15.v3 || !Static36.method947(local15))) {
+				if (local15.type == 0) {
+					if (!local15.v3 && Static36.method947(local15) && local15 != Static180.aClass13_22) {
 						continue;
 					}
-					method2354(local15.anInt507, arg1);
+					method2354(local15.parentId, arg1);
 					if (local15.aClass13Array3 != null) {
-						method2354(local15.anInt507, local15.aClass13Array3);
+						method2354(local15.parentId, local15.aClass13Array3);
 					}
-					@Pc(73) Class3_Sub31 local73 = (Class3_Sub31) Static119.aClass133_9.method3863((long) local15.anInt507);
+					@Pc(73) SubInterface local73 = (SubInterface) Static119.aClass133_9.find((long) local15.parentId);
 					if (local73 != null) {
 						Static96.method1949(local73.anInt5878);
 					}
 				}
-				if (local15.anInt452 == 6) {
+				if (local15.type == 6) {
 					@Pc(105) int local105;
-					if (local15.anInt522 != -1 || local15.anInt462 != -1) {
+					if (local15.modelAnim != -1 || local15.modelAnim2 != -1) {
 						@Pc(100) boolean local100 = Static154.method2926(local15);
 						if (local100) {
-							local105 = local15.anInt462;
+							local105 = local15.modelAnim2;
 						} else {
-							local105 = local15.anInt522;
+							local105 = local15.modelAnim;
 						}
 						if (local105 != -1) {
-							@Pc(118) Class144 local118 = Static36.method941(local105);
+							@Pc(118) SeqType local118 = SeqType.list(local105);
 							if (local118 != null) {
 								local15.anInt500 += Static178.anInt4247;
-								while (local15.anInt500 > local118.anIntArray474[local15.anInt510]) {
-									local15.anInt500 -= local118.anIntArray474[local15.anInt510];
+								while (local15.anInt500 > local118.delay[local15.anInt510]) {
+									local15.anInt500 -= local118.delay[local15.anInt510];
 									local15.anInt510++;
-									if (local118.anIntArray473.length <= local15.anInt510) {
+									if (local118.frames.length <= local15.anInt510) {
 										local15.anInt510 -= local118.anInt5362;
-										if (local15.anInt510 < 0 || local118.anIntArray473.length <= local15.anInt510) {
+										if (local15.anInt510 < 0 || local118.frames.length <= local15.anInt510) {
 											local15.anInt510 = 0;
 										}
 									}
 									local15.anInt496 = local15.anInt510 + 1;
-									if (local118.anIntArray473.length <= local15.anInt496) {
+									if (local118.frames.length <= local15.anInt496) {
 										local15.anInt496 -= local118.anInt5362;
-										if (local15.anInt496 < 0 || local118.anIntArray473.length <= local15.anInt496) {
+										if (local15.anInt496 < 0 || local118.frames.length <= local15.anInt496) {
 											local15.anInt496 = -1;
 										}
 									}
@@ -77,13 +77,13 @@ public final class Static118 {
 							}
 						}
 					}
-					if (local15.anInt483 != 0 && !local15.aBoolean32) {
+					if (local15.anInt483 != 0 && !local15.v3) {
 						@Pc(239) int local239 = local15.anInt483 >> 16;
 						@Pc(243) int local243 = local239 * Static178.anInt4247;
 						local105 = local15.anInt483 << 16 >> 16;
-						local15.anInt450 = local243 + local15.anInt450 & 0x7FF;
+						local15.modelXAn = local243 + local15.modelXAn & 0x7FF;
 						local105 *= Static178.anInt4247;
-						local15.anInt524 = local15.anInt524 + local105 & 0x7FF;
+						local15.modelYAn = local15.modelYAn + local105 & 0x7FF;
 						Static43.method1143(local15);
 					}
 				}
@@ -92,7 +92,7 @@ public final class Static118 {
 	}
 
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(II[Lclient!na;I)Lclient!na;")
-	public static Class100 method2355(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) Class100[] arg2) {
+	public static JagString method2355(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) JagString[] arg2) {
 		@Pc(5) int local5 = 0;
 		for (@Pc(7) int local7 = 0; local7 < arg1; local7++) {
 			if (arg2[arg0 + local7] == null) {
@@ -103,11 +103,11 @@ public final class Static118 {
 		@Pc(39) byte[] local39 = new byte[local5];
 		@Pc(41) int local41 = 0;
 		for (@Pc(43) int local43 = 0; local43 < arg1; local43++) {
-			@Pc(52) Class100 local52 = arg2[local43 + arg0];
+			@Pc(52) JagString local52 = arg2[local43 + arg0];
 			Static289.method2612(local52.aByteArray52, 0, local39, local41, local52.anInt4030);
 			local41 += local52.anInt4030;
 		}
-		@Pc(71) Class100 local71 = new Class100();
+		@Pc(71) JagString local71 = new JagString();
 		local71.anInt4030 = local5;
 		local71.aByteArray52 = local39;
 		return local71;

@@ -1,4 +1,3 @@
-import java.awt.Frame;
 import java.util.Random;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
@@ -6,17 +5,11 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static39 {
 
-	@OriginalMember(owner = "client!d", name = "Y", descriptor = "Ljava/awt/Frame;")
-	public static Frame aFrame1;
-
-	@OriginalMember(owner = "client!d", name = "hb", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_23;
-
 	@OriginalMember(owner = "client!d", name = "ib", descriptor = "Lclient!qf;")
-	public static Class3_Sub2_Sub1 aClass3_Sub2_Sub1_1;
+	public static AbstractPix32 aClass3_Sub2_Sub1_1;
 
 	@OriginalMember(owner = "client!d", name = "R", descriptor = "Lclient!be;")
-	public static Class13 aClass13_10 = null;
+	public static IfType aClass13_10 = null;
 
 	@OriginalMember(owner = "client!d", name = "S", descriptor = "Ljava/util/Random;")
 	public static final Random aRandom1 = new Random();
@@ -28,10 +21,10 @@ public final class Static39 {
 	public static final short[] aShortArray6 = new short[500];
 
 	@OriginalMember(owner = "client!d", name = "fb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_248 = Static28.method790("Close");
+	private static final JagString aClass100_248 = JagString.wrap("Close");
 
 	@OriginalMember(owner = "client!d", name = "gb", descriptor = "Lclient!na;")
-	public static Class100 aClass100_249 = aClass100_248;
+	public static JagString aClass100_249 = aClass100_248;
 
 	@OriginalMember(owner = "client!d", name = "c", descriptor = "(III)I")
 	public static int method990(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {

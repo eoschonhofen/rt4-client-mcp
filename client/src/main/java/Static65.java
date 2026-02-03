@@ -8,16 +8,16 @@ public final class Static65 {
 	public static int anInt1951 = -1;
 
 	@OriginalMember(owner = "client!fc", name = "d", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_434 = Static28.method790("Lade Benutzeroberfl-=che )2 ");
+	public static final JagString aClass100_434 = JagString.wrap("Lade Benutzeroberfl-=che )2 ");
 
 	@OriginalMember(owner = "client!fc", name = "f", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_435 = Static28.method790("<img=0>");
+	public static final JagString aClass100_435 = JagString.wrap("<img=0>");
 
 	@OriginalMember(owner = "client!fc", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_436 = Static28.method790("Utiliser");
+	public static final JagString aClass100_436 = JagString.wrap("Utiliser");
 
 	@OriginalMember(owner = "client!fc", name = "a", descriptor = "(Lclient!wa;I)Lclient!na;")
-	public static Class100 method1497(@OriginalArg(0) Class3_Sub15 arg0) {
+	public static JagString method1497(@OriginalArg(0) Packet arg0) {
 		return Static254.method4350(arg0);
 	}
 
@@ -79,20 +79,20 @@ public final class Static65 {
 
 	@OriginalMember(owner = "client!fc", name = "b", descriptor = "(I)V")
 	public static void method1501() {
-		@Pc(12) Class149 local12 = Static10.aClass149_1;
-		synchronized (Static10.aClass149_1) {
-			Static102.anInt2678 = Static228.anInt5105;
-			Static229.anInt5140++;
+		@Pc(12) ClientKeyboardListener local12 = ClientKeyboardListener.aClass149_1;
+		synchronized (ClientKeyboardListener.aClass149_1) {
+			ClientKeyboardListener.anInt2678 = Static228.anInt5105;
+			ClientKeyboardListener.anInt5140++;
 			@Pc(23) int local23;
-			if (Static114.anInt5844 < 0) {
+			if (ClientKeyboardListener.anInt5844 < 0) {
 				for (local23 = 0; local23 < 112; local23++) {
 					Static187.aBooleanArray101[local23] = false;
 				}
-				Static114.anInt5844 = Static227.anInt5087;
+				ClientKeyboardListener.anInt5844 = ClientKeyboardListener.anInt5087;
 			} else {
-				while (Static114.anInt5844 != Static227.anInt5087) {
-					local23 = Static17.anIntArray53[Static227.anInt5087];
-					Static227.anInt5087 = Static227.anInt5087 + 1 & 0x7F;
+				while (ClientKeyboardListener.anInt5844 != ClientKeyboardListener.anInt5087) {
+					local23 = ClientKeyboardListener.anIntArray53[ClientKeyboardListener.anInt5087];
+					ClientKeyboardListener.anInt5087 = ClientKeyboardListener.anInt5087 + 1 & 0x7F;
 					if (local23 >= 0) {
 						Static187.aBooleanArray101[local23] = true;
 					} else {
@@ -100,7 +100,7 @@ public final class Static65 {
 					}
 				}
 			}
-			Static228.anInt5105 = Static53.anInt1708;
+			Static228.anInt5105 = ClientKeyboardListener.anInt1708;
 		}
 	}
 }

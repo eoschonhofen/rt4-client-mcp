@@ -1,5 +1,3 @@
-import java.io.DataInputStream;
-import java.net.URL;
 import java.util.Random;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
@@ -8,7 +6,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static89 {
 
 	@OriginalMember(owner = "client!ha", name = "i", descriptor = "Lclient!qf;")
-	public static Class3_Sub2_Sub1 aClass3_Sub2_Sub1_5;
+	public static AbstractPix32 aClass3_Sub2_Sub1_5;
 
 	@OriginalMember(owner = "client!ha", name = "k", descriptor = "[[Z")
 	public static boolean[][] aBooleanArrayArray3;
@@ -19,9 +17,6 @@ public final class Static89 {
 	@OriginalMember(owner = "client!ha", name = "m", descriptor = "I")
 	public static int anInt2385 = 0;
 
-	@OriginalMember(owner = "client!ha", name = "p", descriptor = "Lclient!gn;")
-	public static final Class54 aClass54_8 = new Class54(64);
-
 	@OriginalMember(owner = "client!ha", name = "q", descriptor = "I")
 	public static int anInt2388 = 0;
 
@@ -29,7 +24,7 @@ public final class Static89 {
 	public static void method1835(@OriginalArg(0) boolean arg0) {
 		@Pc(11) byte local11;
 		@Pc(13) byte[][] local13;
-		if (Static239.aBoolean269 && arg0) {
+		if (GameShell.glRenderer && arg0) {
 			local11 = 1;
 			local13 = Static186.aByteArrayArray14;
 		} else {
@@ -37,7 +32,7 @@ public final class Static89 {
 			local11 = 4;
 		}
 		for (@Pc(21) int local21 = 0; local21 < local11; local21++) {
-			Static107.method2261();
+			client.method2261();
 			for (@Pc(32) int local32 = 0; local32 < 13; local32++) {
 				for (@Pc(39) int local39 = 0; local39 < 13; local39++) {
 					@Pc(52) int local52 = Static187.anIntArrayArrayArray18[local21][local32][local39];
@@ -67,8 +62,8 @@ public final class Static89 {
 	}
 
 	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(ILclient!be;)Lclient!be;")
-	public static Class13 method1836(@OriginalArg(1) Class13 arg0) {
-		@Pc(12) Class13 local12 = Static36.method938(arg0);
+	public static IfType method1836(@OriginalArg(1) IfType arg0) {
+		@Pc(12) IfType local12 = Static36.method938(arg0);
 		if (local12 == null) {
 			local12 = arg0.aClass13_5;
 		}
@@ -77,7 +72,7 @@ public final class Static89 {
 
 	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(II)[B")
 	public static byte[] method1837(@OriginalArg(1) int arg0) {
-		@Pc(10) Class3_Sub2_Sub11 local10 = (Class3_Sub2_Sub11) Static53.aClass54_5.method1806((long) arg0);
+		@Pc(10) ByteArrayNode2 local10 = (ByteArrayNode2) Static53.aClass54_5.method1806((long) arg0);
 		if (local10 == null) {
 			@Pc(24) Random local24 = new Random((long) arg0);
 			@Pc(27) byte[] local27 = new byte[512];
@@ -92,16 +87,16 @@ public final class Static89 {
 				local27[local58] = local27[local53];
 				local27[local53] = local27[511 - local29] = local62;
 			}
-			local10 = new Class3_Sub2_Sub11(local27);
+			local10 = new ByteArrayNode2(local27);
 			Static53.aClass54_5.method1811(local10, (long) arg0);
 		}
 		return local10.aByteArray37;
 	}
 
 	@OriginalMember(owner = "client!ha", name = "a", descriptor = "([IJIZ)Lclient!na;")
-	public static Class100 method1838(@OriginalArg(0) int[] arg0, @OriginalArg(1) long arg1, @OriginalArg(2) int arg2) {
-		if (Static107.anInterface3_1 != null) {
-			@Pc(17) Class100 local17 = Static107.anInterface3_1.method30(arg2, arg0, arg1);
+	public static JagString method1838(@OriginalArg(0) int[] arg0, @OriginalArg(1) long arg1, @OriginalArg(2) int arg2) {
+		if (QuickChatPhraseType.anInterface3_1 != null) {
+			@Pc(17) JagString local17 = QuickChatPhraseType.anInterface3_1.decode(arg2, arg0, arg1);
 			if (local17 != null) {
 				return local17;
 			}
@@ -109,62 +104,28 @@ public final class Static89 {
 		return Static154.method2929(arg1);
 	}
 
-	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(Ljava/lang/String;Ljava/lang/Throwable;B)V")
-	public static void method1839(@OriginalArg(0) String arg0, @OriginalArg(1) Throwable arg1) {
-		try {
-			@Pc(13) String local13 = "";
-			if (arg1 != null) {
-				local13 = Static97.method1961(arg1);
-			}
-			if (arg0 != null) {
-				if (arg1 != null) {
-					local13 = local13 + " | ";
-				}
-				local13 = local13 + arg0;
-			}
-			Static5.method31(local13);
-			local13 = Static40.method1014(":", "%3a", local13);
-			local13 = Static40.method1014("@", "%40", local13);
-			local13 = Static40.method1014("&", "%26", local13);
-			local13 = Static40.method1014("#", "%23", local13);
-			if (Static69.aClass213_4.anApplet2 == null) {
-				return;
-			}
-			@Pc(109) Class212 local109 = Static69.aClass213_4.method5118(new URL(Static69.aClass213_4.anApplet2.getCodeBase(), "clienterror.ws?c=" + Static131.anInt3252 + "&u=" + Static101.aLong98 + "&v1=" + Class213.aString20 + "&v2=" + Class213.aString14 + "&e=" + local13));
-			while (local109.anInt5925 == 0) {
-				Static231.method3983(1L);
-			}
-			if (local109.anInt5925 == 1) {
-				@Pc(128) DataInputStream local128 = (DataInputStream) local109.anObject6;
-				local128.read();
-				local128.close();
-			}
-		} catch (@Pc(135) Exception local135) {
-		}
-	}
-
 	@OriginalMember(owner = "client!ha", name = "b", descriptor = "(II)V")
 	public static void method1840(@OriginalArg(1) int arg0) {
-		@Pc(8) Class3_Sub2_Sub8 local8 = Static238.method4143(2, arg0);
+		@Pc(8) DelayedStateChange local8 = Static238.method4143(2, arg0);
 		local8.method1007();
 	}
 
 	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(I)V")
-	public static void method1841() {
+	public static void gameDraw() {
 		if (!Static60.aBoolean108) {
 			if (Static162.anInt3953 != 0) {
 				Static155.anInt3751 = Static277.anInt5850;
 				Static60.anInt1892 = Static280.anInt5895;
 			} else if (Static150.anInt3585 == 0) {
-				Static155.anInt3751 = Static215.anInt4873;
-				Static60.anInt1892 = Static223.anInt5032;
+				Static155.anInt3751 = Static215.mouseX;
+				Static60.anInt1892 = Static223.mouseY;
 			} else {
 				Static155.anInt3751 = Static7.anInt985;
 				Static60.anInt1892 = Static60.anInt1893;
 			}
 			Static231.anInt5204 = 1;
 			Static254.aClass100Array168[0] = Static270.aClass100_1091;
-			Static233.aClass100Array160[0] = Static186.aClass100_827;
+			Static233.aClass100Array160[0] = Static186.EMPTY_STRING;
 			Static39.aShortArray6[0] = 1005;
 			Static190.anIntArray382[0] = Static35.anInt1092;
 		}
@@ -172,9 +133,9 @@ public final class Static89 {
 			Static96.method1949(Static154.anInt3711);
 		}
 		@Pc(60) int local60;
-		for (local60 = 0; local60 < Static24.anInt766; local60++) {
+		for (local60 = 0; local60 < Static24.componentDrawCount; local60++) {
 			if (Static186.aBooleanArray100[local60]) {
-				Static31.aBooleanArray29[local60] = true;
+				Static31.componentRedrawRequested2[local60] = true;
 			}
 			Static223.aBooleanArray116[local60] = Static186.aBooleanArray100[local60];
 			Static186.aBooleanArray100[local60] = false;
@@ -183,15 +144,15 @@ public final class Static89 {
 		Static97.anInt2503 = -1;
 		Static214.anInt5574 = -1;
 		Static169.aClass13_18 = null;
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static263.aBoolean299 = true;
 		}
 		Static182.anInt4311 = Static83.anInt372;
 		if (Static154.anInt3711 != -1) {
-			Static24.anInt766 = 0;
+			Static24.componentDrawCount = 0;
 			Static9.method182();
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static46.method1177();
 		} else {
 			Static129.method2503();
@@ -220,15 +181,15 @@ public final class Static89 {
 			Static187.anInt4422 = 2;
 		}
 		if (Static199.anInt4672 == 3) {
-			for (@Pc(189) int local189 = 0; local189 < Static24.anInt766; local189++) {
+			for (@Pc(189) int local189 = 0; local189 < Static24.componentDrawCount; local189++) {
 				if (Static223.aBooleanArray116[local189]) {
-					if (Static239.aBoolean269) {
+					if (GameShell.glRenderer) {
 						Static46.method1182(Static264.anIntArray410[local189], Static50.anIntArray133[local189], Static224.anIntArray443[local189], Static67.anIntArray320[local189], 16711935, 128);
 					} else {
 						Static129.method2484(Static264.anIntArray410[local189], Static50.anIntArray133[local189], Static224.anIntArray443[local189], Static67.anIntArray320[local189], 16711935, 128);
 					}
-				} else if (Static31.aBooleanArray29[local189]) {
-					if (Static239.aBoolean269) {
+				} else if (Static31.componentRedrawRequested2[local189]) {
+					if (GameShell.glRenderer) {
 						Static46.method1182(Static264.anIntArray410[local189], Static50.anIntArray133[local189], Static224.anIntArray443[local189], Static67.anIntArray320[local189], 16711680, 128);
 					} else {
 						Static129.method2484(Static264.anIntArray410[local189], Static50.anIntArray133[local189], Static224.anIntArray443[local189], Static67.anIntArray320[local189], 16711680, 128);

@@ -5,31 +5,31 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static105 {
 
 	@OriginalMember(owner = "client!ib", name = "i", descriptor = "[Lclient!od;")
-	public static Class114[] aClass114Array1;
+	public static DisplayMode[] aClass114Array1;
 
 	@OriginalMember(owner = "client!ib", name = "c", descriptor = "Lclient!qi;")
-	public static final Class3_Sub28 aClass3_Sub28_1 = new Class3_Sub28(0, 0);
+	public static final ColourImageCacheEntry aClass3_Sub28_1 = new ColourImageCacheEntry(0, 0);
 
 	@OriginalMember(owner = "client!ib", name = "d", descriptor = "Lclient!gn;")
-	public static final Class54 aClass54_9 = new Class54(128);
+	public static final LruCache aClass54_9 = new LruCache(128);
 
 	@OriginalMember(owner = "client!ib", name = "e", descriptor = "Lclient!be;")
-	public static Class13 aClass13_14 = null;
+	public static IfType aClass13_14 = null;
 
 	@OriginalMember(owner = "client!ib", name = "f", descriptor = "[I")
 	public static final int[] anIntArray256 = new int[2048];
 
 	@OriginalMember(owner = "client!ib", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_559 = Static28.method790("<col=ffff00>");
+	public static final JagString aClass100_559 = JagString.wrap("<col=ffff00>");
 
 	@OriginalMember(owner = "client!ib", name = "m", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_562 = Static28.method790("Walk here");
+	private static final JagString aClass100_562 = JagString.wrap("Walk here");
 
 	@OriginalMember(owner = "client!ib", name = "j", descriptor = "Lclient!na;")
-	public static Class100 aClass100_560 = aClass100_562;
+	public static JagString aClass100_560 = aClass100_562;
 
 	@OriginalMember(owner = "client!ib", name = "k", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_561 = Static28.method790(" )2> <col=ffffff>");
+	public static final JagString aClass100_561 = JagString.wrap(" )2> <col=ffffff>");
 
 	@OriginalMember(owner = "client!ib", name = "l", descriptor = "I")
 	public static int anInt2863 = 0;
@@ -99,22 +99,22 @@ public final class Static105 {
 
 	@OriginalMember(owner = "client!ib", name = "b", descriptor = "(I)V")
 	public static void method2255() {
-		Static251.anIntArray479 = null;
+		Static251.comtot = null;
 		Static60.anIntArrayArrayArray6 = null;
-		Static128.anIntArray293 = null;
+		Static128.tot = null;
 		Static163.aByteArrayArrayArray11 = null;
 		Static4.aByteArrayArrayArray1 = null;
-		Static118.aByteArrayArrayArray9 = null;
+		Static118.shadow = null;
 		Static240.aByteArrayArrayArray14 = null;
-		Static253.aByteArrayArrayArray16 = null;
-		Static139.anIntArray325 = null;
-		Static221.anIntArray376 = null;
-		Static279.anIntArray568 = null;
+		Static253.floort1 = null;
+		Static139.sattot = null;
+		Static221.huetot = null;
+		Static279.ligtot = null;
 	}
 
 	@OriginalMember(owner = "client!ib", name = "a", descriptor = "(IIIIIIIILclient!th;IZJ)Z")
-	public static boolean method2256(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) Class8 arg8, @OriginalArg(9) int arg9, @OriginalArg(10) boolean arg10, @OriginalArg(11) long arg11) {
-		@Pc(6) boolean local6 = Static83.anIntArrayArrayArray4 == Static80.anIntArrayArrayArray19;
+	public static boolean method2256(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) ModelSource arg8, @OriginalArg(9) int arg9, @OriginalArg(10) boolean arg10, @OriginalArg(11) long arg11) {
+		@Pc(6) boolean local6 = Static83.groundh == Static80.anIntArrayArrayArray19;
 		@Pc(8) int local8 = 0;
 		@Pc(17) int local17;
 		for (@Pc(10) int local10 = arg1; local10 < arg1 + arg3; local10++) {
@@ -122,13 +122,13 @@ public final class Static105 {
 				if (local10 < 0 || local17 < 0 || local10 >= Static152.anInt3594 || local17 >= Static99.anInt2550) {
 					return false;
 				}
-				@Pc(42) Class3_Sub5 local42 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][local10][local17];
+				@Pc(42) Square local42 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][local10][local17];
 				if (local42 != null && local42.anInt662 >= 5) {
 					return false;
 				}
 			}
 		}
-		@Pc(58) Class31 local58 = new Class31();
+		@Pc(58) Sprite local58 = new Sprite();
 		local58.aLong56 = arg11;
 		local58.anInt1709 = arg0;
 		local58.anInt1699 = arg5;
@@ -158,10 +158,10 @@ public final class Static105 {
 				}
 				for (@Pc(141) int local141 = arg0; local141 >= 0; local141--) {
 					if (Static130.aClass3_Sub5ArrayArrayArray1[local141][local17][local108] == null) {
-						Static130.aClass3_Sub5ArrayArrayArray1[local141][local17][local108] = new Class3_Sub5(local141, local17, local108);
+						Static130.aClass3_Sub5ArrayArrayArray1[local141][local17][local108] = new Square(local141, local17, local108);
 					}
 				}
-				@Pc(174) Class3_Sub5 local174 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][local17][local108];
+				@Pc(174) Square local174 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][local17][local108];
 				local174.aClass31Array1[local174.anInt662] = local58;
 				local174.anIntArray59[local174.anInt662] = local115;
 				local174.anInt664 |= local115;

@@ -8,29 +8,26 @@ public final class Static156 {
 	@OriginalMember(owner = "client!mf", name = "O", descriptor = "[[B")
 	public static byte[][] aByteArrayArray11;
 
-	@OriginalMember(owner = "client!mf", name = "W", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_59;
-
 	@OriginalMember(owner = "client!mf", name = "X", descriptor = "I")
 	public static int anInt3783;
 
 	@OriginalMember(owner = "client!mf", name = "q", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_742 = Static28.method790("Okay");
+	public static final JagString aClass100_742 = JagString.wrap("Okay");
 
 	@OriginalMember(owner = "client!mf", name = "x", descriptor = "Lclient!ha;")
-	public static final Class56 aClass56_1 = new Class56();
+	public static final GZip aClass56_1 = new GZip();
 
 	@OriginalMember(owner = "client!mf", name = "K", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_743 = Static28.method790("Poser");
+	public static final JagString aClass100_743 = JagString.wrap("Poser");
 
 	@OriginalMember(owner = "client!mf", name = "S", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_744 = Static28.method790("Starte 3D)2Softwarebibliothek)3");
+	public static final JagString aClass100_744 = JagString.wrap("Starte 3D)2Softwarebibliothek)3");
 
 	@OriginalMember(owner = "client!mf", name = "T", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_745 = Static28.method790("rating: ");
+	private static final JagString aClass100_745 = JagString.wrap("rating: ");
 
 	@OriginalMember(owner = "client!mf", name = "U", descriptor = "Lclient!na;")
-	public static Class100 aClass100_746 = aClass100_745;
+	public static JagString aClass100_746 = aClass100_745;
 
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(IIIII[[[B[I[I[I[I[IIBII)V")
 	public static void method2954(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) byte[][][] arg5, @OriginalArg(6) int[] arg6, @OriginalArg(7) int[] arg7, @OriginalArg(8) int[] arg8, @OriginalArg(9) int[] arg9, @OriginalArg(10) int[] arg10, @OriginalArg(11) int arg11, @OriginalArg(12) byte arg12, @OriginalArg(13) int arg13, @OriginalArg(14) int arg14) {
@@ -44,10 +41,10 @@ public final class Static156 {
 		} else if (arg2 >= Static99.anInt2550 * 128) {
 			arg2 = Static99.anInt2550 * 128 - 1;
 		}
-		Static109.anInt2886 = Class58.anIntArray223[arg3];
-		Static121.anInt3038 = Class58.anIntArray225[arg3];
-		Static231.anInt5205 = Class58.anIntArray223[arg4];
-		Static81.anInt2222 = Class58.anIntArray225[arg4];
+		Static109.anInt2886 = Pix3D.sinTable[arg3];
+		Static121.anInt3038 = Pix3D.cosTable[arg3];
+		Static231.anInt5205 = Pix3D.sinTable[arg4];
+		Static81.anInt2222 = Pix3D.cosTable[arg4];
 		Static149.anInt3555 = arg0;
 		Static162.anInt3947 = arg1;
 		Static217.anInt4903 = arg2;
@@ -70,7 +67,7 @@ public final class Static156 {
 			Static215.anInt4866 = Static99.anInt2550;
 		}
 		@Pc(99) short local99;
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			local99 = 3584;
 		} else {
 			local99 = 3500;
@@ -111,7 +108,7 @@ public final class Static156 {
 		if (Static276.aClass3_Sub5ArrayArrayArray3 != null) {
 			Static278.method4648(true);
 			Static248.method3292(arg0, arg1, arg2, null, 0, (byte) 0, arg13, arg14);
-			if (Static239.aBoolean269) {
+			if (GameShell.glRenderer) {
 				Static119.aBoolean153 = false;
 				Static27.method766(0, 0);
 				Static161.method3066(null);
@@ -125,58 +122,58 @@ public final class Static156 {
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(JI)V")
 	public static void method2956(@OriginalArg(0) long arg0) {
 		if ((long) 0 != arg0) {
-			Static6.aClass3_Sub15_Sub1_1.method2242(104);
-			Static6.aClass3_Sub15_Sub1_1.method2166(arg0);
+			Static6.aClass3_Sub15_Sub1_1.p1Enc(104);
+			Static6.aClass3_Sub15_Sub1_1.p8(arg0);
 		}
 	}
 
 	@OriginalMember(owner = "client!mf", name = "e", descriptor = "(I)V")
 	public static void method2958() {
-		if (Class213.aString20.toLowerCase().indexOf("microsoft") != -1) {
-			Static196.anIntArray407[187] = 27;
-			Static196.anIntArray407[223] = 28;
-			Static196.anIntArray407[221] = 43;
-			Static196.anIntArray407[188] = 71;
-			Static196.anIntArray407[222] = 59;
-			Static196.anIntArray407[192] = 58;
-			Static196.anIntArray407[191] = 73;
-			Static196.anIntArray407[219] = 42;
-			Static196.anIntArray407[190] = 72;
-			Static196.anIntArray407[186] = 57;
-			Static196.anIntArray407[220] = 74;
-			Static196.anIntArray407[189] = 26;
+		if (SignLink.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
+			ClientKeyboardListener.anIntArray407[187] = 27;
+			ClientKeyboardListener.anIntArray407[223] = 28;
+			ClientKeyboardListener.anIntArray407[221] = 43;
+			ClientKeyboardListener.anIntArray407[188] = 71;
+			ClientKeyboardListener.anIntArray407[222] = 59;
+			ClientKeyboardListener.anIntArray407[192] = 58;
+			ClientKeyboardListener.anIntArray407[191] = 73;
+			ClientKeyboardListener.anIntArray407[219] = 42;
+			ClientKeyboardListener.anIntArray407[190] = 72;
+			ClientKeyboardListener.anIntArray407[186] = 57;
+			ClientKeyboardListener.anIntArray407[220] = 74;
+			ClientKeyboardListener.anIntArray407[189] = 26;
 			return;
 		}
-		if (Class213.aMethod6 == null) {
-			Static196.anIntArray407[192] = 58;
-			Static196.anIntArray407[222] = 59;
+		if (SignLink.setTraversalKeysEnabled == null) {
+			ClientKeyboardListener.anIntArray407[192] = 58;
+			ClientKeyboardListener.anIntArray407[222] = 59;
 		} else {
-			Static196.anIntArray407[222] = 58;
-			Static196.anIntArray407[192] = 28;
-			Static196.anIntArray407[520] = 59;
+			ClientKeyboardListener.anIntArray407[222] = 58;
+			ClientKeyboardListener.anIntArray407[192] = 28;
+			ClientKeyboardListener.anIntArray407[520] = 59;
 		}
-		Static196.anIntArray407[45] = 26;
-		Static196.anIntArray407[61] = 27;
-		Static196.anIntArray407[91] = 42;
-		Static196.anIntArray407[59] = 57;
-		Static196.anIntArray407[93] = 43;
-		Static196.anIntArray407[44] = 71;
-		Static196.anIntArray407[92] = 74;
-		Static196.anIntArray407[46] = 72;
-		Static196.anIntArray407[47] = 73;
+		ClientKeyboardListener.anIntArray407[45] = 26;
+		ClientKeyboardListener.anIntArray407[61] = 27;
+		ClientKeyboardListener.anIntArray407[91] = 42;
+		ClientKeyboardListener.anIntArray407[59] = 57;
+		ClientKeyboardListener.anIntArray407[93] = 43;
+		ClientKeyboardListener.anIntArray407[44] = 71;
+		ClientKeyboardListener.anIntArray407[92] = 74;
+		ClientKeyboardListener.anIntArray407[46] = 72;
+		ClientKeyboardListener.anIntArray407[47] = 73;
 	}
 
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "()V")
 	public static void method2959() {
 		@Pc(1) GL local1 = Static239.aGL1;
 		local1.glDisableClientState(GL.GL_COLOR_ARRAY);
-		Static239.method4164(false);
+		Static239.setLightingEnabled(false);
 		local1.glDisable(GL.GL_DEPTH_TEST);
 		local1.glPushAttrib(GL.GL_FOG_BIT);
 		local1.glFogf(GL.GL_FOG_START, 3072.0F);
 		Static239.method4178();
 		for (@Pc(19) int local19 = 0; local19 < Static36.aClass3_Sub14ArrayArray1[0].length; local19++) {
-			@Pc(31) Class3_Sub14 local31 = Static36.aClass3_Sub14ArrayArray1[0][local19];
+			@Pc(31) GlSquare local31 = Static36.aClass3_Sub14ArrayArray1[0][local19];
 			if (local31.anInt2485 >= 0 && Static94.anInterface1_2.method3237(local31.anInt2485) == 4) {
 				local1.glColor4fv(Static190.method3441(local31.anInt2486), 0);
 				@Pc(57) float local57 = 201.5F - (local31.aBoolean140 ? 1.0F : 0.5F);
@@ -190,8 +187,4 @@ public final class Static156 {
 		Static239.method4157();
 	}
 
-	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(BLclient!wa;)Lclient!ta;")
-	public static Class18_Sub4 method2960(@OriginalArg(1) Class3_Sub15 arg0) {
-		return new Class18_Sub4(arg0.method2213(), arg0.method2213(), arg0.method2213(), arg0.method2213(), arg0.method2220(), arg0.method2220(), arg0.method2229());
-	}
 }

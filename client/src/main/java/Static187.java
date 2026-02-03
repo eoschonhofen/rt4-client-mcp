@@ -11,30 +11,27 @@ public final class Static187 {
 	public static final int[][][] anIntArrayArrayArray18 = new int[4][13][13];
 
 	@OriginalMember(owner = "client!pb", name = "J", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_831 = Static28.method790("Choisir une option");
+	public static final JagString aClass100_831 = JagString.wrap("Choisir une option");
 
 	@OriginalMember(owner = "client!pb", name = "K", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_832 = Static28.method790("Chargement des textures )2 ");
-
-	@OriginalMember(owner = "client!pb", name = "Q", descriptor = "I")
-	public static int anInt4413 = 1;
+	public static final JagString aClass100_832 = JagString.wrap("Chargement des textures )2 ");
 
 	@OriginalMember(owner = "client!pb", name = "ab", descriptor = "I")
 	public static int anInt4422 = 0;
 
 	@OriginalMember(owner = "client!pb", name = "cb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_833 = Static28.method790("Chargement en cours)3 Veuillez patienter)3");
+	public static final JagString aClass100_833 = JagString.wrap("Chargement en cours)3 Veuillez patienter)3");
 
 	@OriginalMember(owner = "client!pb", name = "rb", descriptor = "S")
 	public static short aShort27 = 320;
 
 	@OriginalMember(owner = "client!pb", name = "b", descriptor = "(III)Lclient!jj;")
-	public static Class79 method3420(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) Class3_Sub5 local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+	public static GroundObject method3420(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
+		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
 		if (local7 == null) {
 			return null;
 		} else {
-			@Pc(14) Class79 local14 = local7.aClass79_1;
+			@Pc(14) GroundObject local14 = local7.aClass79_1;
 			local7.aClass79_1 = null;
 			return local14;
 		}

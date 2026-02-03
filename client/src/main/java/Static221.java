@@ -8,7 +8,7 @@ public final class Static221 {
 	public static int[] anIntArray374;
 
 	@OriginalMember(owner = "client!s", name = "i", descriptor = "[I")
-	public static int[] anIntArray376;
+	public static int[] huetot;
 
 	@OriginalMember(owner = "client!s", name = "c", descriptor = "I")
 	public static int anInt4363 = -1;
@@ -16,14 +16,11 @@ public final class Static221 {
 	@OriginalMember(owner = "client!s", name = "d", descriptor = "I")
 	public static int anInt4364 = 0;
 
-	@OriginalMember(owner = "client!s", name = "e", descriptor = "[I")
-	public static final int[] anIntArray375 = new int[128];
-
 	@OriginalMember(owner = "client!s", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_821 = Static28.method790("document)3cookie=(R");
+	public static final JagString aClass100_821 = JagString.wrap("document)3cookie=(R");
 
 	@OriginalMember(owner = "client!s", name = "j", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_822 = Static28.method790("Sie k-Onnen sich selbst nicht auf Ihre Freunde)2Liste setzen(Q");
+	public static final JagString aClass100_822 = JagString.wrap("Sie k-Onnen sich selbst nicht auf Ihre Freunde)2Liste setzen(Q");
 
 	@OriginalMember(owner = "client!s", name = "a", descriptor = "(II)I")
 	public static int method3389(@OriginalArg(0) int arg0) {
@@ -69,7 +66,7 @@ public final class Static221 {
 			}
 			local24 += Static129.anInt3144 - 128;
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static46.method1178(Static167.aClass3_Sub2_Sub1_Sub1_3.anIntArray20, arg0, arg1, Static167.aClass3_Sub2_Sub1_Sub1_3.anInt1867, Static167.aClass3_Sub2_Sub1_Sub1_3.anInt1859);
 		} else {
 			Static167.aClass3_Sub2_Sub1_Sub1_3.method1415(arg0, arg1);
@@ -77,12 +74,12 @@ public final class Static221 {
 	}
 
 	@OriginalMember(owner = "client!s", name = "a", descriptor = "([[F[[B[[B[Lclient!gi;II[[F[[B[[B[[II[[F)V")
-	public static void method3393(@OriginalArg(0) float[][] arg0, @OriginalArg(1) byte[][] arg1, @OriginalArg(2) byte[][] arg2, @OriginalArg(3) Class51[] arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) float[][] arg6, @OriginalArg(7) byte[][] arg7, @OriginalArg(8) byte[][] arg8, @OriginalArg(9) int[][] arg9, @OriginalArg(11) float[][] arg10) {
+	public static void method3393(@OriginalArg(0) float[][] arg0, @OriginalArg(1) byte[][] arg1, @OriginalArg(2) byte[][] arg2, @OriginalArg(3) Light[] arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) float[][] arg6, @OriginalArg(7) byte[][] arg7, @OriginalArg(8) byte[][] arg8, @OriginalArg(9) int[][] arg9, @OriginalArg(11) float[][] arg10) {
 		for (@Pc(7) int local7 = 0; local7 < arg5; local7++) {
-			@Pc(18) Class51 local18 = arg3[local7];
+			@Pc(18) Light local18 = arg3[local7];
 			if (local18.anInt2241 == arg4) {
 				@Pc(24) int local24 = 0;
-				@Pc(28) Class45 local28 = new Class45();
+				@Pc(28) Light_Class1 local28 = new Light_Class1();
 				@Pc(37) int local37 = (local18.anInt2240 >> 7) - local18.anInt2236;
 				@Pc(46) int local46 = (local18.anInt2245 >> 7) - local18.anInt2236;
 				if (local46 < 0) {
@@ -115,14 +112,14 @@ public final class Static221 {
 						@Pc(125) int local125 = arg1[local114][local72] & 0xFF;
 						local133 = arg8[local114][local72] & 0xFF;
 						@Pc(135) boolean local135 = false;
-						@Pc(151) Class164 local151;
+						@Pc(151) FloType local151;
 						@Pc(176) int[] local176;
 						@Pc(234) int[] local234;
 						if (local125 == 0) {
 							if (local133 == 0) {
 								continue;
 							}
-							local151 = Static256.method4395(local133 - 1);
+							local151 = FloType.method4395(local133 - 1);
 							if (local151.anInt5899 == -1) {
 								continue;
 							}
@@ -133,7 +130,7 @@ public final class Static221 {
 								continue;
 							}
 						} else if (local133 != 0) {
-							local151 = Static256.method4395(local133 - 1);
+							local151 = FloType.method4395(local133 - 1);
 							@Pc(224) byte local224;
 							if (local151.anInt5899 == -1) {
 								local224 = arg7[local114][local72];
@@ -149,7 +146,7 @@ public final class Static221 {
 								local135 = true;
 							}
 						}
-						@Pc(275) Class31 local275 = Static133.method4008(arg4, local114, local72);
+						@Pc(275) Sprite local275 = Static133.method4008(arg4, local114, local72);
 						if (local275 != null) {
 							@Pc(287) int local287 = (int) (local275.aLong56 >> 14) & 0x3F;
 							if (local287 == 9) {
@@ -245,12 +242,12 @@ public final class Static221 {
 						local133 = arg1[local114][local72] & 0xFF;
 						@Pc(789) byte local789 = arg2[local114][local72];
 						@Pc(791) boolean local791 = false;
-						@Pc(805) Class164 local805;
+						@Pc(805) FloType local805;
 						if (local133 == 0) {
 							if (local775 == 0) {
 								continue;
 							}
-							local805 = Static256.method4395(local775 - 1);
+							local805 = FloType.method4395(local775 - 1);
 							if (local805.anInt5899 == -1) {
 								continue;
 							}
@@ -259,7 +256,7 @@ public final class Static221 {
 								continue;
 							}
 						} else if (local775 != 0) {
-							local805 = Static256.method4395(local775 - 1);
+							local805 = FloType.method4395(local775 - 1);
 							if (local805.anInt5899 == -1) {
 								Static131.method2578(arg0, arg9, local114, arg6, local72, Static53.anIntArrayArray8[arg7[local114][local72]], local28, local18, arg10, arg2[local114][local72]);
 								continue;
@@ -269,7 +266,7 @@ public final class Static221 {
 								local791 = true;
 							}
 						}
-						@Pc(899) Class31 local899 = Static133.method4008(arg4, local114, local72);
+						@Pc(899) Sprite local899 = Static133.method4008(arg4, local114, local72);
 						if (local899 != null) {
 							@Pc(911) int local911 = (int) (local899.aLong56 >> 14) & 0x3F;
 							if (local911 == 9) {

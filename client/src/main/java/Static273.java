@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static273 {
 
 	@OriginalMember(owner = "client!we", name = "v", descriptor = "Lclient!fd;")
-	public static Class41 aClass41_7;
+	public static WorldMapFont aClass41_7;
 
 	@OriginalMember(owner = "client!we", name = "H", descriptor = "[[B")
 	public static byte[][] aByteArrayArray13;
@@ -22,12 +22,12 @@ public final class Static273 {
 	}
 
 	@OriginalMember(owner = "client!we", name = "a", descriptor = "(BILclient!be;)I")
-	public static int method3212(@OriginalArg(1) int arg0, @OriginalArg(2) Class13 arg1) {
-		if (arg1.anIntArrayArray4 == null || arg0 >= arg1.anIntArrayArray4.length) {
+	public static int method3212(@OriginalArg(1) int arg0, @OriginalArg(2) IfType arg1) {
+		if (arg1.scripts == null || arg0 >= arg1.scripts.length) {
 			return -2;
 		}
 		try {
-			@Pc(33) int[] local33 = arg1.anIntArrayArray4[arg0];
+			@Pc(33) int[] local33 = arg1.scripts[arg0];
 			@Pc(35) byte local35 = 0;
 			@Pc(37) int local37 = 0;
 			@Pc(39) int local39 = 0;
@@ -57,7 +57,7 @@ public final class Static273 {
 					local41 = Static227.anIntArray446[local33[local39++]];
 				}
 				@Pc(124) int local124;
-				@Pc(135) Class13 local135;
+				@Pc(135) IfType local135;
 				@Pc(140) int local140;
 				@Pc(152) int local152;
 				if (local46 == 4) {
@@ -65,22 +65,22 @@ public final class Static273 {
 					@Pc(131) int local131 = local124 + local33[local39++];
 					local135 = Static5.method32(local131);
 					local140 = local33[local39++];
-					if (local140 != -1 && (!Static71.method1439(local140).aBoolean131 || Static2.aBoolean1)) {
-						for (local152 = 0; local152 < local135.anIntArray40.length; local152++) {
-							if (local140 + 1 == local135.anIntArray40[local152]) {
-								local41 += local135.anIntArray50[local152];
+					if (local140 != -1 && (!ObjType.list(local140).aBoolean131 || Static2.aBoolean1)) {
+						for (local152 = 0; local152 < local135.linkObjNumber.length; local152++) {
+							if (local140 + 1 == local135.linkObjNumber[local152]) {
+								local41 += local135.linkObjType[local152];
 							}
 						}
 					}
 				}
 				if (local46 == 5) {
-					local41 = Static7.anIntArray75[local33[local39++]];
+					local41 = Static7.var[local33[local39++]];
 				}
 				if (local46 == 6) {
-					local41 = Class55.anIntArray213[Static141.anIntArray326[local33[local39++]] - 1];
+					local41 = ObjType.anIntArray213[Static141.anIntArray326[local33[local39++]] - 1];
 				}
 				if (local46 == 7) {
-					local41 = Static7.anIntArray75[local33[local39++]] * 100 / 46875;
+					local41 = Static7.var[local33[local39++]] * 100 / 46875;
 				}
 				if (local46 == 8) {
 					local41 = Static173.aClass8_Sub4_Sub1_2.anInt1652;
@@ -97,9 +97,9 @@ public final class Static273 {
 					local124 += local33[local39++];
 					local135 = Static5.method32(local124);
 					local140 = local33[local39++];
-					if (local140 != -1 && (!Static71.method1439(local140).aBoolean131 || Static2.aBoolean1)) {
-						for (local152 = 0; local152 < local135.anIntArray40.length; local152++) {
-							if (local135.anIntArray40[local152] == local140 + 1) {
+					if (local140 != -1 && (!ObjType.list(local140).aBoolean131 || Static2.aBoolean1)) {
+						for (local152 = 0; local152 < local135.linkObjNumber.length; local152++) {
+							if (local135.linkObjNumber[local152] == local140 + 1) {
 								local41 = 999999999;
 								break;
 							}
@@ -113,7 +113,7 @@ public final class Static273 {
 					local41 = Static251.anInt5456;
 				}
 				if (local46 == 13) {
-					local124 = Static7.anIntArray75[local33[local39++]];
+					local124 = Static7.var[local33[local39++]];
 					@Pc(353) int local353 = local33[local39++];
 					local41 = (0x1 << local353 & local124) == 0 ? 0 : 1;
 				}
@@ -166,9 +166,9 @@ public final class Static273 {
 
 	@OriginalMember(owner = "client!we", name = "b", descriptor = "(BI)V")
 	public static void method3214(@OriginalArg(1) int arg0) {
-		for (@Pc(11) Class3 local11 = Static210.aClass133_21.method3859(); local11 != null; local11 = Static210.aClass133_21.method3861()) {
-			if ((local11.aLong192 >> 48 & 0xFFFFL) == (long) arg0) {
-				local11.method4658();
+		for (@Pc(11) Linkable local11 = Static210.aClass133_21.method3859(); local11 != null; local11 = Static210.aClass133_21.method3861()) {
+			if ((local11.key >> 48 & 0xFFFFL) == (long) arg0) {
+				local11.unlink();
 			}
 		}
 	}

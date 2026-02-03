@@ -8,14 +8,14 @@ public final class Static134 {
 	public static int anInt3302;
 
 	@OriginalMember(owner = "client!kh", name = "a", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_630 = Static28.method790("Attaquer");
+	public static final JagString aClass100_630 = JagString.wrap("Attaquer");
 
 	@OriginalMember(owner = "client!kh", name = "g", descriptor = "Lclient!hh;")
-	public static final Class59 aClass59_2 = new Class59();
+	public static final PlayerModel aClass59_2 = new PlayerModel();
 
 	@OriginalMember(owner = "client!kh", name = "a", descriptor = "(B)Lclient!ek;")
-	public static Class36_Sub1 method2619() {
-		@Pc(25) Class36_Sub1 local25 = new Class36_Sub1(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[0], Static269.anIntArray252[0], Static254.anIntArray488[0], Static26.anIntArray66[0], Static7.aByteArrayArray5[0], Static259.anIntArray513);
+	public static SoftwarePix8 method2619() {
+		@Pc(25) SoftwarePix8 local25 = new SoftwarePix8(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[0], Static269.anIntArray252[0], Static254.anIntArray488[0], Static26.anIntArray66[0], Static7.aByteArrayArray5[0], Static259.anIntArray513);
 		Static75.method1631();
 		return local25;
 	}
@@ -39,7 +39,7 @@ public final class Static134 {
 
 	@OriginalMember(owner = "client!kh", name = "b", descriptor = "(I)V")
 	public static void method2623() {
-		Static6.aClass3_Sub15_Sub1_1.method2242(104);
-		Static6.aClass3_Sub15_Sub1_1.method2166(0L);
+		Static6.aClass3_Sub15_Sub1_1.p1Enc(104);
+		Static6.aClass3_Sub15_Sub1_1.p8(0L);
 	}
 }

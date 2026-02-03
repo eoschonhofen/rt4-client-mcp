@@ -14,10 +14,10 @@ public final class Static155 {
 	public static final int[] anIntArray355 = new int[2000];
 
 	@OriginalMember(owner = "client!me", name = "T", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_739 = Static28.method790("violet:");
+	public static final JagString aClass100_739 = JagString.wrap("violet:");
 
 	@OriginalMember(owner = "client!me", name = "kb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_740 = Static28.method790("Votre liste noire est pleine (X100 noms maximum(Y)3");
+	public static final JagString aClass100_740 = JagString.wrap("Votre liste noire est pleine (X100 noms maximum(Y)3");
 
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(IB)V")
 	public static void method2940(@OriginalArg(0) int arg0) {
@@ -37,13 +37,13 @@ public final class Static155 {
 	}
 
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(ZLclient!na;I)V")
-	public static void method2941(@OriginalArg(0) boolean arg0, @OriginalArg(1) Class100 arg1) {
+	public static void method2941(@OriginalArg(0) boolean arg0, @OriginalArg(1) JagString arg1) {
 		@Pc(8) short[] local8 = new short[16];
-		@Pc(12) Class100 local12 = arg1.method3114();
+		@Pc(12) JagString local12 = arg1.method3114();
 		@Pc(14) int local14 = 0;
-		for (@Pc(16) int local16 = 0; local16 < Static170.anInt3245; local16++) {
-			@Pc(27) Class55 local27 = Static71.method1439(local16);
-			if ((!arg0 || local27.aBoolean132) && local27.anInt2358 == -1 && local27.anInt2334 == -1 && local27.anInt2370 == 0 && local27.aClass100_495.method3114().method3131(local12) != -1) {
+		for (@Pc(16) int local16 = 0; local16 < ObjType.anInt3245; local16++) {
+			@Pc(27) ObjType local27 = ObjType.list(local16);
+			if ((!arg0 || local27.aBoolean132) && local27.anInt2358 == -1 && local27.anInt2334 == -1 && local27.anInt2370 == 0 && local27.name.method3114().method3131(local12) != -1) {
 				if (local14 >= 250) {
 					Static169.aShortArray52 = null;
 					Static111.anInt2905 = -1;
@@ -62,20 +62,20 @@ public final class Static155 {
 		Static169.aShortArray52 = local8;
 		Static67.anInt3356 = 0;
 		Static111.anInt2905 = local14;
-		@Pc(117) Class100[] local117 = new Class100[Static111.anInt2905];
+		@Pc(117) JagString[] local117 = new JagString[Static111.anInt2905];
 		for (@Pc(119) int local119 = 0; local119 < Static111.anInt2905; local119++) {
-			local117[local119] = Static71.method1439(local8[local119]).aClass100_495;
+			local117[local119] = ObjType.list(local8[local119]).name;
 		}
 		Static202.method3656(local117, Static169.aShortArray52);
 	}
 
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(II)I")
 	public static int method2945(@OriginalArg(1) int arg0) {
-		@Pc(13) Class85 local13 = Static125.method2449(arg0);
+		@Pc(13) VarBitType local13 = VarBitType.method2449(arg0);
 		@Pc(16) int local16 = local13.anInt3327;
 		@Pc(19) int local19 = local13.anInt3323;
 		@Pc(22) int local22 = local13.anInt3318;
-		@Pc(29) int local29 = Class3_Sub9.anIntArray135[local19 - local22];
-		return Static7.anIntArray75[local16] >> local22 & local29;
+		@Pc(29) int local29 = Static8.mask[local19 - local22];
+		return Static7.var[local16] >> local22 & local29;
 	}
 }

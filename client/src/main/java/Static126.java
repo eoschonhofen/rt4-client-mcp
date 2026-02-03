@@ -10,25 +10,25 @@ public final class Static126 {
 	public static float aFloat13;
 
 	@OriginalMember(owner = "client!jm", name = "t", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_600 = Static28.method790("Module texte charg-B");
+	public static final JagString aClass100_600 = JagString.wrap("Module texte charg-B");
 
 	@OriginalMember(owner = "client!jm", name = "w", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_601 = Static28.method790("3D)2Softwarebibliothek gestartet)3");
+	public static final JagString aClass100_601 = JagString.wrap("3D)2Softwarebibliothek gestartet)3");
 
 	@OriginalMember(owner = "client!jm", name = "A", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_603 = Static28.method790("");
+	private static final JagString aClass100_603 = JagString.wrap("");
 
 	@OriginalMember(owner = "client!jm", name = "z", descriptor = "Lclient!na;")
-	public static Class100 aClass100_602 = aClass100_603;
+	public static JagString loadString = aClass100_603;
 
 	@OriginalMember(owner = "client!jm", name = "a", descriptor = "(Z)V")
 	public static void method2460() {
 		if (Static154.anInt3711 != -1) {
 			Static96.method1949(Static154.anInt3711);
 		}
-		for (@Pc(15) int local15 = 0; local15 < Static24.anInt766; local15++) {
+		for (@Pc(15) int local15 = 0; local15 < Static24.componentDrawCount; local15++) {
 			if (Static186.aBooleanArray100[local15]) {
-				Static31.aBooleanArray29[local15] = true;
+				Static31.componentRedrawRequested2[local15] = true;
 			}
 			Static223.aBooleanArray116[local15] = Static186.aBooleanArray100[local15];
 			Static186.aBooleanArray100[local15] = false;
@@ -36,15 +36,15 @@ public final class Static126 {
 		Static97.anInt2503 = -1;
 		Static169.aClass13_18 = null;
 		Static182.anInt4311 = Static83.anInt372;
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static263.aBoolean299 = true;
 		}
 		Static214.anInt5574 = -1;
 		if (Static154.anInt3711 != -1) {
-			Static24.anInt766 = 0;
+			Static24.componentDrawCount = 0;
 			Static9.method182();
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static46.method1177();
 		} else {
 			Static129.method2503();

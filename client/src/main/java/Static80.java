@@ -21,7 +21,7 @@ public final class Static80 {
 	public static int anInt4702;
 
 	@OriginalMember(owner = "client!gf", name = "I", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_886 = Static28.method790(")3runescape)3com)4l=");
+	public static final JagString aClass100_886 = JagString.wrap(")3runescape)3com)4l=");
 
 	@OriginalMember(owner = "client!gf", name = "N", descriptor = "Z")
 	public static boolean aBoolean231 = true;
@@ -30,16 +30,16 @@ public final class Static80 {
 	public static final int[] anIntArray419 = new int[] { 0, 2, 2, 2, 1, 1, 2, 2, 1, 3, 1, 1 };
 
 	@OriginalMember(owner = "client!gf", name = "a", descriptor = "(Lclient!ve;IIB)Lclient!mm;")
-	public static Class3_Sub2_Sub1_Sub1 method3613(@OriginalArg(0) Class153 arg0, @OriginalArg(2) int arg1) {
+	public static Pix32 depack(@OriginalArg(0) Js5 arg0, @OriginalArg(2) int arg1) {
 		return Static234.method4016(arg0, 0, arg1) ? Static102.method2071() : null;
 	}
 
 	@OriginalMember(owner = "client!gf", name = "a", descriptor = "(Lsignlink!ll;I)V")
-	public static void method3615(@OriginalArg(0) Class213 arg0) {
+	public static void method3615(@OriginalArg(0) SignLink arg0) {
 		Static113.anInt4609 = 3;
 		Static53.method1293(true);
 		aBoolean231 = true;
-		Static99.aBoolean143 = true;
+		client.lowMem = true;
 		Static220.aBoolean244 = true;
 		Static102.anInt2679 = 0;
 		Static22.anInt729 = 0;
@@ -52,11 +52,11 @@ public final class Static80 {
 		Static114.anInt5831 = 0;
 		Static139.anInt3451 = 2;
 		Static159.aBoolean189 = true;
-		Static178.aBoolean202 = true;
+		Static178.highDetailLighting = true;
 		Static12.anInt391 = 255;
 		Static53.aBoolean99 = true;
 		Static186.anInt4392 = 0;
-		@Pc(48) Class214 local48 = null;
+		@Pc(48) FileOnDisk local48 = null;
 		Static125.anInt3104 = 127;
 		if (Static238.anInt5316 >= 96) {
 			Static76.method1645(2);
@@ -71,12 +71,12 @@ public final class Static80 {
 		Static127.aBoolean159 = false;
 		Static214.anInt5581 = 0;
 		try {
-			@Pc(78) Class212 local78 = arg0.method5112("runescape");
-			while (local78.anInt5925 == 0) {
-				Static231.method3983(1L);
+			@Pc(78) PrivilegedRequest local78 = arg0.method5112("runescape");
+			while (local78.status == 0) {
+				Static231.sleepPrecise(1L);
 			}
-			if (local78.anInt5925 == 1) {
-				local48 = (Class214) local78.anObject6;
+			if (local78.status == 1) {
+				local48 = (FileOnDisk) local78.result;
 				@Pc(106) byte[] local106 = new byte[(int) local48.method5137()];
 				@Pc(128) int local128;
 				for (@Pc(108) int local108 = 0; local108 < local106.length; local108 += local128) {
@@ -85,7 +85,7 @@ public final class Static80 {
 						throw new IOException("EOF");
 					}
 				}
-				Static136.method2654(new Class3_Sub15(local106));
+				Static136.method2654(new Packet(local106));
 			}
 		} catch (@Pc(151) Exception local151) {
 		}
@@ -120,8 +120,8 @@ public final class Static80 {
 	}
 
 	@OriginalMember(owner = "client!gf", name = "a", descriptor = "(Lclient!na;II)V")
-	public static void method3617(@OriginalArg(0) Class100 arg0, @OriginalArg(2) int arg1) {
-		@Pc(6) Class3_Sub2_Sub8 local6 = Static238.method4143(3, arg1);
+	public static void method3617(@OriginalArg(0) JagString arg0, @OriginalArg(2) int arg1) {
+		@Pc(6) DelayedStateChange local6 = Static238.method4143(3, arg1);
 		local6.method1017();
 		local6.aClass100_254 = arg0;
 	}

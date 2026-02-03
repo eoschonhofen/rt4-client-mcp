@@ -4,23 +4,23 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static252 {
 
 	@OriginalMember(owner = "client!uh", name = "P", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_103;
+	public static Js5 aClass153_103;
 
 	@OriginalMember(owner = "client!uh", name = "O", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1048 = Static28.method790("Benutzeroberfl-=che geladen)3");
+	public static final JagString aClass100_1048 = JagString.wrap("Benutzeroberfl-=che geladen)3");
 
 	@OriginalMember(owner = "client!uh", name = "Y", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1049 = Static28.method790("huffman");
+	public static final JagString HUFFMAN = JagString.wrap("huffman");
 
 	@OriginalMember(owner = "client!uh", name = "ab", descriptor = "Lclient!q;")
-	public static final Class22 aClass22_1 = Static44.method1147();
+	public static final ReferenceNodeFactory aClass22_1 = Static44.method1147();
 
 	@OriginalMember(owner = "client!uh", name = "fb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1050 = Static28.method790("RuneScape wird geladen )2 bitte warten)3)3)3");
+	public static final JagString aClass100_1050 = JagString.wrap("RuneScape wird geladen )2 bitte warten)3)3)3");
 
 	@OriginalMember(owner = "client!uh", name = "e", descriptor = "(I)V")
 	public static void method4301() {
-		Static233.aClass99_31.method3103();
+		FloType.recentUse.method3103();
 	}
 
 	@OriginalMember(owner = "client!uh", name = "f", descriptor = "(I)V")
@@ -49,12 +49,12 @@ public final class Static252 {
 		}
 		if (Static227.anInt5096 != 1) {
 			local33 = Static207.method3685(Static55.anInt1735, Static138.anInt3439, Static134.anInt3302);
-			if (local33 - Static5.anInt40 < 800 && (Static12.aByteArrayArrayArray2[Static55.anInt1735][Static138.anInt3439 >> 7][Static134.anInt3302 >> 7] & 0x4) != 0) {
+			if (local33 - Static5.anInt40 < 800 && (Static12.mapl[Static55.anInt1735][Static138.anInt3439 >> 7][Static134.anInt3302 >> 7] & 0x4) != 0) {
 				Static254.method4348(false, Static138.anInt3439 >> 7, Static134.anInt3302 >> 7, Static130.aClass3_Sub5ArrayArrayArray1, 1);
 			}
 			return;
 		}
-		if ((Static12.aByteArrayArrayArray2[Static55.anInt1735][Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7][Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7] & 0x4) != 0) {
+		if ((Static12.mapl[Static55.anInt1735][Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7][Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7] & 0x4) != 0) {
 			Static254.method4348(false, Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7, Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7, Static130.aClass3_Sub5ArrayArrayArray1, 0);
 		}
 		if (Static240.anInt5333 >= 310) {
@@ -87,7 +87,7 @@ public final class Static252 {
 				} else if (local40 > local135) {
 					local40--;
 				}
-				if ((Static12.aByteArrayArrayArray2[Static55.anInt1735][local33][local40] & 0x4) != 0) {
+				if ((Static12.mapl[Static55.anInt1735][local33][local40] & 0x4) != 0) {
 					Static254.method4348(false, local33, local40, Static130.aClass3_Sub5ArrayArrayArray1, 1);
 					break;
 				}
@@ -99,7 +99,7 @@ public final class Static252 {
 						local33--;
 					}
 					local186 -= 65536;
-					if ((Static12.aByteArrayArrayArray2[Static55.anInt1735][local33][local40] & 0x4) != 0) {
+					if ((Static12.mapl[Static55.anInt1735][local33][local40] & 0x4) != 0) {
 						Static254.method4348(false, local33, local40, Static130.aClass3_Sub5ArrayArrayArray1, 1);
 						break;
 					}
@@ -115,7 +115,7 @@ public final class Static252 {
 			} else if (local33 > local162) {
 				local33--;
 			}
-			if ((Static12.aByteArrayArrayArray2[Static55.anInt1735][local33][local40] & 0x4) != 0) {
+			if ((Static12.mapl[Static55.anInt1735][local33][local40] & 0x4) != 0) {
 				Static254.method4348(false, local33, local40, Static130.aClass3_Sub5ArrayArrayArray1, 1);
 				break;
 			}
@@ -127,7 +127,7 @@ public final class Static252 {
 					local40--;
 				}
 				local186 -= 65536;
-				if ((Static12.aByteArrayArrayArray2[Static55.anInt1735][local33][local40] & 0x4) != 0) {
+				if ((Static12.mapl[Static55.anInt1735][local33][local40] & 0x4) != 0) {
 					Static254.method4348(false, local33, local40, Static130.aClass3_Sub5ArrayArrayArray1, 1);
 					break;
 				}

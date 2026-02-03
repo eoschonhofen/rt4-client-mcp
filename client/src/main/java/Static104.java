@@ -8,15 +8,15 @@ public final class Static104 {
 	public static final int[] anIntArray255 = new int[200];
 
 	@OriginalMember(owner = "client!ia", name = "a", descriptor = "(BLclient!fe;)V")
-	public static void method2247(@OriginalArg(1) Class8_Sub4 arg0) {
-		@Pc(9) Class20 local9 = arg0.method2681();
+	public static void method2247(@OriginalArg(1) ClientEntity arg0) {
+		@Pc(9) BasType local9 = arg0.method2681();
 		arg0.anInt3366 = local9.anInt1037;
 		if (arg0.anInt3409 == 0) {
 			arg0.anInt3417 = 0;
 			return;
 		}
 		if (arg0.anInt3369 != -1 && arg0.anInt3420 == 0) {
-			@Pc(40) Class144 local40 = Static36.method941(arg0.anInt3369);
+			@Pc(40) SeqType local40 = SeqType.list(arg0.anInt3369);
 			if (arg0.anInt3405 > 0 && local40.anInt5363 == 0) {
 				arg0.anInt3417++;
 				return;
@@ -75,8 +75,8 @@ public final class Static104 {
 			local227 = local9.anInt1051;
 		}
 		arg0.anInt3366 = local227;
-		if (arg0 instanceof Class8_Sub4_Sub2) {
-			local233 = ((Class8_Sub4_Sub2) arg0).aClass96_1.aBoolean181;
+		if (arg0 instanceof ClientNPC) {
+			local233 = ((ClientNPC) arg0).aClass96_1.aBoolean181;
 		}
 		if (local233) {
 			if (arg0.anInt3381 != arg0.anInt3400 && arg0.anInt3370 == -1 && arg0.anInt3376 != 0) {

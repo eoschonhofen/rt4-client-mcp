@@ -5,10 +5,10 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static116 {
 
 	@OriginalMember(owner = "client!jb", name = "k", descriptor = "[Lclient!qf;")
-	public static Class3_Sub2_Sub1[] aClass3_Sub2_Sub1Array3;
+	public static AbstractPix32[] aClass3_Sub2_Sub1Array3;
 
 	@OriginalMember(owner = "client!jb", name = "c", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_583 = Static28.method790("(Y<)4col>");
+	public static final JagString aClass100_583 = JagString.wrap("(Y<)4col>");
 
 	@OriginalMember(owner = "client!jb", name = "m", descriptor = "I")
 	public static int anInt2951 = 0;
@@ -23,9 +23,9 @@ public final class Static116 {
 	public static int anInt2961 = 0;
 
 	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(ILclient!ve;I)Lclient!jk;")
-	public static Class3_Sub18 method2320(@OriginalArg(1) Class153 arg0, @OriginalArg(2) int arg1) {
+	public static Patch method2320(@OriginalArg(1) Js5 arg0, @OriginalArg(2) int arg1) {
 		@Pc(9) byte[] local9 = arg0.method4500(arg1);
-		return local9 == null ? null : new Class3_Sub18(local9);
+		return local9 == null ? null : new Patch(local9);
 	}
 
 	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IZ)V")

@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static160 {
 
 	@OriginalMember(owner = "client!mj", name = "n", descriptor = "Lclient!fd;")
-	public static Class41 aClass41_4;
+	public static WorldMapFont aClass41_4;
 
 	@OriginalMember(owner = "client!mj", name = "u", descriptor = "B")
 	public static byte aByte14;
@@ -14,10 +14,10 @@ public final class Static160 {
 	public static short[] aShortArray41;
 
 	@OriginalMember(owner = "client!mj", name = "d", descriptor = "[Lclient!na;")
-	public static final Class100[] aClass100Array121 = new Class100[8];
+	public static final JagString[] aClass100Array121 = new JagString[8];
 
 	@OriginalMember(owner = "client!mj", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_761 = Static28.method790("(U3");
+	public static final JagString aClass100_761 = JagString.wrap("(U3");
 
 	@OriginalMember(owner = "client!mj", name = "i", descriptor = "I")
 	public static int anInt3902 = 0;
@@ -26,25 +26,25 @@ public final class Static160 {
 	public static long aLong134 = 0L;
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IILclient!be;IB)V")
-	public static void method3047(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) Class13 arg2, @OriginalArg(3) int arg3) {
-		if (Static239.aBoolean269) {
+	public static void method3047(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) IfType arg2, @OriginalArg(3) int arg3) {
+		if (GameShell.glRenderer) {
 			Static46.method1187(arg0, arg1, arg2.anInt445 + arg0, arg2.anInt459 + arg1);
 		}
 		if (Static270.anInt5795 >= 3) {
-			if (Static239.aBoolean269) {
-				@Pc(44) Class3_Sub2_Sub1 local44 = arg2.method489(false);
+			if (GameShell.glRenderer) {
+				@Pc(44) AbstractPix32 local44 = arg2.getGraphic(false);
 				if (local44 != null) {
 					local44.method1423(arg0, arg1);
 				}
 			} else {
 				Static129.method2504(arg0, arg1, arg2.anIntArray37, arg2.anIntArray45);
 			}
-		} else if (Static239.aBoolean269) {
-			((Class3_Sub2_Sub1_Sub2) Static106.aClass3_Sub2_Sub1_7).method1427(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Static57.anInt1747, 256, (Class3_Sub2_Sub1_Sub2) arg2.method489(false));
+		} else if (GameShell.glRenderer) {
+			((GlPix32) Static106.aClass3_Sub2_Sub1_7).method1427(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Static57.anInt1747, 256, (GlPix32) arg2.getGraphic(false));
 		} else {
-			((Class3_Sub2_Sub1_Sub1) Static106.aClass3_Sub2_Sub1_7).method313(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Static57.anInt1747, arg2.anIntArray37, arg2.anIntArray45);
+			((Pix32) Static106.aClass3_Sub2_Sub1_7).method313(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Static57.anInt1747, arg2.anIntArray37, arg2.anIntArray45);
 		}
-		Static31.aBooleanArray29[arg3] = true;
+		Static31.componentRedrawRequested2[arg3] = true;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IIIII)Z")

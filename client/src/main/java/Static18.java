@@ -8,25 +8,25 @@ public final class Static18 {
 	public static boolean aBoolean40;
 
 	@OriginalMember(owner = "client!bh", name = "s", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_106 = Static28.method790("p11_full");
+	public static final JagString aClass100_106 = JagString.wrap("p11_full");
 
 	@OriginalMember(owner = "client!bh", name = "t", descriptor = "I")
 	public static int anInt588 = 0;
 
 	@OriginalMember(owner = "client!bh", name = "v", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_107 = Static28.method790("floorshadows");
+	public static final JagString aClass100_107 = JagString.wrap("floorshadows");
 
 	@OriginalMember(owner = "client!bh", name = "z", descriptor = "Z")
 	public static boolean aBoolean39 = true;
 
 	@OriginalMember(owner = "client!bh", name = "C", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_108 = Static28.method790("<br>(X100(U(Y");
+	public static final JagString aClass100_108 = JagString.wrap("<br>(X100(U(Y");
 
 	@OriginalMember(owner = "client!bh", name = "G", descriptor = "[I")
 	public static final int[] anIntArray57 = new int[] { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, Integer.MAX_VALUE, -1 };
 
 	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(Lclient!fe;Z)V")
-	public static void method553(@OriginalArg(0) Class8_Sub4 arg0) {
+	public static void method553(@OriginalArg(0) ClientEntity arg0) {
 		@Pc(8) int local8 = arg0.anInt3395 - Static83.anInt372;
 		@Pc(20) int local20 = arg0.anInt3380 * 128 + arg0.method2693() * 64;
 		@Pc(36) int local36 = arg0.anInt3428 * 128 + arg0.method2693() * 64;
@@ -56,7 +56,7 @@ public final class Static18 {
 	public static void method555(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6) {
 		@Pc(5) int local5;
 		@Pc(29) int local29;
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			local5 = arg1 - 334;
 			if (local5 < 0) {
 				local5 = 0;
@@ -74,14 +74,14 @@ public final class Static18 {
 		@Pc(72) int local72;
 		@Pc(68) int local68;
 		if (local5 != 0) {
-			local68 = Class58.anIntArray225[local5];
-			local72 = Class58.anIntArray223[local5];
+			local68 = Pix3D.cosTable[local5];
+			local72 = Pix3D.sinTable[local5];
 			local59 = local72 * -arg3 >> 16;
 			local57 = local68 * arg3 >> 16;
 		}
 		if (local29 != 0) {
-			local72 = Class58.anIntArray223[local29];
-			local68 = Class58.anIntArray225[local29];
+			local72 = Pix3D.sinTable[local29];
+			local68 = Pix3D.cosTable[local29];
 			local55 = local72 * local57 >> 16;
 			local57 = local57 * local68 >> 16;
 		}
@@ -93,18 +93,18 @@ public final class Static18 {
 	}
 
 	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(B)Lclient!ba;")
-	public static Class10_Sub1 method556() {
+	public static GWCWorld method556() {
 		Static51.anInt1682 = 0;
 		return Static88.method1821();
 	}
 
 	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(IIII)V")
 	public static void method559(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		@Pc(7) Class3_Sub5 local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
 		if (local7 == null) {
 			return;
 		}
-		@Pc(13) Class24 local13 = local7.aClass24_1;
+		@Pc(13) Decor local13 = local7.aClass24_1;
 		if (local13 != null) {
 			local13.anInt1394 = local13.anInt1394 * arg3 / 16;
 			local13.anInt1392 = local13.anInt1392 * arg3 / 16;

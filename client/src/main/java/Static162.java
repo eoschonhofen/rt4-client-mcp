@@ -11,21 +11,21 @@ public final class Static162 {
 	public static int anInt3953 = 0;
 
 	@OriginalMember(owner = "client!ml", name = "S", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_765 = Static28.method790("T");
+	public static final JagString aClass100_765 = JagString.wrap("T");
 
 	@OriginalMember(owner = "client!ml", name = "ab", descriptor = "Z")
 	public static boolean aBoolean190 = true;
 
 	@OriginalMember(owner = "client!ml", name = "a", descriptor = "(BILclient!ve;)[Lclient!ek;")
-	public static Class36_Sub1[] method3088(@OriginalArg(1) int arg0, @OriginalArg(2) Class153 arg1) {
+	public static SoftwarePix8[] method3088(@OriginalArg(1) int arg0, @OriginalArg(2) Js5 arg1) {
 		return Static254.method4346(arg1, arg0) ? Static121.method2406() : null;
 	}
 
 	@OriginalMember(owner = "client!ml", name = "a", descriptor = "(B[B)[B")
 	public static byte[] method3092(@OriginalArg(1) byte[] arg0) {
-		@Pc(17) Class3_Sub15 local17 = new Class3_Sub15(arg0);
-		@Pc(21) int local21 = local17.method2229();
-		@Pc(25) int local25 = local17.method2174();
+		@Pc(17) Packet local17 = new Packet(arg0);
+		@Pc(21) int local21 = local17.g1();
+		@Pc(25) int local25 = local17.g4();
 		if (local25 < 0 || Static133.anInt5233 != 0 && Static133.anInt5233 < local25) {
 			throw new RuntimeException();
 		} else if (local21 == 0) {
@@ -33,15 +33,15 @@ public final class Static162 {
 			local17.method2190(local25, local53);
 			return local53;
 		} else {
-			@Pc(65) int local65 = local17.method2174();
+			@Pc(65) int local65 = local17.g4();
 			if (local65 < 0 || Static133.anInt5233 != 0 && Static133.anInt5233 < local65) {
 				throw new RuntimeException();
 			}
 			@Pc(85) byte[] local85 = new byte[local65];
 			if (local21 == 1) {
-				Static177.method3316(local85, local65, arg0, local25);
+				BZip2.method3316(local85, local65, arg0, local25);
 			} else {
-				Static156.aClass56_1.method1842(local85, local17);
+				Static156.aClass56_1.decompress(local85, local17);
 			}
 			return local85;
 		}

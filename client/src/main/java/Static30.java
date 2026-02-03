@@ -4,28 +4,25 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static30 {
 
-	@OriginalMember(owner = "client!cg", name = "c", descriptor = "Z")
-	public static boolean aBoolean61;
-
 	@OriginalMember(owner = "client!cg", name = "d", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_183 = Static28.method790("Ablegen");
+	public static final JagString aClass100_183 = JagString.wrap("Ablegen");
 
 	@OriginalMember(owner = "client!cg", name = "e", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_184 = Static28.method790("1");
+	public static final JagString aClass100_184 = JagString.wrap("1");
 
 	@OriginalMember(owner = "client!cg", name = "f", descriptor = "I")
 	public static int anInt978 = 127;
 
 	@OriginalMember(owner = "client!cg", name = "h", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_185 = Static28.method790(")3");
+	public static final JagString aClass100_185 = JagString.wrap(")3");
 
 	@OriginalMember(owner = "client!cg", name = "a", descriptor = "(ZILclient!ve;I)[Lclient!ek;")
-	private static Class36_Sub1[] method837(@OriginalArg(1) int arg0, @OriginalArg(2) Class153 arg1) {
+	private static SoftwarePix8[] method837(@OriginalArg(1) int arg0, @OriginalArg(2) Js5 arg1) {
 		return Static234.method4016(arg1, 0, arg0) ? Static121.method2406() : null;
 	}
 
 	@OriginalMember(owner = "client!cg", name = "a", descriptor = "(ILclient!ve;)V")
-	public static void method839(@OriginalArg(1) Class153 arg0) {
+	public static void method839(@OriginalArg(1) Js5 arg0) {
 		Static173.aClass3_Sub2_Sub1_Sub1Array9 = Static265.method4523(Static280.anInt5900, arg0);
 		Static213.aClass3_Sub2_Sub1Array8 = Static209.method3708(Static131.anInt3261, arg0);
 		Static116.aClass3_Sub2_Sub1Array3 = Static209.method3708(Static36.anInt1165, arg0);
@@ -41,28 +38,28 @@ public final class Static30 {
 		Static114.aClass3_Sub2_Sub9_42.method2873(Static159.aClass36Array12, null);
 		Static215.aClass3_Sub2_Sub9_32.method2873(Static159.aClass36Array12, null);
 		Static280.aClass3_Sub2_Sub9_43.method2873(Static159.aClass36Array12, null);
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static242.aClass36_Sub1Array2 = method837(Static84.anInt2257, arg0);
 			for (@Pc(101) int local101 = 0; local101 < Static242.aClass36_Sub1Array2.length; local101++) {
 				Static242.aClass36_Sub1Array2[local101].method1396();
 			}
 		}
-		@Pc(124) Class3_Sub2_Sub1_Sub1 local124 = Static78.method1693(0, arg0, Static163.anInt3962);
+		@Pc(124) Pix32 local124 = Static78.depack(0, arg0, Static163.anInt3962);
 		local124.method311();
-		if (Static239.aBoolean269) {
-			Static106.aClass3_Sub2_Sub1_7 = new Class3_Sub2_Sub1_Sub2(local124);
+		if (GameShell.glRenderer) {
+			Static106.aClass3_Sub2_Sub1_7 = new GlPix32(local124);
 		} else {
 			Static106.aClass3_Sub2_Sub1_7 = local124;
 		}
-		@Pc(143) Class3_Sub2_Sub1_Sub1[] local143 = Static265.method4523(Static128.anInt3143, arg0);
+		@Pc(143) Pix32[] local143 = Static265.method4523(Static128.anInt3143, arg0);
 		@Pc(145) int local145;
 		for (local145 = 0; local145 < local143.length; local145++) {
 			local143[local145].method311();
 		}
-		if (Static239.aBoolean269) {
-			Static277.aClass3_Sub2_Sub1Array12 = new Class3_Sub2_Sub1[local143.length];
+		if (GameShell.glRenderer) {
+			Static277.aClass3_Sub2_Sub1Array12 = new AbstractPix32[local143.length];
 			for (local145 = 0; local145 < local143.length; local145++) {
-				Static277.aClass3_Sub2_Sub1Array12[local145] = new Class3_Sub2_Sub1_Sub2(local143[local145]);
+				Static277.aClass3_Sub2_Sub1Array12[local145] = new GlPix32(local143[local145]);
 			}
 		} else {
 			Static277.aClass3_Sub2_Sub1Array12 = local143;
@@ -75,10 +72,10 @@ public final class Static30 {
 		for (local219 = 0; local219 < Static173.aClass3_Sub2_Sub1_Sub1Array9.length; local219++) {
 			Static173.aClass3_Sub2_Sub1_Sub1Array9[local219].method315(local145 + local217, local217 + local196, local217 + local210);
 		}
-		if (Static239.aBoolean269) {
-			Static67.aClass3_Sub2_Sub1Array4 = new Class3_Sub2_Sub1[Static173.aClass3_Sub2_Sub1_Sub1Array9.length];
+		if (GameShell.glRenderer) {
+			Static67.aClass3_Sub2_Sub1Array4 = new AbstractPix32[Static173.aClass3_Sub2_Sub1_Sub1Array9.length];
 			for (local219 = 0; local219 < Static173.aClass3_Sub2_Sub1_Sub1Array9.length; local219++) {
-				Static67.aClass3_Sub2_Sub1Array4[local219] = new Class3_Sub2_Sub1_Sub2(Static173.aClass3_Sub2_Sub1_Sub1Array9[local219]);
+				Static67.aClass3_Sub2_Sub1Array4[local219] = new GlPix32(Static173.aClass3_Sub2_Sub1_Sub1Array9[local219]);
 			}
 		} else {
 			Static67.aClass3_Sub2_Sub1Array4 = Static173.aClass3_Sub2_Sub1_Sub1Array9;

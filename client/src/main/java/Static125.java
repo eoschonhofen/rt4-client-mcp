@@ -11,10 +11,10 @@ public final class Static125 {
 	public static int anInt3096 = 0;
 
 	@OriginalMember(owner = "client!jl", name = "x", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_18 = new Class99(50);
+	public static final SoftLruCache aClass99_18 = new SoftLruCache(50);
 
 	@OriginalMember(owner = "client!jl", name = "G", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_19 = new Class99(64);
+	public static final SoftLruCache aClass99_19 = new SoftLruCache(64);
 
 	@OriginalMember(owner = "client!jl", name = "H", descriptor = "I")
 	public static int anInt3103 = -1;
@@ -22,40 +22,18 @@ public final class Static125 {
 	@OriginalMember(owner = "client!jl", name = "J", descriptor = "I")
 	public static int anInt3104 = 127;
 
-	@OriginalMember(owner = "client!jl", name = "a", descriptor = "(ILclient!ve;Lclient!ve;)V")
-	public static void method2446(@OriginalArg(1) Class153 arg0, @OriginalArg(2) Class153 arg1) {
-		Static14.aClass153_8 = arg0;
-		Static216.aClass153_31 = arg1;
-		Static53.anInt1716 = Static216.aClass153_31.method4504(3);
-	}
-
 	@OriginalMember(owner = "client!jl", name = "a", descriptor = "(IIIII)V")
 	public static void method2448(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		Static6.aClass3_Sub15_Sub1_1.anInt2792 = 0;
-		Static6.aClass3_Sub15_Sub1_1.method2178(147);
-		Static6.aClass3_Sub15_Sub1_1.method2178(arg2);
-		Static6.aClass3_Sub15_Sub1_1.method2178(arg3);
-		Static6.aClass3_Sub15_Sub1_1.method2230(arg0);
-		Static6.aClass3_Sub15_Sub1_1.method2230(arg1);
+		Static6.aClass3_Sub15_Sub1_1.pos = 0;
+		Static6.aClass3_Sub15_Sub1_1.p1(147);
+		Static6.aClass3_Sub15_Sub1_1.p1(arg2);
+		Static6.aClass3_Sub15_Sub1_1.p1(arg3);
+		Static6.aClass3_Sub15_Sub1_1.p2(arg0);
+		Static6.aClass3_Sub15_Sub1_1.p2(arg1);
 		Static226.anInt5079 = 0;
 		Static57.anInt1758 = 0;
 		Static179.anInt4261 = 1;
 		Static223.anInt5034 = -3;
-	}
-
-	@OriginalMember(owner = "client!jl", name = "a", descriptor = "(IB)Lclient!kk;")
-	public static Class85 method2449(@OriginalArg(0) int arg0) {
-		@Pc(10) Class85 local10 = (Class85) aClass99_19.method3106((long) arg0);
-		if (local10 != null) {
-			return local10;
-		}
-		@Pc(31) byte[] local31 = Static172.aClass153_69.method4495(Static254.method4349(arg0), Static274.method3845(arg0));
-		local10 = new Class85();
-		if (local31 != null) {
-			local10.method2651(new Class3_Sub15(local31));
-		}
-		aClass99_19.method3095(local10, (long) arg0);
-		return local10;
 	}
 
 	@OriginalMember(owner = "client!jl", name = "c", descriptor = "(I)V")

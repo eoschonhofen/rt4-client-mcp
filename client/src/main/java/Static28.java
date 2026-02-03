@@ -10,20 +10,17 @@ public final class Static28 {
 	@OriginalMember(owner = "client!cd", name = "u", descriptor = "I")
 	public static int anInt919;
 
-	@OriginalMember(owner = "client!cd", name = "B", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_18;
-
 	@OriginalMember(owner = "client!cd", name = "v", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_172 = method790("Atteindre");
+	public static final JagString aClass100_172 = JagString.wrap("Atteindre");
 
 	@OriginalMember(owner = "client!cd", name = "y", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_173 = method790("Suche nach Updates )2 ");
+	public static final JagString aClass100_173 = JagString.wrap("Suche nach Updates )2 ");
 
 	@OriginalMember(owner = "client!cd", name = "D", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_174 = method790("Lade Wordpack )2 ");
+	public static final JagString aClass100_174 = JagString.wrap("Lade Wordpack )2 ");
 
 	@OriginalMember(owner = "client!cd", name = "a", descriptor = "(Lclient!ve;B)I")
-	public static int method789(@OriginalArg(0) Class153 arg0) {
+	public static int method789(@OriginalArg(0) Js5 arg0) {
 		@Pc(5) int local5 = 0;
 		if (arg0.method4506(Static280.anInt5900)) {
 			local5++;
@@ -73,45 +70,22 @@ public final class Static28 {
 		return local5;
 	}
 
-	@OriginalMember(owner = "client!cd", name = "a", descriptor = "(Ljava/lang/String;B)Lclient!na;")
-	public static Class100 method790(@OriginalArg(0) String arg0) {
-		@Pc(6) byte[] local6 = arg0.getBytes();
-		@Pc(9) int local9 = local6.length;
-		@Pc(13) Class100 local13 = new Class100();
-		@Pc(15) int local15 = 0;
-		local13.aByteArray52 = new byte[local9];
-		while (local9 > local15) {
-			@Pc(29) int local29 = local6[local15++] & 0xFF;
-			if (local29 <= 45 && local29 >= 40) {
-				if (local15 >= local9) {
-					break;
-				}
-				@Pc(51) int local51 = local6[local15++] & 0xFF;
-				local13.aByteArray52[local13.anInt4030++] = (byte) (local51 + (local29 + -40) * 43 - 48);
-			} else if (local29 != 0) {
-				local13.aByteArray52[local13.anInt4030++] = (byte) local29;
-			}
-		}
-		local13.method3156();
-		return local13.method3151();
-	}
-
 	@OriginalMember(owner = "client!cd", name = "a", descriptor = "(IIIIZ)V")
 	public static void method792(@OriginalArg(3) int arg0, @OriginalArg(4) boolean arg1) {
 		Static152.anInt3594 = 104;
 		Static99.anInt2550 = 104;
 		Static277.anInt5855 = arg0;
-		Static197.aClass3_Sub5ArrayArrayArray2 = new Class3_Sub5[4][Static152.anInt3594][Static99.anInt2550];
+		Static197.aClass3_Sub5ArrayArrayArray2 = new Square[4][Static152.anInt3594][Static99.anInt2550];
 		Static107.anIntArrayArrayArray10 = new int[4][Static152.anInt3594 + 1][Static99.anInt2550 + 1];
-		if (Static239.aBoolean269) {
-			Static36.aClass3_Sub14ArrayArray1 = new Class3_Sub14[4][];
+		if (GameShell.glRenderer) {
+			Static36.aClass3_Sub14ArrayArray1 = new GlSquare[4][];
 		}
 		if (arg1) {
-			Static276.aClass3_Sub5ArrayArrayArray3 = new Class3_Sub5[1][Static152.anInt3594][Static99.anInt2550];
+			Static276.aClass3_Sub5ArrayArrayArray3 = new Square[1][Static152.anInt3594][Static99.anInt2550];
 			Static62.anIntArrayArray11 = new int[Static152.anInt3594][Static99.anInt2550];
 			Static80.anIntArrayArrayArray19 = new int[1][Static152.anInt3594 + 1][Static99.anInt2550 + 1];
-			if (Static239.aBoolean269) {
-				Static195.aClass3_Sub14ArrayArray3 = new Class3_Sub14[1][];
+			if (GameShell.glRenderer) {
+				Static195.aClass3_Sub14ArrayArray3 = new GlSquare[1][];
 			}
 		} else {
 			Static276.aClass3_Sub5ArrayArrayArray3 = null;
@@ -125,9 +99,9 @@ public final class Static28 {
 		Static247.aClass120Array2 = new Class120[500];
 		Static215.anInt4870 = 0;
 		Static140.anIntArrayArrayArray12 = new int[4][Static152.anInt3594 + 1][Static99.anInt2550 + 1];
-		Static243.aClass31Array3 = new Class31[5000];
+		Static243.aClass31Array3 = new Sprite[5000];
 		Static22.anInt726 = 0;
-		Static25.aClass31Array2 = new Class31[100];
+		Static25.aClass31Array2 = new Sprite[100];
 		Static48.aBooleanArrayArray1 = new boolean[Static277.anInt5855 + Static277.anInt5855 + 1][Static277.anInt5855 + Static277.anInt5855 + 1];
 		Static89.aBooleanArrayArray3 = new boolean[Static277.anInt5855 + Static277.anInt5855 + 2][Static277.anInt5855 + Static277.anInt5855 + 2];
 		Static232.aByteArrayArrayArray13 = new byte[4][Static152.anInt3594][Static99.anInt2550];

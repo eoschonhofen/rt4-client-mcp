@@ -5,13 +5,13 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static210 {
 
 	@OriginalMember(owner = "client!rb", name = "f", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_87;
+	public static Js5 aClass153_87;
 
 	@OriginalMember(owner = "client!rb", name = "b", descriptor = "Lclient!sc;")
-	public static final Class133 aClass133_21 = new Class133(512);
+	public static final HashTable aClass133_21 = new HashTable(512);
 
 	@OriginalMember(owner = "client!rb", name = "e", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_909 = Static28.method790("Versteckt");
+	public static final JagString aClass100_909 = JagString.wrap("Versteckt");
 
 	@OriginalMember(owner = "client!rb", name = "a", descriptor = "(I)V")
 	public static void method3711() {
@@ -24,15 +24,15 @@ public final class Static210 {
 
 	@OriginalMember(owner = "client!rb", name = "a", descriptor = "(ZB)V")
 	public static void method3712(@OriginalArg(0) boolean arg0) {
-		Static234.method4017(Static254.anInt5554, arg0, Static154.anInt3711, Static48.anInt1448);
+		Static234.method4017(GameShell.anInt5554, arg0, Static154.anInt3711, GameShell.anInt1448);
 	}
 
 	@OriginalMember(owner = "client!rb", name = "a", descriptor = "(Lclient!wa;Z)Lclient!bn;")
-	public static Class3_Sub2_Sub4 method3713(@OriginalArg(0) Class3_Sub15 arg0) {
-		@Pc(35) Class3_Sub2_Sub4 local35 = new Class3_Sub2_Sub4(arg0.method2202(), arg0.method2202(), arg0.method2163(), arg0.method2163(), arg0.method2174(), arg0.method2229() == 1, arg0.method2229());
-		@Pc(39) int local39 = arg0.method2229();
+	public static Map method3713(@OriginalArg(0) Packet arg0) {
+		@Pc(35) Map local35 = new Map(arg0.gjstr(), arg0.gjstr(), arg0.g2(), arg0.g2(), arg0.g4(), arg0.g1() == 1, arg0.g1());
+		@Pc(39) int local39 = arg0.g1();
 		for (@Pc(41) int local41 = 0; local41 < local39; local41++) {
-			local35.aClass69_23.method2282(new Class3_Sub24(arg0.method2163(), arg0.method2163(), arg0.method2163(), arg0.method2163()));
+			local35.aClass69_23.method2282(new MapChunk(arg0.g2(), arg0.g2(), arg0.g2(), arg0.g2()));
 		}
 		local35.method665();
 		return local35;

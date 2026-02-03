@@ -7,33 +7,30 @@ public final class Static214 {
 	@OriginalMember(owner = "client!rg", name = "y", descriptor = "I")
 	public static int anInt5577;
 
-	@OriginalMember(owner = "client!rg", name = "z", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_106;
-
 	@OriginalMember(owner = "client!rg", name = "C", descriptor = "I")
 	public static int anInt5579;
 
 	@OriginalMember(owner = "client!rg", name = "r", descriptor = "[Lclient!na;")
-	public static final Class100[] aClass100Array170 = new Class100[200];
+	public static final JagString[] aClass100Array170 = new JagString[200];
 
 	@OriginalMember(owner = "client!rg", name = "s", descriptor = "I")
 	public static int anInt5574 = -1;
 
 	@OriginalMember(owner = "client!rg", name = "u", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_1063 = Static28.method790("Started 3d Library");
+	private static final JagString aClass100_1063 = JagString.wrap("Started 3d Library");
 
 	@OriginalMember(owner = "client!rg", name = "A", descriptor = "[I")
 	public static final int[] anIntArray492 = new int[14];
 
 	@OriginalMember(owner = "client!rg", name = "E", descriptor = "Lclient!na;")
-	public static Class100 aClass100_1064 = aClass100_1063;
+	public static JagString aClass100_1064 = aClass100_1063;
 
 	@OriginalMember(owner = "client!rg", name = "F", descriptor = "I")
 	public static int anInt5581 = 0;
 
 	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(Lclient!e;I)V")
-	public static void method4359(@OriginalArg(0) Class8_Sub4_Sub1 arg0) {
-		@Pc(12) Class3_Sub12 local12 = (Class3_Sub12) Static93.aClass133_7.method3863(arg0.aClass100_364.method3158());
+	public static void method4359(@OriginalArg(0) ClientPlayer arg0) {
+		@Pc(12) BgSound local12 = (BgSound) Static93.aClass133_7.find(arg0.aClass100_364.method3158());
 		if (local12 == null) {
 			Static122.method2411(arg0.anIntArray317[0], null, 0, null, arg0.anIntArray318[0], Static55.anInt1735, arg0);
 		} else {
@@ -56,25 +53,8 @@ public final class Static214 {
 	}
 
 	@OriginalMember(owner = "client!rg", name = "d", descriptor = "(B)Lclient!bn;")
-	public static Class3_Sub2_Sub4 method4361() {
+	public static Map method4361() {
 		return Static269.aClass3_Sub2_Sub4_2;
-	}
-
-	@OriginalMember(owner = "client!rg", name = "b", descriptor = "(II)Lclient!me;")
-	public static Class96 method4363(@OriginalArg(0) int arg0) {
-		@Pc(10) Class96 local10 = (Class96) Static93.aClass99_13.method3106((long) arg0);
-		if (local10 != null) {
-			return local10;
-		}
-		@Pc(26) byte[] local26 = Static58.aClass153_28.method4495(Static60.method1447(arg0), Static179.method3322(arg0));
-		local10 = new Class96();
-		local10.anInt3741 = arg0;
-		if (local26 != null) {
-			local10.method2939(new Class3_Sub15(local26));
-		}
-		local10.method2942();
-		Static93.aClass99_13.method3095(local10, (long) arg0);
-		return local10;
 	}
 
 	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(IIIIIIIII)V")

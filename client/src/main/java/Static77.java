@@ -8,13 +8,13 @@ public final class Static77 {
 	public static final int[] anIntArray194 = new int[10000];
 
 	@OriginalMember(owner = "client!gb", name = "N", descriptor = "[I")
-	public static final int[] anIntArray195 = Class58.anIntArray225;
+	public static final int[] anIntArray195 = Pix3D.cosTable;
 
 	@OriginalMember(owner = "client!gb", name = "S", descriptor = "I")
 	public static int anInt2138 = 0;
 
 	@OriginalMember(owner = "client!gb", name = "V", descriptor = "[I")
-	public static final int[] anIntArray198 = Class58.anIntArray223;
+	public static final int[] anIntArray198 = Pix3D.sinTable;
 
 	@OriginalMember(owner = "client!gb", name = "Z", descriptor = "[I")
 	public static final int[] anIntArray199 = new int[10000];
@@ -34,8 +34,8 @@ public final class Static77 {
 	}
 
 	@OriginalMember(owner = "client!gb", name = "a", descriptor = "(Lclient!ve;II)Lclient!gb;")
-	public static Class8_Sub5 method1686(@OriginalArg(0) Class153 arg0, @OriginalArg(1) int arg1) {
-		@Pc(5) byte[] local5 = arg0.method4495(arg1, 0);
-		return local5 == null ? null : new Class8_Sub5(local5);
+	public static ModelUnlit method1686(@OriginalArg(0) Js5 arg0, @OriginalArg(1) int arg1) {
+		@Pc(5) byte[] local5 = arg0.getFile(arg1, 0);
+		return local5 == null ? null : new ModelUnlit(local5);
 	}
 }

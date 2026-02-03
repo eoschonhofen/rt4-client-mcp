@@ -5,40 +5,25 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static123 {
 
 	@OriginalMember(owner = "client!jj", name = "d", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_592 = Static28.method790("headicons_pk");
+	public static final JagString aClass100_592 = JagString.wrap("headicons_pk");
 
 	@OriginalMember(owner = "client!jj", name = "e", descriptor = "I")
 	public static int anInt3058 = 0;
 
 	@OriginalMember(owner = "client!jj", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_593 = Static28.method790(" (X");
+	public static final JagString aClass100_593 = JagString.wrap(" (X");
 
 	@OriginalMember(owner = "client!jj", name = "j", descriptor = "Z")
 	public static boolean aBoolean155 = false;
 
 	@OriginalMember(owner = "client!jj", name = "m", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_594 = Static28.method790("<)4col>");
-
-	@OriginalMember(owner = "client!jj", name = "a", descriptor = "(BI)Lclient!lk;")
-	public static Class3_Sub2_Sub13 method2417(@OriginalArg(1) int arg0) {
-		@Pc(10) Class3_Sub2_Sub13 local10 = (Class3_Sub2_Sub13) Static231.aClass54_13.method1806((long) arg0);
-		if (local10 != null) {
-			return local10;
-		}
-		@Pc(26) byte[] local26 = Static23.aClass153_11.method4495(26, arg0);
-		local10 = new Class3_Sub2_Sub13();
-		if (local26 != null) {
-			local10.method2806(new Class3_Sub15(local26));
-		}
-		Static231.aClass54_13.method1811(local10, (long) arg0);
-		return local10;
-	}
+	public static final JagString aClass100_594 = JagString.wrap("<)4col>");
 
 	@OriginalMember(owner = "client!jj", name = "a", descriptor = "(Z)V")
 	public static void method2418() {
-		if (!Static249.aBoolean282 && Static83.anInt370 != 2) {
+		if (!client.advertsuppressed && client.modewhere != 2) {
 			try {
-				Static206.aClass100_900.method3157(Static215.aClient1);
+				Static206.aClass100_900.method3157(Static215.client);
 			} catch (@Pc(26) Throwable local26) {
 			}
 		}
@@ -177,7 +162,7 @@ public final class Static123 {
 	}
 
 	@OriginalMember(owner = "client!jj", name = "a", descriptor = "(IBI)Lclient!na;")
-	public static Class100 method2420(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
+	public static JagString method2420(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
 		@Pc(4) int local4 = arg1 - arg0;
 		if (local4 < -9) {
 			return Static175.aClass100_798;
@@ -214,7 +199,7 @@ public final class Static123 {
 	}
 
 	@OriginalMember(owner = "client!jj", name = "b", descriptor = "(BI)Lclient!na;")
-	public static Class100 method2423(@OriginalArg(1) int arg0) {
+	public static JagString method2423(@OriginalArg(1) int arg0) {
 		return Static198.method1025(false, arg0);
 	}
 }

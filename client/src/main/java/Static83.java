@@ -8,19 +8,13 @@ public final class Static83 {
 	public static int[][][] anIntArrayArrayArray3;
 
 	@OriginalMember(owner = "client!gj", name = "m", descriptor = "[[[I")
-	public static int[][][] anIntArrayArrayArray4;
+	public static int[][][] groundh;
 
 	@OriginalMember(owner = "client!gj", name = "r", descriptor = "F")
 	public static float aFloat3;
 
-	@OriginalMember(owner = "client!gj", name = "b", descriptor = "I")
-	public static int anInt370 = 0;
-
 	@OriginalMember(owner = "client!gj", name = "d", descriptor = "I")
 	public static int anInt372 = 0;
-
-	@OriginalMember(owner = "client!gj", name = "p", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_3 = new Class99(64);
 
 	@OriginalMember(owner = "client!gj", name = "q", descriptor = "[I")
 	public static final int[] anIntArray23 = new int[32];
@@ -37,8 +31,8 @@ public final class Static83 {
 	}
 
 	@OriginalMember(owner = "client!gj", name = "a", descriptor = "(III)Lclient!df;")
-	public static Class24 method435(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) Class3_Sub5 local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+	public static Decor method435(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
+		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
 		return local7 == null ? null : local7.aClass24_1;
 	}
 

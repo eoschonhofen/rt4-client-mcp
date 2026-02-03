@@ -5,13 +5,10 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static236 {
 
 	@OriginalMember(owner = "client!tc", name = "b", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1003 = Static28.method790("Prendre");
+	public static final JagString aClass100_1003 = JagString.wrap("Prendre");
 
 	@OriginalMember(owner = "client!tc", name = "c", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1004 = Static28.method790(" de votre liste d(Wamis)3");
-
-	@OriginalMember(owner = "client!tc", name = "f", descriptor = "Z")
-	public static boolean aBoolean256 = false;
+	public static final JagString aClass100_1004 = JagString.wrap(" de votre liste d(Wamis)3");
 
 	@OriginalMember(owner = "client!tc", name = "a", descriptor = "(B)I")
 	public static int method4047() {
@@ -25,7 +22,7 @@ public final class Static236 {
 	}
 
 	@OriginalMember(owner = "client!tc", name = "a", descriptor = "(IILclient!be;BIIII)V")
-	public static void method4049(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) Class13 arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6) {
+	public static void method4049(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) IfType arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6) {
 		if (Static45.aBoolean84) {
 			Static42.anInt1396 = 32;
 		} else {
@@ -52,12 +49,12 @@ public final class Static236 {
 				Static45.aBoolean84 = true;
 			}
 		}
-		if (Static58.anInt1766 == 0) {
+		if (client.mouseWheelRotation == 0) {
 			return;
 		}
 		local139 = arg2.anInt445;
 		if (arg4 - local139 <= arg3 && arg5 <= arg0 && arg3 < arg4 + 16 && arg1 + arg5 >= arg0) {
-			arg2.anInt468 += Static58.anInt1766 * 45;
+			arg2.anInt468 += client.mouseWheelRotation * 45;
 			Static43.method1143(arg2);
 		}
 	}

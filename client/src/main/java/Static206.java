@@ -7,14 +7,11 @@ public final class Static206 {
 	@OriginalMember(owner = "client!qk", name = "c", descriptor = "[I")
 	public static int[] anIntArray427;
 
-	@OriginalMember(owner = "client!qk", name = "g", descriptor = "Lclient!ma;")
-	public static Class95 aClass95_3;
-
 	@OriginalMember(owner = "client!qk", name = "a", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_899 = Static28.method790("0(U");
+	public static final JagString PERCENT = JagString.wrap("0(U");
 
 	@OriginalMember(owner = "client!qk", name = "b", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_900 = Static28.method790("tbrefresh");
+	public static final JagString aClass100_900 = JagString.wrap("tbrefresh");
 
 	@OriginalMember(owner = "client!qk", name = "f", descriptor = "I")
 	public static int anInt4773 = 0;
@@ -23,15 +20,15 @@ public final class Static206 {
 	public static int anInt4774 = 0;
 
 	@OriginalMember(owner = "client!qk", name = "l", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_902 = Static28.method790(" ");
+	private static final JagString aClass100_902 = JagString.wrap(" ");
 
 	@OriginalMember(owner = "client!qk", name = "i", descriptor = "Lclient!na;")
-	public static Class100 aClass100_901 = aClass100_902;
+	public static JagString aClass100_901 = aClass100_902;
 
 	@OriginalMember(owner = "client!qk", name = "a", descriptor = "(ZIIIIFII)[I")
 	public static int[] method3679(@OriginalArg(5) float arg0) {
 		@Pc(11) int[] local11 = new int[2048];
-		@Pc(15) Class3_Sub1_Sub4 local15 = new Class3_Sub1_Sub4();
+		@Pc(15) TextureOp34 local15 = new TextureOp34();
 		local15.anInt646 = 8;
 		local15.anInt642 = 4;
 		local15.anInt650 = 35;
@@ -45,14 +42,14 @@ public final class Static206 {
 	}
 
 	@OriginalMember(owner = "client!qk", name = "a", descriptor = "(BLclient!wa;)Lclient!j;")
-	public static Class3_Sub1 method3680(@OriginalArg(1) Class3_Sub15 arg0) {
-		arg0.method2229();
-		@Pc(13) int local13 = arg0.method2229();
-		@Pc(17) Class3_Sub1 local17 = Static223.method3860(local13);
-		local17.anInt5840 = arg0.method2229();
-		@Pc(26) int local26 = arg0.method2229();
+	public static TextureOp method3680(@OriginalArg(1) Packet arg0) {
+		arg0.g1();
+		@Pc(13) int local13 = arg0.g1();
+		@Pc(17) TextureOp local17 = Static223.method3860(local13);
+		local17.anInt5840 = arg0.g1();
+		@Pc(26) int local26 = arg0.g1();
 		for (@Pc(34) int local34 = 0; local34 < local26; local34++) {
-			@Pc(41) int local41 = arg0.method2229();
+			@Pc(41) int local41 = arg0.g1();
 			local17.method4629(local41, arg0);
 		}
 		local17.method4630();

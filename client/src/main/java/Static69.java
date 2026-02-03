@@ -1,36 +1,26 @@
-import java.awt.Frame;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 public final class Static69 {
 
-	@OriginalMember(owner = "client!fh", name = "Y", descriptor = "Ljava/awt/Frame;")
-	public static Frame aFrame2;
-
-	@OriginalMember(owner = "client!fh", name = "cb", descriptor = "Lsignlink!ll;")
-	public static Class213 aClass213_4;
-
-	@OriginalMember(owner = "client!fh", name = "P", descriptor = "Z")
-	public static volatile boolean aBoolean115 = true;
-
 	@OriginalMember(owner = "client!fh", name = "W", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_442 = Static28.method790("M");
+	private static final JagString aClass100_442 = JagString.wrap("M");
 
 	@OriginalMember(owner = "client!fh", name = "T", descriptor = "Lclient!na;")
-	public static Class100 aClass100_440 = aClass100_442;
+	public static JagString aClass100_440 = aClass100_442;
 
 	@OriginalMember(owner = "client!fh", name = "U", descriptor = "[[Z")
 	public static final boolean[][] aBooleanArrayArray2 = new boolean[][] { new boolean[0], { true, false, true }, { true, false, false, true }, { false, false, true, true }, { true, true, false }, { false, true, true }, { true, false, false, true }, { false, false, false, true, true }, { false, true, true }, { true, false, true, true, true }, { false, true, true, true, true }, { false, true, true, true, true, false } };
 
 	@OriginalMember(owner = "client!fh", name = "V", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_441 = Static28.method790("vert:");
+	public static final JagString aClass100_441 = JagString.wrap("vert:");
 
 	@OriginalMember(owner = "client!fh", name = "ab", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_443 = Static28.method790("::noclip");
+	public static final JagString aClass100_443 = JagString.wrap("::noclip");
 
 	@OriginalMember(owner = "client!fh", name = "bb", descriptor = "Lclient!na;")
-	public static Class100 aClass100_444 = aClass100_442;
+	public static JagString aClass100_444 = aClass100_442;
 
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(IIII)I")
 	public static int method1540(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
@@ -57,16 +47,16 @@ public final class Static69 {
 					Static193.aClass100Array134[local36] = Static193.aClass100Array134[local36 + 1];
 				}
 				Static185.anInt4369 = Static119.anInt3028;
-				Static6.aClass3_Sub15_Sub1_1.method2242(213);
-				Static6.aClass3_Sub15_Sub1_1.method2166(arg0);
+				Static6.aClass3_Sub15_Sub1_1.p1Enc(213);
+				Static6.aClass3_Sub15_Sub1_1.p8(arg0);
 				break;
 			}
 		}
 	}
 
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(IIIILclient!th;JLclient!th;Lclient!th;)V")
-	public static void method1543(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) Class8 arg4, @OriginalArg(5) long arg5, @OriginalArg(6) Class8 arg6, @OriginalArg(7) Class8 arg7) {
-		@Pc(3) Class79 local3 = new Class79();
+	public static void method1543(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) ModelSource arg4, @OriginalArg(5) long arg5, @OriginalArg(6) ModelSource arg6, @OriginalArg(7) ModelSource arg7) {
+		@Pc(3) GroundObject local3 = new GroundObject();
 		local3.aClass8_9 = arg4;
 		local3.anInt3064 = arg1 * 128 + 64;
 		local3.anInt3061 = arg2 * 128 + 64;
@@ -75,10 +65,10 @@ public final class Static69 {
 		local3.aClass8_7 = arg6;
 		local3.aClass8_8 = arg7;
 		@Pc(34) int local34 = 0;
-		@Pc(42) Class3_Sub5 local42 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+		@Pc(42) Square local42 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
 		if (local42 != null) {
 			for (@Pc(46) int local46 = 0; local46 < local42.anInt662; local46++) {
-				@Pc(55) Class31 local55 = local42.aClass31Array1[local46];
+				@Pc(55) Sprite local55 = local42.aClass31Array1[local46];
 				if ((local55.aLong56 & 0x400000L) == 4194304L) {
 					@Pc(66) int local66 = local55.aClass8_4.method4549();
 					if (local66 != -32768 && local66 < local34) {
@@ -89,13 +79,13 @@ public final class Static69 {
 		}
 		local3.anInt3063 = -local34;
 		if (Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2] == null) {
-			Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2] = new Class3_Sub5(arg0, arg1, arg2);
+			Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2] = new Square(arg0, arg1, arg2);
 		}
 		Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2].aClass79_1 = local3;
 	}
 
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(Lclient!th;IIIII)V")
-	public static void method1544(@OriginalArg(0) Class8 arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5) {
+	public static void method1544(@OriginalArg(0) ModelSource arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5) {
 		@Pc(1) boolean local1 = true;
 		@Pc(3) int local3 = arg2;
 		@Pc(7) int local7 = arg2 + arg4;
@@ -107,10 +97,10 @@ public final class Static69 {
 					if (local28 >= 0 && local28 < Static152.anInt3594) {
 						for (@Pc(39) int local39 = local11; local39 <= local15; local39++) {
 							if (local39 >= 0 && local39 < Static99.anInt2550 && (!local1 || local28 >= local7 || local39 >= local15 || local39 < arg3 && local28 != arg2)) {
-								@Pc(71) Class3_Sub5 local71 = Static130.aClass3_Sub5ArrayArrayArray1[local17][local28][local39];
+								@Pc(71) Square local71 = Static130.aClass3_Sub5ArrayArrayArray1[local17][local28][local39];
 								if (local71 != null) {
-									@Pc(158) int local158 = (Static83.anIntArrayArrayArray4[local17][local28][local39] + Static83.anIntArrayArrayArray4[local17][local28 + 1][local39] + Static83.anIntArrayArrayArray4[local17][local28][local39 + 1] + Static83.anIntArrayArrayArray4[local17][local28 + 1][local39 + 1]) / 4 - (Static83.anIntArrayArrayArray4[arg1][arg2][arg3] + Static83.anIntArrayArrayArray4[arg1][arg2 + 1][arg3] + Static83.anIntArrayArrayArray4[arg1][arg2][arg3 + 1] + Static83.anIntArrayArrayArray4[arg1][arg2 + 1][arg3 + 1]) / 4;
-									@Pc(161) Class77 local161 = local71.aClass77_1;
+									@Pc(158) int local158 = (Static83.groundh[local17][local28][local39] + Static83.groundh[local17][local28 + 1][local39] + Static83.groundh[local17][local28][local39 + 1] + Static83.groundh[local17][local28 + 1][local39 + 1]) / 4 - (Static83.groundh[arg1][arg2][arg3] + Static83.groundh[arg1][arg2 + 1][arg3] + Static83.groundh[arg1][arg2][arg3 + 1] + Static83.groundh[arg1][arg2 + 1][arg3 + 1]) / 4;
+									@Pc(161) Wall local161 = local71.aClass77_1;
 									if (local161 != null) {
 										if (local161.aClass8_5.method4543()) {
 											arg0.method4544(local161.aClass8_5, (local28 - arg2) * 128 + (1 - arg4) * 64, local158, (local39 - arg3) * 128 + (1 - arg5) * 64, local1);
@@ -120,7 +110,7 @@ public final class Static69 {
 										}
 									}
 									for (@Pc(232) int local232 = 0; local232 < local71.anInt662; local232++) {
-										@Pc(241) Class31 local241 = local71.aClass31Array1[local232];
+										@Pc(241) Sprite local241 = local71.aClass31Array1[local232];
 										if (local241 != null && local241.aClass8_4.method4543() && (local28 == local241.anInt1701 || local28 == local3) && (local39 == local241.anInt1696 || local39 == local11)) {
 											@Pc(270) int local270 = local241.anInt1713 + 1 - local241.anInt1701;
 											@Pc(278) int local278 = local241.anInt1698 + 1 - local241.anInt1696;
@@ -139,7 +129,7 @@ public final class Static69 {
 	}
 
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(BLclient!ek;)V")
-	public static void method1545(@OriginalArg(1) Class36_Sub1 arg0) {
+	public static void method1545(@OriginalArg(1) SoftwarePix8 arg0) {
 		@Pc(5) int local5;
 		for (local5 = 0; local5 < Static270.anIntArray562.length; local5++) {
 			Static270.anIntArray562[local5] = 0;
@@ -179,10 +169,10 @@ public final class Static69 {
 	}
 
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(Lclient!wa;I)V")
-	public static void method1546(@OriginalArg(0) Class3_Sub15 arg0) {
+	public static void method1546(@OriginalArg(0) Packet arg0) {
 		for (@Pc(7) int local7 = 0; local7 < Static106.anInt2871; local7++) {
 			@Pc(18) int local18 = arg0.method2204();
-			@Pc(22) int local22 = arg0.method2163();
+			@Pc(22) int local22 = arg0.g2();
 			if (local22 == 65535) {
 				local22 = -1;
 			}

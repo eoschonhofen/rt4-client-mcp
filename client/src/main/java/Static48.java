@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static48 {
 
-	@OriginalMember(owner = "client!dl", name = "d", descriptor = "I")
-	public static int anInt1448;
-
 	@OriginalMember(owner = "client!dl", name = "e", descriptor = "I")
 	public static int anInt1449;
 
@@ -17,10 +14,10 @@ public final class Static48 {
 	public static int anInt1447 = 0;
 
 	@OriginalMember(owner = "client!dl", name = "j", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_346 = Static28.method790("Opened title screen");
+	private static final JagString aClass100_346 = JagString.wrap("Opened title screen");
 
 	@OriginalMember(owner = "client!dl", name = "k", descriptor = "Lclient!na;")
-	public static Class100 aClass100_347 = aClass100_346;
+	public static JagString aClass100_347 = aClass100_346;
 
 	@OriginalMember(owner = "client!dl", name = "a", descriptor = "(IIIIIIIII)V")
 	public static void method1195(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(7) int arg6, @OriginalArg(8) int arg7) {
@@ -32,45 +29,45 @@ public final class Static48 {
 	}
 
 	@OriginalMember(owner = "client!dl", name = "a", descriptor = "(B)Lclient!wa;")
-	public static Class3_Sub15 method1196() {
-		@Pc(4) Class3_Sub15 local4 = new Class3_Sub15(34);
-		local4.method2178(11);
-		local4.method2178(Static113.anInt4609);
-		local4.method2178(Static162.aBoolean190 ? 1 : 0);
-		local4.method2178(Static80.aBoolean231 ? 1 : 0);
-		local4.method2178(Static250.aBoolean283 ? 1 : 0);
-		local4.method2178(Static53.aBoolean99 ? 1 : 0);
-		local4.method2178(Static15.aBoolean33 ? 1 : 0);
-		local4.method2178(Static11.aBoolean15 ? 1 : 0);
-		local4.method2178(Static159.aBoolean189 ? 1 : 0);
-		local4.method2178(Static209.aBoolean240 ? 1 : 0);
-		local4.method2178(Static139.anInt3451);
-		local4.method2178(Static178.aBoolean202 ? 1 : 0);
-		local4.method2178(Static220.aBoolean244 ? 1 : 0);
-		local4.method2178(Static71.aBoolean107 ? 1 : 0);
-		local4.method2178(Static102.anInt2679);
-		local4.method2178(Static99.aBoolean143 ? 1 : 0);
-		local4.method2178(Static125.anInt3104);
-		local4.method2178(Static12.anInt391);
-		local4.method2178(Static30.anInt978);
-		local4.method2230(Static114.anInt5831);
-		local4.method2230(Static22.anInt729);
-		local4.method2178(Static76.method1644());
-		local4.method2164(Static164.anInt3988);
-		local4.method2178(Static214.anInt5581);
-		local4.method2178(Static164.aBoolean191 ? 1 : 0);
-		local4.method2178(Static33.aBoolean63 ? 1 : 0);
-		local4.method2178(Static141.anInt3474);
-		local4.method2178(Static127.aBoolean159 ? 1 : 0);
-		local4.method2178(Static64.aBoolean111 ? 1 : 0);
+	public static Packet method1196() {
+		@Pc(4) Packet local4 = new Packet(34);
+		local4.p1(11);
+		local4.p1(Static113.anInt4609);
+		local4.p1(Static162.aBoolean190 ? 1 : 0);
+		local4.p1(Static80.aBoolean231 ? 1 : 0);
+		local4.p1(Static250.aBoolean283 ? 1 : 0);
+		local4.p1(Static53.aBoolean99 ? 1 : 0);
+		local4.p1(Static15.aBoolean33 ? 1 : 0);
+		local4.p1(Static11.aBoolean15 ? 1 : 0);
+		local4.p1(Static159.aBoolean189 ? 1 : 0);
+		local4.p1(Static209.aBoolean240 ? 1 : 0);
+		local4.p1(Static139.anInt3451);
+		local4.p1(Static178.highDetailLighting ? 1 : 0);
+		local4.p1(Static220.aBoolean244 ? 1 : 0);
+		local4.p1(Static71.aBoolean107 ? 1 : 0);
+		local4.p1(Static102.anInt2679);
+		local4.p1(client.lowMem ? 1 : 0);
+		local4.p1(Static125.anInt3104);
+		local4.p1(Static12.anInt391);
+		local4.p1(Static30.anInt978);
+		local4.p2(Static114.anInt5831);
+		local4.p2(Static22.anInt729);
+		local4.p1(Static76.method1644());
+		local4.p4(Static164.anInt3988);
+		local4.p1(Static214.anInt5581);
+		local4.p1(Static164.aBoolean191 ? 1 : 0);
+		local4.p1(Static33.aBoolean63 ? 1 : 0);
+		local4.p1(Static141.anInt3474);
+		local4.p1(Static127.aBoolean159 ? 1 : 0);
+		local4.p1(Static64.aBoolean111 ? 1 : 0);
 		return local4;
 	}
 
 	@OriginalMember(owner = "client!dl", name = "a", descriptor = "(II)V")
 	public static void method1197(@OriginalArg(1) int arg0) {
-		@Pc(10) Class150 local10 = Static93.aClass150_1;
-		synchronized (Static93.aClass150_1) {
-			Static93.anInt2467 = arg0;
+		@Pc(10) ClientMouseListener local10 = ClientMouseListener.aClass150_1;
+		synchronized (ClientMouseListener.aClass150_1) {
+			ClientMouseListener.anInt2467 = arg0;
 		}
 	}
 }

@@ -5,10 +5,10 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static260 {
 
 	@OriginalMember(owner = "client!vd", name = "w", descriptor = "Lclient!vk;")
-	public static Class27 aClass27_2;
+	public static PixMap drawArea;
 
 	@OriginalMember(owner = "client!vd", name = "v", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_944 = Static28.method790("hitbar_default");
+	public static final JagString aClass100_944 = JagString.wrap("hitbar_default");
 
 	@OriginalMember(owner = "client!vd", name = "B", descriptor = "[S")
 	public static final short[] aShortArray71 = new short[] { 6798, 8741, 25238, 4626, 4550 };
@@ -17,7 +17,7 @@ public final class Static260 {
 	public static int anInt5014 = 0;
 
 	@OriginalMember(owner = "client!vd", name = "F", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_945 = Static28.method790("0");
+	public static final JagString aClass100_945 = JagString.wrap("0");
 
 	@OriginalMember(owner = "client!vd", name = "a", descriptor = "(IIIIBI)V")
 	public static void method3849(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(5) int arg4) {
@@ -53,7 +53,7 @@ public final class Static260 {
 		}
 		@Pc(10) int local10 = arg1 << 7;
 		@Pc(14) int local14 = arg2 << 7;
-		@Pc(24) int local24 = Static83.anIntArrayArrayArray4[arg0][arg1][arg2] - 1;
+		@Pc(24) int local24 = Static83.groundh[arg0][arg1][arg2] - 1;
 		@Pc(28) int local28 = local24 - 120;
 		@Pc(32) int local32 = local24 - 230;
 		@Pc(36) int local36 = local24 - 238;
@@ -176,34 +176,34 @@ public final class Static260 {
 
 	@OriginalMember(owner = "client!vd", name = "a", descriptor = "(BZ)V")
 	public static void method3852(@OriginalArg(1) boolean arg0) {
-		@Pc(14) Class3_Sub12 local14;
-		for (local14 = (Class3_Sub12) Static3.aClass69_135.method2289(); local14 != null; local14 = (Class3_Sub12) Static3.aClass69_135.method2288()) {
+		@Pc(14) BgSound local14;
+		for (local14 = (BgSound) Static3.aClass69_135.head(); local14 != null; local14 = (BgSound) Static3.aClass69_135.method2288()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
-				Static204.aClass3_Sub3_Sub2_1.method1347(local14.aClass3_Sub3_Sub1_1);
+				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
 			if (local14.aClass3_Sub3_Sub1_2 != null) {
-				Static204.aClass3_Sub3_Sub2_1.method1347(local14.aClass3_Sub3_Sub1_2);
+				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_2);
 				local14.aClass3_Sub3_Sub1_2 = null;
 			}
-			local14.method4658();
+			local14.unlink();
 		}
 		if (!arg0) {
 			return;
 		}
-		for (local14 = (Class3_Sub12) Static152.aClass69_87.method2289(); local14 != null; local14 = (Class3_Sub12) Static152.aClass69_87.method2288()) {
+		for (local14 = (BgSound) Static152.aClass69_87.head(); local14 != null; local14 = (BgSound) Static152.aClass69_87.method2288()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
-				Static204.aClass3_Sub3_Sub2_1.method1347(local14.aClass3_Sub3_Sub1_1);
+				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
-			local14.method4658();
+			local14.unlink();
 		}
-		for (local14 = (Class3_Sub12) Static93.aClass133_7.method3859(); local14 != null; local14 = (Class3_Sub12) Static93.aClass133_7.method3861()) {
+		for (local14 = (BgSound) Static93.aClass133_7.method3859(); local14 != null; local14 = (BgSound) Static93.aClass133_7.method3861()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
-				Static204.aClass3_Sub3_Sub2_1.method1347(local14.aClass3_Sub3_Sub1_1);
+				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
-			local14.method4658();
+			local14.unlink();
 		}
 	}
 }

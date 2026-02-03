@@ -7,25 +7,22 @@ public final class Static173 {
 	@OriginalMember(owner = "client!nk", name = "d", descriptor = "[I")
 	public static int[] anIntArray367;
 
-	@OriginalMember(owner = "client!nk", name = "E", descriptor = "I")
-	public static int anInt4183;
-
 	@OriginalMember(owner = "client!nk", name = "L", descriptor = "[Lclient!mm;")
-	public static Class3_Sub2_Sub1_Sub1[] aClass3_Sub2_Sub1_Sub1Array9;
+	public static Pix32[] aClass3_Sub2_Sub1_Sub1Array9;
 
 	@OriginalMember(owner = "client!nk", name = "O", descriptor = "Lclient!e;")
-	public static Class8_Sub4_Sub1 aClass8_Sub4_Sub1_2;
+	public static ClientPlayer aClass8_Sub4_Sub1_2;
 
 	@OriginalMember(owner = "client!nk", name = "n", descriptor = "[Lclient!sl;")
-	public static final Class138[] aClass138Array1 = new Class138[50];
+	public static final JagFX[] aClass138Array1 = new JagFX[50];
 
 	@OriginalMember(owner = "client!nk", name = "o", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_792 = Static28.method790("Titelbild ge-Offnet)3");
+	public static final JagString aClass100_792 = JagString.wrap("Titelbild ge-Offnet)3");
 
 	@OriginalMember(owner = "client!nk", name = "c", descriptor = "(IZ)V")
 	public static void method3240(@OriginalArg(1) boolean arg0) {
 		@Pc(7) int local7;
-		@Pc(16) Class8_Sub4_Sub2 local16;
+		@Pc(16) ClientNPC local16;
 		@Pc(107) int local107;
 		@Pc(113) int local113;
 		@Pc(133) int local133;

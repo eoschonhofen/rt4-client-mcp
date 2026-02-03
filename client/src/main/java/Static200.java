@@ -6,9 +6,6 @@ public final class Static200 {
 	@OriginalMember(owner = "client!qe", name = "r", descriptor = "[S")
 	public static short[] aShortArray65;
 
-	@OriginalMember(owner = "client!qe", name = "v", descriptor = "Lclient!s;")
-	public static Class93 aClass93_1;
-
 	@OriginalMember(owner = "client!qe", name = "t", descriptor = "[I")
 	public static final int[] anIntArray421 = new int[50];
 

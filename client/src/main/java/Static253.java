@@ -13,32 +13,29 @@ public final class Static253 {
 	@OriginalMember(owner = "client!ui", name = "T", descriptor = "F")
 	public static float aFloat36;
 
-	@OriginalMember(owner = "client!ui", name = "cb", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_104;
-
 	@OriginalMember(owner = "client!ui", name = "eb", descriptor = "[[[B")
-	public static byte[][][] aByteArrayArrayArray16;
+	public static byte[][][] floort1;
 
 	@OriginalMember(owner = "client!ui", name = "mb", descriptor = "F")
 	public static float aFloat37;
 
 	@OriginalMember(owner = "client!ui", name = "ab", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_1056 = Static28.method790(" more options");
+	private static final JagString aClass100_1056 = JagString.wrap(" more options");
 
 	@OriginalMember(owner = "client!ui", name = "V", descriptor = "Lclient!na;")
-	public static Class100 aClass100_1054 = aClass100_1056;
+	public static JagString aClass100_1054 = aClass100_1056;
 
 	@OriginalMember(owner = "client!ui", name = "ob", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_1059 = Static28.method790("Attack");
+	private static final JagString aClass100_1059 = JagString.wrap("Attack");
 
 	@OriginalMember(owner = "client!ui", name = "Y", descriptor = "Lclient!na;")
-	public static Class100 aClass100_1055 = aClass100_1059;
+	public static JagString aClass100_1055 = aClass100_1059;
 
 	@OriginalMember(owner = "client!ui", name = "hb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1057 = Static28.method790("Schrifts-=tze geladen)3");
+	public static final JagString aClass100_1057 = JagString.wrap("Schrifts-=tze geladen)3");
 
 	@OriginalMember(owner = "client!ui", name = "nb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1058 = Static28.method790("jaune:");
+	public static final JagString aClass100_1058 = JagString.wrap("jaune:");
 
 	@OriginalMember(owner = "client!ui", name = "a", descriptor = "(IIZIII)V")
 	public static void method4326(@OriginalArg(1) int arg0, @OriginalArg(2) boolean arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4) {
@@ -54,7 +51,7 @@ public final class Static253 {
 			Static195.method3532();
 		}
 		Static246.method4239();
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static115.method2314(arg3, arg4, arg0, arg2, true);
 			arg2 = Static7.anInt983;
 			arg4 = Static24.anInt773;
@@ -108,7 +105,7 @@ public final class Static253 {
 			}
 		}
 		Static252.method4302();
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static46.method1187(arg2, arg4, arg2 + arg3, arg4 - -arg0);
 			@Pc(248) float local248 = (float) Static240.anInt5333 * 0.17578125F;
 			@Pc(253) float local253 = (float) Static184.anInt4358 * 0.17578125F;
@@ -134,13 +131,13 @@ public final class Static253 {
 			@Pc(361) int local361 = Static148.anInt3535;
 			Static34.anInt1053 = (local361 - local344) * (Static60.anInt1892 - arg4) / arg0 + local344;
 		}
-		Static107.method2261();
+		client.method2261();
 		@Pc(387) byte local387 = Static236.method4047() == 2 ? (byte) Static136.anInt3325 : 1;
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static239.method4173();
 			Static239.method4158(true);
 			Static239.method4154(true);
-			if (Static244.anInt5370 == 10) {
+			if (client.state == 10) {
 				local171 = Static103.method2235(Static178.anInt4247, Static134.anInt3302 >> 10, Static113.anInt4609, Static138.anInt3439 >> 10);
 			} else {
 				local171 = Static103.method2235(Static178.anInt4247, Static173.aClass8_Sub4_Sub1_2.anIntArray317[0] >> 3, Static113.anInt4609, Static173.aClass8_Sub4_Sub1_2.anIntArray318[0] >> 3);
@@ -153,19 +150,19 @@ public final class Static253 {
 			Static263.aBoolean299 = true;
 			Static120.method2390();
 			Static143.method2731(0, 0, 0, 0, 0);
-			Static107.method2261();
+			client.method2261();
 			Static223.method3858();
 			Static142.method2726(arg4, arg3, arg2, Static223.anInt5029, arg0, Static223.anInt5029);
 			Static233.method4000(arg3, arg2, arg0, Static223.anInt5029, Static223.anInt5029, arg4);
 		} else {
 			Static129.method2495(arg2, arg4, arg3, arg0, 0);
 			Static156.method2954(Static138.anInt3439, Static5.anInt40, Static134.anInt3302, Static240.anInt5333, Static184.anInt4358, Static266.aByteArrayArrayArray15, Static79.anIntArray205, Static149.anIntArray338, Static267.anIntArray518, Static50.anIntArray134, Static243.anIntArray476, Static55.anInt1735 + 1, local387, Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7, Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7);
-			Static107.method2261();
+			client.method2261();
 			Static223.method3858();
 			Static142.method2726(arg4, arg3, arg2, 256, arg0, 256);
 			Static233.method4000(arg3, arg2, arg0, 256, 256, arg4);
 		}
-		((Class109) Static94.anInterface1_2).method3239(Static178.anInt4247);
+		((WorldTextureProvider) Static94.anInterface1_2).method3239(Static178.anInt4247);
 		Static115.method2310(arg3, arg4, arg0, arg2);
 		Static240.anInt5333 = local123;
 		Static134.anInt3302 = local121;
@@ -176,12 +173,12 @@ public final class Static253 {
 			Static19.aBoolean43 = false;
 		}
 		if (Static19.aBoolean43) {
-			if (Static239.aBoolean269) {
+			if (GameShell.glRenderer) {
 				Static46.method1186(arg2, arg4, arg3, arg0, 0);
 			} else {
 				Static129.method2495(arg2, arg4, arg3, arg0, 0);
 			}
-			Static114.method4636(false, Static170.aClass100_621);
+			Static114.messageBox(false, Static170.aClass100_621);
 		}
 		if (!arg1 && !Static19.aBoolean43 && !Static60.aBoolean108 && arg2 <= Static155.anInt3751 && arg3 + arg2 > Static155.anInt3751 && arg4 <= Static60.anInt1892 && arg0 + arg4 > Static60.anInt1892) {
 			Static176.method3304(arg4, arg3, arg0, arg2, Static60.anInt1892, Static155.anInt3751);
@@ -193,29 +190,14 @@ public final class Static253 {
 		return arg0 >>> 8;
 	}
 
-	@OriginalMember(owner = "client!ui", name = "a", descriptor = "(IZ)Lclient!ml;")
-	public static Class3_Sub2_Sub15 method4330(@OriginalArg(0) int arg0) {
-		@Pc(10) Class3_Sub2_Sub15 local10 = (Class3_Sub2_Sub15) Static149.aClass54_10.method1806((long) arg0);
-		if (local10 != null) {
-			return local10;
-		}
-		@Pc(24) byte[] local24 = Static84.aClass153_35.method4495(Static97.method1959(arg0), Static103.method2236(arg0));
-		local10 = new Class3_Sub2_Sub15();
-		if (local24 != null) {
-			local10.method3094(new Class3_Sub15(local24));
-		}
-		Static149.aClass54_10.method1811(local10, (long) arg0);
-		return local10;
-	}
-
 	@OriginalMember(owner = "client!ui", name = "h", descriptor = "(I)[Lclient!ok;")
-	public static Class36[] method4331() {
-		@Pc(8) Class36[] local8 = new Class36[Static165.anInt4038];
+	public static Pix8[] method4331() {
+		@Pc(8) Pix8[] local8 = new Pix8[Static165.anInt4038];
 		for (@Pc(10) int local10 = 0; local10 < Static165.anInt4038; local10++) {
-			if (Static239.aBoolean269) {
-				local8[local10] = new Class36_Sub2(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[local10], Static269.anIntArray252[local10], Static254.anIntArray488[local10], Static26.anIntArray66[local10], Static7.aByteArrayArray5[local10], Static259.anIntArray513);
+			if (GameShell.glRenderer) {
+				local8[local10] = new GlPix8(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[local10], Static269.anIntArray252[local10], Static254.anIntArray488[local10], Static26.anIntArray66[local10], Static7.aByteArrayArray5[local10], Static259.anIntArray513);
 			} else {
-				local8[local10] = new Class36_Sub1(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[local10], Static269.anIntArray252[local10], Static254.anIntArray488[local10], Static26.anIntArray66[local10], Static7.aByteArrayArray5[local10], Static259.anIntArray513);
+				local8[local10] = new SoftwarePix8(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[local10], Static269.anIntArray252[local10], Static254.anIntArray488[local10], Static26.anIntArray66[local10], Static7.aByteArrayArray5[local10], Static259.anIntArray513);
 			}
 		}
 		Static75.method1631();

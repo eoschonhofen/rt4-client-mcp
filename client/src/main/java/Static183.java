@@ -8,31 +8,31 @@ public final class Static183 {
 	public static int anInt4271;
 
 	@OriginalMember(owner = "client!ok", name = "c", descriptor = "I")
-	public static int anInt4272 = (int) (Math.random() * 33.0D) - 16;
+	public static int hueOff = (int) (Math.random() * 33.0D) - 16;
 
 	@OriginalMember(owner = "client!ok", name = "f", descriptor = "J")
 	public static long aLong139 = 0L;
 
 	@OriginalMember(owner = "client!ok", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_809 = Static28.method790("Lade Titelbild )2 ");
+	public static final JagString aClass100_809 = JagString.wrap("Lade Titelbild )2 ");
 
 	@OriginalMember(owner = "client!ok", name = "a", descriptor = "(Lclient!ab;Lclient!ab;I)V")
-	public static void method3331(@OriginalArg(0) Class3 arg0, @OriginalArg(1) Class3 arg1) {
-		if (arg0.aClass3_223 != null) {
-			arg0.method4658();
+	public static void method3331(@OriginalArg(0) Linkable arg0, @OriginalArg(1) Linkable arg1) {
+		if (arg0.prev != null) {
+			arg0.unlink();
 		}
-		arg0.aClass3_222 = arg1;
-		arg0.aClass3_223 = arg1.aClass3_223;
-		arg0.aClass3_223.aClass3_222 = arg0;
-		arg0.aClass3_222.aClass3_223 = arg0;
+		arg0.next = arg1;
+		arg0.prev = arg1.prev;
+		arg0.prev.next = arg0;
+		arg0.next.prev = arg0;
 	}
 
 	@OriginalMember(owner = "client!ok", name = "a", descriptor = "(IIB)Lclient!ce;")
-	public static Class16 method3333(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
-		@Pc(9) Class16 local9 = new Class16();
-		for (@Pc(14) Class3_Sub2_Sub4 local14 = (Class3_Sub2_Sub4) Static228.aClass69_120.method2289(); local14 != null; local14 = (Class3_Sub2_Sub4) Static228.aClass69_120.method2288()) {
+	public static LinkList2 method3333(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
+		@Pc(9) LinkList2 local9 = new LinkList2();
+		for (@Pc(14) Map local14 = (Map) Static228.aClass69_120.head(); local14 != null; local14 = (Map) Static228.aClass69_120.method2288()) {
 			if (local14.aBoolean50 && local14.method664(arg1, arg0)) {
-				local9.method798(local14);
+				local9.pushFront(local14);
 			}
 		}
 		return local9;

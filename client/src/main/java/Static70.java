@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static70 {
 
 	@OriginalMember(owner = "client!fi", name = "j", descriptor = "Lclient!qf;")
-	public static Class3_Sub2_Sub1 aClass3_Sub2_Sub1_2;
+	public static AbstractPix32 aClass3_Sub2_Sub1_2;
 
 	@OriginalMember(owner = "client!fi", name = "m", descriptor = "[[[B")
 	public static byte[][][] aByteArrayArrayArray7;
@@ -13,40 +13,37 @@ public final class Static70 {
 	@OriginalMember(owner = "client!fi", name = "k", descriptor = "I")
 	public static int anInt2013 = 0;
 
-	@OriginalMember(owner = "client!fi", name = "l", descriptor = "I")
-	public static int anInt2014 = 0;
-
 	@OriginalMember(owner = "client!fi", name = "n", descriptor = "I")
 	public static int anInt2015 = 0;
 
 	@OriginalMember(owner = "client!fi", name = "a", descriptor = "(B)Lclient!s;")
-	public static Class93 method1547() {
+	public static Timer method1547() {
 		try {
-			return (Class93) Class.forName("Class93_Sub2").getDeclaredConstructor().newInstance();
+			return (Timer) Class.forName("NanoTimer").getDeclaredConstructor().newInstance();
 		} catch (@Pc(15) Throwable local15) {
-			return new Class93_Sub1();
+			return new MillisTimer();
 		}
 	}
 
 	@OriginalMember(owner = "client!fi", name = "a", descriptor = "(BI)Lclient!na;")
-	public static Class100 method1548(@OriginalArg(1) int arg0) {
-		@Pc(9) Class100 local9 = Static123.method2423(arg0);
-		for (@Pc(21) int local21 = local9.method3120() - 3; local21 > 0; local21 -= 3) {
-			local9 = Static34.method882(new Class100[] { local9.method3137(local21, 0), Static159.aClass100_760, local9.method3136(local21) });
+	public static JagString method1548(@OriginalArg(1) int arg0) {
+		@Pc(9) JagString local9 = Static123.method2423(arg0);
+		for (@Pc(21) int local21 = local9.length() - 3; local21 > 0; local21 -= 3) {
+			local9 = Static34.concatenate(new JagString[] { local9.method3137(local21, 0), Static159.aClass100_760, local9.method3136(local21) });
 		}
-		if (local9.method3120() > 9) {
-			return Static34.method882(new Class100[] { Static250.aClass100_1043, local9.method3137(local9.method3120() - 8, 0), Static69.aClass100_444, Static123.aClass100_593, local9, Static116.aClass100_583 });
-		} else if (local9.method3120() > 6) {
-			return Static34.method882(new Class100[] { Static119.aClass100_589, local9.method3137(local9.method3120() - 4, 0), Static35.aClass100_220, Static123.aClass100_593, local9, Static116.aClass100_583 });
+		if (local9.length() > 9) {
+			return Static34.concatenate(new JagString[] { Static250.aClass100_1043, local9.method3137(local9.length() - 8, 0), Static69.aClass100_444, Static123.aClass100_593, local9, Static116.aClass100_583 });
+		} else if (local9.length() > 6) {
+			return Static34.concatenate(new JagString[] { Static119.aClass100_589, local9.method3137(local9.length() - 4, 0), Static35.aClass100_220, Static123.aClass100_593, local9, Static116.aClass100_583 });
 		} else {
-			return Static34.method882(new Class100[] { Static278.aClass100_1101, local9, Static230.aClass100_978 });
+			return Static34.concatenate(new JagString[] { Static278.aClass100_1101, local9, Static230.aClass100_978 });
 		}
 	}
 
 	@OriginalMember(owner = "client!fi", name = "a", descriptor = "(III)V")
 	public static void method1549(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		for (@Pc(11) int local11 = 0; local11 < Static98.anInt2510; local11++) {
-			@Pc(18) Class164 local18 = Static256.method4395(local11);
+		for (@Pc(11) int local11 = 0; local11 < FloType.anInt2510; local11++) {
+			@Pc(18) FloType local18 = FloType.method4395(local11);
 			if (local18 != null) {
 				@Pc(24) int local24 = local18.anInt5892;
 				if (local24 >= 0 && !Static94.anInterface1_2.method3236(local24)) {

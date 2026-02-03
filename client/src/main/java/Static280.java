@@ -5,26 +5,23 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static280 {
 
 	@OriginalMember(owner = "client!wl", name = "q", descriptor = "Lclient!rk;")
-	public static Class3_Sub2_Sub9 aClass3_Sub2_Sub9_43;
-
-	@OriginalMember(owner = "client!wl", name = "s", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_110;
+	public static PixFontGeneric aClass3_Sub2_Sub9_43;
 
 	@OriginalMember(owner = "client!wl", name = "A", descriptor = "I")
 	public static int anInt5900;
 
 	@OriginalMember(owner = "client!wl", name = "d", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1108 = Static28.method790("compass");
+	public static final JagString aClass100_1108 = JagString.wrap("compass");
 
 	@OriginalMember(owner = "client!wl", name = "h", descriptor = "Lclient!be;")
-	public static Class13 aClass13_26 = null;
+	public static IfType aClass13_26 = null;
 
 	@OriginalMember(owner = "client!wl", name = "u", descriptor = "I")
 	public static int anInt5895 = 0;
 
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(Lclient!fe;B)V")
-	public static void method4665(@OriginalArg(0) Class8_Sub4 arg0) {
-		if (Static83.anInt372 == arg0.anInt3386 || arg0.anInt3369 == -1 || arg0.anInt3420 != 0 || arg0.anInt3360 + 1 > Static36.method941(arg0.anInt3369).anIntArray474[arg0.anInt3425]) {
+	public static void method4665(@OriginalArg(0) ClientEntity arg0) {
+		if (Static83.anInt372 == arg0.anInt3386 || arg0.anInt3369 == -1 || arg0.anInt3420 != 0 || arg0.anInt3360 + 1 > SeqType.list(arg0.anInt3369).delay[arg0.anInt3425]) {
 			@Pc(35) int local35 = arg0.anInt3386 - arg0.anInt3395;
 			@Pc(41) int local41 = Static83.anInt372 - arg0.anInt3395;
 			@Pc(52) int local52 = arg0.anInt3380 * 128 + arg0.method2693() * 64;
@@ -52,7 +49,7 @@ public final class Static280 {
 
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(IIII)V")
 	public static void method4666(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) int arg2) {
-		@Pc(18) Class3_Sub2_Sub8 local18 = Static238.method4143(11, arg1);
+		@Pc(18) DelayedStateChange local18 = Static238.method4143(11, arg1);
 		local18.method1017();
 		local18.anInt1270 = arg2;
 		local18.anInt1271 = arg0;
@@ -543,15 +540,15 @@ public final class Static280 {
 	}
 
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(Lclient!be;I)Lclient!be;")
-	public static Class13 method4668(@OriginalArg(0) Class13 arg0) {
-		if (arg0.anInt456 != -1) {
-			return Static5.method32(arg0.anInt456);
+	public static IfType method4668(@OriginalArg(0) IfType arg0) {
+		if (arg0.layerId != -1) {
+			return Static5.method32(arg0.layerId);
 		}
-		@Pc(28) int local28 = arg0.anInt507 >>> 16;
-		@Pc(33) Class86 local33 = new Class86(Static119.aClass133_9);
-		for (@Pc(38) Class3_Sub31 local38 = (Class3_Sub31) local33.method2701(); local38 != null; local38 = (Class3_Sub31) local33.method2700()) {
+		@Pc(28) int local28 = arg0.parentId >>> 16;
+		@Pc(33) HashTableIterator local33 = new HashTableIterator(Static119.aClass133_9);
+		for (@Pc(38) SubInterface local38 = (SubInterface) local33.method2701(); local38 != null; local38 = (SubInterface) local33.method2700()) {
 			if (local28 == local38.anInt5878) {
-				return Static5.method32((int) local38.aLong192);
+				return Static5.method32((int) local38.key);
 			}
 		}
 		return null;
@@ -675,10 +672,10 @@ public final class Static280 {
 
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(IIIIB)V")
 	public static void method4672(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		@Pc(12) Class3_Sub27 local12 = (Class3_Sub27) Static20.aClass133_2.method3863((long) arg3);
+		@Pc(12) ClientInvCache local12 = (ClientInvCache) Static20.aClass133_2.find((long) arg3);
 		if (local12 == null) {
-			local12 = new Class3_Sub27();
-			Static20.aClass133_2.method3862(local12, (long) arg3);
+			local12 = new ClientInvCache();
+			Static20.aClass133_2.put(local12, (long) arg3);
 		}
 		if (arg1 >= local12.anIntArray420.length) {
 			@Pc(39) int[] local39 = new int[arg1 + 1];
@@ -706,11 +703,11 @@ public final class Static280 {
 			local3 = true;
 			for (@Pc(13) int local13 = 0; local13 < Static231.anInt5204 - 1; local13++) {
 				if (Static39.aShortArray6[local13] < 1000 && Static39.aShortArray6[local13 + 1] > 1000) {
-					@Pc(41) Class100 local41 = Static233.aClass100Array160[local13];
+					@Pc(41) JagString local41 = Static233.aClass100Array160[local13];
 					local3 = false;
 					Static233.aClass100Array160[local13] = Static233.aClass100Array160[local13 + 1];
 					Static233.aClass100Array160[local13 + 1] = local41;
-					@Pc(61) Class100 local61 = Static254.aClass100Array168[local13];
+					@Pc(61) JagString local61 = Static254.aClass100Array168[local13];
 					Static254.aClass100Array168[local13] = Static254.aClass100Array168[local13 + 1];
 					Static254.aClass100Array168[local13 + 1] = local61;
 					@Pc(79) int local79 = Static196.anIntArray408[local13];
@@ -735,7 +732,7 @@ public final class Static280 {
 
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(II)V")
 	public static void method4675(@OriginalArg(1) int arg0) {
-		@Pc(17) Class3_Sub2_Sub8 local17 = Static238.method4143(11, arg0);
+		@Pc(17) DelayedStateChange local17 = Static238.method4143(11, arg0);
 		local17.method1007();
 	}
 }

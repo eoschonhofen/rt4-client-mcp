@@ -4,14 +4,11 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static40 {
 
-	@OriginalMember(owner = "client!da", name = "M", descriptor = "Z")
-	public static boolean aBoolean78;
-
 	@OriginalMember(owner = "client!da", name = "ab", descriptor = "I")
 	public static int anInt1275;
 
 	@OriginalMember(owner = "client!da", name = "O", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_253 = Static28.method790("(U0a )2 via: ");
+	public static final JagString aClass100_253 = JagString.wrap("(U0a )2 via: ");
 
 	@OriginalMember(owner = "client!da", name = "d", descriptor = "(I)V")
 	public static void method1008() {
@@ -78,27 +75,12 @@ public final class Static40 {
 	}
 
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(ILclient!ve;Z)Lclient!ok;")
-	public static Class36 method1010(@OriginalArg(0) int arg0, @OriginalArg(1) Class153 arg1) {
+	public static Pix8 method1010(@OriginalArg(0) int arg0, @OriginalArg(1) Js5 arg1) {
 		return Static254.method4346(arg1, arg0) ? Static276.method4614() : null;
 	}
 
-	@OriginalMember(owner = "client!da", name = "c", descriptor = "(II)Lclient!aa;")
-	public static Class2 method1013(@OriginalArg(0) int arg0) {
-		@Pc(10) Class2 local10 = (Class2) Static231.aClass99_29.method3106((long) arg0);
-		if (local10 != null) {
-			return local10;
-		}
-		@Pc(20) byte[] local20 = Static98.aClass153_42.method4495(34, arg0);
-		local10 = new Class2();
-		if (local20 != null) {
-			local10.method6(new Class3_Sub15(local20), arg0);
-		}
-		Static231.aClass99_29.method3095(local10, (long) arg0);
-		return local10;
-	}
-
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;")
-	public static String method1014(@OriginalArg(0) String arg0, @OriginalArg(1) String arg1, @OriginalArg(3) String arg2) {
+	public static String replace(@OriginalArg(0) String arg0, @OriginalArg(1) String arg1, @OriginalArg(3) String arg2) {
 		for (@Pc(5) int local5 = arg2.indexOf(arg0); local5 != -1; local5 = arg2.indexOf(arg0, local5 + arg1.length())) {
 			arg2 = arg2.substring(0, local5) + arg1 + arg2.substring(arg0.length() + local5);
 		}
@@ -106,7 +88,7 @@ public final class Static40 {
 	}
 
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(IIILclient!be;)V")
-	public static void method1015(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) Class13 arg2) {
+	public static void method1015(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) IfType arg2) {
 		if (Static105.aClass13_14 != null || Static60.aBoolean108 || (arg2 == null || Static89.method1836(arg2) == null)) {
 			return;
 		}
@@ -119,31 +101,31 @@ public final class Static40 {
 	}
 
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(IIIILclient!na;JI)V")
-	public static void method1016(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) Class100 arg3, @OriginalArg(5) long arg4, @OriginalArg(6) int arg5) {
-		@Pc(8) Class3_Sub15 local8 = new Class3_Sub15(128);
-		local8.method2178(10);
-		local8.method2230((int) (Math.random() * 99999.0D));
-		local8.method2230(530);
+	public static void method1016(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) JagString arg3, @OriginalArg(5) long arg4, @OriginalArg(6) int arg5) {
+		@Pc(8) Packet local8 = new Packet(128);
+		local8.p1(10);
+		local8.p2((int) (Math.random() * 99999.0D));
+		local8.p2(530);
 		if (GlobalConfig.LOGIN_USE_STRINGS) {
-			local8.method2171(Static79.method1702(arg4));
+			local8.method2171(Static79.toBaseDisplayName(arg4));
 		} else {
-			local8.method2166(arg4);
+			local8.p8(arg4);
 		}
-		local8.method2164((int) (Math.random() * 9.9999999E7D));
+		local8.p4((int) (Math.random() * 9.9999999E7D));
 		local8.method2171(arg3);
-		local8.method2164((int) (Math.random() * 9.9999999E7D));
-		local8.method2230(Static204.anInt4760);
-		local8.method2178(arg0);
-		local8.method2178(arg2);
-		local8.method2164((int) (Math.random() * 9.9999999E7D));
-		local8.method2230(arg5);
-		local8.method2230(arg1);
-		local8.method2164((int) (Math.random() * 9.9999999E7D));
+		local8.p4((int) (Math.random() * 9.9999999E7D));
+		local8.p2(client.affid);
+		local8.p1(arg0);
+		local8.p1(arg2);
+		local8.p4((int) (Math.random() * 9.9999999E7D));
+		local8.p2(arg5);
+		local8.p2(arg1);
+		local8.p4((int) (Math.random() * 9.9999999E7D));
 		local8.method2226(Static86.aBigInteger1, Static256.aBigInteger2);
-		Static6.aClass3_Sub15_Sub1_1.anInt2792 = 0;
-		Static6.aClass3_Sub15_Sub1_1.method2178(36);
-		Static6.aClass3_Sub15_Sub1_1.method2178(local8.anInt2792);
-		Static6.aClass3_Sub15_Sub1_1.method2179(local8.aByteArray40, local8.anInt2792);
+		Static6.aClass3_Sub15_Sub1_1.pos = 0;
+		Static6.aClass3_Sub15_Sub1_1.p1(36);
+		Static6.aClass3_Sub15_Sub1_1.p1(local8.pos);
+		Static6.aClass3_Sub15_Sub1_1.method2179(local8.data, local8.pos);
 		Static223.anInt5034 = -3;
 		Static179.anInt4261 = 1;
 		Static226.anInt5079 = 0;
@@ -152,8 +134,8 @@ public final class Static40 {
 
 	@OriginalMember(owner = "client!da", name = "h", descriptor = "(B)V")
 	public static void method1019() {
-		Static190.aClass99_26.method3103();
+		IfType.spriteCache.method3103();
 		Static124.aClass99_17.method3103();
-		Static87.aClass99_12.method3103();
+		IfType.fontCache.method3103();
 	}
 }

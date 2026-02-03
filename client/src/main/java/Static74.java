@@ -1,4 +1,3 @@
-import java.util.zip.CRC32;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
@@ -6,16 +5,13 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static74 {
 
 	@OriginalMember(owner = "client!fn", name = "P", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_459 = Static28.method790("Loaded config");
+	private static final JagString aClass100_459 = JagString.wrap("Loaded config");
 
 	@OriginalMember(owner = "client!fn", name = "R", descriptor = "Lclient!na;")
-	public static Class100 aClass100_460 = aClass100_459;
-
-	@OriginalMember(owner = "client!fn", name = "X", descriptor = "Ljava/util/zip/CRC32;")
-	public static final CRC32 aCRC32_1 = new CRC32();
+	public static JagString MAINLOAD70 = aClass100_459;
 
 	@OriginalMember(owner = "client!fn", name = "Z", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_461 = Static28.method790(")1 ");
+	public static final JagString aClass100_461 = JagString.wrap(")1 ");
 
 	@OriginalMember(owner = "client!fn", name = "a", descriptor = "(ZIIIIIII)V")
 	public static void method1623(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6) {
@@ -37,7 +33,7 @@ public final class Static74 {
 			local35 = 8;
 		}
 		@Pc(54) int local54 = arg0 * (arg4 - local35 - 32) / (arg1 - arg4);
-		if (!Static239.aBoolean269) {
+		if (!GameShell.glRenderer) {
 			Static129.method2495(arg2, arg3 + 16, 16, arg4 - 32, Static182.anInt4306);
 			Static129.method2495(arg2, local54 + arg3 + 16, 16, local35, Static53.anInt1704);
 			Static129.method2490(arg2, local54 + arg3 + 16, local35, Static219.anInt4938);
@@ -63,13 +59,13 @@ public final class Static74 {
 	}
 
 	@OriginalMember(owner = "client!fn", name = "a", descriptor = "(ILclient!be;)V")
-	public static void method1625(@OriginalArg(1) Class13 arg0) {
-		@Pc(7) Class13 local7 = Static280.method4668(arg0);
+	public static void method1625(@OriginalArg(1) IfType arg0) {
+		@Pc(7) IfType local7 = Static280.method4668(arg0);
 		@Pc(19) int local19;
 		@Pc(17) int local17;
 		if (local7 == null) {
-			local17 = Static254.anInt5554;
-			local19 = Static48.anInt1448;
+			local17 = GameShell.anInt5554;
+			local19 = GameShell.anInt1448;
 		} else {
 			local17 = local7.anInt459;
 			local19 = local7.anInt445;
@@ -80,15 +76,15 @@ public final class Static74 {
 
 	@OriginalMember(owner = "client!fn", name = "c", descriptor = "(II)V")
 	public static void method1626(@OriginalArg(0) int arg0) {
-		if (arg0 == -1 || !Static245.method4225(arg0)) {
+		if (arg0 == -1 || !IfType.openInterface(arg0)) {
 			return;
 		}
-		@Pc(31) Class13[] local31 = Static241.aClass13ArrayArray12[arg0];
+		@Pc(31) IfType[] local31 = IfType.list[arg0];
 		for (@Pc(33) int local33 = 0; local33 < local31.length; local33++) {
-			@Pc(41) Class13 local41 = local31[local33];
-			if (local41.anObjectArray3 != null) {
-				@Pc(50) Class3_Sub19 local50 = new Class3_Sub19();
-				local50.anObjectArray31 = local41.anObjectArray3;
+			@Pc(41) IfType local41 = local31[local33];
+			if (local41.onload != null) {
+				@Pc(50) HookReq local50 = new HookReq();
+				local50.anObjectArray31 = local41.onload;
 				local50.aClass13_17 = local41;
 				Static88.method1818(2000000, local50);
 			}
@@ -96,7 +92,7 @@ public final class Static74 {
 	}
 
 	@OriginalMember(owner = "client!fn", name = "a", descriptor = "(Lclient!ve;Lclient!ve;Z)I")
-	public static int method1628(@OriginalArg(0) Class153 arg0, @OriginalArg(1) Class153 arg1) {
+	public static int method1628(@OriginalArg(0) Js5 arg0, @OriginalArg(1) Js5 arg1) {
 		@Pc(5) int local5 = 0;
 		if (arg0.method4506(Static166.anInt4049)) {
 			local5++;

@@ -6,7 +6,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static120 {
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "[Lclient!gi;")
-	public static Class51[] aClass51Array1;
+	public static Light[] aClass51Array1;
 
 	@OriginalMember(owner = "client!jf", name = "c", descriptor = "[I")
 	private static int[] anIntArray283;
@@ -55,7 +55,7 @@ public final class Static120 {
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(IIIIIII)V")
 	public static void method2388(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6) {
-		if (!Static178.aBoolean202) {
+		if (!Static178.highDetailLighting) {
 			return;
 		}
 		if (arg0 == 1 && arg5 > 0) {
@@ -78,7 +78,7 @@ public final class Static120 {
 	}
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(Lclient!gi;)V")
-	public static void method2389(@OriginalArg(0) Class51 arg0) {
+	public static void method2389(@OriginalArg(0) Light arg0) {
 		if (anInt3034 >= 255) {
 			System.out.println("Number of lights added exceeds maximum!");
 		} else {
@@ -96,7 +96,7 @@ public final class Static120 {
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(IIIIIIII)V")
 	public static void method2391(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7) {
-		if (!Static178.aBoolean202 || anInt3031 == arg3 && anInt3033 == arg4 && anInt3029 == arg5 && anInt3035 == arg6 && anInt3030 == arg7) {
+		if (!Static178.highDetailLighting || anInt3031 == arg3 && anInt3033 == arg4 && anInt3029 == arg5 && anInt3035 == arg6 && anInt3030 == arg7) {
 			return;
 		}
 		@Pc(20) int local20;
@@ -179,7 +179,7 @@ public final class Static120 {
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(IIIIII)V")
 	public static void method2393(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5) {
-		if (!Static178.aBoolean202 || anInt3031 == arg3 && anInt3033 == arg4 && anInt3029 == arg5 && anInt3035 == arg4 && anInt3030 == arg5) {
+		if (!Static178.highDetailLighting || anInt3031 == arg3 && anInt3033 == arg4 && anInt3029 == arg5 && anInt3035 == arg4 && anInt3030 == arg5) {
 			return;
 		}
 		@Pc(20) int local20;
@@ -242,7 +242,7 @@ public final class Static120 {
 	@OriginalMember(owner = "client!jf", name = "b", descriptor = "()V")
 	public static void method2395() {
 		for (@Pc(1) int local1 = 0; local1 < anInt3034; local1++) {
-			@Pc(8) Class51 local8 = aClass51Array1[local1];
+			@Pc(8) Light local8 = aClass51Array1[local1];
 			@Pc(11) int local11 = local8.anInt2241;
 			if (local8.aBoolean124) {
 				local11 = 0;
@@ -301,7 +301,7 @@ public final class Static120 {
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(IIIII)V")
 	public static void method2397(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4) {
-		if (!Static178.aBoolean202) {
+		if (!Static178.highDetailLighting) {
 			return;
 		}
 		label43: for (@Pc(4) int local4 = 0; local4 < 4; local4++) {
@@ -357,7 +357,7 @@ public final class Static120 {
 
 	@OriginalMember(owner = "client!jf", name = "f", descriptor = "()V")
 	public static void method2401() {
-		aClass51Array1 = new Class51[255];
+		aClass51Array1 = new Light[255];
 		anIntArray284 = new int[4];
 		aBooleanArray65 = new boolean[4];
 		anIntArray283 = new int[4];
@@ -366,8 +366,8 @@ public final class Static120 {
 	}
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(II[[[Lclient!bj;)V")
-	public static void method2402(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) Class3_Sub5[][][] arg2) {
-		if (!Static178.aBoolean202) {
+	public static void method2402(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) Square[][][] arg2) {
+		if (!Static178.highDetailLighting) {
 			return;
 		}
 		@Pc(4) GL local4 = Static239.aGL1;
@@ -376,13 +376,13 @@ public final class Static120 {
 		Static239.method4150();
 		Static239.method4177(Static239.anInt5328);
 		local4.glDepthMask(false);
-		Static239.method4164(false);
+		Static239.setLightingEnabled(false);
 		local4.glBlendFunc(GL.GL_DST_COLOR, GL.GL_ONE);
 		local4.glFogfv(GL.GL_FOG_COLOR, new float[] { 0.0F, 0.0F, 0.0F, 0.0F }, 0);
 		local4.glTexEnvi(GL.GL_TEXTURE_ENV, GL.GL_SRC0_RGB, GL.GL_CONSTANT);
 		local4.glTexEnvi(GL.GL_TEXTURE_ENV, GL.GL_OPERAND0_RGB, GL.GL_SRC_ALPHA);
 		label71: for (@Pc(56) int local56 = 0; local56 < anInt3034; local56++) {
-			@Pc(63) Class51 local63 = aClass51Array1[local56];
+			@Pc(63) Light local63 = aClass51Array1[local56];
 			@Pc(66) int local66 = local63.anInt2241;
 			if (local63.aBoolean125) {
 				local66--;
@@ -409,7 +409,7 @@ public final class Static120 {
 						local141 = Static2.anInt15 - 1;
 					}
 					for (@Pc(155) int local155 = local133; local155 <= local141; local155++) {
-						@Pc(160) Class3_Sub5 local160 = null;
+						@Pc(160) Square local160 = null;
 						if (local66 >= 0) {
 							local160 = arg2[local66][local155][local112];
 						}
@@ -433,7 +433,7 @@ public final class Static120 {
 	}
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(ILclient!gi;III)V")
-	private static void method2403(@OriginalArg(0) int arg0, @OriginalArg(1) Class51 arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4) {
+	private static void method2403(@OriginalArg(0) int arg0, @OriginalArg(1) Light arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4) {
 		@Pc(5) int local5 = arg0 + 16384 + 4;
 		@Pc(7) GL local7 = Static239.aGL1;
 		if (!aBooleanArray65[arg0]) {

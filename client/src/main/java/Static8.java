@@ -4,6 +4,9 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static8 {
 
+	@OriginalMember(owner = "client!ea", name = "s", descriptor = "[I")
+	public static final int[] mask = new int[32];
+
 	@OriginalMember(owner = "client!aj", name = "X", descriptor = "F")
 	public static float aFloat1;
 
@@ -11,11 +14,19 @@ public final class Static8 {
 	public static int[] anIntArray8;
 
 	@OriginalMember(owner = "client!aj", name = "R", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_32 = Static28.method790("<col=ff9040>");
+	public static final JagString aClass100_32 = JagString.wrap("<col=ff9040>");
+
+	static {
+		@Pc(10) int local10 = 2;
+		for (@Pc(12) int local12 = 0; local12 < 32; local12++) {
+			mask[local12] = local10 - 1;
+			local10 += local10;
+		}
+	}
 
 	@OriginalMember(owner = "client!aj", name = "a", descriptor = "(BILclient!be;)I")
-	public static int method118(@OriginalArg(1) int arg0, @OriginalArg(2) Class13 arg1) {
-		if (!Static36.method940(arg1).method503(arg0) && arg1.anObjectArray29 == null) {
+	public static int method118(@OriginalArg(1) int arg0, @OriginalArg(2) IfType arg1) {
+		if (!Static36.method940(arg1).method503(arg0) && arg1.onop == null) {
 			return -1;
 		} else if (arg1.anIntArray39 == null || arg0 >= arg1.anIntArray39.length) {
 			return -1;
@@ -26,7 +37,7 @@ public final class Static8 {
 
 	@OriginalMember(owner = "client!aj", name = "c", descriptor = "(II)V")
 	public static void method119() {
-		Static233.aClass99_31.method3102(5);
+		FloType.recentUse.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!aj", name = "a", descriptor = "(IIIZIII)V")
@@ -116,13 +127,14 @@ public final class Static8 {
 
 	@OriginalMember(owner = "client!aj", name = "i", descriptor = "(I)V")
 	public static void method121() {
-		for (@Pc(3) int local3 = 0; local3 < Static165.anInt4043; local3++) {
-			@Pc(19) Class35 local19 = Static247.method4248(local3);
-			if (local19 != null && local19.anInt1765 == 0) {
-				Static106.anIntArray257[local3] = 0;
-				Static7.anIntArray75[local3] = 0;
+		for (@Pc(3) int local3 = 0; local3 < VarpType.numDefinitions; local3++) {
+			@Pc(19) VarpType local19 = VarpType.list(local3);
+			if (local19 != null && local19.clientcode == 0) {
+				Static106.varServ[local3] = 0;
+				Static7.var[local3] = 0;
 			}
 		}
-		Static199.aClass133_20 = new Class133(16);
+
+		Static199.aClass133_20 = new HashTable(16);
 	}
 }

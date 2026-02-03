@@ -4,31 +4,22 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static58 {
 
-	@OriginalMember(owner = "client!eh", name = "f", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_28;
-
 	@OriginalMember(owner = "client!eh", name = "g", descriptor = "[[[I")
 	public static int[][][] anIntArrayArrayArray5;
 
-	@OriginalMember(owner = "client!eh", name = "a", descriptor = "Z")
-	public static boolean aBoolean101 = false;
-
 	@OriginalMember(owner = "client!eh", name = "h", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_394 = Static28.method790("m-Ochte mit Ihnen handeln)3");
+	public static final JagString aClass100_394 = JagString.wrap("m-Ochte mit Ihnen handeln)3");
 
 	@OriginalMember(owner = "client!eh", name = "i", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_395 = Static28.method790(" zuerst von Ihrer Freunde)2Liste(Q");
-
-	@OriginalMember(owner = "client!eh", name = "j", descriptor = "I")
-	public static int anInt1766 = 0;
+	public static final JagString aClass100_395 = JagString.wrap(" zuerst von Ihrer Freunde)2Liste(Q");
 
 	@OriginalMember(owner = "client!eh", name = "a", descriptor = "(I)V")
 	public static void method1321() {
-		@Pc(8) int[] local8 = new int[Static170.anInt3245];
+		@Pc(8) int[] local8 = new int[ObjType.anInt3245];
 		@Pc(10) int local10 = 0;
 		@Pc(12) int local12;
-		for (local12 = 0; local12 < Static170.anInt3245; local12++) {
-			@Pc(19) Class55 local19 = Static71.method1439(local12);
+		for (local12 = 0; local12 < ObjType.anInt3245; local12++) {
+			@Pc(19) ObjType local19 = ObjType.list(local12);
 			if (local19.anInt2360 >= 0 || local19.anInt2331 >= 0) {
 				local8[local10++] = local12;
 			}
@@ -39,13 +30,8 @@ public final class Static58 {
 		}
 	}
 
-	@OriginalMember(owner = "client!eh", name = "a", descriptor = "(Lclient!ve;I)V")
-	public static void method1322(@OriginalArg(0) Class153 arg0) {
-		Static23.aClass153_11 = arg0;
-	}
-
 	@OriginalMember(owner = "client!eh", name = "a", descriptor = "(I[[I[[FI[[FIBIIBZBI[[FILclient!hg;)V")
-	public static void method1324(@OriginalArg(0) int arg0, @OriginalArg(1) int[][] arg1, @OriginalArg(2) float[][] arg2, @OriginalArg(3) int arg3, @OriginalArg(4) float[][] arg4, @OriginalArg(5) int arg5, @OriginalArg(6) byte arg6, @OriginalArg(7) int arg7, @OriginalArg(8) int arg8, @OriginalArg(10) boolean arg9, @OriginalArg(11) byte arg10, @OriginalArg(12) int arg11, @OriginalArg(13) float[][] arg12, @OriginalArg(14) int arg13, @OriginalArg(15) Class3_Sub14 arg14) {
+	public static void method1324(@OriginalArg(0) int arg0, @OriginalArg(1) int[][] arg1, @OriginalArg(2) float[][] arg2, @OriginalArg(3) int arg3, @OriginalArg(4) float[][] arg4, @OriginalArg(5) int arg5, @OriginalArg(6) byte arg6, @OriginalArg(7) int arg7, @OriginalArg(8) int arg8, @OriginalArg(10) boolean arg9, @OriginalArg(11) byte arg10, @OriginalArg(12) int arg11, @OriginalArg(13) float[][] arg12, @OriginalArg(14) int arg13, @OriginalArg(15) GlSquare arg14) {
 		@Pc(11) int local11 = (arg0 << 8) + 255;
 		@Pc(17) int local17 = (arg5 << 8) + 255;
 		@Pc(23) int local23 = (arg8 << 8) + 255;

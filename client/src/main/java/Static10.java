@@ -6,23 +6,20 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static10 {
 
 	@OriginalMember(owner = "client!an", name = "Z", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_63 = Static28.method790("Hidden");
-
-	@OriginalMember(owner = "client!an", name = "ab", descriptor = "Lclient!uf;")
-	public static Class149 aClass149_1 = new Class149();
+	private static final JagString aClass100_63 = JagString.wrap("Hidden");
 
 	@OriginalMember(owner = "client!an", name = "cb", descriptor = "Lclient!na;")
-	public static Class100 aClass100_64 = aClass100_63;
+	public static JagString aClass100_64 = aClass100_63;
 
 	@OriginalMember(owner = "client!an", name = "db", descriptor = "S")
 	public static short aShort9 = 205;
 
 	@OriginalMember(owner = "client!an", name = "eb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_65 = Static28.method790("Lade Schrifts-=tze )2 ");
+	public static final JagString aClass100_65 = JagString.wrap("Lade Schrifts-=tze )2 ");
 
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "([BIII)Lclient!na;")
-	public static Class100 method346(@OriginalArg(0) byte[] arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		@Pc(7) Class100 local7 = new Class100();
+	public static JagString method346(@OriginalArg(0) byte[] arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
+		@Pc(7) JagString local7 = new JagString();
 		local7.aByteArray52 = new byte[arg1];
 		local7.anInt4030 = 0;
 		for (@Pc(22) int local22 = arg2; local22 < arg1 + arg2; local22++) {
@@ -35,9 +32,9 @@ public final class Static10 {
 
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "(BI)I")
 	public static int method347(@OriginalArg(1) int arg0) {
-		if (Static124.aClass95_2 != null) {
-			Static124.aClass95_2.method2834();
-			Static124.aClass95_2 = null;
+		if (Static124.loginStream != null) {
+			Static124.loginStream.close();
+			Static124.loginStream = null;
 		}
 		Static127.anInt3132++;
 		if (Static127.anInt3132 > 4) {
@@ -46,10 +43,10 @@ public final class Static10 {
 			return arg0;
 		}
 		Static82.anInt2231 = 0;
-		if (Static208.anInt4784 == Static249.anInt5428) {
-			Static208.anInt4784 = Static97.anInt2508;
+		if (Static208.anInt4784 == Static249.loginGamePort) {
+			Static208.anInt4784 = Static97.loginJs5Port;
 		} else {
-			Static208.anInt4784 = Static249.anInt5428;
+			Static208.anInt4784 = Static249.loginGamePort;
 		}
 		return -1;
 	}
@@ -83,16 +80,16 @@ public final class Static10 {
 	@OriginalMember(owner = "client!an", name = "h", descriptor = "(I)Z")
 	public static boolean method349() {
 		try {
-			return Static4.method26();
+			return Static4.tcpIn();
 		} catch (@Pc(14) IOException local14) {
 			Static175.method3279();
 			return true;
 		} catch (@Pc(19) Exception local19) {
 			@Pc(61) String local61 = "T2 - " + Static164.anInt3985 + "," + Static5.anInt45 + "," + Static49.anInt1462 + " - " + Static223.anInt5028 + "," + (Static225.anInt5068 + Static173.aClass8_Sub4_Sub1_2.anIntArray318[0]) + "," + (Static173.aClass8_Sub4_Sub1_2.anIntArray317[0] + Static142.anInt3483) + " - ";
 			for (@Pc(63) int local63 = 0; local63 < Static223.anInt5028 && local63 < 50; local63++) {
-				local61 = local61 + Static57.aClass3_Sub15_Sub1_3.aByteArray40[local63] + ",";
+				local61 = local61 + Static4.in.data[local63] + ",";
 			}
-			Static89.method1839(local61, local19);
+			JagException.report(local61, local19);
 			Static278.method4653();
 			return true;
 		}
@@ -100,13 +97,13 @@ public final class Static10 {
 
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "(Z)V")
 	public static void method350() {
-		Static142.aClass99_23.method3104();
+		SeqType.recentUse.method3104();
 		Static267.aClass99_37.method3104();
 	}
 
 	@OriginalMember(owner = "client!an", name = "i", descriptor = "(I)V")
 	public static void method351() {
-		Static79.aClass99_11.method3104();
+		CursorType.recentUse.method3104();
 		Static7.aClass99_5.method3104();
 	}
 

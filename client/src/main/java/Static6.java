@@ -5,23 +5,23 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static6 {
 
 	@OriginalMember(owner = "client!ag", name = "P", descriptor = "Lclient!i;")
-	public static final Class3_Sub15_Sub1 aClass3_Sub15_Sub1_1 = new Class3_Sub15_Sub1(5000);
+	public static final PacketBit aClass3_Sub15_Sub1_1 = new PacketBit(5000);
 
 	@OriginalMember(owner = "client!ag", name = "ab", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_17 = Static28.method790("0");
+	public static final JagString aClass100_17 = JagString.wrap("0");
 
 	@OriginalMember(owner = "client!ag", name = "bb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_18 = Static28.method790("<col=40ff00>");
+	public static final JagString aClass100_18 = JagString.wrap("<col=40ff00>");
 
 	@OriginalMember(owner = "client!ag", name = "cb", descriptor = "[Lclient!cl;")
-	public static final Class3_Sub2_Sub7[] aClass3_Sub2_Sub7Array1 = new Class3_Sub2_Sub7[14];
+	public static final AnimFrameSet[] aClass3_Sub2_Sub7Array1 = new AnimFrameSet[14];
 
 	@OriginalMember(owner = "client!ag", name = "h", descriptor = "(I)V")
 	public static void method82() {
-		if (Static10.aClass149_1 != null) {
-			@Pc(4) Class149 local4 = Static10.aClass149_1;
-			synchronized (Static10.aClass149_1) {
-				Static10.aClass149_1 = null;
+		if (ClientKeyboardListener.aClass149_1 != null) {
+			@Pc(4) ClientKeyboardListener local4 = ClientKeyboardListener.aClass149_1;
+			synchronized (ClientKeyboardListener.aClass149_1) {
+				ClientKeyboardListener.aClass149_1 = null;
 			}
 		}
 	}
@@ -60,8 +60,8 @@ public final class Static6 {
 
 	@OriginalMember(owner = "client!ag", name = "a", descriptor = "(IIIIIIIII)V")
 	public static void method86(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6, @OriginalArg(8) int arg7) {
-		if (Static245.method4225(arg0)) {
-			Static87.method1809(arg1, arg7, arg3, Static241.aClass13ArrayArray12[arg0], arg2, -1, arg6, arg5, arg4);
+		if (IfType.openInterface(arg0)) {
+			Static87.method1809(arg1, arg7, arg3, IfType.list[arg0], arg2, -1, arg6, arg5, arg4);
 		} else if (arg4 == -1) {
 			for (@Pc(27) int local27 = 0; local27 < 100; local27++) {
 				Static186.aBooleanArray100[local27] = true;

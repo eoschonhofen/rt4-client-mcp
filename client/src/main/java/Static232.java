@@ -11,19 +11,16 @@ public final class Static232 {
 	public static byte[][][] aByteArrayArrayArray13;
 
 	@OriginalMember(owner = "client!sm", name = "k", descriptor = "Lsignlink!im;")
-	public static Class212 aClass212_5;
+	public static PrivilegedRequest aClass212_5;
 
 	@OriginalMember(owner = "client!sm", name = "m", descriptor = "I")
 	public static int anInt5212;
 
-	@OriginalMember(owner = "client!sm", name = "c", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_30 = new Class99(64);
-
 	@OriginalMember(owner = "client!sm", name = "f", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_987 = Static28.method790("Connection lost)3");
+	private static final JagString aClass100_987 = JagString.wrap("Connection lost)3");
 
 	@OriginalMember(owner = "client!sm", name = "d", descriptor = "Lclient!na;")
-	public static Class100 aClass100_986 = aClass100_987;
+	public static JagString aClass100_986 = aClass100_987;
 
 	@OriginalMember(owner = "client!sm", name = "l", descriptor = "[S")
 	public static short[] aShortArray74 = new short[256];
@@ -62,10 +59,10 @@ public final class Static232 {
 								@Pc(203) int local203 = (local50 + arg4 & 0x3F) + ((arg6 + local119 & 0x3F) << 6);
 								@Pc(209) int local209 = local116[local163][local203];
 								if (local209 != 0) {
-									@Pc(222) Class118 local222 = Static271.method4601(local209 - 1);
+									@Pc(222) LocType local222 = LocType.list(local209 - 1);
 									if (!Static258.aBooleanArray130[local222.anInt4400]) {
 										if (local11 != -1 && local222.anInt4400 == Static9.anInt172) {
-											@Pc(243) Class3_Sub26 local243 = new Class3_Sub26();
+											@Pc(243) MapElement local243 = new MapElement();
 											local243.anInt4307 = local65;
 											local243.anInt4314 = local144;
 											local243.anInt4308 = local222.anInt4400;
@@ -81,7 +78,7 @@ public final class Static232 {
 				}
 			}
 		}
-		for (@Pc(285) Class3_Sub26 local285 = (Class3_Sub26) Static172.aClass69_97.method2289(); local285 != null; local285 = (Class3_Sub26) Static172.aClass69_97.method2288()) {
+		for (@Pc(285) MapElement local285 = (MapElement) Static172.aClass69_97.head(); local285 != null; local285 = (MapElement) Static172.aClass69_97.method2288()) {
 			Static129.method2502(local285.anInt4307, local285.anInt4314, 15, local11);
 			Static129.method2502(local285.anInt4307, local285.anInt4314, 13, local11);
 			Static129.method2502(local285.anInt4307, local285.anInt4314, 11, local11);

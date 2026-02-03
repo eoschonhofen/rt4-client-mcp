@@ -8,7 +8,7 @@ public final class Static229 {
 	public static byte[][][] aByteArrayArrayArray12;
 
 	@OriginalMember(owner = "client!si", name = "S", descriptor = "[Lclient!na;")
-	public static Class100[] aClass100Array156;
+	public static JagString[] aClass100Array156;
 
 	@OriginalMember(owner = "client!si", name = "ab", descriptor = "I")
 	public static int anInt5138;
@@ -17,25 +17,22 @@ public final class Static229 {
 	public static byte[] aByteArray70;
 
 	@OriginalMember(owner = "client!si", name = "X", descriptor = "[Lclient!sg;")
-	public static final Class136[] aClass136Array1 = new Class136[6];
+	public static final StockMarketOffer[] aClass136Array1 = new StockMarketOffer[6];
 
 	@OriginalMember(owner = "client!si", name = "Z", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_972 = Static28.method790("<col=ffb000>");
+	public static final JagString aClass100_972 = JagString.wrap("<col=ffb000>");
 
 	@OriginalMember(owner = "client!si", name = "hb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_975 = Static28.method790("Take");
+	private static final JagString aClass100_975 = JagString.wrap("Take");
 
 	@OriginalMember(owner = "client!si", name = "db", descriptor = "Lclient!na;")
-	public static Class100 aClass100_973 = aClass100_975;
-
-	@OriginalMember(owner = "client!si", name = "eb", descriptor = "I")
-	public static volatile int anInt5140 = 0;
+	public static JagString aClass100_973 = aClass100_975;
 
 	@OriginalMember(owner = "client!si", name = "gb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_974 = Static28.method790("<br>(X");
+	public static final JagString aClass100_974 = JagString.wrap("<br>(X");
 
 	@OriginalMember(owner = "client!si", name = "ib", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_976 = Static28.method790("Weiter");
+	public static final JagString aClass100_976 = JagString.wrap("Weiter");
 
 	@OriginalMember(owner = "client!si", name = "a", descriptor = "(ZB)I")
 	public static int method3933(@OriginalArg(1) byte arg0) {
@@ -51,13 +48,13 @@ public final class Static229 {
 	}
 
 	@OriginalMember(owner = "client!si", name = "a", descriptor = "(BLclient!na;)I")
-	public static int method3937(@OriginalArg(1) Class100 arg0) {
-		return arg0.method3120() + 1;
+	public static int method3937(@OriginalArg(1) JagString arg0) {
+		return arg0.length() + 1;
 	}
 
 	@OriginalMember(owner = "client!si", name = "b", descriptor = "(IIB)V")
 	public static void method3938(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
-		@Pc(16) Class3_Sub2_Sub8 local16 = Static238.method4143(12, arg1);
+		@Pc(16) DelayedStateChange local16 = Static238.method4143(12, arg1);
 		local16.method1017();
 		local16.anInt1271 = arg0;
 	}

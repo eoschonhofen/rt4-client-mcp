@@ -11,11 +11,11 @@ public final class Static163 {
 	public static byte[][][] aByteArrayArrayArray11;
 
 	@OriginalMember(owner = "client!n", name = "e", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_767 = Static28.method790(")2");
+	public static final JagString aClass100_767 = JagString.wrap(")2");
 
 	@OriginalMember(owner = "client!n", name = "a", descriptor = "(II)V")
 	public static void method3096(@OriginalArg(0) int arg0) {
-		@Pc(8) Class3_Sub2_Sub8 local8 = Static238.method4143(3, arg0);
+		@Pc(8) DelayedStateChange local8 = Static238.method4143(3, arg0);
 		local8.method1007();
 	}
 

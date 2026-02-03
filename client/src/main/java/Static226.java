@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static226 {
 
-	@OriginalMember(owner = "client!sf", name = "b", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_93;
-
 	@OriginalMember(owner = "client!sf", name = "c", descriptor = "I")
 	public static int anInt5080;
 
@@ -16,20 +13,17 @@ public final class Static226 {
 	@OriginalMember(owner = "client!sf", name = "a", descriptor = "I")
 	public static int anInt5079 = 0;
 
-	@OriginalMember(owner = "client!sf", name = "d", descriptor = "I")
-	public static int anInt5081 = 1;
-
 	@OriginalMember(owner = "client!sf", name = "g", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_965 = Static28.method790("<col=ffff00>");
+	public static final JagString aClass100_965 = JagString.wrap("<col=ffff00>");
 
 	@OriginalMember(owner = "client!sf", name = "h", descriptor = "[Lclient!na;")
-	public static final Class100[] aClass100Array154 = new Class100[1000];
+	public static final JagString[] aClass100Array154 = new JagString[1000];
 
 	@OriginalMember(owner = "client!sf", name = "i", descriptor = "I")
 	public static int anInt5084 = 0;
 
 	@OriginalMember(owner = "client!sf", name = "a", descriptor = "(ILclient!cd;)V")
-	public static void method3898(@OriginalArg(1) Class3_Sub7 arg0) {
+	public static void method3898(@OriginalArg(1) LocChange arg0) {
 		@Pc(5) long local5 = 0L;
 		@Pc(7) int local7 = -1;
 		@Pc(14) int local14 = 0;
@@ -56,11 +50,6 @@ public final class Static226 {
 		arg0.anInt923 = local31;
 	}
 
-	@OriginalMember(owner = "client!sf", name = "a", descriptor = "(BLclient!ve;)V")
-	public static void method3899(@OriginalArg(1) Class153 arg0) {
-		Static39.aClass153_23 = arg0;
-	}
-
 	@OriginalMember(owner = "client!sf", name = "b", descriptor = "(B)V")
 	public static void method3901() {
 		@Pc(16) int local16 = Static280.aClass3_Sub2_Sub9_43.method2858(Static234.aClass100_998);
@@ -76,11 +65,11 @@ public final class Static226 {
 		@Pc(43) int local43 = Static60.anInt1892;
 		local16 += 8;
 		local27 = Static155.anInt3751 - local16 / 2;
-		if (local43 + local18 > Static254.anInt5554) {
-			local43 = Static254.anInt5554 - local18;
+		if (local43 + local18 > GameShell.anInt5554) {
+			local43 = GameShell.anInt5554 - local18;
 		}
-		if (Static48.anInt1448 < local27 + local16) {
-			local27 = Static48.anInt1448 - local16;
+		if (GameShell.anInt1448 < local27 + local16) {
+			local27 = GameShell.anInt1448 - local16;
 		}
 		if (local27 < 0) {
 			local27 = 0;

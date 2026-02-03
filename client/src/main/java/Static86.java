@@ -5,16 +5,16 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static86 {
 
 	@OriginalMember(owner = "client!gm", name = "T", descriptor = "Lclient!k;")
-	public static Class80 aClass80_3;
+	public static Js5CacheQueue aClass80_3;
 
 	@OriginalMember(owner = "client!gm", name = "ib", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_37;
+	public static Js5 aClass153_37;
 
 	@OriginalMember(owner = "client!gm", name = "R", descriptor = "I")
-	public static int anInt2293 = (int) (Math.random() * 17.0D) - 8;
+	public static int ligOff = (int) (Math.random() * 17.0D) - 8;
 
 	@OriginalMember(owner = "client!gm", name = "W", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_488 = Static28.method790("_");
+	public static final JagString aClass100_488 = JagString.wrap("_");
 
 	@OriginalMember(owner = "client!gm", name = "X", descriptor = "Ljava/math/BigInteger;")
 	public static final BigInteger aBigInteger1 = GlobalConfig.RSA_EXPONENT;
@@ -24,22 +24,22 @@ public final class Static86 {
 	public static boolean aBoolean129 = false;
 
 	@OriginalMember(owner = "client!gm", name = "fb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_492 = Static28.method790("Loaded textures");
+	private static final JagString aClass100_492 = JagString.wrap("Loaded textures");
 
 	@OriginalMember(owner = "client!gm", name = "cb", descriptor = "Lclient!na;")
-	public static Class100 aClass100_489 = aClass100_492;
+	public static JagString MAINLOAD90 = aClass100_492;
 
 	@OriginalMember(owner = "client!gm", name = "db", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_490 = Static28.method790("cross");
+	public static final JagString aClass100_490 = JagString.wrap("cross");
 
 	@OriginalMember(owner = "client!gm", name = "eb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_491 = Static28.method790("Lade Sprites )2 ");
+	public static final JagString aClass100_491 = JagString.wrap("Lade Sprites )2 ");
 
 	@OriginalMember(owner = "client!gm", name = "gb", descriptor = "[I")
 	public static final int[] anIntArray211 = new int[] { 0, 4, 4, 8, 0, 0, 8, 0, 0 };
 
 	@OriginalMember(owner = "client!gm", name = "hb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_493 = Static28.method790("Regarder dans cette direction");
+	public static final JagString aClass100_493 = JagString.wrap("Regarder dans cette direction");
 
 	@OriginalMember(owner = "client!gm", name = "f", descriptor = "(B)V")
 	public static void method1799() {
@@ -64,8 +64,8 @@ public final class Static86 {
 				Static175.aClass8_Sub4_Sub2Array1[local30] = null;
 			}
 		}
-		if (Static223.anInt5028 != Static57.aClass3_Sub15_Sub1_3.anInt2792) {
-			throw new RuntimeException("gnp1 pos:" + Static57.aClass3_Sub15_Sub1_3.anInt2792 + " psize:" + Static223.anInt5028);
+		if (Static223.anInt5028 != Static4.in.pos) {
+			throw new RuntimeException("gnp1 pos:" + Static4.in.pos + " psize:" + Static223.anInt5028);
 		}
 		for (local19 = 0; local19 < Static272.anInt5214; local19++) {
 			if (Static175.aClass8_Sub4_Sub2Array1[Static33.anIntArray79[local19]] == null) {

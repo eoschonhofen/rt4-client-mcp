@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static119 {
 
 	@OriginalMember(owner = "client!je", name = "W", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_44;
+	public static Js5 aClass153_44;
 
 	@OriginalMember(owner = "client!je", name = "eb", descriptor = "[I")
 	public static int[] anIntArray282;
@@ -14,13 +14,13 @@ public final class Static119 {
 	public static boolean aBoolean153 = false;
 
 	@OriginalMember(owner = "client!je", name = "T", descriptor = "Lclient!sc;")
-	public static Class133 aClass133_9 = new Class133(8);
+	public static HashTable aClass133_9 = new HashTable(8);
 
 	@OriginalMember(owner = "client!je", name = "U", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_588 = Static28.method790("showingVideoAd");
+	public static final JagString aClass100_588 = JagString.wrap("showingVideoAd");
 
 	@OriginalMember(owner = "client!je", name = "db", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_589 = Static28.method790(" <col=ffffff>");
+	public static final JagString aClass100_589 = JagString.wrap(" <col=ffffff>");
 
 	@OriginalMember(owner = "client!je", name = "fb", descriptor = "I")
 	public static int anInt3028 = 1;
@@ -58,11 +58,6 @@ public final class Static119 {
 		}
 	}
 
-	@OriginalMember(owner = "client!je", name = "a", descriptor = "(ILclient!ve;)V")
-	public static void method2384(@OriginalArg(1) Class153 arg0) {
-		Static9.aClass153_2 = arg0;
-	}
-
 	@OriginalMember(owner = "client!je", name = "j", descriptor = "(I)I")
 	public static int method2385() {
 		if (Static203.aClass134_1 == null) {
@@ -79,13 +74,13 @@ public final class Static119 {
 
 	@OriginalMember(owner = "client!je", name = "k", descriptor = "(I)V")
 	public static void method2386() {
-		@Pc(6) Class3_Sub12 local6;
-		for (local6 = (Class3_Sub12) Static3.aClass69_135.method2289(); local6 != null; local6 = (Class3_Sub12) Static3.aClass69_135.method2288()) {
+		@Pc(6) BgSound local6;
+		for (local6 = (BgSound) Static3.aClass69_135.head(); local6 != null; local6 = (BgSound) Static3.aClass69_135.method2288()) {
 			if (local6.aBoolean117) {
 				local6.method1567();
 			}
 		}
-		for (local6 = (Class3_Sub12) Static152.aClass69_87.method2289(); local6 != null; local6 = (Class3_Sub12) Static152.aClass69_87.method2288()) {
+		for (local6 = (BgSound) Static152.aClass69_87.head(); local6 != null; local6 = (BgSound) Static152.aClass69_87.method2288()) {
 			if (local6.aBoolean117) {
 				local6.method1567();
 			}

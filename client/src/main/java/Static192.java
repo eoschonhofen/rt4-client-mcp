@@ -4,13 +4,13 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static192 {
 
 	@OriginalMember(owner = "client!ph", name = "b", descriptor = "[[Lclient!li;")
-	public static final Class92[][] aClass92ArrayArray1 = new Class92[13][13];
+	public static final Environment[][] aClass92ArrayArray1 = new Environment[13][13];
 
 	@OriginalMember(owner = "client!ph", name = "c", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_848 = Static28.method790("Ok");
+	private static final JagString aClass100_848 = JagString.wrap("Ok");
 
 	@OriginalMember(owner = "client!ph", name = "d", descriptor = "Lclient!na;")
-	public static Class100 aClass100_849 = aClass100_848;
+	public static JagString OK = aClass100_848;
 
 	@OriginalMember(owner = "client!ph", name = "a", descriptor = "(B)V")
 	public static void method3473() {
@@ -19,7 +19,7 @@ public final class Static192 {
 			if (local17 == null) {
 				return;
 			}
-			@Pc(40) Class8_Sub4 local40;
+			@Pc(40) ClientEntity local40;
 			@Pc(29) int local29;
 			if (local17.anInt1192 < 0) {
 				local29 = -local17.anInt1192 - 1;
@@ -33,7 +33,7 @@ public final class Static192 {
 				local40 = Static175.aClass8_Sub4_Sub2Array1[local29];
 			}
 			if (local40 != null) {
-				@Pc(63) Class118 local63 = Static271.method4601(local17.anInt1189);
+				@Pc(63) LocType local63 = LocType.list(local17.anInt1189);
 				if (Static55.anInt1735 < 3) {
 				}
 				@Pc(86) int local86;
@@ -49,27 +49,27 @@ public final class Static192 {
 				@Pc(110) int local110 = (local86 >> 1) + local17.anInt1190;
 				@Pc(117) int local117 = (local83 >> 1) + local17.anInt1204;
 				@Pc(126) int local126 = (local83 + 1 >> 1) + local17.anInt1204;
-				@Pc(130) int[][] local130 = Static83.anIntArrayArrayArray4[Static55.anInt1735];
+				@Pc(130) int[][] local130 = Static83.groundh[Static55.anInt1735];
 				@Pc(157) int local157 = local130[local103][local126] + local130[local110][local126] + local130[local110][local117] + local130[local103][local117] >> 2;
-				@Pc(159) Class8 local159 = null;
+				@Pc(159) ModelSource local159 = null;
 				@Pc(164) int local164 = Static133.anIntArray453[local17.anInt1198];
 				if (local164 == 0) {
-					@Pc(176) Class77 local176 = Static262.method4509(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
+					@Pc(176) Wall local176 = Static262.method4509(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
 					if (local176 != null) {
 						local159 = local176.aClass8_5;
 					}
 				} else if (local164 == 1) {
-					@Pc(231) Class24 local231 = Static83.method435(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
+					@Pc(231) Decor local231 = Static83.method435(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
 					if (local231 != null) {
 						local159 = local231.aClass8_3;
 					}
 				} else if (local164 == 2) {
-					@Pc(198) Class31 local198 = Static133.method4008(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
+					@Pc(198) Sprite local198 = Static133.method4008(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
 					if (local198 != null) {
 						local159 = local198.aClass8_4;
 					}
 				} else if (local164 == 3) {
-					@Pc(216) Class15 local216 = Static269.method2210(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
+					@Pc(216) GroundDecor local216 = Static269.method2210(Static55.anInt1735, local17.anInt1190, local17.anInt1204);
 					if (local216 != null) {
 						local159 = local216.aClass8_1;
 					}

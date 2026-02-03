@@ -39,25 +39,25 @@ public final class Static237 {
 	public static float aFloat29;
 
 	@OriginalMember(owner = "client!td", name = "D", descriptor = "Lclient!wa;")
-	public static Class3_Sub15 aClass3_Sub15_8 = new Class3_Sub15(10000);
+	public static Packet aClass3_Sub15_8 = new Packet(10000);
 
 	@OriginalMember(owner = "client!td", name = "bb", descriptor = "Lclient!td;")
-	public static Class8_Sub1_Sub1 aClass8_Sub1_Sub1_1 = new Class8_Sub1_Sub1();
+	public static GlModelLit aClass8_Sub1_Sub1_1 = new GlModelLit();
 
 	@OriginalMember(owner = "client!td", name = "jb", descriptor = "Lclient!td;")
-	public static Class8_Sub1_Sub1 aClass8_Sub1_Sub1_2 = new Class8_Sub1_Sub1();
+	public static GlModelLit aClass8_Sub1_Sub1_2 = new GlModelLit();
 
 	@OriginalMember(owner = "client!td", name = "mb", descriptor = "Lclient!td;")
-	public static Class8_Sub1_Sub1 aClass8_Sub1_Sub1_3 = new Class8_Sub1_Sub1();
+	public static GlModelLit aClass8_Sub1_Sub1_3 = new GlModelLit();
 
 	@OriginalMember(owner = "client!td", name = "nb", descriptor = "Lclient!td;")
-	public static Class8_Sub1_Sub1 aClass8_Sub1_Sub1_4 = new Class8_Sub1_Sub1();
+	public static GlModelLit aClass8_Sub1_Sub1_4 = new GlModelLit();
 
 	@OriginalMember(owner = "client!td", name = "ob", descriptor = "Lclient!td;")
-	public static Class8_Sub1_Sub1 aClass8_Sub1_Sub1_5 = new Class8_Sub1_Sub1();
+	public static GlModelLit aClass8_Sub1_Sub1_5 = new GlModelLit();
 
 	@OriginalMember(owner = "client!td", name = "pb", descriptor = "Lclient!td;")
-	public static Class8_Sub1_Sub1 aClass8_Sub1_Sub1_6 = new Class8_Sub1_Sub1();
+	public static GlModelLit aClass8_Sub1_Sub1_6 = new GlModelLit();
 
 	@OriginalMember(owner = "client!td", name = "qb", descriptor = "[I")
 	public static int[] anIntArray467 = new int[1];
@@ -307,11 +307,11 @@ public final class Static237 {
 
 	@OriginalMember(owner = "client!td", name = "v", descriptor = "()V")
 	public static void method4120() {
-		aClass8_Sub1_Sub1_1 = new Class8_Sub1_Sub1();
-		aClass8_Sub1_Sub1_2 = new Class8_Sub1_Sub1();
-		aClass8_Sub1_Sub1_3 = new Class8_Sub1_Sub1();
-		aClass8_Sub1_Sub1_4 = new Class8_Sub1_Sub1();
-		aClass8_Sub1_Sub1_5 = new Class8_Sub1_Sub1();
-		aClass8_Sub1_Sub1_6 = new Class8_Sub1_Sub1();
+		aClass8_Sub1_Sub1_1 = new GlModelLit();
+		aClass8_Sub1_Sub1_2 = new GlModelLit();
+		aClass8_Sub1_Sub1_3 = new GlModelLit();
+		aClass8_Sub1_Sub1_4 = new GlModelLit();
+		aClass8_Sub1_Sub1_5 = new GlModelLit();
+		aClass8_Sub1_Sub1_6 = new GlModelLit();
 	}
 }

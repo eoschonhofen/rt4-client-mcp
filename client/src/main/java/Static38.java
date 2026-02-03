@@ -5,22 +5,22 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static38 {
 
 	@OriginalMember(owner = "client!cn", name = "J", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_244 = Static28.method790("Starting 3d Library");
+	private static final JagString aClass100_244 = JagString.wrap("Starting 3d Library");
 
 	@OriginalMember(owner = "client!cn", name = "q", descriptor = "Lclient!na;")
-	public static Class100 aClass100_240 = aClass100_244;
+	public static JagString aClass100_240 = aClass100_244;
 
 	@OriginalMember(owner = "client!cn", name = "s", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_241 = Static28.method790("lila:");
+	public static final JagString aClass100_241 = JagString.wrap("lila:");
 
 	@OriginalMember(owner = "client!cn", name = "x", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_242 = Static28.method790("Vous ne pouvez pas ajouter votre nom -9 votre liste noire)3");
+	public static final JagString aClass100_242 = JagString.wrap("Vous ne pouvez pas ajouter votre nom -9 votre liste noire)3");
 
 	@OriginalMember(owner = "client!cn", name = "B", descriptor = "I")
-	public static int anInt1196 = 1;
+	public static int locModelLoadPrevCount = 1;
 
 	@OriginalMember(owner = "client!cn", name = "C", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_243 = Static28.method790("rot:");
+	public static final JagString aClass100_243 = JagString.wrap("rot:");
 
 	@OriginalMember(owner = "client!cn", name = "L", descriptor = "I")
 	public static int anInt1203 = 0;
@@ -35,7 +35,7 @@ public final class Static38 {
 				@Pc(64) int local64 = Static203.aClass134_1.method3894(local11);
 				@Pc(80) int local80 = (arg7 - arg1) * (local43 - arg5) / (arg4 - arg5) + arg1;
 				@Pc(82) int local82 = 16777215;
-				@Pc(84) Class41 local84 = null;
+				@Pc(84) WorldMapFont local84 = null;
 				if (local64 == 0) {
 					if ((double) Static83.aFloat3 == 3.0D) {
 						local84 = Static273.aClass41_7;
@@ -87,9 +87,9 @@ public final class Static38 {
 					local80 -= local84.method1503() * (local211 - 1) / 2;
 					local80 += local84.method1511() / 2;
 					for (@Pc(231) int local231 = 0; local231 < local211; local231++) {
-						@Pc(242) Class100 local242 = Static45.aClass100Array53[local231];
+						@Pc(242) JagString local242 = Static45.aClass100Array53[local231];
 						if (local211 - 1 > local231) {
-							local242.method3133(local242.method3120() - 4);
+							local242.method3133(local242.length() - 4);
 						}
 						local84.method1508(local242, local59, local80, local82);
 						local80 += local84.method1503();
@@ -152,16 +152,16 @@ public final class Static38 {
 
 	@OriginalMember(owner = "client!cn", name = "a", descriptor = "(ZI)I")
 	public static int method963(@OriginalArg(0) boolean arg0) {
-		@Pc(4) long local4 = Class209.method5096();
-		for (@Pc(28) Class3_Sub10 local28 = arg0 ? (Class3_Sub10) Static199.aClass133_20.method3859() : (Class3_Sub10) Static199.aClass133_20.method3861(); local28 != null; local28 = (Class3_Sub10) Static199.aClass133_20.method3861()) {
+		@Pc(4) long local4 = MonotonicTime.currentTime();
+		for (@Pc(28) LongNode local28 = arg0 ? (LongNode) Static199.aClass133_20.method3859() : (LongNode) Static199.aClass133_20.method3861(); local28 != null; local28 = (LongNode) Static199.aClass133_20.method3861()) {
 			if ((local28.aLong55 & 0x3FFFFFFFFFFFFFFFL) < local4) {
 				if ((local28.aLong55 & 0x4000000000000000L) != 0L) {
-					@Pc(58) int local58 = (int) local28.aLong192;
-					Static7.anIntArray75[local58] = Static106.anIntArray257[local58];
-					local28.method4658();
+					@Pc(58) int local58 = (int) local28.key;
+					Static7.var[local58] = Static106.varServ[local58];
+					local28.unlink();
 					return local58;
 				}
-				local28.method4658();
+				local28.unlink();
 			}
 		}
 		return -1;
@@ -177,7 +177,7 @@ public final class Static38 {
 			local3 = 1;
 		}
 		@Pc(28) int local28;
-		@Pc(39) Class8_Sub4_Sub1 local39;
+		@Pc(39) ClientPlayer local39;
 		@Pc(82) int local82;
 		@Pc(182) int local182;
 		@Pc(200) int local200;

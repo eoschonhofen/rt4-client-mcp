@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static44 {
 
 	@OriginalMember(owner = "client!dh", name = "h", descriptor = "I")
-	public static int anInt1404;
+	public static int frequency;
 
 	@OriginalMember(owner = "client!dh", name = "a", descriptor = "Z")
 	public static boolean aBoolean83 = false;
@@ -14,14 +14,14 @@ public final class Static44 {
 	public static final int[] anIntArray106 = new int[2048];
 
 	@OriginalMember(owner = "client!dh", name = "e", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_335 = Static28.method790("Number of player models in cache:");
+	public static final JagString aClass100_335 = JagString.wrap("Number of player models in cache:");
 
 	@OriginalMember(owner = "client!dh", name = "i", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_336 = Static28.method790("<img=1>");
+	public static final JagString aClass100_336 = JagString.wrap("<img=1>");
 
 	@OriginalMember(owner = "client!dh", name = "a", descriptor = "(Z)V")
 	public static void method1146() {
-		Static6.aClass3_Sub15_Sub1_1.anInt2792 = 0;
+		Static6.aClass3_Sub15_Sub1_1.pos = 0;
 		Static5.anInt45 = -1;
 		Static60.aBoolean108 = false;
 		Static223.anInt5028 = 0;
@@ -31,7 +31,7 @@ public final class Static44 {
 		Static270.anInt5795 = 0;
 		Static60.anInt1894 = 0;
 		Static49.anInt1462 = -1;
-		Static57.aClass3_Sub15_Sub1_3.anInt2792 = 0;
+		Static4.in.pos = 0;
 		Static201.anInt1862 = 0;
 		Static164.anInt3985 = -1;
 		@Pc(35) int local35;
@@ -55,22 +55,22 @@ public final class Static44 {
 	}
 
 	@OriginalMember(owner = "client!dh", name = "b", descriptor = "(I)Lclient!q;")
-	public static Class22 method1147() {
+	public static ReferenceNodeFactory method1147() {
 		try {
-			return (Class22) Class.forName("Class22_Sub1").getDeclaredConstructor().newInstance();
+			return (ReferenceNodeFactory) Class.forName("SoftReferenceNodeFactory").getDeclaredConstructor().newInstance();
 		} catch (@Pc(15) Throwable local15) {
 			return null;
 		}
 	}
 
 	@OriginalMember(owner = "client!dh", name = "a", descriptor = "(IIII)Lclient!wk;")
-	public static Class3_Sub31 method1148(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		@Pc(9) Class3_Sub31 local9 = new Class3_Sub31();
+	public static SubInterface method1148(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
+		@Pc(9) SubInterface local9 = new SubInterface();
 		local9.anInt5879 = arg2;
 		local9.anInt5878 = arg0;
-		Static119.aClass133_9.method3862(local9, (long) arg1);
+		Static119.aClass133_9.put(local9, (long) arg1);
 		Static81.method1753(arg0);
-		@Pc(28) Class13 local28 = Static5.method32(arg1);
+		@Pc(28) IfType local28 = Static5.method32(arg1);
 		if (local28 != null) {
 			Static43.method1143(local28);
 		}
@@ -111,7 +111,7 @@ public final class Static44 {
 	}
 
 	@OriginalMember(owner = "client!dh", name = "a", descriptor = "(Lclient!na;I)V")
-	public static void method1149(@OriginalArg(0) Class100 arg0) {
+	public static void method1149(@OriginalArg(0) JagString arg0) {
 		@Pc(7) int local7 = Static91.method1879(arg0);
 		if (local7 != -1) {
 			Static80.method3616(Static203.aClass134_1.aShortArray73[local7], Static203.aClass134_1.aShortArray72[local7]);
@@ -119,9 +119,9 @@ public final class Static44 {
 	}
 
 	@OriginalMember(owner = "client!dh", name = "a", descriptor = "(B)Lclient!uc;")
-	public static Class111 method1150() {
+	public static MouseWheelInterface method1150() {
 		try {
-			return (Class111) Class.forName("Class111_Sub1").getDeclaredConstructor().newInstance();
+			return (MouseWheelInterface) Class.forName("ClientMouseWheelListener").getDeclaredConstructor().newInstance();
 		} catch (@Pc(15) Throwable local15) {
 			return null;
 		}

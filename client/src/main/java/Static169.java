@@ -9,48 +9,45 @@ public final class Static169 {
 	public static short[] aShortArray52;
 
 	@OriginalMember(owner = "client!nf", name = "d", descriptor = "Lclient!fd;")
-	public static Class41 aClass41_5;
+	public static WorldMapFont aClass41_5;
 
 	@OriginalMember(owner = "client!nf", name = "e", descriptor = "I")
 	public static int anInt4073;
 
 	@OriginalMember(owner = "client!nf", name = "h", descriptor = "Lclient!be;")
-	public static Class13 aClass13_18;
-
-	@OriginalMember(owner = "client!nf", name = "f", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_24 = new Class99(500);
+	public static IfType aClass13_18;
 
 	@OriginalMember(owner = "client!nf", name = "i", descriptor = "I")
 	public static int anInt4075 = -1;
 
 	@OriginalMember(owner = "client!nf", name = "a", descriptor = "(Lclient!na;BZ)V")
-	public static void method3175(@OriginalArg(0) Class100 arg0, @OriginalArg(2) boolean arg1) {
+	public static void method3175(@OriginalArg(0) JagString arg0, @OriginalArg(2) boolean arg1) {
 		if (!arg1) {
 			try {
-				Static230.anApplet_Sub1_1.getAppletContext().showDocument(arg0.method3127(Static230.anApplet_Sub1_1.getCodeBase()), "_top");
+				GameShell.shell.getAppletContext().showDocument(arg0.method3127(GameShell.shell.getCodeBase()), "_top");
 			} catch (@Pc(22) Exception local22) {
 			}
 			return;
 		}
-		if (Static239.aBoolean269 && Static40.aBoolean78) {
+		if (GameShell.glRenderer && GameShell.openwinjs) {
 			try {
-				Static287.method1758(Static71.aClass213_3.anApplet2, "openjs", new Object[] { arg0.method3127(Static230.anApplet_Sub1_1.getCodeBase()).toString() });
+				Static287.method1758(GameShell.signlink.applet, "openjs", new Object[] { arg0.method3127(GameShell.shell.getCodeBase()).toString() });
 				return;
 			} catch (@Pc(48) Throwable local48) {
 			}
 		}
 		try {
-			Static230.anApplet_Sub1_1.getAppletContext().showDocument(arg0.method3127(Static230.anApplet_Sub1_1.getCodeBase()), "_blank");
+			GameShell.shell.getAppletContext().showDocument(arg0.method3127(GameShell.shell.getCodeBase()), "_blank");
 		} catch (@Pc(59) Exception local59) {
 		}
 	}
 
 	@OriginalMember(owner = "client!nf", name = "a", descriptor = "(IIIIILsignlink!ll;)Ljava/awt/Frame;")
-	public static Frame method3176(@OriginalArg(2) int arg0, @OriginalArg(3) int arg1, @OriginalArg(4) int arg2, @OriginalArg(5) Class213 arg3) {
+	public static Frame method3176(@OriginalArg(2) int arg0, @OriginalArg(3) int arg1, @OriginalArg(4) int arg2, @OriginalArg(5) SignLink arg3) {
 		if (!arg3.method5111()) {
 			return null;
 		}
-		@Pc(20) Class114[] local20 = Static197.method3558(arg3);
+		@Pc(20) DisplayMode[] local20 = Static197.method3558(arg3);
 		if (local20 == null) {
 			return null;
 		}
@@ -64,14 +61,14 @@ public final class Static169 {
 		if (!local27) {
 			return null;
 		}
-		@Pc(90) Class212 local90 = arg3.method5129(arg0, arg1, arg2);
-		while (local90.anInt5925 == 0) {
-			Static231.method3983(10L);
+		@Pc(90) PrivilegedRequest local90 = arg3.method5129(arg0, arg1, arg2);
+		while (local90.status == 0) {
+			Static231.sleepPrecise(10L);
 		}
-		@Pc(103) Frame local103 = (Frame) local90.anObject6;
+		@Pc(103) Frame local103 = (Frame) local90.result;
 		if (local103 == null) {
 			return null;
-		} else if (local90.anInt5925 == 2) {
+		} else if (local90.status == 2) {
 			Static25.method714(local103, arg3);
 			return null;
 		} else {
@@ -79,12 +76,4 @@ public final class Static169 {
 		}
 	}
 
-	@OriginalMember(owner = "client!nf", name = "a", descriptor = "(II[BB)I")
-	public static int method3178(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) byte[] arg2) {
-		@Pc(5) int local5 = -1;
-		for (@Pc(15) int local15 = arg0; local15 < arg1; local15++) {
-			local5 = local5 >>> 8 ^ Class44.anIntArray175[(local5 ^ arg2[local15]) & 0xFF];
-		}
-		return ~local5;
-	}
 }

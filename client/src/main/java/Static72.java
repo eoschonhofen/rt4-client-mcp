@@ -8,44 +8,38 @@ public final class Static72 {
 	public static boolean aBoolean116;
 
 	@OriginalMember(owner = "client!fl", name = "C", descriptor = "Lsignlink!im;")
-	public static Class212 aClass212_3;
+	public static PrivilegedRequest aClass212_3;
 
 	@OriginalMember(owner = "client!fl", name = "D", descriptor = "[[I")
 	public static int[][] anIntArrayArray14;
 
-	@OriginalMember(owner = "client!fl", name = "U", descriptor = "I")
-	public static int anInt2046;
-
 	@OriginalMember(owner = "client!fl", name = "s", descriptor = "I")
 	public static int anInt2031 = 128;
-
-	@OriginalMember(owner = "client!fl", name = "w", descriptor = "J")
-	public static long aLong74 = 0L;
 
 	@OriginalMember(owner = "client!fl", name = "B", descriptor = "I")
 	public static int anInt2036 = 0;
 
 	@OriginalMember(owner = "client!fl", name = "H", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_446 = Static28.method790("<img=0>");
+	public static final JagString aClass100_446 = JagString.wrap("<img=0>");
 
 	@OriginalMember(owner = "client!fl", name = "P", descriptor = "I")
 	public static int anInt2043 = 0;
 
 	@OriginalMember(owner = "client!fl", name = "Q", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_447 = Static28.method790("");
+	public static final JagString aClass100_447 = JagString.wrap("");
 
 	@OriginalMember(owner = "client!fl", name = "V", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_448 = Static28.method790("(Y");
+	public static final JagString aClass100_448 = JagString.wrap("(Y");
 
 	@OriginalMember(owner = "client!fl", name = "b", descriptor = "(II)Lclient!cl;")
-	public static Class3_Sub2_Sub7 method1566(@OriginalArg(0) int arg0) {
-		@Pc(19) Class3_Sub2_Sub7 local19 = (Class3_Sub2_Sub7) Static267.aClass99_37.method3106((long) arg0);
+	public static AnimFrameSet method1566(@OriginalArg(0) int arg0) {
+		@Pc(19) AnimFrameSet local19 = (AnimFrameSet) Static267.aClass99_37.find((long) arg0);
 		if (local19 != null) {
 			return local19;
 		}
-		local19 = Static87.method1803(Static225.aClass153_92, Static5.aClass153_1, arg0);
+		local19 = Static87.method1803(SeqType.anims, SeqType.bases, arg0);
 		if (local19 != null) {
-			Static267.aClass99_37.method3095(local19, (long) arg0);
+			Static267.aClass99_37.put(local19, (long) arg0);
 		}
 		return local19;
 	}
@@ -101,7 +95,7 @@ public final class Static72 {
 
 	@OriginalMember(owner = "client!fl", name = "a", descriptor = "(IB)V")
 	public static void method1570() {
-		Static142.aClass99_23.method3102(5);
+		SeqType.recentUse.method3102(5);
 		Static267.aClass99_37.method3102(5);
 	}
 }

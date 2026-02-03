@@ -5,36 +5,30 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static37 {
 
 	@OriginalMember(owner = "client!cm", name = "a", descriptor = "Lclient!m;")
-	public static Interface1 anInterface1_1;
-
-	@OriginalMember(owner = "client!cm", name = "b", descriptor = "Ljava/lang/Thread;")
-	public static Thread aThread1;
+	public static TextureProvider anInterface1_1;
 
 	@OriginalMember(owner = "client!cm", name = "c", descriptor = "I")
 	public static int anInt1176;
 
-	@OriginalMember(owner = "client!cm", name = "f", descriptor = "Lsignlink!im;")
-	public static Class212 aClass212_2;
-
 	@OriginalMember(owner = "client!cm", name = "e", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_236 = Static28.method790("Vous ne pouvez pas ajouter votre nom -9 votre liste d(Wamis)3");
+	public static final JagString aClass100_236 = JagString.wrap("Vous ne pouvez pas ajouter votre nom -9 votre liste d(Wamis)3");
 
 	@OriginalMember(owner = "client!cm", name = "h", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_237 = Static28.method790("Verbindung abgebrochen)3");
+	public static final JagString aClass100_237 = JagString.wrap("Verbindung abgebrochen)3");
 
 	@OriginalMember(owner = "client!cm", name = "i", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_238 = Static28.method790("comp-Btence ");
+	public static final JagString aClass100_238 = JagString.wrap("comp-Btence ");
 
 	@OriginalMember(owner = "client!cm", name = "a", descriptor = "(ILclient!fe;)V")
-	public static void method949(@OriginalArg(1) Class8_Sub4 arg0) {
+	public static void method949(@OriginalArg(1) ClientEntity arg0) {
 		if (arg0.anInt3376 == 0) {
 			return;
 		}
-		@Pc(13) Class20 local13 = arg0.method2681();
+		@Pc(13) BasType local13 = arg0.method2681();
 		@Pc(43) int local43;
 		@Pc(36) int local36;
 		if (arg0.anInt3370 != -1 && arg0.anInt3370 < 32768) {
-			@Pc(26) Class8_Sub4_Sub2 local26 = Static175.aClass8_Sub4_Sub2Array1[arg0.anInt3370];
+			@Pc(26) ClientNPC local26 = Static175.aClass8_Sub4_Sub2Array1[arg0.anInt3370];
 			if (local26 != null) {
 				local36 = arg0.anInt3421 - local26.anInt3421;
 				local43 = arg0.anInt3412 - local26.anInt3412;
@@ -50,7 +44,7 @@ public final class Static37 {
 			if (local70 == Static16.anInt549) {
 				local70 = 2047;
 			}
-			@Pc(83) Class8_Sub4_Sub1 local83 = Static159.aClass8_Sub4_Sub1Array1[local70];
+			@Pc(83) ClientPlayer local83 = Static159.aClass8_Sub4_Sub1Array1[local70];
 			if (local83 != null) {
 				local94 = arg0.anInt3421 - local83.anInt3421;
 				local36 = arg0.anInt3412 - local83.anInt3412;

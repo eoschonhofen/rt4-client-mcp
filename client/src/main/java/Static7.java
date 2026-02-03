@@ -12,39 +12,36 @@ public final class Static7 {
 	public static int anInt986;
 
 	@OriginalMember(owner = "client!ah", name = "i", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_5 = new Class99(2);
+	public static final SoftLruCache aClass99_5 = new SoftLruCache(2);
 
 	@OriginalMember(owner = "client!ah", name = "j", descriptor = "[I")
-	public static final int[] anIntArray75 = new int[3500];
-
-	@OriginalMember(owner = "client!ah", name = "k", descriptor = "[J")
-	public static final long[] aLongArray2 = new long[32];
+	public static final int[] var = new int[3500];
 
 	@OriginalMember(owner = "client!ah", name = "m", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_189 = Static28.method790("glow3:");
+	private static final JagString aClass100_189 = JagString.wrap("glow3:");
 
 	@OriginalMember(owner = "client!ah", name = "n", descriptor = "I")
 	public static int anInt983 = 0;
 
 	@OriginalMember(owner = "client!ah", name = "p", descriptor = "Lclient!ih;")
-	public static final Class69 aClass69_32 = new Class69();
+	public static final LinkList aClass69_32 = new LinkList();
 
 	@OriginalMember(owner = "client!ah", name = "q", descriptor = "Lclient!na;")
-	public static Class100 aClass100_190 = aClass100_189;
+	public static JagString aClass100_190 = aClass100_189;
 
 	@OriginalMember(owner = "client!ah", name = "r", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_191 = aClass100_189;
+	public static final JagString aClass100_191 = aClass100_189;
 
 	@OriginalMember(owner = "client!ah", name = "s", descriptor = "I")
 	public static int anInt985 = 0;
 
 	@OriginalMember(owner = "client!ah", name = "u", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_192 = Static28.method790("Veuillez commencer par supprimer ");
+	public static final JagString aClass100_192 = JagString.wrap("Veuillez commencer par supprimer ");
 
 	@OriginalMember(owner = "client!ah", name = "a", descriptor = "(BZ)V")
 	public static void method842(@OriginalArg(1) boolean arg0) {
-		Static107.method2261();
-		if (Static244.anInt5370 != 30 && Static244.anInt5370 != 25) {
+		client.method2261();
+		if (client.state != 30 && client.state != 25) {
 			return;
 		}
 		Static131.anInt3251++;
@@ -52,16 +49,16 @@ public final class Static7 {
 			return;
 		}
 		Static131.anInt3251 = 0;
-		if (!Static224.aBoolean247 && Static124.aClass95_2 != null) {
-			Static6.aClass3_Sub15_Sub1_1.method2242(93);
+		if (!Static224.aBoolean247 && Static124.loginStream != null) {
+			Static6.aClass3_Sub15_Sub1_1.p1Enc(93);
 			try {
-				Static124.aClass95_2.method2830(Static6.aClass3_Sub15_Sub1_1.aByteArray40, Static6.aClass3_Sub15_Sub1_1.anInt2792);
-				Static6.aClass3_Sub15_Sub1_1.anInt2792 = 0;
+				Static124.loginStream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				Static6.aClass3_Sub15_Sub1_1.pos = 0;
 			} catch (@Pc(53) IOException local53) {
 				Static224.aBoolean247 = true;
 			}
 		}
-		Static107.method2261();
+		client.method2261();
 	}
 
 	@OriginalMember(owner = "client!ah", name = "b", descriptor = "(I)V")
@@ -78,8 +75,8 @@ public final class Static7 {
 				if (local37 == 25 || local37 == 23 || local37 == 48 || local37 == 7 || local37 == 13 || local37 == 47 || local37 == 5 || local37 == 43 || local37 == 35 || local37 == 58 || local37 == 22 || local37 == 1006) {
 					local93 = Static196.anIntArray408[Static231.anInt5204 - 1];
 					local99 = Static56.anIntArray142[Static231.anInt5204 - 1];
-					@Pc(103) Class13 local103 = Static5.method32(local99);
-					@Pc(106) Class3_Sub4 local106 = Static36.method940(local103);
+					@Pc(103) IfType local103 = Static5.method32(local99);
+					@Pc(106) ServerActive local106 = Static36.method940(local103);
 					if (local106.method511() || local106.method504()) {
 						Static78.anInt2145 = 0;
 						Static123.aBoolean155 = false;
@@ -108,8 +105,8 @@ public final class Static7 {
 		}
 		@Pc(204) int local204;
 		if (local20 != 1) {
-			local93 = Static223.anInt5032;
-			local204 = Static215.anInt4873;
+			local93 = Static223.mouseY;
+			local204 = Static215.mouseX;
 			if (local204 < Static183.anInt4271 - 10 || local204 > Static24.anInt761 + Static183.anInt4271 + 10 || Static229.anInt5138 - 10 > local93 || local93 > Static13.anInt436 + Static229.anInt5138 + 10) {
 				Static60.aBoolean108 = false;
 				Static133.method4012(Static183.anInt4271, Static24.anInt761, Static229.anInt5138, Static13.anInt436);

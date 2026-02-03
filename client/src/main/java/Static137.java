@@ -4,19 +4,11 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static137 {
 
-	@OriginalMember(owner = "client!kl", name = "r", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_49;
-
 	@OriginalMember(owner = "client!kl", name = "s", descriptor = "I")
 	public static int anInt3337 = 0;
 
 	@OriginalMember(owner = "client!kl", name = "u", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_637 = Static28.method790("<col=ffffff>");
-
-	@OriginalMember(owner = "client!kl", name = "a", descriptor = "(Lclient!wa;B)Lclient!kc;")
-	public static Class18_Sub2 method2664(@OriginalArg(0) Class3_Sub15 arg0) {
-		return new Class18_Sub2(arg0.method2213(), arg0.method2213(), arg0.method2213(), arg0.method2213(), arg0.method2220(), arg0.method2220(), arg0.method2229());
-	}
+	public static final JagString aClass100_637 = JagString.wrap("<col=ffffff>");
 
 	@OriginalMember(owner = "client!kl", name = "b", descriptor = "(II)Z")
 	public static boolean method2665(@OriginalArg(1) int arg0) {
@@ -25,10 +17,10 @@ public final class Static137 {
 		@Pc(76) int local76;
 		@Pc(80) int local80;
 		if (Static56.aClass3_Sub2_Sub1_Sub1_1 == null) {
-			if (Static239.aBoolean269 || Static89.aClass3_Sub2_Sub1_5 == null) {
-				Static56.aClass3_Sub2_Sub1_Sub1_1 = new Class3_Sub2_Sub1_Sub1(512, 512);
+			if (GameShell.glRenderer || Static89.aClass3_Sub2_Sub1_5 == null) {
+				Static56.aClass3_Sub2_Sub1_Sub1_1 = new Pix32(512, 512);
 			} else {
-				Static56.aClass3_Sub2_Sub1_Sub1_1 = (Class3_Sub2_Sub1_Sub1) Static89.aClass3_Sub2_Sub1_5;
+				Static56.aClass3_Sub2_Sub1_Sub1_1 = (Pix32) Static89.aClass3_Sub2_Sub1_5;
 			}
 			@Pc(32) int[] local32 = Static56.aClass3_Sub2_Sub1_Sub1_1.anIntArray20;
 			local35 = local32.length;
@@ -38,10 +30,10 @@ public final class Static137 {
 			for (local37 = 1; local37 < 103; local37++) {
 				local76 = 4 * 512 * (103 - local37) + 24628;
 				for (local80 = 1; local80 < 103; local80++) {
-					if ((Static12.aByteArrayArrayArray2[arg0][local80][local37] & 0x18) == 0) {
+					if ((Static12.mapl[arg0][local80][local37] & 0x18) == 0) {
 						Static152.method2835(local32, local76, arg0, local80, local37);
 					}
-					if (arg0 < 3 && (Static12.aByteArrayArrayArray2[arg0 + 1][local80][local37] & 0x8) != 0) {
+					if (arg0 < 3 && (Static12.mapl[arg0 + 1][local80][local37] & 0x8) != 0) {
 						Static152.method2835(local32, local76, arg0 + 1, local80, local37);
 					}
 					local76 += 4;
@@ -52,13 +44,13 @@ public final class Static137 {
 				for (local76 = 0; local76 < 104; local76++) {
 					@Pc(169) long local169 = Static20.method602(Static55.anInt1735, local37 + 0, local76);
 					if (local169 != 0L) {
-						@Pc(184) Class118 local184 = Static271.method4601((int) (local169 >>> 32) & Integer.MAX_VALUE);
+						@Pc(184) LocType local184 = LocType.list((int) (local169 >>> 32) & Integer.MAX_VALUE);
 						@Pc(187) int local187 = local184.anInt4400;
 						@Pc(194) int local194;
 						if (local184.anIntArray380 != null) {
 							for (local194 = 0; local194 < local184.anIntArray380.length; local194++) {
 								if (local184.anIntArray380[local194] != -1) {
-									@Pc(216) Class118 local216 = Static271.method4601(local184.anIntArray380[local194]);
+									@Pc(216) LocType local216 = LocType.list(local184.anIntArray380[local194]);
 									if (local216.anInt4400 >= 0) {
 										local187 = local216.anInt4400;
 										break;
@@ -87,7 +79,7 @@ public final class Static137 {
 									}
 								}
 							}
-							Static199.anIntArray417[Static251.anInt5454] = local184.anInt4426;
+							Static199.anIntArray417[Static251.anInt5454] = local184.id;
 							Static145.anIntArray331[Static251.anInt5454] = local194;
 							Static93.anIntArray219[Static251.anInt5454] = local237;
 							Static251.anInt5454++;
@@ -101,25 +93,25 @@ public final class Static137 {
 		local35 = (int) (Math.random() * 20.0D) + 238 - 10 << 16;
 		for (local37 = 1; local37 < 103; local37++) {
 			for (local76 = 1; local76 < 103; local76++) {
-				if ((Static12.aByteArrayArrayArray2[arg0][local76][local37] & 0x18) == 0 && !Static164.method3109(local76, local455, local37, local35, arg0)) {
-					if (Static239.aBoolean269) {
+				if ((Static12.mapl[arg0][local76][local37] & 0x18) == 0 && !Static164.method3109(local76, local455, local37, local35, arg0)) {
+					if (GameShell.glRenderer) {
 						Static129.anIntArray297 = null;
 					} else {
-						Static260.aClass27_2.method4189();
+						Static260.drawArea.method4189();
 					}
 					return false;
 				}
-				if (arg0 < 3 && (Static12.aByteArrayArrayArray2[arg0 + 1][local76][local37] & 0x8) != 0 && !Static164.method3109(local76, local455, local37, local35, arg0 + 1)) {
-					if (Static239.aBoolean269) {
+				if (arg0 < 3 && (Static12.mapl[arg0 + 1][local76][local37] & 0x8) != 0 && !Static164.method3109(local76, local455, local37, local35, arg0 + 1)) {
+					if (GameShell.glRenderer) {
 						Static129.anIntArray297 = null;
 					} else {
-						Static260.aClass27_2.method4189();
+						Static260.drawArea.method4189();
 					}
 					return false;
 				}
 			}
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			@Pc(576) int[] local576 = Static56.aClass3_Sub2_Sub1_Sub1_1.anIntArray20;
 			local76 = local576.length;
 			for (local80 = 0; local80 < local76; local80++) {
@@ -127,14 +119,14 @@ public final class Static137 {
 					local576[local80] = 1;
 				}
 			}
-			Static89.aClass3_Sub2_Sub1_5 = new Class3_Sub2_Sub1_Sub2(Static56.aClass3_Sub2_Sub1_Sub1_1);
+			Static89.aClass3_Sub2_Sub1_5 = new GlPix32(Static56.aClass3_Sub2_Sub1_Sub1_1);
 		} else {
 			Static89.aClass3_Sub2_Sub1_5 = Static56.aClass3_Sub2_Sub1_Sub1_1;
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			Static129.anIntArray297 = null;
 		} else {
-			Static260.aClass27_2.method4189();
+			Static260.drawArea.method4189();
 		}
 		Static56.aClass3_Sub2_Sub1_Sub1_1 = null;
 		return true;
@@ -142,7 +134,7 @@ public final class Static137 {
 
 	@OriginalMember(owner = "client!kl", name = "c", descriptor = "(II)V")
 	public static void method2666() {
-		Static279.aClass99_38.method3102(5);
+		SpotType.recentUse.method3102(5);
 		Static56.aClass99_9.method3102(5);
 	}
 }

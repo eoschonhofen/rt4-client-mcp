@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static132 {
 
-	@OriginalMember(owner = "client!ke", name = "R", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_48;
-
 	@OriginalMember(owner = "client!ke", name = "T", descriptor = "[[I")
 	public static final int[][] anIntArrayArray24 = new int[][] { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1 }, { 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1 }, { 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 }, { 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1 }, { 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1 } };
 
@@ -17,15 +14,15 @@ public final class Static132 {
 	public static final int[] anIntArray309 = new int[] { 1, 4 };
 
 	@OriginalMember(owner = "client!ke", name = "a", descriptor = "(ZLclient!wk;Z)V")
-	public static void method2605(@OriginalArg(0) boolean arg0, @OriginalArg(1) Class3_Sub31 arg1) {
-		@Pc(9) int local9 = (int) arg1.aLong192;
+	public static void method2605(@OriginalArg(0) boolean arg0, @OriginalArg(1) SubInterface arg1) {
+		@Pc(9) int local9 = (int) arg1.key;
 		@Pc(16) int local16 = arg1.anInt5878;
-		arg1.method4658();
+		arg1.unlink();
 		if (arg0) {
 			Static109.method2275(local16);
 		}
 		Static273.method3214(local16);
-		@Pc(32) Class13 local32 = Static5.method32(local9);
+		@Pc(32) IfType local32 = Static5.method32(local9);
 		if (local32 != null) {
 			Static43.method1143(local32);
 		}
@@ -58,14 +55,14 @@ public final class Static132 {
 
 	@OriginalMember(owner = "client!ke", name = "c", descriptor = "(III)V")
 	public static void method2606(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
-		@Pc(8) Class3_Sub2_Sub8 local8 = Static238.method4143(1, arg0);
+		@Pc(8) DelayedStateChange local8 = Static238.method4143(1, arg0);
 		local8.method1017();
 		local8.anInt1271 = arg1;
 	}
 
 	@OriginalMember(owner = "client!ke", name = "a", descriptor = "(IIIBI)V")
 	public static void method2607(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(4) int arg3) {
-		@Pc(8) Class3_Sub2_Sub8 local8 = Static238.method4143(4, arg2);
+		@Pc(8) DelayedStateChange local8 = Static238.method4143(4, arg2);
 		local8.method1017();
 		local8.anInt1270 = arg3;
 		local8.anInt1269 = arg0;
@@ -88,7 +85,7 @@ public final class Static132 {
 	}
 
 	@OriginalMember(owner = "client!ke", name = "a", descriptor = "(Lclient!rh;IIIIIIIZ)V")
-	public static void method2610(@OriginalArg(0) Class131 arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) boolean arg8) {
+	public static void method2610(@OriginalArg(0) QuickGround arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) boolean arg8) {
 		@Pc(6) int local6;
 		@Pc(7) int local7 = local6 = (arg6 << 7) - Static149.anInt3555;
 		@Pc(14) int local14;
@@ -97,10 +94,10 @@ public final class Static132 {
 		@Pc(21) int local21 = local20 = local7 + 128;
 		@Pc(26) int local26;
 		@Pc(27) int local27 = local26 = local15 + 128;
-		@Pc(37) int local37 = Static83.anIntArrayArrayArray4[arg1][arg6][arg7] - Static162.anInt3947;
-		@Pc(49) int local49 = Static83.anIntArrayArrayArray4[arg1][arg6 + 1][arg7] - Static162.anInt3947;
-		@Pc(63) int local63 = Static83.anIntArrayArrayArray4[arg1][arg6 + 1][arg7 + 1] - Static162.anInt3947;
-		@Pc(75) int local75 = Static83.anIntArrayArrayArray4[arg1][arg6][arg7 + 1] - Static162.anInt3947;
+		@Pc(37) int local37 = Static83.groundh[arg1][arg6][arg7] - Static162.anInt3947;
+		@Pc(49) int local49 = Static83.groundh[arg1][arg6 + 1][arg7] - Static162.anInt3947;
+		@Pc(63) int local63 = Static83.groundh[arg1][arg6 + 1][arg7 + 1] - Static162.anInt3947;
+		@Pc(75) int local75 = Static83.groundh[arg1][arg6][arg7 + 1] - Static162.anInt3947;
 		@Pc(85) int local85 = local15 * arg4 + local7 * arg5 >> 16;
 		@Pc(95) int local95 = local15 * arg5 - local7 * arg4 >> 16;
 		@Pc(97) int local97 = local85;
@@ -151,7 +148,7 @@ public final class Static132 {
 				Static56.anInt1742 = arg6;
 				Static116.anInt2954 = arg7;
 			}
-			if (!Static239.aBoolean269 && !arg8) {
+			if (!GameShell.glRenderer && !arg8) {
 				Static94.aBoolean138 = false;
 				if (local307 < 0 || local323 < 0 || local291 < 0 || local307 > Static94.anInt2472 || local323 > Static94.anInt2472 || local291 > Static94.anInt2472) {
 					Static94.aBoolean138 = true;
@@ -177,7 +174,7 @@ public final class Static132 {
 			Static56.anInt1742 = arg6;
 			Static116.anInt2954 = arg7;
 		}
-		if (Static239.aBoolean269 || arg8) {
+		if (GameShell.glRenderer || arg8) {
 			return;
 		}
 		Static94.aBoolean138 = false;

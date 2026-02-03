@@ -5,9 +5,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static131 {
 
-	@OriginalMember(owner = "client!kd", name = "pb", descriptor = "I")
-	public static int anInt3252;
-
 	@OriginalMember(owner = "client!kd", name = "ub", descriptor = "I")
 	public static int anInt3255;
 
@@ -15,10 +12,10 @@ public final class Static131 {
 	public static int anInt3261;
 
 	@OriginalMember(owner = "client!kd", name = "kb", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_624 = Static28.method790("Allocating memory");
+	private static final JagString aClass100_624 = JagString.wrap("Allocating memory");
 
 	@OriginalMember(owner = "client!kd", name = "mb", descriptor = "[Lclient!cl;")
-	public static final Class3_Sub2_Sub7[] aClass3_Sub2_Sub7Array5 = new Class3_Sub2_Sub7[14];
+	public static final AnimFrameSet[] aClass3_Sub2_Sub7Array5 = new AnimFrameSet[14];
 
 	@OriginalMember(owner = "client!kd", name = "ob", descriptor = "I")
 	public static int anInt3251 = 0;
@@ -30,7 +27,7 @@ public final class Static131 {
 	public static final int[] anIntArray307 = new int[] { 1, 1, 0, 0, 0, 8, 0, 0, 8 };
 
 	@OriginalMember(owner = "client!kd", name = "tb", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_625 = Static28.method790("Connect-B au serveur de mise -9 jour");
+	public static final JagString aClass100_625 = JagString.wrap("Connect-B au serveur de mise -9 jour");
 
 	@OriginalMember(owner = "client!kd", name = "yb", descriptor = "S")
 	public static short aShort21 = 32767;
@@ -39,7 +36,7 @@ public final class Static131 {
 	public static int anInt3259 = 0;
 
 	@OriginalMember(owner = "client!kd", name = "Ab", descriptor = "Lclient!na;")
-	public static Class100 aClass100_626 = aClass100_624;
+	public static JagString aClass100_626 = aClass100_624;
 
 	@OriginalMember(owner = "client!kd", name = "Bb", descriptor = "I")
 	public static int anInt3260 = -1;
@@ -80,7 +77,7 @@ public final class Static131 {
 	}
 
 	@OriginalMember(owner = "client!kd", name = "a", descriptor = "([[F[[II[[FI[ILclient!fj;BLclient!gi;[[FI)V")
-	public static void method2578(@OriginalArg(0) float[][] arg0, @OriginalArg(1) int[][] arg1, @OriginalArg(2) int arg2, @OriginalArg(3) float[][] arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int[] arg5, @OriginalArg(6) Class45 arg6, @OriginalArg(8) Class51 arg7, @OriginalArg(9) float[][] arg8, @OriginalArg(10) int arg9) {
+	public static void method2578(@OriginalArg(0) float[][] arg0, @OriginalArg(1) int[][] arg1, @OriginalArg(2) int arg2, @OriginalArg(3) float[][] arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int[] arg5, @OriginalArg(6) Light_Class1 arg6, @OriginalArg(8) Light arg7, @OriginalArg(9) float[][] arg8, @OriginalArg(10) int arg9) {
 		@Pc(7) int[] local7 = new int[arg5.length / 2];
 		for (@Pc(13) int local13 = 0; local13 < local7.length; local13++) {
 			@Pc(27) int local27 = arg5[local13 + local13];
@@ -145,21 +142,21 @@ public final class Static131 {
 	}
 
 	@OriginalMember(owner = "client!kd", name = "a", descriptor = "(IIZLjava/awt/Component;)Lclient!vk;")
-	public static Class27 method2579(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) Component arg2) {
+	public static PixMap method2579(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) Component arg2) {
 		try {
-			@Pc(12) Class local12 = Class.forName("Class27_Sub2");
-			@Pc(16) Class27 local16 = (Class27) local12.getDeclaredConstructor().newInstance();
+			@Pc(12) Class local12 = Class.forName("JavaPixMap");
+			@Pc(16) PixMap local16 = (PixMap) local12.getDeclaredConstructor().newInstance();
 			local16.method4192(arg0, arg1, arg2);
 			return local16;
 		} catch (@Pc(25) Throwable local25) {
-			@Pc(29) Class27_Sub1 local29 = new Class27_Sub1();
+			@Pc(29) JavaSafePixMap local29 = new JavaSafePixMap();
 			local29.method4192(arg0, arg1, arg2);
 			return local29;
 		}
 	}
 
 	@OriginalMember(owner = "client!kd", name = "a", descriptor = "(IIILclient!ve;)[Lclient!qf;")
-	public static Class3_Sub2_Sub1[] method2580(@OriginalArg(2) int arg0, @OriginalArg(3) Class153 arg1) {
+	public static AbstractPix32[] method2580(@OriginalArg(2) int arg0, @OriginalArg(3) Js5 arg1) {
 		return Static234.method4016(arg1, 0, arg0) ? Static33.method870() : null;
 	}
 }

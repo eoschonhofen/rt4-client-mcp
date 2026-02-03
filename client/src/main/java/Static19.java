@@ -16,7 +16,7 @@ public final class Static19 {
 	public static int anInt647;
 
 	@OriginalMember(owner = "client!bi", name = "W", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_112 = Static28.method790("k");
+	public static final JagString aClass100_112 = JagString.wrap("k");
 
 	@OriginalMember(owner = "client!bi", name = "jb", descriptor = "Z")
 	public static boolean aBoolean43 = true;
@@ -41,7 +41,7 @@ public final class Static19 {
 
 	@OriginalMember(owner = "client!bi", name = "c", descriptor = "(II)V")
 	public static void method586() {
-		Static262.aClass99_34.method3102(5);
+		BasType.recentUse.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!bi", name = "f", descriptor = "(B)V")
@@ -54,7 +54,7 @@ public final class Static19 {
 			} else {
 				local22 = Static105.anIntArray256[local11];
 			}
-			@Pc(30) Class8_Sub4_Sub1 local30 = Static159.aClass8_Sub4_Sub1Array1[local22];
+			@Pc(30) ClientPlayer local30 = Static159.aClass8_Sub4_Sub1Array1[local22];
 			if (local30 != null && local30.anInt3408 > 0) {
 				local30.anInt3408--;
 				if (local30.anInt3408 == 0) {
@@ -64,7 +64,7 @@ public final class Static19 {
 		}
 		for (local11 = 0; local11 < Static272.anInt5214; local11++) {
 			@Pc(68) int local68 = Static33.anIntArray79[local11];
-			@Pc(72) Class8_Sub4_Sub2 local72 = Static175.aClass8_Sub4_Sub2Array1[local68];
+			@Pc(72) ClientNPC local72 = Static175.aClass8_Sub4_Sub2Array1[local68];
 			if (local72 != null && local72.anInt3408 > 0) {
 				local72.anInt3408--;
 				if (local72.anInt3408 == 0) {
@@ -119,14 +119,14 @@ public final class Static19 {
 
 	@OriginalMember(owner = "client!bi", name = "a", descriptor = "(BLjava/awt/Component;)V")
 	public static void method591(@OriginalArg(1) Component arg0) {
-		@Pc(10) Method local10 = Class213.aMethod6;
+		@Pc(10) Method local10 = SignLink.setTraversalKeysEnabled;
 		if (local10 != null) {
 			try {
 				local10.invoke(arg0, Boolean.FALSE);
 			} catch (@Pc(25) Throwable local25) {
 			}
 		}
-		arg0.addKeyListener(Static10.aClass149_1);
-		arg0.addFocusListener(Static10.aClass149_1);
+		arg0.addKeyListener(ClientKeyboardListener.aClass149_1);
+		arg0.addFocusListener(ClientKeyboardListener.aClass149_1);
 	}
 }

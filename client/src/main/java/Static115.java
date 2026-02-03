@@ -8,37 +8,37 @@ public final class Static115 {
 	public static int anInt2940;
 
 	@OriginalMember(owner = "client!ja", name = "b", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_577 = Static28.method790("S-Blectionner");
+	public static final JagString aClass100_577 = JagString.wrap("S-Blectionner");
 
 	@OriginalMember(owner = "client!ja", name = "d", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_578 = Static28.method790("niveau ");
+	public static final JagString aClass100_578 = JagString.wrap("niveau ");
 
 	@OriginalMember(owner = "client!ja", name = "f", descriptor = "Lclient!ih;")
-	public static final Class69 aClass69_70 = new Class69();
+	public static final LinkList aClass69_70 = new LinkList();
 
 	@OriginalMember(owner = "client!ja", name = "j", descriptor = "I")
 	public static int anInt2937 = 0;
 
 	@OriginalMember(owner = "client!ja", name = "k", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_579 = Static28.method790("Fps:");
+	public static final JagString aClass100_579 = JagString.wrap("Fps:");
 
 	@OriginalMember(owner = "client!ja", name = "l", descriptor = "[Lclient!wa;")
-	public static final Class3_Sub15[] aClass3_Sub15Array1 = new Class3_Sub15[2048];
+	public static final Packet[] aClass3_Sub15Array1 = new Packet[2048];
 
 	@OriginalMember(owner = "client!ja", name = "n", descriptor = "I")
 	public static int anInt2939 = 0;
 
 	@OriginalMember(owner = "client!ja", name = "o", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_580 = Static28.method790("voudrait faire un -Bchange avec vous)3");
+	public static final JagString aClass100_580 = JagString.wrap("voudrait faire un -Bchange avec vous)3");
 
 	@OriginalMember(owner = "client!ja", name = "p", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_581 = Static28.method790(" est d-Bj-9 dans votre liste d(Wamis)3");
+	public static final JagString aClass100_581 = JagString.wrap(" est d-Bj-9 dans votre liste d(Wamis)3");
 
 	@OriginalMember(owner = "client!ja", name = "r", descriptor = "I")
 	public static int anInt2941 = -1;
 
 	@OriginalMember(owner = "client!ja", name = "s", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_582 = Static28.method790("http:)4)4");
+	public static final JagString aClass100_582 = JagString.wrap("http:)4)4");
 
 	@OriginalMember(owner = "client!ja", name = "a", descriptor = "([II)[I")
 	public static int[] method2308(@OriginalArg(0) int[] arg0) {
@@ -77,15 +77,9 @@ public final class Static115 {
 		Static256.method4392();
 	}
 
-	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(Lclient!ve;Lclient!ve;I)V")
-	public static void method2311(@OriginalArg(0) Class153 arg0, @OriginalArg(1) Class153 arg1) {
-		Static87.aClass153_38 = arg1;
-		Static29.aClass153_19 = arg0;
-	}
-
 	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(II)V")
 	public static void method2312(@OriginalArg(0) int arg0) {
-		Static11.anInt386 = 1000 / arg0;
+		GameShell.deltime = 1000 / arg0;
 	}
 
 	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(IIIIIZ)V")
@@ -96,7 +90,7 @@ public final class Static115 {
 		if (arg2 < 1) {
 			arg2 = 1;
 		}
-		if (Static239.aBoolean269) {
+		if (GameShell.glRenderer) {
 			@Pc(25) int local25 = arg2 - 334;
 			if (local25 < 0) {
 				local25 = 0;

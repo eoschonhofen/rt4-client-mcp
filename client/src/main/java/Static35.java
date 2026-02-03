@@ -6,9 +6,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static35 {
 
-	@OriginalMember(owner = "client!cl", name = "J", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_22;
-
 	@OriginalMember(owner = "client!cl", name = "V", descriptor = "[I")
 	public static int[] anIntArray82;
 
@@ -19,19 +16,19 @@ public final class Static35 {
 	public static final Calendar aCalendar1 = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 
 	@OriginalMember(owner = "client!cl", name = "N", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_216 = Static28.method790("K");
+	private static final JagString aClass100_216 = JagString.wrap("K");
 
 	@OriginalMember(owner = "client!cl", name = "P", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_217 = Static28.method790("brillant3:");
+	public static final JagString aClass100_217 = JagString.wrap("brillant3:");
 
 	@OriginalMember(owner = "client!cl", name = "Q", descriptor = "Lclient!na;")
-	public static Class100 aClass100_218 = aClass100_216;
+	public static JagString aClass100_218 = aClass100_216;
 
 	@OriginalMember(owner = "client!cl", name = "R", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_219 = Static28.method790(",Mcran)2titre ouvert");
+	public static final JagString aClass100_219 = JagString.wrap(",Mcran)2titre ouvert");
 
 	@OriginalMember(owner = "client!cl", name = "T", descriptor = "Lclient!na;")
-	public static Class100 aClass100_220 = aClass100_216;
+	public static JagString aClass100_220 = aClass100_216;
 
 	@OriginalMember(owner = "client!cl", name = "Y", descriptor = "I")
 	public static int anInt1092 = -1;
@@ -41,9 +38,6 @@ public final class Static35 {
 
 	@OriginalMember(owner = "client!cl", name = "ab", descriptor = "[I")
 	public static final int[] anIntArray83 = new int[256];
-
-	@OriginalMember(owner = "client!cl", name = "bb", descriptor = "Z")
-	public static volatile boolean aBoolean66 = false;
 
 	@OriginalMember(owner = "client!cl", name = "a", descriptor = "(IIIBII)V")
 	public static void method898(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4) {
@@ -108,12 +102,12 @@ public final class Static35 {
 
 	@OriginalMember(owner = "client!cl", name = "a", descriptor = "(III)J")
 	public static long method899(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) Class3_Sub5 local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
 		if (local7 == null) {
 			return 0L;
 		}
 		for (@Pc(13) int local13 = 0; local13 < local7.anInt662; local13++) {
-			@Pc(22) Class31 local22 = local7.aClass31Array1[local13];
+			@Pc(22) Sprite local22 = local7.aClass31Array1[local13];
 			if ((local22.aLong56 >> 29 & 0x3L) == 2L && local22.anInt1701 == arg1 && local22.anInt1696 == arg2) {
 				return local22.aLong56;
 			}

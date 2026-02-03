@@ -9,13 +9,10 @@ public final class Static99 {
 	public static int[] anIntArray239;
 
 	@OriginalMember(owner = "client!hk", name = "W", descriptor = "Lclient!ih;")
-	public static final Class69 aClass69_64 = new Class69();
+	public static final LinkList aClass69_64 = new LinkList();
 
 	@OriginalMember(owner = "client!hk", name = "db", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_529 = Static28.method790("::wm3");
-
-	@OriginalMember(owner = "client!hk", name = "eb", descriptor = "Z")
-	public static boolean aBoolean143 = true;
+	public static final JagString aClass100_529 = JagString.wrap("::wm3");
 
 	@OriginalMember(owner = "client!hk", name = "fb", descriptor = "[I")
 	public static final int[] anIntArray240 = new int[25];

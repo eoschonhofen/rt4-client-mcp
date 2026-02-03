@@ -4,17 +4,14 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static267 {
 
-	@OriginalMember(owner = "client!vl", name = "g", descriptor = "Lclient!ve;")
-	public static Class153 aClass153_109;
-
 	@OriginalMember(owner = "client!vl", name = "a", descriptor = "Lclient!n;")
-	public static final Class99 aClass99_37 = new Class99(100);
+	public static final SoftLruCache aClass99_37 = new SoftLruCache(100);
 
 	@OriginalMember(owner = "client!vl", name = "e", descriptor = "[I")
 	public static final int[] anIntArray517 = new int[] { 1, 2, 4, 8 };
 
 	@OriginalMember(owner = "client!vl", name = "f", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1087 = Static28.method790("Cabbage");
+	public static final JagString aClass100_1087 = JagString.wrap("Cabbage");
 
 	@OriginalMember(owner = "client!vl", name = "h", descriptor = "I")
 	public static int anInt5773 = 0;
@@ -32,12 +29,12 @@ public final class Static267 {
 	public static int anInt5776 = 0;
 
 	@OriginalMember(owner = "client!vl", name = "a", descriptor = "(III)Lclient!bm;")
-	public static Class15 method4526(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) Class3_Sub5 local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+	public static GroundDecor method4526(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
+		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
 		if (local7 == null) {
 			return null;
 		} else {
-			@Pc(14) Class15 local14 = local7.aClass15_1;
+			@Pc(14) GroundDecor local14 = local7.aClass15_1;
 			local7.aClass15_1 = null;
 			return local14;
 		}
@@ -45,9 +42,9 @@ public final class Static267 {
 
 	@OriginalMember(owner = "client!vl", name = "a", descriptor = "(I)Z")
 	public static boolean method4527() {
-		if (Static150.aBoolean175) {
+		if (client.js) {
 			try {
-				return !((Boolean) Static119.aClass100_588.method3157(Static71.aClass213_3.anApplet2));
+				return !((Boolean) Static119.aClass100_588.method3157(GameShell.signlink.applet));
 			} catch (@Pc(21) Throwable local21) {
 			}
 		}
@@ -147,7 +144,7 @@ public final class Static267 {
 
 	@OriginalMember(owner = "client!vl", name = "b", descriptor = "(I)V")
 	public static void method4529() {
-		Static231.aClass99_29.method3103();
+		MsiType.recentUse.method3103();
 		Static219.aClass99_27.method3103();
 	}
 }

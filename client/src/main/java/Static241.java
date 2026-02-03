@@ -5,22 +5,19 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static241 {
 
 	@OriginalMember(owner = "client!th", name = "f", descriptor = "[Lclient!ok;")
-	public static Class36[] aClass36Array16;
-
-	@OriginalMember(owner = "client!th", name = "j", descriptor = "[[Lclient!be;")
-	public static Class13[][] aClass13ArrayArray12;
+	public static Pix8[] aClass36Array16;
 
 	@OriginalMember(owner = "client!th", name = "m", descriptor = "[Lclient!be;")
-	public static Class13[] aClass13Array13;
+	public static IfType[] aClass13Array13;
 
 	@OriginalMember(owner = "client!th", name = "o", descriptor = "[I")
 	public static int[] anIntArray522;
 
 	@OriginalMember(owner = "client!th", name = "p", descriptor = "[Lclient!mm;")
-	public static Class3_Sub2_Sub1_Sub1[] aClass3_Sub2_Sub1_Sub1Array13;
+	public static Pix32[] aClass3_Sub2_Sub1_Sub1Array13;
 
 	@OriginalMember(owner = "client!th", name = "h", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_1088 = Static28.method790("::setparticles");
+	public static final JagString aClass100_1088 = JagString.wrap("::setparticles");
 
 	@OriginalMember(owner = "client!th", name = "i", descriptor = "[I")
 	public static final int[] anIntArray520 = new int[14];
@@ -77,18 +74,6 @@ public final class Static241 {
 		} else {
 			return arg3;
 		}
-	}
-
-	@OriginalMember(owner = "client!th", name = "a", descriptor = "(ZBLclient!ve;Lclient!dd;Lclient!ve;)V")
-	public static void method4542(@OriginalArg(2) Class153 arg0, @OriginalArg(3) Class3_Sub2_Sub9_Sub1 arg1, @OriginalArg(4) Class153 arg2) {
-		Static240.aBoolean276 = true;
-		Static230.aClass153_95 = arg2;
-		Static167.aClass153_61 = arg0;
-		@Pc(23) int local23 = Static167.aClass153_61.method4483() - 1;
-		Static170.anInt3245 = Static167.aClass153_61.method4504(local23) + local23 * 256;
-		Static143.aClass100Array104 = new Class100[] { null, null, null, null, Static41.aClass100_271 };
-		Static269.aClass100Array87 = new Class100[] { null, null, Static229.aClass100_973, null, null };
-		Static256.aClass3_Sub2_Sub9_Sub1_1 = arg1;
 	}
 
 	@OriginalMember(owner = "client!th", name = "a", descriptor = "(BIIIII)V")
@@ -160,8 +145,8 @@ public final class Static241 {
 
 	@OriginalMember(owner = "client!th", name = "a", descriptor = "(Z)V")
 	public static void method4548() {
-		Static172.aClass3_Sub3_Sub4_2.method4446();
-		Static14.anInt441 = 1;
-		Static172.aClass153_70 = null;
+		Static172.midiPlayer.stop();
+		Static14.state = 1;
+		Static172.midis = null;
 	}
 }

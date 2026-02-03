@@ -5,10 +5,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static144 {
 
 	@OriginalMember(owner = "client!le", name = "c", descriptor = "Lclient!rf;")
-	public static Class3_Sub29 aClass3_Sub29_1;
-
-	@OriginalMember(owner = "client!le", name = "e", descriptor = "I")
-	public static int anInt3490 = 0;
+	public static MidiFile loadingMidiFile;
 
 	@OriginalMember(owner = "client!le", name = "k", descriptor = "Z")
 	public static boolean aBoolean173 = false;
@@ -226,8 +223,8 @@ public final class Static144 {
 									local233 = local222 & 0x3FFF;
 									if (local233 != 0) {
 										local254 = local222 >> 14 & 0x3;
-										@Pc(998) Class2 local998 = Static40.method1013(local233 - 1);
-										@Pc(1003) Class36_Sub1 local1003 = local998.method9(local254);
+										@Pc(998) MsiType local998 = MsiType.list(local233 - 1);
+										@Pc(1003) SoftwarePix8 local1003 = local998.method9(local254);
 										if (local1003 != null) {
 											local276 = local162 * local1003.anInt4278 / 4;
 											local270 = local62 * local1003.anInt4270 / 4;
@@ -262,11 +259,11 @@ public final class Static144 {
 
 	@OriginalMember(owner = "client!le", name = "a", descriptor = "(I)I")
 	public static int method2736() {
-		if (Static69.aFrame2 != null) {
+		if (GameShell.aFrame2 != null) {
 			return 3;
-		} else if (Static239.aBoolean269 && Static124.aBoolean156) {
+		} else if (GameShell.glRenderer && Static124.aBoolean156) {
 			return 2;
-		} else if (Static239.aBoolean269 && !Static124.aBoolean156) {
+		} else if (GameShell.glRenderer && !Static124.aBoolean156) {
 			return 1;
 		} else {
 			return 0;

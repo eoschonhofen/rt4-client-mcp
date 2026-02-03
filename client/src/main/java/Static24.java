@@ -5,20 +5,20 @@ import org.openrs2.deob.annotation.Pc;
 public final class Static24 {
 
 	@OriginalMember(owner = "client!bn", name = "N", descriptor = "Lclient!be;")
-	public static Class13 aClass13_8;
+	public static IfType aClass13_8;
 
 	@OriginalMember(owner = "client!bn", name = "O", descriptor = "I")
 	public static int anInt761;
 
 	@OriginalMember(owner = "client!bn", name = "V", descriptor = "I")
-	public static int anInt766 = 0;
+	public static int componentDrawCount = 0;
 
 	@OriginalMember(owner = "client!bn", name = "eb", descriptor = "I")
 	public static int anInt773 = 0;
 
 	@OriginalMember(owner = "client!bn", name = "c", descriptor = "(II)V")
 	public static void method666() {
-		Static232.aClass99_30.method3102(5);
+		VarpType.recentUse.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!bn", name = "a", descriptor = "(III)I")
@@ -33,14 +33,14 @@ public final class Static24 {
 	}
 
 	@OriginalMember(owner = "client!bn", name = "a", descriptor = "(BZLclient!na;)V")
-	public static void method668(@OriginalArg(1) boolean arg0, @OriginalArg(2) Class100 arg1) {
-		@Pc(9) Class100 local9 = arg1.method3114();
+	public static void method668(@OriginalArg(1) boolean arg0, @OriginalArg(2) JagString arg1) {
+		@Pc(9) JagString local9 = arg1.method3114();
 		@Pc(11) int local11 = 0;
 		@Pc(22) short[] local22 = new short[16];
 		@Pc(28) int local28 = arg0 ? 32768 : 0;
-		@Pc(36) int local36 = (arg0 ? Static34.anInt1047 : Static144.anInt3490) + local28;
+		@Pc(36) int local36 = (arg0 ? QuickChatPhraseType.anInt1047 : QuickChatPhraseType.anInt3490) + local28;
 		for (@Pc(38) int local38 = local28; local38 < local36; local38++) {
-			@Pc(45) Class3_Sub2_Sub6 local45 = Static230.method3953(local38);
+			@Pc(45) QuickChatPhraseType local45 = QuickChatPhraseType.list(local38);
 			if (local45.aBoolean60 && local45.method769().method3114().method3131(local9) != -1) {
 				if (local11 >= 50) {
 					Static111.anInt2905 = -1;
@@ -60,9 +60,9 @@ public final class Static24 {
 		Static169.aShortArray52 = local22;
 		Static111.anInt2905 = local11;
 		Static67.anInt3356 = 0;
-		@Pc(113) Class100[] local113 = new Class100[Static111.anInt2905];
+		@Pc(113) JagString[] local113 = new JagString[Static111.anInt2905];
 		for (@Pc(115) int local115 = 0; local115 < Static111.anInt2905; local115++) {
-			local113[local115] = Static230.method3953(local22[local115]).method769();
+			local113[local115] = QuickChatPhraseType.list(local22[local115]).method769();
 		}
 		Static202.method3656(local113, Static169.aShortArray52);
 	}

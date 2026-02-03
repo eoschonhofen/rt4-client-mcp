@@ -7,7 +7,7 @@ public final class Static149 {
 	public static int anInt3551;
 
 	@OriginalMember(owner = "client!lj", name = "t", descriptor = "[Lclient!qf;")
-	public static Class3_Sub2_Sub1[] aClass3_Sub2_Sub1Array7;
+	public static AbstractPix32[] aClass3_Sub2_Sub1Array7;
 
 	@OriginalMember(owner = "client!lj", name = "y", descriptor = "Ljava/awt/Image;")
 	public static Image anImage3;
@@ -15,11 +15,8 @@ public final class Static149 {
 	@OriginalMember(owner = "client!lj", name = "B", descriptor = "I")
 	public static int anInt3555;
 
-	@OriginalMember(owner = "client!lj", name = "p", descriptor = "Lclient!gn;")
-	public static final Class54 aClass54_10 = new Class54(128);
-
 	@OriginalMember(owner = "client!lj", name = "q", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_683 = Static28.method790("Fallen lassen");
+	public static final JagString aClass100_683 = JagString.wrap("Fallen lassen");
 
 	@OriginalMember(owner = "client!lj", name = "w", descriptor = "I")
 	public static int anInt3554 = 0;

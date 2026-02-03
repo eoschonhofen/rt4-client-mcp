@@ -11,16 +11,16 @@ public final class Static113 {
 	public static int anInt4609 = 3;
 
 	@OriginalMember(owner = "client!il", name = "J", descriptor = "Lclient!na;")
-	private static final Class100 aClass100_868 = Static28.method790("Created gameworld");
+	private static final JagString aClass100_868 = JagString.wrap("Created gameworld");
 
 	@OriginalMember(owner = "client!il", name = "M", descriptor = "Lclient!na;")
-	public static Class100 aClass100_869 = aClass100_868;
+	public static JagString MAINLOAD10 = aClass100_868;
 
 	@OriginalMember(owner = "client!il", name = "Q", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_870 = Static28.method790("Textures charg-Bes");
+	public static final JagString aClass100_870 = JagString.wrap("Textures charg-Bes");
 
 	@OriginalMember(owner = "client!il", name = "R", descriptor = "Lclient!na;")
-	public static final Class100 aClass100_871 = Static28.method790("Liste des serveurs charg-Be");
+	public static final JagString aClass100_871 = JagString.wrap("Liste des serveurs charg-Be");
 
 	@OriginalMember(owner = "client!il", name = "a", descriptor = "(III)V")
 	public static void method3556(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
@@ -40,7 +40,7 @@ public final class Static113 {
 		if (arg1 >= 5 && arg1 <= 8) {
 			arg1 = 4;
 		}
-		@Pc(30) Class118 local30 = Static271.method4601(arg0);
+		@Pc(30) LocType local30 = LocType.list(arg0);
 		return local30.method3416(arg1);
 	}
 }
