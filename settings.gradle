@@ -1,0 +1,8 @@
+rootProject.name = 'rs2client'
+
+include(
+    'deob-annotations',
+    'gl',
+    'signlink',
+    'client'
+)

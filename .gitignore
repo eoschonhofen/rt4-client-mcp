@@ -1,4 +1,11 @@
 .idea/
-target/
 
+target/
 dependency-reduced-pom.xml
+
+/build/
+/*/build/
+
+.gradle/
+
+.DS_Store
