@@ -16,20 +16,11 @@ public final class Static2 {
 	@OriginalMember(owner = "client!aa", name = "a", descriptor = "I")
 	public static int anInt7 = 0;
 
-	@OriginalMember(owner = "client!aa", name = "r", descriptor = "Lclient!na;")
-	private static final JagString aClass100_5 = JagString.wrap("glow1:");
-
 	@OriginalMember(owner = "client!aa", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_3 = aClass100_5;
-
-	@OriginalMember(owner = "client!aa", name = "g", descriptor = "Lclient!na;")
-	public static JagString aClass100_4 = aClass100_5;
-
-	@OriginalMember(owner = "client!aa", name = "h", descriptor = "[S")
-	public static final short[] aShortArray1 = new short[] { 960, 957, -21568, -21571, 22464 };
+	public static final JagString aClass100_3 = Text.aClass100_5;
 
 	@OriginalMember(owner = "client!aa", name = "l", descriptor = "Z")
-	public static boolean aBoolean1 = false;
+	public static boolean memServer = false;
 
 	@OriginalMember(owner = "client!aa", name = "a", descriptor = "(SI)Z")
 	public static boolean method5(@OriginalArg(0) short arg0) {
@@ -61,20 +52,20 @@ public final class Static2 {
 				@Pc(72) HookReq local72;
 				if (arg1 == 0 && local23.anObjectArray12 != null) {
 					local72 = new HookReq();
-					local72.anObjectArray31 = local23.anObjectArray12;
-					local72.aClass13_17 = local23;
+					local72.onop = local23.anObjectArray12;
+					local72.component = local23;
 					Static82.method1767(local72);
 				}
 				if (arg1 == 1 && local23.anObjectArray8 != null) {
-					if (local23.anInt457 >= 0) {
+					if (local23.subId >= 0) {
 						@Pc(103) IfType local103 = Static5.method32(local23.parentId);
-						if (local103 == null || local103.aClass13Array3 == null || local23.anInt457 >= local103.aClass13Array3.length || local103.aClass13Array3[local23.anInt457] != local23) {
+						if (local103 == null || local103.aClass13Array3 == null || local23.subId >= local103.aClass13Array3.length || local103.aClass13Array3[local23.subId] != local23) {
 							continue;
 						}
 					}
 					local72 = new HookReq();
-					local72.anObjectArray31 = local23.anObjectArray8;
-					local72.aClass13_17 = local23;
+					local72.onop = local23.anObjectArray8;
+					local72.component = local23;
 					Static82.method1767(local72);
 				}
 			}
@@ -101,7 +92,7 @@ public final class Static2 {
 		@Pc(61) int local61 = 0;
 		@Pc(64) int local64 = local53 + 1;
 		Static84.anIntArray209[0] = arg3;
-		@Pc(71) int[][] local71 = Static148.aClass97Array1[Static55.anInt1735].anIntArrayArray30;
+		@Pc(71) int[][] local71 = Client.levelCollisionMap[Static55.anInt1735].anIntArrayArray30;
 		@Pc(193) int local193;
 		while (local61 != local64) {
 			local3 = Static259.anIntArray514[local61];
@@ -112,16 +103,16 @@ public final class Static2 {
 				break;
 			}
 			if (arg1 != 0) {
-				if ((arg1 < 5 || arg1 == 10) && Static148.aClass97Array1[Static55.anInt1735].method3042(arg4, local3, local8, arg8, arg1 - 1, 2, arg7)) {
+				if ((arg1 < 5 || arg1 == 10) && Client.levelCollisionMap[Static55.anInt1735].method3042(arg4, local3, local8, arg8, arg1 - 1, 2, arg7)) {
 					local59 = true;
 					break;
 				}
-				if (arg1 < 10 && Static148.aClass97Array1[Static55.anInt1735].method3046(arg4, arg1 - 1, arg8, local8, 2, arg7, local3)) {
+				if (arg1 < 10 && Client.levelCollisionMap[Static55.anInt1735].method3046(arg4, arg1 - 1, arg8, local8, 2, arg7, local3)) {
 					local59 = true;
 					break;
 				}
 			}
-			if (arg0 != 0 && arg6 != 0 && Static148.aClass97Array1[Static55.anInt1735].method3052(arg8, local8, local3, 2, arg0, arg2, arg4, arg6)) {
+			if (arg0 != 0 && arg6 != 0 && Client.levelCollisionMap[Static55.anInt1735].method3052(arg8, local8, local3, 2, arg0, arg2, arg4, arg6)) {
 				local59 = true;
 				break;
 			}

@@ -20,9 +20,4 @@ public final class Static227 {
 	@OriginalMember(owner = "client!sg", name = "q", descriptor = "[I")
 	public static final int[] anIntArray447 = new int[128];
 
-	@OriginalMember(owner = "client!sg", name = "a", descriptor = "(B)V")
-	public static void method3903() {
-		SeqType.recentUse.method3103();
-		Static267.aClass99_37.method3103();
-	}
 }

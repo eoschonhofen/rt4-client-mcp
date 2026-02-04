@@ -5,15 +5,6 @@ public final class Static259 {
 	@OriginalMember(owner = "client!vc", name = "R", descriptor = "[I")
 	public static int[] anIntArray513;
 
-	@OriginalMember(owner = "client!vc", name = "db", descriptor = "[S")
-	public static short[] aShortArray88;
-
-	@OriginalMember(owner = "client!vc", name = "X", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1074 = JagString.wrap("Loading sprites )2 ");
-
-	@OriginalMember(owner = "client!vc", name = "Q", descriptor = "Lclient!na;")
-	public static JagString aClass100_1073 = aClass100_1074;
-
 	@OriginalMember(owner = "client!vc", name = "V", descriptor = "[J")
 	public static final long[] aLongArray11 = new long[1000];
 

@@ -7,7 +7,7 @@ import org.openrs2.deob.annotation.Pc;
 public final class LightType {
 
 	@OriginalMember(owner = "client!rm", name = "d", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_28 = new SoftLruCache(64);
+	public static final SoftLruCache recentUse = new SoftLruCache(64);
 
 	@OriginalMember(owner = "client!gl", name = "a", descriptor = "Lclient!ve;")
 	public static Js5 aClass153_36;
@@ -26,7 +26,7 @@ public final class LightType {
 
     @OriginalMember(owner = "client!la", name = "a", descriptor = "(II)Lclient!ic;")
     public static LightType list(@OriginalArg(1) int arg0) {
-        @Pc(10) LightType local10 = (LightType) aClass99_28.find((long) arg0);
+        @Pc(10) LightType local10 = (LightType) recentUse.find((long) arg0);
         if (local10 != null) {
             return local10;
         }
@@ -35,13 +35,28 @@ public final class LightType {
         if (local26 != null) {
             local10.decode(new Packet(local26), arg0);
         }
-        aClass99_28.put(local10, (long) arg0);
+        recentUse.put(local10, (long) arg0);
         return local10;
     }
 
 	@OriginalMember(owner = "client!id", name = "a", descriptor = "(Lclient!ve;B)V")
 	public static void init(@OriginalArg(0) Js5 arg0) {
 		aClass153_36 = arg0;
+	}
+
+	@OriginalMember(owner = "client!c", name = "c", descriptor = "(II)V")
+	public static void method715() {
+		recentUse.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!gd", name = "b", descriptor = "(I)V")
+	public static void method1695() {
+		recentUse.method3104();
+	}
+
+	@OriginalMember(owner = "client!hd", name = "a", descriptor = "(I)V")
+	public static void method1882() {
+		recentUse.clear();
 	}
 
 	@OriginalMember(owner = "client!ic", name = "a", descriptor = "(ILclient!wa;I)V")

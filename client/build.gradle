@@ -19,13 +19,13 @@ dependencies {
 }
 
 application {
-    mainClass = 'client'
+    mainClass = 'Client'
 }
 
 jar {
     manifest {
         attributes(
-            'Main-Class': 'client'
+            'Main-Class': 'Client'
         )
     }
 

@@ -16,12 +16,6 @@ public final class Static165 {
 	@OriginalMember(owner = "client!nb", name = "a", descriptor = "Lclient!na;")
 	public static final JagString aClass100_772 = JagString.wrap("um");
 
-	@OriginalMember(owner = "client!nb", name = "b", descriptor = "Lclient!na;")
-	private static final JagString aClass100_773 = JagString.wrap("You can(Wt add yourself to your own ignore list)3");
-
-	@OriginalMember(owner = "client!nb", name = "c", descriptor = "Lclient!na;")
-	public static JagString aClass100_774 = aClass100_773;
-
 	@OriginalMember(owner = "client!nb", name = "d", descriptor = "I")
 	public static int anInt4035 = 0;
 

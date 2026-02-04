@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static271 {
 
-	@OriginalMember(owner = "client!wc", name = "c", descriptor = "I")
-	public static int anInt5800;
-
 	@OriginalMember(owner = "client!wc", name = "g", descriptor = "I")
 	public static int locModelLoadCount = 0;
 
@@ -23,7 +20,7 @@ public final class Static271 {
 			return;
 		}
 		if (local10.aClass3_Sub3_Sub1_1 != null) {
-			client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_1);
+			Client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_1);
 			local10.aClass3_Sub3_Sub1_1 = null;
 		}
 		local10.unlink();

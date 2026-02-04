@@ -49,9 +49,9 @@ public final class Static31 {
 		}
 		try {
 			if (++Static20.anInt673 > 1500) {
-				if (Static124.loginStream != null) {
-					Static124.loginStream.close();
-					Static124.loginStream = null;
+				if (Client.stream != null) {
+					Client.stream.close();
+					Client.stream = null;
 				}
 				if (Static196.anInt4587 >= 1) {
 					Static266.anInt5336 = -5;
@@ -61,14 +61,14 @@ public final class Static31 {
 				Static20.anInt673 = 0;
 				Static196.anInt4587++;
 				Static219.anInt4937 = 1;
-				if (Static208.anInt4784 == Static249.loginGamePort) {
-					Static208.anInt4784 = Static97.loginJs5Port;
+				if (Client.anInt4784 == Client.loginGamePort) {
+					Client.anInt4784 = Client.loginJs5Port;
 				} else {
-					Static208.anInt4784 = Static249.loginGamePort;
+					Client.anInt4784 = Client.loginGamePort;
 				}
 			}
 			if (Static219.anInt4937 == 1) {
-				Static72.aClass212_3 = GameShell.signlink.socketreq(Static143.loginHost, Static208.anInt4784);
+				Static72.aClass212_3 = GameShell.signlink.socketreq(Client.loginHost, Client.anInt4784);
 				Static219.anInt4937 = 2;
 			}
 			@Pc(126) int local126;
@@ -79,60 +79,60 @@ public final class Static31 {
 				if (Static72.aClass212_3.status != 1) {
 					return;
 				}
-				Static124.loginStream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
+				Client.stream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
 				Static72.aClass212_3 = null;
-				Static124.loginStream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
-				if (client.midiPcmPlayer != null) {
-					client.midiPcmPlayer.method3571();
+				Client.stream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				if (Client.midiPcmPlayer != null) {
+					Client.midiPcmPlayer.method3571();
 				}
-				if (client.soundPcmPlayer != null) {
-					client.soundPcmPlayer.method3571();
+				if (Client.soundPcmPlayer != null) {
+					Client.soundPcmPlayer.method3571();
 				}
-				local126 = Static124.loginStream.method2828();
-				if (client.midiPcmPlayer != null) {
-					client.midiPcmPlayer.method3571();
+				local126 = Client.stream.method2828();
+				if (Client.midiPcmPlayer != null) {
+					Client.midiPcmPlayer.method3571();
 				}
-				if (client.soundPcmPlayer != null) {
-					client.soundPcmPlayer.method3571();
+				if (Client.soundPcmPlayer != null) {
+					Client.soundPcmPlayer.method3571();
 				}
 				if (local126 != 101) {
 					Static266.anInt5336 = local126;
 					Static219.anInt4937 = 0;
-					Static124.loginStream.close();
-					Static124.loginStream = null;
+					Client.stream.close();
+					Client.stream = null;
 					return;
 				}
 				Static219.anInt4937 = 3;
 			}
 			if (Static219.anInt4937 == 3) {
-				if (Static124.loginStream.available() < 2) {
+				if (Client.stream.available() < 2) {
 					return;
 				}
-				local126 = Static124.loginStream.method2828() << 8 | Static124.loginStream.method2828();
+				local126 = Client.stream.method2828() << 8 | Client.stream.method2828();
 				Static176.method3303(local126);
-				if (Static125.anInt3103 == -1) {
+				if (Client.anInt3103 == -1) {
 					Static219.anInt4937 = 0;
 					Static266.anInt5336 = 6;
-					Static124.loginStream.close();
-					Static124.loginStream = null;
+					Client.stream.close();
+					Client.stream = null;
 					return;
 				}
 				Static219.anInt4937 = 0;
-				Static124.loginStream.close();
-				Static124.loginStream = null;
+				Client.stream.close();
+				Client.stream = null;
 				Static49.method1208();
 				return;
 			}
 		} catch (@Pc(210) IOException local210) {
-			if (Static124.loginStream != null) {
-				Static124.loginStream.close();
-				Static124.loginStream = null;
+			if (Client.stream != null) {
+				Client.stream.close();
+				Client.stream = null;
 			}
 			if (Static196.anInt4587 < 1) {
-				if (Static208.anInt4784 == Static249.loginGamePort) {
-					Static208.anInt4784 = Static97.loginJs5Port;
+				if (Client.anInt4784 == Client.loginGamePort) {
+					Client.anInt4784 = Client.loginJs5Port;
 				} else {
-					Static208.anInt4784 = Static249.loginGamePort;
+					Client.anInt4784 = Client.loginGamePort;
 				}
 				Static219.anInt4937 = 1;
 				Static20.anInt673 = 0;

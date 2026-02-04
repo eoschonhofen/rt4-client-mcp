@@ -119,7 +119,7 @@ public final class Static248 {
 				local32 = Static235.anInt5276;
 				while (true) {
 					if (local32 >= Static126.anInt3114) {
-						Static120.method2402(Static167.anInt4069, Static193.anInt4539, Static130.aClass3_Sub5ArrayArrayArray1);
+						World.method2402(Static167.anInt4069, Static193.anInt4539, Static130.aClass3_Sub5ArrayArrayArray1);
 						break;
 					}
 					for (local37 = 0; local37 < Static182.aClass3_Sub14ArrayArray2[local32].length; local37++) {

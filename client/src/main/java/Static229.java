@@ -22,17 +22,8 @@ public final class Static229 {
 	@OriginalMember(owner = "client!si", name = "Z", descriptor = "Lclient!na;")
 	public static final JagString aClass100_972 = JagString.wrap("<col=ffb000>");
 
-	@OriginalMember(owner = "client!si", name = "hb", descriptor = "Lclient!na;")
-	private static final JagString aClass100_975 = JagString.wrap("Take");
-
-	@OriginalMember(owner = "client!si", name = "db", descriptor = "Lclient!na;")
-	public static JagString aClass100_973 = aClass100_975;
-
 	@OriginalMember(owner = "client!si", name = "gb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_974 = JagString.wrap("<br>(X");
-
-	@OriginalMember(owner = "client!si", name = "ib", descriptor = "Lclient!na;")
-	public static final JagString aClass100_976 = JagString.wrap("Weiter");
 
 	@OriginalMember(owner = "client!si", name = "a", descriptor = "(ZB)I")
 	public static int method3933(@OriginalArg(1) byte arg0) {

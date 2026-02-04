@@ -16,12 +16,6 @@ public final class Static27 {
 	@OriginalMember(owner = "client!cb", name = "cb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_165 = JagString.wrap("titlebg");
 
-	@OriginalMember(owner = "client!cb", name = "gb", descriptor = "Lclient!na;")
-	private static final JagString aClass100_169 = JagString.wrap("Loaded title screen");
-
-	@OriginalMember(owner = "client!cb", name = "db", descriptor = "Lclient!na;")
-	public static JagString aClass100_166 = aClass100_169;
-
 	@OriginalMember(owner = "client!cb", name = "eb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_167 = JagString.wrap("name_icons");
 

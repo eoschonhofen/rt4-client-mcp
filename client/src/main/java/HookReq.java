@@ -5,32 +5,32 @@ import org.openrs2.deob.annotation.OriginalMember;
 public final class HookReq extends Linkable {
 
 	@OriginalMember(owner = "client!jl", name = "q", descriptor = "Lclient!be;")
-	public IfType aClass13_16;
+	public IfType drop;
 
 	@OriginalMember(owner = "client!jl", name = "r", descriptor = "Lclient!na;")
-	public JagString aClass100_598;
+	public JagString opbase;
 
 	@OriginalMember(owner = "client!jl", name = "w", descriptor = "I")
-	public int anInt3097;
+	public int mouseY;
 
 	@OriginalMember(owner = "client!jl", name = "z", descriptor = "I")
-	public int anInt3099;
+	public int keyChar;
 
 	@OriginalMember(owner = "client!jl", name = "A", descriptor = "I")
-	public int anInt3100;
+	public int keyCode;
 
 	@OriginalMember(owner = "client!jl", name = "B", descriptor = "I")
-	public int anInt3101;
+	public int opindex;
 
 	@OriginalMember(owner = "client!jl", name = "C", descriptor = "Z")
 	public boolean aBoolean158;
 
 	@OriginalMember(owner = "client!jl", name = "D", descriptor = "I")
-	public int anInt3102;
+	public int mouseX;
 
 	@OriginalMember(owner = "client!jl", name = "E", descriptor = "[Ljava/lang/Object;")
-	public Object[] anObjectArray31;
+	public Object[] onop;
 
 	@OriginalMember(owner = "client!jl", name = "F", descriptor = "Lclient!be;")
-	public IfType aClass13_17;
+	public IfType component;
 }

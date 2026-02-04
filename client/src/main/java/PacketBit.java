@@ -64,7 +64,7 @@ public final class PacketBit extends Packet {
 	}
 
 	@OriginalMember(owner = "client!i", name = "s", descriptor = "(I)I")
-	public final int method2243() {
+	public final int g1Enc() {
 		return this.data[this.pos++] - this.random.takeNextValue() & 0xFF;
 	}
 

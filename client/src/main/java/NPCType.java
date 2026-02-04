@@ -9,6 +9,12 @@ public final class NPCType {
 	@OriginalMember(owner = "client!he", name = "V", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
 
+	@OriginalMember(owner = "client!jl", name = "x", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_18 = new SoftLruCache(50);
+
+	@OriginalMember(owner = "client!vf", name = "k", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_35 = new SoftLruCache(5);
+
 	@OriginalMember(owner = "client!eh", name = "f", descriptor = "Lclient!ve;")
 	public static Js5 clientConfig;
 
@@ -182,11 +188,32 @@ public final class NPCType {
 		clientConfig = arg1;
 	}
 
+	@OriginalMember(owner = "client!qi", name = "e", descriptor = "(B)V")
+	public static void method3673() {
+		recentUse.method3104();
+		aClass99_18.method3104();
+		aClass99_35.method3104();
+	}
+
+	@OriginalMember(owner = "client!ra", name = "c", descriptor = "(BI)V")
+	public static void method3706() {
+		recentUse.method3102(5);
+		aClass99_18.method3102(5);
+		aClass99_35.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!t", name = "b", descriptor = "(B)V")
+	public static void method4001() {
+		recentUse.clear();
+		aClass99_18.clear();
+		aClass99_35.clear();
+	}
+
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(B)Lclient!me;")
 	public final NPCType method2932() {
 		@Pc(5) int local5 = -1;
 		if (this.anInt3723 != -1) {
-			local5 = Static155.method2945(this.anInt3723);
+			local5 = Static155.getVarbit(this.anInt3723);
 		} else if (this.anInt3749 != -1) {
 			local5 = Static7.var[this.anInt3749];
 		}
@@ -205,7 +232,7 @@ public final class NPCType {
 		}
 		@Pc(16) int local16 = -1;
 		if (this.anInt3723 != -1) {
-			local16 = Static155.method2945(this.anInt3723);
+			local16 = Static155.getVarbit(this.anInt3723);
 		} else if (this.anInt3749 != -1) {
 			local16 = Static7.var[this.anInt3749];
 		}
@@ -249,7 +276,7 @@ public final class NPCType {
 			@Pc(13) NPCType local13 = this.method2932();
 			return local13 == null ? null : local13.method2937(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 		}
-		@Pc(40) ModelLit local40 = (ModelLit) Static125.aClass99_18.find((long) this.id);
+		@Pc(40) ModelLit local40 = (ModelLit) aClass99_18.find((long) this.id);
 		@Pc(46) boolean local46;
 		@Pc(173) int local173;
 		@Pc(235) int local235;
@@ -363,7 +390,7 @@ public final class NPCType {
 			if (GameShell.glRenderer) {
 				((GlModelLit) local40).method4111(false, false, false, false, false, true);
 			}
-			Static125.aClass99_18.put(local40, (long) this.id);
+			aClass99_18.put(local40, (long) this.id);
 		}
 		local46 = false;
 		@Pc(721) boolean local721 = false;
@@ -536,7 +563,7 @@ public final class NPCType {
 		} else if (this.anIntArray354 == null) {
 			return null;
 		} else {
-			@Pc(41) ModelLit local41 = (ModelLit) Static262.aClass99_35.find((long) this.id);
+			@Pc(41) ModelLit local41 = (ModelLit) aClass99_35.find((long) this.id);
 			if (local41 == null) {
 				@Pc(46) boolean local46 = false;
 				for (@Pc(48) int local48 = 0; local48 < this.anIntArray354.length; local48++) {
@@ -573,7 +600,7 @@ public final class NPCType {
 					}
 				}
 				local41 = local119.method1679(64, 768, -50, -10, -50);
-				Static262.aClass99_35.put(local41, (long) this.id);
+				aClass99_35.put(local41, (long) this.id);
 			}
 			if (arg0 != null) {
 				local41 = arg0.method4215(local41, arg2, arg1, arg3);
@@ -601,7 +628,7 @@ public final class NPCType {
 			this.anInt3713 = arg1.g1();
 		} else if (arg0 >= 30 && arg0 < 35) {
 			this.aClass100Array116[arg0 - 30] = arg1.gjstr();
-			if (this.aClass100Array116[arg0 - 30].method3111(Static10.aClass100_64)) {
+			if (this.aClass100Array116[arg0 - 30].method3111(Text.aClass100_64)) {
 				this.aClass100Array116[arg0 - 30] = null;
 			}
 		} else if (arg0 == 40) {

@@ -22,18 +22,18 @@ public final class Static44 {
 	@OriginalMember(owner = "client!dh", name = "a", descriptor = "(Z)V")
 	public static void method1146() {
 		Static6.aClass3_Sub15_Sub1_1.pos = 0;
-		Static5.anInt45 = -1;
+		Client.ptype1 = -1;
 		Static60.aBoolean108 = false;
-		Static223.anInt5028 = 0;
+		Client.psize = 0;
 		Static115.anInt2939 = 0;
 		Static231.anInt5204 = 0;
-		Static230.anInt5152 = -1;
+		Client.ptype0 = -1;
 		Static270.anInt5795 = 0;
 		Static60.anInt1894 = 0;
-		Static49.anInt1462 = -1;
-		Static4.in.pos = 0;
-		Static201.anInt1862 = 0;
-		Static164.anInt3985 = -1;
+		Client.ptype2 = -1;
+		Client.in.pos = 0;
+		Client.timeoutTimer = 0;
+		Client.ptype = -1;
 		@Pc(35) int local35;
 		for (local35 = 0; local35 < Static159.aClass8_Sub4_Sub1Array1.length; local35++) {
 			if (Static159.aClass8_Sub4_Sub1Array1[local35] != null) {
@@ -45,7 +45,7 @@ public final class Static44 {
 				Static175.aClass8_Sub4_Sub2Array1[local35].anInt3370 = -1;
 			}
 		}
-		Static102.method2073();
+		ClientInvCache.deleteAll();
 		Static227.anInt5096 = 1;
 		Static196.method3534(30);
 		for (local35 = 0; local35 < 100; local35++) {
@@ -90,7 +90,7 @@ public final class Static44 {
 			Static133.method4012(Static183.anInt4271, Static24.anInt761, Static229.anInt5138, Static13.anInt436);
 		} else {
 			Static133.method4012(Static183.anInt4271, Static24.anInt761, Static229.anInt5138, Static13.anInt436);
-			local53 = Static280.aClass3_Sub2_Sub9_43.method2858(Static234.aClass100_998);
+			local53 = Static280.aClass3_Sub2_Sub9_43.method2858(Text.aClass100_998);
 			for (@Pc(95) int local95 = 0; local95 < Static231.anInt5204; local95++) {
 				@Pc(104) int local104 = Static280.aClass3_Sub2_Sub9_43.method2858(Static269.method2228(local95));
 				if (local104 > local53) {

@@ -53,16 +53,6 @@ public final class Static78 {
 		return Static234.method4016(arg1, arg0, arg2) ? Static196.method3537() : null;
 	}
 
-	@OriginalMember(owner = "client!gd", name = "a", descriptor = "(I)V")
-	public static void method1694() {
-		Static125.aClass99_19.method3103();
-	}
-
-	@OriginalMember(owner = "client!gd", name = "b", descriptor = "(I)V")
-	public static void method1695() {
-		LightType.aClass99_28.method3104();
-	}
-
 	@OriginalMember(owner = "client!gd", name = "c", descriptor = "(I)V")
 	public static void method1696() {
 		Static7.method842(false);
@@ -71,14 +61,14 @@ public final class Static78 {
 		@Pc(14) int local14;
 		for (local14 = 0; local14 < Static273.aByteArrayArray13.length; local14++) {
 			if (Static36.anIntArray84[local14] != -1 && Static273.aByteArrayArray13[local14] == null) {
-				Static273.aByteArrayArray13[local14] = client.maps.getFile(Static36.anIntArray84[local14], 0);
+				Static273.aByteArrayArray13[local14] = Client.maps.getFile(Static36.anIntArray84[local14], 0);
 				if (Static273.aByteArrayArray13[local14] == null) {
 					Static175.mapLoadCount++;
 					local12 = false;
 				}
 			}
 			if (Static172.anIntArray366[local14] != -1 && Static156.aByteArrayArray11[local14] == null) {
-				Static156.aByteArrayArray11[local14] = client.maps.method4488(Static172.anIntArray366[local14], Static72.anIntArrayArray14[local14], 0);
+				Static156.aByteArrayArray11[local14] = Client.maps.method4488(Static172.anIntArray366[local14], Static72.anIntArrayArray14[local14], 0);
 				if (Static156.aByteArrayArray11[local14] == null) {
 					local12 = false;
 					Static175.mapLoadCount++;
@@ -86,14 +76,14 @@ public final class Static78 {
 			}
 			if (GameShell.glRenderer) {
 				if (Static99.anIntArray239[local14] != -1 && Static186.aByteArrayArray14[local14] == null) {
-					Static186.aByteArrayArray14[local14] = client.maps.getFile(Static99.anIntArray239[local14], 0);
+					Static186.aByteArrayArray14[local14] = Client.maps.getFile(Static99.anIntArray239[local14], 0);
 					if (Static186.aByteArrayArray14[local14] == null) {
 						local12 = false;
 						Static175.mapLoadCount++;
 					}
 				}
 				if (Static35.anIntArray82[local14] != -1 && Static19.aByteArrayArray4[local14] == null) {
-					Static19.aByteArrayArray4[local14] = client.maps.getFile(Static35.anIntArray82[local14], 0);
+					Static19.aByteArrayArray4[local14] = Client.maps.getFile(Static35.anIntArray82[local14], 0);
 					if (Static19.aByteArrayArray4[local14] == null) {
 						Static175.mapLoadCount++;
 						local12 = false;
@@ -101,7 +91,7 @@ public final class Static78 {
 				}
 			}
 			if (Static175.anIntArray371 != null && Static191.aByteArrayArray15[local14] == null && Static175.anIntArray371[local14] != -1) {
-				Static191.aByteArrayArray15[local14] = client.maps.method4488(Static175.anIntArray371[local14], Static72.anIntArrayArray14[local14], 0);
+				Static191.aByteArrayArray15[local14] = Client.maps.method4488(Static175.anIntArray371[local14], Static72.anIntArrayArray14[local14], 0);
 				if (Static191.aByteArrayArray15[local14] == null) {
 					Static175.mapLoadCount++;
 					local12 = false;
@@ -109,10 +99,10 @@ public final class Static78 {
 			}
 		}
 		if (Static235.aClass134_2 == null) {
-			if (Static158.aClass3_Sub2_Sub4_3 == null || !client.worldmap.method4497(Static34.concatenate(new JagString[] { Static158.aClass3_Sub2_Sub4_3.aClass100_138, Static50.aClass100_363 }))) {
+			if (Static158.aClass3_Sub2_Sub4_3 == null || !Client.worldmap.method4497(JagString.join(new JagString[] { Static158.aClass3_Sub2_Sub4_3.aClass100_138, Static50.aClass100_363 }))) {
 				Static235.aClass134_2 = new MapElementList(0);
-			} else if (client.worldmap.method4489(Static34.concatenate(new JagString[] { Static158.aClass3_Sub2_Sub4_3.aClass100_138, Static50.aClass100_363 }))) {
-				Static235.aClass134_2 = Static140.method2711(Static34.concatenate(new JagString[] { Static158.aClass3_Sub2_Sub4_3.aClass100_138, Static50.aClass100_363 }), client.worldmap);
+			} else if (Client.worldmap.method4489(JagString.join(new JagString[] { Static158.aClass3_Sub2_Sub4_3.aClass100_138, Static50.aClass100_363 }))) {
+				Static235.aClass134_2 = Static140.method2711(JagString.join(new JagString[] { Static158.aClass3_Sub2_Sub4_3.aClass100_138, Static50.aClass100_363 }), Client.worldmap);
 			} else {
 				local12 = false;
 				Static175.mapLoadCount++;
@@ -155,9 +145,9 @@ public final class Static78 {
 			return;
 		}
 		if (Static233.mapLoadingStage != 0) {
-			Static114.messageBox(true, Static34.concatenate(new JagString[] { Static170.aClass100_621, Static18.aClass100_108 }));
+			Static114.messageBox(true, JagString.join(new JagString[] { Text.aClass100_621, Static18.aClass100_108 }));
 		}
-		client.method2261();
+		Client.doAudio();
 		Static217.method3768();
 		@Pc(420) boolean local420 = false;
 		@Pc(427) int local427;
@@ -171,7 +161,7 @@ public final class Static78 {
 		}
 		Static28.method792(GameShell.glRenderer ? 28 : 25, local420);
 		for (local427 = 0; local427 < 4; local427++) {
-			Static148.aClass97Array1[local427].method3050();
+			Client.levelCollisionMap[local427].method3050();
 		}
 		for (local427 = 0; local427 < 4; local427++) {
 			for (local320 = 0; local320 < 104; local320++) {
@@ -190,12 +180,12 @@ public final class Static78 {
 			}
 		}
 		if (GameShell.glRenderer) {
-			Static120.method2404();
+			World.method2404();
 		}
 		if (GameShell.glRenderer) {
 			Static75.method1632();
 		}
-		client.method2261();
+		Client.doAudio();
 		System.gc();
 		Static7.method842(true);
 		Static196.method3535(false);
@@ -224,9 +214,9 @@ public final class Static78 {
 		}
 		Static217.method3768();
 		Static7.method842(true);
-		Static45.finishBuild(Static148.aClass97Array1, false);
+		Static45.finishBuild(Client.levelCollisionMap, false);
 		if (GameShell.glRenderer) {
-			Static120.method2395();
+			World.method2395();
 		}
 		Static7.method842(true);
 		local427 = Static146.anInt3508;
@@ -256,7 +246,7 @@ public final class Static78 {
 			}
 			Static217.method3768();
 			Static7.method842(true);
-			Static45.finishBuild(Static148.aClass97Array1, true);
+			Static45.finishBuild(Client.levelCollisionMap, true);
 			Static7.method842(true);
 			Static105.method2255();
 			Static278.method4648(false);
@@ -274,11 +264,11 @@ public final class Static78 {
 			}
 		}
 		Static269.method2218();
-		client.method2261();
+		Client.doAudio();
 		Static219.method3796();
 		Static217.method3768();
 		Static231.aBoolean252 = false;
-		if (GameShell.frame != null && Static124.loginStream != null && client.state == 25) {
+		if (GameShell.frame != null && Client.stream != null && Client.state == 25) {
 			Static6.aClass3_Sub15_Sub1_1.p1Enc(20);
 			Static6.aClass3_Sub15_Sub1_1.p4(1057001181);
 		}
@@ -290,22 +280,22 @@ public final class Static78 {
 			for (@Pc(837) int local837 = local320 - 1; local837 <= local309 + 1; local837++) {
 				for (@Pc(850) int local850 = local821 - 1; local850 <= local815 + 1; local850++) {
 					if (local837 < local320 || local837 > local309 || local850 < local821 || local850 > local815) {
-						client.maps.method4486(Static34.concatenate(new JagString[] { Static103.aClass100_558, Static123.method2423(local837), Static86.aClass100_488, Static123.method2423(local850) }));
-						client.maps.method4486(Static34.concatenate(new JagString[] { Static270.aClass100_1090, Static123.method2423(local837), Static86.aClass100_488, Static123.method2423(local850) }));
+						Client.maps.method4486(JagString.join(new JagString[] { Static103.aClass100_558, JagString.parseInt(local837), Static86.aClass100_488, JagString.parseInt(local850) }));
+						Client.maps.method4486(JagString.join(new JagString[] { Static270.aClass100_1090, JagString.parseInt(local837), Static86.aClass100_488, JagString.parseInt(local850) }));
 					}
 				}
 			}
 		}
-		if (client.state == 28) {
+		if (Client.state == 28) {
 			Static196.method3534(10);
 		} else {
 			Static196.method3534(30);
-			if (Static124.loginStream != null) {
+			if (Client.stream != null) {
 				Static6.aClass3_Sub15_Sub1_1.p1Enc(110);
 			}
 		}
 		Static141.method2720();
-		client.method2261();
+		Client.doAudio();
 		GameShell.doneslowupdate();
 	}
 }

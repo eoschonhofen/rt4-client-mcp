@@ -3,7 +3,7 @@ import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-public final class Static120 {
+public final class World {
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "[Lclient!gi;")
 	public static Light[] aClass51Array1;
@@ -170,7 +170,7 @@ public final class Static120 {
 	}
 
 	@OriginalMember(owner = "client!jf", name = "a", descriptor = "(III)V")
-	public static void method2392() {
+	public static void create() {
 		anInt3032 = 4;
 		anInt3037 = 104;
 		anInt3036 = 104;

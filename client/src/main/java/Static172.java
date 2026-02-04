@@ -7,9 +7,6 @@ public final class Static172 {
 	@OriginalMember(owner = "client!nj", name = "e", descriptor = "Lclient!va;")
 	public static MidiPlayer midiPlayer;
 
-	@OriginalMember(owner = "client!nj", name = "f", descriptor = "Lclient!en;")
-	public static BufferedRandomAccessFile aClass38_4;
-
 	@OriginalMember(owner = "client!nj", name = "g", descriptor = "Lclient!ve;")
 	public static Js5 midis;
 
@@ -18,9 +15,6 @@ public final class Static172 {
 
 	@OriginalMember(owner = "client!nj", name = "k", descriptor = "I")
 	public static int anInt4165;
-
-	@OriginalMember(owner = "client!nj", name = "m", descriptor = "[[S")
-	public static short[][] aShortArrayArray7;
 
 	@OriginalMember(owner = "client!nj", name = "a", descriptor = "Z")
 	public static boolean aBoolean199 = false;

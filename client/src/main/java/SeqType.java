@@ -8,6 +8,8 @@ public final class SeqType {
 
 	@OriginalMember(owner = "client!lc", name = "e", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
+	@OriginalMember(owner = "client!vl", name = "a", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_37 = new SoftLruCache(100);
 
 	@OriginalMember(owner = "client!tk", name = "s", descriptor = "Lclient!ve;")
 	public static Js5 seqConfig;
@@ -94,6 +96,24 @@ public final class SeqType {
 		seqConfig = arg1;
 		bases = arg0;
 		anims = arg2;
+	}
+
+	@OriginalMember(owner = "client!an", name = "a", descriptor = "(Z)V")
+	public static void method350() {
+		recentUse.method3104();
+		aClass99_37.method3104();
+	}
+
+	@OriginalMember(owner = "client!sg", name = "a", descriptor = "(B)V")
+	public static void method3903() {
+		recentUse.clear();
+		aClass99_37.clear();
+	}
+
+	@OriginalMember(owner = "client!fl", name = "a", descriptor = "(IB)V")
+	public static void method1570() {
+		recentUse.method3102(5);
+		aClass99_37.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!tk", name = "a", descriptor = "(Lclient!wa;B)V")

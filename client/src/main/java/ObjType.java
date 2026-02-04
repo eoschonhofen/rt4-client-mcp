@@ -6,11 +6,12 @@ import org.openrs2.deob.annotation.Pc;
 @OriginalClass("client!h")
 public final class ObjType {
 
-	@OriginalMember(owner = "client!h", name = "S", descriptor = "[I")
-	public static final int[] anIntArray213 = new int[99];
-
 	@OriginalMember(owner = "client!cb", name = "Y", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
+	@OriginalMember(owner = "client!tl", name = "c", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_32 = new SoftLruCache(50);
+	@OriginalMember(owner = "client!jd", name = "c", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_16 = new SoftLruCache(100);
 
 	@OriginalMember(owner = "client!nd", name = "n", descriptor = "Lclient!ve;")
 	public static Js5 objConfig;
@@ -175,7 +176,7 @@ public final class ObjType {
 	public int anInt2360 = -1;
 
 	@OriginalMember(owner = "client!h", name = "qb", descriptor = "[Lclient!na;")
-	public JagString[] aClass100Array72 = new JagString[] { null, null, Static229.aClass100_973, null, null };
+	public JagString[] aClass100Array72 = new JagString[] { null, null, Text.aClass100_973, null, null };
 
 	@OriginalMember(owner = "client!h", name = "ub", descriptor = "I")
 	private int anInt2373 = 128;
@@ -187,23 +188,13 @@ public final class ObjType {
 	private int anInt2347 = 0;
 
 	@OriginalMember(owner = "client!h", name = "U", descriptor = "[Lclient!na;")
-	public JagString[] aClass100Array71 = new JagString[] { null, null, null, null, Static41.aClass100_271 };
+	public JagString[] aClass100Array71 = new JagString[] { null, null, null, null, Text.aClass100_271 };
 
 	@OriginalMember(owner = "client!h", name = "Ab", descriptor = "I")
 	public int anInt2375 = 2000;
 
 	@OriginalMember(owner = "client!h", name = "xb", descriptor = "Z")
 	public boolean aBoolean132 = false;
-
-	static {
-		@Pc(4) int local4 = 0;
-		for (@Pc(6) int local6 = 0; local6 < 99; local6++) {
-			@Pc(13) int local13 = local6 + 1;
-			@Pc(26) int local26 = (int) (Math.pow(2.0D, (double) local13 / 7.0D) * 300.0D + (double) local13);
-			local4 += local26;
-			anIntArray213[local6] = local4 / 4;
-		}
-	}
 
 	@OriginalMember(owner = "client!fk", name = "a", descriptor = "(IB)Lclient!h;")
 	public static ObjType list(@OriginalArg(0) int arg0) {
@@ -225,7 +216,7 @@ public final class ObjType {
 			local6.method1823(list(local6.anInt2363), list(local6.anInt2334));
 		}
 		if (!aBoolean276 && local6.aBoolean131) {
-			local6.name = Static199.aClass100_881;
+			local6.name = Text.aClass100_881;
 			local6.anInt2351 = 0;
 			local6.aClass100Array71 = aClass100Array104;
 			local6.aBoolean132 = false;
@@ -242,9 +233,30 @@ public final class ObjType {
 		objConfig = arg0;
 		@Pc(23) int local23 = objConfig.getGroupCount() - 1;
 		anInt3245 = objConfig.getFileIdLimit(local23) + local23 * 256;
-		aClass100Array104 = new JagString[] { null, null, null, null, Static41.aClass100_271 };
-		aClass100Array87 = new JagString[] { null, null, Static229.aClass100_973, null, null };
+		aClass100Array104 = new JagString[] { null, null, null, null, Text.aClass100_271 };
+		aClass100Array87 = new JagString[] { null, null, Text.aClass100_973, null, null };
 		aClass3_Sub2_Sub9_Sub1_1 = arg1;
+	}
+
+	@OriginalMember(owner = "client!i", name = "r", descriptor = "(I)V")
+	public static void method2239() {
+		recentUse.clear();
+		aClass99_32.clear();
+		aClass99_16.clear();
+	}
+
+	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(B)V")
+	public static void method3302() {
+		recentUse.method3104();
+		aClass99_32.method3104();
+		aClass99_16.method3104();
+	}
+
+	@OriginalMember(owner = "client!pf", name = "c", descriptor = "(II)V")
+	public static void method3447() {
+		recentUse.method3102(5);
+		aClass99_32.method3102(5);
+		aClass99_16.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!h", name = "a", descriptor = "(ZZ)Z")
@@ -362,7 +374,7 @@ public final class ObjType {
 				this.aClass100Array71[local157] = arg0.aClass100Array71[local157];
 			}
 		}
-		this.aClass100Array71[4] = Static34.aClass100_197;
+		this.aClass100Array71[4] = Text.aClass100_197;
 	}
 
 	@OriginalMember(owner = "client!h", name = "a", descriptor = "(IIILclient!tk;II)Lclient!ak;")
@@ -378,7 +390,7 @@ public final class ObjType {
 				return list(local22).getModelLit(arg0, arg1, arg2, 1, arg4);
 			}
 		}
-		@Pc(76) ModelLit local76 = (ModelLit) Static244.aClass99_32.find((long) this.id);
+		@Pc(76) ModelLit local76 = (ModelLit) aClass99_32.find((long) this.id);
 		if (local76 == null) {
 			@Pc(85) ModelUnlit local85 = Static77.method1686(aClass153_95, this.anInt2320);
 			if (local85 == null) {
@@ -407,7 +419,7 @@ public final class ObjType {
 			if (GameShell.glRenderer) {
 				((GlModelLit) local76).method4111(false, false, false, false, false, true);
 			}
-			Static244.aClass99_32.put(local76, (long) this.id);
+			aClass99_32.put(local76, (long) this.id);
 		}
 		if (arg2 != null) {
 			local76 = arg2.method4215(local76, arg0, arg1, arg4);
@@ -468,7 +480,7 @@ public final class ObjType {
 			this.anInt2361 = arg0.g2();
 		} else if (arg1 >= 30 && arg1 < 35) {
 			this.aClass100Array72[arg1 - 30] = arg0.gjstr();
-			if (this.aClass100Array72[arg1 - 30].method3111(Static10.aClass100_64)) {
+			if (this.aClass100Array72[arg1 - 30].method3111(Text.aClass100_64)) {
 				this.aClass100Array72[arg1 - 30] = null;
 			}
 		} else if (arg1 >= 35 && arg1 < 40) {

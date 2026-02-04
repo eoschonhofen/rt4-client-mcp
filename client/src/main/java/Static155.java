@@ -11,13 +11,7 @@ public final class Static155 {
 	public static int anInt3718 = -1;
 
 	@OriginalMember(owner = "client!me", name = "P", descriptor = "[I")
-	public static final int[] anIntArray355 = new int[2000];
-
-	@OriginalMember(owner = "client!me", name = "T", descriptor = "Lclient!na;")
-	public static final JagString aClass100_739 = JagString.wrap("violet:");
-
-	@OriginalMember(owner = "client!me", name = "kb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_740 = JagString.wrap("Votre liste noire est pleine (X100 noms maximum(Y)3");
+	public static final int[] varcInt = new int[2000];
 
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(IB)V")
 	public static void method2940(@OriginalArg(0) int arg0) {
@@ -70,7 +64,7 @@ public final class Static155 {
 	}
 
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(II)I")
-	public static int method2945(@OriginalArg(1) int arg0) {
+	public static int getVarbit(@OriginalArg(1) int arg0) {
 		@Pc(13) VarBitType local13 = VarBitType.method2449(arg0);
 		@Pc(16) int local16 = local13.anInt3327;
 		@Pc(19) int local19 = local13.anInt3323;

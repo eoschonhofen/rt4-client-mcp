@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static54 {
 
-	@OriginalMember(owner = "client!ed", name = "r", descriptor = "Lclient!na;")
-	public static final JagString aClass100_373 = JagString.wrap("Wordpack geladen)3");
-
 	@OriginalMember(owner = "client!ed", name = "D", descriptor = "Lclient!na;")
 	public static final JagString aClass100_374 = JagString.wrap("details");
 
@@ -22,7 +19,7 @@ public final class Static54 {
 
 	@OriginalMember(owner = "client!ed", name = "a", descriptor = "(IBIILclient!be;)V")
 	public static void method1305(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) IfType arg3) {
-		client.method2261();
+		Client.doAudio();
 		if (GameShell.glRenderer) {
 			Static46.method1187(arg2, arg1, arg2 + arg3.anInt445, arg1 + arg3.anInt459);
 		} else {
@@ -248,11 +245,6 @@ public final class Static54 {
 		method1307(arg0, arg1, arg2, local14 + 1);
 	}
 
-	@OriginalMember(owner = "client!ed", name = "c", descriptor = "(I)V")
-	public static void method1308() {
-		FluType.recentUse.method3104();
-	}
-
 	@OriginalMember(owner = "client!ed", name = "a", descriptor = "(IIII)I")
 	public static int getTable(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
 		if (arg0 > 243) {
@@ -279,7 +271,7 @@ public final class Static54 {
 			if (Static164.anIntArray362[local5] >= -10) {
 				@Pc(79) JagFX local79 = Static173.aClass138Array1[local5];
 				if (local79 == null) {
-					local79 = Static292.method3988(client.jagFX, Static200.anIntArray421[local5], 0);
+					local79 = Static292.method3988(Client.jagFX, Static200.anIntArray421[local5], 0);
 					if (local79 == null) {
 						continue;
 					}
@@ -313,10 +305,10 @@ public final class Static54 {
 						local209 = Static30.anInt978 * (local125 - local180) / local125;
 					}
 					if (local209 > 0) {
-						@Pc(223) Wave local223 = local79.method3989().method2648(client.soundDecimator);
+						@Pc(223) Wave local223 = local79.method3989().method2648(Client.soundDecimator);
 						@Pc(228) WaveStream local228 = Static284.method404(local223, local209);
 						local228.method396(Static276.anIntArray563[local5] - 1);
-						client.soundMixer.method1343(local228);
+						Client.soundMixer.method1343(local228);
 					}
 					Static164.anIntArray362[local5] = -100;
 				}
@@ -334,7 +326,7 @@ public final class Static54 {
 		}
 		if (Static144.aBoolean173 && !Static136.method2655()) {
 			if (Static12.anInt391 != 0 && Static221.anInt4363 != -1) {
-				Static122.method2410(client.songs, Static221.anInt4363, Static12.anInt391);
+				Static122.method2410(Client.songs, Static221.anInt4363, Static12.anInt391);
 			}
 			Static144.aBoolean173 = false;
 		} else if (Static12.anInt391 != 0 && Static221.anInt4363 != -1 && !Static136.method2655()) {

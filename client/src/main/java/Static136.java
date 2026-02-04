@@ -8,17 +8,11 @@ public final class Static136 {
 	@OriginalMember(owner = "client!kk", name = "i", descriptor = "I")
 	public static int anInt3324;
 
-	@OriginalMember(owner = "client!kk", name = "a", descriptor = "Lclient!na;")
-	public static final JagString aClass100_632 = JagString.wrap("M-Bmoire en cours d(Wattribution");
-
 	@OriginalMember(owner = "client!kk", name = "g", descriptor = "I")
 	public static int anInt3322 = -1;
 
 	@OriginalMember(owner = "client!kk", name = "j", descriptor = "I")
 	public static int anInt3325 = 0;
-
-	@OriginalMember(owner = "client!kk", name = "m", descriptor = "Lclient!na;")
-	public static final JagString aClass100_633 = JagString.wrap("Clientscript error )2 check log for details");
 
 	@OriginalMember(owner = "client!kk", name = "a", descriptor = "(IIB)V")
 	public static void method2649(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
@@ -109,7 +103,7 @@ public final class Static136 {
 			Static102.anInt2679 = 2;
 		}
 		Static186.anInt4392 = Static102.anInt2679;
-		client.lowMem = arg0.g1() == 1;
+		Client.lowMem = arg0.g1() == 1;
 		Static125.anInt3104 = arg0.g1();
 		if (Static125.anInt3104 > 127) {
 			Static125.anInt3104 = 127;

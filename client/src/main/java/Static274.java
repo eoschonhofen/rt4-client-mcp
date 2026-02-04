@@ -15,9 +15,6 @@ public final class Static274 {
 	@OriginalMember(owner = "client!wf", name = "j", descriptor = "Lclient!be;")
 	public static IfType aClass13_24;
 
-	@OriginalMember(owner = "client!wf", name = "h", descriptor = "Lclient!na;")
-	public static final JagString aClass100_942 = JagString.wrap("Update)2Liste geladen)3");
-
 	@OriginalMember(owner = "client!wf", name = "s", descriptor = "Lclient!na;")
 	public static final JagString aClass100_943 = JagString.wrap("Forced tweening disabled)3");
 

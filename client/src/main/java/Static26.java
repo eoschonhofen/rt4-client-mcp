@@ -10,17 +10,11 @@ public final class Static26 {
 	@OriginalMember(owner = "client!ca", name = "X", descriptor = "Lclient!ih;")
 	public static LinkList aClass69_27 = new LinkList();
 
-	@OriginalMember(owner = "client!ca", name = "bb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_159 = JagString.wrap("Examiner");
-
 	@OriginalMember(owner = "client!ca", name = "cb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_160 = Static165.method3165();
 
 	@OriginalMember(owner = "client!ca", name = "db", descriptor = "I")
 	public static int anInt865 = 0;
-
-	@OriginalMember(owner = "client!ca", name = "eb", descriptor = "[I")
-	public static final int[] anIntArray67 = new int[100];
 
 	@OriginalMember(owner = "client!ca", name = "fb", descriptor = "[I")
 	public static final int[] anIntArray68 = new int[50];
@@ -47,11 +41,11 @@ public final class Static26 {
 			for (@Pc(97) int local97 = (local23 - 6) / 8; local97 <= (local23 + 6) / 8; local97++) {
 				@Pc(115) int local115 = (local80 << 8) + local97;
 				Static238.anIntArray470[local74] = local115;
-				Static36.anIntArray84[local74] = client.maps.getGroupId(Static34.concatenate(new JagString[] { Static103.aClass100_558, Static123.method2423(local80), Static86.aClass100_488, Static123.method2423(local97) }));
-				Static172.anIntArray366[local74] = client.maps.getGroupId(Static34.concatenate(new JagString[] { Static270.aClass100_1090, Static123.method2423(local80), Static86.aClass100_488, Static123.method2423(local97) }));
-				Static175.anIntArray371[local74] = client.maps.getGroupId(Static34.concatenate(new JagString[] { Static179.aClass100_807, Static123.method2423(local80), Static86.aClass100_488, Static123.method2423(local97) }));
-				Static99.anIntArray239[local74] = client.maps.getGroupId(Static34.concatenate(new JagString[] { Static165.aClass100_772, Static123.method2423(local80), Static86.aClass100_488, Static123.method2423(local97) }));
-				Static35.anIntArray82[local74] = client.maps.getGroupId(Static34.concatenate(new JagString[] { Static278.aClass100_1103, Static123.method2423(local80), Static86.aClass100_488, Static123.method2423(local97) }));
+				Static36.anIntArray84[local74] = Client.maps.getGroupId(JagString.join(new JagString[] { Static103.aClass100_558, JagString.parseInt(local80), Static86.aClass100_488, JagString.parseInt(local97) }));
+				Static172.anIntArray366[local74] = Client.maps.getGroupId(JagString.join(new JagString[] { Static270.aClass100_1090, JagString.parseInt(local80), Static86.aClass100_488, JagString.parseInt(local97) }));
+				Static175.anIntArray371[local74] = Client.maps.getGroupId(JagString.join(new JagString[] { Static179.aClass100_807, JagString.parseInt(local80), Static86.aClass100_488, JagString.parseInt(local97) }));
+				Static99.anIntArray239[local74] = Client.maps.getGroupId(JagString.join(new JagString[] { Static165.aClass100_772, JagString.parseInt(local80), Static86.aClass100_488, JagString.parseInt(local97) }));
+				Static35.anIntArray82[local74] = Client.maps.getGroupId(JagString.join(new JagString[] { Static278.aClass100_1103, JagString.parseInt(local80), Static86.aClass100_488, JagString.parseInt(local97) }));
 				if (Static175.anIntArray371[local74] == -1) {
 					Static36.anIntArray84[local74] = -1;
 					Static172.anIntArray366[local74] = -1;
@@ -71,12 +65,6 @@ public final class Static26 {
 		Static127.method2463(0, local23, local10, 8, true, 8);
 	}
 
-	@OriginalMember(owner = "client!ca", name = "a", descriptor = "(Z)V")
-	public static void method741() {
-		CursorType.recentUse.method3103();
-		Static7.aClass99_5.method3103();
-	}
-
 	@OriginalMember(owner = "client!ca", name = "a", descriptor = "(ZI)V")
 	public static void method743(@OriginalArg(0) boolean arg0) {
 		@Pc(13) int local13 = Static273.aByteArrayArray13.length;
@@ -91,8 +79,8 @@ public final class Static26 {
 			if (local32 != null) {
 				@Pc(45) int local45 = (Static238.anIntArray470[local25] >> 8) * 64 - Static225.anInt5068;
 				@Pc(56) int local56 = (Static238.anIntArray470[local25] & 0xFF) * 64 - Static142.anInt3483;
-				client.method2261();
-				Static124.method2437(local45, arg0, local32, local56, Static148.aClass97Array1);
+				Client.doAudio();
+				Static124.method2437(local45, arg0, local32, local56, Client.levelCollisionMap);
 			}
 		}
 	}

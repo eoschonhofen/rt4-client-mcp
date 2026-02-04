@@ -7,30 +7,21 @@ public final class Static196 {
 	@OriginalMember(owner = "client!pl", name = "a", descriptor = "[Lclient!ba;")
 	public static GWCWorld[] aClass10_Sub1Array2;
 
-	@OriginalMember(owner = "client!pl", name = "b", descriptor = "Lclient!na;")
-	private static final JagString aClass100_861 = JagString.wrap("Loaded wordpack");
-
-	@OriginalMember(owner = "client!pl", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_862 = JagString.wrap("classement ");
-
 	@OriginalMember(owner = "client!pl", name = "e", descriptor = "[I")
 	public static final int[] anIntArray408 = new int[500];
 
 	@OriginalMember(owner = "client!pl", name = "f", descriptor = "Lclient!na;")
 	public static final JagString aClass100_863 = JagString.wrap(":tradereq:");
 
-	@OriginalMember(owner = "client!pl", name = "g", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD120B = aClass100_861;
-
 	@OriginalMember(owner = "client!pl", name = "i", descriptor = "I")
 	public static int anInt4587 = 0;
 
 	@OriginalMember(owner = "client!pl", name = "a", descriptor = "(II)V")
 	public static void method3534(@OriginalArg(0) int arg0) {
-		if (client.state == arg0) {
+		if (Client.state == arg0) {
 			return;
 		}
-		if (client.state == 0) {
+		if (Client.state == 0) {
 			Static163.method3097();
 		}
 		if (arg0 == 40) {
@@ -53,18 +44,18 @@ public final class Static196 {
 			Static123.method2418();
 		}
 		if (arg0 == 5) {
-			Static181.method3344(client.sprites);
+			Static181.method3344(Client.sprites);
 		} else {
 			Static119.method2381();
 		}
-		@Pc(106) boolean local106 = client.state == 5 || client.state == 10 || client.state == 28;
+		@Pc(106) boolean local106 = Client.state == 5 || Client.state == 10 || Client.state == 28;
 		if (local106 != local37) {
 			if (local37) {
 				Static221.anInt4363 = Static250.anInt5441;
 				if (Static12.anInt391 == 0) {
 					Static29.method801();
 				} else {
-					Static257.method526(Static250.anInt5441, client.songs, 255);
+					Static257.method526(Static250.anInt5441, Client.songs, 255);
 				}
 				Static107.aClass73_3.sendLoginLogoutPacket(false);
 			} else {
@@ -75,7 +66,7 @@ public final class Static196 {
 		if (GameShell.glRenderer && (arg0 == 25 || arg0 == 28 || arg0 == 40)) {
 			Static239.method4160();
 		}
-		client.state = arg0;
+		Client.state = arg0;
 	}
 
 	@OriginalMember(owner = "client!pl", name = "a", descriptor = "(ZI)V")

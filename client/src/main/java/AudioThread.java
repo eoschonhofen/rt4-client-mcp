@@ -26,7 +26,7 @@ public final class AudioThread implements Runnable {
 				for (@Pc(9) int local9 = 0; local9 < 2; local9++) {
 					@Pc(19) PcmPlayer local19 = this.players[local9];
 					if (local19 != null) {
-						local19.method3565();
+						local19.cycle();
 					}
 				}
 				Static231.sleepPrecise(10L);

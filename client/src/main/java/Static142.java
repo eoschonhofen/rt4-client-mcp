@@ -125,7 +125,7 @@ public final class Static142 {
 						@Pc(518) ClientNPC local518 = (ClientNPC) local17;
 						@Pc(528) AbstractPix32[] local528 = (AbstractPix32[]) Static73.aClass99_10.find((long) local518.aClass96_1.anInt3736);
 						if (local528 == null) {
-							local528 = Static209.method3708(local518.aClass96_1.anInt3736, client.sprites);
+							local528 = Static209.method3708(local518.aClass96_1.anInt3736, Client.sprites);
 							if (local528 != null) {
 								Static73.aClass99_10.put(local528, (long) local518.aClass96_1.anInt3736);
 							}
@@ -190,7 +190,7 @@ public final class Static142 {
 								Static65.anInt1951 += 15;
 							}
 							Static213.aClass3_Sub2_Sub1Array8[local17.anIntArray321[local74]].method1423(arg2 + Static65.anInt1951 - 12, arg0 + Static16.anInt548 - 12);
-							Static114.aClass3_Sub2_Sub9_42.method2875(Static123.method2423(local17.anIntArray322[local74]), Static65.anInt1951 + arg2 - 1, Static16.anInt548 + 3 + arg0, 16777215, 0);
+							Static114.aClass3_Sub2_Sub9_42.method2875(JagString.parseInt(local17.anIntArray322[local74]), Static65.anInt1951 + arg2 - 1, Static16.anInt548 + 3 + arg0, 16777215, 0);
 						}
 					}
 				}

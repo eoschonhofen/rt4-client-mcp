@@ -9,18 +9,6 @@ public final class Static126 {
 	@OriginalMember(owner = "client!jm", name = "s", descriptor = "F")
 	public static float aFloat13;
 
-	@OriginalMember(owner = "client!jm", name = "t", descriptor = "Lclient!na;")
-	public static final JagString aClass100_600 = JagString.wrap("Module texte charg-B");
-
-	@OriginalMember(owner = "client!jm", name = "w", descriptor = "Lclient!na;")
-	public static final JagString aClass100_601 = JagString.wrap("3D)2Softwarebibliothek gestartet)3");
-
-	@OriginalMember(owner = "client!jm", name = "A", descriptor = "Lclient!na;")
-	private static final JagString aClass100_603 = JagString.wrap("");
-
-	@OriginalMember(owner = "client!jm", name = "z", descriptor = "Lclient!na;")
-	public static JagString loadString = aClass100_603;
-
 	@OriginalMember(owner = "client!jm", name = "a", descriptor = "(Z)V")
 	public static void method2460() {
 		if (Static154.anInt3711 != -1) {

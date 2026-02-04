@@ -268,7 +268,7 @@ public final class IfType {
 	public int anInt484 = -1;
 
 	@OriginalMember(owner = "client!be", name = "O", descriptor = "I")
-	public int anInt457 = -1;
+	public int subId = -1;
 
 	@OriginalMember(owner = "client!be", name = "J", descriptor = "Z")
 	public boolean aBoolean24 = false;
@@ -436,7 +436,7 @@ public final class IfType {
 	public int modelAnim = -1;
 
 	@OriginalMember(owner = "client!be", name = "Rc", descriptor = "Lclient!na;")
-	public JagString buttonText = Static192.OK;
+	public JagString buttonText = Text.OK;
 
 	@OriginalMember(owner = "client!be", name = "Gc", descriptor = "I")
 	public int modelZAn = 0;
@@ -814,16 +814,16 @@ public final class IfType {
 			this.buttonText = arg0.gjstr();
 			if (this.buttonText.length() == 0) {
 				if (this.buttonType == 1) {
-					this.buttonText = Static192.OK;
+					this.buttonText = Text.OK;
 				}
 				if (this.buttonType == 4) {
-					this.buttonText = Static225.SELECT;
+					this.buttonText = Text.SELECT;
 				}
 				if (this.buttonType == 5) {
-					this.buttonText = Static225.SELECT;
+					this.buttonText = Text.SELECT;
 				}
 				if (this.buttonType == 6) {
-					this.buttonText = Static109.CONTINUE;
+					this.buttonText = Text.CONTINUE;
 				}
 			}
 		}

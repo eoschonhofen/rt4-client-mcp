@@ -98,7 +98,7 @@ public final class ClientNPC extends ClientEntity {
 	@OriginalMember(owner = "client!km", name = "b", descriptor = "(I)I")
 	@Override
 	protected final int method2688() {
-		if (client.game != 0 && this.aClass96_1.anIntArray357 != null) {
+		if (Client.game != 0 && this.aClass96_1.anIntArray357 != null) {
 			@Pc(17) NPCType local17 = this.aClass96_1.method2932();
 			if (local17 != null && local17.anInt3737 != -1) {
 				return local17.anInt3737;

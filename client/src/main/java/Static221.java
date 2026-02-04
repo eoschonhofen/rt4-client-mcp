@@ -19,9 +19,6 @@ public final class Static221 {
 	@OriginalMember(owner = "client!s", name = "g", descriptor = "Lclient!na;")
 	public static final JagString aClass100_821 = JagString.wrap("document)3cookie=(R");
 
-	@OriginalMember(owner = "client!s", name = "j", descriptor = "Lclient!na;")
-	public static final JagString aClass100_822 = JagString.wrap("Sie k-Onnen sich selbst nicht auf Ihre Freunde)2Liste setzen(Q");
-
 	@OriginalMember(owner = "client!s", name = "a", descriptor = "(II)I")
 	public static int method3389(@OriginalArg(0) int arg0) {
 		return arg0 >>> 7;

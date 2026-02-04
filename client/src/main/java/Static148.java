@@ -16,24 +16,6 @@ public final class Static148 {
 	@OriginalMember(owner = "client!li", name = "x", descriptor = "I")
 	public static int anInt3535;
 
-	@OriginalMember(owner = "client!li", name = "b", descriptor = "Lclient!na;")
-	private static final JagString aClass100_673 = JagString.wrap("Loading wordpack )2 ");
-
-	@OriginalMember(owner = "client!li", name = "e", descriptor = "Lclient!na;")
-	public static final JagString aClass100_674 = JagString.wrap("Veuillez patienter)3)3)3");
-
-	@OriginalMember(owner = "client!li", name = "u", descriptor = "Lclient!na;")
-	private static final JagString aClass100_678 = JagString.wrap("Examine");
-
-	@OriginalMember(owner = "client!li", name = "f", descriptor = "Lclient!na;")
-	public static JagString aClass100_675 = aClass100_678;
-
-	@OriginalMember(owner = "client!li", name = "h", descriptor = "[Lclient!mj;")
-	public static final CollisionMap[] aClass97Array1 = new CollisionMap[4];
-
-	@OriginalMember(owner = "client!li", name = "i", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD120 = aClass100_673;
-
 	@OriginalMember(owner = "client!li", name = "p", descriptor = "Lclient!na;")
 	public static final JagString aClass100_677 = JagString.wrap("::rebuild");
 
@@ -42,7 +24,7 @@ public final class Static148 {
 		if (arg0 == -1 && !Static144.aBoolean173) {
 			Static241.method4548();
 		} else if (arg0 != -1 && (Static221.anInt4363 != arg0 || !Static136.method2655()) && Static12.anInt391 != 0 && !Static144.aBoolean173) {
-			Static257.method526(arg0, client.songs, Static12.anInt391);
+			Static257.method526(arg0, Client.songs, Static12.anInt391);
 		}
 		Static221.anInt4363 = arg0;
 	}
@@ -65,7 +47,7 @@ public final class Static148 {
 		if (local16 != null) {
 			return local16;
 		}
-		@Pc(26) byte[] local26 = client.fontMetrics.getFile(arg0, 0);
+		@Pc(26) byte[] local26 = Client.fontMetrics.getFile(arg0, 0);
 		local16 = new PixFont(local26);
 		local16.method2873(Static159.aClass36Array12, null);
 		Static139.aClass99_22.put(local16, (long) arg0);

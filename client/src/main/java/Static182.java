@@ -31,28 +31,28 @@ public final class Static182 {
 			Static78.aClass3_Sub2_Sub1_3.method1419((GameShell.anInt1448 - local15) / 2, 0, local15, local9);
 			Static243.aClass36_1.method3336(GameShell.anInt1448 / 2 - Static243.aClass36_1.anInt4270 / 2, 18);
 		}
-		arg1.method2875(Static53.aClass100_370, GameShell.anInt1448 / 2, GameShell.anInt5554 / 2 - 26, 16777215, -1);
+		arg1.method2875(Text.aClass100_370, GameShell.anInt1448 / 2, GameShell.anInt5554 / 2 - 26, 16777215, -1);
 		local9 = GameShell.anInt5554 / 2 - 18;
 		if (GameShell.glRenderer) {
 			Static46.method1179(GameShell.anInt1448 / 2 - 152, local9, 304, 34, 9179409);
 			Static46.method1179(GameShell.anInt1448 / 2 - 151, local9 - -1, 302, 32, 0);
-			Static46.method1186(GameShell.anInt1448 / 2 - 150, local9 + 2, Static199.loadPos * 3, 30, 9179409);
-			Static46.method1186(GameShell.anInt1448 / 2 + Static199.loadPos * 3 - 150, local9 + 2, 300 - Static199.loadPos * 3, 30, 0);
+			Static46.method1186(GameShell.anInt1448 / 2 - 150, local9 + 2, TitleScreen.loadPos * 3, 30, 9179409);
+			Static46.method1186(GameShell.anInt1448 / 2 + TitleScreen.loadPos * 3 - 150, local9 + 2, 300 - TitleScreen.loadPos * 3, 30, 0);
 		} else {
 			Static129.method2483(GameShell.anInt1448 / 2 - 152, local9, 304, 34, 9179409);
 			Static129.method2483(GameShell.anInt1448 / 2 - 151, local9 + 1, 302, 32, 0);
-			Static129.method2495(GameShell.anInt1448 / 2 - 150, local9 + 2, Static199.loadPos * 3, 30, 9179409);
-			Static129.method2495(Static199.loadPos * 3 + GameShell.anInt1448 / 2 - 150, local9 + 2, 300 - Static199.loadPos * 3, 30, 0);
+			Static129.method2495(GameShell.anInt1448 / 2 - 150, local9 + 2, TitleScreen.loadPos * 3, 30, 9179409);
+			Static129.method2495(TitleScreen.loadPos * 3 + GameShell.anInt1448 / 2 - 150, local9 + 2, 300 - TitleScreen.loadPos * 3, 30, 0);
 		}
-		arg1.method2875(Static126.loadString, GameShell.anInt1448 / 2, GameShell.anInt5554 / 2 + 4, 16777215, -1);
+		arg1.method2875(TitleScreen.loadString, GameShell.anInt1448 / 2, GameShell.anInt5554 / 2 + 4, 16777215, -1);
 	}
 
 	@OriginalMember(owner = "client!oj", name = "a", descriptor = "(IZIJI)Lclient!na;")
 	public static JagString method3360(@OriginalArg(0) int arg0, @OriginalArg(1) boolean arg1, @OriginalArg(2) int arg2, @OriginalArg(3) long arg3) {
-		@Pc(9) JagString local9 = Static87.method1804(0);
+		@Pc(9) JagString local9 = JagString.newStringBuilder(0);
 		if (arg3 < 0L) {
 			arg3 = -arg3;
-			local9.method3113(Static73.aClass100_453);
+			local9.append(Static73.aClass100_453);
 		}
 		@Pc(26) JagString local26 = Static244.aClass100_1017;
 		@Pc(28) JagString local28 = Static30.aClass100_185;
@@ -68,10 +68,10 @@ public final class Static182 {
 			local26 = Static30.aClass100_185;
 			local28 = Static244.aClass100_1017;
 		}
-		@Pc(59) JagString local59 = Static87.method1804(0);
+		@Pc(59) JagString local59 = JagString.newStringBuilder(0);
 		@Pc(61) int local61;
 		for (local61 = 0; local61 < arg2; local61++) {
-			local59.method3113(Static123.method2423((int) (arg3 % 10L)));
+			local59.append(JagString.parseInt((int) (arg3 % 10L)));
 			arg3 /= 10L;
 		}
 		local61 = 0;
@@ -79,21 +79,21 @@ public final class Static182 {
 		if (arg3 == 0L) {
 			local137 = Static6.aClass100_17;
 		} else {
-			@Pc(95) JagString local95 = Static87.method1804(0);
+			@Pc(95) JagString local95 = JagString.newStringBuilder(0);
 			while (arg3 > 0L) {
 				if (arg1 && local61 != 0 && local61 % 3 == 0) {
-					local95.method3113(local26);
+					local95.append(local26);
 				}
-				local95.method3113(Static123.method2423((int) (arg3 % 10L)));
+				local95.append(JagString.parseInt((int) (arg3 % 10L)));
 				local61++;
 				arg3 /= 10L;
 			}
 			local137 = local95;
 		}
 		if (local59.length() > 0) {
-			local59.method3113(local28);
+			local59.append(local28);
 		}
-		return Static34.concatenate(new JagString[] { local9, local137.method3124(), local59.method3124() });
+		return JagString.join(new JagString[] { local9, local137.method3124(), local59.method3124() });
 	}
 
 	@OriginalMember(owner = "client!oj", name = "a", descriptor = "(IBI[[III)I")

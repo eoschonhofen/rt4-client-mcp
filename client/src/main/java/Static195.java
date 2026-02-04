@@ -12,14 +12,8 @@ public final class Static195 {
 	@OriginalMember(owner = "client!pk", name = "bb", descriptor = "Lclient!na;")
 	public static JagString aClass100_859;
 
-	@OriginalMember(owner = "client!pk", name = "Q", descriptor = "Lclient!na;")
-	public static final JagString aClass100_858 = JagString.wrap("glissement:");
-
 	@OriginalMember(owner = "client!pk", name = "V", descriptor = "[S")
-	public static final short[] aShortArray64 = new short[] { -10304, 9104, -1, -1, -1 };
-
-	@OriginalMember(owner = "client!pk", name = "eb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_860 = JagString.wrap("Angreifen");
+	public static final short[] recol1d = new short[] { -10304, 9104, -1, -1, -1 };
 
 	@OriginalMember(owner = "client!pk", name = "f", descriptor = "(B)I")
 	public static int method3531() {

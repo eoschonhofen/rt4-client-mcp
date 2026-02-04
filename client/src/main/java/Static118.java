@@ -10,9 +10,6 @@ public final class Static118 {
 	@OriginalMember(owner = "client!jd", name = "i", descriptor = "Lclient!be;")
 	public static IfType aClass13_15;
 
-	@OriginalMember(owner = "client!jd", name = "c", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_16 = new SoftLruCache(100);
-
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(B)I")
 	public static int method2352() {
 		Static232.anInt5212 = 0;
@@ -89,28 +86,6 @@ public final class Static118 {
 				}
 			}
 		}
-	}
-
-	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(II[Lclient!na;I)Lclient!na;")
-	public static JagString method2355(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) JagString[] arg2) {
-		@Pc(5) int local5 = 0;
-		for (@Pc(7) int local7 = 0; local7 < arg1; local7++) {
-			if (arg2[arg0 + local7] == null) {
-				arg2[local7 + arg0] = Static193.aClass100_853;
-			}
-			local5 += arg2[local7 + arg0].anInt4030;
-		}
-		@Pc(39) byte[] local39 = new byte[local5];
-		@Pc(41) int local41 = 0;
-		for (@Pc(43) int local43 = 0; local43 < arg1; local43++) {
-			@Pc(52) JagString local52 = arg2[local43 + arg0];
-			Static289.method2612(local52.aByteArray52, 0, local39, local41, local52.anInt4030);
-			local41 += local52.anInt4030;
-		}
-		@Pc(71) JagString local71 = new JagString();
-		local71.anInt4030 = local5;
-		local71.aByteArray52 = local39;
-		return local71;
 	}
 
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(II)I")

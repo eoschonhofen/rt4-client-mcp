@@ -7,9 +7,6 @@ public final class Static112 {
 	@OriginalMember(owner = "client!ij", name = "a", descriptor = "Lclient!na;")
 	public static final JagString aClass100_574 = JagString.wrap(":duelfriend:");
 
-	@OriginalMember(owner = "client!ij", name = "n", descriptor = "Lclient!na;")
-	public static final JagString aClass100_575 = JagString.wrap(" de votre liste noire)3");
-
 	@OriginalMember(owner = "client!ij", name = "a", descriptor = "(B)V")
 	public static void method2297() {
 		@Pc(3) int local3 = Static183.anInt4271;
@@ -17,9 +14,9 @@ public final class Static112 {
 		@Pc(11) int local11 = Static13.anInt436;
 		@Pc(13) int local13 = Static24.anInt761;
 		if (Static39.aClass3_Sub2_Sub1_1 == null || Static181.aClass3_Sub2_Sub1_9 == null) {
-			if (client.sprites.method4506(Static55.anInt1736) && client.sprites.method4506(Static169.anInt4073)) {
-				Static39.aClass3_Sub2_Sub1_1 = Static80.depack(client.sprites, Static55.anInt1736);
-				Static181.aClass3_Sub2_Sub1_9 = Static80.depack(client.sprites, Static169.anInt4073);
+			if (Client.sprites.method4506(Static55.anInt1736) && Client.sprites.method4506(Static169.anInt4073)) {
+				Static39.aClass3_Sub2_Sub1_1 = Static80.depack(Client.sprites, Static55.anInt1736);
+				Static181.aClass3_Sub2_Sub1_9 = Static80.depack(Client.sprites, Static169.anInt4073);
 				if (GameShell.glRenderer) {
 					if (Static39.aClass3_Sub2_Sub1_1 instanceof SoftwareAlphaPix32) {
 						Static39.aClass3_Sub2_Sub1_1 = new GlAlphaPix32((Pix32) Static39.aClass3_Sub2_Sub1_1);
@@ -48,7 +45,7 @@ public final class Static112 {
 			Static181.aClass3_Sub2_Sub1_9.method1423(local3, local9);
 			Static181.aClass3_Sub2_Sub1_9.method1421(local3 + local13 - Static181.aClass3_Sub2_Sub1_9.anInt1867, local9);
 		}
-		Static280.aClass3_Sub2_Sub9_43.method2857(Static234.aClass100_998, local3 + 3, local9 + 14, Static195.anInt4581, -1);
+		Static280.aClass3_Sub2_Sub9_43.method2857(Text.aClass100_998, local3 + 3, local9 + 14, Static195.anInt4581, -1);
 		if (GameShell.glRenderer) {
 			Static46.method1182(local3, local9 + 20, local13, local11 - 20, Static40.anInt1275, 256 - Static111.anInt2910);
 		} else {
@@ -68,10 +65,10 @@ public final class Static112 {
 				}
 			}
 		}
-		if ((Static165.aClass3_Sub2_Sub1_8 == null || Static92.aClass3_Sub2_Sub1_6 == null || Static204.aClass3_Sub2_Sub1_10 == null) && client.sprites.method4506(Static85.anInt2261) && client.sprites.method4506(Static136.anInt3324) && client.sprites.method4506(Static254.anInt5556)) {
-			Static165.aClass3_Sub2_Sub1_8 = Static80.depack(client.sprites, Static85.anInt2261);
-			Static92.aClass3_Sub2_Sub1_6 = Static80.depack(client.sprites, Static136.anInt3324);
-			Static204.aClass3_Sub2_Sub1_10 = Static80.depack(client.sprites, Static254.anInt5556);
+		if ((Static165.aClass3_Sub2_Sub1_8 == null || Static92.aClass3_Sub2_Sub1_6 == null || Static204.aClass3_Sub2_Sub1_10 == null) && Client.sprites.method4506(Static85.anInt2261) && Client.sprites.method4506(Static136.anInt3324) && Client.sprites.method4506(Static254.anInt5556)) {
+			Static165.aClass3_Sub2_Sub1_8 = Static80.depack(Client.sprites, Static85.anInt2261);
+			Static92.aClass3_Sub2_Sub1_6 = Static80.depack(Client.sprites, Static136.anInt3324);
+			Static204.aClass3_Sub2_Sub1_10 = Static80.depack(Client.sprites, Static254.anInt5556);
 			if (GameShell.glRenderer) {
 				if (Static165.aClass3_Sub2_Sub1_8 instanceof SoftwareAlphaPix32) {
 					Static165.aClass3_Sub2_Sub1_8 = new GlAlphaPix32((Pix32) Static165.aClass3_Sub2_Sub1_8);

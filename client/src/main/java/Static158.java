@@ -27,9 +27,9 @@ public final class Static158 {
 		}
 		try {
 			if (++Static226.anInt5079 > 2000) {
-				if (Static124.loginStream != null) {
-					Static124.loginStream.close();
-					Static124.loginStream = null;
+				if (Client.stream != null) {
+					Client.stream.close();
+					Client.stream = null;
 				}
 				if (Static57.anInt1758 >= 1) {
 					Static223.anInt5034 = -5;
@@ -39,14 +39,14 @@ public final class Static158 {
 				Static179.anInt4261 = 1;
 				Static226.anInt5079 = 0;
 				Static57.anInt1758++;
-				if (Static209.anInt4794 == Static271.anInt5800) {
-					Static209.anInt4794 = Static55.anInt1738;
+				if (Client.anInt4794 == Client.anInt5800) {
+					Client.anInt4794 = Client.anInt1738;
 				} else {
-					Static209.anInt4794 = Static271.anInt5800;
+					Client.anInt4794 = Client.anInt5800;
 				}
 			}
 			if (Static179.anInt4261 == 1) {
-				Static72.aClass212_3 = GameShell.signlink.socketreq(Static60.aString1, Static209.anInt4794);
+				Static72.aClass212_3 = GameShell.signlink.socketreq(Client.aString1, Client.anInt4794);
 				Static179.anInt4261 = 2;
 			}
 			@Pc(120) int local120;
@@ -57,64 +57,64 @@ public final class Static158 {
 				if (Static72.aClass212_3.status != 1) {
 					return;
 				}
-				Static124.loginStream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
+				Client.stream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
 				Static72.aClass212_3 = null;
-				Static124.loginStream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
-				if (client.midiPcmPlayer != null) {
-					client.midiPcmPlayer.method3571();
+				Client.stream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				if (Client.midiPcmPlayer != null) {
+					Client.midiPcmPlayer.method3571();
 				}
-				if (client.soundPcmPlayer != null) {
-					client.soundPcmPlayer.method3571();
+				if (Client.soundPcmPlayer != null) {
+					Client.soundPcmPlayer.method3571();
 				}
-				local120 = Static124.loginStream.method2828();
-				if (client.midiPcmPlayer != null) {
-					client.midiPcmPlayer.method3571();
+				local120 = Client.stream.method2828();
+				if (Client.midiPcmPlayer != null) {
+					Client.midiPcmPlayer.method3571();
 				}
-				if (client.soundPcmPlayer != null) {
-					client.soundPcmPlayer.method3571();
+				if (Client.soundPcmPlayer != null) {
+					Client.soundPcmPlayer.method3571();
 				}
 				if (local120 != 21) {
 					Static223.anInt5034 = local120;
 					Static179.anInt4261 = 0;
-					Static124.loginStream.close();
-					Static124.loginStream = null;
+					Client.stream.close();
+					Client.stream = null;
 					return;
 				}
 				Static179.anInt4261 = 3;
 			}
 			if (Static179.anInt4261 == 3) {
-				if (Static124.loginStream.available() < 1) {
+				if (Client.stream.available() < 1) {
 					return;
 				}
-				Static229.aClass100Array156 = new JagString[Static124.loginStream.method2828()];
+				Static229.aClass100Array156 = new JagString[Client.stream.method2828()];
 				Static179.anInt4261 = 4;
 			}
 			if (Static179.anInt4261 == 4) {
-				if (Static124.loginStream.available() < Static229.aClass100Array156.length * 8) {
+				if (Client.stream.available() < Static229.aClass100Array156.length * 8) {
 					return;
 				}
-				Static4.in.pos = 0;
-				Static124.loginStream.read(0, Static229.aClass100Array156.length * 8, Static4.in.data);
+				Client.in.pos = 0;
+				Client.stream.read(0, Static229.aClass100Array156.length * 8, Client.in.data);
 				for (local120 = 0; local120 < Static229.aClass100Array156.length; local120++) {
-					Static229.aClass100Array156[local120] = Static79.toBaseDisplayName(Static4.in.g8());
+					Static229.aClass100Array156[local120] = Static79.toBaseDisplayName(Client.in.g8());
 				}
 				Static223.anInt5034 = 21;
 				Static179.anInt4261 = 0;
-				Static124.loginStream.close();
-				Static124.loginStream = null;
+				Client.stream.close();
+				Client.stream = null;
 				return;
 			}
 		} catch (@Pc(238) IOException local238) {
-			if (Static124.loginStream != null) {
-				Static124.loginStream.close();
-				Static124.loginStream = null;
+			if (Client.stream != null) {
+				Client.stream.close();
+				Client.stream = null;
 			}
 			if (Static57.anInt1758 < 1) {
 				Static57.anInt1758++;
-				if (Static271.anInt5800 == Static209.anInt4794) {
-					Static209.anInt4794 = Static55.anInt1738;
+				if (Client.anInt5800 == Client.anInt4794) {
+					Client.anInt4794 = Client.anInt1738;
 				} else {
-					Static209.anInt4794 = Static271.anInt5800;
+					Client.anInt4794 = Client.anInt5800;
 				}
 				Static226.anInt5079 = 0;
 				Static179.anInt4261 = 1;

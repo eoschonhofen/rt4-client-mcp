@@ -10,9 +10,6 @@ public final class Static166 {
 	@OriginalMember(owner = "client!nc", name = "h", descriptor = "I")
 	public static int anInt4049;
 
-	@OriginalMember(owner = "client!nc", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_778 = JagString.wrap("Kampfstufe: ");
-
 	@OriginalMember(owner = "client!nc", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_779 = JagString.wrap("underlay");
 

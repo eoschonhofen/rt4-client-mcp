@@ -9,17 +9,11 @@ public final class Static189 {
 	@OriginalMember(owner = "client!pe", name = "a", descriptor = "I")
 	public static int anInt4443 = 0;
 
-	@OriginalMember(owner = "client!pe", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_834 = JagString.wrap("welle:");
-
 	@OriginalMember(owner = "client!pe", name = "j", descriptor = "I")
 	public static int anInt4451 = 0;
 
 	@OriginalMember(owner = "client!pe", name = "n", descriptor = "Lclient!na;")
 	public static final JagString aClass100_835 = JagString.wrap("hint_mapmarkers");
-
-	@OriginalMember(owner = "client!pe", name = "q", descriptor = "Lclient!na;")
-	public static final JagString aClass100_836 = JagString.wrap(": ");
 
 	@OriginalMember(owner = "client!pe", name = "z", descriptor = "Lclient!na;")
 	public static final JagString aClass100_837 = JagString.wrap("mapdots");
@@ -28,7 +22,7 @@ public final class Static189 {
 	public static void method3438(@OriginalArg(1) boolean arg0) {
 		if (arg0 != LocType.aBoolean61) {
 			LocType.aBoolean61 = arg0;
-			Static90.method1854();
+			LocType.method1854();
 		}
 	}
 }

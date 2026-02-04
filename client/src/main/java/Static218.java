@@ -80,7 +80,7 @@ public final class Static218 {
 	public static final JagString aClass100_719 = JagString.wrap("str");
 
 	@OriginalMember(owner = "client!rk", name = "sb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_720 = Static87.method1804(100);
+	public static final JagString aClass100_720 = JagString.newStringBuilder(100);
 
 	@OriginalMember(owner = "client!rk", name = "tb", descriptor = "I")
 	public static int anInt3627 = -1;
@@ -126,13 +126,13 @@ public final class Static218 {
 				local5 += 3;
 			}
 		}
-		@Pc(30) JagString local30 = Static87.method1804(local3 + local5);
+		@Pc(30) JagString local30 = JagString.newStringBuilder(local3 + local5);
 		for (local15 = 0; local15 < local3; local15++) {
 			@Pc(40) int local40 = arg0.method3149(local15);
 			if (local40 == 60) {
-				local30.method3113(aClass100_711);
+				local30.append(aClass100_711);
 			} else if (local40 == 62) {
-				local30.method3113(aClass100_706);
+				local30.append(aClass100_706);
 			} else {
 				local30.method3152(local40);
 			}

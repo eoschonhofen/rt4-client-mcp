@@ -13,9 +13,6 @@ public final class Static264 {
 	@OriginalMember(owner = "client!vh", name = "c", descriptor = "Lclient!na;")
 	public static final JagString aClass100_875 = JagString.wrap(":");
 
-	@OriginalMember(owner = "client!vh", name = "i", descriptor = "Lclient!na;")
-	public static final JagString aClass100_876 = JagString.wrap("Verbindung mit Update)2Server)3)3)3");
-
 	@OriginalMember(owner = "client!vh", name = "p", descriptor = "[I")
 	public static final int[] anIntArray412 = new int[] { 1, 0, 0, 0, 1, 0, 2, 1, 1, 1, 0, 2, 0, 0, 1, 0 };
 

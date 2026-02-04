@@ -6,8 +6,12 @@ import org.openrs2.deob.annotation.Pc;
 @OriginalClass("client!kk")
 public final class VarBitType {
 
+	@OriginalMember(owner = "client!jl", name = "G", descriptor = "Lclient!n;")
+	public static final SoftLruCache recentUse = new SoftLruCache(64);
+
 	@OriginalMember(owner = "client!nj", name = "c", descriptor = "Lclient!ve;")
 	public static Js5 varbitConfig;
+
 	@OriginalMember(owner = "client!kk", name = "c", descriptor = "I")
 	public int anInt3318;
 
@@ -19,7 +23,7 @@ public final class VarBitType {
 
     @OriginalMember(owner = "client!jl", name = "a", descriptor = "(IB)Lclient!kk;")
     public static VarBitType method2449(@OriginalArg(0) int arg0) {
-        @Pc(10) VarBitType local10 = (VarBitType) Static125.aClass99_19.find((long) arg0);
+        @Pc(10) VarBitType local10 = (VarBitType) recentUse.find((long) arg0);
         if (local10 != null) {
             return local10;
         }
@@ -28,13 +32,28 @@ public final class VarBitType {
         if (local31 != null) {
             local10.method2651(new Packet(local31));
         }
-        Static125.aClass99_19.put(local10, (long) arg0);
+        recentUse.put(local10, (long) arg0);
         return local10;
     }
 
 	@OriginalMember(owner = "client!og", name = "a", descriptor = "(Lclient!ve;I)V")
 	public static void init(@OriginalArg(0) Js5 arg0) {
 		varbitConfig = arg0;
+	}
+
+	@OriginalMember(owner = "client!wa", name = "d", descriptor = "(BI)V")
+	public static void method2221() {
+		recentUse.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!gd", name = "a", descriptor = "(I)V")
+	public static void method1694() {
+		recentUse.clear();
+	}
+
+	@OriginalMember(owner = "client!ec", name = "b", descriptor = "(I)V")
+	public static void method1295() {
+		recentUse.method3104();
 	}
 
 	@OriginalMember(owner = "client!kk", name = "a", descriptor = "(Lclient!wa;I)V")

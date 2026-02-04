@@ -6,6 +6,14 @@ import org.openrs2.deob.annotation.Pc;
 @OriginalClass("client!hh")
 public final class PlayerModel {
 
+    @OriginalMember(owner = "client!cj", name = "e", descriptor = "[[S")
+    public static short[][] recol1s;
+	@OriginalMember(owner = "client!nj", name = "m", descriptor = "[[S")
+	public static short[][] recol1d;
+	@OriginalMember(owner = "client!qe", name = "r", descriptor = "[S")
+	public static short[] recol2s;
+	@OriginalMember(owner = "client!mj", name = "C", descriptor = "[S")
+	public static short[] recol2d;
 	@OriginalMember(owner = "client!hh", name = "e", descriptor = "I")
 	public int anInt2492;
 
@@ -55,11 +63,11 @@ public final class PlayerModel {
 			}
 			local66 = new ModelUnlit(local36, local38);
 			for (@Pc(110) int local110 = 0; local110 < 5; local110++) {
-				if (this.anIntArray236[local110] < Static33.aShortArrayArray2[local110].length) {
-					local66.method1687(Static200.aShortArray65[local110], Static33.aShortArrayArray2[local110][this.anIntArray236[local110]]);
+				if (this.anIntArray236[local110] < recol1s[local110].length) {
+					local66.method1687(recol2s[local110], recol1s[local110][this.anIntArray236[local110]]);
 				}
-				if (Static172.aShortArrayArray7[local110].length > this.anIntArray236[local110]) {
-					local66.method1687(Static160.aShortArray41[local110], Static172.aShortArrayArray7[local110][this.anIntArray236[local110]]);
+				if (recol1d[local110].length > this.anIntArray236[local110]) {
+					local66.method1687(recol2d[local110], recol1d[local110][this.anIntArray236[local110]]);
 				}
 			}
 			local30 = local66.method1679(64, 768, -50, -10, -50);
@@ -288,11 +296,11 @@ public final class PlayerModel {
 				}
 				@Pc(740) ModelUnlit local740 = new ModelUnlit(local239, local239.length);
 				for (local346 = 0; local346 < 5; local346++) {
-					if (Static33.aShortArrayArray2[local346].length > this.anIntArray236[local346]) {
-						local740.method1687(Static200.aShortArray65[local346], Static33.aShortArrayArray2[local346][this.anIntArray236[local346]]);
+					if (recol1s[local346].length > this.anIntArray236[local346]) {
+						local740.method1687(recol2s[local346], recol1s[local346][this.anIntArray236[local346]]);
 					}
-					if (Static172.aShortArrayArray7[local346].length > this.anIntArray236[local346]) {
-						local740.method1687(Static160.aShortArray41[local346], Static172.aShortArrayArray7[local346][this.anIntArray236[local346]]);
+					if (recol1d[local346].length > this.anIntArray236[local346]) {
+						local740.method1687(recol2d[local346], recol1d[local346][this.anIntArray236[local346]]);
 					}
 				}
 				local154 = local740.method1679(64, 850, -30, -50, -30);
@@ -478,11 +486,11 @@ public final class PlayerModel {
 			}
 			@Pc(171) ModelUnlit local171 = new ModelUnlit(local100, local52);
 			for (local114 = 0; local114 < 5; local114++) {
-				if (Static33.aShortArrayArray2[local114].length > this.anIntArray236[local114]) {
-					local171.method1687(Static200.aShortArray65[local114], Static33.aShortArrayArray2[local114][this.anIntArray236[local114]]);
+				if (recol1s[local114].length > this.anIntArray236[local114]) {
+					local171.method1687(recol2s[local114], recol1s[local114][this.anIntArray236[local114]]);
 				}
-				if (Static172.aShortArrayArray7[local114].length > this.anIntArray236[local114]) {
-					local171.method1687(Static160.aShortArray41[local114], Static172.aShortArrayArray7[local114][this.anIntArray236[local114]]);
+				if (recol1d[local114].length > this.anIntArray236[local114]) {
+					local171.method1687(recol2d[local114], recol1d[local114][this.anIntArray236[local114]]);
 				}
 			}
 			local30 = local171.method1679(64, 768, -50, -10, -50);

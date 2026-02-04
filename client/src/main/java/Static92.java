@@ -10,18 +10,6 @@ public final class Static92 {
 	@OriginalMember(owner = "client!hd", name = "a", descriptor = "I")
 	public static int anInt2430 = 0;
 
-	@OriginalMember(owner = "client!hd", name = "o", descriptor = "Lclient!na;")
-	private static final JagString aClass100_511 = JagString.wrap(" has logged out)3");
-
-	@OriginalMember(owner = "client!hd", name = "c", descriptor = "Lclient!na;")
-	public static JagString aClass100_507 = aClass100_511;
-
-	@OriginalMember(owner = "client!hd", name = "h", descriptor = "Lclient!na;")
-	private static final JagString aClass100_509 = JagString.wrap("purple:");
-
-	@OriginalMember(owner = "client!hd", name = "f", descriptor = "Lclient!na;")
-	public static JagString aClass100_508 = aClass100_509;
-
 	@OriginalMember(owner = "client!hd", name = "g", descriptor = "[J")
 	public static final long[] aLongArray3 = new long[200];
 
@@ -32,7 +20,7 @@ public final class Static92 {
 	public static final JagString aClass100_510 = JagString.wrap("null");
 
 	@OriginalMember(owner = "client!hd", name = "p", descriptor = "Lclient!na;")
-	public static final JagString aClass100_512 = aClass100_509;
+	public static final JagString aClass100_512 = Text.aClass100_509;
 
 	@OriginalMember(owner = "client!hd", name = "a", descriptor = "(IIIIIIII)V")
 	public static void method1881(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6) {
@@ -85,8 +73,4 @@ public final class Static92 {
 		}
 	}
 
-	@OriginalMember(owner = "client!hd", name = "a", descriptor = "(I)V")
-	public static void method1882() {
-		LightType.aClass99_28.method3103();
-	}
 }

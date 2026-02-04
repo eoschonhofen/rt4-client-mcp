@@ -26,17 +26,8 @@ public final class Static191 {
 	@OriginalMember(owner = "client!pg", name = "V", descriptor = "I")
 	public static final int anInt4504 = 50;
 
-	@OriginalMember(owner = "client!pg", name = "W", descriptor = "Lclient!na;")
-	public static final JagString aClass100_842 = JagString.wrap(" loggt sich ein)3");
-
-	@OriginalMember(owner = "client!pg", name = "ib", descriptor = "Lclient!na;")
-	private static final JagString aClass100_847 = JagString.wrap("wave2:");
-
 	@OriginalMember(owner = "client!pg", name = "X", descriptor = "Lclient!na;")
-	public static final JagString aClass100_843 = aClass100_847;
-
-	@OriginalMember(owner = "client!pg", name = "Y", descriptor = "Lclient!na;")
-	public static final JagString aClass100_844 = JagString.wrap("leuchten1:");
+	public static final JagString aClass100_843 = Text.aClass100_847;
 
 	@OriginalMember(owner = "client!pg", name = "Z", descriptor = "[I")
 	public static final int[] anIntArray387 = new int[anInt4506];
@@ -52,9 +43,6 @@ public final class Static191 {
 
 	@OriginalMember(owner = "client!pg", name = "eb", descriptor = "[I")
 	public static final int[] anIntArray390 = new int[anInt4506];
-
-	@OriginalMember(owner = "client!pg", name = "hb", descriptor = "Lclient!na;")
-	public static JagString aClass100_846 = aClass100_847;
 
 	@OriginalMember(owner = "client!pg", name = "kb", descriptor = "[I")
 	public static final int[] anIntArray391 = new int[anInt4506];

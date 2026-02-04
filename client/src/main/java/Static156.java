@@ -11,23 +11,8 @@ public final class Static156 {
 	@OriginalMember(owner = "client!mf", name = "X", descriptor = "I")
 	public static int anInt3783;
 
-	@OriginalMember(owner = "client!mf", name = "q", descriptor = "Lclient!na;")
-	public static final JagString aClass100_742 = JagString.wrap("Okay");
-
 	@OriginalMember(owner = "client!mf", name = "x", descriptor = "Lclient!ha;")
 	public static final GZip aClass56_1 = new GZip();
-
-	@OriginalMember(owner = "client!mf", name = "K", descriptor = "Lclient!na;")
-	public static final JagString aClass100_743 = JagString.wrap("Poser");
-
-	@OriginalMember(owner = "client!mf", name = "S", descriptor = "Lclient!na;")
-	public static final JagString aClass100_744 = JagString.wrap("Starte 3D)2Softwarebibliothek)3");
-
-	@OriginalMember(owner = "client!mf", name = "T", descriptor = "Lclient!na;")
-	private static final JagString aClass100_745 = JagString.wrap("rating: ");
-
-	@OriginalMember(owner = "client!mf", name = "U", descriptor = "Lclient!na;")
-	public static JagString aClass100_746 = aClass100_745;
 
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(IIIII[[[B[I[I[I[I[IIBII)V")
 	public static void method2954(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) byte[][][] arg5, @OriginalArg(6) int[] arg6, @OriginalArg(7) int[] arg7, @OriginalArg(8) int[] arg8, @OriginalArg(9) int[] arg9, @OriginalArg(10) int[] arg10, @OriginalArg(11) int arg11, @OriginalArg(12) byte arg12, @OriginalArg(13) int arg13, @OriginalArg(14) int arg14) {
@@ -112,7 +97,7 @@ public final class Static156 {
 				Static119.aBoolean153 = false;
 				Static27.method766(0, 0);
 				Static161.method3066(null);
-				Static120.method2390();
+				World.method2390();
 			}
 			Static278.method4648(false);
 		}
@@ -125,42 +110,6 @@ public final class Static156 {
 			Static6.aClass3_Sub15_Sub1_1.p1Enc(104);
 			Static6.aClass3_Sub15_Sub1_1.p8(arg0);
 		}
-	}
-
-	@OriginalMember(owner = "client!mf", name = "e", descriptor = "(I)V")
-	public static void method2958() {
-		if (SignLink.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
-			ClientKeyboardListener.anIntArray407[187] = 27;
-			ClientKeyboardListener.anIntArray407[223] = 28;
-			ClientKeyboardListener.anIntArray407[221] = 43;
-			ClientKeyboardListener.anIntArray407[188] = 71;
-			ClientKeyboardListener.anIntArray407[222] = 59;
-			ClientKeyboardListener.anIntArray407[192] = 58;
-			ClientKeyboardListener.anIntArray407[191] = 73;
-			ClientKeyboardListener.anIntArray407[219] = 42;
-			ClientKeyboardListener.anIntArray407[190] = 72;
-			ClientKeyboardListener.anIntArray407[186] = 57;
-			ClientKeyboardListener.anIntArray407[220] = 74;
-			ClientKeyboardListener.anIntArray407[189] = 26;
-			return;
-		}
-		if (SignLink.setTraversalKeysEnabled == null) {
-			ClientKeyboardListener.anIntArray407[192] = 58;
-			ClientKeyboardListener.anIntArray407[222] = 59;
-		} else {
-			ClientKeyboardListener.anIntArray407[222] = 58;
-			ClientKeyboardListener.anIntArray407[192] = 28;
-			ClientKeyboardListener.anIntArray407[520] = 59;
-		}
-		ClientKeyboardListener.anIntArray407[45] = 26;
-		ClientKeyboardListener.anIntArray407[61] = 27;
-		ClientKeyboardListener.anIntArray407[91] = 42;
-		ClientKeyboardListener.anIntArray407[59] = 57;
-		ClientKeyboardListener.anIntArray407[93] = 43;
-		ClientKeyboardListener.anIntArray407[44] = 71;
-		ClientKeyboardListener.anIntArray407[92] = 74;
-		ClientKeyboardListener.anIntArray407[46] = 72;
-		ClientKeyboardListener.anIntArray407[47] = 73;
 	}
 
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "()V")

@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static30 {
 
-	@OriginalMember(owner = "client!cg", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_183 = JagString.wrap("Ablegen");
-
 	@OriginalMember(owner = "client!cg", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_184 = JagString.wrap("1");
 

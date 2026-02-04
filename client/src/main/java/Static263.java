@@ -44,10 +44,10 @@ public final class Static263 {
 		}
 		if (local8.onop != null) {
 			@Pc(19) HookReq local19 = new HookReq();
-			local19.anObjectArray31 = local8.onop;
-			local19.aClass13_17 = local8;
-			local19.aClass100_598 = arg0;
-			local19.anInt3101 = arg2;
+			local19.onop = local8.onop;
+			local19.component = local8;
+			local19.opbase = arg0;
+			local19.opindex = arg2;
 			Static82.method1767(local19);
 		}
 		@Pc(37) boolean local37 = true;

@@ -14,6 +14,10 @@ public final class LocType {
 
 	@OriginalMember(owner = "client!wf", name = "o", descriptor = "[Lclient!gb;")
 	public static final ModelUnlit[] aClass8_Sub5Array5 = new ModelUnlit[4];
+	@OriginalMember(owner = "client!he", name = "fb", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_14 = new SoftLruCache(30);
+	@OriginalMember(owner = "client!vf", name = "l", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_36 = new SoftLruCache(50);
 
 	@OriginalMember(owner = "client!lg", name = "g", descriptor = "Lclient!ve;")
 	public static Js5 locConfig;
@@ -232,6 +236,30 @@ public final class LocType {
 		locConfig = arg0;
 	}
 
+	@OriginalMember(owner = "client!oe", name = "b", descriptor = "(I)V")
+	public static void method3323() {
+		recentUse.clear();
+		aClass99_24.clear();
+		aClass99_14.clear();
+		aClass99_36.clear();
+	}
+
+	@OriginalMember(owner = "client!va", name = "b", descriptor = "(II)V")
+	public static void method4415() {
+		recentUse.method3102(5);
+		aClass99_24.method3102(5);
+		aClass99_14.method3102(5);
+		aClass99_36.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!hb", name = "c", descriptor = "(I)V")
+	public static void method1854() {
+		recentUse.method3104();
+		aClass99_24.method3104();
+		aClass99_14.method3104();
+		aClass99_36.method3104();
+	}
+
 	@OriginalMember(owner = "client!pb", name = "a", descriptor = "(II)Z")
 	public final boolean method3416(@OriginalArg(1) int arg0) {
 		if (this.anIntArray378 != null) {
@@ -258,7 +286,7 @@ public final class LocType {
 	public final LocType getMultiLoc() {
 		@Pc(26) int local26 = -1;
 		if (this.anInt4425 != -1) {
-			local26 = Static155.method2945(this.anInt4425);
+			local26 = Static155.getVarbit(this.anInt4425);
 		} else if (this.anInt4431 != -1) {
 			local26 = Static7.var[this.anInt4431];
 		}
@@ -507,7 +535,7 @@ public final class LocType {
 			this.anInt4405 = arg0.g1b() * 5;
 		} else if (arg1 >= 30 && arg1 < 35) {
 			this.aClass100Array130[arg1 - 30] = arg0.gjstr();
-			if (this.aClass100Array130[arg1 - 30].method3111(Static10.aClass100_64)) {
+			if (this.aClass100Array130[arg1 - 30].method3111(Text.aClass100_64)) {
 				this.aClass100Array130[arg1 - 30] = null;
 			}
 		} else if (arg1 == 40) {
@@ -788,7 +816,7 @@ public final class LocType {
 			} else {
 				local29 = arg0 + (this.id << 10) + (arg3 << 3);
 			}
-			@Pc(225) Class139 local225 = (Class139) Static93.aClass99_14.find(local29);
+			@Pc(225) Class139 local225 = (Class139) aClass99_14.find(local29);
 			@Pc(235) GlModelLit local235;
 			@Pc(265) SoftwarePix8 local265;
 			if (local225 == null) {
@@ -809,7 +837,7 @@ public final class LocType {
 				local225 = new Class139();
 				local225.aClass8_10 = local235;
 				local225.aClass36_Sub1_3 = local265;
-				Static93.aClass99_14.put(local225, local29);
+				aClass99_14.put(local225, local29);
 			} else {
 				local235 = (GlModelLit) local225.aClass8_10;
 				local265 = local225.aClass36_Sub1_3;
@@ -837,7 +865,7 @@ public final class LocType {
 		} else {
 			local50 = false;
 		}
-		@Pc(60) ModelSource local60 = (ModelSource) Static93.aClass99_14.find(local29);
+		@Pc(60) ModelSource local60 = (ModelSource) aClass99_14.find(local29);
 		if (local60 == null) {
 			@Pc(69) ModelUnlit local69 = this.method3418(arg0, arg3);
 			if (local69 == null) {
@@ -856,7 +884,7 @@ public final class LocType {
 			} else {
 				local60 = new SoftwareModelLit(local69, this.anInt4407 + 64, this.anInt4405 * 5 + 768, -50, -10, -50);
 			}
-			Static93.aClass99_14.put(local60, local29);
+			aClass99_14.put(local60, local29);
 		}
 		if (local50) {
 			local60 = ((ModelUnlit) local60).method1675();
@@ -881,14 +909,14 @@ public final class LocType {
 			} else {
 				local30 = arg5 + (this.id << 10) + (arg11 << 3);
 			}
-			@Pc(195) SoftwareModelLit local195 = (SoftwareModelLit) Static262.aClass99_36.find(local30);
+			@Pc(195) SoftwareModelLit local195 = (SoftwareModelLit) aClass99_36.find(local30);
 			if (local195 == null) {
 				@Pc(204) ModelUnlit local204 = this.method3418(arg5, arg11);
 				if (local204 == null) {
 					return null;
 				}
 				local195 = new SoftwareModelLit(local204, this.anInt4407 + 64, this.anInt4405 * 5 + 768, -50, -10, -50);
-				Static262.aClass99_36.put(local195, local30);
+				aClass99_36.put(local195, local30);
 			}
 			@Pc(234) boolean local234 = false;
 			if (arg4 != null) {
@@ -916,7 +944,7 @@ public final class LocType {
 		} else {
 			local30 = (arg11 << 3) + ((this.id << 10) + arg5);
 		}
-		@Pc(46) GlModelLit local46 = (GlModelLit) Static262.aClass99_36.find(local30);
+		@Pc(46) GlModelLit local46 = (GlModelLit) aClass99_36.find(local30);
 		if (local46 == null) {
 			local46 = this.method3427(arg5, true, arg11);
 			if (local46 == null) {
@@ -924,7 +952,7 @@ public final class LocType {
 			}
 			local46.method4099();
 			local46.method4111(false, false, false, false, false, true);
-			Static262.aClass99_36.put(local46, local30);
+			aClass99_36.put(local46, local30);
 		}
 		@Pc(80) boolean local80 = false;
 		@Pc(82) GlModelLit local82 = local46;

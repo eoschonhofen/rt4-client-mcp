@@ -4,12 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static236 {
 
-	@OriginalMember(owner = "client!tc", name = "b", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1003 = JagString.wrap("Prendre");
-
-	@OriginalMember(owner = "client!tc", name = "c", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1004 = JagString.wrap(" de votre liste d(Wamis)3");
-
 	@OriginalMember(owner = "client!tc", name = "a", descriptor = "(B)I")
 	public static int method4047() {
 		if (Static127.aBoolean160) {
@@ -49,12 +43,12 @@ public final class Static236 {
 				Static45.aBoolean84 = true;
 			}
 		}
-		if (client.mouseWheelRotation == 0) {
+		if (Client.mouseWheelRotation == 0) {
 			return;
 		}
 		local139 = arg2.anInt445;
 		if (arg4 - local139 <= arg3 && arg5 <= arg0 && arg3 < arg4 + 16 && arg1 + arg5 >= arg0) {
-			arg2.anInt468 += client.mouseWheelRotation * 45;
+			arg2.anInt468 += Client.mouseWheelRotation * 45;
 			Static43.method1143(arg2);
 		}
 	}

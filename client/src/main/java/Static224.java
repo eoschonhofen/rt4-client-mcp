@@ -11,18 +11,6 @@ public final class Static224 {
 	@OriginalMember(owner = "client!sd", name = "R", descriptor = "I")
 	public static int anInt5062;
 
-	@OriginalMember(owner = "client!sd", name = "J", descriptor = "Lclient!na;")
-	public static final JagString aClass100_955 = JagString.wrap("Veuillez patienter )2 tentative de r-Btablissement)3");
-
-	@OriginalMember(owner = "client!sd", name = "M", descriptor = "Lclient!na;")
-	private static final JagString aClass100_956 = JagString.wrap("Face here");
-
-	@OriginalMember(owner = "client!sd", name = "O", descriptor = "Lclient!na;")
-	public static JagString aClass100_957 = aClass100_956;
-
-	@OriginalMember(owner = "client!sd", name = "P", descriptor = "Lclient!na;")
-	public static final JagString aClass100_958 = JagString.wrap("Liste der Welten geladen");
-
 	@OriginalMember(owner = "client!sd", name = "S", descriptor = "I")
 	public static int anInt5063 = 100;
 
@@ -55,11 +43,6 @@ public final class Static224 {
 		}
 		Static130.aClass3_Sub5ArrayArrayArray1[0][arg0][arg1].aClass3_Sub5_1 = local7;
 		Static130.aClass3_Sub5ArrayArrayArray1[3][arg0][arg1] = null;
-	}
-
-	@OriginalMember(owner = "client!sd", name = "f", descriptor = "(B)V")
-	public static void method3885() {
-		FluType.recentUse.method3103();
 	}
 
 	@OriginalMember(owner = "client!sd", name = "e", descriptor = "(I)V")

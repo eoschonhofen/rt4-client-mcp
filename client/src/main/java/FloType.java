@@ -66,6 +66,21 @@ public final class FloType {
 		anInt2510 = clientConfig.getFileIdLimit(4);
 	}
 
+	@OriginalMember(owner = "client!uh", name = "e", descriptor = "(I)V")
+	public static void method4301() {
+		recentUse.clear();
+	}
+
+	@OriginalMember(owner = "client!wh", name = "a", descriptor = "(I)V")
+	public static void method4612() {
+		recentUse.method3104();
+	}
+
+	@OriginalMember(owner = "client!aj", name = "c", descriptor = "(II)V")
+	public static void method119() {
+		recentUse.method3102(5);
+	}
+
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(ILclient!wa;I)V")
 	public final void decode(@OriginalArg(1) Packet arg0, @OriginalArg(2) int arg1) {
 		while (true) {

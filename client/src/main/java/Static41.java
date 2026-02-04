@@ -7,32 +7,20 @@ public final class Static41 {
 	@OriginalMember(owner = "client!dc", name = "v", descriptor = "Lclient!na;")
 	public static final JagString aClass100_266 = JagString.wrap("<col=c0ff00>");
 
-	@OriginalMember(owner = "client!dc", name = "E", descriptor = "Lclient!na;")
-	private static final JagString aClass100_267 = JagString.wrap("wave:");
-
 	@OriginalMember(owner = "client!dc", name = "M", descriptor = "Lclient!na;")
 	public static final JagString aClass100_268 = JagString.wrap(")4");
 
 	@OriginalMember(owner = "client!dc", name = "O", descriptor = "I")
 	public static int anInt1309 = 0;
 
-	@OriginalMember(owner = "client!dc", name = "R", descriptor = "Lclient!na;")
-	private static final JagString aClass100_269 = JagString.wrap("Drop");
-
 	@OriginalMember(owner = "client!dc", name = "S", descriptor = "Lclient!na;")
-	public static final JagString aClass100_270 = aClass100_267;
-
-	@OriginalMember(owner = "client!dc", name = "Y", descriptor = "Lclient!na;")
-	public static JagString aClass100_271 = aClass100_269;
+	public static final JagString aClass100_270 = Text.aClass100_267;
 
 	@OriginalMember(owner = "client!dc", name = "ab", descriptor = "I")
 	public static int anInt1316 = 0;
 
 	@OriginalMember(owner = "client!dc", name = "db", descriptor = "[[B")
 	public static final byte[][] aByteArrayArray6 = new byte[50][];
-
-	@OriginalMember(owner = "client!dc", name = "hb", descriptor = "Lclient!na;")
-	public static JagString aClass100_272 = aClass100_267;
 
 	@OriginalMember(owner = "client!dc", name = "a", descriptor = "(IZLclient!tk;IIIIILclient!ak;IIIIB)Lclient!ak;")
 	public static ModelLit method1043(@OriginalArg(0) int arg0, @OriginalArg(1) boolean arg1, @OriginalArg(2) SeqType arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) ModelLit arg8, @OriginalArg(9) int arg9, @OriginalArg(10) int arg10, @OriginalArg(11) int arg11, @OriginalArg(12) int arg12) {
@@ -169,65 +157,4 @@ public final class Static41 {
 		Static44.frequency = 22050;
 	}
 
-	@OriginalMember(owner = "client!dc", name = "b", descriptor = "(Z)V")
-	public static void method1050() {
-		@Pc(6) int local6 = Static4.in.method2238(8);
-		@Pc(20) int local20;
-		if (Static267.anInt5774 > local6) {
-			for (local20 = local6; local20 < Static267.anInt5774; local20++) {
-				Static52.anIntArray136[Static240.anInt5335++] = Static105.anIntArray256[local20];
-			}
-		}
-		if (local6 > Static267.anInt5774) {
-			throw new RuntimeException("gppov1");
-		}
-		Static267.anInt5774 = 0;
-		for (local20 = 0; local20 < local6; local20++) {
-			@Pc(75) int local75 = Static105.anIntArray256[local20];
-			@Pc(79) ClientPlayer local79 = Static159.aClass8_Sub4_Sub1Array1[local75];
-			@Pc(84) int local84 = Static4.in.method2238(1);
-			if (local84 == 0) {
-				Static105.anIntArray256[Static267.anInt5774++] = local75;
-				local79.anInt3430 = Static83.anInt372;
-			} else {
-				@Pc(107) int local107 = Static4.in.method2238(2);
-				if (local107 == 0) {
-					Static105.anIntArray256[Static267.anInt5774++] = local75;
-					local79.anInt3430 = Static83.anInt372;
-					Static44.anIntArray106[Static116.anInt2951++] = local75;
-				} else {
-					@Pc(153) int local153;
-					@Pc(163) int local163;
-					if (local107 == 1) {
-						Static105.anIntArray256[Static267.anInt5774++] = local75;
-						local79.anInt3430 = Static83.anInt372;
-						local153 = Static4.in.method2238(3);
-						local79.method2684(1, local153);
-						local163 = Static4.in.method2238(1);
-						if (local163 == 1) {
-							Static44.anIntArray106[Static116.anInt2951++] = local75;
-						}
-					} else if (local107 == 2) {
-						Static105.anIntArray256[Static267.anInt5774++] = local75;
-						local79.anInt3430 = Static83.anInt372;
-						if (Static4.in.method2238(1) == 1) {
-							local153 = Static4.in.method2238(3);
-							local79.method2684(2, local153);
-							local163 = Static4.in.method2238(3);
-							local79.method2684(2, local163);
-						} else {
-							local153 = Static4.in.method2238(3);
-							local79.method2684(0, local153);
-						}
-						local153 = Static4.in.method2238(1);
-						if (local153 == 1) {
-							Static44.anIntArray106[Static116.anInt2951++] = local75;
-						}
-					} else if (local107 == 3) {
-						Static52.anIntArray136[Static240.anInt5335++] = local75;
-					}
-				}
-			}
-		}
-	}
 }

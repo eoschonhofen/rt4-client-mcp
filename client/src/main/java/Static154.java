@@ -7,15 +7,6 @@ public final class Static154 {
 	@OriginalMember(owner = "client!md", name = "S", descriptor = "I")
 	public static int anInt3709;
 
-	@OriginalMember(owner = "client!md", name = "J", descriptor = "Lclient!na;")
-	public static final JagString aClass100_732 = JagString.wrap("D-Bmarrage de la librairie 3D");
-
-	@OriginalMember(owner = "client!md", name = "O", descriptor = "Lclient!na;")
-	public static final JagString aClass100_733 = JagString.wrap("Fichiers config charg-Bs");
-
-	@OriginalMember(owner = "client!md", name = "P", descriptor = "Lclient!na;")
-	public static final JagString aClass100_734 = JagString.wrap("Fermer");
-
 	@OriginalMember(owner = "client!md", name = "Q", descriptor = "Lclient!na;")
 	public static final JagString aClass100_735 = JagString.wrap("::mm");
 
@@ -23,13 +14,10 @@ public final class Static154 {
 	public static final JagString aClass100_736 = JagString.wrap("Shift)2click disabled)3");
 
 	@OriginalMember(owner = "client!md", name = "V", descriptor = "[[S")
-	public static final short[][] aShortArrayArray6 = new short[][] { { 6798, 107, 10283, 16, 4797, 7744, 5799, 4634, -31839, 22433, 2983, -11343, 8, 5281, 10438, 3650, -27322, -21845, 200, 571, 908, 21830, 28946, -15701, -14010 }, { 8741, 12, -1506, -22374, 7735, 8404, 1701, -27106, 24094, 10153, -8915, 4783, 1341, 16578, -30533, 25239, 8, 5281, 10438, 3650, -27322, -21845, 200, 571, 908, 21830, 28946, -15701, -14010 }, { 25238, 8742, 12, -1506, -22374, 7735, 8404, 1701, -27106, 24094, 10153, -8915, 4783, 1341, 16578, -30533, 8, 5281, 10438, 3650, -27322, -21845, 200, 571, 908, 21830, 28946, -15701, -14010 }, { 4626, 11146, 6439, 12, 4758, 10270 }, { 4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574 } };
+	public static final short[][] recol1s = new short[][] { { 6798, 107, 10283, 16, 4797, 7744, 5799, 4634, -31839, 22433, 2983, -11343, 8, 5281, 10438, 3650, -27322, -21845, 200, 571, 908, 21830, 28946, -15701, -14010 }, { 8741, 12, -1506, -22374, 7735, 8404, 1701, -27106, 24094, 10153, -8915, 4783, 1341, 16578, -30533, 25239, 8, 5281, 10438, 3650, -27322, -21845, 200, 571, 908, 21830, 28946, -15701, -14010 }, { 25238, 8742, 12, -1506, -22374, 7735, 8404, 1701, -27106, 24094, 10153, -8915, 4783, 1341, 16578, -30533, 8, 5281, 10438, 3650, -27322, -21845, 200, 571, 908, 21830, 28946, -15701, -14010 }, { 4626, 11146, 6439, 12, 4758, 10270 }, { 4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574 } };
 
 	@OriginalMember(owner = "client!md", name = "W", descriptor = "I")
 	public static int anInt3711 = -1;
-
-	@OriginalMember(owner = "client!md", name = "X", descriptor = "Lclient!na;")
-	public static final JagString aClass100_737 = JagString.wrap("Impossible de trouver ");
 
 	@OriginalMember(owner = "client!md", name = "a", descriptor = "(Lclient!be;I)Z")
 	public static boolean method2926(@OriginalArg(0) IfType arg0) {
@@ -56,24 +44,6 @@ public final class Static154 {
 			}
 		}
 		return true;
-	}
-
-	@OriginalMember(owner = "client!md", name = "a", descriptor = "(IILclient!na;Lclient!na;BLclient!na;)V")
-	public static void method2928(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) JagString arg2, @OriginalArg(3) JagString arg3, @OriginalArg(5) JagString arg4) {
-		for (@Pc(14) int local14 = 99; local14 > 0; local14--) {
-			Static26.anIntArray67[local14] = Static26.anIntArray67[local14 - 1];
-			Static153.aClass100Array112[local14] = Static153.aClass100Array112[local14 - 1];
-			Static230.aClass100Array158[local14] = Static230.aClass100Array158[local14 - 1];
-			Static64.aClass100Array62[local14] = Static64.aClass100Array62[local14 - 1];
-			Static241.anIntArray521[local14] = Static241.anIntArray521[local14 - 1];
-		}
-		Static62.anInt1941++;
-		Static26.anIntArray67[0] = arg1;
-		Static153.aClass100Array112[0] = arg4;
-		Static49.anInt1464 = Static119.anInt3028;
-		Static241.anIntArray521[0] = arg0;
-		Static230.aClass100Array158[0] = arg2;
-		Static64.aClass100Array62[0] = arg3;
 	}
 
 	@OriginalMember(owner = "client!md", name = "a", descriptor = "(JB)Lclient!na;")

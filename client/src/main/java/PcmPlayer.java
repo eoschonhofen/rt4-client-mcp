@@ -165,7 +165,7 @@ public class PcmPlayer {
 	}
 
 	@OriginalMember(owner = "client!vh", name = "a", descriptor = "(B)V")
-	public final synchronized void method3565() {
+	public final synchronized void cycle() {
 		if (this.anIntArray411 == null) {
 			return;
 		}

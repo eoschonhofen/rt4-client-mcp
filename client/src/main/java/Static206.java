@@ -19,12 +19,6 @@ public final class Static206 {
 	@OriginalMember(owner = "client!qk", name = "h", descriptor = "I")
 	public static int anInt4774 = 0;
 
-	@OriginalMember(owner = "client!qk", name = "l", descriptor = "Lclient!na;")
-	private static final JagString aClass100_902 = JagString.wrap(" ");
-
-	@OriginalMember(owner = "client!qk", name = "i", descriptor = "Lclient!na;")
-	public static JagString aClass100_901 = aClass100_902;
-
 	@OriginalMember(owner = "client!qk", name = "a", descriptor = "(ZIIIIFII)[I")
 	public static int[] method3679(@OriginalArg(5) float arg0) {
 		@Pc(11) int[] local11 = new int[2048];

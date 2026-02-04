@@ -234,7 +234,7 @@ public final class ClientLocAnim extends ModelSource {
 			return null;
 		}
 		@Pc(69) int local69;
-		if (client.game != 0 && this.aBoolean80 && (this.anim == null || this.anim != null && this.anim.id != local19.anInt4430)) {
+		if (Client.game != 0 && this.aBoolean80 && (this.anim == null || this.anim != null && this.anim.id != local19.anInt4430)) {
 			local69 = local19.anInt4430;
 			if (local19.anInt4430 == -1) {
 				local69 = local22;

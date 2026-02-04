@@ -7,9 +7,6 @@ public final class Static201 {
 	@OriginalMember(owner = "client!qf", name = "S", descriptor = "I")
 	public static int anInt1864;
 
-	@OriginalMember(owner = "client!qf", name = "M", descriptor = "I")
-	public static int anInt1862 = 0;
-
 	@OriginalMember(owner = "client!qf", name = "N", descriptor = "Lclient!na;")
 	public static final JagString aClass100_406 = JagString.wrap("::cardmem");
 
@@ -18,9 +15,6 @@ public final class Static201 {
 
 	@OriginalMember(owner = "client!qf", name = "R", descriptor = "Lclient!na;")
 	public static final JagString aClass100_408 = JagString.wrap(" )2> ");
-
-	@OriginalMember(owner = "client!qf", name = "U", descriptor = "Lclient!na;")
-	public static final JagString aClass100_409 = JagString.wrap("W-=hlen Sie eine Option");
 
 	@OriginalMember(owner = "client!qf", name = "X", descriptor = "Lclient!be;")
 	public static IfType aClass13_13 = null;

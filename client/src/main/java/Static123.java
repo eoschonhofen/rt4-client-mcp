@@ -21,7 +21,7 @@ public final class Static123 {
 
 	@OriginalMember(owner = "client!jj", name = "a", descriptor = "(Z)V")
 	public static void method2418() {
-		if (!client.advertsuppressed && client.modewhere != 2) {
+		if (!Client.advertsuppressed && Client.modewhere != 2) {
 			try {
 				Static206.aClass100_900.method3157(Static215.client);
 			} catch (@Pc(26) Throwable local26) {
@@ -198,8 +198,4 @@ public final class Static123 {
 		return Static251.aFloatArray28;
 	}
 
-	@OriginalMember(owner = "client!jj", name = "b", descriptor = "(BI)Lclient!na;")
-	public static JagString method2423(@OriginalArg(1) int arg0) {
-		return Static198.method1025(false, arg0);
-	}
 }

@@ -6,12 +6,6 @@ public final class Static192 {
 	@OriginalMember(owner = "client!ph", name = "b", descriptor = "[[Lclient!li;")
 	public static final Environment[][] aClass92ArrayArray1 = new Environment[13][13];
 
-	@OriginalMember(owner = "client!ph", name = "c", descriptor = "Lclient!na;")
-	private static final JagString aClass100_848 = JagString.wrap("Ok");
-
-	@OriginalMember(owner = "client!ph", name = "d", descriptor = "Lclient!na;")
-	public static JagString OK = aClass100_848;
-
 	@OriginalMember(owner = "client!ph", name = "a", descriptor = "(B)V")
 	public static void method3473() {
 		while (true) {
@@ -108,7 +102,7 @@ public final class Static192 {
 
 	@OriginalMember(owner = "client!ph", name = "b", descriptor = "(B)V")
 	public static void method3474() {
-		Static250.aClass99_33.method3103();
-		Static139.aClass99_21.method3103();
+		Static250.aClass99_33.clear();
+		Static139.aClass99_21.clear();
 	}
 }

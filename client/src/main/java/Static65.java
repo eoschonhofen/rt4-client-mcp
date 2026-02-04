@@ -7,14 +7,8 @@ public final class Static65 {
 	@OriginalMember(owner = "client!fc", name = "a", descriptor = "I")
 	public static int anInt1951 = -1;
 
-	@OriginalMember(owner = "client!fc", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_434 = JagString.wrap("Lade Benutzeroberfl-=che )2 ");
-
 	@OriginalMember(owner = "client!fc", name = "f", descriptor = "Lclient!na;")
 	public static final JagString aClass100_435 = JagString.wrap("<img=0>");
-
-	@OriginalMember(owner = "client!fc", name = "g", descriptor = "Lclient!na;")
-	public static final JagString aClass100_436 = JagString.wrap("Utiliser");
 
 	@OriginalMember(owner = "client!fc", name = "a", descriptor = "(Lclient!wa;I)Lclient!na;")
 	public static JagString method1497(@OriginalArg(0) Packet arg0) {

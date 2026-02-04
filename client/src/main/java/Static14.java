@@ -1,4 +1,3 @@
-import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
@@ -6,9 +5,6 @@ public final class Static14 {
 
 	@OriginalMember(owner = "client!bd", name = "b", descriptor = "Lclient!na;")
 	public static final JagString aClass100_80 = JagString.wrap("(U(Y");
-
-	@OriginalMember(owner = "client!bd", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_81 = JagString.wrap("Ausw-=hlen");
 
 	@OriginalMember(owner = "client!bd", name = "i", descriptor = "I")
 	public static int state = 0;
@@ -29,14 +25,4 @@ public final class Static14 {
 		return local4;
 	}
 
-	@OriginalMember(owner = "client!bd", name = "a", descriptor = "(BI)V")
-	public static void method475(@OriginalArg(1) int arg0) {
-		@Pc(8) ClientInvCache local8 = (ClientInvCache) Static20.aClass133_2.find((long) arg0);
-		if (local8 != null) {
-			for (@Pc(24) int local24 = 0; local24 < local8.anIntArray420.length; local24++) {
-				local8.anIntArray420[local24] = -1;
-				local8.anIntArray422[local24] = 0;
-			}
-		}
-	}
 }

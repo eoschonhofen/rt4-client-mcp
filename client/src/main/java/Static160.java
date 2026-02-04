@@ -10,9 +10,6 @@ public final class Static160 {
 	@OriginalMember(owner = "client!mj", name = "u", descriptor = "B")
 	public static byte aByte14;
 
-	@OriginalMember(owner = "client!mj", name = "C", descriptor = "[S")
-	public static short[] aShortArray41;
-
 	@OriginalMember(owner = "client!mj", name = "d", descriptor = "[Lclient!na;")
 	public static final JagString[] aClass100Array121 = new JagString[8];
 

@@ -113,7 +113,7 @@ public final class ClientPlayer extends ClientEntity {
 		@Pc(197) int[] local197 = new int[5];
 		for (local111 = 0; local111 < 5; local111++) {
 			local127 = arg0.g1();
-			if (local127 < 0 || local127 >= Static33.aShortArrayArray2[local111].length) {
+			if (local127 < 0 || local127 >= PlayerModel.recol1s[local111].length) {
 				local127 = 0;
 			}
 			local197[local111] = local127;
@@ -179,7 +179,7 @@ public final class ClientPlayer extends ClientEntity {
 			Static16.method501();
 		}
 		@Pc(102) int local102;
-		if (client.modewhat != 0 && local79 < 50) {
+		if (Client.modewhat != 0 && local79 < 50) {
 			local102 = 50 - local79;
 			while (Static105.anInt2863 < local102) {
 				Static51.aByteArrayArray8[Static105.anInt2863] = new byte[102400];
@@ -345,10 +345,10 @@ public final class ClientPlayer extends ClientEntity {
 	public final JagString method1264() {
 		@Pc(2) JagString local2 = this.aClass100_364;
 		if (Static103.aClass100Array88 != null) {
-			local2 = Static34.concatenate(new JagString[] { Static103.aClass100Array88[this.anInt1651], local2 });
+			local2 = JagString.join(new JagString[] { Static103.aClass100Array88[this.anInt1651], local2 });
 		}
 		if (Static263.aClass100Array174 != null) {
-			local2 = Static34.concatenate(new JagString[] { local2, Static263.aClass100Array174[this.anInt1651] });
+			local2 = JagString.join(new JagString[] { local2, Static263.aClass100Array174[this.anInt1651] });
 		}
 		return local2;
 	}

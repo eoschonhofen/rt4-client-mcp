@@ -1,21 +1,11 @@
-import java.io.IOException;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 public final class Static10 {
 
-	@OriginalMember(owner = "client!an", name = "Z", descriptor = "Lclient!na;")
-	private static final JagString aClass100_63 = JagString.wrap("Hidden");
-
-	@OriginalMember(owner = "client!an", name = "cb", descriptor = "Lclient!na;")
-	public static JagString aClass100_64 = aClass100_63;
-
 	@OriginalMember(owner = "client!an", name = "db", descriptor = "S")
 	public static short aShort9 = 205;
-
-	@OriginalMember(owner = "client!an", name = "eb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_65 = JagString.wrap("Lade Schrifts-=tze )2 ");
 
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "([BIII)Lclient!na;")
 	public static JagString method346(@OriginalArg(0) byte[] arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
@@ -32,9 +22,9 @@ public final class Static10 {
 
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "(BI)I")
 	public static int method347(@OriginalArg(1) int arg0) {
-		if (Static124.loginStream != null) {
-			Static124.loginStream.close();
-			Static124.loginStream = null;
+		if (Client.stream != null) {
+			Client.stream.close();
+			Client.stream = null;
 		}
 		Static127.anInt3132++;
 		if (Static127.anInt3132 > 4) {
@@ -43,10 +33,10 @@ public final class Static10 {
 			return arg0;
 		}
 		Static82.anInt2231 = 0;
-		if (Static208.anInt4784 == Static249.loginGamePort) {
-			Static208.anInt4784 = Static97.loginJs5Port;
+		if (Client.anInt4784 == Client.loginGamePort) {
+			Client.anInt4784 = Client.loginJs5Port;
 		} else {
-			Static208.anInt4784 = Static249.loginGamePort;
+			Client.anInt4784 = Client.loginGamePort;
 		}
 		return -1;
 	}
@@ -75,36 +65,6 @@ public final class Static10 {
 		}
 		Static172.anInt4165 = arg0;
 		Static141.anInt3473 = arg0 - 1;
-	}
-
-	@OriginalMember(owner = "client!an", name = "h", descriptor = "(I)Z")
-	public static boolean method349() {
-		try {
-			return Static4.tcpIn();
-		} catch (@Pc(14) IOException local14) {
-			Static175.method3279();
-			return true;
-		} catch (@Pc(19) Exception local19) {
-			@Pc(61) String local61 = "T2 - " + Static164.anInt3985 + "," + Static5.anInt45 + "," + Static49.anInt1462 + " - " + Static223.anInt5028 + "," + (Static225.anInt5068 + Static173.aClass8_Sub4_Sub1_2.anIntArray318[0]) + "," + (Static173.aClass8_Sub4_Sub1_2.anIntArray317[0] + Static142.anInt3483) + " - ";
-			for (@Pc(63) int local63 = 0; local63 < Static223.anInt5028 && local63 < 50; local63++) {
-				local61 = local61 + Static4.in.data[local63] + ",";
-			}
-			JagException.report(local61, local19);
-			Static278.method4653();
-			return true;
-		}
-	}
-
-	@OriginalMember(owner = "client!an", name = "a", descriptor = "(Z)V")
-	public static void method350() {
-		SeqType.recentUse.method3104();
-		Static267.aClass99_37.method3104();
-	}
-
-	@OriginalMember(owner = "client!an", name = "i", descriptor = "(I)V")
-	public static void method351() {
-		CursorType.recentUse.method3104();
-		Static7.aClass99_5.method3104();
 	}
 
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "(IIIIIII)V")

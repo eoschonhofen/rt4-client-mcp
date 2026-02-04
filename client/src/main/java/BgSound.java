@@ -96,7 +96,7 @@ public final class BgSound extends Linkable {
 			this.anInt2042 = this.aClass8_Sub4_Sub1_1.anInt1664 * 128;
 		}
 		if (this.anInt2044 != local8 && this.aClass3_Sub3_Sub1_1 != null) {
-			client.soundMixer.method1347(this.aClass3_Sub3_Sub1_1);
+			Client.soundMixer.method1347(this.aClass3_Sub3_Sub1_1);
 			this.aClass3_Sub3_Sub1_1 = null;
 		}
 	}

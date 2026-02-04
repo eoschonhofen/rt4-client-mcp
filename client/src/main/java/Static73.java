@@ -10,9 +10,6 @@ public final class Static73 {
 	@OriginalMember(owner = "client!fm", name = "S", descriptor = "Lclient!n;")
 	public static final SoftLruCache aClass99_10 = new SoftLruCache(4);
 
-	@OriginalMember(owner = "client!fm", name = "T", descriptor = "Lclient!na;")
-	public static final JagString aClass100_452 = JagString.wrap(" ");
-
 	@OriginalMember(owner = "client!fm", name = "W", descriptor = "Lclient!na;")
 	public static final JagString aClass100_453 = JagString.wrap(")2");
 
@@ -48,7 +45,7 @@ public final class Static73 {
 		Static173.aClass8_Sub4_Sub1_2.anInt3421 = 3000;
 		Static173.aClass8_Sub4_Sub1_2.anInt3412 = 3000;
 		if (!GameShell.glRenderer) {
-			Static145.method2743(client.sprites);
+			Static145.method2743(Client.sprites);
 			Static196.method3534(10);
 			return;
 		}
@@ -73,7 +70,7 @@ public final class Static73 {
 
 	@OriginalMember(owner = "client!fm", name = "a", descriptor = "(ILclient!na;Lclient!na;Lclient!na;I)V")
 	public static void method1598(@OriginalArg(1) JagString arg0, @OriginalArg(2) JagString arg1, @OriginalArg(3) JagString arg2) {
-		Static154.method2928(-1, 9, arg0, arg2, arg1);
+		Client.method2928(-1, 9, arg0, arg2, arg1);
 	}
 
 	@OriginalMember(owner = "client!fm", name = "a", descriptor = "(IIIIII)Z")

@@ -11,7 +11,7 @@ public final class Static260 {
 	public static final JagString aClass100_944 = JagString.wrap("hitbar_default");
 
 	@OriginalMember(owner = "client!vd", name = "B", descriptor = "[S")
-	public static final short[] aShortArray71 = new short[] { 6798, 8741, 25238, 4626, 4550 };
+	public static final short[] recol2d = new short[] { 6798, 8741, 25238, 4626, 4550 };
 
 	@OriginalMember(owner = "client!vd", name = "C", descriptor = "I")
 	public static int anInt5014 = 0;
@@ -179,11 +179,11 @@ public final class Static260 {
 		@Pc(14) BgSound local14;
 		for (local14 = (BgSound) Static3.aClass69_135.head(); local14 != null; local14 = (BgSound) Static3.aClass69_135.method2288()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
-				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
 			if (local14.aClass3_Sub3_Sub1_2 != null) {
-				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_2);
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_2);
 				local14.aClass3_Sub3_Sub1_2 = null;
 			}
 			local14.unlink();
@@ -193,14 +193,14 @@ public final class Static260 {
 		}
 		for (local14 = (BgSound) Static152.aClass69_87.head(); local14 != null; local14 = (BgSound) Static152.aClass69_87.method2288()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
-				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
 			local14.unlink();
 		}
 		for (local14 = (BgSound) Static93.aClass133_7.method3859(); local14 != null; local14 = (BgSound) Static93.aClass133_7.method3861()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
-				client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
 			local14.unlink();

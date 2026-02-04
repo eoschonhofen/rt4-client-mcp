@@ -7,12 +7,6 @@ public final class Static115 {
 	@OriginalMember(owner = "client!ja", name = "q", descriptor = "I")
 	public static int anInt2940;
 
-	@OriginalMember(owner = "client!ja", name = "b", descriptor = "Lclient!na;")
-	public static final JagString aClass100_577 = JagString.wrap("S-Blectionner");
-
-	@OriginalMember(owner = "client!ja", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_578 = JagString.wrap("niveau ");
-
 	@OriginalMember(owner = "client!ja", name = "f", descriptor = "Lclient!ih;")
 	public static final LinkList aClass69_70 = new LinkList();
 
@@ -27,12 +21,6 @@ public final class Static115 {
 
 	@OriginalMember(owner = "client!ja", name = "n", descriptor = "I")
 	public static int anInt2939 = 0;
-
-	@OriginalMember(owner = "client!ja", name = "o", descriptor = "Lclient!na;")
-	public static final JagString aClass100_580 = JagString.wrap("voudrait faire un -Bchange avec vous)3");
-
-	@OriginalMember(owner = "client!ja", name = "p", descriptor = "Lclient!na;")
-	public static final JagString aClass100_581 = JagString.wrap(" est d-Bj-9 dans votre liste d(Wamis)3");
 
 	@OriginalMember(owner = "client!ja", name = "r", descriptor = "I")
 	public static int anInt2941 = -1;

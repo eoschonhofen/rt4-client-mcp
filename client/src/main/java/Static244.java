@@ -4,20 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static244 {
 
-	@OriginalMember(owner = "client!tl", name = "c", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_32 = new SoftLruCache(50);
-
-	@OriginalMember(owner = "client!tl", name = "e", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1013 = JagString.wrap("Loaded fonts");
-
 	@OriginalMember(owner = "client!tl", name = "f", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1014 = JagString.wrap(":assist:");
-
-	@OriginalMember(owner = "client!tl", name = "g", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1015 = JagString.wrap("tremblement:");
-
-	@OriginalMember(owner = "client!tl", name = "h", descriptor = "Lclient!na;")
-	public static JagString aClass100_1016 = aClass100_1013;
 
 	@OriginalMember(owner = "client!tl", name = "i", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1017 = JagString.wrap(")1");

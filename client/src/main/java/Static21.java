@@ -3,23 +3,8 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static21 {
 
-	@OriginalMember(owner = "client!bk", name = "I", descriptor = "Lclient!na;")
-	private static final JagString aClass100_121 = JagString.wrap("yellow:");
-
-	@OriginalMember(owner = "client!bk", name = "K", descriptor = "Lclient!na;")
-	private static final JagString aClass100_122 = JagString.wrap("Loading config )2 ");
-
-	@OriginalMember(owner = "client!bk", name = "L", descriptor = "Lclient!na;")
-	public static JagString aClass100_123 = aClass100_121;
-
-	@OriginalMember(owner = "client!bk", name = "N", descriptor = "Lclient!na;")
-	public static JagString aClass100_124 = aClass100_122;
-
-	@OriginalMember(owner = "client!bk", name = "P", descriptor = "Lclient!na;")
-	public static final JagString aClass100_125 = JagString.wrap("Speicher wird zugewiesen)3");
-
 	@OriginalMember(owner = "client!bk", name = "R", descriptor = "Lclient!na;")
-	public static final JagString aClass100_126 = aClass100_121;
+	public static final JagString aClass100_126 = Text.aClass100_121;
 
 	@OriginalMember(owner = "client!bk", name = "a", descriptor = "(BI)V")
 	public static void method619(@OriginalArg(1) int arg0) {

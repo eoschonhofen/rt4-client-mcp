@@ -22,33 +22,6 @@ public final class Static119 {
 	@OriginalMember(owner = "client!je", name = "db", descriptor = "Lclient!na;")
 	public static final JagString aClass100_589 = JagString.wrap(" <col=ffffff>");
 
-	@OriginalMember(owner = "client!je", name = "fb", descriptor = "I")
-	public static int anInt3028 = 1;
-
-	@OriginalMember(owner = "client!je", name = "h", descriptor = "(I)V")
-	public static void method2380() {
-		Static252.method4301();
-		Static224.method3885();
-		Static181.method3342();
-		Static179.method3323();
-		Static233.method4001();
-		Static103.method2239();
-		Static227.method3903();
-		Static71.method1441();
-		Static78.method1694();
-		Static3.method4657();
-		Static45.method1172();
-		Static267.method4529();
-		Static92.method1882();
-		Static26.method741();
-		Static192.method3474();
-		Static40.method1019();
-		Static180.method3329();
-		Static251.method4276();
-		Static73.aClass99_10.method3103();
-		Static139.aClass99_22.method3103();
-	}
-
 	@OriginalMember(owner = "client!je", name = "f", descriptor = "(B)V")
 	public static void method2381() {
 		if (Static18.aBoolean40) {

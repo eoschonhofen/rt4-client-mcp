@@ -7,20 +7,11 @@ public final class Static184 {
 	@OriginalMember(owner = "client!ol", name = "ib", descriptor = "I")
 	public static int anInt4358;
 
-	@OriginalMember(owner = "client!ol", name = "S", descriptor = "Lclient!na;")
-	public static final JagString aClass100_817 = JagString.wrap("Connexion perdue)3");
-
 	@OriginalMember(owner = "client!ol", name = "V", descriptor = "I")
 	public static int anInt4348 = 0;
 
-	@OriginalMember(owner = "client!ol", name = "X", descriptor = "Lclient!na;")
-	private static final JagString aClass100_818 = JagString.wrap(" is already on your ignore list)3");
-
 	@OriginalMember(owner = "client!ol", name = "Y", descriptor = "Lclient!na;")
 	public static final JagString aClass100_819 = JagString.wrap("<col=00ff80>");
-
-	@OriginalMember(owner = "client!ol", name = "db", descriptor = "Lclient!na;")
-	public static JagString aClass100_820 = aClass100_818;
 
 	@OriginalMember(owner = "client!ol", name = "a", descriptor = "(IIIILclient!th;IJIIII)Z")
 	public static boolean method3387(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) ModelSource arg4, @OriginalArg(5) int arg5, @OriginalArg(6) long arg6, @OriginalArg(7) int arg7, @OriginalArg(8) int arg8, @OriginalArg(9) int arg9, @OriginalArg(10) int arg10) {

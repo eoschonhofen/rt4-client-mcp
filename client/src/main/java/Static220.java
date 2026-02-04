@@ -10,17 +10,11 @@ public final class Static220 {
 	@OriginalMember(owner = "client!rm", name = "g", descriptor = "Z")
 	public static boolean aBoolean244 = true;
 
-	@OriginalMember(owner = "client!rm", name = "h", descriptor = "Lclient!na;")
-	private static final JagString aClass100_929 = JagString.wrap("shake:");
-
 	@OriginalMember(owner = "client!rm", name = "i", descriptor = "Lclient!na;")
 	public static final JagString aClass100_930 = JagString.wrap("(Z");
 
-	@OriginalMember(owner = "client!rm", name = "j", descriptor = "Lclient!na;")
-	public static JagString aClass100_931 = aClass100_929;
-
 	@OriginalMember(owner = "client!rm", name = "k", descriptor = "Lclient!na;")
-	public static final JagString aClass100_932 = aClass100_929;
+	public static final JagString aClass100_932 = Text.aClass100_929;
 
 	@OriginalMember(owner = "client!rm", name = "a", descriptor = "(IBI)V")
 	public static void method3797(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
@@ -78,7 +72,7 @@ public final class Static220 {
 		@Pc(4) long local4 = (long) arg2;
 		@Pc(10) ModelLit local10 = (ModelLit) Static110.aClass99_15.find(local4);
 		if (local10 == null) {
-			@Pc(22) ModelUnlit local22 = Static77.method1686(client.models, arg2);
+			@Pc(22) ModelUnlit local22 = Static77.method1686(Client.models, arg2);
 			if (local22 == null) {
 				return null;
 			}

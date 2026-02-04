@@ -10,12 +10,6 @@ public final class Static3 {
 	@OriginalMember(owner = "client!ab", name = "c", descriptor = "[Z")
 	public static final boolean[] aBooleanArray135 = new boolean[200];
 
-	@OriginalMember(owner = "client!ab", name = "j", descriptor = "[Lclient!na;")
-	public static final JagString[] aClass100Array176 = new JagString[1000];
-
-	@OriginalMember(owner = "client!ab", name = "m", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1105 = JagString.wrap("Objet d(Wabonn-Bs");
-
 	@OriginalMember(owner = "client!ab", name = "n", descriptor = "Lclient!ih;")
 	public static final LinkList aClass69_135 = new LinkList();
 
@@ -27,11 +21,6 @@ public final class Static3 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ab", name = "b", descriptor = "(B)V")
-	public static void method4657() {
-		VarpType.recentUse.method3103();
-	}
-
 	@OriginalMember(owner = "client!ab", name = "a", descriptor = "(II)V")
 	public static void setLang(@OriginalArg(1) int lang) {
 		if (lang == 0) {
@@ -39,9 +28,9 @@ public final class Static3 {
 		}
 
 		if (lang == 1) {
-			Static150.swapEnglish();
+			TextGerman.swapGerman();
 		} else if (lang == 2) {
-			Static12.swapGerman();
+			TextFrench.swapFrench();
 		} else {
 			throw new RuntimeException();
 		}

@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static147 {
 
-	@OriginalMember(owner = "client!lh", name = "x", descriptor = "Lclient!na;")
-	public static final JagString aClass100_671 = JagString.wrap("scrollen:");
-
 	@OriginalMember(owner = "client!lh", name = "z", descriptor = "Lclient!na;")
 	public static final JagString aClass100_672 = JagString.wrap("(U (X");
 

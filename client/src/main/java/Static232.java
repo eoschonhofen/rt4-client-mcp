@@ -16,12 +16,6 @@ public final class Static232 {
 	@OriginalMember(owner = "client!sm", name = "m", descriptor = "I")
 	public static int anInt5212;
 
-	@OriginalMember(owner = "client!sm", name = "f", descriptor = "Lclient!na;")
-	private static final JagString aClass100_987 = JagString.wrap("Connection lost)3");
-
-	@OriginalMember(owner = "client!sm", name = "d", descriptor = "Lclient!na;")
-	public static JagString aClass100_986 = aClass100_987;
-
 	@OriginalMember(owner = "client!sm", name = "l", descriptor = "[S")
 	public static short[] aShortArray74 = new short[256];
 

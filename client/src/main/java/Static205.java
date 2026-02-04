@@ -3,12 +3,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static205 {
 
-	@OriginalMember(owner = "client!qj", name = "g", descriptor = "Lclient!na;")
-	public static final JagString aClass100_897 = JagString.wrap("rouge:");
-
-	@OriginalMember(owner = "client!qj", name = "h", descriptor = "Lclient!na;")
-	public static final JagString aClass100_898 = JagString.wrap("Texturen geladen)3");
-
 	@OriginalMember(owner = "client!qj", name = "i", descriptor = "[I")
 	public static final int[] anIntArray426 = new int[128];
 
@@ -17,7 +11,7 @@ public final class Static205 {
 		if (!Static36.method940(arg0).method503(arg1) && arg0.onop == null) {
 			return null;
 		} else if (arg0.aClass100Array18 == null || arg0.aClass100Array18.length <= arg1 || arg0.aClass100Array18[arg1] == null || arg0.aClass100Array18[arg1].method3144().length() == 0) {
-			return Static121.aBoolean154 ? Static34.concatenate(new JagString[] { Static207.aClass100_903, Static123.method2423(arg1) }) : null;
+			return Static121.aBoolean154 ? JagString.join(new JagString[] { Static207.aClass100_903, JagString.parseInt(arg1) }) : null;
 		} else {
 			return arg0.aClass100Array18[arg1];
 		}

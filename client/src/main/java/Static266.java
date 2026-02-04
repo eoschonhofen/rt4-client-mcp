@@ -19,9 +19,6 @@ public final class Static266 {
 	@OriginalMember(owner = "client!vk", name = "h", descriptor = "I")
 	public static final int anInt5338 = (int) (Math.random() * 33.0D) - 16;
 
-	@OriginalMember(owner = "client!vk", name = "l", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1011 = JagString.wrap("Lade Liste der Welten");
-
 	@OriginalMember(owner = "client!vk", name = "a", descriptor = "(IZIII[Lclient!be;)V")
 	public static void method4190(@OriginalArg(0) int arg0, @OriginalArg(1) boolean arg1, @OriginalArg(2) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) IfType[] arg4) {
 		for (@Pc(3) int local3 = 0; local3 < arg4.length; local3++) {

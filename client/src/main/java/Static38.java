@@ -4,23 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static38 {
 
-	@OriginalMember(owner = "client!cn", name = "J", descriptor = "Lclient!na;")
-	private static final JagString aClass100_244 = JagString.wrap("Starting 3d Library");
-
-	@OriginalMember(owner = "client!cn", name = "q", descriptor = "Lclient!na;")
-	public static JagString aClass100_240 = aClass100_244;
-
-	@OriginalMember(owner = "client!cn", name = "s", descriptor = "Lclient!na;")
-	public static final JagString aClass100_241 = JagString.wrap("lila:");
-
-	@OriginalMember(owner = "client!cn", name = "x", descriptor = "Lclient!na;")
-	public static final JagString aClass100_242 = JagString.wrap("Vous ne pouvez pas ajouter votre nom -9 votre liste noire)3");
-
 	@OriginalMember(owner = "client!cn", name = "B", descriptor = "I")
 	public static int locModelLoadPrevCount = 1;
-
-	@OriginalMember(owner = "client!cn", name = "C", descriptor = "Lclient!na;")
-	public static final JagString aClass100_243 = JagString.wrap("rot:");
 
 	@OriginalMember(owner = "client!cn", name = "L", descriptor = "I")
 	public static int anInt1203 = 0;

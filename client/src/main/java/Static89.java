@@ -32,7 +32,7 @@ public final class Static89 {
 			local11 = 4;
 		}
 		for (@Pc(21) int local21 = 0; local21 < local11; local21++) {
-			client.method2261();
+			Client.doAudio();
 			for (@Pc(32) int local32 = 0; local32 < 13; local32++) {
 				for (@Pc(39) int local39 = 0; local39 < 13; local39++) {
 					@Pc(52) int local52 = Static187.anIntArrayArrayArray18[local21][local32][local39];
@@ -46,7 +46,7 @@ public final class Static89 {
 							@Pc(98) int local98 = (local88 / 8 << 8) + local76 / 8;
 							for (@Pc(100) int local100 = 0; local100 < Static238.anIntArray470.length; local100++) {
 								if (Static238.anIntArray470[local100] == local98 && local13[local100] != null) {
-									Static245.method4228(local82, local32 * 8, local21, Static148.aClass97Array1, local39 * 8, local13[local100], local65, (local76 & 0x7) * 8, (local88 & 0x7) * 8, arg0);
+									Static245.method4228(local82, local32 * 8, local21, Client.levelCollisionMap, local39 * 8, local13[local100], local65, (local76 & 0x7) * 8, (local88 & 0x7) * 8, arg0);
 									local54 = true;
 									break;
 								}
@@ -124,8 +124,8 @@ public final class Static89 {
 				Static60.anInt1892 = Static60.anInt1893;
 			}
 			Static231.anInt5204 = 1;
-			Static254.aClass100Array168[0] = Static270.aClass100_1091;
-			Static233.aClass100Array160[0] = Static186.EMPTY_STRING;
+			Static254.aClass100Array168[0] = Text.aClass100_1091;
+			Static233.aClass100Array160[0] = Static186.AUTO_EMPTY;
 			Static39.aShortArray6[0] = 1005;
 			Static190.anIntArray382[0] = Static35.anInt1092;
 		}

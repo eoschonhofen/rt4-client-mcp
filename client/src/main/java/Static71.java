@@ -10,41 +10,15 @@ public final class Static71 {
 	@OriginalMember(owner = "client!fk", name = "j", descriptor = "[[I")
 	public static int[][] anIntArrayArray10;
 
-	@OriginalMember(owner = "client!fk", name = "b", descriptor = "Lclient!na;")
-	private static final JagString aClass100_415 = JagString.wrap("Please remove ");
-
-	@OriginalMember(owner = "client!fk", name = "c", descriptor = "Lclient!na;")
-	public static final JagString aClass100_416 = JagString.wrap("V-Brification des mises -9 jour )2 ");
-
 	@OriginalMember(owner = "client!fk", name = "g", descriptor = "Z")
 	public static boolean aBoolean107 = true;
-
-	@OriginalMember(owner = "client!fk", name = "h", descriptor = "Lclient!na;")
-	public static JagString aClass100_417 = aClass100_415;
 
 	@OriginalMember(owner = "client!fk", name = "k", descriptor = "[I")
 	public static final int[] anIntArray147 = new int[14];
 
-	@OriginalMember(owner = "client!fk", name = "o", descriptor = "Lclient!na;")
-	public static JagString aClass100_418 = aClass100_415;
-
-	@OriginalMember(owner = "client!fk", name = "p", descriptor = "Lclient!na;")
-	public static final JagString aClass100_419 = JagString.wrap("ondulation2:");
-
-	@OriginalMember(owner = "client!fk", name = "a", descriptor = "(B)V")
-	public static void method1441() {
-		SpotType.recentUse.method3103();
-		Static56.aClass99_9.method3103();
-	}
-
 	@OriginalMember(owner = "client!fk", name = "a", descriptor = "([BIZ)I")
 	public static int method1442(@OriginalArg(0) byte[] arg0, @OriginalArg(1) int arg1) {
 		return Packet.getcrc(0, arg1, arg0);
-	}
-
-	@OriginalMember(owner = "client!fk", name = "b", descriptor = "(IB)V")
-	public static void method1443() {
-		FluType.recentUse.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!fk", name = "b", descriptor = "(I)V")

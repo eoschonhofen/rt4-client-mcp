@@ -8,9 +8,6 @@ public final class Static56 {
 	@OriginalMember(owner = "client!ef", name = "a", descriptor = "[I")
 	public static final int[] anIntArray141 = new int[] { 768, 1024, 1280, 512, 1536, 256, 0, 1792 };
 
-	@OriginalMember(owner = "client!ef", name = "b", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_9 = new SoftLruCache(30);
-
 	@OriginalMember(owner = "client!ef", name = "c", descriptor = "[I")
 	public static final int[] anIntArray142 = new int[500];
 
@@ -26,32 +23,11 @@ public final class Static56 {
 	@OriginalMember(owner = "client!ef", name = "i", descriptor = "I")
 	public static int anInt1743 = 0;
 
-	@OriginalMember(owner = "client!ef", name = "k", descriptor = "Lclient!na;")
-	private static final JagString aClass100_381 = JagString.wrap("skill: ");
-
-	@OriginalMember(owner = "client!ef", name = "l", descriptor = "Lclient!na;")
-	public static final JagString aClass100_382 = JagString.wrap("Chargement des interfaces )2 ");
-
-	@OriginalMember(owner = "client!ef", name = "m", descriptor = "Lclient!na;")
-	private static final JagString aClass100_383 = JagString.wrap("scroll:");
-
-	@OriginalMember(owner = "client!ef", name = "n", descriptor = "Lclient!na;")
-	public static JagString aClass100_384 = aClass100_381;
-
-	@OriginalMember(owner = "client!ef", name = "o", descriptor = "Lclient!na;")
-	public static JagString aClass100_385 = aClass100_383;
-
-	@OriginalMember(owner = "client!ef", name = "s", descriptor = "Lclient!na;")
-	private static final JagString aClass100_387 = JagString.wrap("level: ");
-
-	@OriginalMember(owner = "client!ef", name = "q", descriptor = "Lclient!na;")
-	public static JagString aClass100_386 = aClass100_387;
-
 	@OriginalMember(owner = "client!ef", name = "r", descriptor = "Lclient!be;")
 	public static IfType aClass13_12 = null;
 
 	@OriginalMember(owner = "client!ef", name = "t", descriptor = "Lclient!na;")
-	public static final JagString aClass100_388 = aClass100_383;
+	public static final JagString aClass100_388 = Text.aClass100_383;
 
 	@OriginalMember(owner = "client!ef", name = "a", descriptor = "(I)I")
 	public static int method1314() {

@@ -13,20 +13,8 @@ public final class Static164 {
 	@OriginalMember(owner = "client!na", name = "h", descriptor = "Z")
 	public static boolean aBoolean191 = false;
 
-	@OriginalMember(owner = "client!na", name = "l", descriptor = "I")
-	public static int anInt3985 = 0;
-
 	@OriginalMember(owner = "client!na", name = "o", descriptor = "I")
 	public static int anInt3988 = 0;
-
-	@OriginalMember(owner = "client!na", name = "p", descriptor = "Lclient!na;")
-	public static final JagString aClass100_768 = JagString.wrap("Bitte warten Sie )2 es wird versucht)1 die Verbindung wiederherzustellen)3");
-
-	@OriginalMember(owner = "client!na", name = "ob", descriptor = "Lclient!na;")
-	private static final JagString aClass100_771 = JagString.wrap("Allocated memory");
-
-	@OriginalMember(owner = "client!na", name = "D", descriptor = "Lclient!na;")
-	public static JagString aClass100_769 = aClass100_771;
 
 	@OriginalMember(owner = "client!na", name = "cb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_770 = JagString.wrap(":allyreq:");

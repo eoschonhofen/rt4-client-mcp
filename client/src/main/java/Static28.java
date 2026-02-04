@@ -10,15 +10,6 @@ public final class Static28 {
 	@OriginalMember(owner = "client!cd", name = "u", descriptor = "I")
 	public static int anInt919;
 
-	@OriginalMember(owner = "client!cd", name = "v", descriptor = "Lclient!na;")
-	public static final JagString aClass100_172 = JagString.wrap("Atteindre");
-
-	@OriginalMember(owner = "client!cd", name = "y", descriptor = "Lclient!na;")
-	public static final JagString aClass100_173 = JagString.wrap("Suche nach Updates )2 ");
-
-	@OriginalMember(owner = "client!cd", name = "D", descriptor = "Lclient!na;")
-	public static final JagString aClass100_174 = JagString.wrap("Lade Wordpack )2 ");
-
 	@OriginalMember(owner = "client!cd", name = "a", descriptor = "(Lclient!ve;B)I")
 	public static int method789(@OriginalArg(0) Js5 arg0) {
 		@Pc(5) int local5 = 0;

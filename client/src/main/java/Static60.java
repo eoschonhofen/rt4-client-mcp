@@ -7,9 +7,6 @@ public final class Static60 {
 	@OriginalMember(owner = "client!em", name = "t", descriptor = "[[[I")
 	public static int[][][] anIntArrayArrayArray6;
 
-	@OriginalMember(owner = "client!em", name = "v", descriptor = "Ljava/lang/String;")
-	public static String aString1;
-
 	@OriginalMember(owner = "client!em", name = "w", descriptor = "I")
 	public static int anInt1892;
 
@@ -27,9 +24,6 @@ public final class Static60 {
 
 	@OriginalMember(owner = "client!em", name = "z", descriptor = "Z")
 	public static boolean aBoolean108 = false;
-
-	@OriginalMember(owner = "client!em", name = "A", descriptor = "Lclient!na;")
-	public static final JagString aClass100_421 = JagString.wrap("blinken3:");
 
 	@OriginalMember(owner = "client!em", name = "B", descriptor = "I")
 	public static int anInt1894 = 0;

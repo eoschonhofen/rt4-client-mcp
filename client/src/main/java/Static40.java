@@ -7,9 +7,6 @@ public final class Static40 {
 	@OriginalMember(owner = "client!da", name = "ab", descriptor = "I")
 	public static int anInt1275;
 
-	@OriginalMember(owner = "client!da", name = "O", descriptor = "Lclient!na;")
-	public static final JagString aClass100_253 = JagString.wrap("(U0a )2 via: ");
-
 	@OriginalMember(owner = "client!da", name = "d", descriptor = "(I)V")
 	public static void method1008() {
 		if (Static155.anInt3718 == -1 || Static52.anInt1694 == -1) {
@@ -114,7 +111,7 @@ public final class Static40 {
 		local8.p4((int) (Math.random() * 9.9999999E7D));
 		local8.method2171(arg3);
 		local8.p4((int) (Math.random() * 9.9999999E7D));
-		local8.p2(client.affid);
+		local8.p2(Client.affid);
 		local8.p1(arg0);
 		local8.p1(arg2);
 		local8.p4((int) (Math.random() * 9.9999999E7D));
@@ -134,8 +131,8 @@ public final class Static40 {
 
 	@OriginalMember(owner = "client!da", name = "h", descriptor = "(B)V")
 	public static void method1019() {
-		IfType.spriteCache.method3103();
-		Static124.aClass99_17.method3103();
-		IfType.fontCache.method3103();
+		IfType.spriteCache.clear();
+		Static124.aClass99_17.clear();
+		IfType.fontCache.clear();
 	}
 }

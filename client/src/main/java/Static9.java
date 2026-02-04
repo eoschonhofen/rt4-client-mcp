@@ -89,7 +89,7 @@ public final class Static9 {
 	public static void method186(@OriginalArg(0) boolean arg0) {
 		if (arg0 != ObjType.aBoolean276) {
 			ObjType.aBoolean276 = arg0;
-			Static176.method3302();
+			ObjType.method3302();
 		}
 	}
 

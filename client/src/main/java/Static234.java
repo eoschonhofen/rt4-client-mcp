@@ -10,17 +10,8 @@ public final class Static234 {
 	@OriginalMember(owner = "client!ta", name = "p", descriptor = "[I")
 	public static int[] anIntArray455;
 
-	@OriginalMember(owner = "client!ta", name = "m", descriptor = "Lclient!na;")
-	public static final JagString aClass100_996 = JagString.wrap("Zugewiesener Speicher)3");
-
-	@OriginalMember(owner = "client!ta", name = "q", descriptor = "Lclient!na;")
-	private static final JagString aClass100_997 = JagString.wrap("Choose Option");
-
-	@OriginalMember(owner = "client!ta", name = "w", descriptor = "Lclient!na;")
-	public static JagString aClass100_998 = aClass100_997;
-
 	@OriginalMember(owner = "client!ta", name = "z", descriptor = "[I")
-	public static final int[] anIntArray456 = new int[] { -1, 0, 8, 0, 2, 0, 0, 0, 0, 12, 0, 1, 0, 3, 7, 0, 15, 6, 0, 0, 4, 7, -2, -1, 2, 0, 2, 8, 0, 0, 0, 0, -2, 5, 0, 0, 8, 3, 6, 0, 0, 0, -1, 0, -1, 0, 0, 6, -2, 0, 12, 0, 0, 0, -1, -2, 10, 0, 0, 0, 3, 0, -1, 0, 0, 5, 6, 0, 0, 8, -1, -1, 0, 8, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 6, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 0, -2, 0, 0, 0, 0, 0, 12, 2, 0, -2, -2, 20, 0, 0, 10, 0, 15, 0, -1, 0, 8, -2, 0, 0, 0, 8, 0, 12, 0, 0, 7, 0, 0, 0, 0, 0, -1, -1, 0, 4, 5, 0, 0, 0, 6, 0, 0, 0, 0, 8, 9, 0, 0, 0, 2, -1, 0, -2, 0, 4, 14, 0, 0, 0, 24, 0, -2, 5, 0, 0, 0, 10, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 2, 1, 0, 0, 2, -1, 1, 0, 0, 0, 0, 14, 0, 0, 0, 0, 10, 5, 0, 0, 0, 0, 0, -2, 0, 0, 9, 0, 0, 8, 0, 0, 0, 0, -2, 6, 0, 0, 0, -2, 0, 3, 0, 1, 7, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 3, 0, 0 };
+	public static final int[] SERVERPROT_SIZES = new int[] { -1, 0, 8, 0, 2, 0, 0, 0, 0, 12, 0, 1, 0, 3, 7, 0, 15, 6, 0, 0, 4, 7, -2, -1, 2, 0, 2, 8, 0, 0, 0, 0, -2, 5, 0, 0, 8, 3, 6, 0, 0, 0, -1, 0, -1, 0, 0, 6, -2, 0, 12, 0, 0, 0, -1, -2, 10, 0, 0, 0, 3, 0, -1, 0, 0, 5, 6, 0, 0, 8, -1, -1, 0, 8, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 6, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 0, -2, 0, 0, 0, 0, 0, 12, 2, 0, -2, -2, 20, 0, 0, 10, 0, 15, 0, -1, 0, 8, -2, 0, 0, 0, 8, 0, 12, 0, 0, 7, 0, 0, 0, 0, 0, -1, -1, 0, 4, 5, 0, 0, 0, 6, 0, 0, 0, 0, 8, 9, 0, 0, 0, 2, -1, 0, -2, 0, 4, 14, 0, 0, 0, 24, 0, -2, 5, 0, 0, 0, 10, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 2, 1, 0, 0, 2, -1, 1, 0, 0, 0, 0, 14, 0, 0, 0, 0, 10, 5, 0, 0, 0, 0, 0, -2, 0, 0, 9, 0, 0, 8, 0, 0, 0, 0, -2, 6, 0, 0, 0, -2, 0, 3, 0, 1, 7, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 3, 0, 0 };
 
 	@OriginalMember(owner = "client!ta", name = "B", descriptor = "I")
 	public static int anInt5245 = 0;
@@ -30,44 +21,44 @@ public final class Static234 {
 		for (@Pc(3) int local3 = 0; local3 < Static116.anInt2951; local3++) {
 			@Pc(10) int local10 = Static44.anIntArray106[local3];
 			@Pc(14) ClientNPC local14 = Static175.aClass8_Sub4_Sub2Array1[local10];
-			@Pc(18) int local18 = Static4.in.g1();
+			@Pc(18) int local18 = Client.in.g1();
 			if ((local18 & 0x8) != 0) {
-				local18 += Static4.in.g1() << 8;
+				local18 += Client.in.g1() << 8;
 			}
 			@Pc(43) int local43;
 			@Pc(47) int local47;
 			if ((local18 & 0x40) != 0) {
-				local43 = Static4.in.g1();
-				local47 = Static4.in.method2212();
+				local43 = Client.in.g1();
+				local47 = Client.in.method2212();
 				local14.method2686(local47, Static83.anInt372, local43);
 				local14.anInt3378 = Static83.anInt372 + 300;
-				local14.anInt3372 = Static4.in.method2180();
+				local14.anInt3372 = Client.in.method2180();
 			}
 			if ((local18 & 0x2) != 0) {
-				local43 = Static4.in.method2212();
-				local47 = Static4.in.method2180();
+				local43 = Client.in.method2212();
+				local47 = Client.in.method2180();
 				local14.method2686(local47, Static83.anInt372, local43);
 			}
 			if ((local18 & 0x10) != 0) {
-				local43 = Static4.in.g2();
-				local47 = Static4.in.g1();
+				local43 = Client.in.g2();
+				local47 = Client.in.g1();
 				if (local43 == 65535) {
 					local43 = -1;
 				}
 				Static223.method3855(local47, local43, local14);
 			}
 			if ((local18 & 0x4) != 0) {
-				local14.anInt3370 = Static4.in.method2184();
+				local14.anInt3370 = Client.in.method2184();
 				if (local14.anInt3370 == 65535) {
 					local14.anInt3370 = -1;
 				}
 			}
 			if ((local18 & 0x80) != 0) {
-				local43 = Static4.in.method2184();
+				local43 = Client.in.method2184();
 				if (local43 == 65535) {
 					local43 = -1;
 				}
-				local47 = Static4.in.method2208();
+				local47 = Client.in.method2208();
 				@Pc(147) boolean local147 = true;
 				if (local43 != -1 && local14.anInt3432 != -1 && SeqType.list(SpotType.list(local43).anim).anInt5355 < SeqType.list(SpotType.list(local14.anInt3432).anim).anInt5355) {
 					local147 = false;
@@ -97,7 +88,7 @@ public final class Static234 {
 				if (local14.aClass96_1.method2935()) {
 					Static91.method1877(local14);
 				}
-				local14.method2698(NPCType.list(Static4.in.method2192()));
+				local14.method2698(NPCType.list(Client.in.method2192()));
 				local14.method2692(local14.aClass96_1.anInt3713);
 				local14.anInt3365 = local14.aClass96_1.anInt3737;
 				if (local14.aClass96_1.method2935()) {
@@ -105,28 +96,28 @@ public final class Static234 {
 				}
 			}
 			if ((local18 & 0x20) != 0) {
-				local14.aClass100_640 = Static4.in.gjstr();
+				local14.aClass100_640 = Client.in.gjstr();
 				local14.anInt3408 = 100;
 			}
 			if ((local18 & 0x100) != 0) {
-				local43 = Static4.in.method2212();
+				local43 = Client.in.method2212();
 				@Pc(331) int[] local331 = new int[local43];
 				@Pc(334) int[] local334 = new int[local43];
 				@Pc(337) int[] local337 = new int[local43];
 				for (@Pc(339) int local339 = 0; local339 < local43; local339++) {
-					@Pc(350) int local350 = Static4.in.method2192();
+					@Pc(350) int local350 = Client.in.method2192();
 					if (local350 == 65535) {
 						local350 = -1;
 					}
 					local331[local339] = local350;
-					local334[local339] = Static4.in.method2180();
-					local337[local339] = Static4.in.g2();
+					local334[local339] = Client.in.method2180();
+					local337[local339] = Client.in.g2();
 				}
 				Static159.method3037(local337, local14, local334, local331);
 			}
 			if ((local18 & 0x200) != 0) {
-				local14.anInt3382 = Static4.in.method2184();
-				local14.anInt3363 = Static4.in.g2();
+				local14.anInt3382 = Client.in.method2184();
+				local14.anInt3363 = Client.in.g2();
 			}
 		}
 	}

@@ -7,15 +7,6 @@ public final class Static23 {
 	@OriginalMember(owner = "client!bm", name = "a", descriptor = "F")
 	public static float aFloat5;
 
-	@OriginalMember(owner = "client!bm", name = "d", descriptor = "Lclient!na;")
-	private static final JagString aClass100_130 = JagString.wrap("Checking for updates )2 ");
-
-	@OriginalMember(owner = "client!bm", name = "h", descriptor = "Lclient!na;")
-	public static final JagString aClass100_131 = JagString.wrap(",Mcran)2titre charg-B");
-
-	@OriginalMember(owner = "client!bm", name = "l", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD40 = aClass100_130;
-
 	@OriginalMember(owner = "client!bm", name = "p", descriptor = "Lclient!na;")
 	public static final JagString aClass100_133 = JagString.wrap("(U1");
 
@@ -68,18 +59,6 @@ public final class Static23 {
 			Static83.groundh[arg0][arg2][arg1] = Static83.groundh[arg0][arg2][arg1 - 1];
 		} else if (arg2 > 0 && arg1 > 0 && Static83.groundh[arg0][arg2 - 1][arg1 - 1] != Static83.groundh[arg0 - 1][arg2 - 1][arg1 - 1]) {
 			Static83.groundh[arg0][arg2][arg1] = Static83.groundh[arg0][arg2 - 1][arg1 - 1];
-		}
-	}
-
-	@OriginalMember(owner = "client!bm", name = "a", descriptor = "(III)I")
-	public static int method647(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(10) ClientInvCache local10 = (ClientInvCache) Static20.aClass133_2.find((long) arg0);
-		if (local10 == null) {
-			return 0;
-		} else if (arg1 >= 0 && arg1 < local10.anIntArray422.length) {
-			return local10.anIntArray422[arg1];
-		} else {
-			return 0;
 		}
 	}
 

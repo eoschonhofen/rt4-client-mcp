@@ -10,9 +10,6 @@ public final class Static85 {
 	@OriginalMember(owner = "client!gl", name = "f", descriptor = "I")
 	public static int anInt2263;
 
-	@OriginalMember(owner = "client!gl", name = "c", descriptor = "Lclient!na;")
-	public static final JagString aClass100_484 = JagString.wrap("Monde de jeu cr-B-B");
-
 	@OriginalMember(owner = "client!gl", name = "a", descriptor = "(II)V")
 	public static void method1775(@OriginalArg(1) int arg0) {
 		Static103.method2245();

@@ -13,11 +13,6 @@ public final class Static238 {
 	@OriginalMember(owner = "client!te", name = "C", descriptor = "I")
 	public static int anInt5316 = 64;
 
-	@OriginalMember(owner = "client!te", name = "a", descriptor = "(IZ)V")
-	public static void method4142() {
-		IdkType.recentUse.method3102(5);
-	}
-
 	@OriginalMember(owner = "client!te", name = "a", descriptor = "(III)Lclient!da;")
 	public static DelayedStateChange method4143(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
 		@Pc(13) DelayedStateChange local13 = (DelayedStateChange) Static36.aClass133_3.find((long) arg1 | (long) arg0 << 32);

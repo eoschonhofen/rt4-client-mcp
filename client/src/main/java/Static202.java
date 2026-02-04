@@ -19,12 +19,6 @@ public final class Static202 {
 	@OriginalMember(owner = "client!qg", name = "Z", descriptor = "Lclient!na;")
 	public static final JagString aClass100_892 = JagString.wrap("mem=");
 
-	@OriginalMember(owner = "client!qg", name = "h", descriptor = "(I)V")
-	public static void method3653() {
-		MsiType.recentUse.method3104();
-		Static219.aClass99_27.method3104();
-	}
-
 	@OriginalMember(owner = "client!qg", name = "a", descriptor = "(Lsignlink!ll;Lclient!wa;IB)V")
 	public static void method3654(@OriginalArg(0) SignLink arg0, @OriginalArg(1) Packet arg1, @OriginalArg(2) int arg2) {
 		@Pc(17) ReflectionCheck local17 = new ReflectionCheck();
@@ -43,9 +37,9 @@ public final class Static202 {
 				@Pc(104) String local104;
 				@Pc(95) int local95;
 				if (local71 == 0 || local71 == 1 || local71 == 2) {
-					local93 = new String(arg1.gjstr().method3148());
+					local93 = new String(arg1.gjstr().builderToString());
 					local95 = 0;
-					local104 = new String(arg1.gjstr().method3148());
+					local104 = new String(arg1.gjstr().builderToString());
 					if (local71 == 1) {
 						local95 = arg1.g4();
 					}
@@ -53,12 +47,12 @@ public final class Static202 {
 					local17.fieldValue[local59] = local95;
 					local17.field[local59] = arg0.method5126(local104, Static6.method85(local93));
 				} else if (local71 == 3 || local71 == 4) {
-					local93 = new String(arg1.gjstr().method3148());
-					local104 = new String(arg1.gjstr().method3148());
+					local93 = new String(arg1.gjstr().builderToString());
+					local104 = new String(arg1.gjstr().builderToString());
 					local95 = arg1.g1();
 					@Pc(171) String[] local171 = new String[local95];
 					for (@Pc(173) int local173 = 0; local173 < local95; local173++) {
-						local171[local173] = new String(arg1.gjstr().method3148());
+						local171[local173] = new String(arg1.gjstr().builderToString());
 					}
 					@Pc(193) byte[][] local193 = new byte[local95][];
 					@Pc(210) int local210;

@@ -11,20 +11,11 @@ public final class Static230 {
 	@OriginalMember(owner = "client!sj", name = "p", descriptor = "I")
 	public static int mapPrevLoadCount = 1;
 
-	@OriginalMember(owner = "client!sj", name = "q", descriptor = "[Lclient!na;")
-	public static final JagString[] aClass100Array158 = new JagString[100];
-
-	@OriginalMember(owner = "client!sj", name = "t", descriptor = "I")
-	public static int anInt5152 = 0;
-
 	@OriginalMember(owner = "client!sj", name = "u", descriptor = "Z")
 	public static boolean aBoolean250 = false;
 
 	@OriginalMember(owner = "client!sj", name = "w", descriptor = "Lclient!na;")
 	public static final JagString aClass100_978 = JagString.wrap("<)4col>");
-
-	@OriginalMember(owner = "client!sj", name = "x", descriptor = "Lclient!na;")
-	public static final JagString aClass100_979 = JagString.wrap("Connexion au serveur de mise -9 jour en cours");
 
 	@OriginalMember(owner = "client!sj", name = "H", descriptor = "I")
 	public static int anInt5161 = 0;
@@ -127,13 +118,13 @@ public final class Static230 {
 		try {
 			@Pc(17) JagString local17 = Static272.aClass100_989.method3153(GameShell.signlink.applet);
 			@Pc(23) JagString local23 = Static246.aClass100_1029.method3153(GameShell.signlink.applet);
-			@Pc(48) JagString local48 = Static34.concatenate(new JagString[] { local17, Static142.aClass100_667, arg0, Static276.aClass100_1095, local23 });
+			@Pc(48) JagString local48 = JagString.join(new JagString[] { local17, Static142.aClass100_667, arg0, Static276.aClass100_1095, local23 });
 			if (arg0.length() == 0) {
-				local48 = Static34.concatenate(new JagString[] { local48, Static245.aClass100_1018 });
+				local48 = JagString.join(new JagString[] { local48, Static245.aClass100_1018 });
 			} else {
-				local48 = Static34.concatenate(new JagString[] { local48, Static263.aClass100_1082, Static33.method873(MonotonicTime.currentTime() + 94608000000L), Static64.aClass100_431, Static154.method2929(94608000L) });
+				local48 = JagString.join(new JagString[] { local48, Static263.aClass100_1082, Static33.method873(MonotonicTime.currentTime() + 94608000000L), Static64.aClass100_431, Static154.method2929(94608000L) });
 			}
-			Static34.concatenate(new JagString[] { Static221.aClass100_821, local48, Static223.aClass100_946 }).method3134(GameShell.signlink.applet);
+			JagString.join(new JagString[] { Static221.aClass100_821, local48, Static223.aClass100_946 }).method3134(GameShell.signlink.applet);
 		} catch (@Pc(124) Throwable local124) {
 		}
 	}

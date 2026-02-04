@@ -566,7 +566,7 @@ public final class Static1 {
 		@Pc(161) int local161 = arg0 + arg2 * Static109.anInt2882 / Static48.anInt1449;
 		@Pc(167) int local167 = arg2 * Static89.anInt2387 / Static48.anInt1449;
 		@Pc(169) int local169 = 16711680;
-		if (client.game == 1) {
+		if (Client.game == 1) {
 			local169 = 16777215;
 		}
 		if (GameShell.glRenderer) {

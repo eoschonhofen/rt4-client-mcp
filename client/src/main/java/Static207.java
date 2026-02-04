@@ -18,9 +18,6 @@ public final class Static207 {
 	@OriginalMember(owner = "client!ql", name = "i", descriptor = "Lclient!na;")
 	public static final JagString aClass100_904 = JagString.wrap("::wm2");
 
-	@OriginalMember(owner = "client!ql", name = "k", descriptor = "Lclient!na;")
-	public static final JagString aClass100_905 = JagString.wrap("gleiten:");
-
 	@OriginalMember(owner = "client!ql", name = "a", descriptor = "(IFII[[I[[II[[FIBIZLclient!hg;[[FII[[FI)I")
 	public static int method3683(@OriginalArg(0) int arg0, @OriginalArg(1) float arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int[][] arg4, @OriginalArg(5) int[][] arg5, @OriginalArg(6) int arg6, @OriginalArg(7) float[][] arg7, @OriginalArg(8) int arg8, @OriginalArg(10) int arg9, @OriginalArg(11) boolean arg10, @OriginalArg(12) GlSquare arg11, @OriginalArg(13) float[][] arg12, @OriginalArg(14) int arg13, @OriginalArg(15) int arg14, @OriginalArg(16) float[][] arg15, @OriginalArg(17) int arg16) {
 		@Pc(20) int local20;
@@ -95,7 +92,7 @@ public final class Static207 {
 				if (MonotonicTime.currentTime() - 5000L < Static231.aLong174) {
 					return 0;
 				}
-				Static72.aClass212_3 = GameShell.signlink.socketreq(Static143.loginHost, Static208.anInt4784);
+				Static72.aClass212_3 = GameShell.signlink.socketreq(Client.loginHost, Client.anInt4784);
 				Static15.aLong18 = MonotonicTime.currentTime();
 				Static82.anInt2231 = 1;
 			}
@@ -111,7 +108,7 @@ public final class Static207 {
 				if (Static72.aClass212_3.status != 1) {
 					return -1;
 				}
-				Static124.loginStream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
+				Client.stream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
 				Static6.aClass3_Sub15_Sub1_1.pos = 0;
 				Static72.aClass212_3 = null;
 				local82 = 0;
@@ -120,19 +117,19 @@ public final class Static207 {
 				}
 				Static6.aClass3_Sub15_Sub1_1.p1(255);
 				Static6.aClass3_Sub15_Sub1_1.p4(local82);
-				Static124.loginStream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
-				if (client.midiPcmPlayer != null) {
-					client.midiPcmPlayer.method3571();
+				Client.stream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				if (Client.midiPcmPlayer != null) {
+					Client.midiPcmPlayer.method3571();
 				}
-				if (client.soundPcmPlayer != null) {
-					client.soundPcmPlayer.method3571();
+				if (Client.soundPcmPlayer != null) {
+					Client.soundPcmPlayer.method3571();
 				}
-				local124 = Static124.loginStream.method2828();
-				if (client.midiPcmPlayer != null) {
-					client.midiPcmPlayer.method3571();
+				local124 = Client.stream.method2828();
+				if (Client.midiPcmPlayer != null) {
+					Client.midiPcmPlayer.method3571();
 				}
-				if (client.soundPcmPlayer != null) {
-					client.soundPcmPlayer.method3571();
+				if (Client.soundPcmPlayer != null) {
+					Client.soundPcmPlayer.method3571();
 				}
 				if (local124 != 0) {
 					return Static10.method347(local124);
@@ -140,12 +137,12 @@ public final class Static207 {
 				Static82.anInt2231 = 2;
 			}
 			if (Static82.anInt2231 == 2) {
-				if (Static124.loginStream.available() < 2) {
+				if (Client.stream.available() < 2) {
 					return -1;
 				}
-				Static116.anInt2961 = Static124.loginStream.method2828();
+				Static116.anInt2961 = Client.stream.method2828();
 				Static116.anInt2961 <<= 0x8;
-				Static116.anInt2961 += Static124.loginStream.method2828();
+				Static116.anInt2961 += Client.stream.method2828();
 				Static82.anInt2231 = 3;
 				Static141.anInt3469 = 0;
 				Static229.aByteArray70 = new byte[Static116.anInt2961];
@@ -153,14 +150,14 @@ public final class Static207 {
 			if (Static82.anInt2231 != 3) {
 				return -1;
 			}
-			local82 = Static124.loginStream.available();
+			local82 = Client.stream.available();
 			if (local82 < 1) {
 				return -1;
 			}
 			if (local82 > Static116.anInt2961 - Static141.anInt3469) {
 				local82 = Static116.anInt2961 - Static141.anInt3469;
 			}
-			Static124.loginStream.read(Static141.anInt3469, local82, Static229.aByteArray70);
+			Client.stream.read(Static141.anInt3469, local82, Static229.aByteArray70);
 			Static141.anInt3469 += local82;
 			if (Static141.anInt3469 < Static116.anInt2961) {
 				return -1;
@@ -173,8 +170,8 @@ public final class Static207 {
 						Static101.aClass10_Sub1Array1[local124++] = local247;
 					}
 				}
-				Static124.loginStream.close();
-				Static124.loginStream = null;
+				Client.stream.close();
+				Client.stream = null;
 				Static127.anInt3132 = 0;
 				Static82.anInt2231 = 0;
 				Static229.aByteArray70 = null;

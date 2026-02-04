@@ -7,12 +7,6 @@ public final class Static53 {
 	@OriginalMember(owner = "client!ec", name = "d", descriptor = "Lclient!gn;")
 	public static final LruCache aClass54_5 = new LruCache(16);
 
-	@OriginalMember(owner = "client!ec", name = "r", descriptor = "Lclient!na;")
-	private static final JagString aClass100_371 = JagString.wrap("RuneScape is loading )2 please wait)3)3)3");
-
-	@OriginalMember(owner = "client!ec", name = "k", descriptor = "Lclient!na;")
-	public static JagString aClass100_370 = aClass100_371;
-
 	@OriginalMember(owner = "client!ec", name = "l", descriptor = "I")
 	public static final int anInt1704 = 5063219;
 
@@ -90,8 +84,8 @@ public final class Static53 {
 		@Pc(19) IfType local19 = Static201.method1418(Static98.anInt2512, Static15.anInt506);
 		if (local19 != null && local19.ontargetleave != null) {
 			@Pc(29) HookReq local29 = new HookReq();
-			local29.anObjectArray31 = local19.ontargetleave;
-			local29.aClass13_17 = local19;
+			local29.onop = local19.ontargetleave;
+			local29.component = local19;
 			Static82.method1767(local29);
 		}
 		Static241.aBoolean302 = false;
@@ -99,8 +93,4 @@ public final class Static53 {
 		Static43.method1143(local19);
 	}
 
-	@OriginalMember(owner = "client!ec", name = "b", descriptor = "(I)V")
-	public static void method1295() {
-		Static125.aClass99_19.method3104();
-	}
 }

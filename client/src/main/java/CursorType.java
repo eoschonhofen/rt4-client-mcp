@@ -8,6 +8,8 @@ public final class CursorType {
 
 	@OriginalMember(owner = "client!ge", name = "i", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
+	@OriginalMember(owner = "client!ah", name = "i", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_5 = new SoftLruCache(2);
 
 	@OriginalMember(owner = "client!mc", name = "Z", descriptor = "Lclient!ve;")
 	public static Js5 aClass153_57;
@@ -45,15 +47,33 @@ public final class CursorType {
 		aClass153_97 = arg1;
 	}
 
+    @OriginalMember(owner = "client!an", name = "i", descriptor = "(I)V")
+    public static void method351() {
+        recentUse.method3104();
+        aClass99_5.method3104();
+    }
+
+	@OriginalMember(owner = "client!c", name = "d", descriptor = "(II)V")
+	public static void method716() {
+		recentUse.method3102(5);
+		aClass99_5.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!ca", name = "a", descriptor = "(Z)V")
+	public static void method741() {
+		recentUse.clear();
+		aClass99_5.clear();
+	}
+
 	@OriginalMember(owner = "client!ia", name = "a", descriptor = "(B)Lclient!mm;")
 	public final Pix32 method2246() {
-		@Pc(7) Pix32 local7 = (Pix32) Static7.aClass99_5.find((long) this.anInt2857);
+		@Pc(7) Pix32 local7 = (Pix32) aClass99_5.find((long) this.anInt2857);
 		if (local7 != null) {
 			return local7;
 		}
 		local7 = Static80.depack(aClass153_97, this.anInt2857);
 		if (local7 != null) {
-			Static7.aClass99_5.put(local7, (long) this.anInt2857);
+			aClass99_5.put(local7, (long) this.anInt2857);
 		}
 		return local7;
 	}

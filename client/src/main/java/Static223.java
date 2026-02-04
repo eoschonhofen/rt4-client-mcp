@@ -11,20 +11,8 @@ public final class Static223 {
 	@OriginalMember(owner = "client!sc", name = "g", descriptor = "Lclient!na;")
 	public static final JagString aClass100_947 = JagString.wrap(" )2> <col=ff9040>");
 
-	@OriginalMember(owner = "client!sc", name = "k", descriptor = "Lclient!na;")
-	public static final JagString aClass100_948 = JagString.wrap("Hierhin drehen");
-
-	@OriginalMember(owner = "client!sc", name = "o", descriptor = "I")
-	public static int anInt5028 = 0;
-
 	@OriginalMember(owner = "client!sc", name = "p", descriptor = "I")
 	public static int anInt5029 = 0;
-
-	@OriginalMember(owner = "client!sc", name = "w", descriptor = "Lclient!na;")
-	private static final JagString aClass100_950 = JagString.wrap("Loaded sprites");
-
-	@OriginalMember(owner = "client!sc", name = "r", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD80 = aClass100_950;
 
 	@OriginalMember(owner = "client!sc", name = "v", descriptor = "I")
 	public static int mouseY = 0;

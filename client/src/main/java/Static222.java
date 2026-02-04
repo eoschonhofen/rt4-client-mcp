@@ -11,14 +11,8 @@ public final class Static222 {
 	@OriginalMember(owner = "client!sa", name = "Q", descriptor = "[I")
 	public static final int[] anIntArray437 = new int[5];
 
-	@OriginalMember(owner = "client!sa", name = "U", descriptor = "Lclient!na;")
-	private static final JagString aClass100_936 = JagString.wrap("Use");
-
 	@OriginalMember(owner = "client!sa", name = "W", descriptor = "Z")
 	public static boolean aBoolean246 = true;
-
-	@OriginalMember(owner = "client!sa", name = "X", descriptor = "Lclient!na;")
-	public static JagString aClass100_937 = aClass100_936;
 
 	@OriginalMember(owner = "client!sa", name = "c", descriptor = "(III)I")
 	public static int method3825(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {

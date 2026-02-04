@@ -56,6 +56,21 @@ public final class FluType {
 		configClient = arg0;
 	}
 
+	@OriginalMember(owner = "client!sd", name = "f", descriptor = "(B)V")
+	public static void method3885() {
+		recentUse.clear();
+	}
+
+	@OriginalMember(owner = "client!ed", name = "c", descriptor = "(I)V")
+	public static void method1308() {
+		recentUse.method3104();
+	}
+
+	@OriginalMember(owner = "client!fk", name = "b", descriptor = "(IB)V")
+	public static void method1443() {
+		recentUse.method3102(5);
+	}
+
 	@OriginalMember(owner = "client!ni", name = "a", descriptor = "(IB)V")
 	private void method3216(@OriginalArg(0) int arg0) {
 		@Pc(8) double local8 = (double) (arg0 >> 16 & 0xFF) / 256.0D;

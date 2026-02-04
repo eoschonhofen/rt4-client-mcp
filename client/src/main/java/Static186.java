@@ -14,16 +14,16 @@ public final class Static186 {
 	public static int anInt4392 = 0;
 
 	@OriginalMember(owner = "client!pa", name = "O", descriptor = "Lclient!na;")
-	public static final JagString EMPTY_STRING = JagString.wrap("");
+	public static final JagString AUTO_EMPTY = JagString.wrap("");
 
 	@OriginalMember(owner = "client!pa", name = "P", descriptor = "Lclient!na;")
-	public static JagString aClass100_828 = EMPTY_STRING;
+	public static JagString aClass100_828 = AUTO_EMPTY;
 
 	@OriginalMember(owner = "client!pa", name = "R", descriptor = "[Z")
 	public static final boolean[] aBooleanArray100 = new boolean[100];
 
 	@OriginalMember(owner = "client!pa", name = "S", descriptor = "Lclient!na;")
-	public static JagString aClass100_829 = EMPTY_STRING;
+	public static JagString aClass100_829 = AUTO_EMPTY;
 
 	@OriginalMember(owner = "client!pa", name = "d", descriptor = "(I)V")
 	public static void method3413() {
@@ -32,7 +32,7 @@ public final class Static186 {
 		}
 		if (Static41.anInt1309 < 10) {
 			if (!Static119.aClass153_44.method4489(Static269.aClass3_Sub2_Sub4_2.aClass100_138)) {
-				Static41.anInt1309 = client.worldmap.method4478(Static269.aClass3_Sub2_Sub4_2.aClass100_138) / 10;
+				Static41.anInt1309 = Client.worldmap.method4478(Static269.aClass3_Sub2_Sub4_2.aClass100_138) / 10;
 				return;
 			}
 			Static6.method84();
@@ -108,11 +108,11 @@ public final class Static186 {
 			Static7.method842(true);
 			GameShell.doneslowupdate();
 		} else if (Static41.anInt1309 == 60) {
-			if (Static119.aClass153_44.method4497(Static34.concatenate(new JagString[] { Static269.aClass3_Sub2_Sub4_2.aClass100_138, Static265.aClass100_1086 }))) {
-				if (!Static119.aClass153_44.method4489(Static34.concatenate(new JagString[] { Static269.aClass3_Sub2_Sub4_2.aClass100_138, Static265.aClass100_1086 }))) {
+			if (Static119.aClass153_44.method4497(JagString.join(new JagString[] { Static269.aClass3_Sub2_Sub4_2.aClass100_138, Static265.aClass100_1086 }))) {
+				if (!Static119.aClass153_44.method4489(JagString.join(new JagString[] { Static269.aClass3_Sub2_Sub4_2.aClass100_138, Static265.aClass100_1086 }))) {
 					return;
 				}
-				Static203.aClass134_1 = Static140.method2711(Static34.concatenate(new JagString[] { Static269.aClass3_Sub2_Sub4_2.aClass100_138, Static265.aClass100_1086 }), Static119.aClass153_44);
+				Static203.aClass134_1 = Static140.method2711(JagString.join(new JagString[] { Static269.aClass3_Sub2_Sub4_2.aClass100_138, Static265.aClass100_1086 }), Static119.aClass153_44);
 			} else {
 				Static203.aClass134_1 = new MapElementList(0);
 			}

@@ -47,7 +47,7 @@ public final class Static110 {
 				local141 = Static112.method2299(local6.aClass8_Sub4_Sub2_1);
 				if (local141 != local6.anInt2044) {
 					if (local6.aClass3_Sub3_Sub1_1 != null) {
-						client.soundMixer.method1347(local6.aClass3_Sub3_Sub1_1);
+						Client.soundMixer.method1347(local6.aClass3_Sub3_Sub1_1);
 						local6.aClass3_Sub3_Sub1_1 = null;
 					}
 					local6.anInt2044 = local141;
@@ -74,7 +74,7 @@ public final class Static110 {
 				local141 = Static140.method2706(local6.aClass8_Sub4_Sub1_1);
 				if (local6.anInt2044 != local141) {
 					if (local6.aClass3_Sub3_Sub1_1 != null) {
-						client.soundMixer.method1347(local6.aClass3_Sub3_Sub1_1);
+						Client.soundMixer.method1347(local6.aClass3_Sub3_Sub1_1);
 						local6.aClass3_Sub3_Sub1_1 = null;
 					}
 					local6.anInt2044 = local141;
@@ -89,8 +89,4 @@ public final class Static110 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(ZII)Lclient!na;")
-	public static JagString method2285(@OriginalArg(2) int arg0) {
-		return Static198.method1025(true, arg0);
-	}
 }

@@ -10,12 +10,6 @@ public final class Static141 {
 	@OriginalMember(owner = "client!lb", name = "p", descriptor = "[I")
 	public static final int[] anIntArray326 = new int[25];
 
-	@OriginalMember(owner = "client!lb", name = "x", descriptor = "Lclient!na;")
-	private static final JagString aClass100_665 = JagString.wrap("red:");
-
-	@OriginalMember(owner = "client!lb", name = "q", descriptor = "Lclient!na;")
-	public static JagString aClass100_663 = aClass100_665;
-
 	@OriginalMember(owner = "client!lb", name = "s", descriptor = "Lclient!na;")
 	public static final JagString aClass100_664 = JagString.wrap(":clan:");
 
@@ -26,7 +20,7 @@ public final class Static141 {
 	public static int anInt3474 = 0;
 
 	@OriginalMember(owner = "client!lb", name = "D", descriptor = "Lclient!na;")
-	public static final JagString aClass100_666 = aClass100_665;
+	public static final JagString aClass100_666 = Text.aClass100_665;
 
 	@OriginalMember(owner = "client!lb", name = "d", descriptor = "(B)V")
 	public static void method2720() {
@@ -45,8 +39,8 @@ public final class Static141 {
 		Static255.aClass54_16.method1815();
 		Static171.aClass139_1 = new Class139();
 		((WorldTextureProvider) Static94.anInterface1_2).method3247();
-		Static120.anInt3034 = 0;
-		Static120.aClass51Array1 = new Light[255];
+		World.anInt3034 = 0;
+		World.aClass51Array1 = new Light[255];
 		Static237.method4120();
 		Static242.method4203();
 		Static115.method2315();
@@ -62,20 +56,20 @@ public final class Static141 {
 			Static242.method4201();
 			Static76.method1642();
 		}
-		Static102.method2074(client.fontMetrics, client.sprites);
-		Static30.method839(client.sprites);
+		Static102.method2074(Client.fontMetrics, Client.sprites);
+		Static30.method839(Client.sprites);
 		Static204.aClass3_Sub2_Sub1_10 = null;
 		Static39.aClass3_Sub2_Sub1_1 = null;
 		Static92.aClass3_Sub2_Sub1_6 = null;
 		Static165.aClass3_Sub2_Sub1_8 = null;
 		Static181.aClass3_Sub2_Sub1_9 = null;
-		if (client.state == 5) {
-			Static181.method3344(client.sprites);
+		if (Client.state == 5) {
+			Static181.method3344(Client.sprites);
 		}
-		if (client.state == 10) {
+		if (Client.state == 10) {
 			Static73.method1596(false);
 		}
-		if (client.state == 30) {
+		if (Client.state == 30) {
 			Static196.method3534(25);
 		}
 	}

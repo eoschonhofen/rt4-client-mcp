@@ -17,6 +17,4 @@ public final class Static67 {
 	@OriginalMember(owner = "client!fe", name = "lb", descriptor = "[I")
 	public static final int[] anIntArray320 = new int[100];
 
-	@OriginalMember(owner = "client!fe", name = "nc", descriptor = "[Lclient!hj;")
-	public static final ClientGosubFrame[] aClass61Array3 = new ClientGosubFrame[50];
 }

@@ -11,9 +11,6 @@ public final class Static50 {
 	@OriginalMember(owner = "client!e", name = "sc", descriptor = "[I")
 	public static final int[] anIntArray133 = new int[100];
 
-	@OriginalMember(owner = "client!e", name = "vc", descriptor = "Lclient!na;")
-	public static final JagString aClass100_361 = JagString.wrap("Gestionnaire de saisie charg-B");
-
 	@OriginalMember(owner = "client!e", name = "xc", descriptor = "[I")
 	public static int[] anIntArray134 = new int[2];
 

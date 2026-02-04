@@ -272,7 +272,7 @@ public final class Static239 {
 		aGL1.glMatrixMode(GL.GL_MODELVIEW);
 		aGL1.glLoadIdentity();
 		Static161.method3065();
-		Static120.method2400();
+		World.method2400();
 	}
 
 	@OriginalMember(owner = "client!tf", name = "g", descriptor = "()V")
@@ -497,7 +497,7 @@ public final class Static239 {
 			}
 			aGLDrawable1 = null;
 		}
-		Static120.method2398();
+		World.method2398();
 		GameShell.glRenderer = false;
 	}
 
@@ -759,7 +759,7 @@ public final class Static239 {
 		anInt5328 = local2[0];
 		aGL1.glBindTexture(GL.GL_TEXTURE_2D, anInt5328);
 		aGL1.glTexImage2D(GL.GL_TEXTURE_2D, 0, 4, 1, 1, 0, GL.GL_RGBA, GL.GL_UNSIGNED_BYTE, IntBuffer.wrap(new int[] { -1 }));
-		Static120.method2401();
+		World.method2401();
 		Static238.method4145();
 	}
 }

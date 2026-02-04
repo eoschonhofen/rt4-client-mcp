@@ -7,29 +7,11 @@ public final class Static262 {
 	@OriginalMember(owner = "client!vf", name = "c", descriptor = "I")
 	public static int anInt5752;
 
-	@OriginalMember(owner = "client!vf", name = "d", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1076 = JagString.wrap("Please wait )2 attempting to reestablish)3");
-
-	@OriginalMember(owner = "client!vf", name = "e", descriptor = "Lclient!na;")
-	public static JagString aClass100_1077 = aClass100_1076;
-
 	@OriginalMember(owner = "client!vf", name = "g", descriptor = "[I")
 	public static final int[] anIntArray515 = new int[14];
 
-	@OriginalMember(owner = "client!vf", name = "j", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1080 = JagString.wrap("glow2:");
-
 	@OriginalMember(owner = "client!vf", name = "h", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1078 = aClass100_1080;
-
-	@OriginalMember(owner = "client!vf", name = "i", descriptor = "Lclient!na;")
-	public static JagString aClass100_1079 = aClass100_1080;
-
-	@OriginalMember(owner = "client!vf", name = "k", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_35 = new SoftLruCache(5);
-
-	@OriginalMember(owner = "client!vf", name = "l", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_36 = new SoftLruCache(50);
+	public static final JagString aClass100_1078 = Text.aClass100_1080;
 
 	@OriginalMember(owner = "client!vf", name = "m", descriptor = "I")
 	public static int anInt5754 = -1;
@@ -64,6 +46,6 @@ public final class Static262 {
 
 	@OriginalMember(owner = "client!vf", name = "a", descriptor = "(IB)Lclient!na;")
 	public static JagString method4510(@OriginalArg(0) int arg0) {
-		return arg0 >= 999999999 ? Static220.aClass100_930 : Static123.method2423(arg0);
+		return arg0 >= 999999999 ? Static220.aClass100_930 : JagString.parseInt(arg0);
 	}
 }

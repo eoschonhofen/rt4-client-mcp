@@ -10,15 +10,6 @@ public final class Static265 {
 	@OriginalMember(owner = "client!vj", name = "j", descriptor = "Lclient!dd;")
 	public static PixFont aClass3_Sub2_Sub9_Sub1_2;
 
-	@OriginalMember(owner = "client!vj", name = "h", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1084 = JagString.wrap("Connecting to update server");
-
-	@OriginalMember(owner = "client!vj", name = "b", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD30 = aClass100_1084;
-
-	@OriginalMember(owner = "client!vj", name = "l", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1085 = JagString.wrap("Chargement des fichiers config )2 ");
-
 	@OriginalMember(owner = "client!vj", name = "m", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1086 = JagString.wrap("_labels");
 

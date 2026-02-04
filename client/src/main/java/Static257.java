@@ -7,9 +7,6 @@ public final class Static257 {
 	@OriginalMember(owner = "client!v", name = "b", descriptor = "Lclient!be;")
 	public static IfType aClass13_7;
 
-	@OriginalMember(owner = "client!v", name = "f", descriptor = "Lclient!al;")
-	public static Js5Loader aClass9_2;
-
 	@OriginalMember(owner = "client!v", name = "a", descriptor = "Lclient!na;")
 	public static final JagString aClass100_98 = JagString.wrap(")4a=");
 

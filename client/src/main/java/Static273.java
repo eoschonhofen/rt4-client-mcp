@@ -65,7 +65,7 @@ public final class Static273 {
 					@Pc(131) int local131 = local124 + local33[local39++];
 					local135 = Static5.method32(local131);
 					local140 = local33[local39++];
-					if (local140 != -1 && (!ObjType.list(local140).aBoolean131 || Static2.aBoolean1)) {
+					if (local140 != -1 && (!ObjType.list(local140).aBoolean131 || Static2.memServer)) {
 						for (local152 = 0; local152 < local135.linkObjNumber.length; local152++) {
 							if (local140 + 1 == local135.linkObjNumber[local152]) {
 								local41 += local135.linkObjType[local152];
@@ -77,7 +77,7 @@ public final class Static273 {
 					local41 = Static7.var[local33[local39++]];
 				}
 				if (local46 == 6) {
-					local41 = ObjType.anIntArray213[Static141.anIntArray326[local33[local39++]] - 1];
+					local41 = Static4.skillxp[Static141.anIntArray326[local33[local39++]] - 1];
 				}
 				if (local46 == 7) {
 					local41 = Static7.var[local33[local39++]] * 100 / 46875;
@@ -97,7 +97,7 @@ public final class Static273 {
 					local124 += local33[local39++];
 					local135 = Static5.method32(local124);
 					local140 = local33[local39++];
-					if (local140 != -1 && (!ObjType.list(local140).aBoolean131 || Static2.aBoolean1)) {
+					if (local140 != -1 && (!ObjType.list(local140).aBoolean131 || Static2.memServer)) {
 						for (local152 = 0; local152 < local135.linkObjNumber.length; local152++) {
 							if (local135.linkObjNumber[local152] == local140 + 1) {
 								local41 = 999999999;
@@ -119,7 +119,7 @@ public final class Static273 {
 				}
 				if (local46 == 14) {
 					local124 = local33[local39++];
-					local41 = Static155.method2945(local124);
+					local41 = Static155.getVarbit(local124);
 				}
 				if (local46 == 18) {
 					local41 = (Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7) + Static225.anInt5068;

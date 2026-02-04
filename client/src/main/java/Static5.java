@@ -10,14 +10,8 @@ public final class Static5 {
 	@OriginalMember(owner = "client!af", name = "c", descriptor = "I")
 	public static int anInt39 = -1;
 
-	@OriginalMember(owner = "client!af", name = "f", descriptor = "Lclient!na;")
-	public static final JagString aClass100_8 = JagString.wrap("Gegenstand f-Ur Mitglieder");
-
 	@OriginalMember(owner = "client!af", name = "g", descriptor = "Lclient!na;")
 	public static final JagString aClass100_9 = JagString.wrap("hint_mapedge");
-
-	@OriginalMember(owner = "client!af", name = "k", descriptor = "I")
-	public static int anInt45 = 0;
 
 	@OriginalMember(owner = "client!af", name = "l", descriptor = "[S")
 	public static final short[] aShortArray2 = new short[] { 30, 6, 31, 29, 10, 44, 37, 57 };

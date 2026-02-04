@@ -13,17 +13,14 @@ public final class Static278 {
 	@OriginalMember(owner = "client!wj", name = "f", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1103 = JagString.wrap("ul");
 
-	@OriginalMember(owner = "client!wj", name = "k", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1104 = JagString.wrap("Continuer");
-
 	@OriginalMember(owner = "client!wj", name = "l", descriptor = "I")
 	public static int anInt5867 = 0;
 
 	@OriginalMember(owner = "client!wj", name = "a", descriptor = "(I)V")
 	public static void method4645() {
 		while (true) {
-			if (Static4.in.bitsLeft(Static223.anInt5028) >= 27) {
-				@Pc(14) int local14 = Static4.in.method2238(15);
+			if (Client.in.bitsLeft(Client.psize) >= 27) {
+				@Pc(14) int local14 = Client.in.method2238(15);
 				if (local14 != 32767) {
 					@Pc(19) boolean local19 = false;
 					if (Static175.aClass8_Sub4_Sub2Array1[local14] == null) {
@@ -36,21 +33,21 @@ public final class Static278 {
 					if (local37.aClass96_1 != null && local37.aClass96_1.method2935()) {
 						Static91.method1877(local37);
 					}
-					@Pc(66) int local66 = Static4.in.method2238(1);
-					@Pc(73) int local73 = Static56.anIntArray141[Static4.in.method2238(3)];
+					@Pc(66) int local66 = Client.in.method2238(1);
+					@Pc(73) int local73 = Static56.anIntArray141[Client.in.method2238(3)];
 					if (local19) {
 						local37.anInt3400 = local37.anInt3381 = local73;
 					}
-					@Pc(86) int local86 = Static4.in.method2238(1);
+					@Pc(86) int local86 = Client.in.method2238(1);
 					if (local86 == 1) {
 						Static44.anIntArray106[Static116.anInt2951++] = local14;
 					}
-					@Pc(105) int local105 = Static4.in.method2238(5);
-					local37.method2698(NPCType.list(Static4.in.method2238(14)));
+					@Pc(105) int local105 = Client.in.method2238(5);
+					local37.method2698(NPCType.list(Client.in.method2238(14)));
 					if (local105 > 15) {
 						local105 -= 32;
 					}
-					@Pc(124) int local124 = Static4.in.method2238(5);
+					@Pc(124) int local124 = Client.in.method2238(5);
 					if (local124 > 15) {
 						local124 -= 32;
 					}
@@ -67,7 +64,7 @@ public final class Static278 {
 					continue;
 				}
 			}
-			Static4.in.gBitEnd();
+			Client.in.gBitEnd();
 			return;
 		}
 	}
@@ -105,13 +102,13 @@ public final class Static278 {
 
 	@OriginalMember(owner = "client!wj", name = "b", descriptor = "(I)V")
 	public static void method4649() {
-		Static125.aClass99_18.method3104();
+		NPCType.aClass99_18.method3104();
 	}
 
 	@OriginalMember(owner = "client!wj", name = "a", descriptor = "(IIB)V")
 	public static void method4650(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		if (Static12.anInt391 != 0 && arg1 != -1) {
-			Static122.method2410(client.jingles, arg1, Static12.anInt391);
+			Static122.method2410(Client.jingles, arg1, Static12.anInt391);
 			Static144.aBoolean173 = true;
 		}
 	}
@@ -178,35 +175,17 @@ public final class Static278 {
 		}
 	}
 
-	@OriginalMember(owner = "client!wj", name = "a", descriptor = "(BII)I")
-	public static int method4652(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(8) ClientInvCache local8 = (ClientInvCache) Static20.aClass133_2.find((long) arg0);
-		if (local8 == null) {
-			return 0;
-		} else if (arg1 == -1) {
-			return 0;
-		} else {
-			@Pc(25) int local25 = 0;
-			for (@Pc(27) int local27 = 0; local27 < local8.anIntArray422.length; local27++) {
-				if (arg1 == local8.anIntArray420[local27]) {
-					local25 += local8.anIntArray422[local27];
-				}
-			}
-			return local25;
-		}
-	}
-
 	@OriginalMember(owner = "client!wj", name = "b", descriptor = "(B)V")
 	public static void method4653() {
-		if (Static124.loginStream != null) {
-			Static124.loginStream.close();
-			Static124.loginStream = null;
+		if (Client.stream != null) {
+			Client.stream.close();
+			Client.stream = null;
 		}
 		Static217.method3768();
 		Static65.method1500();
 		@Pc(19) int local19;
 		for (local19 = 0; local19 < 4; local19++) {
-			Static148.aClass97Array1[local19].method3050();
+			Client.levelCollisionMap[local19].method3050();
 		}
 		Static116.method2325(false);
 		System.gc();

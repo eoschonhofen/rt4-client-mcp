@@ -10,9 +10,6 @@ public final class Static153 {
 	@OriginalMember(owner = "client!mc", name = "S", descriptor = "Lclient!mm;")
 	public static Pix32 aClass3_Sub2_Sub1_Sub1_2;
 
-	@OriginalMember(owner = "client!mc", name = "Y", descriptor = "[Lclient!na;")
-	public static final JagString[] aClass100Array112 = new JagString[100];
-
 	@OriginalMember(owner = "client!mc", name = "ab", descriptor = "[I")
 	public static final int[] anIntArray351 = new int[] { 7, 8, 9, 10, 11, 12, 13, 15 };
 

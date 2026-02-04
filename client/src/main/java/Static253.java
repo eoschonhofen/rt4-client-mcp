@@ -19,24 +19,6 @@ public final class Static253 {
 	@OriginalMember(owner = "client!ui", name = "mb", descriptor = "F")
 	public static float aFloat37;
 
-	@OriginalMember(owner = "client!ui", name = "ab", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1056 = JagString.wrap(" more options");
-
-	@OriginalMember(owner = "client!ui", name = "V", descriptor = "Lclient!na;")
-	public static JagString aClass100_1054 = aClass100_1056;
-
-	@OriginalMember(owner = "client!ui", name = "ob", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1059 = JagString.wrap("Attack");
-
-	@OriginalMember(owner = "client!ui", name = "Y", descriptor = "Lclient!na;")
-	public static JagString aClass100_1055 = aClass100_1059;
-
-	@OriginalMember(owner = "client!ui", name = "hb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1057 = JagString.wrap("Schrifts-=tze geladen)3");
-
-	@OriginalMember(owner = "client!ui", name = "nb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1058 = JagString.wrap("jaune:");
-
 	@OriginalMember(owner = "client!ui", name = "a", descriptor = "(IIZIII)V")
 	public static void method4326(@OriginalArg(1) int arg0, @OriginalArg(2) boolean arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4) {
 		Static136.anInt3325++;
@@ -131,33 +113,33 @@ public final class Static253 {
 			@Pc(361) int local361 = Static148.anInt3535;
 			Static34.anInt1053 = (local361 - local344) * (Static60.anInt1892 - arg4) / arg0 + local344;
 		}
-		client.method2261();
+		Client.doAudio();
 		@Pc(387) byte local387 = Static236.method4047() == 2 ? (byte) Static136.anInt3325 : 1;
 		if (GameShell.glRenderer) {
 			Static239.method4173();
 			Static239.method4158(true);
 			Static239.method4154(true);
-			if (client.state == 10) {
+			if (Client.state == 10) {
 				local171 = Static103.method2235(Static178.anInt4247, Static134.anInt3302 >> 10, Static113.anInt4609, Static138.anInt3439 >> 10);
 			} else {
 				local171 = Static103.method2235(Static178.anInt4247, Static173.aClass8_Sub4_Sub1_2.anIntArray317[0] >> 3, Static113.anInt4609, Static173.aClass8_Sub4_Sub1_2.anIntArray318[0] >> 3);
 			}
-			Static120.method2394(Static83.anInt372, !Static11.aBoolean15);
+			World.method2394(Static83.anInt372, !Static11.aBoolean15);
 			Static239.method4176(local171);
 			Static143.method2731(Static240.anInt5333, Static134.anInt3302, Static5.anInt40, Static138.anInt3439, Static184.anInt4358);
 			Static239.anInt5323 = Static83.anInt372;
 			Static156.method2954(Static138.anInt3439, Static5.anInt40, Static134.anInt3302, Static240.anInt5333, Static184.anInt4358, Static266.aByteArrayArrayArray15, Static79.anIntArray205, Static149.anIntArray338, Static267.anIntArray518, Static50.anIntArray134, Static243.anIntArray476, Static55.anInt1735 + 1, local387, Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7, Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7);
 			Static263.aBoolean299 = true;
-			Static120.method2390();
+			World.method2390();
 			Static143.method2731(0, 0, 0, 0, 0);
-			client.method2261();
+			Client.doAudio();
 			Static223.method3858();
 			Static142.method2726(arg4, arg3, arg2, Static223.anInt5029, arg0, Static223.anInt5029);
 			Static233.method4000(arg3, arg2, arg0, Static223.anInt5029, Static223.anInt5029, arg4);
 		} else {
 			Static129.method2495(arg2, arg4, arg3, arg0, 0);
 			Static156.method2954(Static138.anInt3439, Static5.anInt40, Static134.anInt3302, Static240.anInt5333, Static184.anInt4358, Static266.aByteArrayArrayArray15, Static79.anIntArray205, Static149.anIntArray338, Static267.anIntArray518, Static50.anIntArray134, Static243.anIntArray476, Static55.anInt1735 + 1, local387, Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7, Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7);
-			client.method2261();
+			Client.doAudio();
 			Static223.method3858();
 			Static142.method2726(arg4, arg3, arg2, 256, arg0, 256);
 			Static233.method4000(arg3, arg2, arg0, 256, 256, arg4);
@@ -178,7 +160,7 @@ public final class Static253 {
 			} else {
 				Static129.method2495(arg2, arg4, arg3, arg0, 0);
 			}
-			Static114.messageBox(false, Static170.aClass100_621);
+			Static114.messageBox(false, Text.aClass100_621);
 		}
 		if (!arg1 && !Static19.aBoolean43 && !Static60.aBoolean108 && arg2 <= Static155.anInt3751 && arg3 + arg2 > Static155.anInt3751 && arg4 <= Static60.anInt1892 && arg0 + arg4 > Static60.anInt1892) {
 			Static176.method3304(arg4, arg3, arg0, arg2, Static60.anInt1892, Static155.anInt3751);

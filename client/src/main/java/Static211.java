@@ -10,15 +10,6 @@ public final class Static211 {
 	@OriginalMember(owner = "client!rc", name = "p", descriptor = "I")
 	public static int anInt1142 = 0;
 
-	@OriginalMember(owner = "client!rc", name = "v", descriptor = "Lclient!na;")
-	private static final JagString aClass100_228 = JagString.wrap(" from your ignore list first)3");
-
-	@OriginalMember(owner = "client!rc", name = "s", descriptor = "Lclient!na;")
-	public static JagString aClass100_227 = aClass100_228;
-
-	@OriginalMember(owner = "client!rc", name = "D", descriptor = "Lclient!na;")
-	public static final JagString aClass100_229 = JagString.wrap(" s(West d-Bconnect-B)3");
-
 	@OriginalMember(owner = "client!rc", name = "G", descriptor = "Lclient!na;")
 	public static final JagString aClass100_230 = JagString.wrap("");
 
@@ -39,21 +30,21 @@ public final class Static211 {
 
 	@OriginalMember(owner = "client!rc", name = "a", descriptor = "(Z)V")
 	public static void method924() {
-		Static244.aClass99_32.method3104();
+		ObjType.aClass99_32.method3104();
 	}
 
 	@OriginalMember(owner = "client!rc", name = "d", descriptor = "(I)V")
 	public static void method930() {
-		if (client.midiPcmPlayer != null) {
-			client.midiPcmPlayer.shutdown();
+		if (Client.midiPcmPlayer != null) {
+			Client.midiPcmPlayer.shutdown();
 		}
-		if (client.soundPcmPlayer != null) {
-			client.soundPcmPlayer.shutdown();
+		if (Client.soundPcmPlayer != null) {
+			Client.soundPcmPlayer.shutdown();
 		}
-		Static41.init(client.lowMem);
-		client.midiPcmPlayer = Static107.getPlayer(22050, GameShell.signlink, GameShell.canvas, 0);
-		client.midiPcmPlayer.playStream(client.midiPlayer);
-		client.soundPcmPlayer = Static107.getPlayer(2048, GameShell.signlink, GameShell.canvas, 1);
-		client.soundPcmPlayer.playStream(client.soundMixer);
+		Static41.init(Client.lowMem);
+		Client.midiPcmPlayer = Static107.getPlayer(22050, GameShell.signlink, GameShell.canvas, 0);
+		Client.midiPcmPlayer.playStream(Client.midiPlayer);
+		Client.soundPcmPlayer = Static107.getPlayer(2048, GameShell.signlink, GameShell.canvas, 1);
+		Client.soundPcmPlayer.playStream(Client.soundMixer);
 	}
 }

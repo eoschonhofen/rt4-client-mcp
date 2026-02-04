@@ -25,11 +25,8 @@ public final class Static138 {
 	@OriginalMember(owner = "client!km", name = "vc", descriptor = "Lclient!na;")
 	private static final JagString aClass100_642 = JagString.wrap("Jul");
 
-	@OriginalMember(owner = "client!km", name = "Cc", descriptor = "Lclient!na;")
-	private static final JagString aClass100_647 = JagString.wrap("flash3:");
-
 	@OriginalMember(owner = "client!km", name = "wc", descriptor = "Lclient!na;")
-	public static final JagString aClass100_643 = aClass100_647;
+	public static final JagString aClass100_643 = Text.aClass100_647;
 
 	@OriginalMember(owner = "client!km", name = "xc", descriptor = "Lclient!na;")
 	private static final JagString aClass100_644 = JagString.wrap("May");
@@ -67,12 +64,6 @@ public final class Static138 {
 	@OriginalMember(owner = "client!km", name = "Bc", descriptor = "[I")
 	public static final int[] anIntArray323 = new int[32];
 
-	@OriginalMember(owner = "client!km", name = "Dc", descriptor = "Lclient!na;")
-	public static JagString aClass100_648 = aClass100_647;
-
-	@OriginalMember(owner = "client!km", name = "Ic", descriptor = "Lclient!na;")
-	public static final JagString aClass100_651 = JagString.wrap("ondulation:");
-
 	@OriginalMember(owner = "client!km", name = "Mc", descriptor = "Lclient!na;")
 	public static final JagString aClass100_652 = JagString.wrap("loginscreen");
 
@@ -81,9 +72,6 @@ public final class Static138 {
 
 	@OriginalMember(owner = "client!km", name = "Sc", descriptor = "Lclient!na;")
 	public static final JagString aClass100_654 = JagString.wrap(":trade:");
-
-	@OriginalMember(owner = "client!km", name = "ad", descriptor = "I")
-	public static int anInt3445 = 0;
 
 	@OriginalMember(owner = "client!km", name = "b", descriptor = "(III)I")
 	public static int method2695(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {

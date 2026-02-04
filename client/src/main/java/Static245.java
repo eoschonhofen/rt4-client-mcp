@@ -16,17 +16,8 @@ public final class Static245 {
 	@OriginalMember(owner = "client!tm", name = "i", descriptor = "I")
 	public static int anInt5377 = 0;
 
-	@OriginalMember(owner = "client!tm", name = "n", descriptor = "Lclient!na;")
-	private static final JagString aClass100_1020 = JagString.wrap("flash2:");
-
 	@OriginalMember(owner = "client!tm", name = "k", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1019 = aClass100_1020;
-
-	@OriginalMember(owner = "client!tm", name = "o", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1021 = JagString.wrap("Annuler");
-
-	@OriginalMember(owner = "client!tm", name = "p", descriptor = "Lclient!na;")
-	public static JagString aClass100_1022 = aClass100_1020;
+	public static final JagString aClass100_1019 = Text.aClass100_1020;
 
 	@OriginalMember(owner = "client!tm", name = "a", descriptor = "(II)V")
 	public static void method4224(@OriginalArg(0) int arg0) {
@@ -39,9 +30,9 @@ public final class Static245 {
 		for (@Pc(7) int local7 = 0; local7 < Static116.anInt2951; local7++) {
 			@Pc(31) int local31 = Static44.anIntArray106[local7];
 			@Pc(35) ClientPlayer local35 = Static159.aClass8_Sub4_Sub1Array1[local31];
-			@Pc(39) int local39 = Static4.in.g1();
+			@Pc(39) int local39 = Client.in.g1();
 			if ((local39 & 0x10) != 0) {
-				local39 += Static4.in.g1() << 8;
+				local39 += Client.in.g1() << 8;
 			}
 			Static84.method1768(local39, local31, local35);
 		}
@@ -190,7 +181,7 @@ public final class Static245 {
 						if (local417 >= 0 && local255 >= 0 && local417 < 104 && local255 < 104) {
 							local517.aBoolean125 = (Static12.mapl[1][local417][local255] & 0x2) != 0;
 							local517.anInt2235 = Static83.groundh[local517.anInt2241][local417][local255] - local517.anInt2235;
-							Static120.method2389(local517);
+							World.method2389(local517);
 						}
 					}
 				}

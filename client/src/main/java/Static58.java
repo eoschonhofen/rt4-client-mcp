@@ -7,12 +7,6 @@ public final class Static58 {
 	@OriginalMember(owner = "client!eh", name = "g", descriptor = "[[[I")
 	public static int[][][] anIntArrayArrayArray5;
 
-	@OriginalMember(owner = "client!eh", name = "h", descriptor = "Lclient!na;")
-	public static final JagString aClass100_394 = JagString.wrap("m-Ochte mit Ihnen handeln)3");
-
-	@OriginalMember(owner = "client!eh", name = "i", descriptor = "Lclient!na;")
-	public static final JagString aClass100_395 = JagString.wrap(" zuerst von Ihrer Freunde)2Liste(Q");
-
 	@OriginalMember(owner = "client!eh", name = "a", descriptor = "(I)V")
 	public static void method1321() {
 		@Pc(8) int[] local8 = new int[ObjType.anInt3245];

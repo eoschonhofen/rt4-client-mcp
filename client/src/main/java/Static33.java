@@ -5,17 +5,11 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static33 {
 
-	@OriginalMember(owner = "client!cj", name = "e", descriptor = "[[S")
-	public static short[][] aShortArrayArray2;
-
 	@OriginalMember(owner = "client!cj", name = "h", descriptor = "Z")
 	public static boolean aBoolean63;
 
 	@OriginalMember(owner = "client!cj", name = "n", descriptor = "Lsignlink!im;")
 	public static PrivilegedRequest aClass212_1;
-
-	@OriginalMember(owner = "client!cj", name = "b", descriptor = "Lclient!na;")
-	public static final JagString aClass100_194 = JagString.wrap("blanc:");
 
 	@OriginalMember(owner = "client!cj", name = "i", descriptor = "[I")
 	public static final int[] anIntArray79 = new int[32768];
@@ -229,7 +223,7 @@ public final class Static33 {
 		@Pc(36) int local36 = Static35.aCalendar1.get(11);
 		@Pc(40) int local40 = Static35.aCalendar1.get(12);
 		@Pc(44) int local44 = Static35.aCalendar1.get(13);
-		return Static34.concatenate(new JagString[] { Static219.aClass100Array149[local13 - 1], Static74.aClass100_461, Static123.method2423(local17 / 10), Static123.method2423(local17 % 10), Static270.aClass100_1089, Static138.aClass100Array102[local21], Static270.aClass100_1089, Static123.method2423(local32), Static49.aClass100_351, Static123.method2423(local36 / 10), Static123.method2423(local36 % 10), Static264.aClass100_875, Static123.method2423(local40 / 10), Static123.method2423(local40 % 10), Static264.aClass100_875, Static123.method2423(local44 / 10), Static123.method2423(local44 % 10), Static55.aClass100_376 });
+		return JagString.join(new JagString[] { Static219.aClass100Array149[local13 - 1], Static74.aClass100_461, JagString.parseInt(local17 / 10), JagString.parseInt(local17 % 10), Static270.aClass100_1089, Static138.aClass100Array102[local21], Static270.aClass100_1089, JagString.parseInt(local32), Static49.aClass100_351, JagString.parseInt(local36 / 10), JagString.parseInt(local36 % 10), Static264.aClass100_875, JagString.parseInt(local40 / 10), JagString.parseInt(local40 % 10), Static264.aClass100_875, JagString.parseInt(local44 / 10), JagString.parseInt(local44 % 10), Static55.aClass100_376 });
 	}
 
 	@OriginalMember(owner = "client!cj", name = "a", descriptor = "(ZIIIIIIFB)[[I")

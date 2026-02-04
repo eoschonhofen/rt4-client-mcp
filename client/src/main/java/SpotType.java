@@ -8,6 +8,8 @@ public final class SpotType {
 
 	@OriginalMember(owner = "client!wk", name = "t", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
+	@OriginalMember(owner = "client!ef", name = "b", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_9 = new SoftLruCache(30);
 
 	@OriginalMember(owner = "client!he", name = "cb", descriptor = "Lclient!ve;")
 	public static Js5 models;
@@ -76,6 +78,24 @@ public final class SpotType {
 		return local10;
 	}
 
+	@OriginalMember(owner = "client!kl", name = "c", descriptor = "(II)V")
+	public static void method2666() {
+		recentUse.method3102(5);
+		aClass99_9.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!ub", name = "a", descriptor = "(Z)V")
+	public static void method4249() {
+		recentUse.method3104();
+		aClass99_9.method3104();
+	}
+
+	@OriginalMember(owner = "client!fk", name = "a", descriptor = "(B)V")
+	public static void method1441() {
+		recentUse.clear();
+		aClass99_9.clear();
+	}
+
 	@OriginalMember(owner = "client!eg", name = "a", descriptor = "(Lclient!wa;B)V")
 	public final void decode(@OriginalArg(0) Packet arg0) {
 		while (true) {
@@ -130,7 +150,7 @@ public final class SpotType {
 
 	@OriginalMember(owner = "client!eg", name = "a", descriptor = "(IBII)Lclient!ak;")
 	public final ModelLit method1319(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		@Pc(13) ModelLit local13 = (ModelLit) Static56.aClass99_9.find((long) this.id);
+		@Pc(13) ModelLit local13 = (ModelLit) aClass99_9.find((long) this.id);
 		if (local13 == null) {
 			@Pc(28) ModelUnlit local28 = Static77.method1686(models, this.anInt1753);
 			if (local28 == null) {
@@ -148,7 +168,7 @@ public final class SpotType {
 				}
 			}
 			local13 = local28.method1679(this.anInt1749 + 64, this.anInt1748 + 850, -30, -50, -30);
-			Static56.aClass99_9.put(local13, (long) this.id);
+			aClass99_9.put(local13, (long) this.id);
 		}
 		@Pc(118) ModelLit local118;
 		if (this.anim == -1 || arg1 == -1) {

@@ -10,12 +10,6 @@ public final class Static231 {
 	@OriginalMember(owner = "client!sk", name = "mb", descriptor = "I")
 	public static int anInt5205;
 
-	@OriginalMember(owner = "client!sk", name = "cb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_984 = JagString.wrap("Untersuchen");
-
-	@OriginalMember(owner = "client!sk", name = "eb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_985 = JagString.wrap("Musik)2Engine vorbereitet)3");
-
 	@OriginalMember(owner = "client!sk", name = "gb", descriptor = "J")
 	public static long aLong174 = 0L;
 

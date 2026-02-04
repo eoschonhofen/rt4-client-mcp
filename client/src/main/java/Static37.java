@@ -10,15 +10,6 @@ public final class Static37 {
 	@OriginalMember(owner = "client!cm", name = "c", descriptor = "I")
 	public static int anInt1176;
 
-	@OriginalMember(owner = "client!cm", name = "e", descriptor = "Lclient!na;")
-	public static final JagString aClass100_236 = JagString.wrap("Vous ne pouvez pas ajouter votre nom -9 votre liste d(Wamis)3");
-
-	@OriginalMember(owner = "client!cm", name = "h", descriptor = "Lclient!na;")
-	public static final JagString aClass100_237 = JagString.wrap("Verbindung abgebrochen)3");
-
-	@OriginalMember(owner = "client!cm", name = "i", descriptor = "Lclient!na;")
-	public static final JagString aClass100_238 = JagString.wrap("comp-Btence ");
-
 	@OriginalMember(owner = "client!cm", name = "a", descriptor = "(ILclient!fe;)V")
 	public static void method949(@OriginalArg(1) ClientEntity arg0) {
 		if (arg0.anInt3376 == 0) {

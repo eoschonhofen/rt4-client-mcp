@@ -10,15 +10,6 @@ public final class Static125 {
 	@OriginalMember(owner = "client!jl", name = "v", descriptor = "I")
 	public static int anInt3096 = 0;
 
-	@OriginalMember(owner = "client!jl", name = "x", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_18 = new SoftLruCache(50);
-
-	@OriginalMember(owner = "client!jl", name = "G", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_19 = new SoftLruCache(64);
-
-	@OriginalMember(owner = "client!jl", name = "H", descriptor = "I")
-	public static int anInt3103 = -1;
-
 	@OriginalMember(owner = "client!jl", name = "J", descriptor = "I")
 	public static int anInt3104 = 127;
 

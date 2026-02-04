@@ -25,13 +25,6 @@ public final class Static204 {
 	@OriginalMember(owner = "client!qi", name = "B", descriptor = "Lclient!na;")
 	public static final JagString aClass100_896 = JagString.wrap("<col=ffffff>");
 
-	@OriginalMember(owner = "client!qi", name = "e", descriptor = "(B)V")
-	public static void method3673() {
-		NPCType.recentUse.method3104();
-		Static125.aClass99_18.method3104();
-		Static262.aClass99_35.method3104();
-	}
-
 	@OriginalMember(owner = "client!qi", name = "b", descriptor = "(II)I")
 	public static int bitsRequired(@OriginalArg(0) int arg0) {
 		@Pc(5) int local5 = 0;

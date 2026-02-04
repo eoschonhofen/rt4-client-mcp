@@ -64,6 +64,21 @@ public final class IdkType {
 		return local10;
 	}
 
+	@OriginalMember(owner = "client!oi", name = "a", descriptor = "(I)V")
+	public static void method3342() {
+		recentUse.clear();
+	}
+
+	@OriginalMember(owner = "client!t", name = "b", descriptor = "(I)V")
+	public static void method3999() {
+		recentUse.method3104();
+	}
+
+	@OriginalMember(owner = "client!te", name = "a", descriptor = "(IZ)V")
+	public static void method4142() {
+		recentUse.method3102(5);
+	}
+
 	@OriginalMember(owner = "client!dm", name = "a", descriptor = "(Z)Lclient!gb;")
 	public final ModelUnlit method1198() {
 		@Pc(13) int local13 = 0;

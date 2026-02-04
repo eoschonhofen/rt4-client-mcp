@@ -1,5 +1,3 @@
-import java.awt.Component;
-import java.lang.reflect.Method;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
@@ -37,11 +35,6 @@ public final class Static19 {
 			@Pc(91) int local91 = (arg1 - arg3) * (arg7 - arg6) - (arg0 - arg6) * (arg4 - arg3);
 			return local59 * local91 > 0 && local91 * local75 > 0;
 		}
-	}
-
-	@OriginalMember(owner = "client!bi", name = "c", descriptor = "(II)V")
-	public static void method586() {
-		BasType.recentUse.method3102(5);
 	}
 
 	@OriginalMember(owner = "client!bi", name = "f", descriptor = "(B)V")
@@ -117,16 +110,4 @@ public final class Static19 {
 		return local19;
 	}
 
-	@OriginalMember(owner = "client!bi", name = "a", descriptor = "(BLjava/awt/Component;)V")
-	public static void method591(@OriginalArg(1) Component arg0) {
-		@Pc(10) Method local10 = SignLink.setTraversalKeysEnabled;
-		if (local10 != null) {
-			try {
-				local10.invoke(arg0, Boolean.FALSE);
-			} catch (@Pc(25) Throwable local25) {
-			}
-		}
-		arg0.addKeyListener(ClientKeyboardListener.aClass149_1);
-		arg0.addFocusListener(ClientKeyboardListener.aClass149_1);
-	}
 }

@@ -42,11 +42,6 @@ public final class Static276 {
 		}
 	}
 
-	@OriginalMember(owner = "client!wh", name = "a", descriptor = "(I)V")
-	public static void method4612() {
-		FloType.recentUse.method3104();
-	}
-
 	@OriginalMember(owner = "client!wh", name = "a", descriptor = "(IILclient!na;)V")
 	public static void method4613(@OriginalArg(0) int arg0, @OriginalArg(2) JagString arg1) {
 		@Pc(7) JagString local7 = arg1.method3159().method3125();
@@ -76,7 +71,7 @@ public final class Static276 {
 			}
 		}
 		if (!local13) {
-			Static103.method2231(Static186.EMPTY_STRING, 0, Static34.concatenate(new JagString[] { Static82.aClass100_478, local7 }));
+			Client.addChat(Static186.AUTO_EMPTY, 0, JagString.join(new JagString[] { Text.aClass100_478, local7 }));
 		}
 	}
 
@@ -92,9 +87,4 @@ public final class Static276 {
 		return local27;
 	}
 
-	@OriginalMember(owner = "client!wh", name = "a", descriptor = "(II)V")
-	public static void method4615() {
-		MsiType.recentUse.method3102(5);
-		Static219.aClass99_27.method3102(5);
-	}
 }

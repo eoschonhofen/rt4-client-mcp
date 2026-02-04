@@ -17,7 +17,7 @@ public final class Static226 {
 	public static final JagString aClass100_965 = JagString.wrap("<col=ffff00>");
 
 	@OriginalMember(owner = "client!sf", name = "h", descriptor = "[Lclient!na;")
-	public static final JagString[] aClass100Array154 = new JagString[1000];
+	public static final JagString[] varcStr = new JagString[1000];
 
 	@OriginalMember(owner = "client!sf", name = "i", descriptor = "I")
 	public static int anInt5084 = 0;
@@ -52,7 +52,7 @@ public final class Static226 {
 
 	@OriginalMember(owner = "client!sf", name = "b", descriptor = "(B)V")
 	public static void method3901() {
-		@Pc(16) int local16 = Static280.aClass3_Sub2_Sub9_43.method2858(Static234.aClass100_998);
+		@Pc(16) int local16 = Static280.aClass3_Sub2_Sub9_43.method2858(Text.aClass100_998);
 		@Pc(18) int local18;
 		@Pc(27) int local27;
 		for (local18 = 0; local18 < Static231.anInt5204; local18++) {

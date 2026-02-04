@@ -39,23 +39,23 @@ public final class Static217 {
 					local22 = false;
 				}
 			}
-			@Pc(95) JagString local95 = client.game == 1 ? Static156.aClass100_746 : Static56.aClass100_386;
+			@Pc(95) JagString local95 = Client.game == 1 ? Text.aClass100_746 : Text.aClass100_386;
 			if (arg2.anInt1652 < arg2.anInt1656) {
-				local158 = Static34.concatenate(new JagString[] { arg2.method1264(), local22 ? Static123.method2420(arg2.anInt1652, Static173.aClass8_Sub4_Sub1_2.anInt1652) : Static204.aClass100_896, Static123.aClass100_593, local95, Static123.method2423(arg2.anInt1652), Static78.aClass100_465, Static123.method2423(arg2.anInt1656 - arg2.anInt1652), Static72.aClass100_448 });
+				local158 = JagString.join(new JagString[] { arg2.method1264(), local22 ? Static123.method2420(arg2.anInt1652, Static173.aClass8_Sub4_Sub1_2.anInt1652) : Static204.aClass100_896, Static123.aClass100_593, local95, JagString.parseInt(arg2.anInt1652), Static78.aClass100_465, JagString.parseInt(arg2.anInt1656 - arg2.anInt1652), Static72.aClass100_448 });
 			} else {
-				local158 = Static34.concatenate(new JagString[] { arg2.method1264(), local22 ? Static123.method2420(arg2.anInt1652, Static173.aClass8_Sub4_Sub1_2.anInt1652) : Static204.aClass100_896, Static123.aClass100_593, local95, Static123.method2423(arg2.anInt1652), Static72.aClass100_448 });
+				local158 = JagString.join(new JagString[] { arg2.method1264(), local22 ? Static123.method2420(arg2.anInt1652, Static173.aClass8_Sub4_Sub1_2.anInt1652) : Static204.aClass100_896, Static123.aClass100_593, local95, JagString.parseInt(arg2.anInt1652), Static72.aClass100_448 });
 			}
 		} else {
-			local158 = Static34.concatenate(new JagString[] { arg2.method1264(), Static123.aClass100_593, Static56.aClass100_384, Static123.method2423(arg2.anInt1671), Static72.aClass100_448 });
+			local158 = JagString.join(new JagString[] { arg2.method1264(), Static123.aClass100_593, Text.aClass100_384, JagString.parseInt(arg2.anInt1671), Static72.aClass100_448 });
 		}
 		@Pc(275) int local275;
 		if (Static260.anInt5014 == 1) {
-			Static98.method1966(Static169.anInt4075, (long) arg0, Static34.concatenate(new JagString[] { Static34.aClass100_203, Static105.aClass100_561, local158 }), arg3, (short) 1, Static222.aClass100_937, arg1);
+			Static98.method1966(Static169.anInt4075, (long) arg0, JagString.join(new JagString[] { Static34.aClass100_203, Static105.aClass100_561, local158 }), arg3, (short) 1, Text.aClass100_937, arg1);
 		} else if (!Static241.aBoolean302) {
 			for (local275 = 7; local275 >= 0; local275--) {
 				if (Static160.aClass100Array121[local275] != null) {
 					@Pc(291) short local291 = 0;
-					if (client.game == 0 && Static160.aClass100Array121[local275].method3111(Static253.aClass100_1055)) {
+					if (Client.game == 0 && Static160.aClass100Array121[local275].method3111(Text.aClass100_1055)) {
 						if (arg2.anInt1652 > Static173.aClass8_Sub4_Sub1_2.anInt1652) {
 							local291 = 2000;
 						}
@@ -71,15 +71,15 @@ public final class Static217 {
 					}
 					@Pc(353) short local353 = Static5.aShortArray2[local275];
 					@Pc(358) short local358 = (short) (local353 + local291);
-					Static98.method1966(Static191.anIntArray388[local275], (long) arg0, Static34.concatenate(new JagString[] { Static204.aClass100_896, local158 }), arg3, local358, Static160.aClass100Array121[local275], arg1);
+					Static98.method1966(Static191.anIntArray388[local275], (long) arg0, JagString.join(new JagString[] { Static204.aClass100_896, local158 }), arg3, local358, Static160.aClass100Array121[local275], arg1);
 				}
 			}
 		} else if ((Static274.anInt4999 & 0x8) != 0) {
-			Static98.method1966(Static246.anInt5393, (long) arg0, Static34.concatenate(new JagString[] { Static78.aClass100_466, Static105.aClass100_561, local158 }), arg3, (short) 15, Static102.aClass100_545, arg1);
+			Static98.method1966(Static246.anInt5393, (long) arg0, JagString.join(new JagString[] { Static78.aClass100_466, Static105.aClass100_561, local158 }), arg3, (short) 15, Static102.aClass100_545, arg1);
 		}
 		for (local275 = 0; local275 < Static231.anInt5204; local275++) {
 			if (Static39.aShortArray6[local275] == 60) {
-				Static233.aClass100Array160[local275] = Static34.concatenate(new JagString[] { Static204.aClass100_896, local158 });
+				Static233.aClass100Array160[local275] = JagString.join(new JagString[] { Static204.aClass100_896, local158 });
 				break;
 			}
 		}
@@ -87,23 +87,23 @@ public final class Static217 {
 
 	@OriginalMember(owner = "client!rj", name = "f", descriptor = "(B)V")
 	public static void method3768() {
-		Static276.method4612();
-		Static54.method1308();
-		Static233.method3999();
-		Static90.method1854();
-		Static204.method3673();
-		Static176.method3302();
-		Static10.method350();
-		Static247.method4249();
-		Static53.method1295();
-		Static249.method4266();
-		Static124.method2433();
-		Static202.method3653();
-		Static78.method1695();
-		Static10.method351();
+		FloType.method4612();
+		FluType.method1308();
+		IdkType.method3999();
+		LocType.method1854();
+		NPCType.method3673();
+		ObjType.method3302();
+		SeqType.method350();
+		SpotType.method4249();
+		VarBitType.method1295();
+		VarpType.method4266();
+		BasType.method2433();
+		MsiType.method3653();
+		LightType.method1695();
+		CursorType.method351();
 		Static230.method3947();
 		Static147.method2764();
-		if (client.modewhat != 0) {
+		if (Client.modewhat != 0) {
 			for (@Pc(54) int local54 = 0; local54 < Static51.aByteArrayArray8.length; local54++) {
 				Static51.aByteArrayArray8[local54] = null;
 			}
@@ -116,17 +116,17 @@ public final class Static217 {
 			((WorldTextureProvider) Static94.anInterface1_2).method3247();
 		}
 		Static105.aClass54_9.method1815();
-		client.anims.method4499();
-		client.bases.method4499();
-		client.interfaces.method4499();
-		client.jagFX.method4499();
-		client.maps.method4499();
-		client.songs.method4499();
-		client.models.method4499();
-		client.sprites.method4499();
-		client.binary.method4499();
-		client.jingles.method4499();
-		client.scripts.method4499();
+		Client.anims.method4499();
+		Client.bases.method4499();
+		Client.interfaces.method4499();
+		Client.jagFX.method4499();
+		Client.maps.method4499();
+		Client.songs.method4499();
+		Client.models.method4499();
+		Client.sprites.method4499();
+		Client.binary.method4499();
+		Client.jingles.method4499();
+		Client.scripts.method4499();
 		Static73.aClass99_10.method3104();
 	}
 

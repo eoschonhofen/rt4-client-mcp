@@ -95,7 +95,7 @@ public final class EnumType extends Linkable2 {
 			this.method3087();
 		}
 		for (@Pc(38) EnumStringNode local38 = (EnumStringNode) this.aClass133_17.find(arg0.method3118()); local38 != null; local38 = (EnumStringNode) this.aClass133_17.method3867()) {
-			if (local38.aClass100_503.method3108(arg0)) {
+			if (local38.aClass100_503.equalsInner(arg0)) {
 				return true;
 			}
 		}

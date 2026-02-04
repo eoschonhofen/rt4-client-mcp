@@ -10,23 +10,11 @@ public final class Static269 {
 	@OriginalMember(owner = "client!wa", name = "ub", descriptor = "Lclient!bn;")
 	public static Map aClass3_Sub2_Sub4_2;
 
-	@OriginalMember(owner = "client!wa", name = "D", descriptor = "Lclient!na;")
-	private static final JagString aClass100_553 = JagString.wrap("Loaded interfaces");
-
-	@OriginalMember(owner = "client!wa", name = "H", descriptor = "Lclient!na;")
-	public static final JagString aClass100_554 = JagString.wrap("Polices charg-Bes");
-
-	@OriginalMember(owner = "client!wa", name = "eb", descriptor = "Lclient!na;")
-	public static JagString aClass100_555 = aClass100_553;
-
 	@OriginalMember(owner = "client!wa", name = "pb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_556 = JagString.wrap("<br>");
 
-	@OriginalMember(owner = "client!wa", name = "tb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_557 = JagString.wrap("d-Broulement:");
-
 	@OriginalMember(owner = "client!wa", name = "Eb", descriptor = "[Lclient!bg;")
-	public static final Js5CachedResourceProvider[] aClass14_Sub1Array3 = new Js5CachedResourceProvider[28];
+	public static final Js5CachedResourceProvider[] js5Providers = new Js5CachedResourceProvider[28];
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(Z)V")
 	public static void method2170() {
@@ -35,7 +23,7 @@ public final class Static269 {
 
 	@OriginalMember(owner = "client!wa", name = "e", descriptor = "(B)V")
 	public static void method2172() {
-		Static118.aClass99_16.method3104();
+		ObjType.aClass99_16.method3104();
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "([Lclient!mj;ZIIIII[B)V")
@@ -205,7 +193,7 @@ public final class Static269 {
 					if (local190 >= 0 && local194 >= 0 && local190 < 104 && local194 < 104) {
 						local529.aBoolean125 = (Static12.mapl[1][local190][local194] & 0x2) != 0;
 						local529.anInt2235 = Static83.groundh[local529.anInt2241][local190][local194] - local529.anInt2235;
-						Static120.method2389(local529);
+						World.method2389(local529);
 					}
 				}
 			}
@@ -248,11 +236,6 @@ public final class Static269 {
 		}
 	}
 
-	@OriginalMember(owner = "client!wa", name = "d", descriptor = "(BI)V")
-	public static void method2221() {
-		Static125.aClass99_19.method3102(5);
-	}
-
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(IIIII)V")
 	public static void method2225(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
 		if (Static41.anInt1309 < 100) {
@@ -281,7 +264,7 @@ public final class Static269 {
 				Static129.method2495(local50 - 150, local61 + 2, Static41.anInt1309 * 3, 30, 9179409);
 				Static129.method2495(Static41.anInt1309 * 3 + local50 - 150, local61 - -2, 300 - Static41.anInt1309 * 3, 30, 0);
 			}
-			Static280.aClass3_Sub2_Sub9_43.method2875(Static49.aClass100_349, local50, local61 + 20, 16777215, -1);
+			Static280.aClass3_Sub2_Sub9_43.method2875(Text.aClass100_349, local50, local61 + 20, 16777215, -1);
 			return;
 		}
 		Static37.anInt1176 = (int) ((float) (arg2 * 2) / Static83.aFloat3);
@@ -320,7 +303,7 @@ public final class Static269 {
 		}
 		@Pc(405) int local405 = arg1 + arg2 - 8;
 		@Pc(412) int local412 = arg0 + arg3 - 5;
-		Static215.aClass3_Sub2_Sub9_32.method2864(Static34.concatenate(new JagString[] { Static115.aClass100_579, Static123.method2423(GameShell.anInt5359) }), local412, local405, 16776960, -1);
+		Static215.aClass3_Sub2_Sub9_32.method2864(JagString.join(new JagString[] { Static115.aClass100_579, JagString.parseInt(GameShell.anInt5359) }), local412, local405, 16776960, -1);
 		@Pc(434) Runtime local434 = Runtime.getRuntime();
 		@Pc(443) int local443 = (int) ((local434.totalMemory() - local434.freeMemory()) / 1024L);
 		@Pc(445) int local445 = 16776960;
@@ -328,12 +311,12 @@ public final class Static269 {
 		if (local443 > 65536) {
 			local445 = 16711680;
 		}
-		Static215.aClass3_Sub2_Sub9_32.method2864(Static34.concatenate(new JagString[] { Static203.aClass100_894, Static123.method2423(local443), Static19.aClass100_112 }), local412, local446, local445, -1);
+		Static215.aClass3_Sub2_Sub9_32.method2864(JagString.join(new JagString[] { Static203.aClass100_894, JagString.parseInt(local443), Static19.aClass100_112 }), local412, local446, local445, -1);
 		local405 = local446 - 15;
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(IZ)Lclient!na;")
 	public static JagString method2228(@OriginalArg(0) int arg0) {
-		return Static233.aClass100Array160[arg0].length() > 0 ? Static34.concatenate(new JagString[] { Static254.aClass100Array168[arg0], Static206.aClass100_901, Static233.aClass100Array160[arg0] }) : Static254.aClass100Array168[arg0];
+		return Static233.aClass100Array160[arg0].length() > 0 ? JagString.join(new JagString[] { Static254.aClass100Array168[arg0], Text.aClass100_901, Static233.aClass100Array160[arg0] }) : Static254.aClass100Array168[arg0];
 	}
 }

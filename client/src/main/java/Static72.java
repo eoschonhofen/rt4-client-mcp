@@ -25,21 +25,18 @@ public final class Static72 {
 	@OriginalMember(owner = "client!fl", name = "P", descriptor = "I")
 	public static int anInt2043 = 0;
 
-	@OriginalMember(owner = "client!fl", name = "Q", descriptor = "Lclient!na;")
-	public static final JagString aClass100_447 = JagString.wrap("");
-
 	@OriginalMember(owner = "client!fl", name = "V", descriptor = "Lclient!na;")
 	public static final JagString aClass100_448 = JagString.wrap("(Y");
 
 	@OriginalMember(owner = "client!fl", name = "b", descriptor = "(II)Lclient!cl;")
 	public static AnimFrameSet method1566(@OriginalArg(0) int arg0) {
-		@Pc(19) AnimFrameSet local19 = (AnimFrameSet) Static267.aClass99_37.find((long) arg0);
+		@Pc(19) AnimFrameSet local19 = (AnimFrameSet) SeqType.aClass99_37.find((long) arg0);
 		if (local19 != null) {
 			return local19;
 		}
 		local19 = Static87.method1803(SeqType.anims, SeqType.bases, arg0);
 		if (local19 != null) {
-			Static267.aClass99_37.put(local19, (long) arg0);
+			SeqType.aClass99_37.put(local19, (long) arg0);
 		}
 		return local19;
 	}
@@ -93,9 +90,4 @@ public final class Static72 {
 		}
 	}
 
-	@OriginalMember(owner = "client!fl", name = "a", descriptor = "(IB)V")
-	public static void method1570() {
-		SeqType.recentUse.method3102(5);
-		Static267.aClass99_37.method3102(5);
-	}
 }

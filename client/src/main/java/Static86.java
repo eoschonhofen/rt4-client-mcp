@@ -23,23 +23,11 @@ public final class Static86 {
 	@OriginalMember(owner = "client!gm", name = "bb", descriptor = "Z")
 	public static boolean aBoolean129 = false;
 
-	@OriginalMember(owner = "client!gm", name = "fb", descriptor = "Lclient!na;")
-	private static final JagString aClass100_492 = JagString.wrap("Loaded textures");
-
-	@OriginalMember(owner = "client!gm", name = "cb", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD90 = aClass100_492;
-
 	@OriginalMember(owner = "client!gm", name = "db", descriptor = "Lclient!na;")
 	public static final JagString aClass100_490 = JagString.wrap("cross");
 
-	@OriginalMember(owner = "client!gm", name = "eb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_491 = JagString.wrap("Lade Sprites )2 ");
-
 	@OriginalMember(owner = "client!gm", name = "gb", descriptor = "[I")
 	public static final int[] anIntArray211 = new int[] { 0, 4, 4, 8, 0, 0, 8, 0, 0 };
-
-	@OriginalMember(owner = "client!gm", name = "hb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_493 = JagString.wrap("Regarder dans cette direction");
 
 	@OriginalMember(owner = "client!gm", name = "f", descriptor = "(B)V")
 	public static void method1799() {
@@ -64,8 +52,8 @@ public final class Static86 {
 				Static175.aClass8_Sub4_Sub2Array1[local30] = null;
 			}
 		}
-		if (Static223.anInt5028 != Static4.in.pos) {
-			throw new RuntimeException("gnp1 pos:" + Static4.in.pos + " psize:" + Static223.anInt5028);
+		if (Client.psize != Client.in.pos) {
+			throw new RuntimeException("gnp1 pos:" + Client.in.pos + " psize:" + Client.psize);
 		}
 		for (local19 = 0; local19 < Static272.anInt5214; local19++) {
 			if (Static175.aClass8_Sub4_Sub2Array1[Static33.anIntArray79[local19]] == null) {

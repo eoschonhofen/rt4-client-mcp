@@ -39,7 +39,7 @@ public final class Static80 {
 		Static113.anInt4609 = 3;
 		Static53.method1293(true);
 		aBoolean231 = true;
-		client.lowMem = true;
+		Client.lowMem = true;
 		Static220.aBoolean244 = true;
 		Static102.anInt2679 = 0;
 		Static22.anInt729 = 0;

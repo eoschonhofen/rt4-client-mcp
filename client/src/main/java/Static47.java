@@ -7,12 +7,6 @@ public final class Static47 {
 	@OriginalMember(owner = "client!dk", name = "h", descriptor = "Lclient!na;")
 	public static JagString aClass100_991 = null;
 
-	@OriginalMember(owner = "client!dk", name = "i", descriptor = "Lclient!na;")
-	public static final JagString aClass100_992 = JagString.wrap("blinken1:");
-
-	@OriginalMember(owner = "client!dk", name = "j", descriptor = "[Lclient!en;")
-	public static final BufferedRandomAccessFile[] aClass38Array2 = new BufferedRandomAccessFile[28];
-
 	@OriginalMember(owner = "client!dk", name = "a", descriptor = "(III)Lclient!ec;")
 	public static Sprite method3996(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
 		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];

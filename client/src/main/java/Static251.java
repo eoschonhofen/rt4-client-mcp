@@ -19,9 +19,6 @@ public final class Static251 {
 	@OriginalMember(owner = "client!ug", name = "e", descriptor = "I")
 	public static int anInt5447 = 0;
 
-	@OriginalMember(owner = "client!ug", name = "f", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1044 = JagString.wrap("weiss:");
-
 	@OriginalMember(owner = "client!ug", name = "m", descriptor = "I")
 	public static int anInt5454 = 0;
 
@@ -59,7 +56,7 @@ public final class Static251 {
 
 	@OriginalMember(owner = "client!ug", name = "b", descriptor = "(B)V")
 	public static void method4276() {
-		Static45.aClass99_6.method3103();
+		Static45.aClass99_6.clear();
 	}
 
 	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(I)V")

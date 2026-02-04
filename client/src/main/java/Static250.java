@@ -12,9 +12,6 @@ public final class Static250 {
 	@OriginalMember(owner = "client!uf", name = "b", descriptor = "Z")
 	public static boolean aBoolean283 = true;
 
-	@OriginalMember(owner = "client!uf", name = "d", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1040 = JagString.wrap(" autres options");
-
 	@OriginalMember(owner = "client!uf", name = "e", descriptor = "I")
 	public static int anInt5434 = 0;
 

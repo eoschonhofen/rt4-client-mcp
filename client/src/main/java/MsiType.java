@@ -9,6 +9,9 @@ public final class MsiType {
 	@OriginalMember(owner = "client!sk", name = "hb", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
 
+	@OriginalMember(owner = "client!rl", name = "P", descriptor = "Lclient!n;")
+	public static final SoftLruCache aClass99_27 = new SoftLruCache(64);
+
 	@OriginalMember(owner = "client!uf", name = "r", descriptor = "Lclient!ve;")
 	public static Js5 aClass153_101;
 
@@ -62,6 +65,24 @@ public final class MsiType {
 		return local10;
 	}
 
+	@OriginalMember(owner = "client!qg", name = "h", descriptor = "(I)V")
+	public static void method3653() {
+		recentUse.method3104();
+		aClass99_27.method3104();
+	}
+
+	@OriginalMember(owner = "client!vl", name = "b", descriptor = "(I)V")
+	public static void method4529() {
+		recentUse.clear();
+		aClass99_27.clear();
+	}
+
+	@OriginalMember(owner = "client!wh", name = "a", descriptor = "(II)V")
+	public static void method4615() {
+		recentUse.method3102(5);
+		aClass99_27.method3102(5);
+	}
+
 	@OriginalMember(owner = "client!aa", name = "a", descriptor = "(BLclient!wa;I)V")
 	public final void decode(@OriginalArg(1) Packet arg0, @OriginalArg(2) int arg1) {
 		while (true) {
@@ -75,7 +96,7 @@ public final class MsiType {
 
 	@OriginalMember(owner = "client!aa", name = "a", descriptor = "(IB)Lclient!ek;")
 	public final SoftwarePix8 method9(@OriginalArg(0) int arg0) {
-		@Pc(17) SoftwarePix8 local17 = (SoftwarePix8) Static219.aClass99_27.find((long) (arg0 << 16 | this.anInt12));
+		@Pc(17) SoftwarePix8 local17 = (SoftwarePix8) aClass99_27.find((long) (arg0 << 16 | this.anInt12));
 		if (local17 != null) {
 			return local17;
 		}
@@ -88,7 +109,7 @@ public final class MsiType {
 			for (@Pc(59) int local59 = 0; local59 < arg0; local59++) {
 				local17.method1395();
 			}
-			Static219.aClass99_27.put(local17, (long) (arg0 << 16 | this.anInt12));
+			aClass99_27.put(local17, (long) (arg0 << 16 | this.anInt12));
 		}
 		return local17;
 	}

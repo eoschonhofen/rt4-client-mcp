@@ -114,6 +114,21 @@ public final class BasType {
 		clientConfig = arg0;
 	}
 
+	@OriginalMember(owner = "client!jk", name = "e", descriptor = "(B)V")
+	public static void method2433() {
+		recentUse.method3104();
+	}
+
+	@OriginalMember(owner = "client!bi", name = "c", descriptor = "(II)V")
+	public static void method586() {
+		recentUse.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!di", name = "d", descriptor = "(I)V")
+	public static void method1172() {
+		recentUse.clear();
+	}
+
 	@OriginalMember(owner = "client!ck", name = "a", descriptor = "(I)V")
 	public final void postDecode() {
 	}

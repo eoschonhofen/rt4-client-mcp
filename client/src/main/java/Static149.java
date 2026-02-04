@@ -15,9 +15,6 @@ public final class Static149 {
 	@OriginalMember(owner = "client!lj", name = "B", descriptor = "I")
 	public static int anInt3555;
 
-	@OriginalMember(owner = "client!lj", name = "q", descriptor = "Lclient!na;")
-	public static final JagString aClass100_683 = JagString.wrap("Fallen lassen");
-
 	@OriginalMember(owner = "client!lj", name = "w", descriptor = "I")
 	public static int anInt3554 = 0;
 

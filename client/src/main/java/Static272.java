@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static272 {
 
-	@OriginalMember(owner = "client!wd", name = "c", descriptor = "Lclient!na;")
-	public static final JagString aClass100_988 = JagString.wrap("Spieler kann nicht gefunden werden: ");
-
 	@OriginalMember(owner = "client!wd", name = "d", descriptor = "[I")
 	public static final int[] anIntArray451 = new int[] { 8, 11, 4, 6, 9, 7, 10, 0 };
 

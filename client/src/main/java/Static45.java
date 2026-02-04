@@ -344,7 +344,7 @@ public final class Static45 {
 							local2057[local2025.length + local349] = local2049[local349];
 						}
 						Static110.method2280(local152, local2057);
-						Static221.method3393(local1900, Static253.floort1[local152], Static4.aByteArrayArrayArray1[local152], Static120.aClass51Array1, local152, Static120.anInt3034, local1896, Static163.aByteArrayArrayArray11[local152], Static240.aByteArrayArrayArray14[local152], Static83.groundh[local152], local1888);
+						Static221.method3393(local1900, Static253.floort1[local152], Static4.aByteArrayArrayArray1[local152], World.aClass51Array1, local152, World.anInt3034, local1896, Static163.aByteArrayArrayArray11[local152], Static240.aByteArrayArrayArray14[local152], Static83.groundh[local152], local1888);
 						break;
 					}
 					for (local202 = 1; local202 <= 103; local202++) {
@@ -507,7 +507,7 @@ public final class Static45 {
 		Static259.anIntArray514[0] = arg2;
 		@Pc(71) int local71 = local51 + 1;
 		Static84.anIntArray209[0] = arg9;
-		@Pc(78) int[][] local78 = Static148.aClass97Array1[Static55.anInt1735].anIntArrayArray30;
+		@Pc(78) int[][] local78 = Client.levelCollisionMap[Static55.anInt1735].anIntArrayArray30;
 		@Pc(198) int local198;
 		while (local71 != local64) {
 			local10 = Static84.anIntArray209[local64];
@@ -518,16 +518,16 @@ public final class Static45 {
 				break;
 			}
 			if (arg8 != 0) {
-				if ((arg8 < 5 || arg8 == 10) && Static148.aClass97Array1[Static55.anInt1735].method3042(arg3, local3, local10, arg0, arg8 - 1, 1, arg6)) {
+				if ((arg8 < 5 || arg8 == 10) && Client.levelCollisionMap[Static55.anInt1735].method3042(arg3, local3, local10, arg0, arg8 - 1, 1, arg6)) {
 					local53 = true;
 					break;
 				}
-				if (arg8 < 10 && Static148.aClass97Array1[Static55.anInt1735].method3046(arg3, arg8 - 1, arg0, local10, 1, arg6, local3)) {
+				if (arg8 < 10 && Client.levelCollisionMap[Static55.anInt1735].method3046(arg3, arg8 - 1, arg0, local10, 1, arg6, local3)) {
 					local53 = true;
 					break;
 				}
 			}
-			if (arg10 != 0 && arg5 != 0 && Static148.aClass97Array1[Static55.anInt1735].method3052(arg0, local10, local3, 1, arg10, arg1, arg3, arg5)) {
+			if (arg10 != 0 && arg5 != 0 && Client.levelCollisionMap[Static55.anInt1735].method3052(arg0, local10, local3, 1, arg10, arg1, arg3, arg5)) {
 				local53 = true;
 				break;
 			}
@@ -663,8 +663,4 @@ public final class Static45 {
 		}
 	}
 
-	@OriginalMember(owner = "client!di", name = "d", descriptor = "(I)V")
-	public static void method1172() {
-		BasType.recentUse.method3103();
-	}
 }

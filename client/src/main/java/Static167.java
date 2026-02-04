@@ -10,17 +10,11 @@ public final class Static167 {
 	@OriginalMember(owner = "client!nd", name = "y", descriptor = "Lclient!mm;")
 	public static Pix32 aClass3_Sub2_Sub1_Sub1_3;
 
-	@OriginalMember(owner = "client!nd", name = "b", descriptor = "Lclient!na;")
-	public static final JagString aClass100_780 = JagString.wrap("Clientscript error in: ");
-
 	@OriginalMember(owner = "client!nd", name = "q", descriptor = "[[I")
 	public static final int[][] anIntArrayArray31 = new int[104][104];
 
 	@OriginalMember(owner = "client!nd", name = "r", descriptor = "Lclient!na;")
 	public static final JagString aClass100_781 = JagString.wrap("zap");
-
-	@OriginalMember(owner = "client!nd", name = "u", descriptor = "Lclient!na;")
-	public static final JagString aClass100_782 = JagString.wrap("Abbrechen");
 
 	@OriginalMember(owner = "client!nd", name = "x", descriptor = "Lclient!na;")
 	public static final JagString aClass100_783 = JagString.wrap(")4p=");

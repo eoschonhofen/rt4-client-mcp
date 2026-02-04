@@ -43,11 +43,6 @@ public final class Static102 {
 		return local78;
 	}
 
-	@OriginalMember(owner = "client!hn", name = "f", descriptor = "(B)V")
-	public static void method2073() {
-		Static20.aClass133_2 = new HashTable(32);
-	}
-
 	@OriginalMember(owner = "client!hn", name = "a", descriptor = "(Lclient!ve;ILclient!ve;)V")
 	public static void method2074(@OriginalArg(0) Js5 arg0, @OriginalArg(2) Js5 arg1) {
 		Static114.aClass3_Sub2_Sub9_42 = Static127.method2462(Static166.anInt4049, arg1, arg0);

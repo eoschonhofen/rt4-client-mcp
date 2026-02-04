@@ -4,12 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static74 {
 
-	@OriginalMember(owner = "client!fn", name = "P", descriptor = "Lclient!na;")
-	private static final JagString aClass100_459 = JagString.wrap("Loaded config");
-
-	@OriginalMember(owner = "client!fn", name = "R", descriptor = "Lclient!na;")
-	public static JagString MAINLOAD70 = aClass100_459;
-
 	@OriginalMember(owner = "client!fn", name = "Z", descriptor = "Lclient!na;")
 	public static final JagString aClass100_461 = JagString.wrap(")1 ");
 
@@ -84,9 +78,9 @@ public final class Static74 {
 			@Pc(41) IfType local41 = local31[local33];
 			if (local41.onload != null) {
 				@Pc(50) HookReq local50 = new HookReq();
-				local50.anObjectArray31 = local41.onload;
-				local50.aClass13_17 = local41;
-				Static88.method1818(2000000, local50);
+				local50.onop = local41.onload;
+				local50.component = local41;
+				ScriptRunner.executeScript(2000000, local50);
 			}
 		}
 	}

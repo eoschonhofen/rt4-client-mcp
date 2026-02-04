@@ -4,18 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static170 {
 
-	@OriginalMember(owner = "client!nh", name = "S", descriptor = "Lclient!na;")
-	public static final JagString aClass100_619 = JagString.wrap("Lade)3)3)3");
-
-	@OriginalMember(owner = "client!nh", name = "V", descriptor = "Lclient!na;")
-	public static final JagString aClass100_620 = JagString.wrap("sch-Utteln:");
-
-	@OriginalMember(owner = "client!nh", name = "bb", descriptor = "Lclient!na;")
-	private static final JagString aClass100_622 = JagString.wrap("Loading )2 please wait)3");
-
-	@OriginalMember(owner = "client!nh", name = "W", descriptor = "Lclient!na;")
-	public static JagString aClass100_621 = aClass100_622;
-
 	@OriginalMember(owner = "client!nh", name = "Z", descriptor = "I")
 	public static int anInt3241 = 128;
 

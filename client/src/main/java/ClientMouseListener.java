@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -38,7 +39,14 @@ public final class ClientMouseListener implements MouseListener, MouseMotionList
 	@OriginalMember(owner = "client!dc", name = "W", descriptor = "I")
 	public static volatile int anInt1313 = 0;
 
-	@OriginalMember(owner = "client!ug", name = "mouseMoved", descriptor = "(Ljava/awt/event/MouseEvent;)V")
+    @OriginalMember(owner = "client!h", name = "a", descriptor = "(Ljava/awt/Component;Z)V")
+    public static void addListeners(@OriginalArg(0) Component arg0) {
+        arg0.addMouseListener(aClass150_1);
+        arg0.addMouseMotionListener(aClass150_1);
+        arg0.addFocusListener(aClass150_1);
+    }
+
+    @OriginalMember(owner = "client!ug", name = "mouseMoved", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseMoved(@OriginalArg(0) MouseEvent arg0) {
 		if (aClass150_1 != null) {

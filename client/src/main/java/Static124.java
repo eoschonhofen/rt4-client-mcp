@@ -7,9 +7,6 @@ public final class Static124 {
 	@OriginalMember(owner = "client!jk", name = "x", descriptor = "I")
 	public static int anInt3080;
 
-	@OriginalMember(owner = "client!jk", name = "B", descriptor = "Lclient!ma;")
-	public static ClientStream loginStream;
-
 	@OriginalMember(owner = "client!jk", name = "J", descriptor = "I")
 	public static int anInt3083;
 
@@ -28,15 +25,10 @@ public final class Static124 {
 	@OriginalMember(owner = "client!jk", name = "G", descriptor = "Z")
 	public static boolean aBoolean157 = false;
 
-	@OriginalMember(owner = "client!jk", name = "e", descriptor = "(B)V")
-	public static void method2433() {
-		BasType.recentUse.method3104();
-	}
-
 	@OriginalMember(owner = "client!jk", name = "a", descriptor = "(ILclient!na;)Lclient!bn;")
 	public static Map method2434(@OriginalArg(1) JagString arg0) {
 		for (@Pc(15) Map local15 = (Map) Static228.aClass69_120.head(); local15 != null; local15 = (Map) Static228.aClass69_120.method2288()) {
-			if (local15.aClass100_138.method3108(arg0)) {
+			if (local15.aClass100_138.equalsInner(arg0)) {
 				return local15;
 			}
 		}

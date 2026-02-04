@@ -37,25 +37,14 @@ public final class Static233 {
 	@OriginalMember(owner = "client!t", name = "z", descriptor = "I")
 	public static int anInt5224 = 0;
 
-	@OriginalMember(owner = "client!t", name = "B", descriptor = "Lclient!na;")
-	private static final JagString aClass100_993 = JagString.wrap("Your friend list is full)3 Max of 100 for free users)1 and 200 for members)3");
-
 	@OriginalMember(owner = "client!t", name = "C", descriptor = "Lclient!na;")
 	public static final JagString aClass100_994 = JagString.wrap(")3");
-
-	@OriginalMember(owner = "client!t", name = "D", descriptor = "Lclient!na;")
-	public static JagString aClass100_995 = aClass100_993;
 
 	@OriginalMember(owner = "client!t", name = "E", descriptor = "[I")
 	public static final int[] anIntArray452 = new int[32];
 
 	@OriginalMember(owner = "client!t", name = "F", descriptor = "I")
 	public static int anInt5226 = 0;
-
-	@OriginalMember(owner = "client!t", name = "b", descriptor = "(I)V")
-	public static void method3999() {
-		IdkType.recentUse.method3104();
-	}
 
 	@OriginalMember(owner = "client!t", name = "a", descriptor = "(IIIZIII)V")
 	public static void method4000(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5) {
@@ -73,13 +62,6 @@ public final class Static233 {
 		}
 	}
 
-	@OriginalMember(owner = "client!t", name = "b", descriptor = "(B)V")
-	public static void method4001() {
-		NPCType.recentUse.method3103();
-		Static125.aClass99_18.method3103();
-		Static262.aClass99_35.method3103();
-	}
-
 	@OriginalMember(owner = "client!t", name = "a", descriptor = "(ZB)V")
 	public static void method4002(@OriginalArg(0) boolean arg0) {
 		@Pc(19) byte local19;
@@ -92,7 +74,7 @@ public final class Static233 {
 			local21 = Static156.aByteArrayArray11;
 		}
 		for (@Pc(29) int local29 = 0; local29 < local19; local29++) {
-			client.method2261();
+			Client.doAudio();
 			for (@Pc(36) int local36 = 0; local36 < 13; local36++) {
 				for (@Pc(43) int local43 = 0; local43 < 13; local43++) {
 					@Pc(56) int local56 = Static187.anIntArrayArrayArray18[local29][local36][local43];
@@ -105,7 +87,7 @@ public final class Static233 {
 							@Pc(99) int local99 = local89 / 8 + (local83 / 8 << 8);
 							for (@Pc(101) int local101 = 0; local101 < Static238.anIntArray470.length; local101++) {
 								if (Static238.anIntArray470[local101] == local99 && local21[local101] != null) {
-									Static217.method3771(Static148.aClass97Array1, local29, local21[local101], local67, local77, local36 * 8, local43 * 8, arg0, (local83 & 0x7) * 8, (local89 & 0x7) * 8);
+									Static217.method3771(Client.levelCollisionMap, local29, local21[local101], local67, local77, local36 * 8, local43 * 8, arg0, (local83 & 0x7) * 8, (local89 & 0x7) * 8);
 									break;
 								}
 							}

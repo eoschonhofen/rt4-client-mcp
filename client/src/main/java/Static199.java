@@ -12,17 +12,8 @@ public final class Static199 {
 	@OriginalMember(owner = "client!qc", name = "K", descriptor = "Lclient!sc;")
 	public static HashTable aClass133_20 = new HashTable(16);
 
-	@OriginalMember(owner = "client!qc", name = "P", descriptor = "I")
-	public static int loadPos = 10;
-
 	@OriginalMember(owner = "client!qc", name = "U", descriptor = "I")
 	public static int anInt4672 = 0;
-
-	@OriginalMember(owner = "client!qc", name = "Z", descriptor = "Lclient!na;")
-	private static final JagString aClass100_882 = JagString.wrap("Members object");
-
-	@OriginalMember(owner = "client!qc", name = "Y", descriptor = "Lclient!na;")
-	public static JagString aClass100_881 = aClass100_882;
 
 	@OriginalMember(owner = "client!qc", name = "ab", descriptor = "[I")
 	public static final int[] anIntArray417 = new int[1000];

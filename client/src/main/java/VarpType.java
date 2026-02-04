@@ -14,8 +14,8 @@ public final class VarpType {
 
 	@OriginalMember(owner = "client!nb", name = "p", descriptor = "I")
 	public static int numDefinitions;
-	@OriginalMember(owner = "client!eh", name = "e", descriptor = "I")
 
+	@OriginalMember(owner = "client!eh", name = "e", descriptor = "I")
 	public int clientcode = 0;
 
     @OriginalMember(owner = "client!ub", name = "a", descriptor = "(II)Lclient!eh;")
@@ -37,6 +37,21 @@ public final class VarpType {
 	public static void init(@OriginalArg(0) Js5 arg0) {
 		clientConfig = arg0;
 		numDefinitions = clientConfig.getFileIdLimit(16);
+	}
+
+	@OriginalMember(owner = "client!bn", name = "c", descriptor = "(II)V")
+	public static void method666() {
+		recentUse.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!ab", name = "b", descriptor = "(B)V")
+	public static void method4657() {
+		recentUse.clear();
+	}
+
+	@OriginalMember(owner = "client!ud", name = "d", descriptor = "(I)V")
+	public static void method4266() {
+		recentUse.method3104();
 	}
 
 	@OriginalMember(owner = "client!eh", name = "a", descriptor = "(ILclient!wa;)V")

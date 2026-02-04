@@ -11,14 +11,8 @@ public final class Static7 {
 	@OriginalMember(owner = "client!ah", name = "t", descriptor = "I")
 	public static int anInt986;
 
-	@OriginalMember(owner = "client!ah", name = "i", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_5 = new SoftLruCache(2);
-
 	@OriginalMember(owner = "client!ah", name = "j", descriptor = "[I")
 	public static final int[] var = new int[3500];
-
-	@OriginalMember(owner = "client!ah", name = "m", descriptor = "Lclient!na;")
-	private static final JagString aClass100_189 = JagString.wrap("glow3:");
 
 	@OriginalMember(owner = "client!ah", name = "n", descriptor = "I")
 	public static int anInt983 = 0;
@@ -26,22 +20,16 @@ public final class Static7 {
 	@OriginalMember(owner = "client!ah", name = "p", descriptor = "Lclient!ih;")
 	public static final LinkList aClass69_32 = new LinkList();
 
-	@OriginalMember(owner = "client!ah", name = "q", descriptor = "Lclient!na;")
-	public static JagString aClass100_190 = aClass100_189;
-
 	@OriginalMember(owner = "client!ah", name = "r", descriptor = "Lclient!na;")
-	public static final JagString aClass100_191 = aClass100_189;
+	public static final JagString aClass100_191 = Text.aClass100_189;
 
 	@OriginalMember(owner = "client!ah", name = "s", descriptor = "I")
 	public static int anInt985 = 0;
 
-	@OriginalMember(owner = "client!ah", name = "u", descriptor = "Lclient!na;")
-	public static final JagString aClass100_192 = JagString.wrap("Veuillez commencer par supprimer ");
-
 	@OriginalMember(owner = "client!ah", name = "a", descriptor = "(BZ)V")
 	public static void method842(@OriginalArg(1) boolean arg0) {
-		client.method2261();
-		if (client.state != 30 && client.state != 25) {
+		Client.doAudio();
+		if (Client.state != 30 && Client.state != 25) {
 			return;
 		}
 		Static131.anInt3251++;
@@ -49,16 +37,16 @@ public final class Static7 {
 			return;
 		}
 		Static131.anInt3251 = 0;
-		if (!Static224.aBoolean247 && Static124.loginStream != null) {
+		if (!Static224.aBoolean247 && Client.stream != null) {
 			Static6.aClass3_Sub15_Sub1_1.p1Enc(93);
 			try {
-				Static124.loginStream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				Client.stream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
 				Static6.aClass3_Sub15_Sub1_1.pos = 0;
 			} catch (@Pc(53) IOException local53) {
 				Static224.aBoolean247 = true;
 			}
 		}
-		client.method2261();
+		Client.doAudio();
 	}
 
 	@OriginalMember(owner = "client!ah", name = "b", descriptor = "(I)V")

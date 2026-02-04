@@ -55,7 +55,7 @@ public final class SoftLruCache {
 	}
 
 	@OriginalMember(owner = "client!n", name = "a", descriptor = "(I)I")
-	public final int method3100() {
+	public final int size() {
 		@Pc(10) int local10 = 0;
 		for (@Pc(16) ReferenceNode local16 = (ReferenceNode) this.aClass16_8.method795(); local16 != null; local16 = (ReferenceNode) this.aClass16_8.method797()) {
 			if (!local16.method3619()) {
@@ -88,7 +88,7 @@ public final class SoftLruCache {
 	}
 
 	@OriginalMember(owner = "client!n", name = "b", descriptor = "(B)V")
-	public final void method3103() {
+	public final void clear() {
 		for (@Pc(7) ReferenceNode local7 = (ReferenceNode) this.aClass16_8.method795(); local7 != null; local7 = (ReferenceNode) this.aClass16_8.method797()) {
 			if (local7.method3619()) {
 				local7.unlink();

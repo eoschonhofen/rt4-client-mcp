@@ -4,23 +4,11 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static69 {
 
-	@OriginalMember(owner = "client!fh", name = "W", descriptor = "Lclient!na;")
-	private static final JagString aClass100_442 = JagString.wrap("M");
-
-	@OriginalMember(owner = "client!fh", name = "T", descriptor = "Lclient!na;")
-	public static JagString aClass100_440 = aClass100_442;
-
 	@OriginalMember(owner = "client!fh", name = "U", descriptor = "[[Z")
 	public static final boolean[][] aBooleanArrayArray2 = new boolean[][] { new boolean[0], { true, false, true }, { true, false, false, true }, { false, false, true, true }, { true, true, false }, { false, true, true }, { true, false, false, true }, { false, false, false, true, true }, { false, true, true }, { true, false, true, true, true }, { false, true, true, true, true }, { false, true, true, true, true, false } };
 
-	@OriginalMember(owner = "client!fh", name = "V", descriptor = "Lclient!na;")
-	public static final JagString aClass100_441 = JagString.wrap("vert:");
-
 	@OriginalMember(owner = "client!fh", name = "ab", descriptor = "Lclient!na;")
 	public static final JagString aClass100_443 = JagString.wrap("::noclip");
-
-	@OriginalMember(owner = "client!fh", name = "bb", descriptor = "Lclient!na;")
-	public static JagString aClass100_444 = aClass100_442;
 
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(IIII)I")
 	public static int method1540(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
@@ -46,7 +34,7 @@ public final class Static69 {
 					Static190.aLongArray6[local36] = Static190.aLongArray6[local36 + 1];
 					Static193.aClass100Array134[local36] = Static193.aClass100Array134[local36 + 1];
 				}
-				Static185.anInt4369 = Static119.anInt3028;
+				Static185.anInt4369 = Client.anInt3028;
 				Static6.aClass3_Sub15_Sub1_1.p1Enc(213);
 				Static6.aClass3_Sub15_Sub1_1.p8(arg0);
 				break;

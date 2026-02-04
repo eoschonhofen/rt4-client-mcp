@@ -19,12 +19,6 @@ public final class Static197 {
 	@OriginalMember(owner = "client!pm", name = "ab", descriptor = "Z")
 	public static boolean aBoolean228 = true;
 
-	@OriginalMember(owner = "client!pm", name = "gb", descriptor = "Lclient!na;")
-	private static final JagString aClass100_874 = JagString.wrap(" from your friend list first)3");
-
-	@OriginalMember(owner = "client!pm", name = "fb", descriptor = "Lclient!na;")
-	public static JagString aClass100_873 = aClass100_874;
-
 	@OriginalMember(owner = "client!pm", name = "a", descriptor = "(ILsignlink!ll;)[Lclient!od;")
 	public static DisplayMode[] method3558(@OriginalArg(1) SignLink arg0) {
 		if (!arg0.method5111()) {
@@ -101,14 +95,14 @@ public final class Static197 {
 		if (arg0) {
 			Static31.shutdown(GameShell.canvas);
 			Static223.shutdown(GameShell.canvas);
-			if (client.mouseWheel != null) {
-				client.mouseWheel.removeListeners(GameShell.canvas);
+			if (Client.mouseWheel != null) {
+				Client.mouseWheel.removeListeners(GameShell.canvas);
 			}
 			Static215.client.addcanvas();
-			Static19.method591(GameShell.canvas);
-			Static88.method1833(GameShell.canvas);
-			if (client.mouseWheel != null) {
-				client.mouseWheel.addListeners(GameShell.canvas);
+			ClientKeyboardListener.addListeners(GameShell.canvas);
+			ClientMouseListener.addListeners(GameShell.canvas);
+			if (Client.mouseWheel != null) {
+				Client.mouseWheel.addListeners(GameShell.canvas);
 			}
 		} else {
 			if (GameShell.glRenderer) {
@@ -132,10 +126,10 @@ public final class Static197 {
 				Static260.drawArea = null;
 				Static260.drawArea = Static131.method2579(GameShell.anInt5554, GameShell.anInt1448, GameShell.canvas);
 				Static129.method2492();
-				if (client.state == 5) {
+				if (Client.state == 5) {
 					Static182.method3359(true, Static280.aClass3_Sub2_Sub9_43);
 				} else {
-					Static114.messageBox(false, Static170.aClass100_621);
+					Static114.messageBox(false, Text.aClass100_621);
 				}
 				try {
 					@Pc(269) Graphics local269 = GameShell.canvas.getGraphics();
@@ -208,7 +202,7 @@ public final class Static197 {
 		if (Static154.anInt3711 != -1) {
 			Static210.method3712(true);
 		}
-		if (Static124.loginStream != null && (client.state == 30 || client.state == 25)) {
+		if (Client.stream != null && (Client.state == 30 || Client.state == 25)) {
 			Static59.method1373();
 		}
 		for (@Pc(466) int local466 = 0; local466 < 100; local466++) {

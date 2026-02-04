@@ -2,9 +2,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static215 {
 
-	@OriginalMember(owner = "client!rh", name = "a", descriptor = "[I")
-	public static int[] anIntArray432;
-
 	@OriginalMember(owner = "client!rh", name = "d", descriptor = "I")
 	public static int anInt4866;
 
@@ -12,7 +9,7 @@ public final class Static215 {
 	public static PixFontGeneric aClass3_Sub2_Sub9_32;
 
 	@OriginalMember(owner = "client!rh", name = "j", descriptor = "Lclient!client;")
-	public static client client;
+	public static Client client;
 
 	@OriginalMember(owner = "client!rh", name = "g", descriptor = "I")
 	public static final int anInt4868 = -1;
@@ -23,6 +20,4 @@ public final class Static215 {
 	@OriginalMember(owner = "client!rh", name = "o", descriptor = "I")
 	public static int mouseX = 0;
 
-	@OriginalMember(owner = "client!rh", name = "q", descriptor = "Lclient!na;")
-	public static final JagString aClass100_912 = JagString.wrap("OK");
 }

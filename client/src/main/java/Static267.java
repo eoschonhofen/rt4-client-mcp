@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static267 {
 
-	@OriginalMember(owner = "client!vl", name = "a", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_37 = new SoftLruCache(100);
-
 	@OriginalMember(owner = "client!vl", name = "e", descriptor = "[I")
 	public static final int[] anIntArray517 = new int[] { 1, 2, 4, 8 };
 
@@ -42,7 +39,7 @@ public final class Static267 {
 
 	@OriginalMember(owner = "client!vl", name = "a", descriptor = "(I)Z")
 	public static boolean method4527() {
-		if (client.js) {
+		if (Client.js) {
 			try {
 				return !((Boolean) Static119.aClass100_588.method3157(GameShell.signlink.applet));
 			} catch (@Pc(21) Throwable local21) {
@@ -142,9 +139,4 @@ public final class Static267 {
 		}
 	}
 
-	@OriginalMember(owner = "client!vl", name = "b", descriptor = "(I)V")
-	public static void method4529() {
-		MsiType.recentUse.method3103();
-		Static219.aClass99_27.method3103();
-	}
 }

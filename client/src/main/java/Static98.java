@@ -10,9 +10,6 @@ public final class Static98 {
 	@OriginalMember(owner = "client!hj", name = "d", descriptor = "Lclient!na;")
 	public static final JagString aClass100_524 = JagString.wrap("hint_headicons");
 
-	@OriginalMember(owner = "client!hj", name = "i", descriptor = "Lclient!na;")
-	public static final JagString aClass100_525 = JagString.wrap("Benutzen");
-
 	@OriginalMember(owner = "client!hj", name = "a", descriptor = "(II)V")
 	public static void method1964(@OriginalArg(0) int arg0) {
 		Static217.anInt4901 = -1;

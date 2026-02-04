@@ -7,35 +7,20 @@ public final class Static225 {
 	@OriginalMember(owner = "client!se", name = "a", descriptor = "I")
 	public static int anInt5068;
 
-	@OriginalMember(owner = "client!se", name = "b", descriptor = "Lclient!na;")
-	private static final JagString aClass100_959 = JagString.wrap("Prepared sound engine");
-
 	@OriginalMember(owner = "client!se", name = "h", descriptor = "I")
 	public static int anInt5073 = -1;
-
-	@OriginalMember(owner = "client!se", name = "o", descriptor = "Lclient!na;")
-	private static final JagString aClass100_962 = JagString.wrap("Select");
-
-	@OriginalMember(owner = "client!se", name = "k", descriptor = "Lclient!na;")
-	public static JagString SELECT = aClass100_962;
 
 	@OriginalMember(owner = "client!se", name = "m", descriptor = "Lclient!na;")
 	public static final JagString aClass100_961 = JagString.wrap(" )2>");
 
-	@OriginalMember(owner = "client!se", name = "s", descriptor = "Lclient!na;")
-	public static final JagString aClass100_963 = JagString.wrap("Eingabeprozedur geladen)3");
-
 	@OriginalMember(owner = "client!se", name = "t", descriptor = "[I")
 	public static final int[] anIntArray445 = new int[] { 12543016, 15504954, 15914854, 16773818 };
-
-	@OriginalMember(owner = "client!se", name = "v", descriptor = "Lclient!na;")
-	public static JagString aClass100_964 = aClass100_959;
 
 	@OriginalMember(owner = "client!se", name = "a", descriptor = "(I)V")
 	public static void method3889() {
 		while (true) {
-			if (Static4.in.bitsLeft(Static223.anInt5028) >= 11) {
-				@Pc(20) int local20 = Static4.in.method2238(11);
+			if (Client.in.bitsLeft(Client.psize) >= 11) {
+				@Pc(20) int local20 = Client.in.method2238(11);
 				if (local20 != 2047) {
 					@Pc(27) boolean local27 = false;
 					if (Static159.aClass8_Sub4_Sub1Array1[local20] == null) {
@@ -48,20 +33,20 @@ public final class Static225 {
 					Static105.anIntArray256[Static267.anInt5774++] = local20;
 					@Pc(65) ClientPlayer local65 = Static159.aClass8_Sub4_Sub1Array1[local20];
 					local65.anInt3430 = Static83.anInt372;
-					@Pc(73) int local73 = Static4.in.method2238(1);
+					@Pc(73) int local73 = Client.in.method2238(1);
 					if (local73 == 1) {
 						Static44.anIntArray106[Static116.anInt2951++] = local20;
 					}
-					@Pc(92) int local92 = Static4.in.method2238(5);
-					@Pc(99) int local99 = Static56.anIntArray141[Static4.in.method2238(3)];
+					@Pc(92) int local92 = Client.in.method2238(5);
+					@Pc(99) int local99 = Static56.anIntArray141[Client.in.method2238(3)];
 					if (local92 > 15) {
 						local92 -= 32;
 					}
 					if (local27) {
 						local65.anInt3400 = local65.anInt3381 = local99;
 					}
-					@Pc(116) int local116 = Static4.in.method2238(1);
-					@Pc(121) int local121 = Static4.in.method2238(5);
+					@Pc(116) int local116 = Client.in.method2238(1);
+					@Pc(121) int local121 = Client.in.method2238(5);
 					if (local121 > 15) {
 						local121 -= 32;
 					}
@@ -69,7 +54,7 @@ public final class Static225 {
 					continue;
 				}
 			}
-			Static4.in.gBitEnd();
+			Client.in.gBitEnd();
 			return;
 		}
 	}
@@ -94,9 +79,9 @@ public final class Static225 {
 		Static186.aClass100_828 = arg1;
 		Static5.anInt39 = arg2;
 		Static186.aClass100_829 = arg0;
-		if (Static186.aClass100_829.method3108(Static186.EMPTY_STRING) || Static186.aClass100_828.method3108(Static186.EMPTY_STRING)) {
+		if (Static186.aClass100_829.equalsInner(Static186.AUTO_EMPTY) || Static186.aClass100_828.equalsInner(Static186.AUTO_EMPTY)) {
 			Static266.anInt5336 = 3;
-		} else if (Static125.anInt3103 == -1) {
+		} else if (Client.anInt3103 == -1) {
 			Static20.anInt673 = 0;
 			Static196.anInt4587 = 0;
 			Static266.anInt5336 = -3;

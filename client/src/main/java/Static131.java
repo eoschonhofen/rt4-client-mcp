@@ -11,9 +11,6 @@ public final class Static131 {
 	@OriginalMember(owner = "client!kd", name = "Cb", descriptor = "I")
 	public static int anInt3261;
 
-	@OriginalMember(owner = "client!kd", name = "kb", descriptor = "Lclient!na;")
-	private static final JagString aClass100_624 = JagString.wrap("Allocating memory");
-
 	@OriginalMember(owner = "client!kd", name = "mb", descriptor = "[Lclient!cl;")
 	public static final AnimFrameSet[] aClass3_Sub2_Sub7Array5 = new AnimFrameSet[14];
 
@@ -26,17 +23,11 @@ public final class Static131 {
 	@OriginalMember(owner = "client!kd", name = "sb", descriptor = "[I")
 	public static final int[] anIntArray307 = new int[] { 1, 1, 0, 0, 0, 8, 0, 0, 8 };
 
-	@OriginalMember(owner = "client!kd", name = "tb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_625 = JagString.wrap("Connect-B au serveur de mise -9 jour");
-
 	@OriginalMember(owner = "client!kd", name = "yb", descriptor = "S")
 	public static short aShort21 = 32767;
 
 	@OriginalMember(owner = "client!kd", name = "zb", descriptor = "I")
 	public static int anInt3259 = 0;
-
-	@OriginalMember(owner = "client!kd", name = "Ab", descriptor = "Lclient!na;")
-	public static JagString aClass100_626 = aClass100_624;
 
 	@OriginalMember(owner = "client!kd", name = "Bb", descriptor = "I")
 	public static int anInt3260 = -1;

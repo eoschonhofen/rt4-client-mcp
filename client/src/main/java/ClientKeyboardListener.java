@@ -1,7 +1,10 @@
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.lang.reflect.Method;
+
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
@@ -39,6 +42,55 @@ public final class ClientKeyboardListener implements KeyListener, FocusListener 
 
 	@OriginalMember(owner = "client!hn", name = "V", descriptor = "I")
 	public static int anInt2678 = 0;
+
+	@OriginalMember(owner = "client!mf", name = "e", descriptor = "(I)V")
+	public static void setupKeyCodeMap() {
+		if (SignLink.javaVendor.toLowerCase().indexOf("microsoft") != -1) {
+			anIntArray407[187] = 27;
+			anIntArray407[223] = 28;
+			anIntArray407[221] = 43;
+			anIntArray407[188] = 71;
+			anIntArray407[222] = 59;
+			anIntArray407[192] = 58;
+			anIntArray407[191] = 73;
+			anIntArray407[219] = 42;
+			anIntArray407[190] = 72;
+			anIntArray407[186] = 57;
+			anIntArray407[220] = 74;
+			anIntArray407[189] = 26;
+			return;
+		}
+		if (SignLink.setTraversalKeysEnabled == null) {
+			anIntArray407[192] = 58;
+			anIntArray407[222] = 59;
+		} else {
+			anIntArray407[222] = 58;
+			anIntArray407[192] = 28;
+			anIntArray407[520] = 59;
+		}
+		anIntArray407[45] = 26;
+		anIntArray407[61] = 27;
+		anIntArray407[91] = 42;
+		anIntArray407[59] = 57;
+		anIntArray407[93] = 43;
+		anIntArray407[44] = 71;
+		anIntArray407[92] = 74;
+		anIntArray407[46] = 72;
+		anIntArray407[47] = 73;
+	}
+
+	@OriginalMember(owner = "client!bi", name = "a", descriptor = "(BLjava/awt/Component;)V")
+	public static void addListeners(@OriginalArg(1) Component arg0) {
+		@Pc(10) Method local10 = SignLink.setTraversalKeysEnabled;
+		if (local10 != null) {
+			try {
+				local10.invoke(arg0, Boolean.FALSE);
+			} catch (@Pc(25) Throwable local25) {
+			}
+		}
+		arg0.addKeyListener(aClass149_1);
+		arg0.addFocusListener(aClass149_1);
+	}
 
 	@OriginalMember(owner = "client!uf", name = "keyPressed", descriptor = "(Ljava/awt/event/KeyEvent;)V")
 	@Override

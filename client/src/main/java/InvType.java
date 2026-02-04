@@ -8,10 +8,12 @@ public final class InvType extends Linkable2 {
 
 	@OriginalMember(owner = "client!ha", name = "p", descriptor = "Lclient!gn;")
 	public static final LruCache recentUse = new LruCache(64);
+
 	@OriginalMember(owner = "client!al", name = "q", descriptor = "Lclient!ve;")
 	public static Js5 clientConfig;
+
 	@OriginalMember(owner = "client!md", name = "K", descriptor = "I")
-	public int anInt3706 = 0;
+	public int size = 0;
 
     @OriginalMember(owner = "client!u", name = "a", descriptor = "(II)Lclient!md;")
     public static InvType list(@OriginalArg(0) int arg0) {
@@ -47,7 +49,7 @@ public final class InvType extends Linkable2 {
 	@OriginalMember(owner = "client!md", name = "a", descriptor = "(Lclient!wa;IZ)V")
 	private void decode(@OriginalArg(0) Packet arg0, @OriginalArg(1) int arg1) {
 		if (arg1 == 2) {
-			this.anInt3706 = arg0.g2();
+			this.size = arg0.g2();
 		}
 	}
 }

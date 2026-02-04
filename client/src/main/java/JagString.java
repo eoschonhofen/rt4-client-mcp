@@ -44,13 +44,96 @@ public final class JagString implements StringWrapper {
 		return local13.method3151();
 	}
 
+	@OriginalMember(owner = "client!gn", name = "a", descriptor = "(BI)Lclient!na;")
+	public static JagString newStringBuilder(@OriginalArg(1) int arg0) {
+		@Pc(13) JagString local13 = new JagString();
+		local13.anInt4030 = 0;
+		local13.aByteArray52 = new byte[arg0];
+		return local13;
+	}
+
+	@OriginalMember(owner = "client!ck", name = "a", descriptor = "([Lclient!na;B)Lclient!na;")
+	public static JagString join(@OriginalArg(0) JagString[] arg0) {
+		if (arg0.length < 2) {
+			throw new IllegalArgumentException();
+		}
+		return join(0, arg0.length, arg0);
+	}
+
+	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(II[Lclient!na;I)Lclient!na;")
+	public static JagString join(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) JagString[] arg2) {
+		@Pc(5) int local5 = 0;
+		for (@Pc(7) int local7 = 0; local7 < arg1; local7++) {
+			if (arg2[arg0 + local7] == null) {
+				arg2[local7 + arg0] = Static193.aClass100_853;
+			}
+			local5 += arg2[local7 + arg0].anInt4030;
+		}
+		@Pc(39) byte[] local39 = new byte[local5];
+		@Pc(41) int local41 = 0;
+		for (@Pc(43) int local43 = 0; local43 < arg1; local43++) {
+			@Pc(52) JagString local52 = arg2[local43 + arg0];
+			Static289.method2612(local52.aByteArray52, 0, local39, local41, local52.anInt4030);
+			local41 += local52.anInt4030;
+		}
+		@Pc(71) JagString local71 = new JagString();
+		local71.anInt4030 = local5;
+		local71.aByteArray52 = local39;
+		return local71;
+	}
+
+	@OriginalMember(owner = "client!jj", name = "b", descriptor = "(BI)Lclient!na;")
+	public static JagString parseInt(@OriginalArg(1) int arg0) {
+		return parseInt(false, arg0);
+	}
+
+	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(ZII)Lclient!na;")
+	public static JagString method2285(@OriginalArg(2) int arg0) {
+		return parseInt(true, arg0);
+	}
+
+	@OriginalMember(owner = "client!q", name = "a", descriptor = "(BZII)Lclient!na;")
+	public static JagString parseInt(@OriginalArg(1) boolean arg0, @OriginalArg(3) int arg1) {
+		@Pc(23) int local23 = 1;
+		@Pc(27) int local27 = arg1 / 10;
+		while (local27 != 0) {
+			local27 /= 10;
+			local23++;
+		}
+		@Pc(38) int local38 = local23;
+		if (arg1 < 0 || arg0) {
+			local38 = local23 + 1;
+		}
+		@Pc(46) byte[] local46 = new byte[local38];
+		if (arg1 < 0) {
+			local46[0] = 45;
+		} else if (arg0) {
+			local46[0] = 43;
+		}
+		for (@Pc(61) int local61 = 0; local61 < local23; local61++) {
+			@Pc(68) int local68 = arg1 % 10;
+			if (local68 < 0) {
+				local68 = -local68;
+			}
+			if (local68 > 9) {
+				local68 += 39;
+			}
+			local46[local38 - local61 - 1] = (byte) (local68 + 48);
+			arg1 /= 10;
+		}
+		@Pc(112) JagString local112 = new JagString();
+		local112.aByteArray52 = local46;
+		local112.anInt4030 = local38;
+		return local112;
+	}
+
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(Z)Ljava/net/URL;")
 	public final URL method3107() throws MalformedURLException {
 		return new URL(new String(this.aByteArray52, 0, this.anInt4030));
 	}
 
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(BLclient!na;)Z")
-	public final boolean method3108(@OriginalArg(1) JagString arg0) {
+	public final boolean equalsInner(@OriginalArg(1) JagString arg0) {
 		if (arg0 == null) {
 			return false;
 		} else if (arg0 == this) {
@@ -149,7 +232,7 @@ public final class JagString implements StringWrapper {
 	}
 
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(Lclient!na;Z)Lclient!na;")
-	public final JagString method3113(@OriginalArg(0) JagString arg0) {
+	public final JagString append(@OriginalArg(0) JagString arg0) {
 		if (!this.aBoolean193) {
 			throw new IllegalArgumentException();
 		}
@@ -470,7 +553,7 @@ public final class JagString implements StringWrapper {
 		if (!(arg0 instanceof JagString)) {
 			throw new IllegalArgumentException();
 		}
-		return this.method3108((JagString) arg0);
+		return this.equalsInner((JagString) arg0);
 	}
 
 	@OriginalMember(owner = "client!na", name = "c", descriptor = "(Lclient!na;I)I")
@@ -507,7 +590,7 @@ public final class JagString implements StringWrapper {
 			@Pc(22) int local22 = this.method3146(arg1, local16);
 			if (local22 < 0) {
 				local16 = 0;
-				@Pc(45) JagString local45 = Static87.method1804(local8);
+				@Pc(45) JagString local45 = newStringBuilder(local8);
 				while (true) {
 					@Pc(51) int local51 = this.method3146(arg1, local16);
 					if (local51 < 0) {
@@ -519,7 +602,7 @@ public final class JagString implements StringWrapper {
 					while (local16 < local51) {
 						local45.method3152(this.aByteArray52[local16++] & 0xFF);
 					}
-					local45.method3113(arg0);
+					local45.append(arg0);
 					local16 += arg1.anInt4030;
 				}
 			}
@@ -704,7 +787,7 @@ public final class JagString implements StringWrapper {
 	}
 
 	@OriginalMember(owner = "client!na", name = "i", descriptor = "(I)[B")
-	public final byte[] method3148() {
+	public final byte[] builderToString() {
 		@Pc(7) byte[] local7 = new byte[this.anInt4030];
 		Static289.method2612(this.aByteArray52, 0, local7, 0, this.anInt4030);
 		return local7;
@@ -725,7 +808,7 @@ public final class JagString implements StringWrapper {
 				Static148.aClass133_13 = new HashTable(4096);
 			} else {
 				for (local30 = (StringNode) Static148.aClass133_13.find(local9); local30 != null; local30 = (StringNode) Static148.aClass133_13.method3867()) {
-					if (this.method3108(local30.aClass100_980)) {
+					if (this.equalsInner(local30.aClass100_980)) {
 						return local30.aClass100_980;
 					}
 				}

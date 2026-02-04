@@ -10,9 +10,6 @@ public final class Static243 {
 	@OriginalMember(owner = "client!tk", name = "D", descriptor = "[Lclient!ec;")
 	public static Sprite[] aClass31Array3;
 
-	@OriginalMember(owner = "client!tk", name = "x", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1012 = JagString.wrap(" steht bereits auf Ihrer Freunde)2Liste(Q");
-
 	@OriginalMember(owner = "client!tk", name = "K", descriptor = "[I")
 	public static int[] anIntArray476 = new int[2];
 
@@ -32,18 +29,18 @@ public final class Static243 {
 		Static204.anInt4762 = 0;
 		Static67.aBoolean168 = true;
 		Static183.aLong139 = 0L;
-		client.mouseTracking.length = 0;
+		Client.mouseTracking.length = 0;
 		GameShell.focus = true;
 		Static114.method4625();
-		Static49.anInt1462 = -1;
-		Static5.anInt45 = -1;
-		Static164.anInt3985 = -1;
+		Client.ptype2 = -1;
+		Client.ptype1 = -1;
+		Client.ptype = -1;
 		Static267.anInt5775 = 0;
 		Static60.anInt1894 = 0;
 		Static6.aClass3_Sub15_Sub1_1.pos = 0;
-		Static230.anInt5152 = -1;
-		Static201.anInt1862 = 0;
-		Static4.in.pos = 0;
+		Client.ptype0 = -1;
+		Client.timeoutTimer = 0;
+		Client.in.pos = 0;
 		@Pc(3506) int local3506;
 		for (local3506 = 0; local3506 < Static143.aClass102Array1.length; local3506++) {
 			Static143.aClass102Array1[local3506] = null;
@@ -52,7 +49,7 @@ public final class Static243 {
 		Static60.aBoolean108 = false;
 		Static48.method1197(0);
 		for (local3506 = 0; local3506 < 100; local3506++) {
-			Static230.aClass100Array158[local3506] = null;
+			Client.aClass100Array158[local3506] = null;
 		}
 		Static260.anInt5014 = 0;
 		Static132.anInt3291 = (int) (Math.random() * 100.0D) - 50;
@@ -67,7 +64,7 @@ public final class Static243 {
 		Static189.anInt4451 = 0;
 		Static115.anInt2939 = 0;
 		Static59.anInt1814 = (int) (Math.random() * 120.0D) - 60;
-		Static62.anInt1941 = 0;
+		Client.anInt1941 = 0;
 		Static230.anInt5161 = (int) (Math.random() * 80.0D) - 40;
 		Static272.anInt5214 = 0;
 		for (local3506 = 0; local3506 < 2048; local3506++) {
@@ -104,8 +101,8 @@ public final class Static243 {
 		Static251.anInt5449 = 0;
 		Static113.anInt4612 = 0;
 		Static233.anInt5225 = 0;
-		for (local3506 = 0; local3506 < Static155.anIntArray355.length; local3506++) {
-			Static155.anIntArray355[local3506] = -1;
+		for (local3506 = 0; local3506 < Static155.varcInt.length; local3506++) {
+			Static155.varcInt[local3506] = -1;
 		}
 		if (Static154.anInt3711 != -1) {
 			Static109.method2275(Static154.anInt3711);
@@ -125,7 +122,7 @@ public final class Static243 {
 			Static1.aBooleanArray1[local3506] = false;
 			Static191.anIntArray388[local3506] = -1;
 		}
-		Static102.method2073();
+		ClientInvCache.deleteAll();
 		Static19.aBoolean43 = true;
 		for (local3506 = 0; local3506 < 100; local3506++) {
 			Static186.aBooleanArray100[local3506] = true;
@@ -146,9 +143,9 @@ public final class Static243 {
 		}
 		Static197.aBoolean228 = true;
 		Static189.anInt4443 = 0;
-		Static195.aClass100_859 = Static105.aClass100_560;
+		Static195.aClass100_859 = Text.aClass100_560;
 		Static127.aBoolean160 = false;
-		Static259.aShortArray88 = Static62.aShortArray19 = Static232.aShortArray74 = Static259.aShortArray87 = new short[256];
+		Client.aShortArray88 = Static62.aShortArray19 = Static232.aShortArray74 = Static259.aShortArray87 = new short[256];
 		Static114.method4637();
 		Static261.aBoolean298 = false;
 		Static59.method1373();

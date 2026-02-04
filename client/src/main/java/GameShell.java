@@ -20,6 +20,8 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 
 	@OriginalMember(owner = "client!ah", name = "k", descriptor = "[J")
 	public static final long[] drawTime = new long[32];
+	@OriginalMember(owner = "client!dk", name = "j", descriptor = "[Lclient!en;")
+	public static final BufferedRandomAccessFile[] cacheIndex = new BufferedRandomAccessFile[28];
 
 	@OriginalMember(owner = "client!fk", name = "l", descriptor = "Lsignlink!ll;")
 	public static SignLink signlink;
@@ -116,8 +118,10 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 
 	@OriginalMember(owner = "client!ba", name = "B", descriptor = "I")
 	public static int deltime = 20;
+    @OriginalMember(owner = "client!nj", name = "f", descriptor = "Lclient!en;")
+    public static BufferedRandomAccessFile cacheDat;
 
-	@OriginalMember(owner = "client!rc", name = "b", descriptor = "Z")
+    @OriginalMember(owner = "client!rc", name = "b", descriptor = "Z")
 	private boolean alreadyerrored = false;
 
 	@OriginalMember(owner = "client!rc", name = "providesignlink", descriptor = "(Lsignlink!ll;)V")

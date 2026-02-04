@@ -6,9 +6,6 @@ public final class Static219 {
 	@OriginalMember(owner = "client!rl", name = "V", descriptor = "[Lclient!qf;")
 	public static AbstractPix32[] aClass3_Sub2_Sub1Array9;
 
-	@OriginalMember(owner = "client!rl", name = "P", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_27 = new SoftLruCache(64);
-
 	@OriginalMember(owner = "client!rl", name = "S", descriptor = "Lclient!na;")
 	public static final JagString aClass100_920 = JagString.wrap("hitmarks");
 
@@ -41,9 +38,6 @@ public final class Static219 {
 
 	@OriginalMember(owner = "client!rl", name = "Z", descriptor = "I")
 	public static final int anInt4938 = 7759444;
-
-	@OriginalMember(owner = "client!rl", name = "eb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_928 = JagString.wrap("(U0a )2 in: ");
 
 	@OriginalMember(owner = "client!rl", name = "i", descriptor = "(I)V")
 	public static void method3796() {

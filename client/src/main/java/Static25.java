@@ -8,14 +8,8 @@ public final class Static25 {
 	@OriginalMember(owner = "client!c", name = "bb", descriptor = "[Lclient!ec;")
 	public static Sprite[] aClass31Array2;
 
-	@OriginalMember(owner = "client!c", name = "W", descriptor = "Lclient!na;")
-	private static final JagString aClass100_153 = JagString.wrap(" has logged in)3");
-
 	@OriginalMember(owner = "client!c", name = "Y", descriptor = "Lclient!na;")
 	public static final JagString aClass100_154 = JagString.wrap("Mem:");
-
-	@OriginalMember(owner = "client!c", name = "Z", descriptor = "Lclient!na;")
-	public static JagString aClass100_155 = aClass100_153;
 
 	@OriginalMember(owner = "client!c", name = "eb", descriptor = "I")
 	public static int anInt826 = 0;
@@ -54,14 +48,4 @@ public final class Static25 {
 		}
 	}
 
-	@OriginalMember(owner = "client!c", name = "c", descriptor = "(II)V")
-	public static void method715() {
-		LightType.aClass99_28.method3102(5);
-	}
-
-	@OriginalMember(owner = "client!c", name = "d", descriptor = "(II)V")
-	public static void method716() {
-		CursorType.recentUse.method3102(5);
-		Static7.aClass99_5.method3102(5);
-	}
 }
