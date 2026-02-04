@@ -40,7 +40,7 @@ public final class Static63 {
 		if (arg2 == anInt1943) {
 			@Pc(8) IntNode local8 = new IntNode(arg1);
 			local8.key = arg0;
-			aClass69_50.method2282(local8);
+			aClass69_50.push(local8);
 		}
 	}
 
@@ -49,7 +49,7 @@ public final class Static63 {
 		if (arg1 == anInt1943) {
 			@Pc(7) IntNode local7 = new IntNode();
 			local7.key = arg0;
-			aClass69_51.method2282(local7);
+			aClass69_51.push(local7);
 		}
 	}
 
@@ -70,7 +70,7 @@ public final class Static63 {
 		if (arg2 == anInt1943) {
 			@Pc(8) IntNode local8 = new IntNode(arg1);
 			local8.key = arg0;
-			aClass69_48.method2282(local8);
+			aClass69_48.push(local8);
 		}
 	}
 
@@ -79,23 +79,23 @@ public final class Static63 {
 		@Pc(1) GL local1 = Static239.aGL1;
 		@Pc(3) int local3 = 0;
 		while (true) {
-			@Pc(8) IntNode local8 = (IntNode) aClass69_48.method2287();
+			@Pc(8) IntNode local8 = (IntNode) aClass69_48.popFront();
 			if (local8 == null) {
 				if (local3 > 0) {
 					local1.glDeleteBuffersARB(local3, anIntArray151, 0);
 					local3 = 0;
 				}
 				while (true) {
-					local8 = (IntNode) aClass69_49.method2287();
+					local8 = (IntNode) aClass69_49.popFront();
 					if (local8 == null) {
 						while (true) {
-							local8 = (IntNode) aClass69_50.method2287();
+							local8 = (IntNode) aClass69_50.popFront();
 							if (local8 == null) {
 								if (local3 > 0) {
 									local1.glDeleteTextures(local3, anIntArray151, 0);
 								}
 								while (true) {
-									local8 = (IntNode) aClass69_51.method2287();
+									local8 = (IntNode) aClass69_51.popFront();
 									if (local8 == null) {
 										if (anInt1945 + anInt1944 + anInt1942 > 100663296 && MonotonicTime.currentTime() > aLong71 + 60000L) {
 											System.gc();
@@ -137,7 +137,7 @@ public final class Static63 {
 		if (arg2 == anInt1943) {
 			@Pc(8) IntNode local8 = new IntNode(arg1);
 			local8.key = arg0;
-			aClass69_49.method2282(local8);
+			aClass69_49.push(local8);
 		}
 	}
 }

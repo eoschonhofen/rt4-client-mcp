@@ -25,7 +25,7 @@ public final class MidiMixer extends PcmStream {
 	public final PcmStream method4409() {
 		@Pc(9) MidiNote local9;
 		do {
-			local9 = (MidiNote) this.aClass69_126.method2288();
+			local9 = (MidiNote) this.aClass69_126.next();
 			if (local9 == null) {
 				return null;
 			}
@@ -60,7 +60,7 @@ public final class MidiMixer extends PcmStream {
 					this.aClass3_Sub3_Sub4_3.method4442(arg0, arg0.aClass3_Sub18_1.aShortArray36[arg0.anInt3779] < 0);
 				}
 				if (arg0.aClass3_Sub18_1.aShortArray36[arg0.anInt3779] < 0) {
-					arg0.aClass3_Sub3_Sub1_3.method396(-1);
+					arg0.aClass3_Sub3_Sub1_3.setLoopCount(-1);
 				}
 				arg1 = arg0.anInt3775 / local27;
 			}
@@ -78,7 +78,7 @@ public final class MidiMixer extends PcmStream {
 	@Override
 	public final void method4410(@OriginalArg(0) int arg0) {
 		this.aClass3_Sub3_Sub2_2.method4410(arg0);
-		for (@Pc(15) MidiNote local15 = (MidiNote) this.aClass69_126.head(); local15 != null; local15 = (MidiNote) this.aClass69_126.method2288()) {
+		for (@Pc(15) MidiNote local15 = (MidiNote) this.aClass69_126.head(); local15 != null; local15 = (MidiNote) this.aClass69_126.next()) {
 			if (!this.aClass3_Sub3_Sub4_3.method4445(local15)) {
 				@Pc(27) int local27 = arg0;
 				do {
@@ -98,7 +98,7 @@ public final class MidiMixer extends PcmStream {
 	@Override
 	public final void method4408(@OriginalArg(0) int[] arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
 		this.aClass3_Sub3_Sub2_2.method4408(arg0, arg1, arg2);
-		for (@Pc(17) MidiNote local17 = (MidiNote) this.aClass69_126.head(); local17 != null; local17 = (MidiNote) this.aClass69_126.method2288()) {
+		for (@Pc(17) MidiNote local17 = (MidiNote) this.aClass69_126.head(); local17 != null; local17 = (MidiNote) this.aClass69_126.next()) {
 			if (!this.aClass3_Sub3_Sub4_3.method4445(local17)) {
 				@Pc(29) int local29 = arg2;
 				@Pc(31) int local31 = arg1;
@@ -143,13 +143,13 @@ public final class MidiMixer extends PcmStream {
 					arg1.aClass3_Sub3_Sub1_3.method398(local55, local58.method392());
 				}
 				if (arg1.aClass3_Sub18_1.aShortArray36[arg1.anInt3779] < 0) {
-					arg1.aClass3_Sub3_Sub1_3.method396(-1);
+					arg1.aClass3_Sub3_Sub1_3.setLoopCount(-1);
 				}
 				arg2 += local36;
 				local58.method384(local55);
 				local58.method4408(arg0, arg2, arg4 - arg2);
 				if (local58.method412()) {
-					this.aClass3_Sub3_Sub2_2.method1343(local58);
+					this.aClass3_Sub3_Sub2_2.playStream(local58);
 				}
 			}
 		}

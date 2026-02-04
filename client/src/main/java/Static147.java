@@ -38,10 +38,10 @@ public final class Static147 {
 				Ground.anIntArray170[local5] = local61;
 				Ground.anIntArray169[local5] = local71;
 			}
-			Ground.anIntArray165[local5] = Static94.anInt2471 + (local39 << 9) / local71;
-			Ground.anIntArray164[local5] = Static94.anInt2469 + (local61 << 9) / local71;
+			Ground.anIntArray165[local5] = Pix3D.anInt2471 + (local39 << 9) / local71;
+			Ground.anIntArray164[local5] = Pix3D.anInt2469 + (local61 << 9) / local71;
 		}
-		Static94.anInt2473 = 0;
+		Pix3D.anInt2473 = 0;
 		local3 = arg0.anIntArray166.length;
 		for (local5 = 0; local5 < local3; local5++) {
 			local15 = arg0.anIntArray166[local5];
@@ -54,36 +54,30 @@ public final class Static147 {
 			@Pc(160) int local160 = Ground.anIntArray164[local22];
 			@Pc(164) int local164 = Ground.anIntArray164[local29];
 			if ((local39 - local148) * (local164 - local160) - (local156 - local160) * (local152 - local148) > 0) {
-				if (Static158.aBoolean187 && Static19.method583(Static89.anInt2388 + Static94.anInt2471, Static131.anInt3259 + Static94.anInt2469, local156, local160, local164, local39, local148, local152)) {
-					Static56.anInt1742 = arg5;
-					Static116.anInt2954 = arg6;
+				if (Static158.aBoolean187 && Static19.method583(Static89.anInt2388 + Pix3D.anInt2471, Static131.anInt3259 + Pix3D.anInt2469, local156, local160, local164, local39, local148, local152)) {
+					World.groundX = arg5;
+					World.groundZ = arg6;
 				}
 				if (!GameShell.glRenderer && !arg7) {
-					Static94.aBoolean138 = false;
-					if (local39 < 0 || local148 < 0 || local152 < 0 || local39 > Static94.anInt2472 || local148 > Static94.anInt2472 || local152 > Static94.anInt2472) {
-						Static94.aBoolean138 = true;
+					Pix3D.aBoolean138 = false;
+					if (local39 < 0 || local148 < 0 || local152 < 0 || local39 > Pix3D.anInt2472 || local148 > Pix3D.anInt2472 || local152 > Pix3D.anInt2472) {
+						Pix3D.aBoolean138 = true;
 					}
 					if (arg0.anIntArray161 == null || arg0.anIntArray161[local5] == -1) {
 						if (arg0.anIntArray167[local5] != 12345678) {
-							Static94.method1928(local156, local160, local164, local39, local148, local152, arg0.anIntArray167[local5], arg0.anIntArray172[local5], arg0.anIntArray171[local5]);
+							Pix3D.method1928(local156, local160, local164, local39, local148, local152, arg0.anIntArray167[local5], arg0.anIntArray172[local5], arg0.anIntArray171[local5]);
 						}
 					} else if (!Static159.aBoolean189) {
-						@Pc(373) int local373 = Static94.anInterface1_2.method3234(arg0.anIntArray161[local5]);
-						Static94.method1928(local156, local160, local164, local39, local148, local152, Static216.method1640(local373, arg0.anIntArray167[local5]), Static216.method1640(local373, arg0.anIntArray172[local5]), Static216.method1640(local373, arg0.anIntArray171[local5]));
+						@Pc(373) int local373 = Pix3D.anInterface1_2.method3234(arg0.anIntArray161[local5]);
+						Pix3D.method1928(local156, local160, local164, local39, local148, local152, Static216.method1640(local373, arg0.anIntArray167[local5]), Static216.method1640(local373, arg0.anIntArray172[local5]), Static216.method1640(local373, arg0.anIntArray171[local5]));
 					} else if (arg0.aBoolean113) {
-						Static94.method1909(local156, local160, local164, local39, local148, local152, arg0.anIntArray167[local5], arg0.anIntArray172[local5], arg0.anIntArray171[local5], Ground.anIntArray159[0], Ground.anIntArray159[1], Ground.anIntArray159[3], Ground.anIntArray170[0], Ground.anIntArray170[1], Ground.anIntArray170[3], Ground.anIntArray169[0], Ground.anIntArray169[1], Ground.anIntArray169[3], arg0.anIntArray161[local5]);
+						Pix3D.method1909(local156, local160, local164, local39, local148, local152, arg0.anIntArray167[local5], arg0.anIntArray172[local5], arg0.anIntArray171[local5], Ground.anIntArray159[0], Ground.anIntArray159[1], Ground.anIntArray159[3], Ground.anIntArray170[0], Ground.anIntArray170[1], Ground.anIntArray170[3], Ground.anIntArray169[0], Ground.anIntArray169[1], Ground.anIntArray169[3], arg0.anIntArray161[local5]);
 					} else {
-						Static94.method1909(local156, local160, local164, local39, local148, local152, arg0.anIntArray167[local5], arg0.anIntArray172[local5], arg0.anIntArray171[local5], Ground.anIntArray159[local15], Ground.anIntArray159[local22], Ground.anIntArray159[local29], Ground.anIntArray170[local15], Ground.anIntArray170[local22], Ground.anIntArray170[local29], Ground.anIntArray169[local15], Ground.anIntArray169[local22], Ground.anIntArray169[local29], arg0.anIntArray161[local5]);
+						Pix3D.method1909(local156, local160, local164, local39, local148, local152, arg0.anIntArray167[local5], arg0.anIntArray172[local5], arg0.anIntArray171[local5], Ground.anIntArray159[local15], Ground.anIntArray159[local22], Ground.anIntArray159[local29], Ground.anIntArray170[local15], Ground.anIntArray170[local22], Ground.anIntArray170[local29], Ground.anIntArray169[local15], Ground.anIntArray169[local22], Ground.anIntArray169[local29], arg0.anIntArray161[local5]);
 					}
 				}
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!lh", name = "d", descriptor = "(B)V")
-	public static void method2764() {
-		IfType.spriteCache.method3104();
-		Static124.aClass99_17.method3104();
-		IfType.fontCache.method3104();
-	}
 }

@@ -7,9 +7,6 @@ public final class Static141 {
 	@OriginalMember(owner = "client!lb", name = "z", descriptor = "I")
 	public static int anInt3473;
 
-	@OriginalMember(owner = "client!lb", name = "p", descriptor = "[I")
-	public static final int[] anIntArray326 = new int[25];
-
 	@OriginalMember(owner = "client!lb", name = "s", descriptor = "Lclient!na;")
 	public static final JagString aClass100_664 = JagString.wrap(":clan:");
 
@@ -32,13 +29,13 @@ public final class Static141 {
 
 	@OriginalMember(owner = "client!lb", name = "a", descriptor = "(Z)V")
 	public static void method2721() {
-		Static65.method1500();
+		World.method1500();
 		Static89.aClass3_Sub2_Sub1_5 = null;
 		Static107.anInt2875 = -1;
-		Static217.method3768();
+		Client.method3768();
 		Static255.aClass54_16.method1815();
 		Static171.aClass139_1 = new Class139();
-		((WorldTextureProvider) Static94.anInterface1_2).method3247();
+		((WorldTextureProvider) Pix3D.anInterface1_2).method3247();
 		World.anInt3034 = 0;
 		World.aClass51Array1 = new Light[255];
 		Static237.method4120();
@@ -47,7 +44,7 @@ public final class Static141 {
 		Static116.method2325(false);
 		Static119.method2381();
 		for (@Pc(39) int local39 = 0; local39 < 2048; local39++) {
-			@Pc(46) ClientPlayer local46 = Static159.aClass8_Sub4_Sub1Array1[local39];
+			@Pc(46) ClientPlayer local46 = Client.players[local39];
 			if (local46 != null) {
 				local46.anObject5 = null;
 			}
@@ -70,7 +67,7 @@ public final class Static141 {
 			Static73.method1596(false);
 		}
 		if (Client.state == 30) {
-			Static196.method3534(25);
+			Client.setMainState(25);
 		}
 	}
 
@@ -82,11 +79,11 @@ public final class Static141 {
 		Static233.anInt5225 = arg1;
 		Static248.anInt4232 = arg4;
 		if (arg0 && Static113.anInt4612 >= 100) {
-			Static138.anInt3439 = Static245.anInt5375 * 128 + 64;
-			Static134.anInt3302 = Static248.anInt4232 * 128 + 64;
-			Static5.anInt40 = Static207.method3685(Static55.anInt1735, Static138.anInt3439, Static134.anInt3302) - Static231.anInt5203;
+			Client.anInt3439 = Static245.anInt5375 * 128 + 64;
+			Client.anInt3302 = Static248.anInt4232 * 128 + 64;
+			Client.anInt40 = Client.getAvH(Client.minusedlevel, Client.anInt3439, Client.anInt3302) - Static231.anInt5203;
 		}
-		Static227.anInt5096 = 2;
+		Client.anInt5096 = 2;
 	}
 
 }

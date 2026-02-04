@@ -47,7 +47,7 @@ public class Packet extends Linkable {
 
 	@OriginalMember(owner = "client!wa", name = "<init>", descriptor = "(I)V")
 	public Packet(@OriginalArg(0) int arg0) {
-		this.data = Static228.method3907(arg0);
+		this.data = ByteArrayPool.method3907(arg0);
 		this.pos = 0;
 	}
 
@@ -128,7 +128,7 @@ public class Packet extends Linkable {
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(ILclient!na;)V")
-	public final void method2171(@OriginalArg(1) JagString arg0) {
+	public final void pjstr(@OriginalArg(1) JagString arg0) {
 		this.pos += arg0.method3160(this.data, this.pos, arg0.length());
 		this.data[this.pos++] = 0;
 	}
@@ -175,7 +175,7 @@ public class Packet extends Linkable {
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "([BIII)V")
-	public final void method2179(@OriginalArg(0) byte[] arg0, @OriginalArg(2) int arg1) {
+	public final void tinyenc(@OriginalArg(0) byte[] arg0, @OriginalArg(2) int arg1) {
 		for (@Pc(7) int local7 = 0; local7 < arg1; local7++) {
 			this.data[this.pos++] = arg0[local7];
 		}
@@ -495,7 +495,7 @@ public class Packet extends Linkable {
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(Ljava/math/BigInteger;Ljava/math/BigInteger;I)V")
-	public final void method2226(@OriginalArg(0) BigInteger arg0, @OriginalArg(1) BigInteger arg1) {
+	public final void rsaenc(@OriginalArg(0) BigInteger arg0, @OriginalArg(1) BigInteger arg1) {
 		@Pc(2) int local2 = this.pos;
 		this.pos = 0;
 		@Pc(8) byte[] local8 = new byte[local2];
@@ -505,7 +505,7 @@ public class Packet extends Linkable {
 		@Pc(38) byte[] local38 = local28.toByteArray();
 		this.pos = 0;
 		this.p1(local38.length);
-		this.method2179(local38, local38.length);
+		this.tinyenc(local38, local38.length);
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(IF)V")

@@ -12,8 +12,8 @@ public final class Static256 {
 	@OriginalMember(owner = "client!um", name = "a", descriptor = "(Z)V")
 	public static void method4392() {
 		Static11.anInt384 = 0;
-		@Pc(17) int local17 = Static225.anInt5068 + (Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7);
-		@Pc(25) int local25 = (Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7) + Static142.anInt3483;
+		@Pc(17) int local17 = Client.mapBuildBaseX + (Client.localPlayer.x >> 7);
+		@Pc(25) int local25 = (Client.localPlayer.z >> 7) + Client.mapBuildBaseZ;
 		if (local17 >= 3053 && local17 <= 3156 && local25 >= 3056 && local25 <= 3136) {
 			Static11.anInt384 = 1;
 		}
@@ -28,7 +28,7 @@ public final class Static256 {
 	@OriginalMember(owner = "client!um", name = "c", descriptor = "(III)Z")
 	public static boolean method4394(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
 		for (@Pc(1) int local1 = 0; local1 < Static215.anInt4870; local1++) {
-			@Pc(8) Class120 local8 = Static247.aClass120Array2[local1];
+			@Pc(8) Occlude local8 = Static247.aClass120Array2[local1];
 			@Pc(17) int local17;
 			@Pc(29) int local29;
 			@Pc(39) int local39;

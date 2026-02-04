@@ -4,12 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static134 {
 
-	@OriginalMember(owner = "client!kh", name = "f", descriptor = "I")
-	public static int anInt3302;
-
-	@OriginalMember(owner = "client!kh", name = "g", descriptor = "Lclient!hh;")
-	public static final PlayerModel aClass59_2 = new PlayerModel();
-
 	@OriginalMember(owner = "client!kh", name = "a", descriptor = "(B)Lclient!ek;")
 	public static SoftwarePix8 method2619() {
 		@Pc(25) SoftwarePix8 local25 = new SoftwarePix8(Static124.anInt3080, Static227.anInt5091, Static274.anIntArray440[0], Static269.anIntArray252[0], Static254.anIntArray488[0], Static26.anIntArray66[0], Static7.aByteArrayArray5[0], Static259.anIntArray513);
@@ -36,7 +30,7 @@ public final class Static134 {
 
 	@OriginalMember(owner = "client!kh", name = "b", descriptor = "(I)V")
 	public static void method2623() {
-		Static6.aClass3_Sub15_Sub1_1.p1Enc(104);
-		Static6.aClass3_Sub15_Sub1_1.p8(0L);
+		Client.out.p1Enc(104);
+		Client.out.p8(0L);
 	}
 }

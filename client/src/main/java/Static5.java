@@ -1,11 +1,7 @@
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static5 {
-
-	@OriginalMember(owner = "client!af", name = "d", descriptor = "I")
-	public static int anInt40;
 
 	@OriginalMember(owner = "client!af", name = "c", descriptor = "I")
 	public static int anInt39 = -1;
@@ -24,47 +20,11 @@ public final class Static5 {
 		System.out.println("Error: " + Static40.replace("%0a", "\n", arg0));
 	}
 
-	@OriginalMember(owner = "client!af", name = "a", descriptor = "(BI)Lclient!be;")
-	public static IfType method32(@OriginalArg(1) int arg0) {
-		try {
-			@Pc(7) int local7 = arg0 >> 16;
-			@Pc(18) int local18 = arg0 & 0xFFFF;
-			if (IfType.list.length <= local7 || local7 < 0) {
-				// components.length <= parent || parent < 0
-				return null;
-			}
-			if (IfType.list[local7] == null || IfType.list[local7][local18] == null) {
-				@Pc(33) boolean local33 = IfType.openInterface(local7);
-				if (!local33) {
-					return null;
-				}
-			}
-			if (IfType.list[local7].length <= local18) {
-				// components[parent].length <= child
-				return null;
-			}
-			return IfType.list[local7][local18];
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-
 	@OriginalMember(owner = "client!af", name = "b", descriptor = "(B)V")
 	public static void method34() {
 		Static116.method2325(false);
 		System.gc();
-		Static196.method3534(25);
+		Client.setMainState(25);
 	}
 
-	@OriginalMember(owner = "client!af", name = "a", descriptor = "(IIIIIILclient!th;IJ)Z")
-	public static boolean method35(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) ModelSource arg6, @OriginalArg(8) long arg7) {
-		if (arg6 == null) {
-			return true;
-		} else {
-			@Pc(11) int local11 = arg1 * 128 + arg4 * 64;
-			@Pc(19) int local19 = arg2 * 128 + arg5 * 64;
-			return Static105.method2256(arg0, arg1, arg2, arg4, arg5, local11, local19, arg3, arg6, 0, false, arg7);
-		}
-	}
 }

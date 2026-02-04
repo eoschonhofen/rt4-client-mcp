@@ -78,7 +78,7 @@ public final class Static53 {
 
 	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(B)V")
 	public static void method1294() {
-		if (!Static241.aBoolean302) {
+		if (!Client.targetMode) {
 			return;
 		}
 		@Pc(19) IfType local19 = Static201.method1418(Static98.anInt2512, Static15.anInt506);
@@ -86,11 +86,11 @@ public final class Static53 {
 			@Pc(29) HookReq local29 = new HookReq();
 			local29.onop = local19.ontargetleave;
 			local29.component = local19;
-			Static82.method1767(local29);
+			ScriptRunner.executeScript(local29);
 		}
-		Static241.aBoolean302 = false;
+		Client.targetMode = false;
 		Static35.anInt1092 = -1;
-		Static43.method1143(local19);
+		Client.componentUpdated(local19);
 	}
 
 }

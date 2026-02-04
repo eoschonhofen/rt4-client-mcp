@@ -38,12 +38,73 @@ public final class ClientMouseListener implements MouseListener, MouseMotionList
 
 	@OriginalMember(owner = "client!dc", name = "W", descriptor = "I")
 	public static volatile int anInt1313 = 0;
+    @OriginalMember(owner = "client!ah", name = "s", descriptor = "I")
+    public static int mouseClickX = 0;
+	@OriginalMember(owner = "client!em", name = "y", descriptor = "I")
+	public static int mouseClickY = 0;
+	@OriginalMember(owner = "client!rh", name = "o", descriptor = "I")
+	public static int mouseX = 0;
+	@OriginalMember(owner = "client!sc", name = "v", descriptor = "I")
+	public static int mouseY = 0;
+	@OriginalMember(owner = "client!bl", name = "Q", descriptor = "I")
+	public static int mouseButton = 0;
+	@OriginalMember(owner = "client!lk", name = "Z", descriptor = "I")
+	public static int mouseClickButton = 0;
+	@OriginalMember(owner = "client!kf", name = "c", descriptor = "J")
+	public static long aLong175 = 0L;
 
-    @OriginalMember(owner = "client!h", name = "a", descriptor = "(Ljava/awt/Component;Z)V")
+	@OriginalMember(owner = "client!h", name = "a", descriptor = "(Ljava/awt/Component;Z)V")
     public static void addListeners(@OriginalArg(0) Component arg0) {
         arg0.addMouseListener(aClass150_1);
         arg0.addMouseMotionListener(aClass150_1);
         arg0.addFocusListener(aClass150_1);
+    }
+
+    @OriginalMember(owner = "client!ug", name = "a", descriptor = "(I)V")
+    public static void method4277() {
+        if (aClass150_1 != null) {
+            @Pc(5) ClientMouseListener local5 = aClass150_1;
+            synchronized (aClass150_1) {
+                aClass150_1 = null;
+            }
+        }
+    }
+
+	@OriginalMember(owner = "client!ii", name = "b", descriptor = "(I)V")
+	public static void loop() {
+		@Pc(2) ClientMouseListener local2 = aClass150_1;
+		synchronized (aClass150_1) {
+			mouseButton = anInt1759;
+			mouseX = anInt3521;
+			mouseY = anInt4039;
+			mouseClickButton = anInt1313;
+			mouseClickX = anInt1034;
+			anInt2467++;
+			mouseClickY = anInt4973;
+			aLong175 = aLong161;
+			anInt1313 = 0;
+		}
+	}
+
+	@OriginalMember(owner = "client!lc", name = "a", descriptor = "(B)I")
+	public static int getIdleTimer() {
+		return anInt2467;
+	}
+
+	@OriginalMember(owner = "client!dl", name = "a", descriptor = "(II)V")
+	public static void setIdleTimer(@OriginalArg(1) int arg0) {
+		@Pc(10) ClientMouseListener local10 = aClass150_1;
+		synchronized (aClass150_1) {
+			anInt2467 = arg0;
+		}
+	}
+
+    @OriginalMember(owner = "client!sc", name = "a", descriptor = "(ILjava/awt/Component;)V")
+    public static void shutdown(@OriginalArg(1) Component arg0) {
+        arg0.removeMouseListener(aClass150_1);
+        arg0.removeMouseMotionListener(aClass150_1);
+        arg0.removeFocusListener(aClass150_1);
+        anInt1759 = 0;
     }
 
     @OriginalMember(owner = "client!ug", name = "mouseMoved", descriptor = "(Ljava/awt/event/MouseEvent;)V")

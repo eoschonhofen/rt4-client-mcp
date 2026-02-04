@@ -7,9 +7,6 @@ public final class Static30 {
 	@OriginalMember(owner = "client!cg", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_184 = JagString.wrap("1");
 
-	@OriginalMember(owner = "client!cg", name = "f", descriptor = "I")
-	public static int anInt978 = 127;
-
 	@OriginalMember(owner = "client!cg", name = "h", descriptor = "Lclient!na;")
 	public static final JagString aClass100_185 = JagString.wrap(")3");
 

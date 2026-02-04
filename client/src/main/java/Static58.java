@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static58 {
 
-	@OriginalMember(owner = "client!eh", name = "g", descriptor = "[[[I")
-	public static int[][][] anIntArrayArrayArray5;
-
 	@OriginalMember(owner = "client!eh", name = "a", descriptor = "(I)V")
 	public static void method1321() {
 		@Pc(8) int[] local8 = new int[ObjType.anInt3245];

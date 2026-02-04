@@ -1,5 +1,3 @@
-import org.openrs2.deob.annotation.OriginalMember;
-
 import java.math.BigInteger;
 
 public class GlobalConfig {
@@ -21,13 +19,13 @@ public class GlobalConfig {
     public static boolean SELECT_DEFAULT_WORLD = true;
 
     // Send strings instead of base37 for login/registration packets
-    public static boolean LOGIN_USE_STRINGS = false;
+    public static boolean ARIOS_LOGIN_STRINGS = false;
 
-    // Send additional information like user/serial/mac address
-    public static boolean LOGIN_EXTRA_INFO = false;
+    // Send empty strings for user/serial/mac address
+    public static boolean ARIOS_LOGIN_EXTRA = false;
 
     // Send an additional empty CRC for idx28 (not in this revision originally)
-    public static boolean LOGIN_FAKE_IDX28 = false;
+    public static boolean ARIOS_LOGIN_IDX28 = false;
 
     // Packet opcode encryption
     public static boolean USE_ISAAC = true;

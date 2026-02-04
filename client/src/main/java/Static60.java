@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static60 {
 
-	@OriginalMember(owner = "client!em", name = "t", descriptor = "[[[I")
-	public static int[][][] anIntArrayArrayArray6;
-
 	@OriginalMember(owner = "client!em", name = "w", descriptor = "I")
 	public static int anInt1892;
 
@@ -19,30 +16,21 @@ public final class Static60 {
 	@OriginalMember(owner = "client!em", name = "u", descriptor = "Lclient!na;")
 	public static final JagString aClass100_420 = JagString.wrap(")1o");
 
-	@OriginalMember(owner = "client!em", name = "y", descriptor = "I")
-	public static int anInt1893 = 0;
-
-	@OriginalMember(owner = "client!em", name = "z", descriptor = "Z")
-	public static boolean aBoolean108 = false;
-
-	@OriginalMember(owner = "client!em", name = "B", descriptor = "I")
-	public static int anInt1894 = 0;
-
 	@OriginalMember(owner = "client!em", name = "a", descriptor = "(Lclient!be;Lclient!qf;IIIBI)V")
 	public static void method1446(@OriginalArg(0) IfType arg0, @OriginalArg(1) AbstractPix32 arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(6) int arg5) {
 		if (arg1 == null) {
 			return;
 		}
 		@Pc(21) int local21 = arg3 * arg3 + arg2 * arg2;
-		@Pc(27) int local27 = Static59.anInt1814 + Static57.anInt1747 & 0x7FF;
+		@Pc(27) int local27 = Client.anInt1814 + Client.anInt1747 & 0x7FF;
 		@Pc(39) int local39 = Math.max(arg0.anInt445 / 2, arg0.anInt459 / 2) + 10;
 		if (local39 * local39 < local21) {
 			return;
 		}
 		@Pc(50) int local50 = Pix3D.sinTable[local27];
-		@Pc(58) int local58 = local50 * 256 / (Static273.anInt4130 + 256);
+		@Pc(58) int local58 = local50 * 256 / (Client.anInt4130 + 256);
 		@Pc(62) int local62 = Pix3D.cosTable[local27];
-		@Pc(70) int local70 = local62 * 256 / (Static273.anInt4130 + 256);
+		@Pc(70) int local70 = local62 * 256 / (Client.anInt4130 + 256);
 		@Pc(81) int local81 = local58 * arg2 + arg3 * local70 >> 16;
 		@Pc(92) int local92 = local70 * arg2 - arg3 * local58 >> 16;
 		if (GameShell.glRenderer) {

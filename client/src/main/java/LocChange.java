@@ -14,7 +14,7 @@ public final class LocChange extends Linkable {
 	public int anInt920;
 
 	@OriginalMember(owner = "client!cd", name = "x", descriptor = "I")
-	public int anInt921;
+	public int newType;
 
 	@OriginalMember(owner = "client!cd", name = "z", descriptor = "I")
 	public int anInt922;
@@ -32,11 +32,11 @@ public final class LocChange extends Linkable {
 	public int anInt928;
 
 	@OriginalMember(owner = "client!cd", name = "I", descriptor = "I")
-	public int anInt929;
+	public int oldType;
 
 	@OriginalMember(owner = "client!cd", name = "C", descriptor = "I")
-	public int anInt924 = -1;
+	public int endTime = -1;
 
 	@OriginalMember(owner = "client!cd", name = "E", descriptor = "I")
-	public int anInt925 = 0;
+	public int startTime = 0;
 }

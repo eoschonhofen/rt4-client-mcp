@@ -58,13 +58,13 @@ public abstract class ClientEntity extends ModelSource {
 	public int anInt3411;
 
 	@OriginalMember(owner = "client!fe", name = "Qb", descriptor = "I")
-	public int anInt3412;
+	public int x;
 
 	@OriginalMember(owner = "client!fe", name = "Ub", descriptor = "I")
 	public int anInt3416;
 
 	@OriginalMember(owner = "client!fe", name = "ac", descriptor = "I")
-	public int anInt3421;
+	public int z;
 
 	@OriginalMember(owner = "client!fe", name = "dc", descriptor = "I")
 	public int anInt3424;
@@ -133,7 +133,7 @@ public abstract class ClientEntity extends ModelSource {
 	public int anInt3376 = 32;
 
 	@OriginalMember(owner = "client!fe", name = "P", descriptor = "I")
-	public int anInt3370 = -1;
+	public int targetId = -1;
 
 	@OriginalMember(owner = "client!fe", name = "Bb", descriptor = "Z")
 	private boolean aBoolean170 = false;
@@ -238,7 +238,7 @@ public abstract class ClientEntity extends ModelSource {
 	public int anInt3429 = 0;
 
 	@OriginalMember(owner = "client!fe", name = "kc", descriptor = "I")
-	public int anInt3430 = 0;
+	public int cycle = 0;
 
 	@OriginalMember(owner = "client!fe", name = "ec", descriptor = "I")
 	public int anInt3425 = 0;
@@ -291,9 +291,9 @@ public abstract class ClientEntity extends ModelSource {
 		this.anIntArray317[0] = arg2;
 		this.anInt3409 = 0;
 		this.anInt3405 = 0;
-		this.anInt3421 = arg0 * 64 + this.anIntArray317[0] * 128;
-		this.anInt3412 = arg0 * 64 + this.anIntArray318[0] * 128;
-		if (GameShell.glRenderer && Static173.aClass8_Sub4_Sub1_2 == this) {
+		this.z = arg0 * 64 + this.anIntArray317[0] * 128;
+		this.x = arg0 * 64 + this.anIntArray318[0] * 128;
+		if (GameShell.glRenderer && Client.localPlayer == this) {
 			Static86.method1799();
 		}
 	}
@@ -363,13 +363,13 @@ public abstract class ClientEntity extends ModelSource {
 		@Pc(53) int local53 = -local27 / 2;
 		@Pc(64) int local64 = local53 * local43 - local48 * local39 >> 16;
 		@Pc(75) int local75 = local39 * local53 + local43 * local48 >> 16;
-		@Pc(87) int local87 = Static207.method3685(Static55.anInt1735, local75 + this.anInt3412, this.anInt3421 + local64);
+		@Pc(87) int local87 = Client.getAvH(Client.minusedlevel, local75 + this.x, this.z + local64);
 		@Pc(91) int local91 = local24 / 2;
 		@Pc(96) int local96 = -local27 / 2;
 		@Pc(106) int local106 = local91 * local43 + local96 * local39 >> 16;
 		@Pc(110) int local110 = local27 / 2;
 		@Pc(121) int local121 = local96 * local43 - local91 * local39 >> 16;
-		@Pc(134) int local134 = Static207.method3685(Static55.anInt1735, local106 + this.anInt3412, this.anInt3421 - -local121);
+		@Pc(134) int local134 = Client.getAvH(Client.minusedlevel, local106 + this.x, this.z - -local121);
 		@Pc(139) int local139 = -local24 / 2;
 		@Pc(150) int local150 = local110 * local43 - local39 * local139 >> 16;
 		@Pc(154) int local154 = local27 / 2;
@@ -377,9 +377,9 @@ public abstract class ClientEntity extends ModelSource {
 		@Pc(169) int local169 = local39 * local110 + local43 * local139 >> 16;
 		@Pc(179) int local179 = local154 * local43 - local39 * local158 >> 16;
 		@Pc(189) int local189 = local39 * local154 + local43 * local158 >> 16;
-		@Pc(201) int local201 = Static207.method3685(Static55.anInt1735, this.anInt3412 + local169, local150 + this.anInt3421);
+		@Pc(201) int local201 = Client.getAvH(Client.minusedlevel, this.x + local169, local150 + this.z);
 		@Pc(212) int local212 = local134 > local87 ? local87 : local134;
-		@Pc(224) int local224 = Static207.method3685(Static55.anInt1735, local189 + this.anInt3412, local179 + this.anInt3421);
+		@Pc(224) int local224 = Client.getAvH(Client.minusedlevel, local189 + this.x, local179 + this.z);
 		@Pc(231) int local231 = local224 > local201 ? local201 : local224;
 		@Pc(238) int local238 = local224 > local134 ? local134 : local224;
 		@Pc(245) int local245 = local201 <= local87 ? local201 : local87;
@@ -517,7 +517,7 @@ public abstract class ClientEntity extends ModelSource {
 		this.anInt3383 += this.anInt3355;
 		if (this.anInt3383 != 0) {
 			local101 = this.anInt3383 >> 5 & 0x7FF;
-			local106 = arg0.method4549() / 2;
+			local106 = arg0.calcBoundingCylinder() / 2;
 			arg0.method4575(0, -local106, 0);
 			arg0.method4564(local101);
 			arg0.method4575(0, local106, 0);
@@ -608,7 +608,7 @@ public abstract class ClientEntity extends ModelSource {
 			return;
 		}
 		local101 = this.anInt3427 >> 5 & 0x7FF;
-		local106 = arg0.method4549() / 2;
+		local106 = arg0.calcBoundingCylinder() / 2;
 		arg0.method4575(0, -local106, 0);
 		arg0.method4574(local101);
 		arg0.method4575(0, local106, 0);

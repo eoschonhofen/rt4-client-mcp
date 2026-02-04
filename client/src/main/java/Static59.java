@@ -13,43 +13,6 @@ public final class Static59 {
 	@OriginalMember(owner = "client!ej", name = "U", descriptor = "I")
 	public static int anInt1812 = 0;
 
-	@OriginalMember(owner = "client!ej", name = "W", descriptor = "I")
-	public static int anInt1814 = 0;
-
-	@OriginalMember(owner = "client!ej", name = "h", descriptor = "(I)V")
-	public static void method1372() {
-		if (Static162.anInt3953 == 2) {
-			if (Static155.anInt3751 == Static277.anInt5850 && Static60.anInt1892 == Static280.anInt5895) {
-				Static162.anInt3953 = 0;
-				if (Static172.aBoolean199 && Static187.aBooleanArray101[81] && Static231.anInt5204 > 2) {
-					Static103.method2232(Static231.anInt5204 - 2);
-				} else {
-					Static103.method2232(Static231.anInt5204 - 1);
-				}
-			}
-		} else if (Static155.anInt3751 == Static7.anInt985 && Static60.anInt1892 == Static60.anInt1893) {
-			Static162.anInt3953 = 0;
-			if (Static172.aBoolean199 && Static187.aBooleanArray101[81] && Static231.anInt5204 > 2) {
-				Static103.method2232(Static231.anInt5204 - 2);
-			} else {
-				Static103.method2232(Static231.anInt5204 - 1);
-			}
-		} else {
-			Static280.anInt5895 = Static60.anInt1893;
-			Static162.anInt3953 = 2;
-			Static277.anInt5850 = Static7.anInt985;
-		}
-	}
-
-	@OriginalMember(owner = "client!ej", name = "i", descriptor = "(I)V")
-	public static void method1373() {
-		Static6.aClass3_Sub15_Sub1_1.p1Enc(243);
-		Static6.aClass3_Sub15_Sub1_1.p1(Static144.method2736());
-		Static6.aClass3_Sub15_Sub1_1.p2(GameShell.anInt1448);
-		Static6.aClass3_Sub15_Sub1_1.p2(GameShell.anInt5554);
-		Static6.aClass3_Sub15_Sub1_1.p1(Static186.anInt4392);
-	}
-
 	@OriginalMember(owner = "client!ej", name = "a", descriptor = "(IZIJ)Lclient!na;")
 	public static JagString method1376(@OriginalArg(3) long arg0) {
 		@Pc(35) long local35 = arg0 / (long) 10;

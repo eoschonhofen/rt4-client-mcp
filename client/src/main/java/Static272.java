@@ -1,6 +1,4 @@
-import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static272 {
 
@@ -13,20 +11,4 @@ public final class Static272 {
 	@OriginalMember(owner = "client!wd", name = "f", descriptor = "Lclient!na;")
 	public static final JagString aClass100_990 = JagString.wrap("::errortest");
 
-	@OriginalMember(owner = "client!wd", name = "g", descriptor = "I")
-	public static int anInt5214 = 0;
-
-	@OriginalMember(owner = "client!wd", name = "a", descriptor = "(BII)V")
-	public static void method3995(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(14) VarBitType local14 = VarBitType.method2449(arg1);
-		@Pc(17) int local17 = local14.anInt3327;
-		@Pc(20) int local20 = local14.anInt3323;
-		@Pc(23) int local23 = local14.anInt3318;
-		@Pc(29) int local29 = Static8.mask[local20 - local23];
-		if (arg0 < 0 || local29 < arg0) {
-			arg0 = 0;
-		}
-		local29 <<= local23;
-		Static170.method2575(arg0 << local23 & local29 | ~local29 & Static106.varServ[local17], local17);
-	}
 }

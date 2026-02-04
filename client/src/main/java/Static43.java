@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static43 {
 
-	@OriginalMember(owner = "client!dg", name = "h", descriptor = "Lclient!be;")
-	public static IfType aClass13_11;
-
 	@OriginalMember(owner = "client!dg", name = "b", descriptor = "Lclient!na;")
 	public static final JagString aClass100_333 = JagString.wrap("Shift)2click ENABLED(Q");
 
@@ -19,54 +16,17 @@ public final class Static43 {
 	@OriginalMember(owner = "client!dg", name = "f", descriptor = "Z")
 	public static boolean aBoolean82 = false;
 
-	@OriginalMember(owner = "client!dg", name = "a", descriptor = "(IIIIILclient!th;IJZ)Z")
-	public static boolean method1141(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) ModelSource arg5, @OriginalArg(6) int arg6, @OriginalArg(7) long arg7, @OriginalArg(8) boolean arg8) {
-		if (arg5 == null) {
-			return true;
-		}
-		@Pc(7) int local7 = arg1 - arg4;
-		@Pc(11) int local11 = arg2 - arg4;
-		@Pc(15) int local15 = arg1 + arg4;
-		@Pc(19) int local19 = arg2 + arg4;
-		if (arg8) {
-			if (arg6 > 640 && arg6 < 1408) {
-				local19 += 128;
-			}
-			if (arg6 > 1152 && arg6 < 1920) {
-				local15 += 128;
-			}
-			if (arg6 > 1664 || arg6 < 384) {
-				local11 -= 128;
-			}
-			if (arg6 > 128 && arg6 < 896) {
-				local7 -= 128;
-			}
-		}
-		local7 /= 128;
-		local11 /= 128;
-		local15 /= 128;
-		local19 /= 128;
-		return Static105.method2256(arg0, local7, local11, local15 + 1 - local7, local19 - local11 + 1, arg1, arg2, arg3, arg5, arg6, true, arg7);
-	}
-
-	@OriginalMember(owner = "client!dg", name = "a", descriptor = "(ILclient!be;)V")
-	public static void method1143(@OriginalArg(1) IfType arg0) {
-		if (Static182.anInt4311 == arg0.anInt465) {
-			Static186.aBooleanArray100[arg0.anInt517] = true;
-		}
-	}
-
 	@OriginalMember(owner = "client!dg", name = "a", descriptor = "(IIIIIILclient!mj;)V")
 	public static void method1144(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) CollisionMap arg5) {
 		@Pc(9) long local9 = 0L;
 		if (arg3 == 0) {
-			local9 = Static265.method4521(arg2, arg1, arg0);
+			local9 = World.method4521(arg2, arg1, arg0);
 		} else if (arg3 == 1) {
-			local9 = Static139.method2703(arg2, arg1, arg0);
+			local9 = World.method2703(arg2, arg1, arg0);
 		} else if (arg3 == 2) {
-			local9 = Static35.method899(arg2, arg1, arg0);
+			local9 = World.method899(arg2, arg1, arg0);
 		} else if (arg3 == 3) {
-			local9 = Static20.method602(arg2, arg1, arg0);
+			local9 = World.method602(arg2, arg1, arg0);
 		}
 		@Pc(57) int local57 = (int) local9 >> 14 & 0x1F;
 		@Pc(70) int local70 = (int) (local9 >>> 32) & Integer.MAX_VALUE;
@@ -81,7 +41,7 @@ public final class Static43 {
 		@Pc(100) ModelSource local100 = null;
 		@Pc(102) ModelSource local102 = null;
 		if (arg3 == 0) {
-			@Pc(110) Wall local110 = Static110.method2276(arg2, arg1, arg0);
+			@Pc(110) Wall local110 = World.method2276(arg2, arg1, arg0);
 			if (local110 != null) {
 				local100 = local110.aClass8_5;
 				local102 = local110.aClass8_6;
@@ -98,13 +58,13 @@ public final class Static43 {
 		} else if (arg3 == 2) {
 			@Pc(148) Sprite local148 = Static47.method3996(arg2, arg1, arg0);
 			if (local148 != null) {
-				local100 = local148.aClass8_4;
+				local100 = local148.model;
 			}
 			if (local74.blockwalk != 0 && local74.anInt4397 + arg1 < 104 && local74.anInt4397 + arg0 < 104 && arg1 + local74.anInt4403 < 104 && arg0 + local74.anInt4403 < 104) {
 				arg5.method3056(arg1, local74.anInt4397, local74.blockrange, local92, local74.anInt4403, arg0);
 			}
 		} else if (arg3 == 3) {
-			@Pc(211) GroundDecor local211 = Static267.method4526(arg2, arg1, arg0);
+			@Pc(211) GroundDecor local211 = World.method4526(arg2, arg1, arg0);
 			if (local211 != null) {
 				local100 = local211.aClass8_1;
 			}

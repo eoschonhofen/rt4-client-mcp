@@ -9,6 +9,8 @@ public final class Static267 {
 
 	@OriginalMember(owner = "client!vl", name = "f", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1087 = JagString.wrap("Cabbage");
+	@OriginalMember(owner = "client!je", name = "U", descriptor = "Lclient!na;")
+	public static final JagString aClass100_588 = JagString.wrap("showingVideoAd");
 
 	@OriginalMember(owner = "client!vl", name = "h", descriptor = "I")
 	public static int anInt5773 = 0;
@@ -16,32 +18,14 @@ public final class Static267 {
 	@OriginalMember(owner = "client!vl", name = "i", descriptor = "[I")
 	public static int[] anIntArray518 = new int[2];
 
-	@OriginalMember(owner = "client!vl", name = "j", descriptor = "I")
-	public static int anInt5774 = 0;
-
-	@OriginalMember(owner = "client!vl", name = "k", descriptor = "I")
-	public static int anInt5775 = 0;
-
 	@OriginalMember(owner = "client!vl", name = "l", descriptor = "I")
 	public static int anInt5776 = 0;
-
-	@OriginalMember(owner = "client!vl", name = "a", descriptor = "(III)Lclient!bm;")
-	public static GroundDecor method4526(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
-		if (local7 == null) {
-			return null;
-		} else {
-			@Pc(14) GroundDecor local14 = local7.aClass15_1;
-			local7.aClass15_1 = null;
-			return local14;
-		}
-	}
 
 	@OriginalMember(owner = "client!vl", name = "a", descriptor = "(I)Z")
 	public static boolean method4527() {
 		if (Client.js) {
 			try {
-				return !((Boolean) Static119.aClass100_588.method3157(GameShell.signlink.applet));
+				return !((Boolean) aClass100_588.method3157(GameShell.signlink.applet));
 			} catch (@Pc(21) Throwable local21) {
 			}
 		}
@@ -96,7 +80,7 @@ public final class Static267 {
 			Static1.anInt6++;
 		}
 		Static226.anInt5084 += arg0;
-		local60 = (arg0 + (Static83.anInt372 & 0x1)) / 2;
+		local60 = (arg0 + (Client.loopCycle & 0x1)) / 2;
 		if (local60 <= 0) {
 			return;
 		}

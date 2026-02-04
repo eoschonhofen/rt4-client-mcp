@@ -13,12 +13,6 @@ public final class Static206 {
 	@OriginalMember(owner = "client!qk", name = "b", descriptor = "Lclient!na;")
 	public static final JagString aClass100_900 = JagString.wrap("tbrefresh");
 
-	@OriginalMember(owner = "client!qk", name = "f", descriptor = "I")
-	public static int anInt4773 = 0;
-
-	@OriginalMember(owner = "client!qk", name = "h", descriptor = "I")
-	public static int anInt4774 = 0;
-
 	@OriginalMember(owner = "client!qk", name = "a", descriptor = "(ZIIIIFII)[I")
 	public static int[] method3679(@OriginalArg(5) float arg0) {
 		@Pc(11) int[] local11 = new int[2048];
@@ -39,7 +33,7 @@ public final class Static206 {
 	public static TextureOp method3680(@OriginalArg(1) Packet arg0) {
 		arg0.g1();
 		@Pc(13) int local13 = arg0.g1();
-		@Pc(17) TextureOp local17 = Static223.method3860(local13);
+		@Pc(17) TextureOp local17 = TextureOp.method3860(local13);
 		local17.anInt5840 = arg0.g1();
 		@Pc(26) int local26 = arg0.g1();
 		for (@Pc(34) int local34 = 0; local34 < local26; local34++) {

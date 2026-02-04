@@ -19,45 +19,9 @@ public final class Static29 {
 		return local27;
 	}
 
-	@OriginalMember(owner = "client!ce", name = "a", descriptor = "(IIIIIIIIII)V")
-	public static void method800(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6, @OriginalArg(8) int arg7, @OriginalArg(9) int arg8) {
-		@Pc(9) LocChange local9 = null;
-		for (@Pc(14) LocChange local14 = (LocChange) Static26.aClass69_27.head(); local14 != null; local14 = (LocChange) Static26.aClass69_27.method2288()) {
-			if (local14.anInt918 == arg0 && arg3 == local14.anInt928 && local14.anInt916 == arg1 && arg6 == local14.anInt927) {
-				local9 = local14;
-				break;
-			}
-		}
-		if (local9 == null) {
-			local9 = new LocChange();
-			local9.anInt928 = arg3;
-			local9.anInt916 = arg1;
-			local9.anInt918 = arg0;
-			local9.anInt927 = arg6;
-			Static226.method3898(local9);
-			Static26.aClass69_27.method2282(local9);
-		}
-		local9.anInt926 = arg7;
-		local9.anInt925 = arg8;
-		local9.anInt924 = arg4;
-		local9.anInt929 = arg5;
-		local9.anInt922 = arg2;
-	}
-
-	@OriginalMember(owner = "client!ce", name = "a", descriptor = "(II)V")
-	public static void method801() {
-		Static253.anInt5527 = 0;
-		Static226.anInt5085 = -1;
-		Static14.state = 1;
-		Static57.anInt1757 = 2;
-		Static72.aBoolean116 = false;
-		Static172.midis = null;
-		Static277.anInt5853 = -1;
-	}
-
 	@OriginalMember(owner = "client!ce", name = "a", descriptor = "(IBI)Lclient!bn;")
 	public static Map method803(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
-		for (@Pc(10) Map local10 = (Map) Static228.aClass69_120.head(); local10 != null; local10 = (Map) Static228.aClass69_120.method2288()) {
+		for (@Pc(10) Map local10 = (Map) Static228.aClass69_120.head(); local10 != null; local10 = (Map) Static228.aClass69_120.next()) {
 			if (local10.aBoolean50 && local10.method664(arg1, arg0)) {
 				return local10;
 			}

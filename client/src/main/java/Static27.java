@@ -4,17 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static27 {
 
-	@OriginalMember(owner = "client!cb", name = "hb", descriptor = "Lclient!le;")
-	public static WaveCache loadingWaveCache;
-
-	@OriginalMember(owner = "client!cb", name = "I", descriptor = "[I")
-	public static final int[] anIntArray70 = new int[32];
-
 	@OriginalMember(owner = "client!cb", name = "ab", descriptor = "Lclient!na;")
 	public static final JagString aClass100_164 = JagString.wrap(" )2> <col=00ffff>");
-
-	@OriginalMember(owner = "client!cb", name = "cb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_165 = JagString.wrap("titlebg");
 
 	@OriginalMember(owner = "client!cb", name = "eb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_167 = JagString.wrap("name_icons");

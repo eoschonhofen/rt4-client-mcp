@@ -4,15 +4,12 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static209 {
 
-	@OriginalMember(owner = "client!ra", name = "J", descriptor = "I")
-	public static int anInt4808 = 0;
-
 	@OriginalMember(owner = "client!ra", name = "R", descriptor = "Z")
 	public static boolean aBoolean240 = true;
 
 	@OriginalMember(owner = "client!ra", name = "a", descriptor = "(ILclient!pb;BII)V")
 	public static void method3701(@OriginalArg(0) int arg0, @OriginalArg(1) LocType arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
-		for (@Pc(10) BgSound local10 = (BgSound) Static3.aClass69_135.head(); local10 != null; local10 = (BgSound) Static3.aClass69_135.method2288()) {
+		for (@Pc(10) BgSound local10 = (BgSound) Static3.aClass69_135.head(); local10 != null; local10 = (BgSound) Static3.aClass69_135.next()) {
 			if (arg3 == local10.anInt2033 && local10.anInt2041 == arg0 * 128 && local10.anInt2029 == arg2 * 128 && arg1.id == local10.multiloc.id) {
 				if (local10.aClass3_Sub3_Sub1_1 != null) {
 					Client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_1);

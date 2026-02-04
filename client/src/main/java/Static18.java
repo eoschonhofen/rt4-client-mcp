@@ -10,9 +10,6 @@ public final class Static18 {
 	@OriginalMember(owner = "client!bh", name = "s", descriptor = "Lclient!na;")
 	public static final JagString aClass100_106 = JagString.wrap("p11_full");
 
-	@OriginalMember(owner = "client!bh", name = "t", descriptor = "I")
-	public static int anInt588 = 0;
-
 	@OriginalMember(owner = "client!bh", name = "v", descriptor = "Lclient!na;")
 	public static final JagString aClass100_107 = JagString.wrap("floorshadows");
 
@@ -24,28 +21,6 @@ public final class Static18 {
 
 	@OriginalMember(owner = "client!bh", name = "G", descriptor = "[I")
 	public static final int[] anIntArray57 = new int[] { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, Integer.MAX_VALUE, -1 };
-
-	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(Lclient!fe;Z)V")
-	public static void method553(@OriginalArg(0) ClientEntity arg0) {
-		@Pc(8) int local8 = arg0.anInt3395 - Static83.anInt372;
-		@Pc(20) int local20 = arg0.anInt3380 * 128 + arg0.method2693() * 64;
-		@Pc(36) int local36 = arg0.anInt3428 * 128 + arg0.method2693() * 64;
-		if (arg0.anInt3431 == 0) {
-			arg0.anInt3400 = 1024;
-		}
-		arg0.anInt3412 += (local20 - arg0.anInt3412) / local8;
-		arg0.anInt3421 += (local36 - arg0.anInt3421) / local8;
-		if (arg0.anInt3431 == 1) {
-			arg0.anInt3400 = 1536;
-		}
-		arg0.anInt3417 = 0;
-		if (arg0.anInt3431 == 2) {
-			arg0.anInt3400 = 0;
-		}
-		if (arg0.anInt3431 == 3) {
-			arg0.anInt3400 = 512;
-		}
-	}
 
 	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(IB)I")
 	public static int method554(@OriginalArg(0) int arg0) {
@@ -85,11 +60,11 @@ public final class Static18 {
 			local55 = local72 * local57 >> 16;
 			local57 = local57 * local68 >> 16;
 		}
-		Static240.anInt5333 = arg6;
-		Static184.anInt4358 = arg4;
-		Static134.anInt3302 = arg5 - local57;
-		Static138.anInt3439 = arg0 - local55;
-		Static5.anInt40 = arg2 - local59;
+		Client.anInt5333 = arg6;
+		Client.anInt4358 = arg4;
+		Client.anInt3302 = arg5 - local57;
+		Client.anInt3439 = arg0 - local55;
+		Client.anInt40 = arg2 - local59;
 	}
 
 	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(B)Lclient!ba;")
@@ -100,11 +75,11 @@ public final class Static18 {
 
 	@OriginalMember(owner = "client!bh", name = "a", descriptor = "(IIII)V")
 	public static void method559(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
+		@Pc(7) Square local7 = World.levelTiles[arg0][arg1][arg2];
 		if (local7 == null) {
 			return;
 		}
-		@Pc(13) Decor local13 = local7.aClass24_1;
+		@Pc(13) Decor local13 = local7.decor;
 		if (local13 != null) {
 			local13.anInt1394 = local13.anInt1394 * arg3 / 16;
 			local13.anInt1392 = local13.anInt1392 * arg3 / 16;

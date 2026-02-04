@@ -9,7 +9,7 @@ public final class Square extends Linkable {
 	public boolean aBoolean45;
 
 	@OriginalMember(owner = "client!bj", name = "y", descriptor = "I")
-	public int anInt662;
+	public int spriteCount;
 
 	@OriginalMember(owner = "client!bj", name = "A", descriptor = "Z")
 	public boolean aBoolean46;
@@ -24,16 +24,16 @@ public final class Square extends Linkable {
 	public int anInt665;
 
 	@OriginalMember(owner = "client!bj", name = "G", descriptor = "Lclient!bm;")
-	public GroundDecor aClass15_1;
+	public GroundDecor groundDecor;
 
 	@OriginalMember(owner = "client!bj", name = "I", descriptor = "I")
 	public int anInt667;
 
 	@OriginalMember(owner = "client!bj", name = "J", descriptor = "Lclient!df;")
-	public Decor aClass24_1;
+	public Decor decor;
 
 	@OriginalMember(owner = "client!bj", name = "K", descriptor = "Lclient!jh;")
-	public Wall aClass77_1;
+	public Wall wall;
 
 	@OriginalMember(owner = "client!bj", name = "M", descriptor = "Lclient!bj;")
 	public Square aClass3_Sub5_1;
@@ -48,13 +48,13 @@ public final class Square extends Linkable {
 	public int anInt670;
 
 	@OriginalMember(owner = "client!bj", name = "X", descriptor = "Lclient!jj;")
-	public GroundObject aClass79_1;
+	public GroundObject groundObject;
 
 	@OriginalMember(owner = "client!bj", name = "D", descriptor = "I")
 	public int anInt664 = 0;
 
 	@OriginalMember(owner = "client!bj", name = "w", descriptor = "[Lclient!ec;")
-	public final Sprite[] aClass31Array1 = new Sprite[5];
+	public final Sprite[] sprites = new Sprite[5];
 
 	@OriginalMember(owner = "client!bj", name = "P", descriptor = "[I")
 	public final int[] anIntArray59 = new int[5];

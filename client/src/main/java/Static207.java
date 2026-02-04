@@ -6,12 +6,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static207 {
 
-	@OriginalMember(owner = "client!ql", name = "c", descriptor = "Z")
-	public static boolean aBoolean236 = false;
-
-	@OriginalMember(owner = "client!ql", name = "d", descriptor = "I")
-	public static int anInt4778 = 0;
-
 	@OriginalMember(owner = "client!ql", name = "h", descriptor = "Lclient!na;")
 	public static final JagString aClass100_903 = JagString.wrap("Hidden)2");
 
@@ -92,7 +86,7 @@ public final class Static207 {
 				if (MonotonicTime.currentTime() - 5000L < Static231.aLong174) {
 					return 0;
 				}
-				Static72.aClass212_3 = GameShell.signlink.socketreq(Client.loginHost, Client.anInt4784);
+				Client.socketReq = GameShell.signlink.socketreq(Client.worldListHost, Client.worldListPort);
 				Static15.aLong18 = MonotonicTime.currentTime();
 				Static82.anInt2231 = 1;
 			}
@@ -102,34 +96,34 @@ public final class Static207 {
 			@Pc(82) int local82;
 			@Pc(124) int local124;
 			if (Static82.anInt2231 == 1) {
-				if (Static72.aClass212_3.status == 2) {
+				if (Client.socketReq.status == 2) {
 					return Static10.method347(1001);
 				}
-				if (Static72.aClass212_3.status != 1) {
+				if (Client.socketReq.status != 1) {
 					return -1;
 				}
-				Client.stream = new ClientStream((Socket) Static72.aClass212_3.result, GameShell.signlink);
-				Static6.aClass3_Sub15_Sub1_1.pos = 0;
-				Static72.aClass212_3 = null;
+				Client.stream = new ClientStream((Socket) Client.socketReq.result, GameShell.signlink);
+				Client.out.pos = 0;
+				Client.socketReq = null;
 				local82 = 0;
 				if (Static61.aBoolean109) {
 					local82 = Static80.anInt4702;
 				}
-				Static6.aClass3_Sub15_Sub1_1.p1(255);
-				Static6.aClass3_Sub15_Sub1_1.p4(local82);
-				Client.stream.write(Static6.aClass3_Sub15_Sub1_1.data, Static6.aClass3_Sub15_Sub1_1.pos);
+				Client.out.p1(255);
+				Client.out.p4(local82);
+				Client.stream.write(Client.out.data, Client.out.pos);
 				if (Client.midiPcmPlayer != null) {
-					Client.midiPcmPlayer.method3571();
+					Client.midiPcmPlayer.skipNextAcceptedCheck();
 				}
 				if (Client.soundPcmPlayer != null) {
-					Client.soundPcmPlayer.method3571();
+					Client.soundPcmPlayer.skipNextAcceptedCheck();
 				}
-				local124 = Client.stream.method2828();
+				local124 = Client.stream.read();
 				if (Client.midiPcmPlayer != null) {
-					Client.midiPcmPlayer.method3571();
+					Client.midiPcmPlayer.skipNextAcceptedCheck();
 				}
 				if (Client.soundPcmPlayer != null) {
-					Client.soundPcmPlayer.method3571();
+					Client.soundPcmPlayer.skipNextAcceptedCheck();
 				}
 				if (local124 != 0) {
 					return Static10.method347(local124);
@@ -140,9 +134,9 @@ public final class Static207 {
 				if (Client.stream.available() < 2) {
 					return -1;
 				}
-				Static116.anInt2961 = Client.stream.method2828();
+				Static116.anInt2961 = Client.stream.read();
 				Static116.anInt2961 <<= 0x8;
-				Static116.anInt2961 += Client.stream.method2828();
+				Static116.anInt2961 += Client.stream.read();
 				Static82.anInt2231 = 3;
 				Static141.anInt3469 = 0;
 				Static229.aByteArray70 = new byte[Static116.anInt2961];
@@ -185,24 +179,4 @@ public final class Static207 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ql", name = "a", descriptor = "(IIII)I")
-	public static int method3685(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		if (Static83.groundh == null) {
-			return 0;
-		}
-		@Pc(12) int local12 = arg1 >> 7;
-		@Pc(16) int local16 = arg2 >> 7;
-		if (local12 < 0 || local16 < 0 || local12 > 103 || local16 > 103) {
-			return 0;
-		}
-		@Pc(36) int local36 = arg1 & 0x7F;
-		@Pc(40) int local40 = arg2 & 0x7F;
-		@Pc(42) int local42 = arg0;
-		if (arg0 < 3 && (Static12.mapl[1][local12][local16] & 0x2) == 2) {
-			local42 = arg0 + 1;
-		}
-		@Pc(91) int local91 = local36 * Static83.groundh[local42][local12 + 1][local16 + 1] + Static83.groundh[local42][local12][local16 + 1] * (128 - local36) >> 7;
-		@Pc(118) int local118 = local36 * Static83.groundh[local42][local12 + 1][local16] + (128 - local36) * Static83.groundh[local42][local12][local16] >> 7;
-		return local40 * local91 + (128 - local40) * local118 >> 7;
-	}
 }

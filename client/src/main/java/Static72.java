@@ -4,42 +4,14 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static72 {
 
-	@OriginalMember(owner = "client!fl", name = "u", descriptor = "Z")
-	public static boolean aBoolean116;
-
-	@OriginalMember(owner = "client!fl", name = "C", descriptor = "Lsignlink!im;")
-	public static PrivilegedRequest aClass212_3;
-
 	@OriginalMember(owner = "client!fl", name = "D", descriptor = "[[I")
 	public static int[][] anIntArrayArray14;
-
-	@OriginalMember(owner = "client!fl", name = "s", descriptor = "I")
-	public static int anInt2031 = 128;
-
-	@OriginalMember(owner = "client!fl", name = "B", descriptor = "I")
-	public static int anInt2036 = 0;
 
 	@OriginalMember(owner = "client!fl", name = "H", descriptor = "Lclient!na;")
 	public static final JagString aClass100_446 = JagString.wrap("<img=0>");
 
-	@OriginalMember(owner = "client!fl", name = "P", descriptor = "I")
-	public static int anInt2043 = 0;
-
 	@OriginalMember(owner = "client!fl", name = "V", descriptor = "Lclient!na;")
 	public static final JagString aClass100_448 = JagString.wrap("(Y");
-
-	@OriginalMember(owner = "client!fl", name = "b", descriptor = "(II)Lclient!cl;")
-	public static AnimFrameSet method1566(@OriginalArg(0) int arg0) {
-		@Pc(19) AnimFrameSet local19 = (AnimFrameSet) SeqType.aClass99_37.find((long) arg0);
-		if (local19 != null) {
-			return local19;
-		}
-		local19 = Static87.method1803(SeqType.anims, SeqType.bases, arg0);
-		if (local19 != null) {
-			SeqType.aClass99_37.put(local19, (long) arg0);
-		}
-		return local19;
-	}
 
 	@OriginalMember(owner = "client!fl", name = "a", descriptor = "(IIIIII)V")
 	public static void method1568(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4) {

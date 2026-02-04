@@ -24,6 +24,8 @@ public final class ClientKeyboardListener implements KeyListener, FocusListener 
 
 	@OriginalMember(owner = "client!vh", name = "u", descriptor = "[I")
 	public static final int[] anIntArray413 = new int[128];
+	@OriginalMember(owner = "client!pb", name = "q", descriptor = "[Z")
+	public static final boolean[] keyHeld = new boolean[112];
 
 	@OriginalMember(owner = "client!an", name = "ab", descriptor = "Lclient!uf;")
 	public static ClientKeyboardListener aClass149_1 = new ClientKeyboardListener();
@@ -42,6 +44,12 @@ public final class ClientKeyboardListener implements KeyListener, FocusListener 
 
 	@OriginalMember(owner = "client!hn", name = "V", descriptor = "I")
 	public static int anInt2678 = 0;
+	@OriginalMember(owner = "client!sh", name = "h", descriptor = "I")
+	public static int anInt5105 = 0;
+    @OriginalMember(owner = "client!hn", name = "Z", descriptor = "I")
+    public static int code;
+	@OriginalMember(owner = "client!pi", name = "Y", descriptor = "I")
+	public static int ch;
 
 	@OriginalMember(owner = "client!mf", name = "e", descriptor = "(I)V")
 	public static void setupKeyCodeMap() {
@@ -90,6 +98,70 @@ public final class ClientKeyboardListener implements KeyListener, FocusListener 
 		}
 		arg0.addKeyListener(aClass149_1);
 		arg0.addFocusListener(aClass149_1);
+	}
+
+    @OriginalMember(owner = "client!ag", name = "h", descriptor = "(I)V")
+    public static void method82() {
+        if (aClass149_1 != null) {
+            @Pc(4) ClientKeyboardListener local4 = aClass149_1;
+            synchronized (aClass149_1) {
+                aClass149_1 = null;
+            }
+        }
+    }
+
+	@OriginalMember(owner = "client!ch", name = "a", descriptor = "(Ljava/awt/Component;I)V")
+	public static void shutdown(@OriginalArg(0) Component arg0) {
+		arg0.removeKeyListener(aClass149_1);
+		arg0.removeFocusListener(aClass149_1);
+		anInt5844 = -1;
+	}
+
+	@OriginalMember(owner = "client!fc", name = "b", descriptor = "(I)V")
+	public static void loop() {
+		@Pc(12) ClientKeyboardListener local12 = aClass149_1;
+		synchronized (aClass149_1) {
+			anInt2678 = anInt5105;
+			anInt5140++;
+			@Pc(23) int local23;
+			if (anInt5844 < 0) {
+				for (local23 = 0; local23 < 112; local23++) {
+					keyHeld[local23] = false;
+				}
+				anInt5844 = anInt5087;
+			} else {
+				while (anInt5844 != anInt5087) {
+					local23 = anIntArray53[anInt5087];
+					anInt5087 = anInt5087 + 1 & 0x7F;
+					if (local23 >= 0) {
+						keyHeld[local23] = true;
+					} else {
+						keyHeld[~local23] = false;
+					}
+				}
+			}
+			anInt5105 = anInt1708;
+		}
+	}
+
+	@OriginalMember(owner = "client!c", name = "d", descriptor = "(I)Z")
+	public static boolean pollKey() {
+		@Pc(6) ClientKeyboardListener local6 = aClass149_1;
+		synchronized (aClass149_1) {
+			if (anInt5105 == anInt2678) {
+				return false;
+			} else {
+				code = anIntArray375[anInt2678];
+				ch = anIntArray413[anInt2678];
+				anInt2678 = anInt2678 + 1 & 0x7F;
+				return true;
+			}
+		}
+	}
+
+	@OriginalMember(owner = "client!pk", name = "f", descriptor = "(B)I")
+	public static int getIdleTimer() {
+		return anInt5140;
 	}
 
 	@OriginalMember(owner = "client!uf", name = "keyPressed", descriptor = "(Ljava/awt/event/KeyEvent;)V")

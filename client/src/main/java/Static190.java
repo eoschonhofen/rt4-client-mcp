@@ -10,9 +10,6 @@ public final class Static190 {
 	@OriginalMember(owner = "client!pf", name = "h", descriptor = "[J")
 	public static final long[] aLongArray6 = new long[100];
 
-	@OriginalMember(owner = "client!pf", name = "r", descriptor = "[I")
-	public static final int[] anIntArray382 = new int[500];
-
 	@OriginalMember(owner = "client!pf", name = "a", descriptor = "(II)[F")
 	public static float[] method3441(@OriginalArg(0) int arg0) {
 		@Pc(7) float local7 = Static161.method3068() + Static161.method3059();
@@ -36,9 +33,9 @@ public final class Static190 {
 		if (local43 != null) {
 			return local43;
 		}
-		Static94.aBoolean134 = false;
+		Pix3D.aBoolean134 = false;
 		local43 = Static164.method3150(arg4, false, arg1, arg2, arg0, arg3, false);
-		if (local43 != null && !Static94.aBoolean134) {
+		if (local43 != null && !Pix3D.aBoolean134) {
 			ObjType.aClass99_16.put(local43, local37);
 		}
 		return local43;

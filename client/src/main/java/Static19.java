@@ -37,41 +37,11 @@ public final class Static19 {
 		}
 	}
 
-	@OriginalMember(owner = "client!bi", name = "f", descriptor = "(B)V")
-	public static void method587() {
-		@Pc(11) int local11;
-		for (local11 = -1; local11 < Static267.anInt5774; local11++) {
-			@Pc(22) int local22;
-			if (local11 == -1) {
-				local22 = 2047;
-			} else {
-				local22 = Static105.anIntArray256[local11];
-			}
-			@Pc(30) ClientPlayer local30 = Static159.aClass8_Sub4_Sub1Array1[local22];
-			if (local30 != null && local30.anInt3408 > 0) {
-				local30.anInt3408--;
-				if (local30.anInt3408 == 0) {
-					local30.aClass100_640 = null;
-				}
-			}
-		}
-		for (local11 = 0; local11 < Static272.anInt5214; local11++) {
-			@Pc(68) int local68 = Static33.anIntArray79[local11];
-			@Pc(72) ClientNPC local72 = Static175.aClass8_Sub4_Sub2Array1[local68];
-			if (local72 != null && local72.anInt3408 > 0) {
-				local72.anInt3408--;
-				if (local72.anInt3408 == 0) {
-					local72.aClass100_640 = null;
-				}
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!bi", name = "a", descriptor = "(IIBI)I")
 	public static int method588(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) int arg2) {
-		@Pc(19) int local19 = Static94.anIntArray220[Static268.method4585(arg1, arg2)];
+		@Pc(19) int local19 = Pix3D.anIntArray220[SoftwareModelLit.method4585(arg1, arg2)];
 		if (arg0 > 0) {
-			@Pc(31) int local31 = Static94.anInterface1_2.method3238(arg0 & 0xFFFF);
+			@Pc(31) int local31 = Pix3D.anInterface1_2.method3238(arg0 & 0xFFFF);
 			@Pc(49) int local49;
 			@Pc(73) int local73;
 			if (local31 != 0) {
@@ -89,7 +59,7 @@ public final class Static19 {
 					local19 = ((local49 & 0xFF00) * local31 + local73 * (local19 & 0xFF00) & 0xFF0000) + (local31 * (local49 & 0xFF00FF) + ((local19 & 0xFF00FF) * local73) & 0xFF00FF00) >> 8;
 				}
 			}
-			local49 = Static94.anInterface1_2.method3229(arg0 & 0xFFFF);
+			local49 = Pix3D.anInterface1_2.method3229(arg0 & 0xFFFF);
 			if (local49 != 0) {
 				local49 += 256;
 				@Pc(125) int local125 = (local19 >> 16 & 0xFF) * local49;

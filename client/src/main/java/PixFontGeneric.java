@@ -152,14 +152,14 @@ public abstract class PixFontGeneric extends Linkable2 {
 						if (GameShell.glRenderer) {
 							Static46.method1174(arg1, local4 + (int) ((double) this.anInt3626 * 0.7D), local323, Static218.anInt3627);
 						} else {
-							Static129.method2489(arg1, local4 + (int) ((double) this.anInt3626 * 0.7D), local323, Static218.anInt3627);
+							Pix2D.method2489(arg1, local4 + (int) ((double) this.anInt3626 * 0.7D), local323, Static218.anInt3627);
 						}
 					}
 					if (Static218.anInt3628 != -1) {
 						if (GameShell.glRenderer) {
 							Static46.method1174(arg1, local4 + this.anInt3626 + 1, local323, Static218.anInt3628);
 						} else {
-							Static129.method2489(arg1, local4 + this.anInt3626 + 1, local323, Static218.anInt3628);
+							Pix2D.method2489(arg1, local4 + this.anInt3626 + 1, local323, Static218.anInt3628);
 						}
 					}
 					arg1 += local323;
@@ -844,14 +844,14 @@ public abstract class PixFontGeneric extends Linkable2 {
 						if (GameShell.glRenderer) {
 							Static46.method1174(arg1, local4 + (int) ((double) this.anInt3626 * 0.7D), local387, Static218.anInt3627);
 						} else {
-							Static129.method2489(arg1, local4 + (int) ((double) this.anInt3626 * 0.7D), local387, Static218.anInt3627);
+							Pix2D.method2489(arg1, local4 + (int) ((double) this.anInt3626 * 0.7D), local387, Static218.anInt3627);
 						}
 					}
 					if (Static218.anInt3628 != -1) {
 						if (GameShell.glRenderer) {
 							Static46.method1174(arg1, local4 + this.anInt3626, local387, Static218.anInt3628);
 						} else {
-							Static129.method2489(arg1, local4 + this.anInt3626, local387, Static218.anInt3628);
+							Pix2D.method2489(arg1, local4 + this.anInt3626, local387, Static218.anInt3628);
 						}
 					}
 					arg1 += local387;

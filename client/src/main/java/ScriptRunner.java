@@ -41,6 +41,8 @@ public final class ScriptRunner {
 
 	@OriginalMember(owner = "client!nd", name = "b", descriptor = "Lclient!na;")
 	public static final JagString AUTO_CS_ERROR = JagString.wrap("Clientscript error in: ");
+	@OriginalMember(owner = "client!ah", name = "r", descriptor = "Lclient!na;")
+	public static final JagString aClass100_191 = Text.aClass100_189;
 
 	@OriginalMember(owner = "client!ck", name = "T", descriptor = "Lclient!na;")
 	private static final JagString AUTO_JAN = JagString.wrap("Jan");
@@ -186,7 +188,7 @@ public final class ScriptRunner {
 					if (local226 == 1) {
 						// push_varp
 						local77 = intOperands[pc];
-						intStack[isp++] = Static7.var[local77];
+						intStack[isp++] = VarCache.var[local77];
 						continue;
 					}
 					if (local226 == 2) {
@@ -255,7 +257,7 @@ public final class ScriptRunner {
 					if (local226 == 25) {
 						// push_varbit
 						local77 = intOperands[pc];
-						intStack[isp++] = Static155.getVarbit(local77);
+						intStack[isp++] = VarCache.getVarbit(local77);
 						continue;
 					}
 					if (local226 == 27) {
@@ -357,14 +359,14 @@ public final class ScriptRunner {
 					}
 					if (local226 == 42) {
 						// push_varc_int
-						intStack[isp++] = Static155.varcInt[intOperands[pc]];
+						intStack[isp++] = Client.varcInt[intOperands[pc]];
 						continue;
 					}
 					if (local226 == 43) {
 						// pop_varc_int
 						local77 = intOperands[pc];
 						isp--;
-						Static155.varcInt[local77] = intStack[isp];
+						Client.varcInt[local77] = intStack[isp];
 						Static4.method24(local77);
 						continue;
 					}
@@ -460,18 +462,18 @@ public final class ScriptRunner {
 						local803 = intStack[isp + 1];
 						local1052 = intStack[isp + 2];
 						if (local803 != 0) {
-							local1063 = Static5.method32(local809);
-							if (local1063.aClass13Array3 == null) {
-								local1063.aClass13Array3 = new IfType[local1052 + 1];
+							local1063 = IfType.get(local809);
+							if (local1063.subcomponents == null) {
+								local1063.subcomponents = new IfType[local1052 + 1];
 							}
-							if (local1052 >= local1063.aClass13Array3.length) {
+							if (local1052 >= local1063.subcomponents.length) {
 								@Pc(1085) IfType[] local1085 = new IfType[local1052 + 1];
-								for (local1087 = 0; local1087 < local1063.aClass13Array3.length; local1087++) {
-									local1085[local1087] = local1063.aClass13Array3[local1087];
+								for (local1087 = 0; local1087 < local1063.subcomponents.length; local1087++) {
+									local1085[local1087] = local1063.subcomponents[local1087];
 								}
-								local1063.aClass13Array3 = local1085;
+								local1063.subcomponents = local1085;
 							}
-							if (local1052 > 0 && local1063.aClass13Array3[local1052 - 1] == null) {
+							if (local1052 > 0 && local1063.subcomponents[local1052 - 1] == null) {
 								throw new RuntimeException("Gap at:" + (local1052 - 1));
 							}
 							@Pc(1137) IfType local1137 = new IfType();
@@ -479,13 +481,13 @@ public final class ScriptRunner {
 							local1137.subId = local1052;
 							local1137.layerId = local1137.parentId = local1063.parentId;
 							local1137.type = local803;
-							local1063.aClass13Array3[local1052] = local1137;
+							local1063.subcomponents[local1052] = local1137;
 							if (secondary) {
 								Static274.aClass13_24 = local1137;
 							} else {
 								Static227.aClass13_25 = local1137;
 							}
-							Static43.method1143(local1063);
+							Client.componentUpdated(local1063);
 							continue;
 						}
 						throw new RuntimeException();
@@ -499,16 +501,16 @@ public final class ScriptRunner {
 							}
 							throw new RuntimeException("Tried to .cc_delete static .active-component!");
 						}
-						local1204 = Static5.method32(local1182.parentId);
-						local1204.aClass13Array3[local1182.subId] = null;
-						Static43.method1143(local1204);
+						local1204 = IfType.get(local1182.parentId);
+						local1204.subcomponents[local1182.subId] = null;
+						Client.componentUpdated(local1204);
 						continue;
 					}
 					if (local226 == 102) {
 						isp--;
-						local1182 = Static5.method32(intStack[isp]);
-						local1182.aClass13Array3 = null;
-						Static43.method1143(local1182);
+						local1182 = IfType.get(intStack[isp]);
+						local1182.subcomponents = null;
+						Client.componentUpdated(local1182);
 						continue;
 					}
 					if (local226 == 200) {
@@ -531,7 +533,7 @@ public final class ScriptRunner {
 					if (local226 == 201) {
 						isp--;
 						local809 = intStack[isp];
-						local1204 = Static5.method32(local809);
+						local1204 = IfType.get(local809);
 						if (local1204 == null) {
 							intStack[isp++] = 0;
 						} else {
@@ -553,7 +555,7 @@ public final class ScriptRunner {
 							local809 = intStack[isp];
 							for (local1052 = 0; local1052 < Static204.anIntArray425.length; local1052++) {
 								if (local809 == Static204.anIntArray425[local1052]) {
-									Static173.aClass8_Sub4_Sub1_2.aClass59_1.method1953(local1052, local803);
+									Client.localPlayer.aClass59_1.method1953(local1052, local803);
 									continue label4266;
 								}
 							}
@@ -563,7 +565,7 @@ public final class ScriptRunner {
 									continue label4266;
 								}
 								if (local809 == Static153.anIntArray351[local1052]) {
-									Static173.aClass8_Sub4_Sub1_2.aClass59_1.method1953(local1052, local803);
+									Client.localPlayer.aClass59_1.method1953(local1052, local803);
 									continue label4266;
 								}
 								local1052++;
@@ -573,13 +575,13 @@ public final class ScriptRunner {
 							isp -= 2;
 							local809 = intStack[isp];
 							local803 = intStack[isp + 1];
-							Static173.aClass8_Sub4_Sub1_2.aClass59_1.method1951(local809, local803);
+							Client.localPlayer.aClass59_1.method1951(local809, local803);
 							continue;
 						}
 						if (local226 == 410) {
 							isp--;
 							local12388 = intStack[isp] != 0;
-							Static173.aClass8_Sub4_Sub1_2.aClass59_1.method1948(local12388);
+							Client.localPlayer.aClass59_1.method1948(local12388);
 							continue;
 						}
 					} else {
@@ -592,7 +594,7 @@ public final class ScriptRunner {
 								} else {
 									local226 -= 1000;
 									isp--;
-									local1182 = Static5.method32(intStack[isp]);
+									local1182 = IfType.get(intStack[isp]);
 								}
 								if (local226 == 1100) {
 									isp -= 2;
@@ -610,7 +612,7 @@ public final class ScriptRunner {
 									if (local1182.anInt468 < 0) {
 										local1182.anInt468 = 0;
 									}
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									if (local1182.subId == -1) {
 										Static118.method2353(local1182.parentId);
 									}
@@ -619,7 +621,7 @@ public final class ScriptRunner {
 								if (local226 == 1101) {
 									isp--;
 									local1182.colour = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									if (local1182.subId == -1) {
 										Static245.method4224(local1182.parentId);
 									}
@@ -628,44 +630,44 @@ public final class ScriptRunner {
 								if (local226 == 1102) {
 									isp--;
 									local1182.fill = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1103) {
 									isp--;
 									local1182.trans = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1104) {
 									isp--;
 									local1182.lineWidth = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1105) {
 									isp--;
 									local1182.graphic = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1106) {
 									isp--;
 									local1182.rotate = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1107) {
 									isp--;
 									local1182.tiling = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1108) {
 									local1182.model1Type = 1;
 									isp--;
 									local1182.model1Id = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									if (local1182.subId == -1) {
 										Static271.method4600(local1182.parentId);
 									}
@@ -679,7 +681,7 @@ public final class ScriptRunner {
 									local1182.modelYAn = intStack[isp + 3];
 									local1182.modelZAn = intStack[isp + 4];
 									local1182.modelZoom = intStack[isp + 5];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									if (local1182.subId == -1) {
 										Static153.method2910(local1182.parentId);
 										Static180.method3328(local1182.parentId);
@@ -694,7 +696,7 @@ public final class ScriptRunner {
 										local1182.anInt510 = 0;
 										local1182.anInt500 = 0;
 										local1182.anInt496 = 1;
-										Static43.method1143(local1182);
+										Client.componentUpdated(local1182);
 									}
 									if (local1182.subId == -1) {
 										Static181.method3345(local1182.parentId);
@@ -704,7 +706,7 @@ public final class ScriptRunner {
 								if (local226 == 1111) {
 									isp--;
 									local1182.orthog = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1112) {
@@ -712,7 +714,7 @@ public final class ScriptRunner {
 									local2522 = stringStack[ssp];
 									if (!local2522.equalsInner(local1182.text)) {
 										local1182.text = local2522;
-										Static43.method1143(local1182);
+										Client.componentUpdated(local1182);
 									}
 									if (local1182.subId == -1) {
 										Static163.method3096(local1182.parentId);
@@ -722,7 +724,7 @@ public final class ScriptRunner {
 								if (local226 == 1113) {
 									isp--;
 									local1182.font = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1114) {
@@ -730,46 +732,46 @@ public final class ScriptRunner {
 									local1182.hAlign = intStack[isp];
 									local1182.vAlign = intStack[isp + 1];
 									local1182.lineHeight = intStack[isp + 2];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1115) {
 									isp--;
 									local1182.shadow = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1116) {
 									isp--;
 									local1182.outline = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1117) {
 									isp--;
 									local1182.shadowColour = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1118) {
 									isp--;
 									local1182.vFlip = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1119) {
 									isp--;
 									local1182.hFlip = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1120) {
 									isp -= 2;
 									local1182.scrollWidth = intStack[isp];
 									local1182.scrollHeight = intStack[isp + 1];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									if (local1182.type == 0) {
-										Static17.method531(local1182, false);
+										Client.method531(local1182, false);
 									}
 									continue;
 								}
@@ -777,19 +779,19 @@ public final class ScriptRunner {
 									isp -= 2;
 									local1182.aShort11 = (short) intStack[isp];
 									local1182.aShort10 = (short) intStack[isp + 1];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1122) {
 									isp--;
 									local1182.alpha = intStack[isp] == 1;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									continue;
 								}
 								if (local226 == 1123) {
 									isp--;
 									local1182.modelZoom = intStack[isp];
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 									if (local1182.subId == -1) {
 										Static153.method2910(local1182.parentId);
 									}
@@ -800,10 +802,10 @@ public final class ScriptRunner {
 									local1182 = secondary ? Static274.aClass13_24 : Static227.aClass13_25;
 								} else {
 									isp--;
-									local1182 = Static5.method32(intStack[isp]);
+									local1182 = IfType.get(intStack[isp]);
 									local226 -= 1000;
 								}
-								Static43.method1143(local1182);
+								Client.componentUpdated(local1182);
 								if (local226 == 1200 || local226 == 1205) {
 									isp -= 2;
 									local1052 = intStack[isp + 1];
@@ -851,7 +853,7 @@ public final class ScriptRunner {
 								}
 								if (local226 == 1202) {
 									local1182.model1Type = 3;
-									local1182.model1Id = Static173.aClass8_Sub4_Sub1_2.aClass59_1.method1952();
+									local1182.model1Id = Client.localPlayer.aClass59_1.method1952();
 									if (local1182.subId == -1) {
 										Static271.method4600(local1182.parentId);
 									}
@@ -878,7 +880,7 @@ public final class ScriptRunner {
 							} else if (local226 >= 1300 && local226 < 1400 || local226 >= 2300 && local226 < 2400) {
 								if (local226 >= 2000) {
 									isp--;
-									local1182 = Static5.method32(intStack[isp]);
+									local1182 = IfType.get(intStack[isp]);
 									local226 -= 1000;
 								} else {
 									local1182 = secondary ? Static274.aClass13_24 : Static227.aClass13_25;
@@ -955,7 +957,7 @@ public final class ScriptRunner {
 									} else {
 										local226 -= 1000;
 										isp--;
-										local1182 = Static5.method32(intStack[isp]);
+										local1182 = IfType.get(intStack[isp]);
 									}
 									@Pc(12937) int[] local12937 = null;
 									ssp--;
@@ -1030,7 +1032,7 @@ public final class ScriptRunner {
 									} else if (local226 == 1418) {
 										local1182.anObjectArray20 = local13000;
 									} else if (local226 == 1419) {
-										local1182.anObjectArray14 = local13000;
+										local1182.onkey = local13000;
 									} else if (local226 == 1420) {
 										local1182.anObjectArray1 = local13000;
 									} else if (local226 == 1421) {
@@ -1157,7 +1159,7 @@ public final class ScriptRunner {
 								} else if (local226 < 1900) {
 									local1182 = secondary ? Static274.aClass13_24 : Static227.aClass13_25;
 									if (local226 == 1800) {
-										intStack[isp++] = Static36.method940(local1182).method512();
+										intStack[isp++] = Client.method940(local1182).method512();
 										continue;
 									}
 									if (local226 == 1801) {
@@ -1181,7 +1183,7 @@ public final class ScriptRunner {
 									}
 								} else if (local226 < 2600) {
 									isp--;
-									local1182 = Static5.method32(intStack[isp]);
+									local1182 = IfType.get(intStack[isp]);
 									if (local226 == 2500) {
 										intStack[isp++] = local1182.anInt523;
 										continue;
@@ -1208,7 +1210,7 @@ public final class ScriptRunner {
 									}
 								} else if (local226 < 2700) {
 									isp--;
-									local1182 = Static5.method32(intStack[isp]);
+									local1182 = IfType.get(intStack[isp]);
 									if (local226 == 2600) {
 										intStack[isp++] = local1182.anInt489;
 										continue;
@@ -1264,13 +1266,13 @@ public final class ScriptRunner {
 								} else if (local226 < 2800) {
 									if (local226 == 2700) {
 										isp--;
-										local1182 = Static5.method32(intStack[isp]);
+										local1182 = IfType.get(intStack[isp]);
 										intStack[isp++] = local1182.anInt458;
 										continue;
 									}
 									if (local226 == 2701) {
 										isp--;
-										local1182 = Static5.method32(intStack[isp]);
+										local1182 = IfType.get(intStack[isp]);
 										if (local1182.anInt458 == -1) {
 											intStack[isp++] = 0;
 										} else {
@@ -1281,7 +1283,7 @@ public final class ScriptRunner {
 									if (local226 == 2702) {
 										isp--;
 										local809 = intStack[isp];
-										@Pc(12566) SubInterface local12566 = (SubInterface) Static119.aClass133_9.find((long) local809);
+										@Pc(12566) SubInterface local12566 = (SubInterface) BgSound.aClass133_9.find((long) local809);
 										if (local12566 == null) {
 											intStack[isp++] = 0;
 										} else {
@@ -1291,14 +1293,14 @@ public final class ScriptRunner {
 									}
 									if (local226 == 2703) {
 										isp--;
-										local1182 = Static5.method32(intStack[isp]);
-										if (local1182.aClass13Array3 == null) {
+										local1182 = IfType.get(intStack[isp]);
+										if (local1182.subcomponents == null) {
 											intStack[isp++] = 0;
 											continue;
 										}
-										local803 = local1182.aClass13Array3.length;
-										for (local1052 = 0; local1052 < local1182.aClass13Array3.length; local1052++) {
-											if (local1182.aClass13Array3[local1052] == null) {
+										local803 = local1182.subcomponents.length;
+										for (local1052 = 0; local1052 < local1182.subcomponents.length; local1052++) {
+											if (local1182.subcomponents[local1052] == null) {
 												local803 = local1052;
 												break;
 											}
@@ -1310,7 +1312,7 @@ public final class ScriptRunner {
 										isp -= 2;
 										local809 = intStack[isp];
 										local803 = intStack[isp + 1];
-										@Pc(12663) SubInterface local12663 = (SubInterface) Static119.aClass133_9.find((long) local809);
+										@Pc(12663) SubInterface local12663 = (SubInterface) BgSound.aClass133_9.find((long) local809);
 										if (local12663 != null && local12663.anInt5878 == local803) {
 											intStack[isp++] = 1;
 											continue;
@@ -1320,9 +1322,9 @@ public final class ScriptRunner {
 									}
 								} else if (local226 < 2900) {
 									isp--;
-									local1182 = Static5.method32(intStack[isp]);
+									local1182 = IfType.get(intStack[isp]);
 									if (local226 == 2800) {
-										intStack[isp++] = Static36.method940(local1182).method512();
+										intStack[isp++] = Client.method940(local1182).method512();
 										continue;
 									}
 									if (local226 == 2801) {
@@ -1353,7 +1355,7 @@ public final class ScriptRunner {
 									}
 									if (local226 == 3101) {
 										isp -= 2;
-										Static186.method3415(intStack[isp + 1], intStack[isp], Static173.aClass8_Sub4_Sub1_2);
+										Client.triggerPlayerAnim(intStack[isp + 1], intStack[isp], Client.localPlayer);
 										continue;
 									}
 									if (local226 == 3103) {
@@ -1367,23 +1369,23 @@ public final class ScriptRunner {
 										if (local609.method3123()) {
 											local803 = local609.method3132();
 										}
-										Static6.aClass3_Sub15_Sub1_1.p1Enc(23);
-										Static6.aClass3_Sub15_Sub1_1.p4(local803);
+										Client.out.p1Enc(23);
+										Client.out.p4(local803);
 										continue;
 									}
 									if (local226 == 3105) {
 										ssp--;
 										local609 = stringStack[ssp];
-										Static6.aClass3_Sub15_Sub1_1.p1Enc(244);
-										Static6.aClass3_Sub15_Sub1_1.p8(local609.method3158());
+										Client.out.p1Enc(244);
+										Client.out.p8(local609.method3158());
 										continue;
 									}
 									if (local226 == 3106) {
 										ssp--;
 										local609 = stringStack[ssp];
-										Static6.aClass3_Sub15_Sub1_1.p1Enc(65);
-										Static6.aClass3_Sub15_Sub1_1.p1(local609.length() + 1);
-										Static6.aClass3_Sub15_Sub1_1.method2171(local609);
+										Client.out.p1Enc(65);
+										Client.out.p1(local609.length() + 1);
+										Client.out.pjstr(local609);
 										continue;
 									}
 									if (local226 == 3107) {
@@ -1399,7 +1401,7 @@ public final class ScriptRunner {
 										local803 = intStack[isp + 1];
 										local809 = intStack[isp];
 										local1052 = intStack[isp + 2];
-										local1063 = Static5.method32(local1052);
+										local1063 = IfType.get(local1052);
 										Static40.method1015(local803, local809, local1063);
 										continue;
 									}
@@ -1414,14 +1416,14 @@ public final class ScriptRunner {
 									if (local226 == 3110) {
 										isp--;
 										local809 = intStack[isp];
-										Static6.aClass3_Sub15_Sub1_1.p1Enc(111);
-										Static6.aClass3_Sub15_Sub1_1.p2(local809);
+										Client.out.p1Enc(111);
+										Client.out.p2(local809);
 										continue;
 									}
 								} else if (local226 < 3300) {
 									if (local226 == 3200) {
 										isp -= 3;
-										Static26.method744(intStack[isp + 1], intStack[isp], intStack[isp + 2]);
+										Client.method744(intStack[isp + 1], intStack[isp], intStack[isp + 2]);
 										continue;
 									}
 									if (local226 == 3201) {
@@ -1431,13 +1433,13 @@ public final class ScriptRunner {
 									}
 									if (local226 == 3202) {
 										isp -= 2;
-										Static278.method4650(intStack[isp + 1], intStack[isp]);
+										Client.method4650(intStack[isp + 1], intStack[isp]);
 										continue;
 									}
 								} else if (local226 < 3400) {
 									if (local226 == 3300) {
 										// clientclock
-										intStack[isp++] = Static83.anInt372;
+										intStack[isp++] = Client.loopCycle;
 										continue;
 									}
 									if (local226 == 3301) {
@@ -1475,28 +1477,28 @@ public final class ScriptRunner {
 										// stat
 										isp--;
 										local809 = intStack[isp];
-										intStack[isp++] = Static99.anIntArray240[local809];
+										intStack[isp++] = Client.statEffectiveLevel[local809];
 										continue;
 									}
 									if (local226 == 3306) {
 										// stat_base
 										isp--;
 										local809 = intStack[isp];
-										intStack[isp++] = Static141.anIntArray326[local809];
+										intStack[isp++] = Client.statBaseLevel[local809];
 										continue;
 									}
 									if (local226 == 3307) {
 										// stat_xp
 										isp--;
 										local809 = intStack[isp];
-										intStack[isp++] = Static227.anIntArray446[local809];
+										intStack[isp++] = Client.statXP[local809];
 										continue;
 									}
 									if (local226 == 3308) {
 										// coord
-										local809 = Static55.anInt1735;
-										local803 = Static225.anInt5068 + (Static173.aClass8_Sub4_Sub1_2.anInt3412 >> 7);
-										local1052 = (Static173.aClass8_Sub4_Sub1_2.anInt3421 >> 7) + Static142.anInt3483;
+										local809 = Client.minusedlevel;
+										local803 = Client.mapBuildBaseX + (Client.localPlayer.x >> 7);
+										local1052 = (Client.localPlayer.z >> 7) + Client.mapBuildBaseZ;
 										intStack[isp++] = (local809 << 28) - (-(local803 << 14) - local1052);
 										continue;
 									}
@@ -1523,7 +1525,7 @@ public final class ScriptRunner {
 									}
 									if (local226 == 3312) {
 										// map_members
-										intStack[isp++] = Static2.memServer ? 1 : 0;
+										intStack[isp++] = Client.memServer ? 1 : 0;
 										continue;
 									}
 									if (local226 == 3313) {
@@ -1552,16 +1554,16 @@ public final class ScriptRunner {
 									}
 									if (local226 == 3316) {
 										// staffmodlevel
-										if (Static191.anInt4502 < 2) {
+										if (Client.anInt4502 < 2) {
 											intStack[isp++] = 0;
 										} else {
-											intStack[isp++] = Static191.anInt4502;
+											intStack[isp++] = Client.anInt4502;
 										}
 										continue;
 									}
 									if (local226 == 3317) {
 										// reboottimer
-										intStack[isp++] = Static60.anInt1894;
+										intStack[isp++] = Client.rebootTimer;
 										continue;
 									}
 									if (local226 == 3318) {
@@ -1571,17 +1573,17 @@ public final class ScriptRunner {
 									}
 									if (local226 == 3321) {
 										// runenergy_visible
-										intStack[isp++] = Static12.anInt400;
+										intStack[isp++] = Client.runEnergy;
 										continue;
 									}
 									if (local226 == 3322) {
 										// runweight_visible
-										intStack[isp++] = Static251.anInt5456;
+										intStack[isp++] = Client.runWeight;
 										continue;
 									}
 									if (local226 == 3323) {
 										// playermod
-										if (Static249.anInt5431 >= 5 && Static249.anInt5431 <= 9) {
+										if (Client.anInt5431 >= 5 && Client.anInt5431 <= 9) {
 											intStack[isp++] = 1;
 											continue;
 										}
@@ -1589,31 +1591,31 @@ public final class ScriptRunner {
 										continue;
 									}
 									if (local226 == 3324) {
-										if (Static249.anInt5431 >= 5 && Static249.anInt5431 <= 9) {
-											intStack[isp++] = Static249.anInt5431;
+										if (Client.anInt5431 >= 5 && Client.anInt5431 <= 9) {
+											intStack[isp++] = Client.anInt5431;
 											continue;
 										}
 										intStack[isp++] = 0;
 										continue;
 									}
 									if (local226 == 3325) {
-										intStack[isp++] = Static202.aBoolean233 ? 1 : 0;
+										intStack[isp++] = Client.aBoolean233 ? 1 : 0;
 										continue;
 									}
 									if (local226 == 3326) {
-										intStack[isp++] = Static173.aClass8_Sub4_Sub1_2.anInt1652;
+										intStack[isp++] = Client.localPlayer.combatLevel;
 										continue;
 									}
 									if (local226 == 3327) {
-										intStack[isp++] = Static173.aClass8_Sub4_Sub1_2.aClass59_1.aBoolean141 ? 1 : 0;
+										intStack[isp++] = Client.localPlayer.aClass59_1.aBoolean141 ? 1 : 0;
 										continue;
 									}
 									if (local226 == 3328) {
-										intStack[isp++] = Static124.aBoolean157 && !Static207.aBoolean236 ? 1 : 0;
+										intStack[isp++] = Client.aBoolean157 && !Client.aBoolean236 ? 1 : 0;
 										continue;
 									}
 									if (local226 == 3329) {
-										intStack[isp++] = Static86.aBoolean129 ? 1 : 0;
+										intStack[isp++] = Client.aBoolean129 ? 1 : 0;
 										continue;
 									}
 									if (local226 == 3330) {
@@ -1772,13 +1774,13 @@ public final class ScriptRunner {
 										local803 = intStack[isp];
 										ssp--;
 										local609 = stringStack[ssp];
-										Static171.method3221(local609, local803);
+										Client.method3221(local609, local803);
 										continue;
 									}
 									if (local226 == 3605) {
 										ssp--;
 										local609 = stringStack[ssp];
-										Static64.method1496(local609.method3158());
+										Client.method1496(local609.method3158());
 										continue;
 									}
 									if (local226 == 3606) {
@@ -1796,7 +1798,7 @@ public final class ScriptRunner {
 									if (local226 == 3608) {
 										ssp--;
 										local609 = stringStack[ssp];
-										Static69.method1542(local609.method3158());
+										Client.method1542(local609.method3158());
 										continue;
 									}
 									if (local226 == 3609) {
@@ -1871,7 +1873,7 @@ public final class ScriptRunner {
 									if (local226 == 3617) {
 										ssp--;
 										local609 = stringStack[ssp];
-										Static178.method3318(local609);
+										Client.method3318(local609);
 										continue;
 									}
 									if (local226 == 3618) {
@@ -1918,7 +1920,7 @@ public final class ScriptRunner {
 									if (local226 == 3624) {
 										isp--;
 										local809 = intStack[isp];
-										if (Static199.aClass3_Sub22Array1 != null && Static214.anInt5577 > local809 && Static199.aClass3_Sub22Array1[local809].displayName.method3111(Static173.aClass8_Sub4_Sub1_2.aClass100_364)) {
+										if (Static199.aClass3_Sub22Array1 != null && Static214.anInt5577 > local809 && Static199.aClass3_Sub22Array1[local809].displayName.method3111(Client.localPlayer.aClass100_364)) {
 											intStack[isp++] = 1;
 											continue;
 										}
@@ -2312,10 +2314,10 @@ public final class ScriptRunner {
 													Static59.anInt1812 = intStack[isp];
 													Static49.anInt1459 = intStack[isp + 1];
 													Static84.anInt2256 = intStack[isp + 2];
-													Static6.aClass3_Sub15_Sub1_1.p1Enc(157);
-													Static6.aClass3_Sub15_Sub1_1.p1(Static59.anInt1812);
-													Static6.aClass3_Sub15_Sub1_1.p1(Static49.anInt1459);
-													Static6.aClass3_Sub15_Sub1_1.p1(Static84.anInt2256);
+													Client.out.p1Enc(157);
+													Client.out.p1(Static59.anInt1812);
+													Client.out.p1(Static49.anInt1459);
+													Client.out.p1(Static84.anInt2256);
 													continue;
 												}
 												if (local226 == 5002) {
@@ -2324,10 +2326,10 @@ public final class ScriptRunner {
 													isp -= 2;
 													local803 = intStack[isp];
 													local1052 = intStack[isp + 1];
-													Static6.aClass3_Sub15_Sub1_1.p1Enc(99);
-													Static6.aClass3_Sub15_Sub1_1.p8(local609.method3158());
-													Static6.aClass3_Sub15_Sub1_1.p1(local803 - 1);
-													Static6.aClass3_Sub15_Sub1_1.p1(local1052);
+													Client.out.p1Enc(99);
+													Client.out.p8(local609.method3158());
+													Client.out.p1(local803 - 1);
+													Client.out.p1(local1052);
 													continue;
 												}
 												if (local226 == 5003) {
@@ -2361,7 +2363,7 @@ public final class ScriptRunner {
 													ssp--;
 													local609 = stringStack[ssp];
 													if (!local609.method3138(Static12.aClass100_74)) {
-														if (Static191.anInt4502 == 0 && (Static124.aBoolean157 && !Static207.aBoolean236 || Static86.aBoolean129)) {
+														if (Client.anInt4502 == 0 && (Client.aBoolean157 && !Client.aBoolean236 || Client.aBoolean129)) {
 															continue;
 														}
 														local2522 = local609.method3114();
@@ -2399,8 +2401,8 @@ public final class ScriptRunner {
 														} else if (local2522.method3138(Static262.aClass100_1078)) {
 															local5555 = 10;
 															local609 = local609.method3136(Static262.aClass100_1078.length());
-														} else if (local2522.method3138(Static7.aClass100_191)) {
-															local609 = local609.method3136(Static7.aClass100_191.length());
+														} else if (local2522.method3138(aClass100_191)) {
+															local609 = local609.method3136(aClass100_191.length());
 															local5555 = 11;
 														} else if (Client.lang != 0) {
 															if (local2522.method3138(Text.aClass100_123)) {
@@ -2455,9 +2457,9 @@ public final class ScriptRunner {
 														} else if (local2522.method3138(Static56.aClass100_388)) {
 															local5943 = 4;
 															local609 = local609.method3136(Static56.aClass100_388.length());
-														} else if (local2522.method3138(Static57.aClass100_389)) {
+														} else if (local2522.method3138(Text.aClass100_389)) {
 															local5943 = 5;
-															local609 = local609.method3136(Static57.aClass100_389.length());
+															local609 = local609.method3136(Text.aClass100_389.length());
 														} else if (Client.lang != 0) {
 															if (local2522.method3138(Text.aClass100_272)) {
 																local609 = local609.method3136(Text.aClass100_272.length());
@@ -2476,13 +2478,13 @@ public final class ScriptRunner {
 																local5943 = 5;
 															}
 														}
-														Static6.aClass3_Sub15_Sub1_1.p1Enc(237);
-														Static6.aClass3_Sub15_Sub1_1.p1(0);
-														local4859 = Static6.aClass3_Sub15_Sub1_1.pos;
-														Static6.aClass3_Sub15_Sub1_1.p1(local5555);
-														Static6.aClass3_Sub15_Sub1_1.p1(local5943);
-														Static146.method2748(Static6.aClass3_Sub15_Sub1_1, local609);
-														Static6.aClass3_Sub15_Sub1_1.psize1(Static6.aClass3_Sub15_Sub1_1.pos - local4859);
+														Client.out.p1Enc(237);
+														Client.out.p1(0);
+														local4859 = Client.out.pos;
+														Client.out.p1(local5555);
+														Client.out.p1(local5943);
+														Static146.method2748(Client.out, local609);
+														Client.out.psize1(Client.out.pos - local4859);
 														continue;
 													}
 													Static127.method2470(local609);
@@ -2492,13 +2494,13 @@ public final class ScriptRunner {
 													ssp -= 2;
 													local2522 = stringStack[ssp + 1];
 													local609 = stringStack[ssp];
-													if (Static191.anInt4502 != 0 || (!Static124.aBoolean157 || Static207.aBoolean236) && !Static86.aBoolean129) {
-														Static6.aClass3_Sub15_Sub1_1.p1Enc(201);
-														Static6.aClass3_Sub15_Sub1_1.p1(0);
-														local1052 = Static6.aClass3_Sub15_Sub1_1.pos;
-														Static6.aClass3_Sub15_Sub1_1.p8(local609.method3158());
-														Static146.method2748(Static6.aClass3_Sub15_Sub1_1, local2522);
-														Static6.aClass3_Sub15_Sub1_1.psize1(Static6.aClass3_Sub15_Sub1_1.pos - local1052);
+													if (Client.anInt4502 != 0 || (!Client.aBoolean157 || Client.aBoolean236) && !Client.aBoolean129) {
+														Client.out.p1Enc(201);
+														Client.out.p1(0);
+														local1052 = Client.out.pos;
+														Client.out.p8(local609.method3158());
+														Static146.method2748(Client.out, local2522);
+														Client.out.psize1(Client.out.pos - local1052);
 													}
 													continue;
 												}
@@ -2539,10 +2541,10 @@ public final class ScriptRunner {
 													continue;
 												}
 												if (local226 == 5015) {
-													if (Static173.aClass8_Sub4_Sub1_2 == null || Static173.aClass8_Sub4_Sub1_2.aClass100_364 == null) {
-														local609 = Static186.aClass100_829;
+													if (Client.localPlayer == null || Client.localPlayer.aClass100_364 == null) {
+														local609 = TitleScreen.loginUser;
 													} else {
-														local609 = Static173.aClass8_Sub4_Sub1_2.method1264();
+														local609 = Client.localPlayer.method1264();
 													}
 													stringStack[ssp++] = local609;
 													continue;
@@ -2633,35 +2635,35 @@ public final class ScriptRunner {
 													continue;
 												}
 												if (local226 == 5059) {
-													Static6.aClass3_Sub15_Sub1_1.p1Enc(167);
-													Static6.aClass3_Sub15_Sub1_1.p1(0);
-													local809 = Static6.aClass3_Sub15_Sub1_1.pos;
-													Static6.aClass3_Sub15_Sub1_1.p1(0);
-													Static6.aClass3_Sub15_Sub1_1.p2(Static122.aClass12_1.anInt439);
-													Static122.aClass12_1.aClass3_Sub2_Sub6_1.method760(Static6.aClass3_Sub15_Sub1_1, Static122.aClass12_1.anIntArray33);
-													Static6.aClass3_Sub15_Sub1_1.psize1(Static6.aClass3_Sub15_Sub1_1.pos - local809);
+													Client.out.p1Enc(167);
+													Client.out.p1(0);
+													local809 = Client.out.pos;
+													Client.out.p1(0);
+													Client.out.p2(Static122.aClass12_1.anInt439);
+													Static122.aClass12_1.aClass3_Sub2_Sub6_1.method760(Client.out, Static122.aClass12_1.anIntArray33);
+													Client.out.psize1(Client.out.pos - local809);
 													continue;
 												}
 												if (local226 == 5060) {
 													ssp--;
 													local609 = stringStack[ssp];
-													Static6.aClass3_Sub15_Sub1_1.p1Enc(178);
-													Static6.aClass3_Sub15_Sub1_1.p1(0);
-													local803 = Static6.aClass3_Sub15_Sub1_1.pos;
-													Static6.aClass3_Sub15_Sub1_1.p8(local609.method3158());
-													Static6.aClass3_Sub15_Sub1_1.p2(Static122.aClass12_1.anInt439);
-													Static122.aClass12_1.aClass3_Sub2_Sub6_1.method760(Static6.aClass3_Sub15_Sub1_1, Static122.aClass12_1.anIntArray33);
-													Static6.aClass3_Sub15_Sub1_1.psize1(Static6.aClass3_Sub15_Sub1_1.pos - local803);
+													Client.out.p1Enc(178);
+													Client.out.p1(0);
+													local803 = Client.out.pos;
+													Client.out.p8(local609.method3158());
+													Client.out.p2(Static122.aClass12_1.anInt439);
+													Static122.aClass12_1.aClass3_Sub2_Sub6_1.method760(Client.out, Static122.aClass12_1.anIntArray33);
+													Client.out.psize1(Client.out.pos - local803);
 													continue;
 												}
 												if (local226 == 5061) {
-													Static6.aClass3_Sub15_Sub1_1.p1Enc(167);
-													Static6.aClass3_Sub15_Sub1_1.p1(0);
-													local809 = Static6.aClass3_Sub15_Sub1_1.pos;
-													Static6.aClass3_Sub15_Sub1_1.p1(1);
-													Static6.aClass3_Sub15_Sub1_1.p2(Static122.aClass12_1.anInt439);
-													Static122.aClass12_1.aClass3_Sub2_Sub6_1.method760(Static6.aClass3_Sub15_Sub1_1, Static122.aClass12_1.anIntArray33);
-													Static6.aClass3_Sub15_Sub1_1.psize1(Static6.aClass3_Sub15_Sub1_1.pos - local809);
+													Client.out.p1Enc(167);
+													Client.out.p1(0);
+													local809 = Client.out.pos;
+													Client.out.p1(1);
+													Client.out.p2(Static122.aClass12_1.anInt439);
+													Static122.aClass12_1.aClass3_Sub2_Sub6_1.method760(Client.out, Static122.aClass12_1.anIntArray33);
+													Client.out.psize1(Client.out.pos - local809);
 													continue;
 												}
 												if (local226 == 5062) {
@@ -2763,7 +2765,7 @@ public final class ScriptRunner {
 												}
 											} else if (local226 < 5200) {
 												if (local226 == 5100) {
-													if (Static187.aBooleanArray101[86]) {
+													if (ClientKeyboardListener.keyHeld[86]) {
 														intStack[isp++] = 1;
 													} else {
 														intStack[isp++] = 0;
@@ -2771,7 +2773,7 @@ public final class ScriptRunner {
 													continue;
 												}
 												if (local226 == 5101) {
-													if (Static187.aBooleanArray101[82]) {
+													if (ClientKeyboardListener.keyHeld[82]) {
 														intStack[isp++] = 1;
 													} else {
 														intStack[isp++] = 0;
@@ -2779,7 +2781,7 @@ public final class ScriptRunner {
 													continue;
 												}
 												if (local226 == 5102) {
-													if (Static187.aBooleanArray101[81]) {
+													if (ClientKeyboardListener.keyHeld[81]) {
 														intStack[isp++] = 1;
 													} else {
 														intStack[isp++] = 0;
@@ -2791,11 +2793,11 @@ public final class ScriptRunner {
 												if (local226 < 5300) {
 													if (local226 == 5200) {
 														isp--;
-														Static155.method2940(intStack[isp]);
+														WorldMap.method2940(intStack[isp]);
 														continue;
 													}
 													if (local226 == 5201) {
-														intStack[isp++] = Static91.method1874();
+														intStack[isp++] = WorldMap.method1874();
 														continue;
 													}
 													if (local226 == 5202) {
@@ -2845,8 +2847,8 @@ public final class ScriptRunner {
 														continue;
 													}
 													if (local226 == 5209) {
-														intStack[isp++] = Static158.anInt3846 + Static13.anInt435;
-														intStack[isp++] = Static2.anInt13 + Static181.anInt4296 - Static28.anInt919 - 1;
+														intStack[isp++] = WorldMap.anInt3846 + WorldMap.anInt435;
+														intStack[isp++] = WorldMap.anInt13 + WorldMap.anInt4296 - WorldMap.anInt919 - 1;
 														continue;
 													}
 													if (local226 == 5210) {
@@ -2877,8 +2879,8 @@ public final class ScriptRunner {
 														if (local809 == -1) {
 															local2522 = AUTO_EMPTY;
 														} else {
-															local2522 = Static203.aClass134_1.aClass100Array153[local809];
-															local1052 = Static203.aClass134_1.method3894(local809);
+															local2522 = WorldMap.aClass134_1.aClass100Array153[local809];
+															local1052 = WorldMap.aClass134_1.method3894(local809);
 														}
 														local2522 = local2522.method3140(Static67.aClass100_639, Static5.aClass100_10);
 														stringStack[ssp++] = local2522;
@@ -2891,8 +2893,8 @@ public final class ScriptRunner {
 														if (local809 == -1) {
 															local2522 = AUTO_EMPTY;
 														} else {
-															local2522 = Static203.aClass134_1.aClass100Array153[local809];
-															local1052 = Static203.aClass134_1.method3894(local809);
+															local2522 = WorldMap.aClass134_1.aClass100Array153[local809];
+															local1052 = WorldMap.aClass134_1.method3894(local809);
 														}
 														local2522 = local2522.method3140(Static67.aClass100_639, Static5.aClass100_10);
 														stringStack[ssp++] = local2522;
@@ -2952,11 +2954,11 @@ public final class ScriptRunner {
 													}
 													if (local226 == 5219) {
 														ssp--;
-														Static44.method1149(stringStack[ssp]);
+														WorldMap.method1149(stringStack[ssp]);
 														continue;
 													}
 													if (local226 == 5220) {
-														intStack[isp++] = Static41.anInt1309 == 100 ? 1 : 0;
+														intStack[isp++] = WorldMap.stage == 100 ? 1 : 0;
 														continue;
 													}
 												} else if (local226 < 5400) {
@@ -3036,11 +3038,11 @@ public final class ScriptRunner {
 														local2522 = stringStack[ssp + 1];
 														isp--;
 														local1052 = intStack[isp];
-														Static6.aClass3_Sub15_Sub1_1.p1Enc(117);
-														Static6.aClass3_Sub15_Sub1_1.p1(Static229.method3937(local609) + Static229.method3937(local2522) + 1);
-														Static6.aClass3_Sub15_Sub1_1.method2171(local609);
-														Static6.aClass3_Sub15_Sub1_1.method2171(local2522);
-														Static6.aClass3_Sub15_Sub1_1.p1(local1052);
+														Client.out.p1Enc(117);
+														Client.out.p1(Static229.method3937(local609) + Static229.method3937(local2522) + 1);
+														Client.out.pjstr(local609);
+														Client.out.pjstr(local2522);
+														Client.out.p1(local1052);
 														continue;
 													}
 													if (local226 == 5401) {
@@ -3050,7 +3052,7 @@ public final class ScriptRunner {
 														Static269.method2172();
 														Static278.method4649();
 														Static11.method443();
-														Static87.method1807();
+														Client.method1807();
 														continue;
 													}
 													if (local226 == 5405) {
@@ -3200,7 +3202,7 @@ public final class ScriptRunner {
 														local652 = intStack[isp + 3];
 														local1052 = intStack[isp + 2];
 														local803 = intStack[isp + 1];
-														Static141.method2722(false, local1052, local803, local652, (local809 & 0x3FFF) - Static142.anInt3483, (local809 >> 14 & 0x3FFF) - Static225.anInt5068);
+														Static141.method2722(false, local1052, local803, local652, (local809 & 0x3FFF) - Client.mapBuildBaseZ, (local809 >> 14 & 0x3FFF) - Client.mapBuildBaseX);
 														continue;
 													}
 													if (local226 == 5501) {
@@ -3209,7 +3211,7 @@ public final class ScriptRunner {
 														local809 = intStack[isp];
 														local652 = intStack[isp + 3];
 														local1052 = intStack[isp + 2];
-														Static260.method3849(local803, (local809 & 0x3FFF) - Static142.anInt3483, local1052, (local809 >> 14 & 0x3FFF) - Static225.anInt5068, local652);
+														Static260.method3849(local803, (local809 & 0x3FFF) - Client.mapBuildBaseZ, local1052, (local809 >> 14 & 0x3FFF) - Client.mapBuildBaseX, local652);
 														continue;
 													}
 													if (local226 == 5502) {
@@ -3237,7 +3239,7 @@ public final class ScriptRunner {
 															throw new RuntimeException();
 														}
 														Static75.anInt2119 = local652;
-														Static227.anInt5096 = 3;
+														Client.anInt5096 = 3;
 														continue;
 													}
 													if (local226 == 5503) {
@@ -3246,21 +3248,21 @@ public final class ScriptRunner {
 													}
 													if (local226 == 5504) {
 														isp -= 2;
-														Static72.anInt2031 = intStack[isp];
-														Static57.anInt1747 = intStack[isp + 1];
-														if (Static227.anInt5096 == 2) {
-															Static184.anInt4358 = Static57.anInt1747;
-															Static240.anInt5333 = Static72.anInt2031;
+														Client.anInt2031 = intStack[isp];
+														Client.anInt1747 = intStack[isp + 1];
+														if (Client.anInt5096 == 2) {
+															Client.anInt4358 = Client.anInt1747;
+															Client.anInt5333 = Client.anInt2031;
 														}
-														Static87.method1812();
+														Client.followCamera();
 														continue;
 													}
 													if (local226 == 5505) {
-														intStack[isp++] = Static72.anInt2031;
+														intStack[isp++] = Client.anInt2031;
 														continue;
 													}
 													if (local226 == 5506) {
-														intStack[isp++] = Static57.anInt1747;
+														intStack[isp++] = Client.anInt1747;
 														continue;
 													}
 												} else if (local226 < 5700) {
@@ -3270,8 +3272,8 @@ public final class ScriptRunner {
 														local2522 = stringStack[ssp + 1];
 														isp--;
 														local1052 = intStack[isp];
-														if (Client.state == 10 && Static219.anInt4937 == 0 && Static184.anInt4348 == 0 && Static179.anInt4261 == 0 && Static82.anInt2231 == 0) {
-															Static225.method3896(local609, local2522, local1052);
+														if (Client.state == 10 && Client.worldHopStep == 0 && Client.loginStep == 0 && Client.accountCreateStep == 0 && Static82.anInt2231 == 0) {
+															TitleScreen.method3896(local609, local2522, local1052);
 														}
 														continue;
 													}
@@ -3280,41 +3282,41 @@ public final class ScriptRunner {
 														continue;
 													}
 													if (local226 == 5602) {
-														if (Static184.anInt4348 == 0) {
-															Static266.anInt5336 = -2;
+														if (Client.loginStep == 0) {
+															Client.worldHopError = -2;
 														}
 														continue;
 													}
 													if (local226 == 5603) {
 														isp -= 4;
-														if (Client.state == 10 && Static219.anInt4937 == 0 && Static184.anInt4348 == 0 && Static179.anInt4261 == 0 && Static82.anInt2231 == 0) {
-															Static125.method2448(intStack[isp + 2], intStack[isp + 3], intStack[isp], intStack[isp + 1]);
+														if (Client.state == 10 && Client.worldHopStep == 0 && Client.loginStep == 0 && Client.accountCreateStep == 0 && Static82.anInt2231 == 0) {
+															Client.method2448(intStack[isp + 2], intStack[isp + 3], intStack[isp], intStack[isp + 1]);
 														}
 														continue;
 													}
 													if (local226 == 5604) {
 														ssp--;
-														if (Client.state == 10 && Static219.anInt4937 == 0 && Static184.anInt4348 == 0 && Static179.anInt4261 == 0 && Static82.anInt2231 == 0) {
-															Static78.method1691(stringStack[ssp].method3158());
+														if (Client.state == 10 && Client.worldHopStep == 0 && Client.loginStep == 0 && Client.accountCreateStep == 0 && Static82.anInt2231 == 0) {
+															Client.method1691(stringStack[ssp].method3158());
 														}
 														continue;
 													}
 													if (local226 == 5605) {
 														isp -= 4;
 														ssp -= 2;
-														if (Client.state == 10 && Static219.anInt4937 == 0 && Static184.anInt4348 == 0 && Static179.anInt4261 == 0 && Static82.anInt2231 == 0) {
+														if (Client.state == 10 && Client.worldHopStep == 0 && Client.loginStep == 0 && Client.accountCreateStep == 0 && Static82.anInt2231 == 0) {
 															Static40.method1016(intStack[isp], intStack[isp + 3], intStack[isp + 1], stringStack[ssp + 1], stringStack[ssp].method3158(), intStack[isp + 2]);
 														}
 														continue;
 													}
 													if (local226 == 5606) {
-														if (Static179.anInt4261 == 0) {
-															Static223.anInt5034 = -2;
+														if (Client.accountCreateStep == 0) {
+															Client.accountCreateError = -2;
 														}
 														continue;
 													}
 													if (local226 == 5607) {
-														intStack[isp++] = Static266.anInt5336;
+														intStack[isp++] = Client.worldHopError;
 														continue;
 													}
 													if (local226 == 5608) {
@@ -3322,7 +3324,7 @@ public final class ScriptRunner {
 														continue;
 													}
 													if (local226 == 5609) {
-														intStack[isp++] = Static223.anInt5034;
+														intStack[isp++] = Client.accountCreateError;
 														continue;
 													}
 													if (local226 == 5610) {
@@ -3349,22 +3351,22 @@ public final class ScriptRunner {
 														Static113.anInt4609 = local809;
 														if (!GameShell.glRenderer || !Static178.highDetailLighting) {
 															if (Static113.anInt4609 == 1) {
-																Static94.method1911(0.9F);
+																Pix3D.method1911(0.9F);
 															}
 															if (Static113.anInt4609 == 2) {
-																Static94.method1911(0.8F);
+																Pix3D.method1911(0.8F);
 															}
 															if (Static113.anInt4609 == 3) {
-																Static94.method1911(0.7F);
+																Pix3D.method1911(0.7F);
 															}
 															if (Static113.anInt4609 == 4) {
-																Static94.method1911(0.6F);
+																Pix3D.method1911(0.6F);
 															}
 														}
 														if (GameShell.glRenderer) {
 															Static86.method1799();
 															if (!Static178.highDetailLighting) {
-																Static145.method2742();
+																Client.method2742();
 															}
 														}
 														Static269.method2172();
@@ -3376,7 +3378,7 @@ public final class ScriptRunner {
 														isp--;
 														Static53.method1293(intStack[isp] == 1);
 														LocType.method1854();
-														Static145.method2742();
+														Client.method2742();
 														Static269.method2218();
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
@@ -3393,7 +3395,7 @@ public final class ScriptRunner {
 													if (local226 == 6005) {
 														isp--;
 														Static250.aBoolean283 = intStack[isp] == 1;
-														Static145.method2742();
+														Client.method2742();
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
 														continue;
@@ -3401,7 +3403,7 @@ public final class ScriptRunner {
 													if (local226 == 6006) {
 														isp--;
 														Static53.aBoolean99 = intStack[isp] == 1;
-														((WorldTextureProvider) Static94.anInterface1_2).method3245(!Static53.aBoolean99);
+														((WorldTextureProvider) Pix3D.anInterface1_2).method3245(!Static53.aBoolean99);
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
 														continue;
@@ -3452,22 +3454,22 @@ public final class ScriptRunner {
 														isp--;
 														Static178.highDetailLighting = intStack[isp] == 1;
 														if (GameShell.glRenderer && Static178.highDetailLighting) {
-															Static94.method1911(0.7F);
+															Pix3D.method1911(0.7F);
 														} else {
 															if (Static113.anInt4609 == 1) {
-																Static94.method1911(0.9F);
+																Pix3D.method1911(0.9F);
 															}
 															if (Static113.anInt4609 == 2) {
-																Static94.method1911(0.8F);
+																Pix3D.method1911(0.8F);
 															}
 															if (Static113.anInt4609 == 3) {
-																Static94.method1911(0.7F);
+																Pix3D.method1911(0.7F);
 															}
 															if (Static113.anInt4609 == 4) {
-																Static94.method1911(0.6F);
+																Pix3D.method1911(0.6F);
 															}
 														}
-														Static145.method2742();
+														Client.method2742();
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
 														continue;
@@ -3476,7 +3478,7 @@ public final class ScriptRunner {
 														isp--;
 														Static220.aBoolean244 = intStack[isp] == 1;
 														if (GameShell.glRenderer) {
-															Static145.method2742();
+															Client.method2742();
 														}
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
@@ -3521,7 +3523,7 @@ public final class ScriptRunner {
 														if (local809 > 127) {
 															local809 = 127;
 														}
-														Static125.anInt3104 = local809;
+														Client.waveVolume = local809;
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
 														continue;
@@ -3535,17 +3537,17 @@ public final class ScriptRunner {
 														if (local809 > 255) {
 															local809 = 255;
 														}
-														if (local809 != Static12.anInt391) {
-															if (Static12.anInt391 == 0 && Static221.anInt4363 != -1) {
-																Static122.method2410(Client.songs, Static221.anInt4363, local809);
-																Static144.aBoolean173 = false;
+														if (local809 != Client.midiVolume) {
+															if (Client.midiVolume == 0 && Client.anInt4363 != -1) {
+																MidiManager.play(Client.songs, Client.anInt4363, local809);
+																Client.aBoolean173 = false;
 															} else if (local809 == 0) {
 																Static241.method4548();
-																Static144.aBoolean173 = false;
+																Client.aBoolean173 = false;
 															} else {
-																Static230.method3956(local809);
+																MidiManager.method3956(local809);
 															}
-															Static12.anInt391 = local809;
+															Client.midiVolume = local809;
 														}
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
@@ -3560,7 +3562,7 @@ public final class ScriptRunner {
 														if (local809 > 127) {
 															local809 = 127;
 														}
-														Static30.anInt978 = local809;
+														Client.ambientVolume = local809;
 														Static203.method3663(GameShell.signlink);
 														Static18.aBoolean39 = false;
 														continue;
@@ -3669,15 +3671,15 @@ public final class ScriptRunner {
 														continue;
 													}
 													if (local226 == 6118) {
-														intStack[isp++] = Static125.anInt3104;
+														intStack[isp++] = Client.waveVolume;
 														continue;
 													}
 													if (local226 == 6119) {
-														intStack[isp++] = Static12.anInt391;
+														intStack[isp++] = Client.midiVolume;
 														continue;
 													}
 													if (local226 == 6120) {
-														intStack[isp++] = Static30.anInt978;
+														intStack[isp++] = Client.ambientVolume;
 														continue;
 													}
 													if (local226 == 6121) {
@@ -3820,7 +3822,7 @@ public final class ScriptRunner {
 													}
 												} else if (local226 < 6600) {
 													if (local226 == 6500) {
-														if (Client.state == 10 && Static219.anInt4937 == 0 && Static184.anInt4348 == 0 && Static179.anInt4261 == 0) {
+														if (Client.state == 10 && Client.worldHopStep == 0 && Client.loginStep == 0 && Client.accountCreateStep == 0) {
 															intStack[isp++] = Static207.method3684() == -1 ? 0 : 1;
 															continue;
 														}
@@ -3872,7 +3874,7 @@ public final class ScriptRunner {
 													if (local226 == 6503) {
 														isp--;
 														local809 = intStack[isp];
-														if (Client.state == 10 && Static219.anInt4937 == 0 && Static184.anInt4348 == 0 && Static179.anInt4261 == 0) {
+														if (Client.state == 10 && Client.worldHopStep == 0 && Client.loginStep == 0 && Client.accountCreateStep == 0) {
 															intStack[isp++] = Static176.method3303(local809) ? 1 : 0;
 															continue;
 														}
@@ -4000,7 +4002,7 @@ public final class ScriptRunner {
 										ssp -= 2;
 										local2522 = stringStack[ssp + 1];
 										local609 = stringStack[ssp];
-										if (Static173.aClass8_Sub4_Sub1_2.aClass59_1 != null && Static173.aClass8_Sub4_Sub1_2.aClass59_1.aBoolean141) {
+										if (Client.localPlayer.aClass59_1 != null && Client.localPlayer.aClass59_1.aBoolean141) {
 											stringStack[ssp++] = local2522;
 											continue;
 										}
@@ -4172,7 +4174,7 @@ public final class ScriptRunner {
 								local1182 = secondary ? Static274.aClass13_24 : Static227.aClass13_25;
 							} else {
 								isp--;
-								local1182 = Static5.method32(intStack[isp]);
+								local1182 = IfType.get(intStack[isp]);
 								local226 -= 1000;
 							}
 							if (local226 == 1000) {
@@ -4193,7 +4195,7 @@ public final class ScriptRunner {
 								}
 								local1182.aByte2 = (byte) local1052;
 								local1182.aByte4 = (byte) local803;
-								Static43.method1143(local1182);
+								Client.componentUpdated(local1182);
 								Static74.method1625(local1182);
 								if (local1182.subId == -1) {
 									Static280.method4675(local1182.parentId);
@@ -4220,10 +4222,10 @@ public final class ScriptRunner {
 									local803 = 4;
 								}
 								local1182.aByte5 = (byte) local803;
-								Static43.method1143(local1182);
+								Client.componentUpdated(local1182);
 								Static74.method1625(local1182);
 								if (local1182.type == 0) {
-									Static17.method531(local1182, false);
+									Client.method531(local1182, false);
 								}
 								continue;
 							}
@@ -4232,7 +4234,7 @@ public final class ScriptRunner {
 								local1552 = intStack[isp] == 1;
 								if (local1552 != local1182.hide) {
 									local1182.hide = local1552;
-									Static43.method1143(local1182);
+									Client.componentUpdated(local1182);
 								}
 								if (local1182.subId == -1) {
 									Static93.method1906(local1182.parentId);
@@ -4243,10 +4245,10 @@ public final class ScriptRunner {
 								isp -= 2;
 								local1182.anInt473 = intStack[isp];
 								local1182.anInt442 = intStack[isp + 1];
-								Static43.method1143(local1182);
+								Client.componentUpdated(local1182);
 								Static74.method1625(local1182);
 								if (local1182.type == 0) {
-									Static17.method531(local1182, false);
+									Client.method531(local1182, false);
 								}
 								continue;
 							}
@@ -4290,4 +4292,25 @@ public final class ScriptRunner {
 		}
 	}
 
+	@OriginalMember(owner = "client!fn", name = "c", descriptor = "(II)V")
+	public static void method1626(@OriginalArg(0) int arg0) {
+		if (arg0 == -1 || !IfType.openInterface(arg0)) {
+			return;
+		}
+		@Pc(31) IfType[] local31 = IfType.list[arg0];
+		for (@Pc(33) int local33 = 0; local33 < local31.length; local33++) {
+			@Pc(41) IfType local41 = local31[local33];
+			if (local41.onload != null) {
+				@Pc(50) HookReq local50 = new HookReq();
+				local50.onop = local41.onload;
+				local50.component = local41;
+				executeScript(2000000, local50);
+			}
+		}
+	}
+
+	@OriginalMember(owner = "client!gi", name = "a", descriptor = "(ILclient!jl;)V")
+	public static void executeScript(@OriginalArg(1) HookReq arg0) {
+		executeScript(200000, arg0);
+	}
 }

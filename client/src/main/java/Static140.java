@@ -28,7 +28,7 @@ public final class Static140 {
 				}
 			}
 		}
-		arg0.method2179(local15, 24);
+		arg0.tinyenc(local15, 24);
 	}
 
 	@OriginalMember(owner = "client!la", name = "a", descriptor = "(ILclient!e;)I")
@@ -51,32 +51,32 @@ public final class Static140 {
 			return;
 		}
 		if (Static35.anInt1093 >= 100) {
-			Client.addChat(Static186.AUTO_EMPTY, 0, Text.aClass100_1028);
+			Client.addChat(TitleScreen.AUTO_EMPTY, 0, Text.aClass100_1028);
 			return;
 		}
 		@Pc(34) JagString local34 = Static79.toBaseDisplayName(arg0).method3125();
 		@Pc(36) int local36;
 		for (local36 = 0; local36 < Static35.anInt1093; local36++) {
 			if (Static190.aLongArray6[local36] == arg0) {
-				Client.addChat(Static186.AUTO_EMPTY, 0, JagString.join(new JagString[] { local34, Text.aClass100_820 }));
+				Client.addChat(TitleScreen.AUTO_EMPTY, 0, JagString.join(new JagString[] { local34, Text.aClass100_820 }));
 				return;
 			}
 		}
 		for (local36 = 0; local36 < Static9.anInt178; local36++) {
 			if (Static92.aLongArray3[local36] == arg0) {
-				Client.addChat(Static186.AUTO_EMPTY, 0, JagString.join(new JagString[] { Text.aClass100_418, local34, Text.aClass100_873 }));
+				Client.addChat(TitleScreen.AUTO_EMPTY, 0, JagString.join(new JagString[] { Text.aClass100_418, local34, Text.aClass100_873 }));
 				return;
 			}
 		}
-		if (local34.equalsInner(Static173.aClass8_Sub4_Sub1_2.aClass100_364)) {
-			Client.addChat(Static186.AUTO_EMPTY, 0, Text.aClass100_774);
+		if (local34.equalsInner(Client.localPlayer.aClass100_364)) {
+			Client.addChat(TitleScreen.AUTO_EMPTY, 0, Text.aClass100_774);
 			return;
 		}
 		Static190.aLongArray6[Static35.anInt1093] = arg0;
 		Static193.aClass100Array134[Static35.anInt1093++] = Static79.toBaseDisplayName(arg0);
-		Static185.anInt4369 = Client.anInt3028;
-		Static6.aClass3_Sub15_Sub1_1.p1Enc(34);
-		Static6.aClass3_Sub15_Sub1_1.p8(arg0);
+		Client.friendTransmitNum = Client.transmitNum;
+		Client.out.p1Enc(34);
+		Client.out.p8(arg0);
 	}
 
 	@OriginalMember(owner = "client!la", name = "a", descriptor = "(Lsignlink!ll;Ljava/lang/Object;I)V")
@@ -85,7 +85,7 @@ public final class Static140 {
 			return;
 		}
 		for (@Pc(19) int local19 = 0; local19 < 50 && arg0.eventQueue.peekEvent() != null; local19++) {
-			Static231.sleepPrecise(1L);
+			ThreadSleep.sleepPrecise(1L);
 		}
 		if (arg1 != null) {
 			arg0.eventQueue.postEvent(new ActionEvent(arg1, 1001, "dummy"));

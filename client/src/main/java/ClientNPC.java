@@ -16,7 +16,7 @@ public final class ClientNPC extends ClientEntity {
 
 	@OriginalMember(owner = "client!km", name = "b", descriptor = "()I")
 	@Override
-	public final int method4549() {
+	public final int calcBoundingCylinder() {
 		return this.anInt3413;
 	}
 
@@ -32,14 +32,14 @@ public final class ClientNPC extends ClientEntity {
 		if (local74 == null) {
 			return;
 		}
-		this.anInt3413 = local74.method4549();
+		this.anInt3413 = local74.calcBoundingCylinder();
 		@Pc(84) NPCType local84 = this.aClass96_1;
 		if (local84.anIntArray357 != null) {
 			local84 = local84.method2932();
 		}
 		@Pc(140) ModelLit local140;
 		if (Static209.aBoolean240 && local84.aBoolean180) {
-			local140 = Static41.method1043(this.aClass96_1.aByte13, this.aBoolean171, local53 == null ? local29 : local53, this.anInt3412, this.aClass96_1.aShort23, this.anInt3421, this.aClass96_1.aShort24, this.aClass96_1.anInt3713, local74, arg0, local53 == null ? this.anInt3425 : this.anInt3407, this.anInt3424, this.aClass96_1.aByte12);
+			local140 = Static41.method1043(this.aClass96_1.aByte13, this.aBoolean171, local53 == null ? local29 : local53, this.x, this.aClass96_1.aShort23, this.z, this.aClass96_1.aShort24, this.aClass96_1.anInt3713, local74, arg0, local53 == null ? this.anInt3425 : this.anInt3407, this.anInt3424, this.aClass96_1.aByte12);
 			if (GameShell.glRenderer) {
 				@Pc(144) float local144 = Static239.method4179();
 				@Pc(146) float local146 = Static239.method4166();

@@ -2,7 +2,7 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 
 @OriginalClass("client!pe")
-public final class Class120 {
+public final class Occlude {
 
 	@OriginalMember(owner = "client!pe", name = "b", descriptor = "I")
 	public int anInt4444;

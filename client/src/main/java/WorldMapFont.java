@@ -15,6 +15,8 @@ public final class WorldMapFont {
 
 	@OriginalMember(owner = "client!fd", name = "d", descriptor = "Ljava/lang/String;")
 	public static final String aString2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()-_=+[{]};:'@#~,<.>/?\\| " + String.valueOf('Ä') + 'Ë' + 'Ï' + 'Ö' + 'Ü' + 'ä' + 'ë' + 'ï' + 'ö' + 'ü' + 'ÿ' + 'ß' + 'Á' + 'À' + 'É' + 'È' + 'Í' + 'Ì' + 'Ó' + 'Ò' + 'Ú' + 'Ù' + 'á' + 'à' + 'é' + 'è' + 'í' + 'ì' + 'ó' + 'ò' + 'ú' + 'ù' + 'Â' + 'Ê' + 'Î' + 'Ô' + 'Û' + 'â' + 'ê' + 'î' + 'ô' + 'û' + 'Æ' + 'æ';
+	@OriginalMember(owner = "client!fd", name = "e", descriptor = "I")
+	public static final int anInt1956 = aString2.length();
 
 	@OriginalMember(owner = "client!fd", name = "f", descriptor = "[I")
 	private static final int[] anIntArray155 = new int[256];
@@ -40,26 +42,26 @@ public final class WorldMapFont {
 
 	@OriginalMember(owner = "client!fd", name = "<init>", descriptor = "(IZLjava/awt/Component;)V")
 	public WorldMapFont(@OriginalArg(0) int arg0, @OriginalArg(1) boolean arg1, @OriginalArg(2) Component arg2) {
-		this.anInt1955 = Static66.anInt1956 * 9;
+		this.anInt1955 = anInt1956 * 9;
 		this.aBoolean112 = false;
 		@Pc(30) Font local30 = new Font("Helvetica", 1, arg0);
 		@Pc(34) FontMetrics local34 = arg2.getFontMetrics(local30);
 		@Pc(36) int local36;
-		for (local36 = 0; local36 < Static66.anInt1956; local36++) {
+		for (local36 = 0; local36 < anInt1956; local36++) {
 			this.method1509(local30, local34, aString2.charAt(local36), local36, false);
 		}
 		if (this.aBoolean112) {
-			this.anInt1955 = Static66.anInt1956 * 9;
+			this.anInt1955 = anInt1956 * 9;
 			this.aBoolean112 = false;
 			local30 = new Font("Helvetica", 0, arg0);
 			local34 = arg2.getFontMetrics(local30);
-			for (local36 = 0; local36 < Static66.anInt1956; local36++) {
+			for (local36 = 0; local36 < anInt1956; local36++) {
 				this.method1509(local30, local34, aString2.charAt(local36), local36, false);
 			}
 			if (!this.aBoolean112) {
-				this.anInt1955 = Static66.anInt1956 * 9;
+				this.anInt1955 = anInt1956 * 9;
 				this.aBoolean112 = false;
-				for (local36 = 0; local36 < Static66.anInt1956; local36++) {
+				for (local36 = 0; local36 < anInt1956; local36++) {
 					this.method1509(local30, local34, aString2.charAt(local36), local36, true);
 				}
 			}
@@ -118,31 +120,31 @@ public final class WorldMapFont {
 		@Pc(21) int local21 = arg4[arg0 + 3];
 		@Pc(27) int local27 = arg4[arg0 + 4];
 		@Pc(47) int local47 = arg4[arg0] * 16384 + arg4[arg0 + 1] * 128 + arg4[arg0 + 2];
-		@Pc(53) int local53 = local7 + local15 * Static129.anInt3144;
-		@Pc(57) int local57 = Static129.anInt3144 - local21;
+		@Pc(53) int local53 = local7 + local15 * Pix2D.anInt3144;
+		@Pc(57) int local57 = Pix2D.anInt3144 - local21;
 		@Pc(59) int local59 = 0;
 		@Pc(66) int local66;
-		if (local15 < Static129.anInt3147) {
-			local66 = Static129.anInt3147 - local15;
+		if (local15 < Pix2D.anInt3147) {
+			local66 = Pix2D.anInt3147 - local15;
 			local27 -= local66;
-			local15 = Static129.anInt3147;
+			local15 = Pix2D.anInt3147;
 			local47 += local66 * local21;
-			local53 += local66 * Static129.anInt3144;
+			local53 += local66 * Pix2D.anInt3144;
 		}
-		if (local15 + local27 >= Static129.anInt3149) {
-			local27 -= local15 + local27 + 1 - Static129.anInt3149;
+		if (local15 + local27 >= Pix2D.anInt3149) {
+			local27 -= local15 + local27 + 1 - Pix2D.anInt3149;
 		}
-		if (local7 < Static129.anInt3145) {
-			local66 = Static129.anInt3145 - local7;
+		if (local7 < Pix2D.anInt3145) {
+			local66 = Pix2D.anInt3145 - local7;
 			local21 -= local66;
-			local7 = Static129.anInt3145;
+			local7 = Pix2D.anInt3145;
 			local47 += local66;
 			local53 += local66;
 			local59 = local66;
 			local57 += local66;
 		}
-		if (local7 + local21 >= Static129.anInt3148) {
-			local66 = local7 + local21 + 1 - Static129.anInt3148;
+		if (local7 + local21 >= Pix2D.anInt3148) {
+			local66 = local7 + local21 + 1 - Pix2D.anInt3148;
 			local21 -= local66;
 			local59 += local66;
 			local57 += local66;
@@ -151,9 +153,9 @@ public final class WorldMapFont {
 			return;
 		}
 		if (this.aBoolean112) {
-			this.method1505(Static129.anIntArray297, arg4, arg3, local47, local53, local21, local27, local57, local59);
+			this.method1505(Pix2D.anIntArray297, arg4, arg3, local47, local53, local21, local27, local57, local59);
 		} else {
-			this.method1507(Static129.anIntArray297, arg4, arg3, local47, local53, local21, local27, local57, local59);
+			this.method1507(Pix2D.anIntArray297, arg4, arg3, local47, local53, local21, local27, local57, local59);
 		}
 	}
 
@@ -201,7 +203,7 @@ public final class WorldMapFont {
 	public final void method1508(@OriginalArg(0) JagString arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
 		@Pc(5) int local5 = this.method1510(arg0) / 2;
 		@Pc(8) int local8 = this.method1511();
-		if (arg1 - local5 <= Static129.anInt3148 && (arg1 + local5 >= Static129.anInt3145 && (arg2 - local8 <= Static129.anInt3149 && arg2 >= 0))) {
+		if (arg1 - local5 <= Pix2D.anInt3148 && (arg1 + local5 >= Pix2D.anInt3145 && (arg2 - local8 <= Pix2D.anInt3149 && arg2 >= 0))) {
 			this.method1502(arg0, arg1 - local5, arg2, arg3, true);
 		}
 	}

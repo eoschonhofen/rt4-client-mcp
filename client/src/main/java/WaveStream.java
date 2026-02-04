@@ -77,7 +77,12 @@ public final class WaveStream extends PcmStream {
 		this.method416();
 	}
 
-	@OriginalMember(owner = "client!b", name = "b", descriptor = "([III)V")
+    @OriginalMember(owner = "client!b", name = "a", descriptor = "(Lclient!kj;II)Lclient!b;")
+    public static WaveStream newRatePercent(@OriginalArg(0) Wave arg0, @OriginalArg(2) int arg1) {
+        return arg0.aByteArray47 == null || arg0.aByteArray47.length == 0 ? null : new WaveStream(arg0, (int) ((long) arg0.anInt3316 * 256L * (long) 100 / (long) (Static44.frequency * 100)), arg1 << 6);
+    }
+
+    @OriginalMember(owner = "client!b", name = "b", descriptor = "([III)V")
 	@Override
 	public final synchronized void method4408(@OriginalArg(0) int[] arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
 		if (this.anInt343 == 0 && this.anInt351 == 0) {
@@ -552,7 +557,7 @@ public final class WaveStream extends PcmStream {
 	}
 
 	@OriginalMember(owner = "client!b", name = "f", descriptor = "(I)V")
-	public final synchronized void method396(@OriginalArg(0) int arg0) {
+	public final synchronized void setLoopCount(@OriginalArg(0) int arg0) {
 		this.anInt350 = arg0;
 	}
 

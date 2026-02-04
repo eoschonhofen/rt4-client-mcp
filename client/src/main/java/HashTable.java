@@ -52,13 +52,13 @@ public final class HashTable {
 	}
 
 	@OriginalMember(owner = "client!sc", name = "c", descriptor = "(I)Lclient!ab;")
-	public final Linkable method3859() {
+	public final Linkable search() {
 		this.anInt5037 = 0;
-		return this.method3861();
+		return this.findnext();
 	}
 
 	@OriginalMember(owner = "client!sc", name = "d", descriptor = "(I)Lclient!ab;")
-	public final Linkable method3861() {
+	public final Linkable findnext() {
 		@Pc(24) Linkable local24;
 		if (this.anInt5037 > 0 && this.aClass3_193 != this.buckets[this.anInt5037 - 1]) {
 			local24 = this.aClass3_193;

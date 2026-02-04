@@ -4,14 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static128 {
 
-	@OriginalMember(owner = "client!ka", name = "r", descriptor = "[I")
-	public static int[] tot;
-
 	@OriginalMember(owner = "client!ka", name = "u", descriptor = "I")
 	public static int anInt3143;
-
-	@OriginalMember(owner = "client!ka", name = "q", descriptor = "Lclient!ih;")
-	public static final LinkList aClass69_77 = new LinkList();
 
 	@OriginalMember(owner = "client!ka", name = "t", descriptor = "[I")
 	public static final int[] anIntArray294 = new int[] { 0, 0, 2, 0, 0, 2, 1, 1, 0 };

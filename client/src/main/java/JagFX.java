@@ -29,7 +29,13 @@ public final class JagFX {
 		this.anInt5206 = arg0.g2();
 	}
 
-	@OriginalMember(owner = "client!sl", name = "a", descriptor = "()[B")
+    @OriginalMember(owner = "client!sl", name = "a", descriptor = "(Lclient!ve;II)Lclient!sl;")
+    public static JagFX load(@OriginalArg(0) Js5 arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
+        @Pc(5) byte[] local5 = arg0.getFile(arg1, arg2);
+        return local5 == null ? null : new JagFX(new Packet(local5));
+    }
+
+    @OriginalMember(owner = "client!sl", name = "a", descriptor = "()[B")
 	private byte[] method3987() {
 		@Pc(1) int local1 = 0;
 		@Pc(3) int local3;
@@ -61,13 +67,13 @@ public final class JagFX {
 	}
 
 	@OriginalMember(owner = "client!sl", name = "b", descriptor = "()Lclient!kj;")
-	public final Wave method3989() {
+	public final Wave toWave() {
 		@Pc(2) byte[] local2 = this.method3987();
 		return new Wave(22050, local2, this.anInt5207 * 22050 / 1000, this.anInt5206 * 22050 / 1000);
 	}
 
 	@OriginalMember(owner = "client!sl", name = "c", descriptor = "()I")
-	public final int method3990() {
+	public final int optimiseStart() {
 		@Pc(1) int local1 = 9999999;
 		@Pc(3) int local3;
 		for (local3 = 0; local3 < 10; local3++) {

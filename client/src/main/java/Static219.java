@@ -18,9 +18,6 @@ public final class Static219 {
 	@OriginalMember(owner = "client!rl", name = "W", descriptor = "Lclient!na;")
 	private static final JagString aClass100_923 = JagString.wrap("Fri");
 
-	@OriginalMember(owner = "client!rl", name = "X", descriptor = "I")
-	public static int anInt4937 = 0;
-
 	@OriginalMember(owner = "client!rl", name = "db", descriptor = "Lclient!na;")
 	private static final JagString aClass100_927 = JagString.wrap("Sun");
 
@@ -41,10 +38,10 @@ public final class Static219 {
 
 	@OriginalMember(owner = "client!rl", name = "i", descriptor = "(I)V")
 	public static void method3796() {
-		for (@Pc(10) LocChange local10 = (LocChange) Static26.aClass69_27.head(); local10 != null; local10 = (LocChange) Static26.aClass69_27.method2288()) {
-			if (local10.anInt924 == -1) {
-				local10.anInt925 = 0;
-				Static226.method3898(local10);
+		for (@Pc(10) LocChange local10 = (LocChange) Client.aClass69_27.head(); local10 != null; local10 = (LocChange) Client.aClass69_27.next()) {
+			if (local10.endTime == -1) {
+				local10.startTime = 0;
+				Client.locChangeSetOld(local10);
 			} else {
 				local10.unlink();
 			}

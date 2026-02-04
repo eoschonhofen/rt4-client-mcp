@@ -10,26 +10,6 @@ public final class Static155 {
 	@OriginalMember(owner = "client!me", name = "k", descriptor = "I")
 	public static int anInt3718 = -1;
 
-	@OriginalMember(owner = "client!me", name = "P", descriptor = "[I")
-	public static final int[] varcInt = new int[2000];
-
-	@OriginalMember(owner = "client!me", name = "a", descriptor = "(IB)V")
-	public static void method2940(@OriginalArg(0) int arg0) {
-		Static217.anInt4901 = -1;
-		if (arg0 == 37) {
-			Static138.aFloat14 = 3.0F;
-		} else if (arg0 == 50) {
-			Static138.aFloat14 = 4.0F;
-		} else if (arg0 == 75) {
-			Static138.aFloat14 = 6.0F;
-		} else if (arg0 == 100) {
-			Static138.aFloat14 = 8.0F;
-		} else if (arg0 == 200) {
-			Static138.aFloat14 = 16.0F;
-		}
-		Static217.anInt4901 = -1;
-	}
-
 	@OriginalMember(owner = "client!me", name = "a", descriptor = "(ZLclient!na;I)V")
 	public static void method2941(@OriginalArg(0) boolean arg0, @OriginalArg(1) JagString arg1) {
 		@Pc(8) short[] local8 = new short[16];
@@ -63,13 +43,4 @@ public final class Static155 {
 		Static202.method3656(local117, Static169.aShortArray52);
 	}
 
-	@OriginalMember(owner = "client!me", name = "a", descriptor = "(II)I")
-	public static int getVarbit(@OriginalArg(1) int arg0) {
-		@Pc(13) VarBitType local13 = VarBitType.method2449(arg0);
-		@Pc(16) int local16 = local13.anInt3327;
-		@Pc(19) int local19 = local13.anInt3323;
-		@Pc(22) int local22 = local13.anInt3318;
-		@Pc(29) int local29 = Static8.mask[local19 - local22];
-		return Static7.var[local16] >> local22 & local29;
-	}
 }

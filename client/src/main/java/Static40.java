@@ -46,9 +46,9 @@ public final class Static40 {
 			local173 = Static107.anIntArrayArrayArray9[Static155.anInt3718][local70 + 2][local72] + local131 - local119 - local111;
 			local30[local72] = (float) local119 + (((float) local173 * local66 + (float) local155) * local66 + (float) local146) * local66;
 		}
-		Static5.anInt40 = (int) local30[1] * -1;
-		Static138.anInt3439 = (int) local30[0] - Static225.anInt5068 * 128;
-		Static134.anInt3302 = (int) local30[2] - Static142.anInt3483 * 128;
+		Client.anInt40 = (int) local30[1] * -1;
+		Client.anInt3439 = (int) local30[0] - Client.mapBuildBaseX * 128;
+		Client.anInt3302 = (int) local30[2] - Client.mapBuildBaseZ * 128;
 		@Pc(226) float[] local226 = new float[3];
 		local141 = Static75.anInt2119 * 2;
 		for (local131 = 0; local131 < 3; local131++) {
@@ -67,8 +67,8 @@ public final class Static40 {
 		@Pc(392) double local392 = Math.sqrt((double) (local371 * local371 + local363 * local363));
 		Static146.aFloat15 = (float) Math.atan2((double) local382, local392);
 		Static84.aFloat10 = -((float) Math.atan2((double) local363, (double) local371));
-		Static240.anInt5333 = (int) ((double) Static146.aFloat15 * 325.949D) & 0x7FF;
-		Static184.anInt4358 = (int) ((double) Static84.aFloat10 * 325.949D) & 0x7FF;
+		Client.anInt5333 = (int) ((double) Static146.aFloat15 * 325.949D) & 0x7FF;
+		Client.anInt4358 = (int) ((double) Static84.aFloat10 * 325.949D) & 0x7FF;
 	}
 
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(ILclient!ve;Z)Lclient!ok;")
@@ -86,10 +86,10 @@ public final class Static40 {
 
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(IIILclient!be;)V")
 	public static void method1015(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) IfType arg2) {
-		if (Static105.aClass13_14 != null || Static60.aBoolean108 || (arg2 == null || Static89.method1836(arg2) == null)) {
+		if (Client.dragComponent != null || Client.isMenuOpen || (arg2 == null || Static89.method1836(arg2) == null)) {
 			return;
 		}
-		Static105.aClass13_14 = arg2;
+		Client.dragComponent = arg2;
 		Static4.aClass13_1 = Static89.method1836(arg2);
 		Static246.anInt5388 = arg1;
 		Static138.aBoolean172 = false;
@@ -103,13 +103,13 @@ public final class Static40 {
 		local8.p1(10);
 		local8.p2((int) (Math.random() * 99999.0D));
 		local8.p2(530);
-		if (GlobalConfig.LOGIN_USE_STRINGS) {
-			local8.method2171(Static79.toBaseDisplayName(arg4));
+		if (GlobalConfig.ARIOS_LOGIN_STRINGS) {
+			local8.pjstr(Static79.toBaseDisplayName(arg4));
 		} else {
 			local8.p8(arg4);
 		}
 		local8.p4((int) (Math.random() * 9.9999999E7D));
-		local8.method2171(arg3);
+		local8.pjstr(arg3);
 		local8.p4((int) (Math.random() * 9.9999999E7D));
 		local8.p2(Client.affid);
 		local8.p1(arg0);
@@ -118,15 +118,15 @@ public final class Static40 {
 		local8.p2(arg5);
 		local8.p2(arg1);
 		local8.p4((int) (Math.random() * 9.9999999E7D));
-		local8.method2226(Static86.aBigInteger1, Static256.aBigInteger2);
-		Static6.aClass3_Sub15_Sub1_1.pos = 0;
-		Static6.aClass3_Sub15_Sub1_1.p1(36);
-		Static6.aClass3_Sub15_Sub1_1.p1(local8.pos);
-		Static6.aClass3_Sub15_Sub1_1.method2179(local8.data, local8.pos);
-		Static223.anInt5034 = -3;
-		Static179.anInt4261 = 1;
-		Static226.anInt5079 = 0;
-		Static57.anInt1758 = 0;
+		local8.rsaenc(Static86.aBigInteger1, Static256.aBigInteger2);
+		Client.out.pos = 0;
+		Client.out.p1(36);
+		Client.out.p1(local8.pos);
+		Client.out.tinyenc(local8.data, local8.pos);
+		Client.accountCreateError = -3;
+		Client.accountCreateStep = 1;
+		Client.accountCreateWaitingTime = 0;
+		Client.accountCreateFailCount = 0;
 	}
 
 	@OriginalMember(owner = "client!da", name = "h", descriptor = "(B)V")

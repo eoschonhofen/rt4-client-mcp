@@ -7,12 +7,6 @@ public final class Static138 {
 	@OriginalMember(owner = "client!km", name = "sc", descriptor = "[Lclient!qf;")
 	public static AbstractPix32[] aClass3_Sub2_Sub1Array5;
 
-	@OriginalMember(owner = "client!km", name = "uc", descriptor = "F")
-	public static float aFloat14;
-
-	@OriginalMember(owner = "client!km", name = "Pc", descriptor = "I")
-	public static int anInt3439;
-
 	@OriginalMember(owner = "client!km", name = "Yc", descriptor = "I")
 	public static int anInt3443;
 
@@ -61,9 +55,6 @@ public final class Static138 {
 	@OriginalMember(owner = "client!km", name = "Ac", descriptor = "[Lclient!na;")
 	public static final JagString[] aClass100Array102 = new JagString[] { aClass100_649, aClass100_650, aClass100_646, aClass100_655, aClass100_644, aClass100_656, aClass100_642, aClass100_653, aClass100_657, aClass100_658, aClass100_645, aClass100_641 };
 
-	@OriginalMember(owner = "client!km", name = "Bc", descriptor = "[I")
-	public static final int[] anIntArray323 = new int[32];
-
 	@OriginalMember(owner = "client!km", name = "Mc", descriptor = "Lclient!na;")
 	public static final JagString aClass100_652 = JagString.wrap("loginscreen");
 
@@ -72,14 +63,6 @@ public final class Static138 {
 
 	@OriginalMember(owner = "client!km", name = "Sc", descriptor = "Lclient!na;")
 	public static final JagString aClass100_654 = JagString.wrap(":trade:");
-
-	@OriginalMember(owner = "client!km", name = "b", descriptor = "(III)I")
-	public static int method2695(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(14) int local14 = arg1 * 57 + arg0;
-		@Pc(20) int local20 = local14 ^ local14 << 13;
-		@Pc(34) int local34 = Integer.MAX_VALUE & (local20 * local20 * 15731 + 789221) * local20 + 1376312589;
-		return local34 >> 19 & 0xFF;
-	}
 
 	@OriginalMember(owner = "client!km", name = "a", descriptor = "(ILjava/lang/Object;Z)[B")
 	public static byte[] method2696(@OriginalArg(1) Object arg0, @OriginalArg(2) boolean arg1) {
@@ -104,36 +87,36 @@ public final class Static138 {
 	@OriginalMember(owner = "client!km", name = "c", descriptor = "(Z)Z")
 	public static boolean updateLoading() {
 		try {
-			if (Static14.state == 2) {
-				if (Static144.loadingMidiFile == null) {
-					Static144.loadingMidiFile = Static291.load(Static172.midis, Static277.anInt5853, Static226.anInt5085);
-					if (Static144.loadingMidiFile == null) {
+			if (MidiManager.state == 2) {
+				if (MidiManager.loadingMidiFile == null) {
+					MidiManager.loadingMidiFile = MidiFile.load(MidiManager.midis, MidiManager.anInt5853, MidiManager.anInt5085);
+					if (MidiManager.loadingMidiFile == null) {
 						return false;
 					}
 				}
 
-				if (Static27.loadingWaveCache == null) {
-					Static27.loadingWaveCache = new WaveCache(Static78.aClass153_32, Static252.aClass153_103);
+				if (MidiManager.loadingWaveCache == null) {
+					MidiManager.loadingWaveCache = new WaveCache(MidiManager.aClass153_32, MidiManager.aClass153_103);
 				}
 
-				if (Static172.midiPlayer.method4411(Static144.loadingMidiFile, Static210.aClass153_87, Static27.loadingWaveCache)) {
-					Static172.midiPlayer.method4412();
-					Static172.midiPlayer.method4447(Static253.anInt5527);
-					Static172.midiPlayer.method4431(Static72.aBoolean116, Static144.loadingMidiFile);
-					Static14.state = 0;
-					Static144.loadingMidiFile = null;
-					Static27.loadingWaveCache = null;
-					Static172.midis = null;
+				if (MidiManager.midiPlayer.method4411(MidiManager.loadingMidiFile, MidiManager.aClass153_87, MidiManager.loadingWaveCache)) {
+					MidiManager.midiPlayer.method4412();
+					MidiManager.midiPlayer.method4447(MidiManager.anInt5527);
+					MidiManager.midiPlayer.method4431(MidiManager.aBoolean116, MidiManager.loadingMidiFile);
+					MidiManager.state = 0;
+					MidiManager.loadingMidiFile = null;
+					MidiManager.loadingWaveCache = null;
+					MidiManager.midis = null;
 					return true;
 				}
 			}
 		} catch (@Pc(68) Exception ex) {
 			ex.printStackTrace();
-			Static172.midiPlayer.stop();
-			Static172.midis = null;
-			Static144.loadingMidiFile = null;
-			Static14.state = 0;
-			Static27.loadingWaveCache = null;
+			MidiManager.midiPlayer.stop();
+			MidiManager.midis = null;
+			MidiManager.loadingMidiFile = null;
+			MidiManager.state = 0;
+			MidiManager.loadingWaveCache = null;
 		}
 
 		return false;

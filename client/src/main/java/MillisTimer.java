@@ -76,7 +76,7 @@ public final class MillisTimer extends Timer {
 		if (arg0 > this.delta) {
 			this.delta = arg0;
 		}
-		Static231.sleepPrecise((long) this.delta);
+		ThreadSleep.sleepPrecise((long) this.delta);
 		local139 = 0;
 		while (this.count < 256) {
 			this.count += this.ratio;

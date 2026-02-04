@@ -32,7 +32,7 @@ public final class Static112 {
 			} else if (GameShell.glRenderer) {
 				Static46.method1182(local3, local9, local13, 20, Static40.anInt1275, 256 - Static111.anInt2910);
 			} else {
-				Static129.method2484(local3, local9, local13, 20, Static40.anInt1275, 256 - Static111.anInt2910);
+				Pix2D.method2484(local3, local9, local13, 20, Static40.anInt1275, 256 - Static111.anInt2910);
 			}
 		}
 		@Pc(112) int local112;
@@ -49,19 +49,19 @@ public final class Static112 {
 		if (GameShell.glRenderer) {
 			Static46.method1182(local3, local9 + 20, local13, local11 - 20, Static40.anInt1275, 256 - Static111.anInt2910);
 		} else {
-			Static129.method2484(local3, local9 + 20, local13, local11 - 20, Static40.anInt1275, 256 - Static111.anInt2910);
+			Pix2D.method2484(local3, local9 + 20, local13, local11 - 20, Static40.anInt1275, 256 - Static111.anInt2910);
 		}
-		local114 = Static223.mouseY;
-		local112 = Static215.mouseX;
+		local114 = ClientMouseListener.mouseY;
+		local112 = ClientMouseListener.mouseX;
 		@Pc(203) int local203;
 		@Pc(219) int local219;
-		for (local203 = 0; local203 < Static231.anInt5204; local203++) {
-			local219 = (Static231.anInt5204 - local203 - 1) * 15 + local9 + 35;
+		for (local203 = 0; local203 < Client.menuNumEntries; local203++) {
+			local219 = (Client.menuNumEntries - local203 - 1) * 15 + local9 + 35;
 			if (local3 < local112 && local112 < local3 + local13 && local114 > local219 - 13 && local114 < local219 + 3) {
 				if (GameShell.glRenderer) {
 					Static46.method1182(local3, local219 - 13, local13, 16, Static251.anInt5457, 256 - Static232.anInt5208);
 				} else {
-					Static129.method2484(local3, local219 - 13, local13, 16, Static251.anInt5457, 256 - Static232.anInt5208);
+					Pix2D.method2484(local3, local219 - 13, local13, 16, Static251.anInt5457, 256 - Static232.anInt5208);
 				}
 			}
 		}
@@ -101,15 +101,15 @@ public final class Static112 {
 			Static204.aClass3_Sub2_Sub1_10.method1423(local3, local11 + local9 - Static204.aClass3_Sub2_Sub1_10.anInt1859);
 			Static204.aClass3_Sub2_Sub1_10.method1421(local3 + local13 - Static204.aClass3_Sub2_Sub1_10.anInt1867, local9 - -local11 + -Static204.aClass3_Sub2_Sub1_10.anInt1859);
 		}
-		for (local203 = 0; local203 < Static231.anInt5204; local203++) {
-			local219 = (Static231.anInt5204 - local203 - 1) * 15 + local9 + 35;
+		for (local203 = 0; local203 < Client.menuNumEntries; local203++) {
+			local219 = (Client.menuNumEntries - local203 - 1) * 15 + local9 + 35;
 			local418 = Static195.anInt4581;
 			if (local3 < local112 && local13 + local3 > local112 && local219 - 13 < local114 && local114 < local219 + 3) {
 				local418 = Static262.anInt5752;
 			}
 			Static280.aClass3_Sub2_Sub9_43.method2857(Static269.method2228(local203), local3 + 3, local219, local418, 0);
 		}
-		Static121.method2407(Static183.anInt4271, Static229.anInt5138, Static13.anInt436, Static24.anInt761);
+		Client.method2407(Static183.anInt4271, Static229.anInt5138, Static13.anInt436, Static24.anInt761);
 	}
 
 	@OriginalMember(owner = "client!ij", name = "a", descriptor = "(Lclient!km;I)I")

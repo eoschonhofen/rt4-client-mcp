@@ -16,17 +16,6 @@ public final class Static109 {
 	@OriginalMember(owner = "client!ig", name = "i", descriptor = "I")
 	public static int anInt2886;
 
-	@OriginalMember(owner = "client!ig", name = "a", descriptor = "(I)V")
-	public static void method2274() {
-		for (@Pc(7) int local7 = 0; local7 < Static272.anInt5214; local7++) {
-			@Pc(18) int local18 = Static33.anIntArray79[local7];
-			@Pc(22) ClientNPC local22 = Static175.aClass8_Sub4_Sub2Array1[local18];
-			if (local22 != null) {
-				Static263.method4514(local22.aClass96_1.anInt3713, local22);
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!ig", name = "a", descriptor = "(BI)V")
 	public static void method2275(@OriginalArg(1) int arg0) {
 		if (arg0 == -1 || !IfType.open[arg0]) {

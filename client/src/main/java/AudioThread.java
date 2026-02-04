@@ -29,7 +29,7 @@ public final class AudioThread implements Runnable {
 						local19.cycle();
 					}
 				}
-				Static231.sleepPrecise(10L);
+				ThreadSleep.sleepPrecise(10L);
 				Static140.flushEvents(this.signlink, null);
 			}
 		} catch (@Pc(43) Exception local43) {

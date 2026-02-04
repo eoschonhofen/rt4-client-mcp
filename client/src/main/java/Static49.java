@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static49 {
 
-	@OriginalMember(owner = "client!dm", name = "j", descriptor = "Lclient!na;")
-	public static final JagString aClass100_351 = JagString.wrap(" ");
-
 	@OriginalMember(owner = "client!dm", name = "m", descriptor = "I")
 	public static int anInt1459 = 0;
 
@@ -60,70 +57,7 @@ public final class Static49 {
 				local39 = true;
 				if (!local95.method3426()) {
 					local15 = false;
-					Static271.locModelLoadCount++;
-				}
-			}
-		}
-	}
-
-	@OriginalMember(owner = "client!dm", name = "a", descriptor = "(B)V")
-	public static void method1202() {
-		Client.in.gBitStart();
-		@Pc(13) int local13 = Client.in.method2238(8);
-		@Pc(22) int local22;
-		if (Static272.anInt5214 > local13) {
-			for (local22 = local13; local22 < Static272.anInt5214; local22++) {
-				Static52.anIntArray136[Static240.anInt5335++] = Static33.anIntArray79[local22];
-			}
-		}
-		if (Static272.anInt5214 < local13) {
-			throw new RuntimeException("gnpov1");
-		}
-		Static272.anInt5214 = 0;
-		for (local22 = 0; local22 < local13; local22++) {
-			@Pc(61) int local61 = Static33.anIntArray79[local22];
-			@Pc(65) ClientNPC local65 = Static175.aClass8_Sub4_Sub2Array1[local61];
-			@Pc(70) int local70 = Client.in.method2238(1);
-			if (local70 == 0) {
-				Static33.anIntArray79[Static272.anInt5214++] = local61;
-				local65.anInt3430 = Static83.anInt372;
-			} else {
-				@Pc(92) int local92 = Client.in.method2238(2);
-				if (local92 == 0) {
-					Static33.anIntArray79[Static272.anInt5214++] = local61;
-					local65.anInt3430 = Static83.anInt372;
-					Static44.anIntArray106[Static116.anInt2951++] = local61;
-				} else {
-					@Pc(139) int local139;
-					@Pc(149) int local149;
-					if (local92 == 1) {
-						Static33.anIntArray79[Static272.anInt5214++] = local61;
-						local65.anInt3430 = Static83.anInt372;
-						local139 = Client.in.method2238(3);
-						local65.method2684(1, local139);
-						local149 = Client.in.method2238(1);
-						if (local149 == 1) {
-							Static44.anIntArray106[Static116.anInt2951++] = local61;
-						}
-					} else if (local92 == 2) {
-						Static33.anIntArray79[Static272.anInt5214++] = local61;
-						local65.anInt3430 = Static83.anInt372;
-						if (Client.in.method2238(1) == 1) {
-							local139 = Client.in.method2238(3);
-							local65.method2684(2, local139);
-							local149 = Client.in.method2238(3);
-							local65.method2684(2, local149);
-						} else {
-							local139 = Client.in.method2238(3);
-							local65.method2684(0, local139);
-						}
-						local139 = Client.in.method2238(1);
-						if (local139 == 1) {
-							Static44.anIntArray106[Static116.anInt2951++] = local61;
-						}
-					} else if (local92 == 3) {
-						Static52.anIntArray136[Static240.anInt5335++] = local61;
-					}
+					Client.locModelLoadCount++;
 				}
 			}
 		}
@@ -161,13 +95,13 @@ public final class Static49 {
 
 	@OriginalMember(owner = "client!dm", name = "a", descriptor = "(Lclient!be;III)V")
 	public static void method1207(@OriginalArg(0) IfType arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		if (Static231.anInt5204 < 2 && Static260.anInt5014 == 0 && !Static241.aBoolean302) {
+		if (Client.menuNumEntries < 2 && Static260.anInt5014 == 0 && !Client.targetMode) {
 			return;
 		}
 		@Pc(24) JagString local24 = Static13.method471();
 		if (arg0 == null) {
 			@Pc(40) int local40 = Static280.aClass3_Sub2_Sub9_43.method2859(local24, arg2 + 4, arg1 - -15, Static39.aRandom1, Static60.anInt1895);
-			Static133.method4012(arg2 + 4, Static280.aClass3_Sub2_Sub9_43.method2858(local24) + local40, arg1, 15);
+			Client.dirtyArea(arg2 + 4, Static280.aClass3_Sub2_Sub9_43.method2858(local24) + local40, arg1, 15);
 			return;
 		}
 		@Pc(59) PixFontGeneric local59 = arg0.getFont(Static159.aClass36Array12);
@@ -175,17 +109,17 @@ public final class Static49 {
 			local59 = Static280.aClass3_Sub2_Sub9_43;
 		}
 		local59.method2878(local24, arg2, arg1, arg0.anInt445, arg0.anInt459, arg0.colour, arg0.shadowColour, arg0.hAlign, arg0.vAlign, Static39.aRandom1, Static60.anInt1895, Static50.anIntArray132);
-		Static133.method4012(Static50.anIntArray132[0], Static50.anIntArray132[2], Static50.anIntArray132[1], Static50.anIntArray132[3]);
+		Client.dirtyArea(Static50.anIntArray132[0], Static50.anIntArray132[2], Static50.anIntArray132[1], Static50.anIntArray132[3]);
 	}
 
 	@OriginalMember(owner = "client!dm", name = "d", descriptor = "(I)V")
 	public static void method1208() {
-		Static224.aBoolean247 = false;
+		Client.networkError = false;
 		Static231.anInt5202 = 0;
-		Static266.anInt5336 = -3;
-		Static92.anInt2430 = 0;
-		Static184.anInt4348 = 1;
-		Static276.anInt5816 = 0;
+		Client.worldHopError = -3;
+		Client.loginWaitingTime = 0;
+		Client.loginStep = 1;
+		Client.loginFailCount = 0;
 		Static204.anInt4765 = -1;
 	}
 }

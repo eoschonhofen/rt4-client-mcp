@@ -29,21 +29,21 @@ public final class Static260 {
 		if (Static233.anInt5217 >= 100) {
 			@Pc(30) int local30 = Static251.anInt5449 * 128 + 64;
 			@Pc(36) int local36 = Static265.anInt5765 * 128 + 64;
-			@Pc(44) int local44 = Static207.method3685(Static55.anInt1735, local30, local36) - Static57.anInt1744;
-			@Pc(49) int local49 = local44 - Static5.anInt40;
-			@Pc(54) int local54 = local30 - Static138.anInt3439;
-			@Pc(59) int local59 = local36 - Static134.anInt3302;
+			@Pc(44) int local44 = Client.getAvH(Client.minusedlevel, local30, local36) - Static57.anInt1744;
+			@Pc(49) int local49 = local44 - Client.anInt40;
+			@Pc(54) int local54 = local30 - Client.anInt3439;
+			@Pc(59) int local59 = local36 - Client.anInt3302;
 			@Pc(70) int local70 = (int) Math.sqrt((double) (local59 * local59 + local54 * local54));
-			Static240.anInt5333 = (int) (Math.atan2((double) local49, (double) local70) * 325.949D) & 0x7FF;
-			Static184.anInt4358 = (int) (Math.atan2((double) local54, (double) local59) * -325.949D) & 0x7FF;
-			if (Static240.anInt5333 < 128) {
-				Static240.anInt5333 = 128;
+			Client.anInt5333 = (int) (Math.atan2((double) local49, (double) local70) * 325.949D) & 0x7FF;
+			Client.anInt4358 = (int) (Math.atan2((double) local54, (double) local59) * -325.949D) & 0x7FF;
+			if (Client.anInt5333 < 128) {
+				Client.anInt5333 = 128;
 			}
-			if (Static240.anInt5333 > 383) {
-				Static240.anInt5333 = 383;
+			if (Client.anInt5333 > 383) {
+				Client.anInt5333 = 383;
 			}
 		}
-		Static227.anInt5096 = 2;
+		Client.anInt5096 = 2;
 	}
 
 	@OriginalMember(owner = "client!vd", name = "b", descriptor = "(IIII)Z")
@@ -53,7 +53,7 @@ public final class Static260 {
 		}
 		@Pc(10) int local10 = arg1 << 7;
 		@Pc(14) int local14 = arg2 << 7;
-		@Pc(24) int local24 = Static83.groundh[arg0][arg1][arg2] - 1;
+		@Pc(24) int local24 = ClientBuild.groundh[arg0][arg1][arg2] - 1;
 		@Pc(28) int local28 = local24 - 120;
 		@Pc(32) int local32 = local24 - 230;
 		@Pc(36) int local36 = local24 - 238;
@@ -177,7 +177,7 @@ public final class Static260 {
 	@OriginalMember(owner = "client!vd", name = "a", descriptor = "(BZ)V")
 	public static void method3852(@OriginalArg(1) boolean arg0) {
 		@Pc(14) BgSound local14;
-		for (local14 = (BgSound) Static3.aClass69_135.head(); local14 != null; local14 = (BgSound) Static3.aClass69_135.method2288()) {
+		for (local14 = (BgSound) Static3.aClass69_135.head(); local14 != null; local14 = (BgSound) Static3.aClass69_135.next()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
 				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
@@ -191,14 +191,14 @@ public final class Static260 {
 		if (!arg0) {
 			return;
 		}
-		for (local14 = (BgSound) Static152.aClass69_87.head(); local14 != null; local14 = (BgSound) Static152.aClass69_87.method2288()) {
+		for (local14 = (BgSound) Static152.aClass69_87.head(); local14 != null; local14 = (BgSound) Static152.aClass69_87.next()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
 				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;
 			}
 			local14.unlink();
 		}
-		for (local14 = (BgSound) Static93.aClass133_7.method3859(); local14 != null; local14 = (BgSound) Static93.aClass133_7.method3861()) {
+		for (local14 = (BgSound) Static93.aClass133_7.search(); local14 != null; local14 = (BgSound) Static93.aClass133_7.findnext()) {
 			if (local14.aClass3_Sub3_Sub1_1 != null) {
 				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
 				local14.aClass3_Sub3_Sub1_1 = null;

@@ -76,7 +76,7 @@ public final class ColourImageCache {
 			} else {
 				this.aBoolean221 = false;
 			}
-			this.aClass69_103.method2283(local29);
+			this.aClass69_103.pushFront(local29);
 			return this.anIntArrayArray34[local29.anInt4761];
 		}
 	}

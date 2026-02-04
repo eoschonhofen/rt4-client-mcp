@@ -19,34 +19,6 @@ public final class Static280 {
 	@OriginalMember(owner = "client!wl", name = "u", descriptor = "I")
 	public static int anInt5895 = 0;
 
-	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(Lclient!fe;B)V")
-	public static void method4665(@OriginalArg(0) ClientEntity arg0) {
-		if (Static83.anInt372 == arg0.anInt3386 || arg0.anInt3369 == -1 || arg0.anInt3420 != 0 || arg0.anInt3360 + 1 > SeqType.list(arg0.anInt3369).delay[arg0.anInt3425]) {
-			@Pc(35) int local35 = arg0.anInt3386 - arg0.anInt3395;
-			@Pc(41) int local41 = Static83.anInt372 - arg0.anInt3395;
-			@Pc(52) int local52 = arg0.anInt3380 * 128 + arg0.method2693() * 64;
-			@Pc(64) int local64 = arg0.anInt3428 * 128 + arg0.method2693() * 64;
-			@Pc(75) int local75 = arg0.anInt3416 * 128 + arg0.method2693() * 64;
-			@Pc(86) int local86 = arg0.anInt3392 * 128 + arg0.method2693() * 64;
-			arg0.anInt3412 = (local41 * local75 + local52 * (local35 - local41)) / local35;
-			arg0.anInt3421 = (local86 * local41 + local64 * (local35 - local41)) / local35;
-		}
-		arg0.anInt3417 = 0;
-		if (arg0.anInt3431 == 0) {
-			arg0.anInt3400 = 1024;
-		}
-		if (arg0.anInt3431 == 1) {
-			arg0.anInt3400 = 1536;
-		}
-		if (arg0.anInt3431 == 2) {
-			arg0.anInt3400 = 0;
-		}
-		if (arg0.anInt3431 == 3) {
-			arg0.anInt3400 = 512;
-		}
-		arg0.anInt3381 = arg0.anInt3400;
-	}
-
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(IIII)V")
 	public static void method4666(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) int arg2) {
 		@Pc(18) DelayedStateChange local18 = Static238.method4143(11, arg1);
@@ -58,40 +30,40 @@ public final class Static280 {
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "([IIIIIIIIIZB)V")
 	public static void method4667(@OriginalArg(0) int[] arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) int arg8, @OriginalArg(9) boolean arg9) {
 		@Pc(7) int local7 = arg2;
-		if (Static129.anInt3148 <= arg2) {
+		if (Pix2D.anInt3148 <= arg2) {
 			return;
 		}
-		if (arg2 < Static129.anInt3145) {
-			local7 = Static129.anInt3145;
+		if (arg2 < Pix2D.anInt3145) {
+			local7 = Pix2D.anInt3145;
 		}
 		@Pc(30) int local30 = arg7 + arg2;
-		if (Static129.anInt3145 >= local30) {
+		if (Pix2D.anInt3145 >= local30) {
 			return;
 		}
-		if (Static129.anInt3148 < local30) {
-			local30 = Static129.anInt3148;
+		if (Pix2D.anInt3148 < local30) {
+			local30 = Pix2D.anInt3148;
 		}
 		@Pc(43) int local43 = arg8;
-		if (Static129.anInt3149 <= arg8) {
+		if (Pix2D.anInt3149 <= arg8) {
 			return;
 		}
 		@Pc(56) int local56 = arg8 + arg6;
-		if (arg8 < Static129.anInt3147) {
-			local43 = Static129.anInt3147;
+		if (arg8 < Pix2D.anInt3147) {
+			local43 = Pix2D.anInt3147;
 		}
-		if (local56 <= Static129.anInt3147) {
+		if (local56 <= Pix2D.anInt3147) {
 			return;
 		}
-		@Pc(79) int local79 = local7 + Static129.anInt3144 * local43;
+		@Pc(79) int local79 = local7 + Pix2D.anInt3144 * local43;
 		if (arg5 == 9) {
 			arg3 = arg3 + 1 & 0x3;
 			arg5 = 1;
 		}
-		@Pc(99) int local99 = local7 + Static129.anInt3144 - local30;
+		@Pc(99) int local99 = local7 + Pix2D.anInt3144 - local30;
 		local43 -= arg8;
 		@Pc(108) int local108 = arg6 - local43;
-		if (Static129.anInt3149 < local56) {
-			local56 = Static129.anInt3149;
+		if (Pix2D.anInt3149 < local56) {
+			local56 = Pix2D.anInt3149;
 		}
 		if (arg5 == 10) {
 			arg3 = arg3 + 3 & 0x3;
@@ -542,13 +514,13 @@ public final class Static280 {
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(Lclient!be;I)Lclient!be;")
 	public static IfType method4668(@OriginalArg(0) IfType arg0) {
 		if (arg0.layerId != -1) {
-			return Static5.method32(arg0.layerId);
+			return IfType.get(arg0.layerId);
 		}
 		@Pc(28) int local28 = arg0.parentId >>> 16;
-		@Pc(33) HashTableIterator local33 = new HashTableIterator(Static119.aClass133_9);
+		@Pc(33) HashTableIterator local33 = new HashTableIterator(BgSound.aClass133_9);
 		for (@Pc(38) SubInterface local38 = (SubInterface) local33.method2701(); local38 != null; local38 = (SubInterface) local33.method2700()) {
 			if (local28 == local38.anInt5878) {
-				return Static5.method32((int) local38.key);
+				return IfType.get((int) local38.key);
 			}
 		}
 		return null;
@@ -675,30 +647,30 @@ public final class Static280 {
 		@Pc(3) boolean local3 = false;
 		while (!local3) {
 			local3 = true;
-			for (@Pc(13) int local13 = 0; local13 < Static231.anInt5204 - 1; local13++) {
-				if (Static39.aShortArray6[local13] < 1000 && Static39.aShortArray6[local13 + 1] > 1000) {
-					@Pc(41) JagString local41 = Static233.aClass100Array160[local13];
+			for (@Pc(13) int local13 = 0; local13 < Client.menuNumEntries - 1; local13++) {
+				if (Client.menuAction[local13] < 1000 && Client.menuAction[local13 + 1] > 1000) {
+					@Pc(41) JagString local41 = Client.aClass100Array160[local13];
 					local3 = false;
-					Static233.aClass100Array160[local13] = Static233.aClass100Array160[local13 + 1];
-					Static233.aClass100Array160[local13 + 1] = local41;
-					@Pc(61) JagString local61 = Static254.aClass100Array168[local13];
-					Static254.aClass100Array168[local13] = Static254.aClass100Array168[local13 + 1];
-					Static254.aClass100Array168[local13 + 1] = local61;
-					@Pc(79) int local79 = Static196.anIntArray408[local13];
-					Static196.anIntArray408[local13] = Static196.anIntArray408[local13 + 1];
-					Static196.anIntArray408[local13 + 1] = local79;
-					@Pc(97) int local97 = Static56.anIntArray142[local13];
-					Static56.anIntArray142[local13] = Static56.anIntArray142[local13 + 1];
-					Static56.anIntArray142[local13 + 1] = local97;
-					@Pc(115) int local115 = Static190.anIntArray382[local13];
-					Static190.anIntArray382[local13] = Static190.anIntArray382[local13 + 1];
-					Static190.anIntArray382[local13 + 1] = local115;
-					@Pc(133) short local133 = Static39.aShortArray6[local13];
-					Static39.aShortArray6[local13] = Static39.aShortArray6[local13 + 1];
-					Static39.aShortArray6[local13 + 1] = local133;
-					@Pc(151) long local151 = Static159.aLongArray5[local13];
-					Static159.aLongArray5[local13] = Static159.aLongArray5[local13 + 1];
-					Static159.aLongArray5[local13 + 1] = local151;
+					Client.aClass100Array160[local13] = Client.aClass100Array160[local13 + 1];
+					Client.aClass100Array160[local13 + 1] = local41;
+					@Pc(61) JagString local61 = Client.aClass100Array168[local13];
+					Client.aClass100Array168[local13] = Client.aClass100Array168[local13 + 1];
+					Client.aClass100Array168[local13 + 1] = local61;
+					@Pc(79) int local79 = Client.anIntArray408[local13];
+					Client.anIntArray408[local13] = Client.anIntArray408[local13 + 1];
+					Client.anIntArray408[local13 + 1] = local79;
+					@Pc(97) int local97 = Client.anIntArray142[local13];
+					Client.anIntArray142[local13] = Client.anIntArray142[local13 + 1];
+					Client.anIntArray142[local13 + 1] = local97;
+					@Pc(115) int local115 = Client.anIntArray382[local13];
+					Client.anIntArray382[local13] = Client.anIntArray382[local13 + 1];
+					Client.anIntArray382[local13 + 1] = local115;
+					@Pc(133) short local133 = Client.menuAction[local13];
+					Client.menuAction[local13] = Client.menuAction[local13 + 1];
+					Client.menuAction[local13 + 1] = local133;
+					@Pc(151) long local151 = Client.aLongArray5[local13];
+					Client.aLongArray5[local13] = Client.aLongArray5[local13 + 1];
+					Client.aLongArray5[local13 + 1] = local151;
 				}
 			}
 		}

@@ -198,6 +198,49 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 		}
 	}
 
+	@OriginalMember(owner = "client!l", name = "b", descriptor = "(I)V")
+	public static void method2704() {
+		@Pc(7) int local7 = anInt4246;
+		@Pc(9) int local9 = anInt3497;
+		@Pc(16) int local16 = canvasHei - anInt5554 - local7;
+		@Pc(23) int local23 = canvasWid - local9 - anInt1448;
+		if (local9 <= 0 && local23 <= 0 && local7 <= 0 && local16 <= 0) {
+			return;
+		}
+		try {
+			@Pc(46) Container local46;
+			if (aFrame2 != null) {
+				local46 = aFrame2;
+			} else if (frame == null) {
+				local46 = signlink.applet;
+			} else {
+				local46 = frame;
+			}
+			@Pc(59) int local59 = 0;
+			@Pc(61) int local61 = 0;
+			if (frame == local46) {
+				@Pc(68) Insets local68 = frame.getInsets();
+				local61 = local68.left;
+				local59 = local68.top;
+			}
+			@Pc(77) Graphics local77 = local46.getGraphics();
+			local77.setColor(Color.black);
+			if (local9 > 0) {
+				local77.fillRect(local61, local59, local9, canvasHei);
+			}
+			if (local7 > 0) {
+				local77.fillRect(local61, local59, canvasWid, local7);
+			}
+			if (local23 > 0) {
+				local77.fillRect(local61 + canvasWid - local23, local59, local23, canvasHei);
+			}
+			if (local16 > 0) {
+				local77.fillRect(local61, local59 + canvasHei - local16, canvasWid, local16);
+			}
+		} catch (@Pc(132) Exception local132) {
+		}
+	}
+
 	@OriginalMember(owner = "client!rc", name = "focusLost", descriptor = "(Ljava/awt/event/FocusEvent;)V")
 	@Override
 	public final void focusLost(@OriginalArg(0) FocusEvent e) {
@@ -299,7 +342,7 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 	public final void destroy() {
 		if (shell == this && !alreadyshutdown) {
 			killtime = MonotonicTime.currentTime();
-			Static231.sleepPrecise(5000L);
+			ThreadSleep.sleepPrecise(5000L);
 			JagException.signlink = null;
 			this.shutdown(false);
 		}
@@ -534,9 +577,9 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 
 			Static224.method3888();
 			this.addcanvas();
-			Static260.drawArea = Static131.method2579(anInt5554, anInt1448, canvas);
+			Static260.drawArea = PixMap.method2579(anInt5554, anInt1448, canvas);
 			this.maininit();
-			timer = Static70.method1547();
+			timer = Timer.method1547();
 
 			while (killtime == 0L || killtime > MonotonicTime.currentTime()) {
 				updateCount = timer.count(mindel, deltime);
@@ -611,7 +654,7 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 
 			@Pc(76) PrivilegedRequest req = signlink.threadreq(1, this);
 			while (req.status == 0) {
-				Static231.sleepPrecise(10L);
+				ThreadSleep.sleepPrecise(10L);
 			}
 			thread = (Thread) req.result;
 		} catch (@Pc(91) Exception ex) {
@@ -669,7 +712,7 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 
 			@Pc(86) PrivilegedRequest local86 = signlink.threadreq(1, this);
 			while (local86.status == 0) {
-				Static231.sleepPrecise(10L);
+				ThreadSleep.sleepPrecise(10L);
 			}
 
 			thread = (Thread) local86.result;

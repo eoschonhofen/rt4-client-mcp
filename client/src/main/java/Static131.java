@@ -1,4 +1,3 @@
-import java.awt.Component;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
@@ -13,9 +12,6 @@ public final class Static131 {
 
 	@OriginalMember(owner = "client!kd", name = "mb", descriptor = "[Lclient!cl;")
 	public static final AnimFrameSet[] aClass3_Sub2_Sub7Array5 = new AnimFrameSet[14];
-
-	@OriginalMember(owner = "client!kd", name = "ob", descriptor = "I")
-	public static int anInt3251 = 0;
 
 	@OriginalMember(owner = "client!kd", name = "rb", descriptor = "I")
 	public static final int anInt3254 = (int) (Math.random() * 17.0D) - 8;
@@ -59,12 +55,6 @@ public final class Static131 {
 			arg1++;
 			arg0[arg1] = arg3;
 		}
-	}
-
-	@OriginalMember(owner = "client!kd", name = "a", descriptor = "(Ljava/lang/String;B)V")
-	public static void method2577(@OriginalArg(0) String arg0) {
-		System.out.println("Bad " + arg0 + ", Usage: worldid, <live/rc/wip>, <english/german>, <game0/game1>");
-		System.exit(1);
 	}
 
 	@OriginalMember(owner = "client!kd", name = "a", descriptor = "([[F[[II[[FI[ILclient!fj;BLclient!gi;[[FI)V")
@@ -130,20 +120,6 @@ public final class Static131 {
 			local7[local13] = arg6.method1553(arg7, local393, local408, local400, local115, local123, local107);
 		}
 		arg6.method1557(local7);
-	}
-
-	@OriginalMember(owner = "client!kd", name = "a", descriptor = "(IIZLjava/awt/Component;)Lclient!vk;")
-	public static PixMap method2579(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) Component arg2) {
-		try {
-			@Pc(12) Class local12 = Class.forName("JavaPixMap");
-			@Pc(16) PixMap local16 = (PixMap) local12.getDeclaredConstructor().newInstance();
-			local16.method4192(arg0, arg1, arg2);
-			return local16;
-		} catch (@Pc(25) Throwable local25) {
-			@Pc(29) JavaSafePixMap local29 = new JavaSafePixMap();
-			local29.method4192(arg0, arg1, arg2);
-			return local29;
-		}
 	}
 
 	@OriginalMember(owner = "client!kd", name = "a", descriptor = "(IIILclient!ve;)[Lclient!qf;")

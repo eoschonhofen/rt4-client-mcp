@@ -95,7 +95,7 @@ public final class Js5 {
 	}
 
 	@OriginalMember(owner = "client!ve", name = "b", descriptor = "(B)I")
-	public final int method4480() {
+	public final int getCrc() {
 		if (!this.method4484()) {
 			throw new IllegalStateException("");
 		}

@@ -260,6 +260,14 @@ public final class LocType {
 		aClass99_36.method3104();
 	}
 
+	@OriginalMember(owner = "client!pe", name = "a", descriptor = "(BZ)V")
+	public static void method3438(@OriginalArg(1) boolean arg0) {
+		if (arg0 != aBoolean61) {
+			aBoolean61 = arg0;
+			method1854();
+		}
+	}
+
 	@OriginalMember(owner = "client!pb", name = "a", descriptor = "(II)Z")
 	public final boolean method3416(@OriginalArg(1) int arg0) {
 		if (this.anIntArray378 != null) {
@@ -286,9 +294,9 @@ public final class LocType {
 	public final LocType getMultiLoc() {
 		@Pc(26) int local26 = -1;
 		if (this.anInt4425 != -1) {
-			local26 = Static155.getVarbit(this.anInt4425);
+			local26 = VarCache.getVarbit(this.anInt4425);
 		} else if (this.anInt4431 != -1) {
-			local26 = Static7.var[this.anInt4431];
+			local26 = VarCache.var[this.anInt4431];
 		}
 		if (local26 < 0 || local26 >= this.anIntArray380.length - 1 || this.anIntArray380[local26] == -1) {
 			@Pc(84) int local84 = this.anIntArray380[this.anIntArray380.length - 1];

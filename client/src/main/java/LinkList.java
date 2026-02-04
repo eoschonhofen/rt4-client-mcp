@@ -43,7 +43,7 @@ public final class LinkList {
 	}
 
 	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(ZLclient!ab;)V")
-	public final void method2282(@OriginalArg(1) Linkable arg0) {
+	public final void push(@OriginalArg(1) Linkable arg0) {
 		if (arg0.prev != null) {
 			arg0.unlink();
 		}
@@ -54,7 +54,7 @@ public final class LinkList {
 	}
 
 	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(ILclient!ab;)V")
-	public final void method2283(@OriginalArg(1) Linkable arg0) {
+	public final void pushFront(@OriginalArg(1) Linkable arg0) {
 		if (arg0.prev != null) {
 			arg0.unlink();
 		}
@@ -77,7 +77,7 @@ public final class LinkList {
 	}
 
 	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(B)Lclient!ab;")
-	public final Linkable method2287() {
+	public final Linkable popFront() {
 		@Pc(3) Linkable local3 = this.sentinel.next;
 		if (this.sentinel == local3) {
 			return null;
@@ -88,7 +88,7 @@ public final class LinkList {
 	}
 
 	@OriginalMember(owner = "client!ih", name = "e", descriptor = "(I)Lclient!ab;")
-	public final Linkable method2288() {
+	public final Linkable next() {
 		@Pc(12) Linkable local12 = this.cursor;
 		if (local12 == this.sentinel) {
 			this.cursor = null;

@@ -8,14 +8,8 @@ public final class Static169 {
 	@OriginalMember(owner = "client!nf", name = "c", descriptor = "[S")
 	public static short[] aShortArray52;
 
-	@OriginalMember(owner = "client!nf", name = "d", descriptor = "Lclient!fd;")
-	public static WorldMapFont aClass41_5;
-
 	@OriginalMember(owner = "client!nf", name = "e", descriptor = "I")
 	public static int anInt4073;
-
-	@OriginalMember(owner = "client!nf", name = "h", descriptor = "Lclient!be;")
-	public static IfType aClass13_18;
 
 	@OriginalMember(owner = "client!nf", name = "i", descriptor = "I")
 	public static int anInt4075 = -1;
@@ -63,7 +57,7 @@ public final class Static169 {
 		}
 		@Pc(90) PrivilegedRequest local90 = arg3.method5129(arg0, arg1, arg2);
 		while (local90.status == 0) {
-			Static231.sleepPrecise(10L);
+			ThreadSleep.sleepPrecise(10L);
 		}
 		@Pc(103) Frame local103 = (Frame) local90.result;
 		if (local103 == null) {

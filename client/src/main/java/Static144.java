@@ -4,20 +4,14 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static144 {
 
-	@OriginalMember(owner = "client!le", name = "c", descriptor = "Lclient!rf;")
-	public static MidiFile loadingMidiFile;
-
-	@OriginalMember(owner = "client!le", name = "k", descriptor = "Z")
-	public static boolean aBoolean173 = false;
-
 	@OriginalMember(owner = "client!le", name = "a", descriptor = "(IIIIIIIIIII)V")
 	public static void method2735(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) int arg6, @OriginalArg(8) int arg7) {
 		@Pc(9) int local9 = arg3 - arg5;
 		@Pc(14) int local14 = arg1 - arg2;
-		if (Static48.anInt1449 > arg3) {
+		if (WorldMap.anInt1449 > arg3) {
 			local9++;
 		}
-		if (Static181.anInt4296 > arg1) {
+		if (WorldMap.anInt4296 > arg1) {
 			local14++;
 		}
 		@Pc(32) int local32;
@@ -44,15 +38,15 @@ public final class Static144 {
 			local62 = local57 - local47;
 			if (local62 > 0) {
 				local71 = local32 + arg5 >> 6;
-				if (local71 >= 0 && Static248.anIntArrayArrayArray17.length - 1 >= local71) {
+				if (local71 >= 0 && WorldMap.anIntArrayArrayArray17.length - 1 >= local71) {
 					local47 += arg4;
-					local185 = Static248.anIntArrayArrayArray17[local71];
-					@Pc(189) byte[][] local189 = Static34.aByteArrayArrayArray3[local71];
-					@Pc(193) byte[][] local193 = Static90.aByteArrayArrayArray8[local71];
-					@Pc(197) byte[][] local197 = Static70.aByteArrayArrayArray7[local71];
-					@Pc(201) byte[][] local201 = Static125.aByteArrayArrayArray10[local71];
+					local185 = WorldMap.anIntArrayArrayArray17[local71];
+					@Pc(189) byte[][] local189 = WorldMap.aByteArrayArrayArray3[local71];
+					@Pc(193) byte[][] local193 = WorldMap.aByteArrayArrayArray8[local71];
+					@Pc(197) byte[][] local197 = WorldMap.aByteArrayArrayArray7[local71];
+					@Pc(201) byte[][] local201 = WorldMap.aByteArrayArrayArray10[local71];
 					local57 += arg4;
-					@Pc(209) byte[][] local209 = Static229.aByteArrayArrayArray12[local71];
+					@Pc(209) byte[][] local209 = WorldMap.aByteArrayArrayArray12[local71];
 					for (local211 = 0; local211 < local14; local211++) {
 						local222 = arg6 * local211 >> 16;
 						local233 = (local211 + 1) * arg6 >> 16;
@@ -65,10 +59,10 @@ public final class Static144 {
 							local270 = local32 + arg5 & 0x3F;
 							local276 = (local260 << 6) + local270;
 							if (local254 < 0 || local185.length - 1 < local254 || local185[local254] == null) {
-								if (Static269.aClass3_Sub2_Sub4_2.anInt759 != -1) {
-									local312 = Static269.aClass3_Sub2_Sub4_2.anInt759;
+								if (WorldMap.aClass3_Sub2_Sub4_2.anInt759 != -1) {
+									local312 = WorldMap.aClass3_Sub2_Sub4_2.anInt759;
 								} else if ((local211 + arg2 & 0x4) == (arg5 + local32 & 0x4)) {
-									local312 = Static145.anIntArray330[Static26.anInt865 + 1];
+									local312 = WorldMap.anIntArray330[Static26.anInt865 + 1];
 								} else {
 									local312 = 4936552;
 								}
@@ -76,20 +70,20 @@ public final class Static144 {
 									if (local312 == 0) {
 										local312 = 1;
 									}
-									Static129.method2495(local47, local222, local62, local238, local312);
+									Pix2D.method2495(local47, local222, local62, local238, local312);
 									continue;
 								}
 							} else {
 								local312 = local185[local254][local276];
 							}
-							local372 = local189[local254] == null ? 0 : Static145.anIntArray330[local189[local254][local276] & 0xFF];
+							local372 = local189[local254] == null ? 0 : WorldMap.anIntArray330[local189[local254][local276] & 0xFF];
 							if (local312 == 0) {
 								local312 = 1;
 							}
-							@Pc(395) int local395 = local209[local254] == null ? 0 : Static145.anIntArray330[local209[local254][local276] & 0xFF];
+							@Pc(395) int local395 = local209[local254] == null ? 0 : WorldMap.anIntArray330[local209[local254][local276] & 0xFF];
 							@Pc(437) int local437;
 							if (local372 == 0 && local395 == 0) {
-								Static129.method2495(local47, local222, local62, local238, local312);
+								Pix2D.method2495(local47, local222, local62, local238, local312);
 							} else {
 								@Pc(433) byte local433;
 								if (local372 != 0) {
@@ -99,9 +93,9 @@ public final class Static144 {
 									local433 = local193[local254] == null ? 0 : local193[local254][local276];
 									local437 = local433 & 0xFC;
 									if (local437 == 0 || local62 <= 1 || local238 <= 1) {
-										Static129.method2495(local47, local222, local62, local238, local372);
+										Pix2D.method2495(local47, local222, local62, local238, local372);
 									} else {
-										Static280.method4667(Static129.anIntArray297, local372, local47, local433 & 0x3, local312, local437 >> 2, local238, local62, local222, true);
+										Static280.method4667(Pix2D.anIntArray297, local372, local47, local433 & 0x3, local312, local437 >> 2, local238, local62, local222, true);
 									}
 								}
 								if (local395 != 0) {
@@ -111,9 +105,9 @@ public final class Static144 {
 									local433 = local201[local254][local276];
 									local437 = local433 & 0xFC;
 									if (local437 == 0 || local62 <= 1 || local238 <= 1) {
-										Static129.method2495(local47, local222, local62, local238, local395);
+										Pix2D.method2495(local47, local222, local62, local238, local395);
 									}
-									Static280.method4667(Static129.anIntArray297, local395, local47, local433 & 0x3, 0, local437 >> 2, local238, local62, local222, local372 == 0);
+									Static280.method4667(Pix2D.anIntArray297, local395, local47, local433 & 0x3, 0, local437 >> 2, local238, local62, local222, local372 == 0);
 								}
 							}
 							if (local197[local254] != null) {
@@ -136,42 +130,42 @@ public final class Static144 {
 										local546 -= 4;
 									}
 									if (local546 == 1) {
-										Static129.method2490(local47, local222, local238, local575);
+										Pix2D.method2490(local47, local222, local238, local575);
 									} else if (local546 == 2) {
-										Static129.method2489(local47, local222, local62, local575);
+										Pix2D.method2489(local47, local222, local62, local575);
 									} else if (local546 == 3) {
-										Static129.method2490(local437, local222, local238, local575);
+										Pix2D.method2490(local437, local222, local238, local575);
 									} else if (local546 == 4) {
-										Static129.method2489(local47, local569, local62, local575);
+										Pix2D.method2489(local47, local569, local62, local575);
 									} else if (local546 == 9) {
-										Static129.method2490(local47, local222, local238, 16777215);
-										Static129.method2489(local47, local222, local62, local575);
+										Pix2D.method2490(local47, local222, local238, 16777215);
+										Pix2D.method2489(local47, local222, local62, local575);
 									} else if (local546 == 10) {
-										Static129.method2490(local437, local222, local238, 16777215);
-										Static129.method2489(local47, local222, local62, local575);
+										Pix2D.method2490(local437, local222, local238, 16777215);
+										Pix2D.method2489(local47, local222, local62, local575);
 									} else if (local546 == 11) {
-										Static129.method2490(local437, local222, local238, 16777215);
-										Static129.method2489(local47, local569, local62, local575);
+										Pix2D.method2490(local437, local222, local238, 16777215);
+										Pix2D.method2489(local47, local569, local62, local575);
 									} else if (local546 == 12) {
-										Static129.method2490(local47, local222, local238, 16777215);
-										Static129.method2489(local47, local569, local62, local575);
+										Pix2D.method2490(local47, local222, local238, 16777215);
+										Pix2D.method2489(local47, local569, local62, local575);
 									} else if (local546 == 17) {
-										Static129.method2489(local47, local222, 1, local575);
+										Pix2D.method2489(local47, local222, 1, local575);
 									} else if (local546 == 18) {
-										Static129.method2489(local437, local222, 1, local575);
+										Pix2D.method2489(local437, local222, 1, local575);
 									} else if (local546 == 19) {
-										Static129.method2489(local437, local569, 1, local575);
+										Pix2D.method2489(local437, local569, 1, local575);
 									} else if (local546 == 20) {
-										Static129.method2489(local47, local569, 1, local575);
+										Pix2D.method2489(local47, local569, 1, local575);
 									} else {
 										@Pc(705) int local705;
 										if (local546 == 25) {
 											for (local705 = 0; local705 < local238; local705++) {
-												Static129.method2489(local705 + local47, -local705 + local569, 1, local575);
+												Pix2D.method2489(local705 + local47, -local705 + local569, 1, local575);
 											}
 										} else if (local546 == 26) {
 											for (local705 = 0; local705 < local238; local705++) {
-												Static129.method2489(local705 + local47, local222 + local705, 1, local575);
+												Pix2D.method2489(local705 + local47, local222 + local705, 1, local575);
 											}
 										}
 									}
@@ -182,10 +176,10 @@ public final class Static144 {
 				} else {
 					local47 += arg4;
 					for (@Pc(90) int local90 = 0; local90 < local14; local90++) {
-						if (Static269.aClass3_Sub2_Sub4_2.anInt759 != -1) {
-							local104 = Static269.aClass3_Sub2_Sub4_2.anInt759;
+						if (WorldMap.aClass3_Sub2_Sub4_2.anInt759 != -1) {
+							local104 = WorldMap.aClass3_Sub2_Sub4_2.anInt759;
 						} else if ((local32 + arg5 & 0x4) == (local90 + arg2 & 0x4)) {
-							local104 = Static145.anIntArray330[Static26.anInt865 + 1];
+							local104 = WorldMap.anIntArray330[Static26.anInt865 + 1];
 						} else {
 							local104 = 4936552;
 						}
@@ -195,7 +189,7 @@ public final class Static144 {
 						local145 = (arg6 * local90 >> 16) + arg0;
 						local157 = arg0 + ((local90 + 1) * arg6 >> 16);
 						local162 = local157 - local145;
-						Static129.method2495(local47, local145, local62, local162, local104);
+						Pix2D.method2495(local47, local145, local62, local162, local104);
 					}
 				}
 			}
@@ -207,8 +201,8 @@ public final class Static144 {
 			if (local62 > 0) {
 				local47 += arg4;
 				local71 = arg5 + local32 >> 6;
-				if (local71 >= 0 && Static58.anIntArrayArrayArray5.length - 1 >= local71) {
-					local185 = Static58.anIntArrayArrayArray5[local71];
+				if (local71 >= 0 && WorldMap.anIntArrayArrayArray5.length - 1 >= local71) {
+					local185 = WorldMap.anIntArrayArrayArray5[local71];
 					for (local104 = -2; local104 < local14 + 2; local104++) {
 						local145 = local104 * arg6 >> 16;
 						local157 = (local104 + 1) * arg6 >> 16;

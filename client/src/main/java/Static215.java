@@ -2,9 +2,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static215 {
 
-	@OriginalMember(owner = "client!rh", name = "d", descriptor = "I")
-	public static int anInt4866;
-
 	@OriginalMember(owner = "client!rh", name = "h", descriptor = "Lclient!rk;")
 	public static PixFontGeneric aClass3_Sub2_Sub9_32;
 
@@ -16,8 +13,5 @@ public final class Static215 {
 
 	@OriginalMember(owner = "client!rh", name = "k", descriptor = "I")
 	public static int anInt4870 = 0;
-
-	@OriginalMember(owner = "client!rh", name = "o", descriptor = "I")
-	public static int mouseX = 0;
 
 }

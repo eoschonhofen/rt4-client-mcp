@@ -4,14 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static167 {
 
-	@OriginalMember(owner = "client!nd", name = "s", descriptor = "I")
-	public static int anInt4069;
-
 	@OriginalMember(owner = "client!nd", name = "y", descriptor = "Lclient!mm;")
 	public static Pix32 aClass3_Sub2_Sub1_Sub1_3;
-
-	@OriginalMember(owner = "client!nd", name = "q", descriptor = "[[I")
-	public static final int[][] anIntArrayArray31 = new int[104][104];
 
 	@OriginalMember(owner = "client!nd", name = "r", descriptor = "Lclient!na;")
 	public static final JagString aClass100_781 = JagString.wrap("zap");
@@ -32,7 +26,7 @@ public final class Static167 {
 
 	@OriginalMember(owner = "client!nd", name = "a", descriptor = "(ILclient!ve;)V")
 	public static void method3172(@OriginalArg(1) Js5 arg0) {
-		Static262.anInt5754 = arg0.getGroupId(Static27.aClass100_165);
+		Static262.anInt5754 = arg0.getGroupId(TitleScreen.aClass100_165);
 		Static136.anInt3322 = arg0.getGroupId(Static165.aClass100_776);
 	}
 }

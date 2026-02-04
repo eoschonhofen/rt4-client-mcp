@@ -7,9 +7,6 @@ public final class Static181 {
 	@OriginalMember(owner = "client!oi", name = "h", descriptor = "Lclient!qf;")
 	public static AbstractPix32 aClass3_Sub2_Sub1_9;
 
-	@OriginalMember(owner = "client!oi", name = "m", descriptor = "I")
-	public static int anInt4296;
-
 	@OriginalMember(owner = "client!oi", name = "b", descriptor = "Lclient!na;")
 	public static final JagString aClass100_810 = JagString.wrap("::qa_op_test");
 
@@ -38,7 +35,7 @@ public final class Static181 {
 		if (GameShell.glRenderer) {
 			Static46.method1184();
 		} else {
-			Static129.method2492();
+			Pix2D.method2492();
 		}
 		Static78.aClass3_Sub2_Sub1_3 = Static130.method2514(arg0, Static262.anInt5754);
 		@Pc(20) int local20 = GameShell.anInt5554;

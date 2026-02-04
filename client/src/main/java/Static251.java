@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static251 {
 
-	@OriginalMember(owner = "client!ug", name = "d", descriptor = "[I")
-	public static int[] comtot;
-
 	@OriginalMember(owner = "client!ug", name = "h", descriptor = "I")
 	public static int anInt5449;
 
@@ -19,54 +16,9 @@ public final class Static251 {
 	@OriginalMember(owner = "client!ug", name = "e", descriptor = "I")
 	public static int anInt5447 = 0;
 
-	@OriginalMember(owner = "client!ug", name = "m", descriptor = "I")
-	public static int anInt5454 = 0;
-
-	@OriginalMember(owner = "client!ug", name = "o", descriptor = "I")
-	public static int anInt5456 = 0;
-
-	@OriginalMember(owner = "client!ug", name = "r", descriptor = "I")
-	public static int anInt5459 = 0;
-
-	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(B)V")
-	public static void method4274() {
-		for (@Pc(10) LocChange local10 = (LocChange) Static26.aClass69_27.head(); local10 != null; local10 = (LocChange) Static26.aClass69_27.method2288()) {
-			if (local10.anInt924 > 0) {
-				local10.anInt924--;
-			}
-			if (local10.anInt924 != 0) {
-				if (local10.anInt925 > 0) {
-					local10.anInt925--;
-				}
-				if (local10.anInt925 == 0 && local10.anInt928 >= 1 && local10.anInt916 >= 1 && local10.anInt928 <= 102 && local10.anInt916 <= 102 && (local10.anInt929 < 0 || Static113.method3557(local10.anInt929, local10.anInt926))) {
-					Static79.method1698(local10.anInt929, local10.anInt928, local10.anInt918, local10.anInt922, local10.anInt916, local10.anInt926, local10.anInt927);
-					local10.anInt925 = -1;
-					if (local10.anInt921 == local10.anInt929 && local10.anInt921 == -1) {
-						local10.unlink();
-					} else if (local10.anInt929 == local10.anInt921 && local10.anInt922 == local10.anInt923 && local10.anInt920 == local10.anInt926) {
-						local10.unlink();
-					}
-				}
-			} else if (local10.anInt921 < 0 || Static113.method3557(local10.anInt921, local10.anInt920)) {
-				Static79.method1698(local10.anInt921, local10.anInt928, local10.anInt918, local10.anInt923, local10.anInt916, local10.anInt920, local10.anInt927);
-				local10.unlink();
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!ug", name = "b", descriptor = "(B)V")
 	public static void method4276() {
 		Static45.aClass99_6.clear();
-	}
-
-	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(I)V")
-	public static void method4277() {
-		if (ClientMouseListener.aClass150_1 != null) {
-			@Pc(5) ClientMouseListener local5 = ClientMouseListener.aClass150_1;
-			synchronized (ClientMouseListener.aClass150_1) {
-				ClientMouseListener.aClass150_1 = null;
-			}
-		}
 	}
 
 	@OriginalMember(owner = "client!ug", name = "a", descriptor = "(II)V")

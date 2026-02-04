@@ -17,14 +17,8 @@ public final class Static191 {
 	@OriginalMember(owner = "client!pg", name = "R", descriptor = "[I")
 	public static final int[] anIntArray385 = new int[anInt4506];
 
-	@OriginalMember(owner = "client!pg", name = "S", descriptor = "I")
-	public static int anInt4502 = 0;
-
 	@OriginalMember(owner = "client!pg", name = "T", descriptor = "[I")
 	public static final int[] anIntArray386 = new int[] { 76, 8, 137, 4, 0, 1, 38, 2, 19 };
-
-	@OriginalMember(owner = "client!pg", name = "V", descriptor = "I")
-	public static final int anInt4504 = 50;
 
 	@OriginalMember(owner = "client!pg", name = "X", descriptor = "Lclient!na;")
 	public static final JagString aClass100_843 = Text.aClass100_847;

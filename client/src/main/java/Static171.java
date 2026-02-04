@@ -14,19 +14,6 @@ public final class Static171 {
 	@OriginalMember(owner = "client!ni", name = "n", descriptor = "Lclient!sm;")
 	public static Class139 aClass139_1 = new Class139();
 
-	@OriginalMember(owner = "client!ni", name = "a", descriptor = "(ILclient!na;)I")
-	public static int method3218(@OriginalArg(1) JagString arg0) {
-		if (Static203.aClass134_1 == null || arg0.length() == 0) {
-			return -1;
-		}
-		for (@Pc(20) int local20 = 0; local20 < Static203.aClass134_1.anInt5074; local20++) {
-			if (Static203.aClass134_1.aClass100Array153[local20].method3140(Static101.aClass100_538, Static197.aClass100_872).method3142(arg0)) {
-				return local20;
-			}
-		}
-		return -1;
-	}
-
 	@OriginalMember(owner = "client!ni", name = "a", descriptor = "(BILjava/util/Random;)I")
 	public static int method3219(@OriginalArg(1) int arg0, @OriginalArg(2) Random arg1) {
 		if (arg0 <= 0) {
@@ -43,10 +30,4 @@ public final class Static171 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ni", name = "a", descriptor = "(ILclient!na;I)V")
-	public static void method3221(@OriginalArg(1) JagString arg0, @OriginalArg(2) int arg1) {
-		Static6.aClass3_Sub15_Sub1_1.p1Enc(188);
-		Static6.aClass3_Sub15_Sub1_1.method2216(arg1);
-		Static6.aClass3_Sub15_Sub1_1.p8(arg0.method3158());
-	}
 }

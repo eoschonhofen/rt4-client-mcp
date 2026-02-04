@@ -109,7 +109,7 @@ public final class MonochromeImageCache {
 			} else {
 				this.aBoolean195 = false;
 			}
-			this.aClass69_96.method2283(local44);
+			this.aClass69_96.pushFront(local44);
 			return this.anIntArrayArrayArray13[local44.anInt3468];
 		}
 	}

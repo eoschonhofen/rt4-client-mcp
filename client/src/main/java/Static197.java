@@ -16,9 +16,6 @@ public final class Static197 {
 	@OriginalMember(owner = "client!pm", name = "Y", descriptor = "Lclient!na;")
 	public static final JagString aClass100_872 = JagString.wrap("<br>");
 
-	@OriginalMember(owner = "client!pm", name = "ab", descriptor = "Z")
-	public static boolean aBoolean228 = true;
-
 	@OriginalMember(owner = "client!pm", name = "a", descriptor = "(ILsignlink!ll;)[Lclient!od;")
 	public static DisplayMode[] method3558(@OriginalArg(1) SignLink arg0) {
 		if (!arg0.method5111()) {
@@ -26,7 +23,7 @@ public final class Static197 {
 		}
 		@Pc(17) PrivilegedRequest local17 = arg0.method5132();
 		while (local17.status == 0) {
-			Static231.sleepPrecise(10L);
+			ThreadSleep.sleepPrecise(10L);
 		}
 		if (local17.status == 2) {
 			return new DisplayMode[0];
@@ -93,8 +90,8 @@ public final class Static197 {
 			GameShell.anInt5554 = 503;
 		}
 		if (arg0) {
-			Static31.shutdown(GameShell.canvas);
-			Static223.shutdown(GameShell.canvas);
+			ClientKeyboardListener.shutdown(GameShell.canvas);
+			ClientMouseListener.shutdown(GameShell.canvas);
 			if (Client.mouseWheel != null) {
 				Client.mouseWheel.removeListeners(GameShell.canvas);
 			}
@@ -122,29 +119,29 @@ public final class Static197 {
 		if (arg2 && arg1 > 0) {
 			GameShell.canvas.setIgnoreRepaint(true);
 			if (!Static211.aBoolean73) {
-				Static65.method1500();
+				World.method1500();
 				Static260.drawArea = null;
-				Static260.drawArea = Static131.method2579(GameShell.anInt5554, GameShell.anInt1448, GameShell.canvas);
-				Static129.method2492();
+				Static260.drawArea = PixMap.method2579(GameShell.anInt5554, GameShell.anInt1448, GameShell.canvas);
+				Pix2D.method2492();
 				if (Client.state == 5) {
 					Static182.method3359(true, Static280.aClass3_Sub2_Sub9_43);
 				} else {
-					Static114.messageBox(false, Text.aClass100_621);
+					Client.messageBox(false, Text.aClass100_621);
 				}
 				try {
 					@Pc(269) Graphics local269 = GameShell.canvas.getGraphics();
 					Static260.drawArea.method4186(local269);
 				} catch (@Pc(277) Exception local277) {
 				}
-				Static139.method2704();
+				GameShell.method2704();
 				if (arg3 == 0) {
-					Static260.drawArea = Static131.method2579(503, 765, GameShell.canvas);
+					Static260.drawArea = PixMap.method2579(503, 765, GameShell.canvas);
 				} else {
 					Static260.drawArea = null;
 				}
 				@Pc(300) PrivilegedRequest local300 = GameShell.signlink.method5123(Static215.client.getClass());
 				while (local300.status == 0) {
-					Static231.sleepPrecise(100L);
+					ThreadSleep.sleepPrecise(100L);
 				}
 				if (local300.status == 1) {
 					Static211.aBoolean73 = true;
@@ -161,30 +158,30 @@ public final class Static197 {
 		if (arg1 > 0 && arg3 == 0) {
 			GameShell.thread.setPriority(5);
 			Static260.drawArea = null;
-			Static268.method4580();
-			((WorldTextureProvider) Static94.anInterface1_2).method3248(200);
+			SoftwareModelLit.method4580();
+			((WorldTextureProvider) Pix3D.anInterface1_2).method3248(200);
 			if (Static178.highDetailLighting) {
-				Static94.method1911(0.7F);
+				Pix3D.method1911(0.7F);
 			}
 			Static114.method4637();
 		} else if (arg1 == 0 && arg3 > 0) {
 			GameShell.thread.setPriority(1);
-			Static260.drawArea = Static131.method2579(503, 765, GameShell.canvas);
-			Static268.method4583();
+			Static260.drawArea = PixMap.method2579(503, 765, GameShell.canvas);
+			SoftwareModelLit.method4583();
 			Static76.method1643();
-			((WorldTextureProvider) Static94.anInterface1_2).method3248(20);
+			((WorldTextureProvider) Pix3D.anInterface1_2).method3248(20);
 			if (Static178.highDetailLighting) {
 				if (Static113.anInt4609 == 1) {
-					Static94.method1911(0.9F);
+					Pix3D.method1911(0.9F);
 				}
 				if (Static113.anInt4609 == 2) {
-					Static94.method1911(0.8F);
+					Pix3D.method1911(0.8F);
 				}
 				if (Static113.anInt4609 == 3) {
-					Static94.method1911(0.7F);
+					Pix3D.method1911(0.7F);
 				}
 				if (Static113.anInt4609 == 4) {
-					Static94.method1911(0.6F);
+					Pix3D.method1911(0.6F);
 				}
 			}
 			Static95.method1939();
@@ -199,14 +196,14 @@ public final class Static197 {
 		} else {
 			Static124.aBoolean156 = false;
 		}
-		if (Static154.anInt3711 != -1) {
-			Static210.method3712(true);
+		if (Client.toplevelinterface != -1) {
+			Client.method3712(true);
 		}
 		if (Client.stream != null && (Client.state == 30 || Client.state == 25)) {
-			Static59.method1373();
+			Client.method1373();
 		}
 		for (@Pc(466) int local466 = 0; local466 < 100; local466++) {
-			Static186.aBooleanArray100[local466] = true;
+			Client.componentRedrawRequested1[local466] = true;
 		}
 		GameShell.fullredraw = true;
 	}

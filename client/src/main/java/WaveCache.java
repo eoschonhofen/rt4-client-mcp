@@ -33,11 +33,11 @@ public final class WaveCache {
 		if (local37 != null) {
 			return local37;
 		} else if (arg0 == null || arg0[0] > 0) {
-			@Pc(59) JagFX local59 = Static292.method3988(this.aClass153_52, arg1, arg2);
+			@Pc(59) JagFX local59 = JagFX.load(this.aClass153_52, arg1, arg2);
 			if (local59 == null) {
 				return null;
 			}
-			local37 = local59.method3989();
+			local37 = local59.toWave();
 			this.aClass133_12.put(local37, local30);
 			if (arg0 != null) {
 				arg0[0] -= local37.aByteArray47.length;

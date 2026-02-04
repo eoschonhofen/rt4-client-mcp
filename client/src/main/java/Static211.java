@@ -7,9 +7,6 @@ public final class Static211 {
 	@OriginalMember(owner = "client!rc", name = "R", descriptor = "Z")
 	private static boolean aBoolean74;
 
-	@OriginalMember(owner = "client!rc", name = "p", descriptor = "I")
-	public static int anInt1142 = 0;
-
 	@OriginalMember(owner = "client!rc", name = "G", descriptor = "Lclient!na;")
 	public static final JagString aClass100_230 = JagString.wrap("");
 
@@ -24,8 +21,8 @@ public final class Static211 {
 
 	@OriginalMember(owner = "client!rc", name = "a", descriptor = "(Lclient!na;Z)Lclient!na;")
 	public static JagString method923(@OriginalArg(0) JagString arg0) {
-		@Pc(12) int local12 = Static171.method3218(arg0);
-		return local12 == -1 ? Static93.aClass100_517 : Static203.aClass134_1.aClass100Array153[local12].method3140(Static101.aClass100_538, Static197.aClass100_872);
+		@Pc(12) int local12 = WorldMap.method3218(arg0);
+		return local12 == -1 ? Static93.aClass100_517 : WorldMap.aClass134_1.aClass100Array153[local12].method3140(Static101.aClass100_538, Static197.aClass100_872);
 	}
 
 	@OriginalMember(owner = "client!rc", name = "a", descriptor = "(Z)V")

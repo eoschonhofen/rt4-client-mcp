@@ -259,6 +259,14 @@ public final class ObjType {
 		aClass99_16.method3102(5);
 	}
 
+	@OriginalMember(owner = "client!al", name = "a", descriptor = "(ZI)V")
+	public static void method186(@OriginalArg(0) boolean arg0) {
+		if (arg0 != aBoolean276) {
+			aBoolean276 = arg0;
+			method3302();
+		}
+	}
+
 	@OriginalMember(owner = "client!h", name = "a", descriptor = "(ZZ)Z")
 	public final boolean method1816(@OriginalArg(0) boolean arg0) {
 		@Pc(6) int local6 = this.anInt2372;

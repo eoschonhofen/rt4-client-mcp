@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static279 {
 
-	@OriginalMember(owner = "client!wk", name = "v", descriptor = "[I")
-	public static int[] ligtot;
-
 	@OriginalMember(owner = "client!wk", name = "u", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1106 = JagString.wrap("::clientjs5drop");
 

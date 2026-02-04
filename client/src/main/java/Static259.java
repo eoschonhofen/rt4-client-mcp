@@ -14,6 +14,4 @@ public final class Static259 {
 	@OriginalMember(owner = "client!vc", name = "bb", descriptor = "[S")
 	public static short[] aShortArray87 = new short[256];
 
-	@OriginalMember(owner = "client!vc", name = "eb", descriptor = "[I")
-	public static final int[] anIntArray514 = new int[4096];
 }

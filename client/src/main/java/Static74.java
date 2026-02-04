@@ -28,16 +28,16 @@ public final class Static74 {
 		}
 		@Pc(54) int local54 = arg0 * (arg4 - local35 - 32) / (arg1 - arg4);
 		if (!GameShell.glRenderer) {
-			Static129.method2495(arg2, arg3 + 16, 16, arg4 - 32, Static182.anInt4306);
-			Static129.method2495(arg2, local54 + arg3 + 16, 16, local35, Static53.anInt1704);
-			Static129.method2490(arg2, local54 + arg3 + 16, local35, Static219.anInt4938);
-			Static129.method2490(arg2 + 1, local54 + 16 + arg3, local35, Static219.anInt4938);
-			Static129.method2489(arg2, arg3 + local54 + 16, 16, Static219.anInt4938);
-			Static129.method2489(arg2, arg3 + local54 + 17, 16, Static219.anInt4938);
-			Static129.method2490(arg2 + 15, local54 + 16 + arg3, local35, Static20.anInt671);
-			Static129.method2490(arg2 + 14, arg3 - -17 - -local54, local35 - 1, Static20.anInt671);
-			Static129.method2489(arg2, local35 + arg3 + local54 + 15, 16, Static20.anInt671);
-			Static129.method2489(arg2 + 1, local35 + arg3 - (-local54 + -14), 15, Static20.anInt671);
+			Pix2D.method2495(arg2, arg3 + 16, 16, arg4 - 32, Static182.anInt4306);
+			Pix2D.method2495(arg2, local54 + arg3 + 16, 16, local35, Static53.anInt1704);
+			Pix2D.method2490(arg2, local54 + arg3 + 16, local35, Static219.anInt4938);
+			Pix2D.method2490(arg2 + 1, local54 + 16 + arg3, local35, Static219.anInt4938);
+			Pix2D.method2489(arg2, arg3 + local54 + 16, 16, Static219.anInt4938);
+			Pix2D.method2489(arg2, arg3 + local54 + 17, 16, Static219.anInt4938);
+			Pix2D.method2490(arg2 + 15, local54 + 16 + arg3, local35, Static20.anInt671);
+			Pix2D.method2490(arg2 + 14, arg3 - -17 - -local54, local35 - 1, Static20.anInt671);
+			Pix2D.method2489(arg2, local35 + arg3 + local54 + 15, 16, Static20.anInt671);
+			Pix2D.method2489(arg2 + 1, local35 + arg3 - (-local54 + -14), 15, Static20.anInt671);
 			return;
 		}
 		Static46.method1186(arg2, arg3 + 16, 16, arg4 - 32, Static182.anInt4306);
@@ -66,23 +66,6 @@ public final class Static74 {
 		}
 		Static150.method2801(local17, local19, arg0, false);
 		Static111.method2291(arg0, local17, local19);
-	}
-
-	@OriginalMember(owner = "client!fn", name = "c", descriptor = "(II)V")
-	public static void method1626(@OriginalArg(0) int arg0) {
-		if (arg0 == -1 || !IfType.openInterface(arg0)) {
-			return;
-		}
-		@Pc(31) IfType[] local31 = IfType.list[arg0];
-		for (@Pc(33) int local33 = 0; local33 < local31.length; local33++) {
-			@Pc(41) IfType local41 = local31[local33];
-			if (local41.onload != null) {
-				@Pc(50) HookReq local50 = new HookReq();
-				local50.onop = local41.onload;
-				local50.component = local41;
-				ScriptRunner.executeScript(2000000, local50);
-			}
-		}
 	}
 
 	@OriginalMember(owner = "client!fn", name = "a", descriptor = "(Lclient!ve;Lclient!ve;Z)I")

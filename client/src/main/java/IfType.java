@@ -106,7 +106,7 @@ public final class IfType {
 	public Object[] anObjectArray13;
 
 	@OriginalMember(owner = "client!be", name = "tb", descriptor = "[Ljava/lang/Object;")
-	public Object[] anObjectArray14;
+	public Object[] onkey;
 
 	@OriginalMember(owner = "client!be", name = "ub", descriptor = "[Ljava/lang/Object;")
 	public Object[] onvarcstrtransmit;
@@ -136,7 +136,7 @@ public final class IfType {
 	public Object[] anObjectArray20;
 
 	@OriginalMember(owner = "client!be", name = "lc", descriptor = "[Lclient!be;")
-	public IfType[] aClass13Array3;
+	public IfType[] subcomponents;
 
 	@OriginalMember(owner = "client!be", name = "mc", descriptor = "[B")
 	public byte[] aByteArray8;
@@ -271,7 +271,7 @@ public final class IfType {
 	public int subId = -1;
 
 	@OriginalMember(owner = "client!be", name = "J", descriptor = "Z")
-	public boolean aBoolean24 = false;
+	public boolean clickTrigger = false;
 
 	@OriginalMember(owner = "client!be", name = "Sb", descriptor = "Lclient!na;")
 	public JagString targetBase = Static176.aClass100_800;
@@ -355,7 +355,7 @@ public final class IfType {
 	public JagString aClass100_88 = Static176.aClass100_800;
 
 	@OriginalMember(owner = "client!be", name = "Lc", descriptor = "I")
-	public int anInt511 = 0;
+	public int varcTransmitNum = 0;
 
 	@OriginalMember(owner = "client!be", name = "w", descriptor = "I")
 	public int width = 0;
@@ -364,7 +364,7 @@ public final class IfType {
 	public int marginX = 0;
 
 	@OriginalMember(owner = "client!be", name = "Ib", descriptor = "I")
-	public int anInt482 = -1;
+	public int transmitNum = -1;
 
 	@OriginalMember(owner = "client!be", name = "c", descriptor = "Z")
 	public boolean alpha = false;
@@ -394,7 +394,7 @@ public final class IfType {
 	public int anInt498 = -1;
 
 	@OriginalMember(owner = "client!be", name = "Rb", descriptor = "I")
-	public int anInt487 = 0;
+	public int varcstrTransmitNum = 0;
 
 	@OriginalMember(owner = "client!be", name = "ic", descriptor = "I")
 	public int modelXOf = 0;
@@ -424,7 +424,7 @@ public final class IfType {
 	public int scrollWidth = 0;
 
 	@OriginalMember(owner = "client!be", name = "ec", descriptor = "I")
-	public int anInt493 = 0;
+	public int invTransmit = 0;
 
 	@OriginalMember(owner = "client!be", name = "Vc", descriptor = "S")
 	public short aShort11 = 0;
@@ -457,7 +457,7 @@ public final class IfType {
 	public IfType aClass13_5 = null;
 
 	@OriginalMember(owner = "client!be", name = "od", descriptor = "I")
-	public int anInt525 = 0;
+	public int statTransmit = 0;
 
 	@OriginalMember(owner = "client!be", name = "ab", descriptor = "I")
 	public int model1Type = 1;
@@ -496,7 +496,7 @@ public final class IfType {
 	public int anInt510 = 0;
 
 	@OriginalMember(owner = "client!be", name = "mb", descriptor = "I")
-	public int anInt471 = 0;
+	public int varTransmitNum = 0;
 
 	@OriginalMember(owner = "client!be", name = "rb", descriptor = "I")
 	public int colour = 0;
@@ -547,6 +547,39 @@ public final class IfType {
 
 		list = new IfType[IfType.interfaces.getGroupCount()][];
 		open = new boolean[IfType.interfaces.getGroupCount()];
+	}
+
+    @OriginalMember(owner = "client!af", name = "a", descriptor = "(BI)Lclient!be;")
+    public static IfType get(@OriginalArg(1) int arg0) {
+        try {
+            @Pc(7) int local7 = arg0 >> 16;
+            @Pc(18) int local18 = arg0 & 0xFFFF;
+            if (list.length <= local7 || local7 < 0) {
+                // components.length <= parent || parent < 0
+                return null;
+            }
+            if (list[local7] == null || list[local7][local18] == null) {
+                @Pc(33) boolean local33 = openInterface(local7);
+                if (!local33) {
+                    return null;
+                }
+            }
+            if (list[local7].length <= local18) {
+                // components[parent].length <= child
+                return null;
+            }
+            return list[local7][local18];
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+	@OriginalMember(owner = "client!lh", name = "d", descriptor = "(B)V")
+	public static void method2764() {
+		spriteCache.method3104();
+		Static124.aClass99_17.method3104();
+		fontCache.method3104();
 	}
 
 	@OriginalMember(owner = "client!be", name = "a", descriptor = "(IIB)V")

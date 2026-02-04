@@ -6,15 +6,30 @@ public final class Static123 {
 
 	@OriginalMember(owner = "client!jj", name = "d", descriptor = "Lclient!na;")
 	public static final JagString aClass100_592 = JagString.wrap("headicons_pk");
+	@OriginalMember(owner = "client!nm", name = "bb", descriptor = "Lclient!na;")
+	public static final JagString aClass100_798 = JagString.wrap("<col=ff0000>");
+	@OriginalMember(owner = "client!fb", name = "p", descriptor = "Lclient!na;")
+	public static final JagString aClass100_433 = JagString.wrap("<col=ff3000>");
+	@OriginalMember(owner = "client!sc", name = "D", descriptor = "Lclient!na;")
+	public static final JagString aClass100_951 = JagString.wrap("<col=ff7000>");
+	@OriginalMember(owner = "client!si", name = "Z", descriptor = "Lclient!na;")
+	public static final JagString aClass100_972 = JagString.wrap("<col=ffb000>");
+	@OriginalMember(owner = "client!df", name = "l", descriptor = "Lclient!na;")
+	public static final JagString aClass100_332 = JagString.wrap("<col=00ff00>");
+	@OriginalMember(owner = "client!ag", name = "bb", descriptor = "Lclient!na;")
+	public static final JagString aClass100_18 = JagString.wrap("<col=40ff00>");
+	@OriginalMember(owner = "client!vg", name = "f", descriptor = "Lclient!na;")
+	public static final JagString aClass100_1081 = JagString.wrap("<col=80ff00>");
+	@OriginalMember(owner = "client!dc", name = "v", descriptor = "Lclient!na;")
+	public static final JagString aClass100_266 = JagString.wrap("<col=c0ff00>");
+	@OriginalMember(owner = "client!sf", name = "g", descriptor = "Lclient!na;")
+	public static final JagString aClass100_965 = JagString.wrap("<col=ffff00>");
 
 	@OriginalMember(owner = "client!jj", name = "e", descriptor = "I")
 	public static int anInt3058 = 0;
 
 	@OriginalMember(owner = "client!jj", name = "g", descriptor = "Lclient!na;")
 	public static final JagString aClass100_593 = JagString.wrap(" (X");
-
-	@OriginalMember(owner = "client!jj", name = "j", descriptor = "Z")
-	public static boolean aBoolean155 = false;
 
 	@OriginalMember(owner = "client!jj", name = "m", descriptor = "Lclient!na;")
 	public static final JagString aClass100_594 = JagString.wrap("<)4col>");
@@ -33,7 +48,7 @@ public final class Static123 {
 	public static void method2419() {
 		Static215.anInt4870 = 0;
 		label194: for (@Pc(3) int local3 = 0; local3 < Static28.anInt917; local3++) {
-			@Pc(10) Class120 local10 = Static91.aClass120Array1[local3];
+			@Pc(10) Occlude local10 = Static91.aClass120Array1[local3];
 			@Pc(14) int local14;
 			if (Static8.anIntArray8 != null) {
 				for (local14 = 0; local14 < Static8.anIntArray8.length; local14++) {
@@ -47,19 +62,19 @@ public final class Static123 {
 			@Pc(158) int local158;
 			@Pc(137) boolean local137;
 			if (local10.anInt4453 == 1) {
-				local14 = local10.anInt4452 + Static277.anInt5855 - Static167.anInt4069;
-				if (local14 >= 0 && local14 <= Static277.anInt5855 + Static277.anInt5855) {
-					local115 = local10.anInt4461 + Static277.anInt5855 - Static193.anInt4539;
+				local14 = local10.anInt4452 + World.anInt5855 - World.anInt4069;
+				if (local14 >= 0 && local14 <= World.anInt5855 + World.anInt5855) {
+					local115 = local10.anInt4461 + World.anInt5855 - World.anInt4539;
 					if (local115 < 0) {
 						local115 = 0;
 					}
-					local126 = local10.anInt4464 + Static277.anInt5855 - Static193.anInt4539;
-					if (local126 > Static277.anInt5855 + Static277.anInt5855) {
-						local126 = Static277.anInt5855 + Static277.anInt5855;
+					local126 = local10.anInt4464 + World.anInt5855 - World.anInt4539;
+					if (local126 > World.anInt5855 + World.anInt5855) {
+						local126 = World.anInt5855 + World.anInt5855;
 					}
 					local137 = false;
 					while (local115 <= local126) {
-						if (Static48.aBooleanArrayArray1[local14][local115++]) {
+						if (World.aBooleanArrayArray1[local14][local115++]) {
 							local137 = true;
 							break;
 						}
@@ -83,19 +98,19 @@ public final class Static123 {
 					}
 				}
 			} else if (local10.anInt4453 == 2) {
-				local14 = local10.anInt4461 + Static277.anInt5855 - Static193.anInt4539;
-				if (local14 >= 0 && local14 <= Static277.anInt5855 + Static277.anInt5855) {
-					local115 = local10.anInt4452 + Static277.anInt5855 - Static167.anInt4069;
+				local14 = local10.anInt4461 + World.anInt5855 - World.anInt4539;
+				if (local14 >= 0 && local14 <= World.anInt5855 + World.anInt5855) {
+					local115 = local10.anInt4452 + World.anInt5855 - World.anInt4069;
 					if (local115 < 0) {
 						local115 = 0;
 					}
-					local126 = local10.anInt4446 + Static277.anInt5855 - Static167.anInt4069;
-					if (local126 > Static277.anInt5855 + Static277.anInt5855) {
-						local126 = Static277.anInt5855 + Static277.anInt5855;
+					local126 = local10.anInt4446 + World.anInt5855 - World.anInt4069;
+					if (local126 > World.anInt5855 + World.anInt5855) {
+						local126 = World.anInt5855 + World.anInt5855;
 					}
 					local137 = false;
 					while (local115 <= local126) {
-						if (Static48.aBooleanArrayArray1[local115++][local14]) {
+						if (World.aBooleanArrayArray1[local115++][local14]) {
 							local137 = true;
 							break;
 						}
@@ -121,27 +136,27 @@ public final class Static123 {
 			} else if (local10.anInt4453 == 4) {
 				local14 = local10.anInt4444 - Static162.anInt3947;
 				if (local14 > 128) {
-					local115 = local10.anInt4461 + Static277.anInt5855 - Static193.anInt4539;
+					local115 = local10.anInt4461 + World.anInt5855 - World.anInt4539;
 					if (local115 < 0) {
 						local115 = 0;
 					}
-					local126 = local10.anInt4464 + Static277.anInt5855 - Static193.anInt4539;
-					if (local126 > Static277.anInt5855 + Static277.anInt5855) {
-						local126 = Static277.anInt5855 + Static277.anInt5855;
+					local126 = local10.anInt4464 + World.anInt5855 - World.anInt4539;
+					if (local126 > World.anInt5855 + World.anInt5855) {
+						local126 = World.anInt5855 + World.anInt5855;
 					}
 					if (local115 <= local126) {
-						@Pc(408) int local408 = local10.anInt4452 + Static277.anInt5855 - Static167.anInt4069;
+						@Pc(408) int local408 = local10.anInt4452 + World.anInt5855 - World.anInt4069;
 						if (local408 < 0) {
 							local408 = 0;
 						}
-						local158 = local10.anInt4446 + Static277.anInt5855 - Static167.anInt4069;
-						if (local158 > Static277.anInt5855 + Static277.anInt5855) {
-							local158 = Static277.anInt5855 + Static277.anInt5855;
+						local158 = local10.anInt4446 + World.anInt5855 - World.anInt4069;
+						if (local158 > World.anInt5855 + World.anInt5855) {
+							local158 = World.anInt5855 + World.anInt5855;
 						}
 						@Pc(430) boolean local430 = false;
 						label166: for (@Pc(432) int local432 = local408; local432 <= local158; local432++) {
 							for (@Pc(437) int local437 = local115; local437 <= local126; local437++) {
-								if (Static48.aBooleanArrayArray1[local432][local437]) {
+								if (World.aBooleanArrayArray1[local432][local437]) {
 									local430 = true;
 									break label166;
 								}
@@ -165,23 +180,23 @@ public final class Static123 {
 	public static JagString method2420(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
 		@Pc(4) int local4 = arg1 - arg0;
 		if (local4 < -9) {
-			return Static175.aClass100_798;
+			return aClass100_798;
 		} else if (local4 < -6) {
-			return Static64.aClass100_433;
+			return aClass100_433;
 		} else if (local4 < -3) {
-			return Static223.aClass100_951;
+			return aClass100_951;
 		} else if (local4 < 0) {
-			return Static229.aClass100_972;
+			return aClass100_972;
 		} else if (local4 > 9) {
-			return Static42.aClass100_332;
+			return aClass100_332;
 		} else if (local4 > 6) {
-			return Static6.aClass100_18;
-		} else if (local4 <= 3) {
-			return local4 > 0 ? Static41.aClass100_266 : Static226.aClass100_965;
+			return aClass100_18;
+		} else if (local4 > 3) {
+			return aClass100_1081;
 		} else {
-			return Static263.aClass100_1081;
+			return local4 > 0 ? aClass100_266 : aClass100_965;
 		}
-	}
+    }
 
 	@OriginalMember(owner = "client!jj", name = "a", descriptor = "(B)[F")
 	public static float[] method2422() {

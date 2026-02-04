@@ -7,12 +7,6 @@ public final class Static221 {
 	@OriginalMember(owner = "client!s", name = "a", descriptor = "[I")
 	public static int[] anIntArray374;
 
-	@OriginalMember(owner = "client!s", name = "i", descriptor = "[I")
-	public static int[] huetot;
-
-	@OriginalMember(owner = "client!s", name = "c", descriptor = "I")
-	public static int anInt4363 = -1;
-
 	@OriginalMember(owner = "client!s", name = "d", descriptor = "I")
 	public static int anInt4364 = 0;
 
@@ -31,7 +25,7 @@ public final class Static221 {
 			Static250.anInt5434 = 0;
 		}
 		@Pc(20) int local20 = 0;
-		@Pc(24) int local24 = Static129.anInt3144 * arg1;
+		@Pc(24) int local24 = Pix2D.anInt3144 * arg1;
 		@Pc(26) int local26 = 0;
 		for (@Pc(28) int local28 = 1; local28 < 255; local28++) {
 			@Pc(43) int local43 = (256 - local28) * Static35.anIntArray83[local28] / 256;
@@ -41,7 +35,7 @@ public final class Static221 {
 			local20 += local43;
 			@Pc(55) int local55;
 			for (local55 = local43; local55 < 128; local55++) {
-				@Pc(65) int local65 = Static129.anIntArray297[local24++ + arg0];
+				@Pc(65) int local65 = Pix2D.anIntArray297[local24++ + arg0];
 				@Pc(70) int local70 = Static216.anIntArray188[local20++];
 				if (local70 == 0) {
 					Static167.aClass3_Sub2_Sub1_Sub1_3.anIntArray20[local26++] = local65;
@@ -59,9 +53,9 @@ public final class Static221 {
 				}
 			}
 			for (local55 = 0; local55 < local43; local55++) {
-				Static167.aClass3_Sub2_Sub1_Sub1_3.anIntArray20[local26++] = Static129.anIntArray297[arg0 + local24++];
+				Static167.aClass3_Sub2_Sub1_Sub1_3.anIntArray20[local26++] = Pix2D.anIntArray297[arg0 + local24++];
 			}
-			local24 += Static129.anInt3144 - 128;
+			local24 += Pix2D.anInt3144 - 128;
 		}
 		if (GameShell.glRenderer) {
 			Static46.method1178(Static167.aClass3_Sub2_Sub1_Sub1_3.anIntArray20, arg0, arg1, Static167.aClass3_Sub2_Sub1_Sub1_3.anInt1867, Static167.aClass3_Sub2_Sub1_Sub1_3.anInt1859);
@@ -143,12 +137,12 @@ public final class Static221 {
 								local135 = true;
 							}
 						}
-						@Pc(275) Sprite local275 = Static133.method4008(arg4, local114, local72);
+						@Pc(275) Sprite local275 = World.getScene(arg4, local114, local72);
 						if (local275 != null) {
-							@Pc(287) int local287 = (int) (local275.aLong56 >> 14) & 0x3F;
+							@Pc(287) int local287 = (int) (local275.typecode >> 14) & 0x3F;
 							if (local287 == 9) {
 								local234 = null;
-								@Pc(302) int local302 = (int) (local275.aLong56 >> 20) & 0x3;
+								@Pc(302) int local302 = (int) (local275.typecode >> 20) & 0x3;
 								@Pc(315) boolean local315;
 								@Pc(343) short local343;
 								@Pc(349) int local349;
@@ -263,12 +257,12 @@ public final class Static221 {
 								local791 = true;
 							}
 						}
-						@Pc(899) Sprite local899 = Static133.method4008(arg4, local114, local72);
+						@Pc(899) Sprite local899 = World.getScene(arg4, local114, local72);
 						if (local899 != null) {
-							@Pc(911) int local911 = (int) (local899.aLong56 >> 14) & 0x3F;
+							@Pc(911) int local911 = (int) (local899.typecode >> 14) & 0x3F;
 							if (local911 == 9) {
 								@Pc(917) int[] local917 = null;
-								@Pc(925) int local925 = (int) (local899.aLong56 >> 20) & 0x3;
+								@Pc(925) int local925 = (int) (local899.typecode >> 20) & 0x3;
 								@Pc(973) int local973;
 								@Pc(947) boolean local947;
 								@Pc(961) short local961;

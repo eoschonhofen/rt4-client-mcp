@@ -4,15 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static193 {
 
-	@OriginalMember(owner = "client!pi", name = "U", descriptor = "I")
-	public static int anInt4539;
-
-	@OriginalMember(owner = "client!pi", name = "Y", descriptor = "I")
-	public static int anInt4542;
-
-	@OriginalMember(owner = "client!pi", name = "P", descriptor = "J")
-	public static long aLong147 = 0L;
-
 	@OriginalMember(owner = "client!pi", name = "Q", descriptor = "Lclient!na;")
 	public static final JagString aClass100_853 = JagString.wrap("null");
 
@@ -42,9 +33,9 @@ public final class Static193 {
 					Static106.anIntArray258[local41] = Static106.anIntArray258[local41 + 1];
 					Static3.aBooleanArray135[local41] = Static3.aBooleanArray135[local41 + 1];
 				}
-				Static185.anInt4369 = Client.anInt3028;
-				Static6.aClass3_Sub15_Sub1_1.p1Enc(57);
-				Static6.aClass3_Sub15_Sub1_1.p8(arg0);
+				Client.friendTransmitNum = Client.transmitNum;
+				Client.out.p1Enc(57);
+				Client.out.p8(arg0);
 				break;
 			}
 		}
@@ -140,7 +131,7 @@ public final class Static193 {
 			}
 		}
 		@Pc(493) GlSquare local493;
-		for (local493 = (GlSquare) local103.method3859(); local493 != null; local493 = (GlSquare) local103.method3861()) {
+		for (local493 = (GlSquare) local103.search(); local493 != null; local493 = (GlSquare) local103.findnext()) {
 			local493.method1940();
 		}
 		for (local16 = 1; local16 <= 102; local16++) {
@@ -256,7 +247,7 @@ public final class Static193 {
 				}
 			}
 		}
-		for (local493 = (GlSquare) local103.method3859(); local493 != null; local493 = (GlSquare) local103.method3861()) {
+		for (local493 = (GlSquare) local103.search(); local493 != null; local493 = (GlSquare) local103.findnext()) {
 			if (local493.anInt2483 == 0) {
 				local493.unlink();
 			} else {
@@ -281,29 +272,29 @@ public final class Static193 {
 			local13 = 25;
 		}
 		arg0--;
-		@Pc(23) int local23 = Static259.anIntArray514[arg0];
-		@Pc(27) int local27 = Static84.anIntArray209[arg0];
+		@Pc(23) int local23 = Client.anIntArray514[arg0];
+		@Pc(27) int local27 = Client.anIntArray209[arg0];
 		if (arg1 == 0) {
-			Static6.aClass3_Sub15_Sub1_1.p1Enc(215);
-			Static6.aClass3_Sub15_Sub1_1.p1(local13 + local13 + 3);
+			Client.out.p1Enc(215);
+			Client.out.p1(local13 + local13 + 3);
 		}
 		if (arg1 == 1) {
-			Static6.aClass3_Sub15_Sub1_1.p1Enc(39);
-			Static6.aClass3_Sub15_Sub1_1.p1(local13 + local13 + 3 + 14);
+			Client.out.p1Enc(39);
+			Client.out.p1(local13 + local13 + 3 + 14);
 		}
 		if (arg1 == 2) {
-			Static6.aClass3_Sub15_Sub1_1.p1Enc(77);
-			Static6.aClass3_Sub15_Sub1_1.p1(local13 + local13 + 3);
+			Client.out.p1Enc(77);
+			Client.out.p1(local13 + local13 + 3);
 		}
-		Static6.aClass3_Sub15_Sub1_1.method2216(Static187.aBooleanArray101[82] ? 1 : 0);
-		Static6.aClass3_Sub15_Sub1_1.p2(Static225.anInt5068 + local23);
-		Static6.aClass3_Sub15_Sub1_1.method2209(Static142.anInt3483 + local27);
-		Static84.anInt2255 = Static84.anIntArray209[0];
-		Static115.anInt2939 = Static259.anIntArray514[0];
+		Client.out.method2216(ClientKeyboardListener.keyHeld[82] ? 1 : 0);
+		Client.out.p2(Client.mapBuildBaseX + local23);
+		Client.out.method2209(Client.mapBuildBaseZ + local27);
+		Static84.anInt2255 = Client.anIntArray209[0];
+		Client.anInt2939 = Client.anIntArray514[0];
 		for (@Pc(126) int local126 = 1; local126 < local13; local126++) {
 			arg0--;
-			Static6.aClass3_Sub15_Sub1_1.method2216(Static259.anIntArray514[arg0] - local23);
-			Static6.aClass3_Sub15_Sub1_1.method2169(Static84.anIntArray209[arg0] - local27);
+			Client.out.method2216(Client.anIntArray514[arg0] - local23);
+			Client.out.method2169(Client.anIntArray209[arg0] - local27);
 		}
 	}
 }

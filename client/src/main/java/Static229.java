@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static229 {
 
-	@OriginalMember(owner = "client!si", name = "R", descriptor = "[[[B")
-	public static byte[][][] aByteArrayArrayArray12;
-
 	@OriginalMember(owner = "client!si", name = "S", descriptor = "[Lclient!na;")
 	public static JagString[] aClass100Array156;
 
@@ -18,9 +15,6 @@ public final class Static229 {
 
 	@OriginalMember(owner = "client!si", name = "X", descriptor = "[Lclient!sg;")
 	public static final StockMarketOffer[] aClass136Array1 = new StockMarketOffer[6];
-
-	@OriginalMember(owner = "client!si", name = "Z", descriptor = "Lclient!na;")
-	public static final JagString aClass100_972 = JagString.wrap("<col=ffb000>");
 
 	@OriginalMember(owner = "client!si", name = "gb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_974 = JagString.wrap("<br>(X");

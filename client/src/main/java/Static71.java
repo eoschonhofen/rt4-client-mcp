@@ -1,6 +1,5 @@
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static71 {
 
@@ -21,25 +20,4 @@ public final class Static71 {
 		return Packet.getcrc(0, arg1, arg0);
 	}
 
-	@OriginalMember(owner = "client!fk", name = "b", descriptor = "(I)V")
-	public static void method1444() {
-		for (@Pc(7) int local7 = -1; local7 < Static267.anInt5774; local7++) {
-			@Pc(21) int local21;
-			if (local7 == -1) {
-				local21 = 2047;
-			} else {
-				local21 = Static105.anIntArray256[local7];
-			}
-			@Pc(31) ClientPlayer local31 = Static159.aClass8_Sub4_Sub1Array1[local21];
-			if (local31 != null) {
-				Static263.method4514(local31.method2693(), local31);
-			}
-		}
-	}
-
-	@OriginalMember(owner = "client!fk", name = "c", descriptor = "(I)V")
-	public static void method1445() {
-		Static6.aClass3_Sub15_Sub1_1.p1Enc(177);
-		Static6.aClass3_Sub15_Sub1_1.p2(Static189.anInt4443);
-	}
 }

@@ -6,12 +6,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static203 {
 
-	@OriginalMember(owner = "client!qh", name = "a", descriptor = "Lclient!se;")
-	public static MapElementList aClass134_1;
-
-	@OriginalMember(owner = "client!qh", name = "d", descriptor = "Lclient!fd;")
-	public static WorldMapFont aClass41_8;
-
 	@OriginalMember(owner = "client!qh", name = "e", descriptor = "[Lclient!ee;")
 	public static WorldInfo[] aClass32Array1;
 
@@ -60,10 +54,10 @@ public final class Static203 {
 		} else {
 			GameShell.canvas.setLocation(GameShell.anInt3497, GameShell.anInt4246);
 		}
-		if (Static154.anInt3711 != -1) {
-			Static210.method3712(true);
+		if (Client.toplevelinterface != -1) {
+			Client.method3712(true);
 		}
-		Static139.method2704();
+		GameShell.method2704();
 	}
 
 	@OriginalMember(owner = "client!qh", name = "a", descriptor = "(Lsignlink!ll;B)V")
@@ -72,7 +66,7 @@ public final class Static203 {
 		try {
 			@Pc(16) PrivilegedRequest local16 = arg0.method5112("runescape");
 			while (local16.status == 0) {
-				Static231.sleepPrecise(1L);
+				ThreadSleep.sleepPrecise(1L);
 			}
 			if (local16.status == 1) {
 				local11 = (FileOnDisk) local16.result;

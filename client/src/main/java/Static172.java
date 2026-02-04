@@ -4,12 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static172 {
 
-	@OriginalMember(owner = "client!nj", name = "e", descriptor = "Lclient!va;")
-	public static MidiPlayer midiPlayer;
-
-	@OriginalMember(owner = "client!nj", name = "g", descriptor = "Lclient!ve;")
-	public static Js5 midis;
-
 	@OriginalMember(owner = "client!nj", name = "j", descriptor = "[I")
 	public static int[] anIntArray366;
 

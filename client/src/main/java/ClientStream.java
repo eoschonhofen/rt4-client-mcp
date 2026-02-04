@@ -131,7 +131,7 @@ public final class ClientStream implements Runnable {
 	}
 
 	@OriginalMember(owner = "client!ma", name = "a", descriptor = "(I)I")
-	public final int method2828() throws IOException {
+	public final int read() throws IOException {
 		return this.aBoolean177 ? 0 : this.anInputStream1.read();
 	}
 
@@ -200,7 +200,7 @@ public final class ClientStream implements Runnable {
 		}
 		if (this.aClass212_4 != null) {
 			while (this.aClass212_4.status == 0) {
-				Static231.sleepPrecise(1L);
+				ThreadSleep.sleepPrecise(1L);
 			}
 			if (this.aClass212_4.status == 1) {
 				try {

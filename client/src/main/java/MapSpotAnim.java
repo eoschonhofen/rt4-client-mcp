@@ -76,7 +76,7 @@ public final class MapSpotAnim extends ModelSource {
 
 	@OriginalMember(owner = "client!bh", name = "b", descriptor = "()I")
 	@Override
-	public final int method4549() {
+	public final int calcBoundingCylinder() {
 		return this.anInt603;
 	}
 
@@ -86,7 +86,7 @@ public final class MapSpotAnim extends ModelSource {
 		@Pc(7) ModelLit local7 = this.method552();
 		if (local7 != null) {
 			local7.method4546(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, this.aClass47_Sub1_1);
-			this.anInt603 = local7.method4549();
+			this.anInt603 = local7.calcBoundingCylinder();
 		}
 	}
 

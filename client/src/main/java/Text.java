@@ -146,6 +146,8 @@ public class Text {
     private static final JagString aClass100_553 = JagString.wrap("Loaded interfaces");
     @OriginalMember(owner = "client!eg", name = "B", descriptor = "Lclient!na;")
     static final JagString aClass100_393 = JagString.wrap("slide:");
+    @OriginalMember(owner = "client!eg", name = "u", descriptor = "Lclient!na;")
+    public static final JagString aClass100_389 = aClass100_393;
     @OriginalMember(owner = "client!bk", name = "I", descriptor = "Lclient!na;")
     static final JagString aClass100_121 = JagString.wrap("yellow:");
     @OriginalMember(owner = "client!mg", name = "U", descriptor = "Lclient!na;")

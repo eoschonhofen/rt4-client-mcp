@@ -6,9 +6,6 @@ public final class Static14 {
 	@OriginalMember(owner = "client!bd", name = "b", descriptor = "Lclient!na;")
 	public static final JagString aClass100_80 = JagString.wrap("(U(Y");
 
-	@OriginalMember(owner = "client!bd", name = "i", descriptor = "I")
-	public static int state = 0;
-
 	@OriginalMember(owner = "client!bd", name = "a", descriptor = "(Z)[Lclient!mm;")
 	public static Pix32[] method474() {
 		@Pc(4) Pix32[] local4 = new Pix32[Static165.anInt4038];

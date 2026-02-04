@@ -47,7 +47,7 @@ public final class JagException extends RuntimeException {
 
 			@Pc(109) PrivilegedRequest local109 = signlink.urlreq(new URL(signlink.applet.getCodeBase(), "clienterror.ws?c=" + GameShell.revision + "&u=" + Static101.aLong98 + "&v1=" + SignLink.javaVendor + "&v2=" + SignLink.javaVersion + "&e=" + local13));
 			while (local109.status == 0) {
-				Static231.sleepPrecise(1L);
+				ThreadSleep.sleepPrecise(1L);
 			}
 			if (local109.status == 1) {
 				@Pc(128) DataInputStream local128 = (DataInputStream) local109.result;

@@ -250,7 +250,7 @@ public final class Static1 {
 			}
 		}
 		@Pc(1161) GlSquare local1161;
-		for (local1161 = (GlSquare) local10.method3859(); local1161 != null; local1161 = (GlSquare) local10.method3861()) {
+		for (local1161 = (GlSquare) local10.search(); local1161 != null; local1161 = (GlSquare) local10.findnext()) {
 			local1161.method1940();
 		}
 		for (local12 = 1; local12 <= 102; local12++) {
@@ -515,7 +515,7 @@ public final class Static1 {
 				}
 			}
 		}
-		for (local1161 = (GlSquare) local10.method3859(); local1161 != null; local1161 = (GlSquare) local10.method3861()) {
+		for (local1161 = (GlSquare) local10.search(); local1161 != null; local1161 = (GlSquare) local10.findnext()) {
 			if (local1161.anInt2483 == 0) {
 				local1161.unlink();
 			} else {
@@ -539,32 +539,32 @@ public final class Static1 {
 			Static46.method1187(arg0, arg3, arg2 + arg0, arg1 + arg3);
 			Static46.method1186(arg0, arg3, arg2, arg1, 0);
 		} else {
-			Static129.method2496(arg0, arg3, arg2 + arg0, arg3 + arg1);
-			Static129.method2495(arg0, arg3, arg2, arg1, 0);
+			Pix2D.method2496(arg0, arg3, arg2 + arg0, arg3 + arg1);
+			Pix2D.method2495(arg0, arg3, arg2, arg1, 0);
 		}
-		if (Static41.anInt1309 < 100) {
+		if (WorldMap.stage < 100) {
 			return;
 		}
 		if (Static70.aClass3_Sub2_Sub1_2 == null || arg2 != Static70.aClass3_Sub2_Sub1_2.anInt1867 || Static70.aClass3_Sub2_Sub1_2.anInt1859 != arg1) {
 			@Pc(63) Pix32 local63 = new Pix32(arg2, arg1);
-			Static129.method2491(local63.anIntArray20, arg2, arg1);
-			Static214.method4364(arg2, 0, Static48.anInt1449, 0, 0, Static181.anInt4296, arg1, 0);
+			Pix2D.method2491(local63.anIntArray20, arg2, arg1);
+			Static214.method4364(arg2, 0, WorldMap.anInt1449, 0, 0, WorldMap.anInt4296, arg1, 0);
 			if (GameShell.glRenderer) {
 				Static70.aClass3_Sub2_Sub1_2 = new GlPix32(local63);
 			} else {
 				Static70.aClass3_Sub2_Sub1_2 = local63;
 			}
 			if (GameShell.glRenderer) {
-				Static129.anIntArray297 = null;
+				Pix2D.anIntArray297 = null;
 			} else {
 				Static260.drawArea.method4189();
 			}
 		}
 		Static70.aClass3_Sub2_Sub1_2.method1415(arg0, arg3);
-		@Pc(147) int local147 = arg1 * Static109.anInt2884 / Static181.anInt4296 + arg3;
-		@Pc(153) int local153 = Static37.anInt1176 * arg1 / Static181.anInt4296;
-		@Pc(161) int local161 = arg0 + arg2 * Static109.anInt2882 / Static48.anInt1449;
-		@Pc(167) int local167 = arg2 * Static89.anInt2387 / Static48.anInt1449;
+		@Pc(147) int local147 = arg1 * Static109.anInt2884 / WorldMap.anInt4296 + arg3;
+		@Pc(153) int local153 = Static37.anInt1176 * arg1 / WorldMap.anInt4296;
+		@Pc(161) int local161 = arg0 + arg2 * Static109.anInt2882 / WorldMap.anInt1449;
+		@Pc(167) int local167 = arg2 * Static89.anInt2387 / WorldMap.anInt1449;
 		@Pc(169) int local169 = 16711680;
 		if (Client.game == 1) {
 			local169 = 16777215;
@@ -573,8 +573,8 @@ public final class Static1 {
 			Static46.method1182(local161, local147, local167, local153, local169, 128);
 			Static46.method1179(local161, local147, local167, local153, local169);
 		} else {
-			Static129.method2484(local161, local147, local167, local153, local169, 128);
-			Static129.method2483(local161, local147, local167, local153, local169);
+			Pix2D.method2484(local161, local147, local167, local153, local169, 128);
+			Pix2D.method2483(local161, local147, local167, local153, local169);
 		}
 		if (Static201.anInt1864 <= 0) {
 			return;
@@ -585,14 +585,14 @@ public final class Static1 {
 		} else {
 			local225 = Static91.anInt2428 * 25;
 		}
-		for (@Pc(238) MapElement local238 = (MapElement) Static145.aClass69_84.head(); local238 != null; local238 = (MapElement) Static145.aClass69_84.method2288()) {
+		for (@Pc(238) MapElement local238 = (MapElement) Static145.aClass69_84.head(); local238 != null; local238 = (MapElement) Static145.aClass69_84.next()) {
 			if (local238.anInt4308 == Static9.anInt172) {
-				@Pc(258) int local258 = arg3 + local238.anInt4314 * arg1 / Static181.anInt4296;
-				@Pc(267) int local267 = arg2 * local238.anInt4307 / Static48.anInt1449 + arg0;
+				@Pc(258) int local258 = arg3 + local238.anInt4314 * arg1 / WorldMap.anInt4296;
+				@Pc(267) int local267 = arg2 * local238.anInt4307 / WorldMap.anInt1449 + arg0;
 				if (GameShell.glRenderer) {
 					Static46.method1182(local267 - 2, local258 + -2, 4, 4, 16776960, local225);
 				} else {
-					Static129.method2484(local267 - 2, local258 + -2, 4, 4, 16776960, local225);
+					Pix2D.method2484(local267 - 2, local258 + -2, 4, 4, 16776960, local225);
 				}
 			}
 		}

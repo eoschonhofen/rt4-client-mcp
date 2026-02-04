@@ -8,7 +8,7 @@ public final class Sprite {
 	public int anInt1696;
 
 	@OriginalMember(owner = "client!ec", name = "c", descriptor = "Lclient!th;")
-	public ModelSource aClass8_4;
+	public ModelSource model;
 
 	@OriginalMember(owner = "client!ec", name = "e", descriptor = "I")
 	public int anInt1698;
@@ -41,5 +41,5 @@ public final class Sprite {
 	public int anInt1714;
 
 	@OriginalMember(owner = "client!ec", name = "A", descriptor = "J")
-	public long aLong56 = 0L;
+	public long typecode = 0L;
 }

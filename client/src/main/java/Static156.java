@@ -33,23 +33,23 @@ public final class Static156 {
 		Static149.anInt3555 = arg0;
 		Static162.anInt3947 = arg1;
 		Static217.anInt4903 = arg2;
-		Static167.anInt4069 = arg0 / 128;
-		Static193.anInt4539 = arg2 / 128;
-		Static31.anInt987 = Static167.anInt4069 - Static277.anInt5855;
-		if (Static31.anInt987 < 0) {
-			Static31.anInt987 = 0;
+		World.anInt4069 = arg0 / 128;
+		World.anInt4539 = arg2 / 128;
+		World.anInt987 = World.anInt4069 - World.anInt5855;
+		if (World.anInt987 < 0) {
+			World.anInt987 = 0;
 		}
-		Static80.anInt4698 = Static193.anInt4539 - Static277.anInt5855;
-		if (Static80.anInt4698 < 0) {
-			Static80.anInt4698 = 0;
+		World.anInt4698 = World.anInt4539 - World.anInt5855;
+		if (World.anInt4698 < 0) {
+			World.anInt4698 = 0;
 		}
-		Static2.anInt15 = Static167.anInt4069 + Static277.anInt5855;
-		if (Static2.anInt15 > Static152.anInt3594) {
-			Static2.anInt15 = Static152.anInt3594;
+		World.anInt15 = World.anInt4069 + World.anInt5855;
+		if (World.anInt15 > Static152.anInt3594) {
+			World.anInt15 = Static152.anInt3594;
 		}
-		Static215.anInt4866 = Static193.anInt4539 + Static277.anInt5855;
-		if (Static215.anInt4866 > Static99.anInt2550) {
-			Static215.anInt4866 = Static99.anInt2550;
+		World.anInt4866 = World.anInt4539 + World.anInt5855;
+		if (World.anInt4866 > Static99.anInt2550) {
+			World.anInt4866 = Static99.anInt2550;
 		}
 		@Pc(99) short local99;
 		if (GameShell.glRenderer) {
@@ -59,12 +59,12 @@ public final class Static156 {
 		}
 		@Pc(104) int local104;
 		@Pc(113) int local113;
-		for (local104 = 0; local104 < Static277.anInt5855 + Static277.anInt5855 + 2; local104++) {
-			for (local113 = 0; local113 < Static277.anInt5855 + Static277.anInt5855 + 2; local113++) {
-				@Pc(130) int local130 = (local104 - Static277.anInt5855 << 7) - (Static149.anInt3555 & 0x7F);
-				@Pc(140) int local140 = (local113 - Static277.anInt5855 << 7) - (Static217.anInt4903 & 0x7F);
-				@Pc(146) int local146 = Static167.anInt4069 + local104 - Static277.anInt5855;
-				@Pc(152) int local152 = Static193.anInt4539 + local113 - Static277.anInt5855;
+		for (local104 = 0; local104 < World.anInt5855 + World.anInt5855 + 2; local104++) {
+			for (local113 = 0; local113 < World.anInt5855 + World.anInt5855 + 2; local113++) {
+				@Pc(130) int local130 = (local104 - World.anInt5855 << 7) - (Static149.anInt3555 & 0x7F);
+				@Pc(140) int local140 = (local113 - World.anInt5855 << 7) - (Static217.anInt4903 & 0x7F);
+				@Pc(146) int local146 = World.anInt4069 + local104 - World.anInt5855;
+				@Pc(152) int local152 = World.anInt4539 + local113 - World.anInt5855;
 				if (local146 >= 0 && local152 >= 0 && local146 < Static152.anInt3594 && local152 < Static99.anInt2550) {
 					@Pc(176) int local176;
 					if (Static80.anIntArrayArrayArray19 == null) {
@@ -79,9 +79,9 @@ public final class Static156 {
 				}
 			}
 		}
-		for (local104 = 0; local104 < Static277.anInt5855 + Static277.anInt5855 + 1; local104++) {
-			for (local113 = 0; local113 < Static277.anInt5855 + Static277.anInt5855 + 1; local113++) {
-				Static48.aBooleanArrayArray1[local104][local113] = Static89.aBooleanArrayArray3[local104][local113] || Static89.aBooleanArrayArray3[local104 + 1][local113] || Static89.aBooleanArrayArray3[local104][local113 + 1] || Static89.aBooleanArrayArray3[local104 + 1][local113 + 1];
+		for (local104 = 0; local104 < World.anInt5855 + World.anInt5855 + 1; local104++) {
+			for (local113 = 0; local113 < World.anInt5855 + World.anInt5855 + 1; local113++) {
+				World.aBooleanArrayArray1[local104][local113] = Static89.aBooleanArrayArray3[local104][local113] || Static89.aBooleanArrayArray3[local104 + 1][local113] || Static89.aBooleanArrayArray3[local104][local113 + 1] || Static89.aBooleanArrayArray3[local104 + 1][local113 + 1];
 			}
 		}
 		Static8.anIntArray8 = arg6;
@@ -92,7 +92,7 @@ public final class Static156 {
 		Static123.method2419();
 		if (Static276.aClass3_Sub5ArrayArrayArray3 != null) {
 			Static278.method4648(true);
-			Static248.method3292(arg0, arg1, arg2, null, 0, (byte) 0, arg13, arg14);
+			World.renderAll(arg0, arg1, arg2, null, 0, (byte) 0, arg13, arg14);
 			if (GameShell.glRenderer) {
 				Static119.aBoolean153 = false;
 				Static27.method766(0, 0);
@@ -101,14 +101,14 @@ public final class Static156 {
 			}
 			Static278.method4648(false);
 		}
-		Static248.method3292(arg0, arg1, arg2, arg5, arg11, arg12, arg13, arg14);
+		World.renderAll(arg0, arg1, arg2, arg5, arg11, arg12, arg13, arg14);
 	}
 
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(JI)V")
 	public static void method2956(@OriginalArg(0) long arg0) {
 		if ((long) 0 != arg0) {
-			Static6.aClass3_Sub15_Sub1_1.p1Enc(104);
-			Static6.aClass3_Sub15_Sub1_1.p8(arg0);
+			Client.out.p1Enc(104);
+			Client.out.p8(arg0);
 		}
 	}
 
@@ -123,10 +123,10 @@ public final class Static156 {
 		Static239.method4178();
 		for (@Pc(19) int local19 = 0; local19 < Static36.aClass3_Sub14ArrayArray1[0].length; local19++) {
 			@Pc(31) GlSquare local31 = Static36.aClass3_Sub14ArrayArray1[0][local19];
-			if (local31.anInt2485 >= 0 && Static94.anInterface1_2.method3237(local31.anInt2485) == 4) {
+			if (local31.anInt2485 >= 0 && Pix3D.anInterface1_2.method3237(local31.anInt2485) == 4) {
 				local1.glColor4fv(Static190.method3441(local31.anInt2486), 0);
 				@Pc(57) float local57 = 201.5F - (local31.aBoolean140 ? 1.0F : 0.5F);
-				local31.method1944(Static130.aClass3_Sub5ArrayArrayArray1, local57, true);
+				local31.method1944(World.levelTiles, local57, true);
 			}
 		}
 		local1.glEnableClientState(GL.GL_COLOR_ARRAY);

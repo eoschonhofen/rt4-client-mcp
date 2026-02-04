@@ -43,7 +43,7 @@ public final class LruCache {
 
 	@OriginalMember(owner = "client!gn", name = "a", descriptor = "(I)Lclient!ab;")
 	public final Linkable method1808() {
-		return this.aClass133_5.method3859();
+		return this.aClass133_5.search();
 	}
 
 	@OriginalMember(owner = "client!gn", name = "a", descriptor = "(Lclient!rg;JB)V")
@@ -66,7 +66,7 @@ public final class LruCache {
 
 	@OriginalMember(owner = "client!gn", name = "b", descriptor = "(I)Lclient!ab;")
 	public final Linkable method1813() {
-		return this.aClass133_5.method3861();
+		return this.aClass133_5.findnext();
 	}
 
 	@OriginalMember(owner = "client!gn", name = "c", descriptor = "(I)V")

@@ -8,8 +8,9 @@ public final class SeqType {
 
 	@OriginalMember(owner = "client!lc", name = "e", descriptor = "Lclient!n;")
 	public static final SoftLruCache recentUse = new SoftLruCache(64);
+
 	@OriginalMember(owner = "client!vl", name = "a", descriptor = "Lclient!n;")
-	public static final SoftLruCache aClass99_37 = new SoftLruCache(100);
+	public static final SoftLruCache framesetCache = new SoftLruCache(100);
 
 	@OriginalMember(owner = "client!tk", name = "s", descriptor = "Lclient!ve;")
 	public static Js5 seqConfig;
@@ -101,19 +102,32 @@ public final class SeqType {
 	@OriginalMember(owner = "client!an", name = "a", descriptor = "(Z)V")
 	public static void method350() {
 		recentUse.method3104();
-		aClass99_37.method3104();
+		framesetCache.method3104();
 	}
 
 	@OriginalMember(owner = "client!sg", name = "a", descriptor = "(B)V")
 	public static void method3903() {
 		recentUse.clear();
-		aClass99_37.clear();
+		framesetCache.clear();
 	}
 
 	@OriginalMember(owner = "client!fl", name = "a", descriptor = "(IB)V")
 	public static void method1570() {
 		recentUse.method3102(5);
-		aClass99_37.method3102(5);
+		framesetCache.method3102(5);
+	}
+
+	@OriginalMember(owner = "client!fl", name = "b", descriptor = "(II)Lclient!cl;")
+	public static AnimFrameSet method1566(@OriginalArg(0) int arg0) {
+		@Pc(19) AnimFrameSet local19 = (AnimFrameSet) framesetCache.find((long) arg0);
+		if (local19 != null) {
+			return local19;
+		}
+		local19 = AnimFrameSet.method1803(anims, bases, arg0);
+		if (local19 != null) {
+			framesetCache.put(local19, (long) arg0);
+		}
+		return local19;
 	}
 
 	@OriginalMember(owner = "client!tk", name = "a", descriptor = "(Lclient!wa;B)V")
@@ -131,7 +145,7 @@ public final class SeqType {
 	public final ModelLit method4214(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) ModelLit arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4) {
 		@Pc(10) int local10 = this.delay[arg0];
 		@Pc(15) int local15 = this.frames[arg0];
-		@Pc(23) AnimFrameSet local23 = Static72.method1566(local15 >> 16);
+		@Pc(23) AnimFrameSet local23 = method1566(local15 >> 16);
 		@Pc(27) int local27 = local15 & 0xFFFF;
 		if (local23 == null) {
 			return arg2.method4568(true, true, true);
@@ -140,7 +154,7 @@ public final class SeqType {
 		@Pc(41) AnimFrameSet local41 = null;
 		if ((this.aBoolean277 || Static204.aBoolean234) && arg1 != -1 && this.frames.length > arg1) {
 			@Pc(69) int local69 = this.frames[arg1];
-			local41 = Static72.method1566(local69 >> 16);
+			local41 = method1566(local69 >> 16);
 			arg1 = local69 & 0xFFFF;
 		}
 		@Pc(124) ModelLit local124;
@@ -187,7 +201,7 @@ public final class SeqType {
 	public final ModelLit method4215(@OriginalArg(0) ModelLit arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
 		@Pc(8) int local8 = this.frames[arg3];
 		@Pc(13) int local13 = this.delay[arg3];
-		@Pc(19) AnimFrameSet local19 = Static72.method1566(local8 >> 16);
+		@Pc(19) AnimFrameSet local19 = method1566(local8 >> 16);
 		@Pc(23) int local23 = local8 & 0xFFFF;
 		if (local19 == null) {
 			return arg0.method4572(true, true, true);
@@ -195,7 +209,7 @@ public final class SeqType {
 		@Pc(34) AnimFrameSet local34 = null;
 		if ((this.aBoolean277 || Static204.aBoolean234) && arg1 != -1 && arg1 < this.frames.length) {
 			@Pc(59) int local59 = this.frames[arg1];
-			local34 = Static72.method1566(local59 >> 16);
+			local34 = method1566(local59 >> 16);
 			arg1 = local59 & 0xFFFF;
 		}
 		@Pc(71) AnimFrameSet local71 = null;
@@ -206,14 +220,14 @@ public final class SeqType {
 			if (this.anIntArray475.length > arg3) {
 				local83 = this.anIntArray475[arg3];
 				if (local83 != 65535) {
-					local71 = Static72.method1566(local83 >> 16);
+					local71 = method1566(local83 >> 16);
 					local83 &= 0xFFFF;
 				}
 			}
 			if ((this.aBoolean277 || Static204.aBoolean234) && arg1 != -1 && this.anIntArray475.length > arg1) {
 				local85 = this.anIntArray475[arg1];
 				if (local85 != 65535) {
-					local81 = Static72.method1566(local85 >> 16);
+					local81 = method1566(local85 >> 16);
 					local85 &= 0xFFFF;
 				}
 			}
@@ -244,7 +258,7 @@ public final class SeqType {
 	public final ModelLit method4216(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) ModelLit arg4) {
 		@Pc(6) int local6 = this.delay[arg1];
 		@Pc(11) int local11 = this.frames[arg1];
-		@Pc(19) AnimFrameSet local19 = Static72.method1566(local11 >> 16);
+		@Pc(19) AnimFrameSet local19 = method1566(local11 >> 16);
 		@Pc(27) int local27 = local11 & 0xFFFF;
 		if (local19 == null) {
 			return arg4.method4572(true, true, true);
@@ -253,7 +267,7 @@ public final class SeqType {
 		@Pc(42) AnimFrameSet local42 = null;
 		if ((this.aBoolean277 || Static204.aBoolean234) && arg0 != -1 && arg0 < this.frames.length) {
 			@Pc(66) int local66 = this.frames[arg0];
-			local42 = Static72.method1566(local66 >> 16);
+			local42 = method1566(local66 >> 16);
 			arg0 = local66 & 0xFFFF;
 		}
 		@Pc(106) ModelLit local106;
@@ -319,7 +333,7 @@ public final class SeqType {
 	public final ModelLit method4219(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(4) ModelLit arg3) {
 		@Pc(16) int local16 = this.delay[arg2];
 		@Pc(21) int local21 = this.frames[arg2];
-		@Pc(27) AnimFrameSet local27 = Static72.method1566(local21 >> 16);
+		@Pc(27) AnimFrameSet local27 = method1566(local21 >> 16);
 		@Pc(31) int local31 = local21 & 0xFFFF;
 		if (local27 == null) {
 			return arg3.method4560(true, true, true);
@@ -327,7 +341,7 @@ public final class SeqType {
 		@Pc(42) AnimFrameSet local42 = null;
 		if ((this.aBoolean277 || Static204.aBoolean234) && arg0 != -1 && this.frames.length > arg0) {
 			@Pc(65) int local65 = this.frames[arg0];
-			local42 = Static72.method1566(local65 >> 16);
+			local42 = method1566(local65 >> 16);
 			arg0 = local65 & 0xFFFF;
 		}
 		@Pc(103) ModelLit local103;

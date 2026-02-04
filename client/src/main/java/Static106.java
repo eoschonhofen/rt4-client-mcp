@@ -8,9 +8,6 @@ public final class Static106 {
 	@OriginalMember(owner = "client!ic", name = "n", descriptor = "I")
 	public static int anInt2871;
 
-	@OriginalMember(owner = "client!ic", name = "e", descriptor = "[I")
-	public static final int[] varServ = new int[3500];
-
 	@OriginalMember(owner = "client!ic", name = "j", descriptor = "I")
 	public static int anInt2869 = 100;
 

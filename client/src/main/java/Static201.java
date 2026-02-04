@@ -21,13 +21,13 @@ public final class Static201 {
 
 	@OriginalMember(owner = "client!qf", name = "a", descriptor = "(BII)Lclient!be;")
 	public static IfType method1418(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(7) IfType local7 = Static5.method32(arg0);
+		@Pc(7) IfType local7 = IfType.get(arg0);
 		if (arg1 == -1) {
 			return local7;
-		} else if (local7 == null || local7.aClass13Array3 == null || local7.aClass13Array3.length <= arg1) {
+		} else if (local7 == null || local7.subcomponents == null || local7.subcomponents.length <= arg1) {
 			return null;
 		} else {
-			return local7.aClass13Array3[arg1];
+			return local7.subcomponents[arg1];
 		}
 	}
 }

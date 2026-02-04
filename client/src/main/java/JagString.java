@@ -127,6 +127,26 @@ public final class JagString implements StringWrapper {
 		return local112;
 	}
 
+	@OriginalMember(owner = "client!fi", name = "a", descriptor = "(BI)Lclient!na;")
+	public static JagString method1548(@OriginalArg(1) int arg0) {
+		@Pc(9) JagString local9 = parseInt(arg0);
+		for (@Pc(21) int local21 = local9.length() - 3; local21 > 0; local21 -= 3) {
+			local9 = join(new JagString[] { local9.method3137(local21, 0), Static159.aClass100_760, local9.method3136(local21) });
+		}
+		if (local9.length() > 9) {
+			return join(new JagString[] { Static250.aClass100_1043, local9.method3137(local9.length() - 8, 0), Text.aClass100_444, Static123.aClass100_593, local9, Static116.aClass100_583 });
+		} else if (local9.length() > 6) {
+			return join(new JagString[] { Static270.aClass100_589, local9.method3137(local9.length() - 4, 0), Text.aClass100_220, Static123.aClass100_593, local9, Static116.aClass100_583 });
+		} else {
+			return join(new JagString[] { Static278.aClass100_1101, local9, Static230.aClass100_978 });
+		}
+	}
+
+	@OriginalMember(owner = "client!bg", name = "d", descriptor = "(II)Z")
+	public static boolean method530(@OriginalArg(0) int arg0) {
+		return arg0 == 198 || arg0 == 230 || arg0 == 156 || arg0 == 140 || arg0 == 223;
+	}
+
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(Z)Ljava/net/URL;")
 	public final URL method3107() throws MalformedURLException {
 		return new URL(new String(this.aByteArray52, 0, this.anInt4030));
@@ -388,7 +408,7 @@ public final class JagString implements StringWrapper {
 				local12 = this.aByteArray52[local28] & 0xFF;
 				local28++;
 			}
-			if (Static17.method530(local12)) {
+			if (method530(local12)) {
 				local23++;
 			} else {
 				local20--;
@@ -403,7 +423,7 @@ public final class JagString implements StringWrapper {
 				local14 = arg0.aByteArray52[local30] & 0xFF;
 				local30++;
 			}
-			if (Static17.method530(local14)) {
+			if (method530(local14)) {
 				local26++;
 			} else {
 				local17--;

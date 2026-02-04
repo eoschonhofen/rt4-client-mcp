@@ -15,9 +15,6 @@ public final class Static143 {
 	@OriginalMember(owner = "client!ld", name = "d", descriptor = "Lclient!na;")
 	public static final JagString aClass100_668 = JagString.wrap("Hidden)2use");
 
-	@OriginalMember(owner = "client!ld", name = "i", descriptor = "I")
-	public static int anInt3486 = 0;
-
 	@OriginalMember(owner = "client!ld", name = "a", descriptor = "(IIIIZI)V")
 	public static void method2731(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(5) int arg4) {
 		Static230.anInt5158 = arg1;

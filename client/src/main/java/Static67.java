@@ -11,10 +11,4 @@ public final class Static67 {
 	@OriginalMember(owner = "client!fe", name = "I", descriptor = "Lclient!na;")
 	public static final JagString aClass100_639 = JagString.wrap(" ");
 
-	@OriginalMember(owner = "client!fe", name = "R", descriptor = "Z")
-	public static boolean aBoolean168 = true;
-
-	@OriginalMember(owner = "client!fe", name = "lb", descriptor = "[I")
-	public static final int[] anIntArray320 = new int[100];
-
 }

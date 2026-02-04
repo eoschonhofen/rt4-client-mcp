@@ -8,16 +8,7 @@ public final class Static227 {
 	@OriginalMember(owner = "client!sg", name = "i", descriptor = "Lclient!be;")
 	public static IfType aClass13_25;
 
-	@OriginalMember(owner = "client!sg", name = "o", descriptor = "I")
-	public static int anInt5096;
-
-	@OriginalMember(owner = "client!sg", name = "b", descriptor = "[I")
-	public static final int[] anIntArray446 = new int[25];
-
 	@OriginalMember(owner = "client!sg", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_966 = JagString.wrap("settings");
-
-	@OriginalMember(owner = "client!sg", name = "q", descriptor = "[I")
-	public static final int[] anIntArray447 = new int[128];
 
 }

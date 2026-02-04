@@ -7,12 +7,6 @@ public final class Static183 {
 	@OriginalMember(owner = "client!ok", name = "b", descriptor = "I")
 	public static int anInt4271;
 
-	@OriginalMember(owner = "client!ok", name = "c", descriptor = "I")
-	public static int hueOff = (int) (Math.random() * 33.0D) - 16;
-
-	@OriginalMember(owner = "client!ok", name = "f", descriptor = "J")
-	public static long aLong139 = 0L;
-
 	@OriginalMember(owner = "client!ok", name = "a", descriptor = "(Lclient!ab;Lclient!ab;I)V")
 	public static void method3331(@OriginalArg(0) Linkable arg0, @OriginalArg(1) Linkable arg1) {
 		if (arg0.prev != null) {
@@ -27,7 +21,7 @@ public final class Static183 {
 	@OriginalMember(owner = "client!ok", name = "a", descriptor = "(IIB)Lclient!ce;")
 	public static LinkList2 method3333(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		@Pc(9) LinkList2 local9 = new LinkList2();
-		for (@Pc(14) Map local14 = (Map) Static228.aClass69_120.head(); local14 != null; local14 = (Map) Static228.aClass69_120.method2288()) {
+		for (@Pc(14) Map local14 = (Map) Static228.aClass69_120.head(); local14 != null; local14 = (Map) Static228.aClass69_120.next()) {
 			if (local14.aBoolean50 && local14.method664(arg1, arg0)) {
 				local9.pushFront(local14);
 			}

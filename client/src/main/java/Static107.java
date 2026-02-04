@@ -11,9 +11,6 @@ public final class Static107 {
 	@OriginalMember(owner = "client!id", name = "k", descriptor = "I")
 	public static int anInt2878;
 
-	@OriginalMember(owner = "client!id", name = "l", descriptor = "Lclient!jb;")
-	public static Js5Net aClass73_3;
-
 	@OriginalMember(owner = "client!id", name = "b", descriptor = "I")
 	public static int anInt2875 = -1;
 

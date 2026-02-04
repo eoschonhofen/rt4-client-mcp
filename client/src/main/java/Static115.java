@@ -7,20 +7,11 @@ public final class Static115 {
 	@OriginalMember(owner = "client!ja", name = "q", descriptor = "I")
 	public static int anInt2940;
 
-	@OriginalMember(owner = "client!ja", name = "f", descriptor = "Lclient!ih;")
-	public static final LinkList aClass69_70 = new LinkList();
-
-	@OriginalMember(owner = "client!ja", name = "j", descriptor = "I")
-	public static int anInt2937 = 0;
-
 	@OriginalMember(owner = "client!ja", name = "k", descriptor = "Lclient!na;")
 	public static final JagString aClass100_579 = JagString.wrap("Fps:");
 
 	@OriginalMember(owner = "client!ja", name = "l", descriptor = "[Lclient!wa;")
 	public static final Packet[] aClass3_Sub15Array1 = new Packet[2048];
-
-	@OriginalMember(owner = "client!ja", name = "n", descriptor = "I")
-	public static int anInt2939 = 0;
 
 	@OriginalMember(owner = "client!ja", name = "r", descriptor = "I")
 	public static int anInt2941 = -1;
@@ -39,28 +30,13 @@ public final class Static115 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(IIII)I")
-	public static int method2309(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) int local7 = arg1 / arg0;
-		@Pc(11) int local11 = arg2 / arg0;
-		@Pc(17) int local17 = arg2 & arg0 - 1;
-		@Pc(23) int local23 = arg0 - 1 & arg1;
-		@Pc(28) int local28 = Static24.method670(local7, local11);
-		@Pc(35) int local35 = Static24.method670(local7 + 1, local11);
-		@Pc(42) int local42 = Static24.method670(local7, local11 + 1);
-		@Pc(56) int local56 = Static24.method670(local7 + 1, local11 + 1);
-		@Pc(63) int local63 = Static170.method2569(local28, local35, local23, arg0);
-		@Pc(70) int local70 = Static170.method2569(local42, local56, local23, arg0);
-		return Static170.method2569(local63, local70, local17, arg0);
-	}
-
 	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(IIIIB)V")
 	public static void method2310(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		if (Static70.anInt2013 == 1) {
-			Static240.aClass3_Sub2_Sub1Array10[Static17.anInt577 / 100].method1423(Static122.anInt3047 - 8, Static25.anInt826 + -8);
+		if (Client.crossMode == 1) {
+			Static240.aClass3_Sub2_Sub1Array10[Client.crossCycle / 100].method1423(Client.crossX - 8, Client.crossY + -8);
 		}
-		if (Static70.anInt2013 == 2) {
-			Static240.aClass3_Sub2_Sub1Array10[Static17.anInt577 / 100 + 4].method1423(Static122.anInt3047 - 8, Static25.anInt826 + -8);
+		if (Client.crossMode == 2) {
+			Static240.aClass3_Sub2_Sub1Array10[Client.crossCycle / 100 + 4].method1423(Client.crossX - 8, Client.crossY + -8);
 		}
 		Static256.method4392();
 	}

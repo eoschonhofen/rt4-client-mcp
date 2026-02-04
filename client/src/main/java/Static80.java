@@ -8,9 +8,6 @@ public final class Static80 {
 	@OriginalMember(owner = "client!gf", name = "K", descriptor = "I")
 	public static int anInt4696;
 
-	@OriginalMember(owner = "client!gf", name = "M", descriptor = "I")
-	public static int anInt4698;
-
 	@OriginalMember(owner = "client!gf", name = "O", descriptor = "[[[I")
 	public static int[][][] anIntArrayArrayArray19;
 
@@ -46,18 +43,18 @@ public final class Static80 {
 		Static250.aBoolean283 = true;
 		Static11.aBoolean15 = true;
 		Static15.aBoolean33 = true;
-		Static30.anInt978 = 127;
+		Client.ambientVolume = 127;
 		Static71.aBoolean107 = true;
 		Static209.aBoolean240 = true;
 		Static114.anInt5831 = 0;
 		Static139.anInt3451 = 2;
 		Static159.aBoolean189 = true;
 		Static178.highDetailLighting = true;
-		Static12.anInt391 = 255;
+		Client.midiVolume = 255;
 		Static53.aBoolean99 = true;
 		Static186.anInt4392 = 0;
 		@Pc(48) FileOnDisk local48 = null;
-		Static125.anInt3104 = 127;
+		Client.waveVolume = 127;
 		if (Static238.anInt5316 >= 96) {
 			Static76.method1645(2);
 		} else {
@@ -73,7 +70,7 @@ public final class Static80 {
 		try {
 			@Pc(78) PrivilegedRequest local78 = arg0.method5112("runescape");
 			while (local78.status == 0) {
-				Static231.sleepPrecise(1L);
+				ThreadSleep.sleepPrecise(1L);
 			}
 			if (local78.status == 1) {
 				local48 = (FileOnDisk) local78.result;
@@ -99,23 +96,23 @@ public final class Static80 {
 
 	@OriginalMember(owner = "client!gf", name = "a", descriptor = "(BII)V")
 	public static void method3616(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		Static142.anInt3482 = arg0 - Static158.anInt3846;
-		@Pc(24) int local24 = Static142.anInt3482 - (int) ((float) Static24.aClass13_8.anInt445 / Static83.aFloat3);
-		@Pc(33) int local33 = Static142.anInt3482 + (int) ((float) Static24.aClass13_8.anInt445 / Static83.aFloat3);
+		Static142.anInt3482 = arg0 - WorldMap.anInt3846;
+		@Pc(24) int local24 = Static142.anInt3482 - (int) ((float) Client.aClass13_8.anInt445 / WorldMap.aFloat3);
+		@Pc(33) int local33 = Static142.anInt3482 + (int) ((float) Client.aClass13_8.anInt445 / WorldMap.aFloat3);
 		if (local24 < 0) {
-			Static142.anInt3482 = (int) ((float) Static24.aClass13_8.anInt445 / Static83.aFloat3);
+			Static142.anInt3482 = (int) ((float) Client.aClass13_8.anInt445 / WorldMap.aFloat3);
 		}
-		Static217.anInt4901 = Static181.anInt4296 + Static2.anInt13 - arg1 - 1;
-		@Pc(61) int local61 = (int) ((float) Static24.aClass13_8.anInt459 / Static83.aFloat3) + Static217.anInt4901;
-		@Pc(70) int local70 = Static217.anInt4901 - (int) ((float) Static24.aClass13_8.anInt459 / Static83.aFloat3);
-		if (local33 > Static48.anInt1449) {
-			Static142.anInt3482 = Static48.anInt1449 - (int) ((float) Static24.aClass13_8.anInt445 / Static83.aFloat3);
+		Static217.anInt4901 = WorldMap.anInt4296 + WorldMap.anInt13 - arg1 - 1;
+		@Pc(61) int local61 = (int) ((float) Client.aClass13_8.anInt459 / WorldMap.aFloat3) + Static217.anInt4901;
+		@Pc(70) int local70 = Static217.anInt4901 - (int) ((float) Client.aClass13_8.anInt459 / WorldMap.aFloat3);
+		if (local33 > WorldMap.anInt1449) {
+			Static142.anInt3482 = WorldMap.anInt1449 - (int) ((float) Client.aClass13_8.anInt445 / WorldMap.aFloat3);
 		}
 		if (local70 < 0) {
-			Static217.anInt4901 = (int) ((float) Static24.aClass13_8.anInt459 / Static83.aFloat3);
+			Static217.anInt4901 = (int) ((float) Client.aClass13_8.anInt459 / WorldMap.aFloat3);
 		}
-		if (Static181.anInt4296 < local61) {
-			Static217.anInt4901 = Static181.anInt4296 - (int) ((float) Static24.aClass13_8.anInt459 / Static83.aFloat3);
+		if (WorldMap.anInt4296 < local61) {
+			Static217.anInt4901 = WorldMap.anInt4296 - (int) ((float) Client.aClass13_8.anInt459 / WorldMap.aFloat3);
 		}
 	}
 

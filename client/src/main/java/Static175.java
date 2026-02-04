@@ -8,26 +8,10 @@ public final class Static175 {
 	@OriginalMember(owner = "client!nm", name = "W", descriptor = "Lclient!na;")
 	public static JagString aClass100_797;
 
-	@OriginalMember(owner = "client!nm", name = "S", descriptor = "[Lclient!km;")
-	public static final ClientNPC[] aClass8_Sub4_Sub2Array1 = new ClientNPC[32768];
-
 	@OriginalMember(owner = "client!nm", name = "U", descriptor = "I")
 	public static int mapLoadCount = 0;
 
 	@OriginalMember(owner = "client!nm", name = "Y", descriptor = "J")
 	public static long aLong138 = 0L;
 
-	@OriginalMember(owner = "client!nm", name = "bb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_798 = JagString.wrap("<col=ff0000>");
-
-	@OriginalMember(owner = "client!nm", name = "a", descriptor = "(Z)V")
-	public static void method3279() {
-		if (Static267.anInt5775 > 0) {
-			Static278.method4653();
-		} else {
-			Static233.aClass95_4 = Client.stream;
-			Client.stream = null;
-			Static196.method3534(40);
-		}
-	}
 }

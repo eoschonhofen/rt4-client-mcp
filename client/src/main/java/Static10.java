@@ -33,10 +33,10 @@ public final class Static10 {
 			return arg0;
 		}
 		Static82.anInt2231 = 0;
-		if (Client.anInt4784 == Client.loginGamePort) {
-			Client.anInt4784 = Client.loginJs5Port;
+		if (Client.worldListPort == Client.worldListGamePort) {
+			Client.worldListPort = Client.worldListJs5Port;
 		} else {
-			Client.anInt4784 = Client.loginGamePort;
+			Client.worldListPort = Client.worldListGamePort;
 		}
 		return -1;
 	}

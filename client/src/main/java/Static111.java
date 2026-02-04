@@ -1,6 +1,5 @@
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static111 {
 
@@ -12,9 +11,6 @@ public final class Static111 {
 
 	@OriginalMember(owner = "client!ii", name = "y", descriptor = "I")
 	public static int anInt2910;
-
-	@OriginalMember(owner = "client!ii", name = "c", descriptor = "I")
-	public static int anInt2901 = 0;
 
 	@OriginalMember(owner = "client!ii", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_570 = JagString.wrap(")2");
@@ -47,7 +43,7 @@ public final class Static111 {
 		} else {
 			arg0.anInt523 = arg2 - (arg2 * arg0.dataX >> 14) - arg0.anInt445;
 		}
-		if (!Static121.aBoolean154 || Static36.method940(arg0).eventCode == 0 && arg0.type != 0) {
+		if (!Static121.aBoolean154 || Client.method940(arg0).eventCode == 0 && arg0.type != 0) {
 			return;
 		}
 		if (arg0.anInt469 < 0) {
@@ -62,19 +58,4 @@ public final class Static111 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ii", name = "b", descriptor = "(I)V")
-	public static void method2292() {
-		@Pc(2) ClientMouseListener local2 = ClientMouseListener.aClass150_1;
-		synchronized (ClientMouseListener.aClass150_1) {
-			Static22.anInt723 = ClientMouseListener.anInt1759;
-			Static215.mouseX = ClientMouseListener.anInt3521;
-			Static223.mouseY = ClientMouseListener.anInt4039;
-			Static150.anInt3585 = ClientMouseListener.anInt1313;
-			Static7.anInt985 = ClientMouseListener.anInt1034;
-			ClientMouseListener.anInt2467++;
-			Static60.anInt1893 = ClientMouseListener.anInt4973;
-			Static133.aLong175 = ClientMouseListener.aLong161;
-			ClientMouseListener.anInt1313 = 0;
-		}
-	}
 }

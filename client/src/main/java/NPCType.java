@@ -213,9 +213,9 @@ public final class NPCType {
 	public final NPCType method2932() {
 		@Pc(5) int local5 = -1;
 		if (this.anInt3723 != -1) {
-			local5 = Static155.getVarbit(this.anInt3723);
+			local5 = VarCache.getVarbit(this.anInt3723);
 		} else if (this.anInt3749 != -1) {
-			local5 = Static7.var[this.anInt3749];
+			local5 = VarCache.var[this.anInt3749];
 		}
 		if (local5 < 0 || local5 >= this.anIntArray357.length - 1 || this.anIntArray357[local5] == -1) {
 			@Pc(55) int local55 = this.anIntArray357[this.anIntArray357.length - 1];
@@ -232,9 +232,9 @@ public final class NPCType {
 		}
 		@Pc(16) int local16 = -1;
 		if (this.anInt3723 != -1) {
-			local16 = Static155.getVarbit(this.anInt3723);
+			local16 = VarCache.getVarbit(this.anInt3723);
 		} else if (this.anInt3749 != -1) {
-			local16 = Static7.var[this.anInt3749];
+			local16 = VarCache.var[this.anInt3749];
 		}
 		if (local16 < 0 || local16 >= this.anIntArray357.length - 1 || this.anIntArray357[local16] == -1) {
 			@Pc(62) int local62 = this.anIntArray357[this.anIntArray357.length - 1];
@@ -406,7 +406,7 @@ public final class NPCType {
 					local46 = true;
 					local200 = arg0[local235].anInt5399;
 					local214 = local753.frames[local200];
-					Static6.aClass3_Sub2_Sub7Array1[local235] = Static72.method1566(local214 >>> 16);
+					Static6.aClass3_Sub2_Sub7Array1[local235] = SeqType.method1566(local214 >>> 16);
 					local214 &= 0xFFFF;
 					Static107.anIntArray259[local235] = local214;
 					if (Static6.aClass3_Sub2_Sub7Array1[local235] != null) {
@@ -418,7 +418,7 @@ public final class NPCType {
 						Static71.anIntArray147[local235] = local753.delay[local200];
 						Static214.anIntArray492[local235] = arg0[local235].anInt5404;
 						local228 = local753.frames[local207];
-						Static131.aClass3_Sub2_Sub7Array5[local235] = Static72.method1566(local228 >>> 16);
+						Static131.aClass3_Sub2_Sub7Array5[local235] = SeqType.method1566(local228 >>> 16);
 						local228 &= 0xFFFF;
 						Static61.anIntArray148[local235] = local228;
 						if (Static131.aClass3_Sub2_Sub7Array5[local235] != null) {
@@ -451,7 +451,7 @@ public final class NPCType {
 			local235 = arg8.frames[arg5];
 			local228 = local235 >>> 16;
 			local235 &= 0xFFFF;
-			local962 = Static72.method1566(local228);
+			local962 = SeqType.method1566(local228);
 			if (local962 != null) {
 				local723 |= local962.method903(local235);
 				local721 |= local962.method901(local235);
@@ -465,7 +465,7 @@ public final class NPCType {
 				if (local228 == local1040) {
 					local964 = local962;
 				} else {
-					local964 = Static72.method1566(local221 >>> 16);
+					local964 = SeqType.method1566(local221 >>> 16);
 				}
 				if (local964 != null) {
 					local723 |= local964.method903(local221);
@@ -482,7 +482,7 @@ public final class NPCType {
 			local228 = arg6.frames[arg2];
 			local324 = local228 >>> 16;
 			local228 &= 0xFFFF;
-			local1088 = Static72.method1566(local324);
+			local1088 = SeqType.method1566(local324);
 			if (local1088 != null) {
 				local723 |= local1088.method903(local228);
 				local721 |= local1088.method901(local228);
@@ -496,7 +496,7 @@ public final class NPCType {
 				if (local318 == local324) {
 					local1092 = local1088;
 				} else {
-					local1092 = Static72.method1566(local1040 >>> 16);
+					local1092 = SeqType.method1566(local1040 >>> 16);
 				}
 				if (local1092 != null) {
 					local723 |= local1092.method903(local1040);

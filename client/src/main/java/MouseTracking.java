@@ -27,13 +27,13 @@ public final class MouseTracking implements Runnable {
 			@Pc(12) Object local12 = this.lock;
 			synchronized (this.lock) {
 				if (this.length < 500) {
-					this.x[this.length] = Static215.mouseX;
-					this.y[this.length] = Static223.mouseY;
+					this.x[this.length] = ClientMouseListener.mouseX;
+					this.y[this.length] = ClientMouseListener.mouseY;
 					this.length++;
 				}
 			}
 
-			Static231.sleepPrecise(50L);
+			ThreadSleep.sleepPrecise(50L);
 		}
 	}
 }

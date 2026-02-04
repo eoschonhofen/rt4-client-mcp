@@ -26,7 +26,7 @@ public final class Static214 {
 	public static void method4359(@OriginalArg(0) ClientPlayer arg0) {
 		@Pc(12) BgSound local12 = (BgSound) Static93.aClass133_7.find(arg0.aClass100_364.method3158());
 		if (local12 == null) {
-			Static122.method2411(arg0.anIntArray317[0], null, 0, null, arg0.anIntArray318[0], Static55.anInt1735, arg0);
+			BgSound.method2411(arg0.anIntArray317[0], null, 0, null, arg0.anIntArray318[0], Client.minusedlevel, arg0);
 		} else {
 			local12.method1567();
 		}
@@ -48,7 +48,7 @@ public final class Static214 {
 
 	@OriginalMember(owner = "client!rg", name = "d", descriptor = "(B)Lclient!bn;")
 	public static Map method4361() {
-		return Static269.aClass3_Sub2_Sub4_2;
+		return WorldMap.aClass3_Sub2_Sub4_2;
 	}
 
 	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(IIIIIIIII)V")

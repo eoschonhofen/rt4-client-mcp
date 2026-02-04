@@ -273,7 +273,7 @@ public class PcmPlayer {
 	}
 
 	@OriginalMember(owner = "client!vh", name = "b", descriptor = "(I)V")
-	public final void method3571() {
+	public final void skipNextAcceptedCheck() {
 		this.aBoolean229 = true;
 	}
 
@@ -307,7 +307,7 @@ public class PcmPlayer {
 			if (local6) {
 				Static60.aClass19_1.shutdown = true;
 				while (Static60.aClass19_1.running) {
-					Static231.sleepPrecise(50L);
+					ThreadSleep.sleepPrecise(50L);
 				}
 				Static60.aClass19_1 = null;
 			}

@@ -326,7 +326,7 @@ public final class PlayerModel {
 					local374 = arg0[local353].anInt5399;
 					local367 = arg0[local353].anInt5398;
 					local381 = local858.frames[local374];
-					Static276.aClass3_Sub2_Sub7Array8[local353] = Static72.method1566(local381 >>> 16);
+					Static276.aClass3_Sub2_Sub7Array8[local353] = SeqType.method1566(local381 >>> 16);
 					local381 &= 0xFFFF;
 					Static241.anIntArray520[local353] = local381;
 					if (Static276.aClass3_Sub2_Sub7Array8[local353] != null) {
@@ -338,7 +338,7 @@ public final class PlayerModel {
 						Static262.anIntArray515[local353] = local858.delay[local374];
 						Static73.anIntArray183[local353] = arg0[local353].anInt5404;
 						local979 = local858.frames[local367];
-						Static133.aClass3_Sub2_Sub7Array7[local353] = Static72.method1566(local979 >>> 16);
+						Static133.aClass3_Sub2_Sub7Array7[local353] = SeqType.method1566(local979 >>> 16);
 						@Pc(991) int local991 = local979 & 0xFFFF;
 						Static216.anIntArray187[local353] = local991;
 						if (Static133.aClass3_Sub2_Sub7Array7[local353] != null) {
@@ -365,7 +365,7 @@ public final class PlayerModel {
 		if (arg3 != null) {
 			local353 = arg3.frames[arg7];
 			local979 = local353 >>> 16;
-			local1042 = Static72.method1566(local979);
+			local1042 = SeqType.method1566(local979);
 			local353 &= 0xFFFF;
 			if (local1042 != null) {
 				local836 |= local1042.method903(local353);
@@ -380,7 +380,7 @@ public final class PlayerModel {
 				if (local979 == local451) {
 					local1040 = local1042;
 				} else {
-					local1040 = Static72.method1566(local360 >>> 16);
+					local1040 = SeqType.method1566(local360 >>> 16);
 				}
 				if (local1040 != null) {
 					local836 |= local1040.method903(local360);
@@ -397,7 +397,7 @@ public final class PlayerModel {
 			local979 = arg2.frames[arg8];
 			local475 = local979 >>> 16;
 			local979 &= 0xFFFF;
-			local1154 = Static72.method1566(local475);
+			local1154 = SeqType.method1566(local475);
 			if (local1154 != null) {
 				local836 |= local1154.method903(local979);
 				local827 |= local1154.method901(local979);
@@ -411,7 +411,7 @@ public final class PlayerModel {
 				if (local475 == local481) {
 					local1156 = local1154;
 				} else {
-					local1156 = Static72.method1566(local451 >>> 16);
+					local1156 = SeqType.method1566(local451 >>> 16);
 				}
 				if (local1156 != null) {
 					local836 |= local1156.method903(local451);

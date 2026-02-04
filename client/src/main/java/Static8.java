@@ -26,7 +26,7 @@ public final class Static8 {
 
 	@OriginalMember(owner = "client!aj", name = "a", descriptor = "(BILclient!be;)I")
 	public static int method118(@OriginalArg(1) int arg0, @OriginalArg(2) IfType arg1) {
-		if (!Static36.method940(arg1).method503(arg0) && arg1.onop == null) {
+		if (!Client.method940(arg1).method503(arg0) && arg1.onop == null) {
 			return -1;
 		} else if (arg1.anIntArray39 == null || arg0 >= arg1.anIntArray39.length) {
 			return -1;
@@ -125,11 +125,11 @@ public final class Static8 {
 		for (@Pc(3) int local3 = 0; local3 < VarpType.numDefinitions; local3++) {
 			@Pc(19) VarpType local19 = VarpType.list(local3);
 			if (local19 != null && local19.clientcode == 0) {
-				Static106.varServ[local3] = 0;
-				Static7.var[local3] = 0;
+				VarCache.varServ[local3] = 0;
+				VarCache.var[local3] = 0;
 			}
 		}
 
-		Static199.aClass133_20 = new HashTable(16);
+		VarCache.aClass133_20 = new HashTable(16);
 	}
 }

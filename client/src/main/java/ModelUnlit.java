@@ -1242,7 +1242,7 @@ public final class ModelUnlit extends ModelSource {
 
 	@OriginalMember(owner = "client!gb", name = "b", descriptor = "()I")
 	@Override
-	public final int method4549() {
+	public final int calcBoundingCylinder() {
 		if (!this.aBoolean121) {
 			this.method1664();
 		}

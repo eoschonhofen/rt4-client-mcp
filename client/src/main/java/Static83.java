@@ -4,21 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static83 {
 
-	@OriginalMember(owner = "client!gj", name = "i", descriptor = "[[[I")
-	public static int[][][] anIntArrayArrayArray3;
-
-	@OriginalMember(owner = "client!gj", name = "m", descriptor = "[[[I")
-	public static int[][][] groundh;
-
-	@OriginalMember(owner = "client!gj", name = "r", descriptor = "F")
-	public static float aFloat3;
-
-	@OriginalMember(owner = "client!gj", name = "d", descriptor = "I")
-	public static int anInt372 = 0;
-
-	@OriginalMember(owner = "client!gj", name = "q", descriptor = "[I")
-	public static final int[] anIntArray23 = new int[32];
-
 	@OriginalMember(owner = "client!gj", name = "a", descriptor = "(II)Z")
 	public static boolean method433(@OriginalArg(0) int arg0) {
 		if (arg0 >= 97 && arg0 <= 122) {
@@ -28,12 +13,6 @@ public final class Static83 {
 		} else {
 			return arg0 >= 48 && arg0 <= 57;
 		}
-	}
-
-	@OriginalMember(owner = "client!gj", name = "a", descriptor = "(III)Lclient!df;")
-	public static Decor method435(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2) {
-		@Pc(7) Square local7 = Static130.aClass3_Sub5ArrayArrayArray1[arg0][arg1][arg2];
-		return local7 == null ? null : local7.aClass24_1;
 	}
 
 	@OriginalMember(owner = "client!gj", name = "a", descriptor = "([JII[II)V")

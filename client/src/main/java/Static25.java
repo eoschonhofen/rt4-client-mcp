@@ -11,40 +11,19 @@ public final class Static25 {
 	@OriginalMember(owner = "client!c", name = "Y", descriptor = "Lclient!na;")
 	public static final JagString aClass100_154 = JagString.wrap("Mem:");
 
-	@OriginalMember(owner = "client!c", name = "eb", descriptor = "I")
-	public static int anInt826 = 0;
-
-	@OriginalMember(owner = "client!c", name = "hb", descriptor = "Z")
-	public static boolean aBoolean57 = false;
-
-	@OriginalMember(owner = "client!c", name = "d", descriptor = "(I)Z")
-	public static boolean method712() {
-		@Pc(6) ClientKeyboardListener local6 = ClientKeyboardListener.aClass149_1;
-		synchronized (ClientKeyboardListener.aClass149_1) {
-			if (Static228.anInt5105 == ClientKeyboardListener.anInt2678) {
-				return false;
-			} else {
-				Static102.anInt2681 = ClientKeyboardListener.anIntArray375[ClientKeyboardListener.anInt2678];
-				Static193.anInt4542 = ClientKeyboardListener.anIntArray413[ClientKeyboardListener.anInt2678];
-				ClientKeyboardListener.anInt2678 = ClientKeyboardListener.anInt2678 + 1 & 0x7F;
-				return true;
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!c", name = "a", descriptor = "(Ljava/awt/Frame;ZLsignlink!ll;)V")
 	public static void method714(@OriginalArg(0) Frame arg0, @OriginalArg(2) SignLink arg1) {
 		while (true) {
 			@Pc(16) PrivilegedRequest local16 = arg1.method5115(arg0);
 			while (local16.status == 0) {
-				Static231.sleepPrecise(10L);
+				ThreadSleep.sleepPrecise(10L);
 			}
 			if (local16.status == 1) {
 				arg0.setVisible(false);
 				arg0.dispose();
 				return;
 			}
-			Static231.sleepPrecise(100L);
+			ThreadSleep.sleepPrecise(100L);
 		}
 	}
 

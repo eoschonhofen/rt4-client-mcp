@@ -38,7 +38,7 @@ public final class Wave extends PcmStreamable {
 	}
 
 	@OriginalMember(owner = "client!kj", name = "a", descriptor = "(Lclient!vj;)Lclient!kj;")
-	public final Wave method2648(@OriginalArg(0) Decimator arg0) {
+	public final Wave decimate(@OriginalArg(0) Decimator arg0) {
 		this.aByteArray47 = arg0.method4520(this.aByteArray47);
 		this.anInt3316 = arg0.method4524(this.anInt3316);
 		if (this.anInt3315 == this.anInt3314) {

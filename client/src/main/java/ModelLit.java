@@ -13,7 +13,7 @@ public abstract class ModelLit extends ModelSource {
 	public abstract int method4550();
 
 	@OriginalMember(owner = "client!ak", name = "b", descriptor = "()I")
-	public abstract int method4549();
+	public abstract int calcBoundingCylinder();
 
 	@OriginalMember(owner = "client!ak", name = "d", descriptor = "()Z")
 	protected abstract boolean method4551();

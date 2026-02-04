@@ -104,14 +104,14 @@ public final class Static136 {
 		}
 		Static186.anInt4392 = Static102.anInt2679;
 		Client.lowMem = arg0.g1() == 1;
-		Static125.anInt3104 = arg0.g1();
-		if (Static125.anInt3104 > 127) {
-			Static125.anInt3104 = 127;
+		Client.waveVolume = arg0.g1();
+		if (Client.waveVolume > 127) {
+			Client.waveVolume = 127;
 		}
-		Static12.anInt391 = arg0.g1();
-		Static30.anInt978 = arg0.g1();
-		if (Static30.anInt978 > 127) {
-			Static30.anInt978 = 127;
+		Client.midiVolume = arg0.g1();
+		Client.ambientVolume = arg0.g1();
+		if (Client.ambientVolume > 127) {
+			Client.ambientVolume = 127;
 		}
 		if (local21 >= 1) {
 			Static114.anInt5831 = arg0.g2();
@@ -150,8 +150,4 @@ public final class Static136 {
 		}
 	}
 
-	@OriginalMember(owner = "client!kk", name = "a", descriptor = "(I)Z")
-	public static boolean method2655() {
-		return Static14.state == 0 ? Static172.midiPlayer.method4414() : true;
-	}
 }

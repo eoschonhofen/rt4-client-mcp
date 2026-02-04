@@ -61,14 +61,14 @@ public final class Static153 {
 
 	@OriginalMember(owner = "client!mc", name = "f", descriptor = "(B)V")
 	public static void method2909() {
-		Static6.aClass3_Sub15_Sub1_1.p1Enc(184);
-		for (@Pc(18) SubInterface local18 = (SubInterface) Static119.aClass133_9.method3859(); local18 != null; local18 = (SubInterface) Static119.aClass133_9.method3861()) {
+		Client.out.p1Enc(184);
+		for (@Pc(18) SubInterface local18 = (SubInterface) BgSound.aClass133_9.search(); local18 != null; local18 = (SubInterface) BgSound.aClass133_9.findnext()) {
 			if (local18.anInt5879 == 0) {
-				Static132.method2605(true, local18);
+				Client.method2605(true, local18);
 			}
 		}
 		if (Static39.aClass13_10 != null) {
-			Static43.method1143(Static39.aClass13_10);
+			Client.componentUpdated(Static39.aClass13_10);
 			Static39.aClass13_10 = null;
 		}
 	}

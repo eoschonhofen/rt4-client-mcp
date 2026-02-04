@@ -49,7 +49,7 @@ public final class PacketBit extends Packet {
 	}
 
 	@OriginalMember(owner = "client!i", name = "a", descriptor = "([IZ)V")
-	public final void method2240(@OriginalArg(0) int[] arg0) {
+	public final void seed(@OriginalArg(0) int[] arg0) {
 		this.random = new Isaac(arg0);
 	}
 

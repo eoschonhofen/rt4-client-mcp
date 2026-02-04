@@ -664,7 +664,7 @@ public final class Static239 {
 				if (local29++ > 5) {
 					return -2;
 				}
-				Static231.sleepPrecise(1000L);
+				ThreadSleep.sleepPrecise(1000L);
 			}
 			aGL1 = aGLContext1.getGL();
 			new GLU();
@@ -689,7 +689,7 @@ public final class Static239 {
 						method4169();
 						return -3;
 					}
-					Static231.sleepPrecise(100L);
+					ThreadSleep.sleepPrecise(100L);
 				}
 			}
 			aGL1.glClear(GL.GL_COLOR_BUFFER_BIT);

@@ -4,20 +4,16 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static270 {
 
+	@OriginalMember(owner = "client!je", name = "db", descriptor = "Lclient!na;")
+	public static final JagString aClass100_589 = JagString.wrap(" <col=ffffff>");
 	@OriginalMember(owner = "client!wb", name = "b", descriptor = "[I")
 	public static int[] anIntArray562;
-
-	@OriginalMember(owner = "client!wb", name = "l", descriptor = "Lclient!fd;")
-	public static WorldMapFont aClass41_9;
 
 	@OriginalMember(owner = "client!wb", name = "a", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1089 = JagString.wrap(")2");
 
 	@OriginalMember(owner = "client!wb", name = "c", descriptor = "I")
 	public static int anInt5794 = -1;
-
-	@OriginalMember(owner = "client!wb", name = "d", descriptor = "I")
-	public static int anInt5795 = 0;
 
 	@OriginalMember(owner = "client!wb", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1090 = JagString.wrap("l");

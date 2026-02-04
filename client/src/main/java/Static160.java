@@ -4,17 +4,11 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static160 {
 
-	@OriginalMember(owner = "client!mj", name = "n", descriptor = "Lclient!fd;")
-	public static WorldMapFont aClass41_4;
-
 	@OriginalMember(owner = "client!mj", name = "u", descriptor = "B")
 	public static byte aByte14;
 
 	@OriginalMember(owner = "client!mj", name = "d", descriptor = "[Lclient!na;")
 	public static final JagString[] aClass100Array121 = new JagString[8];
-
-	@OriginalMember(owner = "client!mj", name = "g", descriptor = "Lclient!na;")
-	public static final JagString aClass100_761 = JagString.wrap("(U3");
 
 	@OriginalMember(owner = "client!mj", name = "i", descriptor = "I")
 	public static int anInt3902 = 0;
@@ -27,21 +21,21 @@ public final class Static160 {
 		if (GameShell.glRenderer) {
 			Static46.method1187(arg0, arg1, arg2.anInt445 + arg0, arg2.anInt459 + arg1);
 		}
-		if (Static270.anInt5795 >= 3) {
+		if (Client.anInt5795 >= 3) {
 			if (GameShell.glRenderer) {
 				@Pc(44) AbstractPix32 local44 = arg2.getGraphic(false);
 				if (local44 != null) {
 					local44.method1423(arg0, arg1);
 				}
 			} else {
-				Static129.method2504(arg0, arg1, arg2.anIntArray37, arg2.anIntArray45);
+				Pix2D.method2504(arg0, arg1, arg2.anIntArray37, arg2.anIntArray45);
 			}
 		} else if (GameShell.glRenderer) {
-			((GlPix32) Static106.aClass3_Sub2_Sub1_7).method1427(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Static57.anInt1747, 256, (GlPix32) arg2.getGraphic(false));
+			((GlPix32) Static106.aClass3_Sub2_Sub1_7).method1427(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Client.anInt1747, 256, (GlPix32) arg2.getGraphic(false));
 		} else {
-			((Pix32) Static106.aClass3_Sub2_Sub1_7).method313(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Static57.anInt1747, arg2.anIntArray37, arg2.anIntArray45);
+			((Pix32) Static106.aClass3_Sub2_Sub1_7).method313(arg0, arg1, arg2.anInt445, arg2.anInt459, Static106.aClass3_Sub2_Sub1_7.anInt1867 / 2, Static106.aClass3_Sub2_Sub1_7.anInt1859 / 2, Client.anInt1747, arg2.anIntArray37, arg2.anIntArray45);
 		}
-		Static31.componentRedrawRequested2[arg3] = true;
+		Client.componentRedrawRequested2[arg3] = true;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IIIII)Z")

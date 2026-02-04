@@ -10,9 +10,6 @@ public final class Static93 {
 	@OriginalMember(owner = "client!he", name = "db", descriptor = "Lclient!na;")
 	public static final JagString aClass100_517 = JagString.wrap("");
 
-	@OriginalMember(owner = "client!he", name = "eb", descriptor = "[I")
-	public static final int[] anIntArray219 = new int[1000];
-
 	@OriginalMember(owner = "client!he", name = "gb", descriptor = "Lclient!na;")
 	public static final JagString aClass100_518 = JagString.wrap("www");
 

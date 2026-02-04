@@ -4,23 +4,14 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static41 {
 
-	@OriginalMember(owner = "client!dc", name = "v", descriptor = "Lclient!na;")
-	public static final JagString aClass100_266 = JagString.wrap("<col=c0ff00>");
-
 	@OriginalMember(owner = "client!dc", name = "M", descriptor = "Lclient!na;")
 	public static final JagString aClass100_268 = JagString.wrap(")4");
-
-	@OriginalMember(owner = "client!dc", name = "O", descriptor = "I")
-	public static int anInt1309 = 0;
 
 	@OriginalMember(owner = "client!dc", name = "S", descriptor = "Lclient!na;")
 	public static final JagString aClass100_270 = Text.aClass100_267;
 
 	@OriginalMember(owner = "client!dc", name = "ab", descriptor = "I")
 	public static int anInt1316 = 0;
-
-	@OriginalMember(owner = "client!dc", name = "db", descriptor = "[[B")
-	public static final byte[][] aByteArrayArray6 = new byte[50][];
 
 	@OriginalMember(owner = "client!dc", name = "a", descriptor = "(IZLclient!tk;IIIIILclient!ak;IIIIB)Lclient!ak;")
 	public static ModelLit method1043(@OriginalArg(0) int arg0, @OriginalArg(1) boolean arg1, @OriginalArg(2) SeqType arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(8) ModelLit arg8, @OriginalArg(9) int arg9, @OriginalArg(10) int arg10, @OriginalArg(11) int arg11, @OriginalArg(12) int arg12) {
@@ -86,7 +77,7 @@ public final class Static41 {
 		local130 = arg8.method4550();
 		if (arg2 != null) {
 			@Pc(403) int local403 = arg2.frames[arg10];
-			local386 = Static72.method1566(local403 >> 16);
+			local386 = SeqType.method1566(local403 >> 16);
 			arg10 = local403 & 0xFFFF;
 		}
 		local109 = local367;
@@ -131,18 +122,18 @@ public final class Static41 {
 		}
 		if (GameShell.glRenderer) {
 			@Pc(650) GlModelLit local650 = (GlModelLit) local33;
-			if (Static207.method3685(Static55.anInt1735, arg3 + local384, local126 + arg5) != arg11 || Static207.method3685(Static55.anInt1735, local115 + arg3, arg5 - -local130) != arg11) {
+			if (Client.getAvH(Client.minusedlevel, arg3 + local384, local126 + arg5) != arg11 || Client.getAvH(Client.minusedlevel, local115 + arg3, arg5 - -local130) != arg11) {
 				for (local162 = 0; local162 < local650.anInt5295; local162++) {
-					local650.anIntArray465[local162] += Static207.method3685(Static55.anInt1735, local650.anIntArray461[local162] + arg3, arg5 + local650.anIntArray466[local162]) - arg11;
+					local650.anIntArray465[local162] += Client.getAvH(Client.minusedlevel, local650.anIntArray461[local162] + arg3, arg5 + local650.anIntArray466[local162]) - arg11;
 				}
 				local650.aClass5_1.aBoolean3 = false;
 				local650.aClass127_4.aBoolean235 = false;
 			}
 		} else {
 			@Pc(574) SoftwareModelLit local574 = (SoftwareModelLit) local33;
-			if (Static207.method3685(Static55.anInt1735, arg3 + local384, arg5 - -local126) != arg11 || arg11 != Static207.method3685(Static55.anInt1735, arg3 + local115, arg5 - -local130)) {
+			if (Client.getAvH(Client.minusedlevel, arg3 + local384, arg5 - -local126) != arg11 || arg11 != Client.getAvH(Client.minusedlevel, arg3 + local115, arg5 - -local130)) {
 				for (local162 = 0; local162 < local574.anInt5788; local162++) {
-					local574.anIntArray527[local162] += Static207.method3685(Static55.anInt1735, arg3 + local574.anIntArray528[local162], arg5 + local574.anIntArray531[local162]) - arg11;
+					local574.anIntArray527[local162] += Client.getAvH(Client.minusedlevel, arg3 + local574.anIntArray528[local162], arg5 + local574.anIntArray531[local162]) - arg11;
 				}
 				local574.aBoolean305 = false;
 			}

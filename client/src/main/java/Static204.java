@@ -7,12 +7,6 @@ public final class Static204 {
 	@OriginalMember(owner = "client!qi", name = "z", descriptor = "Lclient!qf;")
 	public static AbstractPix32 aClass3_Sub2_Sub1_10;
 
-	@OriginalMember(owner = "client!qi", name = "t", descriptor = "I")
-	public static int anInt4762 = 0;
-
-	@OriginalMember(owner = "client!qi", name = "u", descriptor = "Lclient!ih;")
-	public static LinkList checks = new LinkList();
-
 	@OriginalMember(owner = "client!qi", name = "v", descriptor = "Z")
 	public static boolean aBoolean234 = false;
 

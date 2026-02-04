@@ -22,7 +22,7 @@ public final class Static15 {
 	@OriginalMember(owner = "client!be", name = "a", descriptor = "(Z)Lclient!na;")
 	public static JagString method479() {
 		@Pc(8) JagString local8 = Static93.aClass100_518;
-		@Pc(10) JagString local10 = Static186.AUTO_EMPTY;
+		@Pc(10) JagString local10 = TitleScreen.AUTO_EMPTY;
 		if (Client.modewhere != 0) {
 			local8 = Static50.aClass100_365;
 		}

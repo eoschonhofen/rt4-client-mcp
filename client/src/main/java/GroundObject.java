@@ -5,26 +5,26 @@ import org.openrs2.deob.annotation.OriginalMember;
 public final class GroundObject {
 
 	@OriginalMember(owner = "client!jj", name = "a", descriptor = "Lclient!th;")
-	public ModelSource aClass8_7;
+	public ModelSource bottomObj;
 
 	@OriginalMember(owner = "client!jj", name = "b", descriptor = "I")
-	public int anInt3057;
+	public int y;
 
 	@OriginalMember(owner = "client!jj", name = "c", descriptor = "Lclient!th;")
-	public ModelSource aClass8_8;
+	public ModelSource middleObj;
 
 	@OriginalMember(owner = "client!jj", name = "h", descriptor = "Lclient!th;")
-	public ModelSource aClass8_9;
+	public ModelSource topObj;
 
 	@OriginalMember(owner = "client!jj", name = "k", descriptor = "I")
-	public int anInt3061;
+	public int z;
 
 	@OriginalMember(owner = "client!jj", name = "n", descriptor = "I")
-	public int anInt3063;
+	public int height;
 
 	@OriginalMember(owner = "client!jj", name = "o", descriptor = "I")
-	public int anInt3064;
+	public int x;
 
 	@OriginalMember(owner = "client!jj", name = "r", descriptor = "J")
-	public long aLong108;
+	public long typecode;
 }

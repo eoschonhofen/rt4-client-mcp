@@ -21,21 +21,21 @@ public final class Static148 {
 
 	@OriginalMember(owner = "client!li", name = "a", descriptor = "(ZI)V")
 	public static void method2765(@OriginalArg(1) int arg0) {
-		if (arg0 == -1 && !Static144.aBoolean173) {
+		if (arg0 == -1 && !Client.aBoolean173) {
 			Static241.method4548();
-		} else if (arg0 != -1 && (Static221.anInt4363 != arg0 || !Static136.method2655()) && Static12.anInt391 != 0 && !Static144.aBoolean173) {
-			Static257.method526(arg0, Client.songs, Static12.anInt391);
+		} else if (arg0 != -1 && (Client.anInt4363 != arg0 || !MidiManager.isInitialised()) && Client.midiVolume != 0 && !Client.aBoolean173) {
+			MidiManager.method526(arg0, Client.songs, Client.midiVolume);
 		}
-		Static221.anInt4363 = arg0;
+		Client.anInt4363 = arg0;
 	}
 
 	@OriginalMember(owner = "client!li", name = "a", descriptor = "(III)V")
 	public static void method2766(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
-		Static7.var[arg0] = arg1;
-		@Pc(21) LongNode local21 = (LongNode) Static199.aClass133_20.find((long) arg0);
+		VarCache.var[arg0] = arg1;
+		@Pc(21) LongNode local21 = (LongNode) VarCache.aClass133_20.find((long) arg0);
 		if (local21 == null) {
 			local21 = new LongNode(MonotonicTime.currentTime() + 500L);
-			Static199.aClass133_20.put(local21, (long) arg0);
+			VarCache.aClass133_20.put(local21, (long) arg0);
 		} else {
 			local21.aLong55 = MonotonicTime.currentTime() + 500L;
 		}

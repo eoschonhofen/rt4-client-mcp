@@ -22,9 +22,6 @@ public final class Static241 {
 	@OriginalMember(owner = "client!th", name = "i", descriptor = "[I")
 	public static final int[] anIntArray520 = new int[14];
 
-	@OriginalMember(owner = "client!th", name = "n", descriptor = "Z")
-	public static boolean aBoolean302 = false;
-
 	@OriginalMember(owner = "client!th", name = "a", descriptor = "(DI)V")
 	public static void method4537(@OriginalArg(0) double arg0) {
 		if (Static122.aDouble1 == arg0) {
@@ -142,8 +139,8 @@ public final class Static241 {
 
 	@OriginalMember(owner = "client!th", name = "a", descriptor = "(Z)V")
 	public static void method4548() {
-		Static172.midiPlayer.stop();
-		Static14.state = 1;
-		Static172.midis = null;
+		MidiManager.midiPlayer.stop();
+		MidiManager.state = 1;
+		MidiManager.midis = null;
 	}
 }

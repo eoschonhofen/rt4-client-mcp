@@ -105,7 +105,7 @@ public final class EnumType extends Linkable2 {
 	@OriginalMember(owner = "client!ml", name = "d", descriptor = "(I)V")
 	private void method3087() {
 		this.aClass133_17 = new HashTable(this.aClass133_16.method3868());
-		for (@Pc(22) StringNode local22 = (StringNode) this.aClass133_16.method3859(); local22 != null; local22 = (StringNode) this.aClass133_16.method3861()) {
+		for (@Pc(22) StringNode local22 = (StringNode) this.aClass133_16.search(); local22 != null; local22 = (StringNode) this.aClass133_16.findnext()) {
 			@Pc(36) EnumStringNode local36 = new EnumStringNode(local22.aClass100_980, (int) local22.key);
 			this.aClass133_17.put(local36, local22.aClass100_980.method3118());
 		}
@@ -136,7 +136,7 @@ public final class EnumType extends Linkable2 {
 	@OriginalMember(owner = "client!ml", name = "e", descriptor = "(I)V")
 	private void method3091() {
 		this.aClass133_17 = new HashTable(this.aClass133_16.method3868());
-		for (@Pc(24) IntNode local24 = (IntNode) this.aClass133_16.method3859(); local24 != null; local24 = (IntNode) this.aClass133_16.method3861()) {
+		for (@Pc(24) IntNode local24 = (IntNode) this.aClass133_16.search(); local24 != null; local24 = (IntNode) this.aClass133_16.findnext()) {
 			@Pc(34) IntNode local34 = new IntNode((int) local24.key);
 			this.aClass133_17.put(local34, (long) local24.anInt3141);
 		}
