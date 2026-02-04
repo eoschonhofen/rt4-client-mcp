@@ -137,7 +137,7 @@ public final class Static136 {
 			Static164.aBoolean191 = arg0.g1() == 1;
 		}
 		if (local21 >= 8) {
-			Static33.aBoolean63 = arg0.g1() == 1;
+			Client.aBoolean63 = arg0.g1() == 1;
 		}
 		if (local21 >= 9) {
 			Static141.anInt3474 = arg0.g1();

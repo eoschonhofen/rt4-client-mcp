@@ -2,9 +2,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static158 {
 
-	@OriginalMember(owner = "client!mh", name = "hb", descriptor = "Lclient!bn;")
-	public static Map aClass3_Sub2_Sub4_3;
-
 	@OriginalMember(owner = "client!mh", name = "Y", descriptor = "Z")
 	public static boolean aBoolean187 = false;
 

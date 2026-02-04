@@ -13,12 +13,6 @@ public final class Static280 {
 	@OriginalMember(owner = "client!wl", name = "d", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1108 = JagString.wrap("compass");
 
-	@OriginalMember(owner = "client!wl", name = "h", descriptor = "Lclient!be;")
-	public static IfType aClass13_26 = null;
-
-	@OriginalMember(owner = "client!wl", name = "u", descriptor = "I")
-	public static int anInt5895 = 0;
-
 	@OriginalMember(owner = "client!wl", name = "a", descriptor = "(IIII)V")
 	public static void method4666(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) int arg2) {
 		@Pc(18) DelayedStateChange local18 = Static238.method4143(11, arg1);
@@ -517,9 +511,9 @@ public final class Static280 {
 			return IfType.get(arg0.layerId);
 		}
 		@Pc(28) int local28 = arg0.parentId >>> 16;
-		@Pc(33) HashTableIterator local33 = new HashTableIterator(BgSound.aClass133_9);
+		@Pc(33) HashTableIterator local33 = new HashTableIterator(Client.aClass133_9);
 		for (@Pc(38) SubInterface local38 = (SubInterface) local33.method2701(); local38 != null; local38 = (SubInterface) local33.method2700()) {
-			if (local28 == local38.anInt5878) {
+			if (local28 == local38.id) {
 				return IfType.get((int) local38.key);
 			}
 		}
@@ -637,40 +631,6 @@ public final class Static280 {
 							Static131.method2576(Static71.anIntArrayArray10[local161], local78, local69, arg3);
 						}
 					}
-				}
-			}
-		}
-	}
-
-	@OriginalMember(owner = "client!wl", name = "b", descriptor = "(I)V")
-	public static void method4673() {
-		@Pc(3) boolean local3 = false;
-		while (!local3) {
-			local3 = true;
-			for (@Pc(13) int local13 = 0; local13 < Client.menuNumEntries - 1; local13++) {
-				if (Client.menuAction[local13] < 1000 && Client.menuAction[local13 + 1] > 1000) {
-					@Pc(41) JagString local41 = Client.aClass100Array160[local13];
-					local3 = false;
-					Client.aClass100Array160[local13] = Client.aClass100Array160[local13 + 1];
-					Client.aClass100Array160[local13 + 1] = local41;
-					@Pc(61) JagString local61 = Client.aClass100Array168[local13];
-					Client.aClass100Array168[local13] = Client.aClass100Array168[local13 + 1];
-					Client.aClass100Array168[local13 + 1] = local61;
-					@Pc(79) int local79 = Client.anIntArray408[local13];
-					Client.anIntArray408[local13] = Client.anIntArray408[local13 + 1];
-					Client.anIntArray408[local13 + 1] = local79;
-					@Pc(97) int local97 = Client.anIntArray142[local13];
-					Client.anIntArray142[local13] = Client.anIntArray142[local13 + 1];
-					Client.anIntArray142[local13 + 1] = local97;
-					@Pc(115) int local115 = Client.anIntArray382[local13];
-					Client.anIntArray382[local13] = Client.anIntArray382[local13 + 1];
-					Client.anIntArray382[local13 + 1] = local115;
-					@Pc(133) short local133 = Client.menuAction[local13];
-					Client.menuAction[local13] = Client.menuAction[local13 + 1];
-					Client.menuAction[local13 + 1] = local133;
-					@Pc(151) long local151 = Client.aLongArray5[local13];
-					Client.aLongArray5[local13] = Client.aLongArray5[local13 + 1];
-					Client.aLongArray5[local13 + 1] = local151;
 				}
 			}
 		}

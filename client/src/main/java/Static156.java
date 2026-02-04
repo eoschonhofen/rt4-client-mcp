@@ -1,132 +1,31 @@
 import javax.media.opengl.GL;
-import org.openrs2.deob.annotation.OriginalArg;
+
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 public final class Static156 {
 
-	@OriginalMember(owner = "client!mf", name = "O", descriptor = "[[B")
-	public static byte[][] aByteArrayArray11;
-
 	@OriginalMember(owner = "client!mf", name = "X", descriptor = "I")
 	public static int anInt3783;
 
 	@OriginalMember(owner = "client!mf", name = "x", descriptor = "Lclient!ha;")
-	public static final GZip aClass56_1 = new GZip();
-
-	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(IIIII[[[B[I[I[I[I[IIBII)V")
-	public static void method2954(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) byte[][][] arg5, @OriginalArg(6) int[] arg6, @OriginalArg(7) int[] arg7, @OriginalArg(8) int[] arg8, @OriginalArg(9) int[] arg9, @OriginalArg(10) int[] arg10, @OriginalArg(11) int arg11, @OriginalArg(12) byte arg12, @OriginalArg(13) int arg13, @OriginalArg(14) int arg14) {
-		if (arg0 < 0) {
-			arg0 = 0;
-		} else if (arg0 >= Static152.anInt3594 * 128) {
-			arg0 = Static152.anInt3594 * 128 - 1;
-		}
-		if (arg2 < 0) {
-			arg2 = 0;
-		} else if (arg2 >= Static99.anInt2550 * 128) {
-			arg2 = Static99.anInt2550 * 128 - 1;
-		}
-		Static109.anInt2886 = Pix3D.sinTable[arg3];
-		Static121.anInt3038 = Pix3D.cosTable[arg3];
-		Static231.anInt5205 = Pix3D.sinTable[arg4];
-		Static81.anInt2222 = Pix3D.cosTable[arg4];
-		Static149.anInt3555 = arg0;
-		Static162.anInt3947 = arg1;
-		Static217.anInt4903 = arg2;
-		World.anInt4069 = arg0 / 128;
-		World.anInt4539 = arg2 / 128;
-		World.anInt987 = World.anInt4069 - World.anInt5855;
-		if (World.anInt987 < 0) {
-			World.anInt987 = 0;
-		}
-		World.anInt4698 = World.anInt4539 - World.anInt5855;
-		if (World.anInt4698 < 0) {
-			World.anInt4698 = 0;
-		}
-		World.anInt15 = World.anInt4069 + World.anInt5855;
-		if (World.anInt15 > Static152.anInt3594) {
-			World.anInt15 = Static152.anInt3594;
-		}
-		World.anInt4866 = World.anInt4539 + World.anInt5855;
-		if (World.anInt4866 > Static99.anInt2550) {
-			World.anInt4866 = Static99.anInt2550;
-		}
-		@Pc(99) short local99;
-		if (GameShell.glRenderer) {
-			local99 = 3584;
-		} else {
-			local99 = 3500;
-		}
-		@Pc(104) int local104;
-		@Pc(113) int local113;
-		for (local104 = 0; local104 < World.anInt5855 + World.anInt5855 + 2; local104++) {
-			for (local113 = 0; local113 < World.anInt5855 + World.anInt5855 + 2; local113++) {
-				@Pc(130) int local130 = (local104 - World.anInt5855 << 7) - (Static149.anInt3555 & 0x7F);
-				@Pc(140) int local140 = (local113 - World.anInt5855 << 7) - (Static217.anInt4903 & 0x7F);
-				@Pc(146) int local146 = World.anInt4069 + local104 - World.anInt5855;
-				@Pc(152) int local152 = World.anInt4539 + local113 - World.anInt5855;
-				if (local146 >= 0 && local152 >= 0 && local146 < Static152.anInt3594 && local152 < Static99.anInt2550) {
-					@Pc(176) int local176;
-					if (Static80.anIntArrayArrayArray19 == null) {
-						local176 = Static107.anIntArrayArrayArray10[0][local146][local152] + 128 - Static162.anInt3947;
-					} else {
-						local176 = Static80.anIntArrayArrayArray19[0][local146][local152] + 128 - Static162.anInt3947;
-					}
-					@Pc(201) int local201 = Static107.anIntArrayArrayArray10[3][local146][local152] - Static162.anInt3947 - 1000;
-					Static89.aBooleanArrayArray3[local104][local113] = Static160.method3049(local130, local201, local176, local140, local99);
-				} else {
-					Static89.aBooleanArrayArray3[local104][local113] = false;
-				}
-			}
-		}
-		for (local104 = 0; local104 < World.anInt5855 + World.anInt5855 + 1; local104++) {
-			for (local113 = 0; local113 < World.anInt5855 + World.anInt5855 + 1; local113++) {
-				World.aBooleanArrayArray1[local104][local113] = Static89.aBooleanArrayArray3[local104][local113] || Static89.aBooleanArrayArray3[local104 + 1][local113] || Static89.aBooleanArrayArray3[local104][local113 + 1] || Static89.aBooleanArrayArray3[local104 + 1][local113 + 1];
-			}
-		}
-		Static8.anIntArray8 = arg6;
-		Static127.anIntArray292 = arg7;
-		Static96.anIntArray234 = arg8;
-		Static234.anIntArray454 = arg9;
-		Static206.anIntArray427 = arg10;
-		Static123.method2419();
-		if (Static276.aClass3_Sub5ArrayArrayArray3 != null) {
-			Static278.method4648(true);
-			World.renderAll(arg0, arg1, arg2, null, 0, (byte) 0, arg13, arg14);
-			if (GameShell.glRenderer) {
-				Static119.aBoolean153 = false;
-				Static27.method766(0, 0);
-				Static161.method3066(null);
-				World.method2390();
-			}
-			Static278.method4648(false);
-		}
-		World.renderAll(arg0, arg1, arg2, arg5, arg11, arg12, arg13, arg14);
-	}
-
-	@OriginalMember(owner = "client!mf", name = "a", descriptor = "(JI)V")
-	public static void method2956(@OriginalArg(0) long arg0) {
-		if ((long) 0 != arg0) {
-			Client.out.p1Enc(104);
-			Client.out.p8(arg0);
-		}
-	}
+	public static final GZip gzip = new GZip();
 
 	@OriginalMember(owner = "client!mf", name = "a", descriptor = "()V")
 	public static void method2959() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		local1.glDisableClientState(GL.GL_COLOR_ARRAY);
 		Static239.setLightingEnabled(false);
 		local1.glDisable(GL.GL_DEPTH_TEST);
 		local1.glPushAttrib(GL.GL_FOG_BIT);
 		local1.glFogf(GL.GL_FOG_START, 3072.0F);
 		Static239.method4178();
-		for (@Pc(19) int local19 = 0; local19 < Static36.aClass3_Sub14ArrayArray1[0].length; local19++) {
-			@Pc(31) GlSquare local31 = Static36.aClass3_Sub14ArrayArray1[0][local19];
+		for (@Pc(19) int local19 = 0; local19 < World.glTiles[0].length; local19++) {
+			@Pc(31) GlSquare local31 = World.glTiles[0][local19];
 			if (local31.anInt2485 >= 0 && Pix3D.anInterface1_2.method3237(local31.anInt2485) == 4) {
 				local1.glColor4fv(Static190.method3441(local31.anInt2486), 0);
 				@Pc(57) float local57 = 201.5F - (local31.aBoolean140 ? 1.0F : 0.5F);
-				local31.method1944(World.levelTiles, local57, true);
+				local31.method1944(World.activeTiles, local57, true);
 			}
 		}
 		local1.glEnableClientState(GL.GL_COLOR_ARRAY);

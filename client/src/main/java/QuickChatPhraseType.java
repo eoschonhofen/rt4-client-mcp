@@ -75,7 +75,18 @@ public final class QuickChatPhraseType extends Linkable2 {
 		}
 	}
 
-	@OriginalMember(owner = "client!cb", name = "a", descriptor = "(Lclient!wa;[IZ)V")
+    @OriginalMember(owner = "client!ha", name = "a", descriptor = "([IJIZ)Lclient!na;")
+    public static JagString method1838(@OriginalArg(0) int[] arg0, @OriginalArg(1) long arg1, @OriginalArg(2) int arg2) {
+        if (anInterface3_1 != null) {
+            @Pc(17) JagString local17 = anInterface3_1.decode(arg2, arg0, arg1);
+            if (local17 != null) {
+                return local17;
+            }
+        }
+        return Static154.method2929(arg1);
+    }
+
+    @OriginalMember(owner = "client!cb", name = "a", descriptor = "(Lclient!wa;[IZ)V")
 	public final void method760(@OriginalArg(0) Packet arg0, @OriginalArg(1) int[] arg1) {
 		if (this.anIntArray71 == null) {
 			return;
@@ -180,7 +191,7 @@ public final class QuickChatPhraseType extends Linkable2 {
 		if (this.anIntArray71 != null) {
 			for (@Pc(22) int local22 = 0; local22 < this.anIntArray71.length; local22++) {
 				local17.append(this.aClass100Array35[local22]);
-				local17.append(Static89.method1838(this.anIntArrayArray5[local22], arg0.method2198(Static16.anIntArray51[this.anIntArray71[local22]]), this.anIntArray71[local22]));
+				local17.append(method1838(this.anIntArrayArray5[local22], arg0.method2198(Static16.anIntArray51[this.anIntArray71[local22]]), this.anIntArray71[local22]));
 			}
 		}
 		local17.append(this.aClass100Array35[this.aClass100Array35.length - 1]);

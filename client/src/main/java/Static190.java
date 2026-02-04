@@ -34,7 +34,7 @@ public final class Static190 {
 			return local43;
 		}
 		Pix3D.aBoolean134 = false;
-		local43 = Static164.method3150(arg4, false, arg1, arg2, arg0, arg3, false);
+		local43 = ObjType.method3150(arg4, false, arg1, arg2, arg0, arg3, false);
 		if (local43 != null && !Pix3D.aBoolean134) {
 			ObjType.aClass99_16.put(local43, local37);
 		}

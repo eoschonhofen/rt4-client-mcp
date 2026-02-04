@@ -30,17 +30,6 @@ public final class Static115 {
 		}
 	}
 
-	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(IIIIB)V")
-	public static void method2310(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
-		if (Client.crossMode == 1) {
-			Static240.aClass3_Sub2_Sub1Array10[Client.crossCycle / 100].method1423(Client.crossX - 8, Client.crossY + -8);
-		}
-		if (Client.crossMode == 2) {
-			Static240.aClass3_Sub2_Sub1Array10[Client.crossCycle / 100 + 4].method1423(Client.crossX - 8, Client.crossY + -8);
-		}
-		Static256.method4392();
-	}
-
 	@OriginalMember(owner = "client!ja", name = "a", descriptor = "(II)V")
 	public static void method2312(@OriginalArg(0) int arg0) {
 		GameShell.deltime = 1000 / arg0;
@@ -114,7 +103,7 @@ public final class Static115 {
 	public static void method2315() {
 		Static215.aClass3_Sub2_Sub9_32 = null;
 		Static213.aClass3_Sub2_Sub1Array8 = null;
-		Static240.aClass3_Sub2_Sub1Array10 = null;
+		Client.cross = null;
 		Static159.aClass36Array12 = null;
 		Static265.aClass3_Sub2_Sub9_Sub1_2 = null;
 		Static173.aClass3_Sub2_Sub1_Sub1Array9 = null;
@@ -130,6 +119,6 @@ public final class Static115 {
 		Static277.aClass3_Sub2_Sub1Array12 = null;
 		Static276.aClass3_Sub2_Sub1Array11 = null;
 		Static219.aClass3_Sub2_Sub1Array9 = null;
-		Static241.aClass36Array16 = null;
+		Client.scrollbar = null;
 	}
 }

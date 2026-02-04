@@ -44,7 +44,13 @@ public class TitleScreen {
             Client.out.p1(local43.pos);
             Client.out.tinyenc(local43.data, local43.pos);
         } else {
-            Static49.method1208();
+            Client.method1208();
         }
+    }
+
+    @OriginalMember(owner = "client!nd", name = "a", descriptor = "(ILclient!ve;)V")
+    public static void method3172(@OriginalArg(1) Js5 arg0) {
+        Static262.anInt5754 = arg0.getGroupId(aClass100_165);
+        Static136.anInt3322 = arg0.getGroupId(Static165.aClass100_776);
     }
 }

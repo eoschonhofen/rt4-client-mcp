@@ -38,7 +38,7 @@ public final class CodeBook {
 			local27 = 0;
 			local32 = JagVorbis.readBits(5) + 1;
 			while (local27 < this.entries) {
-				@Pc(44) int local44 = JagVorbis.readBits(Static204.bitsRequired(this.entries - local27));
+				@Pc(44) int local44 = JagVorbis.readBits(MathTool.bitsRequired(this.entries - local27));
 				for (local46 = 0; local46 < local44; local46++) {
 					this.lengths[local27++] = local32;
 				}

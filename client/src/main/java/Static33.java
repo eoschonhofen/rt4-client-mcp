@@ -7,8 +7,6 @@ public final class Static33 {
 
 	@OriginalMember(owner = "client!dm", name = "j", descriptor = "Lclient!na;")
 	public static final JagString aClass100_351 = JagString.wrap(" ");
-	@OriginalMember(owner = "client!cj", name = "h", descriptor = "Z")
-	public static boolean aBoolean63;
 
 	@OriginalMember(owner = "client!cj", name = "n", descriptor = "Lsignlink!im;")
 	public static PrivilegedRequest aClass212_1;

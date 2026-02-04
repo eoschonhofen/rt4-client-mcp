@@ -14,13 +14,7 @@ public final class Static233 {
 	@OriginalMember(owner = "client!t", name = "w", descriptor = "[J")
 	public static final long[] aLongArray9 = new long[100];
 
-	@OriginalMember(owner = "client!t", name = "y", descriptor = "I")
-	public static int mapLoadingStage = 0;
-
 	@OriginalMember(owner = "client!t", name = "z", descriptor = "I")
 	public static int anInt5224 = 0;
-
-	@OriginalMember(owner = "client!t", name = "C", descriptor = "Lclient!na;")
-	public static final JagString aClass100_994 = JagString.wrap(")3");
 
 }

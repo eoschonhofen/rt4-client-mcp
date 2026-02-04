@@ -40,7 +40,7 @@ public final class SeqType {
 	private int[] anIntArray475;
 
 	@OriginalMember(owner = "client!tk", name = "a", descriptor = "I")
-	public int anInt5347 = 2;
+	public int duplicatebehavior = 2;
 
 	@OriginalMember(owner = "client!tk", name = "b", descriptor = "Z")
 	public boolean aBoolean277 = false;
@@ -64,7 +64,7 @@ public final class SeqType {
 	public int anInt5363 = -1;
 
 	@OriginalMember(owner = "client!tk", name = "p", descriptor = "I")
-	public int anInt5355 = 5;
+	public int priority = 5;
 
 	@OriginalMember(owner = "client!tk", name = "r", descriptor = "Z")
 	public boolean aBoolean279 = false;
@@ -382,7 +382,7 @@ public final class SeqType {
 		} else if (arg0 == 4) {
 			this.aBoolean279 = true;
 		} else if (arg0 == 5) {
-			this.anInt5355 = arg1.g1();
+			this.priority = arg1.g1();
 		} else if (arg0 == 6) {
 			this.anInt5353 = arg1.g2();
 		} else if (arg0 == 7) {
@@ -394,7 +394,7 @@ public final class SeqType {
 		} else if (arg0 == 10) {
 			this.anInt5349 = arg1.g1();
 		} else if (arg0 == 11) {
-			this.anInt5347 = arg1.g1();
+			this.duplicatebehavior = arg1.g1();
 		} else if (arg0 == 12) {
 			local8 = arg1.g1();
 			this.anIntArray475 = new int[local8];

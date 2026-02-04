@@ -85,7 +85,7 @@ public final class IdkType {
 		@Pc(16) ModelUnlit[] local16 = new ModelUnlit[5];
 		for (@Pc(18) int local18 = 0; local18 < 5; local18++) {
 			if (this.anIntArray113[local18] != -1) {
-				local16[local13++] = Static77.method1686(aClass153_8, this.anIntArray113[local18]);
+				local16[local13++] = ModelUnlit.method1686(aClass153_8, this.anIntArray113[local18]);
 			}
 		}
 		@Pc(52) ModelUnlit local52 = new ModelUnlit(local16, local13);
@@ -161,7 +161,7 @@ public final class IdkType {
 		}
 		@Pc(16) ModelUnlit[] local16 = new ModelUnlit[this.anIntArray112.length];
 		for (@Pc(18) int local18 = 0; local18 < this.anIntArray112.length; local18++) {
-			local16[local18] = Static77.method1686(aClass153_8, this.anIntArray112[local18]);
+			local16[local18] = ModelUnlit.method1686(aClass153_8, this.anIntArray112[local18]);
 		}
 		@Pc(56) ModelUnlit local56;
 		if (local16.length == 1) {

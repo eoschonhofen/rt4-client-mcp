@@ -181,7 +181,7 @@ public final class Light_Class1 {
 
 	@OriginalMember(owner = "client!fj", name = "c", descriptor = "()V")
 	public final void method1556() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		if (Static239.aBoolean271) {
 			this.aClass155_1.method4516();
 			local1.glInterleavedArrays(GL.GL_C4UB_V3F, 16, 0L);

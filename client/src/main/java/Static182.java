@@ -7,9 +7,6 @@ public final class Static182 {
 	@OriginalMember(owner = "client!oj", name = "t", descriptor = "[I")
 	public static int[] anIntArray372;
 
-	@OriginalMember(owner = "client!oj", name = "E", descriptor = "[[Lclient!hg;")
-	public static GlSquare[][] aClass3_Sub14ArrayArray2;
-
 	@OriginalMember(owner = "client!oj", name = "p", descriptor = "I")
 	public static final int anInt4306 = 2301979;
 
@@ -23,7 +20,7 @@ public final class Static182 {
 			local9 = GameShell.anInt5554;
 			@Pc(15) int local15 = local9 * 956 / 503;
 			Static78.aClass3_Sub2_Sub1_3.method1419((GameShell.anInt1448 - local15) / 2, 0, local15, local9);
-			Static243.aClass36_1.method3336(GameShell.anInt1448 / 2 - Static243.aClass36_1.anInt4270 / 2, 18);
+			Static243.aClass36_1.plotSprite(GameShell.anInt1448 / 2 - Static243.aClass36_1.anInt4270 / 2, 18);
 		}
 		arg1.method2875(Text.aClass100_370, GameShell.anInt1448 / 2, GameShell.anInt5554 / 2 - 26, 16777215, -1);
 		local9 = GameShell.anInt5554 / 2 - 18;

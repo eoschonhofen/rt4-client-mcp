@@ -1,6 +1,4 @@
-import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static138 {
 
@@ -9,9 +7,6 @@ public final class Static138 {
 
 	@OriginalMember(owner = "client!km", name = "Yc", descriptor = "I")
 	public static int anInt3443;
-
-	@OriginalMember(owner = "client!km", name = "pc", descriptor = "Z")
-	public static boolean aBoolean172 = false;
 
 	@OriginalMember(owner = "client!km", name = "tc", descriptor = "Lclient!na;")
 	private static final JagString aClass100_641 = JagString.wrap("Dec");
@@ -64,61 +59,4 @@ public final class Static138 {
 	@OriginalMember(owner = "client!km", name = "Sc", descriptor = "Lclient!na;")
 	public static final JagString aClass100_654 = JagString.wrap(":trade:");
 
-	@OriginalMember(owner = "client!km", name = "a", descriptor = "(ILjava/lang/Object;Z)[B")
-	public static byte[] method2696(@OriginalArg(1) Object arg0, @OriginalArg(2) boolean arg1) {
-		if (arg0 == null) {
-			return null;
-		} else if (arg0 instanceof byte[]) {
-			@Pc(14) byte[] local14 = (byte[]) arg0;
-			return arg1 ? Static23.method648(local14) : local14;
-		} else if (arg0 instanceof ByteArrayWrapper) {
-			@Pc(34) ByteArrayWrapper local34 = (ByteArrayWrapper) arg0;
-			return local34.method4236();
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	@OriginalMember(owner = "client!km", name = "f", descriptor = "(I)Z")
-	public static boolean method2697() {
-		return GameShell.glRenderer ? true : Static162.aBoolean190;
-	}
-
-	@OriginalMember(owner = "client!km", name = "c", descriptor = "(Z)Z")
-	public static boolean updateLoading() {
-		try {
-			if (MidiManager.state == 2) {
-				if (MidiManager.loadingMidiFile == null) {
-					MidiManager.loadingMidiFile = MidiFile.load(MidiManager.midis, MidiManager.anInt5853, MidiManager.anInt5085);
-					if (MidiManager.loadingMidiFile == null) {
-						return false;
-					}
-				}
-
-				if (MidiManager.loadingWaveCache == null) {
-					MidiManager.loadingWaveCache = new WaveCache(MidiManager.aClass153_32, MidiManager.aClass153_103);
-				}
-
-				if (MidiManager.midiPlayer.method4411(MidiManager.loadingMidiFile, MidiManager.aClass153_87, MidiManager.loadingWaveCache)) {
-					MidiManager.midiPlayer.method4412();
-					MidiManager.midiPlayer.method4447(MidiManager.anInt5527);
-					MidiManager.midiPlayer.method4431(MidiManager.aBoolean116, MidiManager.loadingMidiFile);
-					MidiManager.state = 0;
-					MidiManager.loadingMidiFile = null;
-					MidiManager.loadingWaveCache = null;
-					MidiManager.midis = null;
-					return true;
-				}
-			}
-		} catch (@Pc(68) Exception ex) {
-			ex.printStackTrace();
-			MidiManager.midiPlayer.stop();
-			MidiManager.midis = null;
-			MidiManager.loadingMidiFile = null;
-			MidiManager.state = 0;
-			MidiManager.loadingWaveCache = null;
-		}
-
-		return false;
-	}
 }

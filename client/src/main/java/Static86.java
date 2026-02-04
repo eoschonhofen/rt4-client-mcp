@@ -9,9 +9,6 @@ public final class Static86 {
 	@OriginalMember(owner = "client!gm", name = "ib", descriptor = "Lclient!ve;")
 	public static Js5 aClass153_37;
 
-	@OriginalMember(owner = "client!gm", name = "W", descriptor = "Lclient!na;")
-	public static final JagString aClass100_488 = JagString.wrap("_");
-
 	@OriginalMember(owner = "client!gm", name = "X", descriptor = "Ljava/math/BigInteger;")
 	public static final BigInteger aBigInteger1 = GlobalConfig.RSA_EXPONENT;
 	// new BigInteger("58778699976184461502525193738213253649000149147835990136706041084440742975821");

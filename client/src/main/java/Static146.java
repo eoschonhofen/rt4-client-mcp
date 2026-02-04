@@ -21,18 +21,7 @@ public final class Static146 {
 
 	@OriginalMember(owner = "client!lg", name = "a", descriptor = "(Lclient!ve;BII)[Lclient!ok;")
 	public static Pix8[] method2749(@OriginalArg(0) Js5 arg0, @OriginalArg(3) int arg1) {
-		return Static234.method4016(arg0, 0, arg1) ? Static253.method4331() : null;
+		return Static234.method4016(arg0, 0, arg1) ? PixLoader.method4331() : null;
 	}
 
-	@OriginalMember(owner = "client!lg", name = "a", descriptor = "(I)V")
-	public static void method2750(@OriginalArg(0) int arg0) {
-		World.anInt5276 = arg0;
-		for (@Pc(3) int local3 = 0; local3 < Static152.anInt3594; local3++) {
-			for (@Pc(8) int local8 = 0; local8 < Static99.anInt2550; local8++) {
-				if (World.levelTiles[arg0][local3][local8] == null) {
-					World.levelTiles[arg0][local3][local8] = new Square(arg0, local3, local8);
-				}
-			}
-		}
-	}
 }

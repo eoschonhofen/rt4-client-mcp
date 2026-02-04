@@ -80,7 +80,7 @@ public final class SoftLruCache {
 			} else if (++local9.key2 > (long) arg0) {
 				@Pc(33) ReferenceNode local33 = Static252.aClass22_1.create(local9);
 				this.aClass133_18.put(local33, local9.key);
-				Static84.method1772(local9, local33);
+				LinkList2.insertBefore(local9, local33);
 				local9.unlink();
 				local9.unlink2();
 			}

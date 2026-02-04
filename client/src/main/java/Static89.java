@@ -8,64 +8,11 @@ public final class Static89 {
 	@OriginalMember(owner = "client!ha", name = "i", descriptor = "Lclient!qf;")
 	public static AbstractPix32 aClass3_Sub2_Sub1_5;
 
-	@OriginalMember(owner = "client!ha", name = "k", descriptor = "[[Z")
-	public static boolean[][] aBooleanArrayArray3;
-
 	@OriginalMember(owner = "client!ha", name = "o", descriptor = "I")
 	public static int anInt2387;
 
 	@OriginalMember(owner = "client!ha", name = "q", descriptor = "I")
 	public static int anInt2388 = 0;
-
-	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(ZB)V")
-	public static void method1835(@OriginalArg(0) boolean arg0) {
-		@Pc(11) byte local11;
-		@Pc(13) byte[][] local13;
-		if (GameShell.glRenderer && arg0) {
-			local11 = 1;
-			local13 = Static186.aByteArrayArray14;
-		} else {
-			local13 = Static273.aByteArrayArray13;
-			local11 = 4;
-		}
-		for (@Pc(21) int local21 = 0; local21 < local11; local21++) {
-			Client.doAudio();
-			for (@Pc(32) int local32 = 0; local32 < 13; local32++) {
-				for (@Pc(39) int local39 = 0; local39 < 13; local39++) {
-					@Pc(52) int local52 = Static187.anIntArrayArrayArray18[local21][local32][local39];
-					@Pc(54) boolean local54 = false;
-					if (local52 != -1) {
-						@Pc(65) int local65 = local52 >> 24 & 0x3;
-						if (!arg0 || local65 == 0) {
-							@Pc(76) int local76 = local52 >> 3 & 0x7FF;
-							@Pc(82) int local82 = local52 >> 1 & 0x3;
-							@Pc(88) int local88 = local52 >> 14 & 0x3FF;
-							@Pc(98) int local98 = (local88 / 8 << 8) + local76 / 8;
-							for (@Pc(100) int local100 = 0; local100 < Static238.anIntArray470.length; local100++) {
-								if (Static238.anIntArray470[local100] == local98 && local13[local100] != null) {
-									ClientBuild.method4228(local82, local32 * 8, local21, Client.levelCollisionMap, local39 * 8, local13[local100], local65, (local76 & 0x7) * 8, (local88 & 0x7) * 8, arg0);
-									local54 = true;
-									break;
-								}
-							}
-						}
-					}
-					if (!local54) {
-						Static23.method645(local21, local39 * 8, local32 * 8, 8, 8);
-					}
-				}
-			}
-		}
-	}
-
-	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(ILclient!be;)Lclient!be;")
-	public static IfType method1836(@OriginalArg(1) IfType arg0) {
-		@Pc(12) IfType local12 = Client.method938(arg0);
-		if (local12 == null) {
-			local12 = arg0.aClass13_5;
-		}
-		return local12;
-	}
 
 	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(II)[B")
 	public static byte[] method1837(@OriginalArg(1) int arg0) {
@@ -90,112 +37,10 @@ public final class Static89 {
 		return local10.aByteArray37;
 	}
 
-	@OriginalMember(owner = "client!ha", name = "a", descriptor = "([IJIZ)Lclient!na;")
-	public static JagString method1838(@OriginalArg(0) int[] arg0, @OriginalArg(1) long arg1, @OriginalArg(2) int arg2) {
-		if (QuickChatPhraseType.anInterface3_1 != null) {
-			@Pc(17) JagString local17 = QuickChatPhraseType.anInterface3_1.decode(arg2, arg0, arg1);
-			if (local17 != null) {
-				return local17;
-			}
-		}
-		return Static154.method2929(arg1);
-	}
-
 	@OriginalMember(owner = "client!ha", name = "b", descriptor = "(II)V")
 	public static void method1840(@OriginalArg(1) int arg0) {
 		@Pc(8) DelayedStateChange local8 = Static238.method4143(2, arg0);
 		local8.method1007();
-	}
-
-	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(I)V")
-	public static void gameDraw() {
-		if (!Client.isMenuOpen) {
-			if (Static162.anInt3953 != 0) {
-				Static155.anInt3751 = Static277.anInt5850;
-				Static60.anInt1892 = Static280.anInt5895;
-			} else if (ClientMouseListener.mouseClickButton == 0) {
-				Static155.anInt3751 = ClientMouseListener.mouseX;
-				Static60.anInt1892 = ClientMouseListener.mouseY;
-			} else {
-				Static155.anInt3751 = ClientMouseListener.mouseClickX;
-				Static60.anInt1892 = ClientMouseListener.mouseClickY;
-			}
-			Client.menuNumEntries = 1;
-			Client.aClass100Array168[0] = Text.aClass100_1091;
-			Client.aClass100Array160[0] = TitleScreen.AUTO_EMPTY;
-			Client.menuAction[0] = 1005;
-			Client.anIntArray382[0] = Static35.anInt1092;
-		}
-		if (Client.toplevelinterface != -1) {
-			Client.animateInterface(Client.toplevelinterface);
-		}
-		@Pc(60) int local60;
-		for (local60 = 0; local60 < Client.componentDrawCount; local60++) {
-			if (Client.componentRedrawRequested1[local60]) {
-				Client.componentRedrawRequested2[local60] = true;
-			}
-			Static223.aBooleanArray116[local60] = Client.componentRedrawRequested1[local60];
-			Client.componentRedrawRequested1[local60] = false;
-		}
-		Static201.aClass13_13 = null;
-		Static97.anInt2503 = -1;
-		Static214.anInt5574 = -1;
-		Client.hoveredSlotParent = null;
-		if (GameShell.glRenderer) {
-			Static263.aBoolean299 = true;
-		}
-		Static182.anInt4311 = Client.loopCycle;
-		if (Client.toplevelinterface != -1) {
-			Client.componentDrawCount = 0;
-			Static9.method182();
-		}
-		if (GameShell.glRenderer) {
-			Static46.method1177();
-		} else {
-			Pix2D.method2503();
-		}
-		Static280.method4673();
-		if (Client.isMenuOpen) {
-			if (Static261.aBoolean298) {
-				Static112.method2297();
-			} else {
-				Static145.method2744();
-			}
-		} else if (Static201.aClass13_13 != null) {
-			Static49.method1207(Static201.aClass13_13, Static143.anInt3484, Static131.anInt3260);
-		} else if (Static97.anInt2503 != -1) {
-			Static49.method1207(null, Static214.anInt5574, Static97.anInt2503);
-		}
-		local60 = Client.isMenuOpen ? -1 : Static235.method4044();
-		if (local60 == -1) {
-			local60 = Static270.anInt5794;
-		}
-		Static81.method1750(local60);
-		if (Client.anInt3096 == 1) {
-			Client.anInt3096 = 2;
-		}
-		if (Static187.anInt4422 == 1) {
-			Static187.anInt4422 = 2;
-		}
-		if (Static199.anInt4672 == 3) {
-			for (@Pc(189) int local189 = 0; local189 < Client.componentDrawCount; local189++) {
-				if (Static223.aBooleanArray116[local189]) {
-					if (GameShell.glRenderer) {
-						Static46.method1182(Client.anIntArray410[local189], Client.anIntArray133[local189], Client.anIntArray443[local189], Client.anIntArray320[local189], 16711935, 128);
-					} else {
-						Pix2D.method2484(Client.anIntArray410[local189], Client.anIntArray133[local189], Client.anIntArray443[local189], Client.anIntArray320[local189], 16711935, 128);
-					}
-				} else if (Client.componentRedrawRequested2[local189]) {
-					if (GameShell.glRenderer) {
-						Static46.method1182(Client.anIntArray410[local189], Client.anIntArray133[local189], Client.anIntArray443[local189], Client.anIntArray320[local189], 16711680, 128);
-					} else {
-						Pix2D.method2484(Client.anIntArray410[local189], Client.anIntArray133[local189], Client.anIntArray443[local189], Client.anIntArray320[local189], 16711680, 128);
-					}
-				}
-			}
-		}
-		Static110.method2281(Client.anInt4247, Client.localPlayer.x, Client.localPlayer.z, Client.minusedlevel);
-		Client.anInt4247 = 0;
 	}
 
 	@OriginalMember(owner = "client!ha", name = "a", descriptor = "(IIIII)V")

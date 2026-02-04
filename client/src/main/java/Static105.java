@@ -13,9 +13,6 @@ public final class Static105 {
 	@OriginalMember(owner = "client!ib", name = "d", descriptor = "Lclient!gn;")
 	public static final LruCache aClass54_9 = new LruCache(128);
 
-	@OriginalMember(owner = "client!ib", name = "g", descriptor = "Lclient!na;")
-	public static final JagString aClass100_559 = JagString.wrap("<col=ffff00>");
-
 	@OriginalMember(owner = "client!ib", name = "k", descriptor = "Lclient!na;")
 	public static final JagString aClass100_561 = JagString.wrap(" )2> <col=ffffff>");
 

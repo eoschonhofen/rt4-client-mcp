@@ -383,7 +383,13 @@ public final class Patch extends Linkable {
 		}
 	}
 
-	@OriginalMember(owner = "client!jk", name = "d", descriptor = "(B)V")
+    @OriginalMember(owner = "client!jb", name = "a", descriptor = "(ILclient!ve;I)Lclient!jk;")
+    public static Patch method2320(@OriginalArg(1) Js5 arg0, @OriginalArg(2) int arg1) {
+        @Pc(9) byte[] local9 = arg0.method4500(arg1);
+        return local9 == null ? null : new Patch(local9);
+    }
+
+    @OriginalMember(owner = "client!jk", name = "d", descriptor = "(B)V")
 	public final void method2432() {
 		this.anIntArray289 = null;
 	}

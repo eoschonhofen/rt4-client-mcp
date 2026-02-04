@@ -19,7 +19,7 @@ public final class Static13 {
 			local32 = JagString.join(new JagString[] { Text.aClass100_937, Text.aClass100_901, Static34.aClass100_203, Static225.aClass100_961 });
 		} else if (Client.targetMode && Client.menuNumEntries < 2) {
 			local32 = JagString.join(new JagString[] { Static102.aClass100_545, Text.aClass100_901, Static78.aClass100_466, Static225.aClass100_961 });
-		} else if (Static172.aBoolean199 && ClientKeyboardListener.keyHeld[81] && Client.menuNumEntries > 2) {
+		} else if (Client.aBoolean199 && ClientKeyboardListener.keyHeld[81] && Client.menuNumEntries > 2) {
 			local32 = Static269.method2228(Client.menuNumEntries - 2);
 		} else {
 			local32 = Static269.method2228(Client.menuNumEntries - 1);

@@ -45,7 +45,7 @@ public final class SoftwareAlphaPix32 extends Pix32 {
 
 	@OriginalMember(owner = "client!am", name = "e", descriptor = "(II)V")
 	@Override
-	public final void method1423(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
+	public final void plotSprite(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		arg0 += this.anInt1863;
 		arg1 += this.anInt1861;
 		@Pc(15) int local15 = arg0 + arg1 * Pix2D.anInt3144;

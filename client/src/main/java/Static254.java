@@ -19,17 +19,6 @@ public final class Static254 {
 	@OriginalMember(owner = "client!uj", name = "A", descriptor = "[I")
 	public static final int[] anIntArray489 = new int[] { 2, 0, 0, 2, 0, 0, 0, 4, 4 };
 
-	@OriginalMember(owner = "client!uj", name = "a", descriptor = "(BLclient!ve;I)Z")
-	public static boolean method4346(@OriginalArg(1) Js5 arg0, @OriginalArg(2) int arg1) {
-		@Pc(13) byte[] local13 = arg0.method4500(arg1);
-		if (local13 == null) {
-			return false;
-		} else {
-			Static84.method1770(local13);
-			return true;
-		}
-	}
-
 	@OriginalMember(owner = "client!uj", name = "a", descriptor = "(II)I")
 	public static int method4349(@OriginalArg(0) int arg0) {
 		return arg0 >>> 10;

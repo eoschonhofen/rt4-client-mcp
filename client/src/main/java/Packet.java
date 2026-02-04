@@ -66,7 +66,12 @@ public class Packet extends Linkable {
 		return ~local5;
 	}
 
-	@OriginalMember(owner = "client!wa", name = "c", descriptor = "(I)I")
+    @OriginalMember(owner = "client!fk", name = "a", descriptor = "([BIZ)I")
+    public static int getcrc(@OriginalArg(0) byte[] arg0, @OriginalArg(1) int arg1) {
+        return getcrc(0, arg1, arg0);
+    }
+
+    @OriginalMember(owner = "client!wa", name = "c", descriptor = "(I)I")
 	public final int g2() {
 		this.pos += 2;
 		return ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
@@ -253,7 +258,7 @@ public class Packet extends Linkable {
 	}
 
 	@OriginalMember(owner = "client!wa", name = "a", descriptor = "(II[BB)V")
-	public final void method2190(@OriginalArg(1) int arg0, @OriginalArg(2) byte[] arg1) {
+	public final void gdata(@OriginalArg(1) int arg0, @OriginalArg(2) byte[] arg1) {
 		for (@Pc(8) int local8 = 0; local8 < arg0; local8++) {
 			arg1[local8] = this.data[this.pos++];
 		}
@@ -499,7 +504,7 @@ public class Packet extends Linkable {
 		@Pc(2) int local2 = this.pos;
 		this.pos = 0;
 		@Pc(8) byte[] local8 = new byte[local2];
-		this.method2190(local2, local8);
+		this.gdata(local2, local8);
 		@Pc(23) BigInteger local23 = new BigInteger(local8);
 		@Pc(28) BigInteger local28 = local23.modPow(arg0, arg1);
 		@Pc(38) byte[] local38 = local28.toByteArray();

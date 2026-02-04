@@ -14,7 +14,7 @@ public final class Static133 {
 	public static final int[] anIntArray453 = new int[] { 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3 };
 
 	@OriginalMember(owner = "client!kf", name = "j", descriptor = "I")
-	public static final int anInt5233 = 0;
+	public static final int maxsize = 0;
 
 	@OriginalMember(owner = "client!kf", name = "a", descriptor = "(II)I")
 	public static int method4010(@OriginalArg(0) int arg0) {

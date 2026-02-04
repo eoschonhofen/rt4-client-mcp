@@ -6,9 +6,13 @@ import org.openrs2.deob.annotation.Pc;
 @OriginalClass("client!fl")
 public final class BgSound extends Linkable {
 
-    @OriginalMember(owner = "client!je", name = "T", descriptor = "Lclient!sc;")
-    public static HashTable aClass133_9 = new HashTable(8);
-    @OriginalMember(owner = "client!fl", name = "p", descriptor = "I")
+	@OriginalMember(owner = "client!he", name = "ab", descriptor = "Lclient!sc;")
+	public static final HashTable aClass133_7 = new HashTable(16);
+	@OriginalMember(owner = "client!ab", name = "n", descriptor = "Lclient!ih;")
+	public static final LinkList soundlist = new LinkList();
+	@OriginalMember(owner = "client!ma", name = "x", descriptor = "Lclient!ih;")
+	public static final LinkList aClass69_87 = new LinkList();
+	@OriginalMember(owner = "client!fl", name = "p", descriptor = "I")
 	public int anInt2028;
 
 	@OriginalMember(owner = "client!fl", name = "q", descriptor = "I")
@@ -65,14 +69,14 @@ public final class BgSound extends Linkable {
 	@OriginalMember(owner = "client!je", name = "k", descriptor = "(I)V")
 	public static void recalculateMultilocs() {
 		@Pc(6) BgSound local6;
-		for (local6 = (BgSound) Static3.aClass69_135.head(); local6 != null; local6 = (BgSound) Static3.aClass69_135.next()) {
+		for (local6 = (BgSound) soundlist.head(); local6 != null; local6 = (BgSound) soundlist.next()) {
 			if (local6.aBoolean117) {
-				local6.method1567();
+				local6.recalcSound();
 			}
 		}
-		for (local6 = (BgSound) Static152.aClass69_87.head(); local6 != null; local6 = (BgSound) Static152.aClass69_87.next()) {
+		for (local6 = (BgSound) aClass69_87.head(); local6 != null; local6 = (BgSound) aClass69_87.next()) {
 			if (local6.aBoolean117) {
-				local6.method1567();
+				local6.recalcSound();
 			}
 		}
 	}
@@ -100,12 +104,12 @@ public final class BgSound extends Linkable {
 			local13.anInt2037 = (arg4 + local57) * 128;
 			if (arg1.anIntArray380 != null) {
 				local13.aBoolean117 = true;
-				local13.method1567();
+				local13.recalcSound();
 			}
 			if (local13.anIntArray181 != null) {
 				local13.anInt2034 = local13.anInt2032 + (int) (Math.random() * (double) (local13.anInt2040 - local13.anInt2032));
 			}
-			Static3.aClass69_135.push(local13);
+			soundlist.push(local13);
 		} else if (arg3 != null) {
 			local13.aClass8_Sub4_Sub2_1 = arg3;
 			@Pc(138) NPCType local138 = arg3.aClass96_1;
@@ -119,19 +123,172 @@ public final class BgSound extends Linkable {
 				local13.anInt2044 = Static112.method2299(arg3);
 				local13.anInt2042 = local138.anInt3746 * 128;
 			}
-			Static152.aClass69_87.push(local13);
+			aClass69_87.push(local13);
 		} else if (arg6 != null) {
 			local13.aClass8_Sub4_Sub1_1 = arg6;
 			local13.anInt2037 = (arg6.method2693() + arg4) * 128;
 			local13.anInt2028 = (arg6.method2693() + arg0) * 128;
 			local13.anInt2044 = Static140.method2706(arg6);
 			local13.anInt2042 = arg6.anInt1664 * 128;
-			Static93.aClass133_7.put(local13, arg6.aClass100_364.method3158());
+			aClass133_7.put(local13, arg6.name.method3158());
 		}
 	}
 
+    @OriginalMember(owner = "client!hc", name = "a", descriptor = "(Lclient!km;Z)V")
+    public static void method1877(@OriginalArg(0) ClientNPC arg0) {
+        for (@Pc(13) BgSound local13 = (BgSound) aClass69_87.head(); local13 != null; local13 = (BgSound) aClass69_87.next()) {
+            if (arg0 == local13.aClass8_Sub4_Sub2_1) {
+                if (local13.aClass3_Sub3_Sub1_1 != null) {
+                    Client.soundMixer.method1347(local13.aClass3_Sub3_Sub1_1);
+                    local13.aClass3_Sub3_Sub1_1 = null;
+                }
+                local13.unlink();
+                return;
+            }
+        }
+    }
+
+	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(IIIII)V")
+	public static void method2281(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
+		@Pc(6) BgSound local6;
+		for (local6 = (BgSound) soundlist.head(); local6 != null; local6 = (BgSound) soundlist.next()) {
+			Static150.method2804(arg1, local6, arg3, arg0, arg2);
+		}
+		@Pc(37) byte local37;
+		@Pc(42) BasType local42;
+		@Pc(141) int local141;
+		for (local6 = (BgSound) aClass69_87.head(); local6 != null; local6 = (BgSound) aClass69_87.next()) {
+			local37 = 1;
+			local42 = local6.aClass8_Sub4_Sub2_1.method2681();
+			if (local42.anInt1037 == local6.aClass8_Sub4_Sub2_1.anInt3366) {
+				local37 = 0;
+			} else if (local42.anInt1058 == local6.aClass8_Sub4_Sub2_1.anInt3366 || local42.anInt1054 == local6.aClass8_Sub4_Sub2_1.anInt3366 || local42.anInt1045 == local6.aClass8_Sub4_Sub2_1.anInt3366 || local42.anInt1043 == local6.aClass8_Sub4_Sub2_1.anInt3366) {
+				local37 = 2;
+			} else if (local42.anInt1062 == local6.aClass8_Sub4_Sub2_1.anInt3366 || local42.anInt1042 == local6.aClass8_Sub4_Sub2_1.anInt3366 || local6.aClass8_Sub4_Sub2_1.anInt3366 == local42.anInt1048 || local42.anInt1066 == local6.aClass8_Sub4_Sub2_1.anInt3366) {
+				local37 = 3;
+			}
+			if (local6.anInt2038 != local37) {
+				local141 = Static112.method2299(local6.aClass8_Sub4_Sub2_1);
+				if (local141 != local6.anInt2044) {
+					if (local6.aClass3_Sub3_Sub1_1 != null) {
+						Client.soundMixer.method1347(local6.aClass3_Sub3_Sub1_1);
+						local6.aClass3_Sub3_Sub1_1 = null;
+					}
+					local6.anInt2044 = local141;
+				}
+				local6.anInt2038 = local37;
+			}
+			local6.anInt2041 = local6.aClass8_Sub4_Sub2_1.x;
+			local6.anInt2037 = local6.aClass8_Sub4_Sub2_1.x + local6.aClass8_Sub4_Sub2_1.method2693() * 64;
+			local6.anInt2029 = local6.aClass8_Sub4_Sub2_1.z;
+			local6.anInt2028 = local6.aClass8_Sub4_Sub2_1.z + local6.aClass8_Sub4_Sub2_1.method2693() * 64;
+			Static150.method2804(arg1, local6, arg3, arg0, arg2);
+		}
+		for (local6 = (BgSound) aClass133_7.search(); local6 != null; local6 = (BgSound) aClass133_7.findnext()) {
+			local37 = 1;
+			local42 = local6.aClass8_Sub4_Sub1_1.method2681();
+			if (local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1037) {
+				local37 = 0;
+			} else if (local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1058 || local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1054 || local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1045 || local42.anInt1043 == local6.aClass8_Sub4_Sub1_1.anInt3366) {
+				local37 = 2;
+			} else if (local42.anInt1062 == local6.aClass8_Sub4_Sub1_1.anInt3366 || local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1042 || local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1048 || local6.aClass8_Sub4_Sub1_1.anInt3366 == local42.anInt1066) {
+				local37 = 3;
+			}
+			if (local6.anInt2038 != local37) {
+				local141 = Static140.method2706(local6.aClass8_Sub4_Sub1_1);
+				if (local6.anInt2044 != local141) {
+					if (local6.aClass3_Sub3_Sub1_1 != null) {
+						Client.soundMixer.method1347(local6.aClass3_Sub3_Sub1_1);
+						local6.aClass3_Sub3_Sub1_1 = null;
+					}
+					local6.anInt2044 = local141;
+				}
+				local6.anInt2038 = local37;
+			}
+			local6.anInt2041 = local6.aClass8_Sub4_Sub1_1.x;
+			local6.anInt2037 = local6.aClass8_Sub4_Sub1_1.x + local6.aClass8_Sub4_Sub1_1.method2693() * 64;
+			local6.anInt2029 = local6.aClass8_Sub4_Sub1_1.z;
+			local6.anInt2028 = local6.aClass8_Sub4_Sub1_1.z + local6.aClass8_Sub4_Sub1_1.method2693() * 64;
+			Static150.method2804(arg1, local6, arg3, arg0, arg2);
+		}
+	}
+
+	@OriginalMember(owner = "client!ra", name = "a", descriptor = "(ILclient!pb;BII)V")
+	public static void method3701(@OriginalArg(0) int arg0, @OriginalArg(1) LocType arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
+		for (@Pc(10) BgSound local10 = (BgSound) soundlist.head(); local10 != null; local10 = (BgSound) soundlist.next()) {
+			if (arg3 == local10.anInt2033 && local10.anInt2041 == arg0 * 128 && local10.anInt2029 == arg2 * 128 && arg1.id == local10.multiloc.id) {
+				if (local10.aClass3_Sub3_Sub1_1 != null) {
+					Client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_1);
+					local10.aClass3_Sub3_Sub1_1 = null;
+				}
+				if (local10.aClass3_Sub3_Sub1_2 != null) {
+					Client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_2);
+					local10.aClass3_Sub3_Sub1_2 = null;
+				}
+				local10.unlink();
+				return;
+			}
+		}
+	}
+
+	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(Lclient!e;I)V")
+	public static void method4359(@OriginalArg(0) ClientPlayer arg0) {
+		@Pc(12) BgSound local12 = (BgSound) aClass133_7.find(arg0.name.method3158());
+		if (local12 == null) {
+			method2411(arg0.routeZ[0], null, 0, null, arg0.routeX[0], Client.minusedlevel, arg0);
+		} else {
+			local12.recalcSound();
+		}
+	}
+
+	@OriginalMember(owner = "client!vd", name = "a", descriptor = "(BZ)V")
+	public static void reset(@OriginalArg(1) boolean arg0) {
+		@Pc(14) BgSound local14;
+		for (local14 = (BgSound) soundlist.head(); local14 != null; local14 = (BgSound) soundlist.next()) {
+			if (local14.aClass3_Sub3_Sub1_1 != null) {
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
+				local14.aClass3_Sub3_Sub1_1 = null;
+			}
+			if (local14.aClass3_Sub3_Sub1_2 != null) {
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_2);
+				local14.aClass3_Sub3_Sub1_2 = null;
+			}
+			local14.unlink();
+		}
+		if (!arg0) {
+			return;
+		}
+		for (local14 = (BgSound) aClass69_87.head(); local14 != null; local14 = (BgSound) aClass69_87.next()) {
+			if (local14.aClass3_Sub3_Sub1_1 != null) {
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
+				local14.aClass3_Sub3_Sub1_1 = null;
+			}
+			local14.unlink();
+		}
+		for (local14 = (BgSound) aClass133_7.search(); local14 != null; local14 = (BgSound) aClass133_7.findnext()) {
+			if (local14.aClass3_Sub3_Sub1_1 != null) {
+				Client.soundMixer.method1347(local14.aClass3_Sub3_Sub1_1);
+				local14.aClass3_Sub3_Sub1_1 = null;
+			}
+			local14.unlink();
+		}
+	}
+
+	@OriginalMember(owner = "client!wc", name = "a", descriptor = "(Lclient!e;I)V")
+	public static void method4597(@OriginalArg(0) ClientPlayer arg0) {
+		@Pc(10) BgSound local10 = (BgSound) aClass133_7.find(arg0.name.method3158());
+		if (local10 == null) {
+			return;
+		}
+		if (local10.aClass3_Sub3_Sub1_1 != null) {
+			Client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_1);
+			local10.aClass3_Sub3_Sub1_1 = null;
+		}
+		local10.unlink();
+	}
+
 	@OriginalMember(owner = "client!fl", name = "c", descriptor = "(I)V")
-	public final void method1567() {
+	public final void recalcSound() {
 		@Pc(8) int local8 = this.anInt2044;
 		if (this.multiloc != null) {
 			@Pc(17) LocType local17 = this.multiloc.getMultiLoc();

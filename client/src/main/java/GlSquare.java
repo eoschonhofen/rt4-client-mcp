@@ -275,7 +275,7 @@ public final class GlSquare extends Linkable {
 		if (Static95.aClass3_Sub15_3.pos == 0 && Static95.aClass3_Sub15_2.pos == 0) {
 			return;
 		}
-		@Pc(257) GL local257 = Static239.aGL1;
+		@Pc(257) GL local257 = Static239.gl;
 		if (this.anInt2485 == -1 || arg2) {
 			Static239.method4177(-1);
 			Static27.method766(0, 0);

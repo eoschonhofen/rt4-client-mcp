@@ -120,8 +120,10 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 	public static int deltime = 20;
     @OriginalMember(owner = "client!nj", name = "f", descriptor = "Lclient!en;")
     public static BufferedRandomAccessFile cacheDat;
+	@OriginalMember(owner = "client!vd", name = "w", descriptor = "Lclient!vk;")
+	public static PixMap drawArea;
 
-    @OriginalMember(owner = "client!rc", name = "b", descriptor = "Z")
+	@OriginalMember(owner = "client!rc", name = "b", descriptor = "Z")
 	private boolean alreadyerrored = false;
 
 	@OriginalMember(owner = "client!rc", name = "providesignlink", descriptor = "(Lsignlink!ll;)V")
@@ -241,7 +243,81 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 		}
 	}
 
-	@OriginalMember(owner = "client!rc", name = "focusLost", descriptor = "(Ljava/awt/event/FocusEvent;)V")
+    @OriginalMember(owner = "client!nf", name = "a", descriptor = "(Lclient!na;BZ)V")
+    public static void method3175(@OriginalArg(0) JagString arg0, @OriginalArg(2) boolean arg1) {
+        if (!arg1) {
+            try {
+                shell.getAppletContext().showDocument(arg0.method3127(shell.getCodeBase()), "_top");
+            } catch (@Pc(22) Exception local22) {
+            }
+            return;
+        }
+        if (glRenderer && openwinjs) {
+            try {
+                Static287.method1758(signlink.applet, "openjs", new Object[] { arg0.method3127(shell.getCodeBase()).toString() });
+                return;
+            } catch (@Pc(48) Throwable local48) {
+            }
+        }
+        try {
+            shell.getAppletContext().showDocument(arg0.method3127(shell.getCodeBase()), "_blank");
+        } catch (@Pc(59) Exception local59) {
+        }
+    }
+
+	@OriginalMember(owner = "client!qh", name = "a", descriptor = "(Z)V")
+	public static void method3662() {
+		@Pc(8) Container local8;
+		if (aFrame2 != null) {
+			local8 = aFrame2;
+		} else if (frame == null) {
+			local8 = signlink.applet;
+		} else {
+			local8 = frame;
+		}
+		canvasWid = local8.getSize().width;
+		canvasHei = local8.getSize().height;
+		@Pc(35) Insets local35;
+		if (local8 == frame) {
+			local35 = frame.getInsets();
+			canvasHei -= local35.bottom + local35.top;
+			canvasWid -= local35.right + local35.left;
+		}
+		if (Static144.method2736() >= 2) {
+			anInt1448 = canvasWid;
+			anInt3497 = 0;
+			anInt4246 = 0;
+			anInt5554 = canvasHei;
+		} else {
+			anInt4246 = 0;
+			anInt3497 = (canvasWid - 765) / 2;
+			anInt5554 = 503;
+			anInt1448 = 765;
+		}
+		if (glRenderer) {
+			Static239.method4181(anInt1448, anInt5554);
+		}
+		canvas.setSize(anInt1448, anInt5554);
+		if (local8 == frame) {
+			local35 = frame.getInsets();
+			canvas.setLocation(local35.left + anInt3497, anInt4246 + local35.top);
+		} else {
+			canvas.setLocation(anInt3497, anInt4246);
+		}
+		if (Client.toplevelinterface != -1) {
+			Client.method3712(true);
+		}
+		method2704();
+	}
+
+    @OriginalMember(owner = "client!n", name = "a", descriptor = "(B)V")
+    public static void resetProgress() {
+        Static240.aFontMetrics1 = null;
+        Static222.aFont1 = null;
+        Static149.anImage3 = null;
+    }
+
+    @OriginalMember(owner = "client!rc", name = "focusLost", descriptor = "(Ljava/awt/event/FocusEvent;)V")
 	@Override
 	public final void focusLost(@OriginalArg(0) FocusEvent e) {
 		focus_in = false;
@@ -577,7 +653,7 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
 
 			Static224.method3888();
 			this.addcanvas();
-			Static260.drawArea = PixMap.method2579(anInt5554, anInt1448, canvas);
+			drawArea = PixMap.method2579(anInt5554, anInt1448, canvas);
 			this.maininit();
 			timer = Timer.method1547();
 

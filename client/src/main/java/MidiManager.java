@@ -118,4 +118,49 @@ public class MidiManager {
             anInt5527 = arg0;
         }
     }
+
+    @OriginalMember(owner = "client!km", name = "c", descriptor = "(Z)Z")
+    public static boolean updateLoading() {
+        try {
+            if (state == 2) {
+                if (loadingMidiFile == null) {
+                    loadingMidiFile = MidiFile.load(midis, anInt5853, anInt5085);
+                    if (loadingMidiFile == null) {
+                        return false;
+                    }
+                }
+
+                if (loadingWaveCache == null) {
+                    loadingWaveCache = new WaveCache(aClass153_32, aClass153_103);
+                }
+
+                if (midiPlayer.method4411(loadingMidiFile, aClass153_87, loadingWaveCache)) {
+                    midiPlayer.method4412();
+                    midiPlayer.method4447(anInt5527);
+                    midiPlayer.method4431(aBoolean116, loadingMidiFile);
+                    state = 0;
+                    loadingMidiFile = null;
+                    loadingWaveCache = null;
+                    midis = null;
+                    return true;
+                }
+            }
+        } catch (@Pc(68) Exception ex) {
+            ex.printStackTrace();
+            midiPlayer.stop();
+            midis = null;
+            loadingMidiFile = null;
+            state = 0;
+            loadingWaveCache = null;
+        }
+
+        return false;
+    }
+
+    @OriginalMember(owner = "client!th", name = "a", descriptor = "(Z)V")
+    public static void method4548() {
+        midiPlayer.stop();
+        state = 1;
+        midis = null;
+    }
 }

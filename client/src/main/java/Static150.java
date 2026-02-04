@@ -63,7 +63,7 @@ public final class Static150 {
 		if (arg2.aByte3 == 4) {
 			arg2.anInt459 = arg2.anInt442 * arg2.anInt445 / arg2.anInt473;
 		}
-		if (Static121.aBoolean154 && (Client.method940(arg2).eventCode != 0 || arg2.type == 0)) {
+		if (Client.aBoolean154 && (Client.getActive(arg2).eventCode != 0 || arg2.type == 0)) {
 			if (arg2.anInt459 < 5 && arg2.anInt445 < 5) {
 				arg2.anInt459 = 5;
 				arg2.anInt445 = 5;
@@ -77,7 +77,7 @@ public final class Static150 {
 			}
 		}
 		if (arg2.clientCode == 1337) {
-			Static280.aClass13_26 = arg2;
+			Client.aClass13_26 = arg2;
 		}
 		if (arg3 && arg2.anObjectArray17 != null && (local4 != arg2.anInt445 || arg2.anInt459 != local7)) {
 			@Pc(305) HookReq local305 = new HookReq();

@@ -6,9 +6,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static140 {
 
-	@OriginalMember(owner = "client!la", name = "i", descriptor = "[[[I")
-	public static int[][][] anIntArrayArrayArray12;
-
 	@OriginalMember(owner = "client!la", name = "a", descriptor = "(Lclient!wa;Z)V")
 	public static void method2705(@OriginalArg(0) Packet arg0) {
 		@Pc(15) byte[] local15 = new byte[24];
@@ -43,40 +40,6 @@ public final class Static140 {
 			local14 = arg0.anInt1658;
 		}
 		return local14;
-	}
-
-	@OriginalMember(owner = "client!la", name = "a", descriptor = "(IJ)V")
-	public static void method2707(@OriginalArg(1) long arg0) {
-		if (arg0 == 0L) {
-			return;
-		}
-		if (Static35.anInt1093 >= 100) {
-			Client.addChat(TitleScreen.AUTO_EMPTY, 0, Text.aClass100_1028);
-			return;
-		}
-		@Pc(34) JagString local34 = Static79.toBaseDisplayName(arg0).method3125();
-		@Pc(36) int local36;
-		for (local36 = 0; local36 < Static35.anInt1093; local36++) {
-			if (Static190.aLongArray6[local36] == arg0) {
-				Client.addChat(TitleScreen.AUTO_EMPTY, 0, JagString.join(new JagString[] { local34, Text.aClass100_820 }));
-				return;
-			}
-		}
-		for (local36 = 0; local36 < Static9.anInt178; local36++) {
-			if (Static92.aLongArray3[local36] == arg0) {
-				Client.addChat(TitleScreen.AUTO_EMPTY, 0, JagString.join(new JagString[] { Text.aClass100_418, local34, Text.aClass100_873 }));
-				return;
-			}
-		}
-		if (local34.equalsInner(Client.localPlayer.aClass100_364)) {
-			Client.addChat(TitleScreen.AUTO_EMPTY, 0, Text.aClass100_774);
-			return;
-		}
-		Static190.aLongArray6[Static35.anInt1093] = arg0;
-		Static193.aClass100Array134[Static35.anInt1093++] = Static79.toBaseDisplayName(arg0);
-		Client.friendTransmitNum = Client.transmitNum;
-		Client.out.p1Enc(34);
-		Client.out.p8(arg0);
 	}
 
 	@OriginalMember(owner = "client!la", name = "a", descriptor = "(Lsignlink!ll;Ljava/lang/Object;I)V")

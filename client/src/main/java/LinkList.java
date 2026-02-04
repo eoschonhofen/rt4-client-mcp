@@ -18,7 +18,18 @@ public final class LinkList {
 		this.sentinel.next = this.sentinel;
 	}
 
-	@OriginalMember(owner = "client!ih", name = "a", descriptor = "(I)V")
+    @OriginalMember(owner = "client!ok", name = "a", descriptor = "(Lclient!ab;Lclient!ab;I)V")
+    public static void insertBefore(@OriginalArg(0) Linkable arg0, @OriginalArg(1) Linkable arg1) {
+        if (arg0.prev != null) {
+            arg0.unlink();
+        }
+        arg0.next = arg1;
+        arg0.prev = arg1.prev;
+        arg0.prev.next = arg0;
+        arg0.next.prev = arg0;
+    }
+
+    @OriginalMember(owner = "client!ih", name = "a", descriptor = "(I)V")
 	public final void method2278() {
 		while (true) {
 			@Pc(5) Linkable local5 = this.sentinel.next;

@@ -154,7 +154,7 @@ public final class Mixer extends PcmStream {
 		while (arg0 != this.aClass69_44.sentinel && ((MixerController) arg0).anInt905 <= arg1.anInt905) {
 			arg0 = arg0.next;
 		}
-		Static183.method3331(arg1, arg0);
+		LinkList.insertBefore(arg1, arg0);
 		this.anInt1781 = ((MixerController) this.aClass69_44.sentinel.next).anInt905;
 	}
 }

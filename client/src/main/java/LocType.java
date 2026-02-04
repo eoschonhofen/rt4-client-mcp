@@ -330,7 +330,7 @@ public final class LocType {
 				}
 				local7 = (ModelUnlit) aClass99_24.find((long) local60);
 				if (local7 == null) {
-					local7 = Static77.method1686(models, local60 & 0xFFFF);
+					local7 = ModelUnlit.method1686(models, local60 & 0xFFFF);
 					if (local7 == null) {
 						return null;
 					}
@@ -363,7 +363,7 @@ public final class LocType {
 			}
 			local7 = (ModelUnlit) aClass99_24.find((long) local48);
 			if (local7 == null) {
-				local7 = Static77.method1686(models, local48 & 0xFFFF);
+				local7 = ModelUnlit.method1686(models, local48 & 0xFFFF);
 				if (local7 == null) {
 					return null;
 				}
@@ -543,7 +543,7 @@ public final class LocType {
 			this.anInt4405 = arg0.g1b() * 5;
 		} else if (arg1 >= 30 && arg1 < 35) {
 			this.aClass100Array130[arg1 - 30] = arg0.gjstr();
-			if (this.aClass100Array130[arg1 - 30].method3111(Text.aClass100_64)) {
+			if (this.aClass100Array130[arg1 - 30].equalsIgnoreCase(Text.aClass100_64)) {
 				this.aClass100Array130[arg1 - 30] = null;
 			}
 		} else if (arg1 == 40) {
@@ -728,7 +728,7 @@ public final class LocType {
 			if (local79 == null) {
 				@Pc(175) ModelUnlit local175 = null;
 				for (local177 = 0; local177 < local24; local177++) {
-					local175 = Static77.method1686(models, this.anIntArray379[local177] & 0xFFFF);
+					local175 = ModelUnlit.method1686(models, this.anIntArray379[local177] & 0xFFFF);
 					if (local175 == null) {
 						return null;
 					}
@@ -760,7 +760,7 @@ public final class LocType {
 			}
 			local79 = (GlModelLit) aClass99_24.find((long) local26);
 			if (local79 == null) {
-				@Pc(90) ModelUnlit local90 = Static77.method1686(models, local26 & 0xFFFF);
+				@Pc(90) ModelUnlit local90 = ModelUnlit.method1686(models, local26 & 0xFFFF);
 				if (local90 == null) {
 					return null;
 				}

@@ -7,17 +7,6 @@ public final class Static183 {
 	@OriginalMember(owner = "client!ok", name = "b", descriptor = "I")
 	public static int anInt4271;
 
-	@OriginalMember(owner = "client!ok", name = "a", descriptor = "(Lclient!ab;Lclient!ab;I)V")
-	public static void method3331(@OriginalArg(0) Linkable arg0, @OriginalArg(1) Linkable arg1) {
-		if (arg0.prev != null) {
-			arg0.unlink();
-		}
-		arg0.next = arg1;
-		arg0.prev = arg1.prev;
-		arg0.prev.next = arg0;
-		arg0.next.prev = arg0;
-	}
-
 	@OriginalMember(owner = "client!ok", name = "a", descriptor = "(IIB)Lclient!ce;")
 	public static LinkList2 method3333(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		@Pc(9) LinkList2 local9 = new LinkList2();

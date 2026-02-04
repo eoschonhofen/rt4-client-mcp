@@ -802,7 +802,7 @@ public final class GlModelLit extends ModelLit {
 				}
 			}
 		}
-		@Pc(744) GL local744 = Static239.aGL1;
+		@Pc(744) GL local744 = Static239.gl;
 		local744.glPushMatrix();
 		local744.glTranslatef((float) arg5, (float) arg6, (float) arg7);
 		local744.glRotatef((float) arg0 * 0.17578125F, 0.0F, 1.0F, 0.0F);
@@ -1060,7 +1060,7 @@ public final class GlModelLit extends ModelLit {
 		if (this.anInt5296 == 0) {
 			return;
 		}
-		@Pc(5) GL local5 = Static239.aGL1;
+		@Pc(5) GL local5 = Static239.gl;
 		local5.glPushMatrix();
 		if (arg2 != 0) {
 			local5.glRotatef((float) arg2 * 0.17578125F, 1.0F, 0.0F, 0.0F);
@@ -2966,7 +2966,7 @@ public final class GlModelLit extends ModelLit {
 
 	@OriginalMember(owner = "client!td", name = "w", descriptor = "()V")
 	private void method4121() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		if (this.anInt5297 == 0) {
 			return;
 		}

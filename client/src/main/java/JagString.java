@@ -147,6 +147,15 @@ public final class JagString implements StringWrapper {
 		return arg0 == 198 || arg0 == 230 || arg0 == 156 || arg0 == 140 || arg0 == 223;
 	}
 
+	@OriginalMember(owner = "client!nb", name = "a", descriptor = "(II)Lclient!na;")
+	public static JagString method3165() {
+		@Pc(21) JagString local21 = new JagString();
+		local21.anInt4030 = 1;
+		local21.aByteArray52 = new byte[1];
+		local21.aByteArray52[0] = -96;
+		return local21;
+	}
+
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(Z)Ljava/net/URL;")
 	public final URL method3107() throws MalformedURLException {
 		return new URL(new String(this.aByteArray52, 0, this.anInt4030));
@@ -217,7 +226,7 @@ public final class JagString implements StringWrapper {
 	}
 
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(ILclient!na;)Z")
-	public final boolean method3111(@OriginalArg(1) JagString arg0) {
+	public final boolean equalsIgnoreCase(@OriginalArg(1) JagString arg0) {
 		if (arg0 == null) {
 			return false;
 		} else if (this.anInt4030 == arg0.anInt4030) {
@@ -486,7 +495,7 @@ public final class JagString implements StringWrapper {
 	}
 
 	@OriginalMember(owner = "client!na", name = "a", descriptor = "(Lclient!na;I)I")
-	public final int method3131(@OriginalArg(0) JagString arg0) {
+	public final int indexOf(@OriginalArg(0) JagString arg0) {
 		return this.method3146(arg0, 0);
 	}
 

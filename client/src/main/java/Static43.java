@@ -32,7 +32,7 @@ public final class Static43 {
 		@Pc(70) int local70 = (int) (local9 >>> 32) & Integer.MAX_VALUE;
 		@Pc(74) LocType local74 = LocType.list(local70);
 		if (local74.method3422()) {
-			Static209.method3701(arg1, local74, arg0, arg2);
+			BgSound.method3701(arg1, local74, arg0, arg2);
 		}
 		@Pc(92) int local92 = (int) local9 >> 20 & 0x3;
 		if (local9 == 0L) {
@@ -90,13 +90,13 @@ public final class Static43 {
 			if (local100 instanceof ClientLocAnim) {
 				((ClientLocAnim) local100).method1046();
 			} else {
-				Static9.method181(local74, Static238.anIntArray469[local92] * 8, local92, Static34.anIntArray80[local92] * 8, 4, arg1, arg0, arg4);
+				Static9.method181(local74, ClientBuild.anIntArray469[local92] * 8, local92, ClientBuild.anIntArray80[local92] * 8, 4, arg1, arg0, arg4);
 			}
 		} else if (local57 == 6) {
 			if (local100 instanceof ClientLocAnim) {
 				((ClientLocAnim) local100).method1046();
 			} else {
-				Static9.method181(local74, Static64.anIntArray154[local92] * 8, local92 + 4, Static114.anIntArray565[local92] * 8, 4, arg1, arg0, arg4);
+				Static9.method181(local74, Static64.anIntArray154[local92] * 8, local92 + 4, ClientBuild.anIntArray565[local92] * 8, 4, arg1, arg0, arg4);
 			}
 		} else if (local57 == 7) {
 			if (local100 instanceof ClientLocAnim) {
@@ -108,12 +108,12 @@ public final class Static43 {
 			if (local100 instanceof ClientLocAnim) {
 				((ClientLocAnim) local100).method1046();
 			} else {
-				Static9.method181(local74, Static64.anIntArray154[local92] * 8, local92 + 4, Static114.anIntArray565[local92] * 8, 4, arg1, arg0, arg4);
+				Static9.method181(local74, Static64.anIntArray154[local92] * 8, local92 + 4, ClientBuild.anIntArray565[local92] * 8, 4, arg1, arg0, arg4);
 			}
 			if (local102 instanceof ClientLocAnim) {
 				((ClientLocAnim) local102).method1046();
 			} else {
-				Static9.method181(local74, Static64.anIntArray154[local92] * 8, (local92 + 2 & 0x3) + 4, Static114.anIntArray565[local92] * 8, 4, arg1, arg0, arg4);
+				Static9.method181(local74, Static64.anIntArray154[local92] * 8, (local92 + 2 & 0x3) + 4, ClientBuild.anIntArray565[local92] * 8, 4, arg1, arg0, arg4);
 			}
 		} else if (local57 == 11) {
 			if (local100 instanceof ClientLocAnim) {

@@ -22,7 +22,7 @@ public final class Static148 {
 	@OriginalMember(owner = "client!li", name = "a", descriptor = "(ZI)V")
 	public static void method2765(@OriginalArg(1) int arg0) {
 		if (arg0 == -1 && !Client.aBoolean173) {
-			Static241.method4548();
+			MidiManager.method4548();
 		} else if (arg0 != -1 && (Client.anInt4363 != arg0 || !MidiManager.isInitialised()) && Client.midiVolume != 0 && !Client.aBoolean173) {
 			MidiManager.method526(arg0, Client.songs, Client.midiVolume);
 		}

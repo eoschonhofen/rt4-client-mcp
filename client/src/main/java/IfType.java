@@ -304,7 +304,7 @@ public final class IfType {
 	public boolean shadow = false;
 
 	@OriginalMember(owner = "client!be", name = "cb", descriptor = "I")
-	public int anInt465 = -1;
+	public int drawTime = -1;
 
 	@OriginalMember(owner = "client!be", name = "jc", descriptor = "I")
 	public int anInt496 = 1;
@@ -445,7 +445,7 @@ public final class IfType {
 	public int anInt503 = 0;
 
 	@OriginalMember(owner = "client!be", name = "Uc", descriptor = "I")
-	public int anInt517 = -1;
+	public int drawCount = -1;
 
 	@OriginalMember(owner = "client!be", name = "K", descriptor = "I")
 	public int clientCode = 0;
@@ -580,6 +580,63 @@ public final class IfType {
 		spriteCache.method3104();
 		Static124.aClass99_17.method3104();
 		fontCache.method3104();
+	}
+
+	@OriginalMember(owner = "client!da", name = "h", descriptor = "(B)V")
+	public static void method1019() {
+		spriteCache.clear();
+		Static124.aClass99_17.clear();
+		fontCache.clear();
+	}
+
+	@OriginalMember(owner = "client!eb", name = "d", descriptor = "(I)V")
+	public static void method1287() {
+		list = new IfType[interfaces.getGroupCount()][];
+		open = new boolean[interfaces.getGroupCount()];
+	}
+
+	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(II)V")
+	public static void method1289() {
+		spriteCache.method3102(50);
+		Static124.aClass99_17.method3102(50);
+		fontCache.method3102(50);
+	}
+
+	@OriginalMember(owner = "client!ig", name = "a", descriptor = "(BI)V")
+	public static void closeInterface(@OriginalArg(1) int arg0) {
+		if (arg0 == -1 || !open[arg0]) {
+			return;
+		}
+		interfaces.method4490(arg0);
+		if (list[arg0] == null) {
+			return;
+		}
+		@Pc(27) boolean local27 = true;
+		for (@Pc(29) int local29 = 0; local29 < list[arg0].length; local29++) {
+			if (list[arg0][local29] != null) {
+				if (list[arg0][local29].type == 2) {
+					local27 = false;
+				} else {
+					list[arg0][local29] = null;
+				}
+			}
+		}
+		if (local27) {
+			list[arg0] = null;
+		}
+		open[arg0] = false;
+	}
+
+	@OriginalMember(owner = "client!qf", name = "a", descriptor = "(BII)Lclient!be;")
+	public static IfType method1418(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
+		@Pc(7) IfType local7 = get(arg0);
+		if (arg1 == -1) {
+			return local7;
+		} else if (local7 == null || local7.subcomponents == null || local7.subcomponents.length <= arg1) {
+			return null;
+		} else {
+			return local7.subcomponents[arg1];
+		}
 	}
 
 	@OriginalMember(owner = "client!be", name = "a", descriptor = "(IIB)V")
@@ -955,7 +1012,7 @@ public final class IfType {
 			if (local10 == 1) {
 				local61 = (ModelLit) Static124.aClass99_17.find((long) ((local10 << 16) + local13));
 				if (local61 == null) {
-					@Pc(69) ModelUnlit local69 = Static77.method1686(models, local13);
+					@Pc(69) ModelUnlit local69 = ModelUnlit.method1686(models, local13);
 					if (local69 == null) {
 						loadingAsset = true;
 						return null;

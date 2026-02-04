@@ -557,7 +557,7 @@ public final class Static1 {
 			if (GameShell.glRenderer) {
 				Pix2D.anIntArray297 = null;
 			} else {
-				Static260.drawArea.method4189();
+				GameShell.drawArea.method4189();
 			}
 		}
 		Static70.aClass3_Sub2_Sub1_2.method1415(arg0, arg3);

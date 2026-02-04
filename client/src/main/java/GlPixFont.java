@@ -53,7 +53,7 @@ public final class GlPixFont extends PixFontGeneric {
 		@Pc(4) GL local4;
 		if (Static46.aClass3_Sub2_Sub1_Sub2_1 == null) {
 			Static239.method4151();
-			local4 = Static239.aGL1;
+			local4 = Static239.gl;
 			Static239.method4177(this.anInt3638);
 			local4.glColor3ub((byte) (arg5 >> 16), (byte) (arg5 >> 8), (byte) arg5);
 			local4.glTranslatef((float) arg1, (float) (Static239.anInt5329 - arg2), 0.0F);
@@ -62,7 +62,7 @@ public final class GlPixFont extends PixFontGeneric {
 			return;
 		}
 		Static239.method4151();
-		local4 = Static239.aGL1;
+		local4 = Static239.gl;
 		local4.glColor3ub((byte) (arg5 >> 16), (byte) (arg5 >> 8), (byte) arg5);
 		local4.glTranslatef((float) arg1, (float) (Static239.anInt5329 - arg2), 0.0F);
 		@Pc(32) float local32 = (float) (arg0 % 16) / 16.0F;
@@ -105,7 +105,7 @@ public final class GlPixFont extends PixFontGeneric {
 	@Override
 	protected final void method2855(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6) {
 		Static239.method4151();
-		@Pc(2) GL local2 = Static239.aGL1;
+		@Pc(2) GL local2 = Static239.gl;
 		Static239.method4177(this.anInt3638);
 		local2.glColor4ub((byte) (arg5 >> 16), (byte) (arg5 >> 8), (byte) arg5, arg6 > 255 ? -1 : (byte) arg6);
 		local2.glTranslatef((float) arg1, (float) (Static239.anInt5329 - arg2), 0.0F);
@@ -119,7 +119,7 @@ public final class GlPixFont extends PixFontGeneric {
 			return;
 		}
 		this.anIntArray349 = new int[256];
-		@Pc(9) GL local9 = Static239.aGL1;
+		@Pc(9) GL local9 = Static239.gl;
 		for (@Pc(11) int local11 = 0; local11 < 256; local11++) {
 			@Pc(21) float local21 = (float) (local11 % 16) / 16.0F;
 			@Pc(28) float local28 = (float) (local11 / 16) / 16.0F;
@@ -182,7 +182,7 @@ public final class GlPixFont extends PixFontGeneric {
 			}
 		}
 		@Pc(153) ByteBuffer local153 = ByteBuffer.wrap(local66);
-		@Pc(155) GL local155 = Static239.aGL1;
+		@Pc(155) GL local155 = Static239.gl;
 		if (this.anInt3638 == -1) {
 			@Pc(162) int[] local162 = new int[1];
 			local155.glGenTextures(1, local162, 0);

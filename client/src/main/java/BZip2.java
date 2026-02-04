@@ -486,7 +486,7 @@ public final class BZip2 {
 	}
 
 	@OriginalMember(owner = "client!oc", name = "a", descriptor = "([BI[BII)I")
-	public static int method3316(@OriginalArg(0) byte[] arg0, @OriginalArg(1) int arg1, @OriginalArg(2) byte[] arg2, @OriginalArg(3) int arg3) {
+	public static int decompress(@OriginalArg(0) byte[] arg0, @OriginalArg(1) int arg1, @OriginalArg(2) byte[] arg2, @OriginalArg(3) int arg3) {
 		@Pc(2) BZip2State local2 = aClass11_1;
 		synchronized (aClass11_1) {
 			aClass11_1.aByteArray4 = arg2;

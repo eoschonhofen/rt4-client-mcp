@@ -50,7 +50,7 @@ public final class Js5Index {
 
 	@OriginalMember(owner = "client!ii", name = "<init>", descriptor = "([BI)V")
 	public Js5Index(@OriginalArg(0) byte[] arg0, @OriginalArg(1) int arg1) {
-		this.anInt2911 = Static71.method1442(arg0, arg0.length);
+		this.anInt2911 = Packet.getcrc(arg0, arg0.length);
 		if (arg1 != this.anInt2911) {
 			throw new RuntimeException();
 		}
@@ -59,7 +59,7 @@ public final class Js5Index {
 
 	@OriginalMember(owner = "client!ii", name = "a", descriptor = "(I[B)V")
 	private void method2293(@OriginalArg(1) byte[] arg0) {
-		@Pc(12) Packet local12 = new Packet(Static162.method3092(arg0));
+		@Pc(12) Packet local12 = new Packet(Static162.getUncompressedPacket(arg0));
 		@Pc(16) int local16 = local12.g1();
 		if (local16 != 5 && local16 != 6) {
 			throw new RuntimeException();

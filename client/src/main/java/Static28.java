@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static28 {
 
-	@OriginalMember(owner = "client!cd", name = "s", descriptor = "I")
-	public static int anInt917;
-
 	@OriginalMember(owner = "client!cd", name = "a", descriptor = "(Lclient!ve;B)I")
 	public static int method789(@OriginalArg(0) Js5 arg0) {
 		@Pc(5) int local5 = 0;

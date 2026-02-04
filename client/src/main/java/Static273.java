@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static273 {
 
-	@OriginalMember(owner = "client!we", name = "H", descriptor = "[[B")
-	public static byte[][] aByteArrayArray13;
-
 	@OriginalMember(owner = "client!we", name = "a", descriptor = "(BI)I")
 	public static int method3211(@OriginalArg(1) int arg0) {
 		@Pc(13) int local13 = arg0 * (arg0 * arg0 >> 12) >> 12;

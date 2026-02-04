@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static72 {
 
-	@OriginalMember(owner = "client!fl", name = "D", descriptor = "[[I")
-	public static int[][] anIntArrayArray14;
-
 	@OriginalMember(owner = "client!fl", name = "H", descriptor = "Lclient!na;")
 	public static final JagString aClass100_446 = JagString.wrap("<img=0>");
 

@@ -114,7 +114,7 @@ public final class MidiPlayer extends PcmStream {
 			@Pc(40) int local40 = (int) local34.key;
 			@Pc(48) Patch local48 = (Patch) this.aClass133_23.find((long) local40);
 			if (local48 == null) {
-				local48 = Static116.method2320(arg1, local40);
+				local48 = Patch.method2320(arg1, local40);
 				if (local48 == null) {
 					local5 = false;
 					continue;

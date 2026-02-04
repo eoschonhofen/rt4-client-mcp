@@ -19,7 +19,7 @@ public final class CollisionMap {
 	private final int anInt3899;
 
 	@OriginalMember(owner = "client!mj", name = "m", descriptor = "[[I")
-	public final int[][] anIntArrayArray30;
+	public final int[][] flags;
 
 	@OriginalMember(owner = "client!mj", name = "<init>", descriptor = "(II)V")
 	public CollisionMap(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
@@ -27,8 +27,8 @@ public final class CollisionMap {
 		this.anInt3907 = 0;
 		this.anInt3912 = 0;
 		this.anInt3899 = arg0;
-		this.anIntArrayArray30 = new int[this.anInt3899][this.anInt3904];
-		this.method3050();
+		this.flags = new int[this.anInt3899][this.anInt3904];
+		this.reset();
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IZIIII)V")
@@ -311,40 +311,40 @@ public final class CollisionMap {
 					if (local64 == local54 - 1 && local49 == local59) {
 						return true;
 					}
-					if (local64 == local54 && local59 + 1 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0120) == 0) {
+					if (local64 == local54 && local59 + 1 == local49 && (this.flags[local64][local49] & 0x12C0120) == 0) {
 						return true;
 					}
-					if (local54 == local64 && local59 - 1 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0102) == 0) {
+					if (local54 == local64 && local59 - 1 == local49 && (this.flags[local64][local49] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 1) {
 					if (local54 == local64 && local49 == local59 + 1) {
 						return true;
 					}
-					if (local54 - 1 == local64 && local59 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0108) == 0) {
+					if (local54 - 1 == local64 && local59 == local49 && (this.flags[local64][local49] & 0x12C0108) == 0) {
 						return true;
 					}
-					if (local64 == local54 + 1 && local49 == local59 && (this.anIntArrayArray30[local64][local49] & 0x12C0180) == 0) {
+					if (local64 == local54 + 1 && local49 == local59 && (this.flags[local64][local49] & 0x12C0180) == 0) {
 						return true;
 					}
 				} else if (arg6 == 2) {
 					if (local54 + 1 == local64 && local49 == local59) {
 						return true;
 					}
-					if (local54 == local64 && local49 == local59 + 1 && (this.anIntArrayArray30[local64][local49] & 0x12C0120) == 0) {
+					if (local54 == local64 && local49 == local59 + 1 && (this.flags[local64][local49] & 0x12C0120) == 0) {
 						return true;
 					}
-					if (local54 == local64 && local59 - 1 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0102) == 0) {
+					if (local54 == local64 && local59 - 1 == local49 && (this.flags[local64][local49] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 3) {
 					if (local64 == local54 && local59 - 1 == local49) {
 						return true;
 					}
-					if (local54 - 1 == local64 && local59 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0108) == 0) {
+					if (local54 - 1 == local64 && local59 == local49 && (this.flags[local64][local49] & 0x12C0108) == 0) {
 						return true;
 					}
-					if (local54 + 1 == local64 && local49 == local59 && (this.anIntArrayArray30[local64][local49] & 0x12C0180) == 0) {
+					if (local54 + 1 == local64 && local49 == local59 && (this.flags[local64][local49] & 0x12C0180) == 0) {
 						return true;
 					}
 				}
@@ -357,14 +357,14 @@ public final class CollisionMap {
 					if (local64 == local54 && local49 == local59 + 1) {
 						return true;
 					}
-					if (local64 == local54 + 1 && local49 == local59 && (this.anIntArrayArray30[local64][local49] & 0x12C0180) == 0) {
+					if (local64 == local54 + 1 && local49 == local59 && (this.flags[local64][local49] & 0x12C0180) == 0) {
 						return true;
 					}
-					if (local54 == local64 && local49 == local59 - 1 && (this.anIntArrayArray30[local64][local49] & 0x12C0102) == 0) {
+					if (local54 == local64 && local49 == local59 - 1 && (this.flags[local64][local49] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 1) {
-					if (local64 == local54 - 1 && local59 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0108) == 0) {
+					if (local64 == local54 - 1 && local59 == local49 && (this.flags[local64][local49] & 0x12C0108) == 0) {
 						return true;
 					}
 					if (local54 == local64 && local59 + 1 == local49) {
@@ -373,14 +373,14 @@ public final class CollisionMap {
 					if (local64 == local54 + 1 && local59 == local49) {
 						return true;
 					}
-					if (local54 == local64 && local49 == local59 - 1 && (this.anIntArrayArray30[local64][local49] & 0x12C0102) == 0) {
+					if (local54 == local64 && local49 == local59 - 1 && (this.flags[local64][local49] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 2) {
-					if (local64 == local54 - 1 && local59 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0108) == 0) {
+					if (local64 == local54 - 1 && local59 == local49 && (this.flags[local64][local49] & 0x12C0108) == 0) {
 						return true;
 					}
-					if (local54 == local64 && local49 == local59 + 1 && (this.anIntArrayArray30[local64][local49] & 0x12C0120) == 0) {
+					if (local54 == local64 && local49 == local59 + 1 && (this.flags[local64][local49] & 0x12C0120) == 0) {
 						return true;
 					}
 					if (local54 + 1 == local64 && local59 == local49) {
@@ -393,10 +393,10 @@ public final class CollisionMap {
 					if (local64 == local54 - 1 && local59 == local49) {
 						return true;
 					}
-					if (local64 == local54 && local59 + 1 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0120) == 0) {
+					if (local64 == local54 && local59 + 1 == local49 && (this.flags[local64][local49] & 0x12C0120) == 0) {
 						return true;
 					}
-					if (local64 == local54 + 1 && local59 == local49 && (this.anIntArrayArray30[local64][local49] & 0x12C0180) == 0) {
+					if (local64 == local54 + 1 && local59 == local49 && (this.flags[local64][local49] & 0x12C0180) == 0) {
 						return true;
 					}
 					if (local64 == local54 && local49 == local59 - 1) {
@@ -405,16 +405,16 @@ public final class CollisionMap {
 				}
 			}
 			if (arg4 == 9) {
-				if (local64 == local54 && local59 + 1 == local49 && (this.anIntArrayArray30[local64][local49] & 0x20) == 0) {
+				if (local64 == local54 && local59 + 1 == local49 && (this.flags[local64][local49] & 0x20) == 0) {
 					return true;
 				}
-				if (local64 == local54 && local49 == local59 - 1 && (this.anIntArrayArray30[local64][local49] & 0x2) == 0) {
+				if (local64 == local54 && local49 == local59 - 1 && (this.flags[local64][local49] & 0x2) == 0) {
 					return true;
 				}
-				if (local64 == local54 - 1 && local49 == local59 && (this.anIntArrayArray30[local64][local49] & 0x8) == 0) {
+				if (local64 == local54 - 1 && local49 == local59 && (this.flags[local64][local49] & 0x8) == 0) {
 					return true;
 				}
-				if (local54 + 1 == local64 && local59 == local49 && (this.anIntArrayArray30[local64][local49] & 0x80) == 0) {
+				if (local54 + 1 == local64 && local59 == local49 && (this.flags[local64][local49] & 0x80) == 0) {
 					return true;
 				}
 			}
@@ -426,40 +426,40 @@ public final class CollisionMap {
 					if (local64 == local54 - arg5 && local49 <= local59 && local59 <= local792) {
 						return true;
 					}
-					if (local64 <= local54 && local785 >= local54 && local59 + 1 == local49 && (this.anIntArrayArray30[local54][local49] & 0x12C0120) == 0) {
+					if (local64 <= local54 && local785 >= local54 && local59 + 1 == local49 && (this.flags[local54][local49] & 0x12C0120) == 0) {
 						return true;
 					}
-					if (local64 <= local54 && local785 >= local54 && local59 - arg5 == local49 && (this.anIntArrayArray30[local54][local792] & 0x12C0102) == 0) {
+					if (local64 <= local54 && local785 >= local54 && local59 - arg5 == local49 && (this.flags[local54][local792] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 1) {
 					if (local54 >= local64 && local54 <= local785 && local59 + 1 == local49) {
 						return true;
 					}
-					if (local64 == local54 - arg5 && local49 <= local59 && local792 >= local59 && (this.anIntArrayArray30[local785][local59] & 0x12C0108) == 0) {
+					if (local64 == local54 - arg5 && local49 <= local59 && local792 >= local59 && (this.flags[local785][local59] & 0x12C0108) == 0) {
 						return true;
 					}
-					if (local64 == local54 + 1 && local49 <= local59 && local792 >= local59 && (this.anIntArrayArray30[local64][local59] & 0x12C0180) == 0) {
+					if (local64 == local54 + 1 && local49 <= local59 && local792 >= local59 && (this.flags[local64][local59] & 0x12C0180) == 0) {
 						return true;
 					}
 				} else if (arg6 == 2) {
 					if (local54 + 1 == local64 && local49 <= local59 && local59 <= local792) {
 						return true;
 					}
-					if (local54 >= local64 && local785 >= local54 && local49 == local59 + 1 && (this.anIntArrayArray30[local54][local49] & 0x12C0120) == 0) {
+					if (local54 >= local64 && local785 >= local54 && local49 == local59 + 1 && (this.flags[local54][local49] & 0x12C0120) == 0) {
 						return true;
 					}
-					if (local54 >= local64 && local785 >= local54 && local59 - arg5 == local49 && (this.anIntArrayArray30[local54][local792] & 0x12C0102) == 0) {
+					if (local54 >= local64 && local785 >= local54 && local59 - arg5 == local49 && (this.flags[local54][local792] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 3) {
 					if (local64 <= local54 && local785 >= local54 && local59 - arg5 == local49) {
 						return true;
 					}
-					if (local64 == local54 - arg5 && local59 >= local49 && local792 >= local59 && (this.anIntArrayArray30[local785][local59] & 0x12C0108) == 0) {
+					if (local64 == local54 - arg5 && local59 >= local49 && local792 >= local59 && (this.flags[local785][local59] & 0x12C0108) == 0) {
 						return true;
 					}
-					if (local54 + 1 == local64 && local49 <= local59 && local59 <= local792 && (this.anIntArrayArray30[local64][local59] & 0x12C0180) == 0) {
+					if (local54 + 1 == local64 && local49 <= local59 && local59 <= local792 && (this.flags[local64][local59] & 0x12C0180) == 0) {
 						return true;
 					}
 				}
@@ -472,14 +472,14 @@ public final class CollisionMap {
 					if (local64 <= local54 && local785 >= local54 && local49 == local59 + 1) {
 						return true;
 					}
-					if (local54 + 1 == local64 && local59 >= local49 && local59 <= local792 && (this.anIntArrayArray30[local64][local59] & 0x12C0180) == 0) {
+					if (local54 + 1 == local64 && local59 >= local49 && local59 <= local792 && (this.flags[local64][local59] & 0x12C0180) == 0) {
 						return true;
 					}
-					if (local54 >= local64 && local785 >= local54 && local59 - arg5 == local49 && (this.anIntArrayArray30[local54][local792] & 0x12C0102) == 0) {
+					if (local54 >= local64 && local785 >= local54 && local59 - arg5 == local49 && (this.flags[local54][local792] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 1) {
-					if (local64 == local54 - arg5 && local59 >= local49 && local59 <= local792 && (this.anIntArrayArray30[local785][local59] & 0x12C0108) == 0) {
+					if (local64 == local54 - arg5 && local59 >= local49 && local59 <= local792 && (this.flags[local785][local59] & 0x12C0108) == 0) {
 						return true;
 					}
 					if (local64 <= local54 && local785 >= local54 && local49 == local59 + 1) {
@@ -488,14 +488,14 @@ public final class CollisionMap {
 					if (local54 + 1 == local64 && local59 >= local49 && local59 <= local792) {
 						return true;
 					}
-					if (local54 >= local64 && local54 <= local785 && local49 == local59 - arg5 && (this.anIntArrayArray30[local54][local792] & 0x12C0102) == 0) {
+					if (local54 >= local64 && local54 <= local785 && local49 == local59 - arg5 && (this.flags[local54][local792] & 0x12C0102) == 0) {
 						return true;
 					}
 				} else if (arg6 == 2) {
-					if (local54 - arg5 == local64 && local49 <= local59 && local792 >= local59 && (this.anIntArrayArray30[local785][local59] & 0x12C0108) == 0) {
+					if (local54 - arg5 == local64 && local49 <= local59 && local792 >= local59 && (this.flags[local785][local59] & 0x12C0108) == 0) {
 						return true;
 					}
-					if (local64 <= local54 && local54 <= local785 && local49 == local59 + 1 && (this.anIntArrayArray30[local54][local49] & 0x12C0120) == 0) {
+					if (local64 <= local54 && local54 <= local785 && local49 == local59 + 1 && (this.flags[local54][local49] & 0x12C0120) == 0) {
 						return true;
 					}
 					if (local64 == local54 + 1 && local49 <= local59 && local59 <= local792) {
@@ -508,10 +508,10 @@ public final class CollisionMap {
 					if (local54 - arg5 == local64 && local59 >= local49 && local59 <= local792) {
 						return true;
 					}
-					if (local64 <= local54 && local54 <= local785 && local59 + 1 == local49 && (this.anIntArrayArray30[local54][local49] & 0x12C0120) == 0) {
+					if (local64 <= local54 && local54 <= local785 && local59 + 1 == local49 && (this.flags[local54][local49] & 0x12C0120) == 0) {
 						return true;
 					}
-					if (local64 == local54 + 1 && local59 >= local49 && local59 <= local792 && (this.anIntArrayArray30[local64][local59] & 0x12C0180) == 0) {
+					if (local64 == local54 + 1 && local59 >= local49 && local59 <= local792 && (this.flags[local64][local59] & 0x12C0180) == 0) {
 						return true;
 					}
 					if (local64 <= local54 && local785 >= local54 && local59 - arg5 == local49) {
@@ -520,16 +520,16 @@ public final class CollisionMap {
 				}
 			}
 			if (arg4 == 9) {
-				if (local64 <= local54 && local54 <= local785 && local49 == local59 + 1 && (this.anIntArrayArray30[local54][local49] & 0x12C0120) == 0) {
+				if (local64 <= local54 && local54 <= local785 && local49 == local59 + 1 && (this.flags[local54][local49] & 0x12C0120) == 0) {
 					return true;
 				}
-				if (local54 >= local64 && local54 <= local785 && local49 == local59 - arg5 && (this.anIntArrayArray30[local54][local792] & 0x12C0102) == 0) {
+				if (local54 >= local64 && local54 <= local785 && local49 == local59 - arg5 && (this.flags[local54][local792] & 0x12C0102) == 0) {
 					return true;
 				}
-				if (local54 - arg5 == local64 && local59 >= local49 && local59 <= local792 && (this.anIntArrayArray30[local785][local59] & 0x12C0108) == 0) {
+				if (local54 - arg5 == local64 && local59 >= local49 && local59 <= local792 && (this.flags[local785][local59] & 0x12C0108) == 0) {
 					return true;
 				}
-				if (local64 == local54 + 1 && local59 >= local49 && local792 >= local59 && (this.anIntArrayArray30[local64][local59] & 0x12C0180) == 0) {
+				if (local64 == local54 + 1 && local59 >= local49 && local792 >= local59 && (this.flags[local64][local59] & 0x12C0180) == 0) {
 					return true;
 				}
 			}
@@ -558,7 +558,7 @@ public final class CollisionMap {
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IBII)V")
 	private void method3044(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		this.anIntArrayArray30[arg1][arg2] |= arg0;
+		this.flags[arg1][arg2] |= arg0;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IIIIIIII)Z")
@@ -580,46 +580,46 @@ public final class CollisionMap {
 					arg5 = arg5 + 2 & 0x3;
 				}
 				if (arg5 == 0) {
-					if (local62 == local72 + 1 && local67 == local77 && (this.anIntArrayArray30[local62][local77] & 0x80) == 0) {
+					if (local62 == local72 + 1 && local67 == local77 && (this.flags[local62][local77] & 0x80) == 0) {
 						return true;
 					}
-					if (local72 == local62 && local77 == local67 - 1 && (this.anIntArrayArray30[local62][local77] & 0x2) == 0) {
+					if (local72 == local62 && local77 == local67 - 1 && (this.flags[local62][local77] & 0x2) == 0) {
 						return true;
 					}
 				} else if (arg5 == 1) {
-					if (local62 == local72 - 1 && local67 == local77 && (this.anIntArrayArray30[local62][local77] & 0x8) == 0) {
+					if (local62 == local72 - 1 && local67 == local77 && (this.flags[local62][local77] & 0x8) == 0) {
 						return true;
 					}
-					if (local72 == local62 && local77 == local67 - 1 && (this.anIntArrayArray30[local62][local77] & 0x2) == 0) {
+					if (local72 == local62 && local77 == local67 - 1 && (this.flags[local62][local77] & 0x2) == 0) {
 						return true;
 					}
 				} else if (arg5 == 2) {
-					if (local62 == local72 - 1 && local77 == local67 && (this.anIntArrayArray30[local62][local77] & 0x8) == 0) {
+					if (local62 == local72 - 1 && local77 == local67 && (this.flags[local62][local77] & 0x8) == 0) {
 						return true;
 					}
-					if (local72 == local62 && local67 + 1 == local77 && (this.anIntArrayArray30[local62][local77] & 0x20) == 0) {
+					if (local72 == local62 && local67 + 1 == local77 && (this.flags[local62][local77] & 0x20) == 0) {
 						return true;
 					}
 				} else if (arg5 == 3) {
-					if (local62 == local72 + 1 && local77 == local67 && (this.anIntArrayArray30[local62][local77] & 0x80) == 0) {
+					if (local62 == local72 + 1 && local77 == local67 && (this.flags[local62][local77] & 0x80) == 0) {
 						return true;
 					}
-					if (local72 == local62 && local77 == local67 + 1 && (this.anIntArrayArray30[local62][local77] & 0x20) == 0) {
+					if (local72 == local62 && local77 == local67 + 1 && (this.flags[local62][local77] & 0x20) == 0) {
 						return true;
 					}
 				}
 			}
 			if (arg1 == 8) {
-				if (local62 == local72 && local67 + 1 == local77 && (this.anIntArrayArray30[local62][local77] & 0x20) == 0) {
+				if (local62 == local72 && local67 + 1 == local77 && (this.flags[local62][local77] & 0x20) == 0) {
 					return true;
 				}
-				if (local62 == local72 && local67 - 1 == local77 && (this.anIntArrayArray30[local62][local77] & 0x2) == 0) {
+				if (local62 == local72 && local67 - 1 == local77 && (this.flags[local62][local77] & 0x2) == 0) {
 					return true;
 				}
-				if (local72 - 1 == local62 && local77 == local67 && (this.anIntArrayArray30[local62][local77] & 0x8) == 0) {
+				if (local72 - 1 == local62 && local77 == local67 && (this.flags[local62][local77] & 0x8) == 0) {
 					return true;
 				}
-				if (local62 == local72 + 1 && local67 == local77 && (this.anIntArrayArray30[local62][local77] & 0x80) == 0) {
+				if (local62 == local72 + 1 && local67 == local77 && (this.flags[local62][local77] & 0x80) == 0) {
 					return true;
 				}
 			}
@@ -631,46 +631,46 @@ public final class CollisionMap {
 					arg5 = arg5 + 2 & 0x3;
 				}
 				if (arg5 == 0) {
-					if (local72 + 1 == local62 && local77 <= local67 && local67 <= local420 && (this.anIntArrayArray30[local62][local67] & 0x80) == 0) {
+					if (local72 + 1 == local62 && local77 <= local67 && local67 <= local420 && (this.flags[local62][local67] & 0x80) == 0) {
 						return true;
 					}
-					if (local72 >= local62 && local414 >= local72 && local67 - arg4 == local77 && (this.anIntArrayArray30[local72][local420] & 0x2) == 0) {
+					if (local72 >= local62 && local414 >= local72 && local67 - arg4 == local77 && (this.flags[local72][local420] & 0x2) == 0) {
 						return true;
 					}
 				} else if (arg5 == 1) {
-					if (local72 - arg4 == local62 && local67 >= local77 && local420 >= local67 && (this.anIntArrayArray30[local414][local67] & 0x8) == 0) {
+					if (local72 - arg4 == local62 && local67 >= local77 && local420 >= local67 && (this.flags[local414][local67] & 0x8) == 0) {
 						return true;
 					}
-					if (local72 >= local62 && local414 >= local72 && local67 - arg4 == local77 && (this.anIntArrayArray30[local72][local420] & 0x2) == 0) {
+					if (local72 >= local62 && local414 >= local72 && local67 - arg4 == local77 && (this.flags[local72][local420] & 0x2) == 0) {
 						return true;
 					}
 				} else if (arg5 == 2) {
-					if (local62 == local72 - arg4 && local67 >= local77 && local67 <= local420 && (this.anIntArrayArray30[local414][local67] & 0x8) == 0) {
+					if (local62 == local72 - arg4 && local67 >= local77 && local67 <= local420 && (this.flags[local414][local67] & 0x8) == 0) {
 						return true;
 					}
-					if (local62 <= local72 && local72 <= local414 && local77 == local67 + 1 && (this.anIntArrayArray30[local72][local77] & 0x20) == 0) {
+					if (local62 <= local72 && local72 <= local414 && local77 == local67 + 1 && (this.flags[local72][local77] & 0x20) == 0) {
 						return true;
 					}
 				} else if (arg5 == 3) {
-					if (local72 + 1 == local62 && local77 <= local67 && local67 <= local420 && (this.anIntArrayArray30[local62][local67] & 0x80) == 0) {
+					if (local72 + 1 == local62 && local77 <= local67 && local67 <= local420 && (this.flags[local62][local67] & 0x80) == 0) {
 						return true;
 					}
-					if (local72 >= local62 && local72 <= local414 && local77 == local67 + 1 && (this.anIntArrayArray30[local72][local77] & 0x20) == 0) {
+					if (local72 >= local62 && local72 <= local414 && local77 == local67 + 1 && (this.flags[local72][local77] & 0x20) == 0) {
 						return true;
 					}
 				}
 			}
 			if (arg1 == 8) {
-				if (local62 <= local72 && local414 >= local72 && local77 == local67 + 1 && (this.anIntArrayArray30[local72][local77] & 0x20) == 0) {
+				if (local62 <= local72 && local414 >= local72 && local77 == local67 + 1 && (this.flags[local72][local77] & 0x20) == 0) {
 					return true;
 				}
-				if (local72 >= local62 && local414 >= local72 && local77 == local67 - arg4 && (this.anIntArrayArray30[local72][local420] & 0x2) == 0) {
+				if (local72 >= local62 && local414 >= local72 && local77 == local67 - arg4 && (this.flags[local72][local420] & 0x2) == 0) {
 					return true;
 				}
-				if (local62 == local72 - arg4 && local77 <= local67 && local420 >= local67 && (this.anIntArrayArray30[local414][local67] & 0x8) == 0) {
+				if (local62 == local72 - arg4 && local77 <= local67 && local420 >= local67 && (this.flags[local414][local67] & 0x8) == 0) {
 					return true;
 				}
-				if (local62 == local72 + 1 && local67 >= local77 && local67 <= local420 && (this.anIntArrayArray30[local62][local67] & 0x80) == 0) {
+				if (local62 == local72 + 1 && local67 >= local77 && local67 <= local420 && (this.flags[local62][local67] & 0x80) == 0) {
 					return true;
 				}
 			}
@@ -691,7 +691,7 @@ public final class CollisionMap {
 				local45 = arg5;
 				local52 = local22 >= local9 ? local9 : local22;
 				while (local52 > local45) {
-					if ((this.anIntArrayArray30[local45 - this.anInt3912][local13 - this.anInt3907 - 1] & 0x2) == 0) {
+					if ((this.flags[local45 - this.anInt3912][local13 - this.anInt3907 - 1] & 0x2) == 0) {
 						return true;
 					}
 					local45++;
@@ -700,7 +700,7 @@ public final class CollisionMap {
 				local45 = arg5;
 				local52 = local9 > local22 ? local22 : local9;
 				while (local52 > local45) {
-					if ((this.anIntArrayArray30[local45 - this.anInt3912][arg6 - this.anInt3907] & 0x20) == 0) {
+					if ((this.flags[local45 - this.anInt3912][arg6 - this.anInt3907] & 0x20) == 0) {
 						return true;
 					}
 					local45++;
@@ -709,13 +709,13 @@ public final class CollisionMap {
 		} else if (local9 > arg0 && local9 <= local22) {
 			if (arg1 == local13 && (arg3 & 0x4) == 0) {
 				for (local45 = arg0; local45 < local9; local45++) {
-					if ((this.anIntArrayArray30[local45 - this.anInt3912][local13 - this.anInt3907 - 1] & 0x2) == 0) {
+					if ((this.flags[local45 - this.anInt3912][local13 - this.anInt3907 - 1] & 0x2) == 0) {
 						return true;
 					}
 				}
 			} else if (arg6 == local27 && (arg3 & 0x1) == 0) {
 				for (local45 = arg0; local45 < local9; local45++) {
-					if ((this.anIntArrayArray30[local45 - this.anInt3912][arg6 - this.anInt3907] & 0x20) == 0) {
+					if ((this.flags[local45 - this.anInt3912][arg6 - this.anInt3907] & 0x20) == 0) {
 						return true;
 					}
 				}
@@ -725,7 +725,7 @@ public final class CollisionMap {
 				local45 = arg6;
 				local52 = local27 >= local13 ? local13 : local27;
 				while (local45 < local52) {
-					if ((this.anIntArrayArray30[local9 - this.anInt3912 - 1][local45 - this.anInt3907] & 0x8) == 0) {
+					if ((this.flags[local9 - this.anInt3912 - 1][local45 - this.anInt3907] & 0x8) == 0) {
 						return true;
 					}
 					local45++;
@@ -734,7 +734,7 @@ public final class CollisionMap {
 				local45 = arg6;
 				local52 = local27 < local13 ? local27 : local13;
 				while (local45 < local52) {
-					if ((this.anIntArrayArray30[arg5 - this.anInt3912][local45 - this.anInt3907] & 0x80) == 0) {
+					if ((this.flags[arg5 - this.anInt3912][local45 - this.anInt3907] & 0x80) == 0) {
 						return true;
 					}
 					local45++;
@@ -743,13 +743,13 @@ public final class CollisionMap {
 		} else if (arg1 < local13 && local27 >= local13) {
 			if (local9 == arg0 && (arg3 & 0x8) == 0) {
 				for (local45 = arg1; local45 < local13; local45++) {
-					if ((this.anIntArrayArray30[local9 - this.anInt3912 - 1][local45 - this.anInt3907] & 0x8) == 0) {
+					if ((this.flags[local9 - this.anInt3912 - 1][local45 - this.anInt3907] & 0x8) == 0) {
 						return true;
 					}
 				}
 			} else if (local22 == arg5 && (arg3 & 0x2) == 0) {
 				for (local45 = arg1; local45 < local13; local45++) {
-					if ((this.anIntArrayArray30[arg5 - this.anInt3912][local45 - this.anInt3907] & 0x80) == 0) {
+					if ((this.flags[arg5 - this.anInt3912][local45 - this.anInt3907] & 0x80) == 0) {
 						return true;
 					}
 				}
@@ -759,13 +759,13 @@ public final class CollisionMap {
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(I)V")
-	public final void method3050() {
+	public final void reset() {
 		for (@Pc(3) int local3 = 0; local3 < this.anInt3899; local3++) {
 			for (@Pc(13) int local13 = 0; local13 < this.anInt3904; local13++) {
 				if (local3 == 0 || local13 == 0 || local3 >= this.anInt3899 - 5 || this.anInt3904 - 5 <= local13) {
-					this.anIntArrayArray30[local3][local13] = 16777215;
+					this.flags[local3][local13] = 16777215;
 				} else {
-					this.anIntArrayArray30[local3][local13] = 16777216;
+					this.flags[local3][local13] = 16777216;
 				}
 			}
 		}
@@ -775,7 +775,7 @@ public final class CollisionMap {
 	public final void blockGround(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
 		@Pc(12) int local12 = arg0 - this.anInt3907;
 		@Pc(17) int local17 = arg1 - this.anInt3912;
-		this.anIntArrayArray30[local17][local12] |= 0x200000;
+		this.flags[local17][local12] |= 0x200000;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(ZIIIIIIII)Z")
@@ -787,14 +787,14 @@ public final class CollisionMap {
 		@Pc(47) int local47 = arg6 + arg7 - 1;
 		if (arg0 <= arg2 && local41 >= arg2 && arg6 <= arg1 && arg1 <= local47) {
 			return true;
-		} else if (arg0 - 1 == arg2 && arg1 >= arg6 && arg1 <= local47 && (this.anIntArrayArray30[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x8) == 0 && (arg5 & 0x8) == 0) {
+		} else if (arg0 - 1 == arg2 && arg1 >= arg6 && arg1 <= local47 && (this.flags[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x8) == 0 && (arg5 & 0x8) == 0) {
 			return true;
-		} else if (arg2 == local41 + 1 && arg6 <= arg1 && local47 >= arg1 && (this.anIntArrayArray30[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x80) == 0 && (arg5 & 0x2) == 0) {
+		} else if (arg2 == local41 + 1 && arg6 <= arg1 && local47 >= arg1 && (this.flags[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x80) == 0 && (arg5 & 0x2) == 0) {
 			return true;
-		} else if (arg1 == arg6 - 1 && arg0 <= arg2 && local41 >= arg2 && (this.anIntArrayArray30[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x2) == 0 && (arg5 & 0x4) == 0) {
+		} else if (arg1 == arg6 - 1 && arg0 <= arg2 && local41 >= arg2 && (this.flags[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x2) == 0 && (arg5 & 0x4) == 0) {
 			return true;
 		} else {
-			return arg1 == local47 + 1 && arg2 >= arg0 && local41 >= arg2 && (this.anIntArrayArray30[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x20) == 0 && (arg5 & 0x1) == 0;
+			return arg1 == local47 + 1 && arg2 >= arg0 && local41 >= arg2 && (this.flags[arg2 - this.anInt3912][arg1 - this.anInt3907] & 0x20) == 0 && (arg5 & 0x1) == 0;
 		}
 	}
 
@@ -802,7 +802,7 @@ public final class CollisionMap {
 	public final void method3053(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
 		@Pc(4) int local4 = arg1 - this.anInt3912;
 		@Pc(9) int local9 = arg0 - this.anInt3907;
-		this.anIntArrayArray30[local4][local9] &= 0xFFFBFFFF;
+		this.flags[local4][local9] &= 0xFFFBFFFF;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "b", descriptor = "(IIIII)Z")
@@ -836,12 +836,12 @@ public final class CollisionMap {
 			local117 = local77 * 65536 / local96;
 			while (local61 != local22) {
 				if (local22 > local61) {
-					if ((this.anIntArrayArray30[local66][local61] & 0x12C0102) != 0) {
+					if ((this.flags[local66][local61] & 0x12C0102) != 0) {
 						return false;
 					}
 					local61++;
 				} else if (local22 < local61) {
-					if ((this.anIntArrayArray30[local66][local61] & 0x12C0120) != 0) {
+					if ((this.flags[local66][local61] & 0x12C0120) != 0) {
 						return false;
 					}
 					local61--;
@@ -850,12 +850,12 @@ public final class CollisionMap {
 				if (local111 >= 65536) {
 					local111 -= 65536;
 					if (local66 < local33) {
-						if ((this.anIntArrayArray30[local66][local61] & 0x12C0108) != 0) {
+						if ((this.flags[local66][local61] & 0x12C0108) != 0) {
 							return false;
 						}
 						local66++;
 					} else if (local66 > local33) {
-						if ((this.anIntArrayArray30[local66][local61] & 0x12C0180) != 0) {
+						if ((this.flags[local66][local61] & 0x12C0180) != 0) {
 							return false;
 						}
 						local66--;
@@ -867,12 +867,12 @@ public final class CollisionMap {
 			local111 = 32768;
 			while (local33 != local66) {
 				if (local66 < local33) {
-					if ((this.anIntArrayArray30[local66][local61] & 0x12C0108) != 0) {
+					if ((this.flags[local66][local61] & 0x12C0108) != 0) {
 						return false;
 					}
 					local66++;
 				} else if (local33 < local66) {
-					if ((this.anIntArrayArray30[local66][local61] & 0x12C0180) != 0) {
+					if ((this.flags[local66][local61] & 0x12C0180) != 0) {
 						return false;
 					}
 					local66--;
@@ -881,12 +881,12 @@ public final class CollisionMap {
 				if (local111 >= 65536) {
 					local111 -= 65536;
 					if (local61 < local22) {
-						if ((this.anIntArrayArray30[local66][local61] & 0x12C0102) != 0) {
+						if ((this.flags[local66][local61] & 0x12C0102) != 0) {
 							return false;
 						}
 						local61++;
 					} else if (local22 < local61) {
-						if ((this.anIntArrayArray30[local66][local61] & 0x12C0120) != 0) {
+						if ((this.flags[local66][local61] & 0x12C0120) != 0) {
 							return false;
 						}
 						local61--;
@@ -894,12 +894,12 @@ public final class CollisionMap {
 				}
 			}
 		}
-		return (this.anIntArrayArray30[local33][local22] & 0x1240100) == 0;
+		return (this.flags[local33][local22] & 0x1240100) == 0;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(BIII)V")
 	private void method3055(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		this.anIntArrayArray30[arg1][arg0] &= ~arg2;
+		this.flags[arg1][arg0] &= ~arg2;
 	}
 
 	@OriginalMember(owner = "client!mj", name = "a", descriptor = "(IIIZIII)V")
@@ -931,6 +931,6 @@ public final class CollisionMap {
 	public final void method3057(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		@Pc(4) int local4 = arg1 - this.anInt3907;
 		@Pc(17) int local17 = arg0 - this.anInt3912;
-		this.anIntArrayArray30[local17][local4] |= 0x40000;
+		this.flags[local17][local4] |= 0x40000;
 	}
 }

@@ -30,7 +30,7 @@ public final class Static24 {
 		@Pc(36) int local36 = (arg0 ? QuickChatPhraseType.anInt1047 : QuickChatPhraseType.anInt3490) + local28;
 		for (@Pc(38) int local38 = local28; local38 < local36; local38++) {
 			@Pc(45) QuickChatPhraseType local45 = QuickChatPhraseType.list(local38);
-			if (local45.aBoolean60 && local45.method769().method3114().method3131(local9) != -1) {
+			if (local45.aBoolean60 && local45.method769().method3114().indexOf(local9) != -1) {
 				if (local11 >= 50) {
 					Static111.anInt2905 = -1;
 					Static169.aShortArray52 = null;

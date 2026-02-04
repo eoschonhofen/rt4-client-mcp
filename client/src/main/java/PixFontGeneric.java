@@ -108,7 +108,7 @@ public abstract class PixFontGeneric extends Linkable2 {
 									@Pc(125) Pix8 local125 = this.aClass36Array11[local120];
 									@Pc(136) int local136 = this.anIntArray346 == null ? local125.anInt4276 : this.anIntArray346[local120];
 									if (Static218.anInt3631 == 256) {
-										local125.method3336(arg1, local4 + this.anInt3626 - local136);
+										local125.plotSprite(arg1, local4 + this.anInt3626 - local136);
 									} else {
 										local125.method3335(arg1, local4 + this.anInt3626 - local136, Static218.anInt3631);
 									}
@@ -789,7 +789,7 @@ public abstract class PixFontGeneric extends Linkable2 {
 									@Pc(146) Pix8 local146 = this.aClass36Array11[local141];
 									@Pc(157) int local157 = this.anIntArray346 == null ? local146.anInt4276 : this.anIntArray346[local141];
 									if (Static218.anInt3631 == 256) {
-										local146.method3336(arg1 + local121, local4 + this.anInt3626 - local157 + local130);
+										local146.plotSprite(arg1 + local121, local4 + this.anInt3626 - local157 + local130);
 									} else {
 										local146.method3335(arg1 + local121, local4 + this.anInt3626 - local157 + local130, Static218.anInt3631);
 									}

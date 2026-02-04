@@ -18,40 +18,6 @@ public final class Static74 {
 		}
 	}
 
-	@OriginalMember(owner = "client!fn", name = "a", descriptor = "(BIIIII)V")
-	public static void method1624(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4) {
-		Static241.aClass36Array16[0].method3336(arg2, arg3);
-		Static241.aClass36Array16[1].method3336(arg2, arg4 + arg3 - 16);
-		@Pc(35) int local35 = arg4 * (arg4 - 32) / arg1;
-		if (local35 < 8) {
-			local35 = 8;
-		}
-		@Pc(54) int local54 = arg0 * (arg4 - local35 - 32) / (arg1 - arg4);
-		if (!GameShell.glRenderer) {
-			Pix2D.method2495(arg2, arg3 + 16, 16, arg4 - 32, Static182.anInt4306);
-			Pix2D.method2495(arg2, local54 + arg3 + 16, 16, local35, Static53.anInt1704);
-			Pix2D.method2490(arg2, local54 + arg3 + 16, local35, Static219.anInt4938);
-			Pix2D.method2490(arg2 + 1, local54 + 16 + arg3, local35, Static219.anInt4938);
-			Pix2D.method2489(arg2, arg3 + local54 + 16, 16, Static219.anInt4938);
-			Pix2D.method2489(arg2, arg3 + local54 + 17, 16, Static219.anInt4938);
-			Pix2D.method2490(arg2 + 15, local54 + 16 + arg3, local35, Static20.anInt671);
-			Pix2D.method2490(arg2 + 14, arg3 - -17 - -local54, local35 - 1, Static20.anInt671);
-			Pix2D.method2489(arg2, local35 + arg3 + local54 + 15, 16, Static20.anInt671);
-			Pix2D.method2489(arg2 + 1, local35 + arg3 - (-local54 + -14), 15, Static20.anInt671);
-			return;
-		}
-		Static46.method1186(arg2, arg3 + 16, 16, arg4 - 32, Static182.anInt4306);
-		Static46.method1186(arg2, arg3 + local54 + 16, 16, local35, Static53.anInt1704);
-		Static46.method1176(arg2, local54 + arg3 + 16, local35, Static219.anInt4938);
-		Static46.method1176(arg2 + 1, local54 + 16 + arg3, local35, Static219.anInt4938);
-		Static46.method1174(arg2, local54 + arg3 + 16, 16, Static219.anInt4938);
-		Static46.method1174(arg2, local54 + arg3 + 17, 16, Static219.anInt4938);
-		Static46.method1176(arg2 + 15, arg3 + (16 - -local54), local35, Static20.anInt671);
-		Static46.method1176(arg2 + 14, arg3 - -local54 + 17, local35 - 1, Static20.anInt671);
-		Static46.method1174(arg2, local35 + arg3 + local54 + 15, 16, Static20.anInt671);
-		Static46.method1174(arg2 + 1, arg3 + 14 - -local54 + local35, 15, Static20.anInt671);
-	}
-
 	@OriginalMember(owner = "client!fn", name = "a", descriptor = "(ILclient!be;)V")
 	public static void method1625(@OriginalArg(1) IfType arg0) {
 		@Pc(7) IfType local7 = Static280.method4668(arg0);

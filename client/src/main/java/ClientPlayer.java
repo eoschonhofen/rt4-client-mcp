@@ -10,7 +10,7 @@ public final class ClientPlayer extends ClientEntity {
 	public PlayerModel aClass59_1;
 
 	@OriginalMember(owner = "client!e", name = "Mc", descriptor = "Lclient!na;")
-	public JagString aClass100_364;
+	public JagString name;
 
 	@OriginalMember(owner = "client!e", name = "tc", descriptor = "I")
 	public int anInt1649 = -1;
@@ -120,7 +120,7 @@ public final class ClientPlayer extends ClientEntity {
 		}
 		this.anInt3365 = arg0.g2();
 		@Pc(236) long local236 = arg0.g8();
-		this.aClass100_364 = Static79.toBaseDisplayName(local236).method3125();
+		this.name = Static79.toBaseDisplayName(local236).method3125();
 		this.combatLevel = arg0.g1();
 		if (local37) {
 			this.anInt1671 = arg0.g2();
@@ -137,7 +137,7 @@ public final class ClientPlayer extends ClientEntity {
 		local134 = this.anInt1664;
 		this.anInt1664 = arg0.g1();
 		if (this.anInt1664 == 0) {
-			Static271.method4597(this);
+			BgSound.method4597(this);
 		} else {
 			@Pc(309) int local309 = this.anInt1658;
 			@Pc(312) int local312 = this.anInt1654;
@@ -148,7 +148,7 @@ public final class ClientPlayer extends ClientEntity {
 			this.anInt1654 = arg0.g2();
 			this.anInt1670 = arg0.g2();
 			if (this.anInt1664 != local134 || this.anInt1648 != local175 || this.anInt1658 != local309 || local312 != this.anInt1654 || this.anInt1670 != local315) {
-				Static214.method4359(this);
+				BgSound.method4359(this);
 			}
 		}
 		if (this.aClass59_1 == null) {
@@ -157,8 +157,8 @@ public final class ClientPlayer extends ClientEntity {
 		local175 = this.aClass59_1.anInt2492;
 		this.aClass59_1.method1950(local197, local22, local26 == 1, local44, this.anInt3365);
 		if (local175 != local22) {
-			this.x = this.anIntArray318[0] * 128 + this.method2693() * 64;
-			this.z = this.anIntArray317[0] * 128 + this.method2693() * 64;
+			this.x = this.routeX[0] * 128 + this.method2693() * 64;
+			this.z = this.routeZ[0] * 128 + this.method2693() * 64;
 		}
 		if (this.aClass47_Sub1_5 != null) {
 			this.aClass47_Sub1_5.method1646();
@@ -318,7 +318,7 @@ public final class ClientPlayer extends ClientEntity {
 			return;
 		}
 		@Pc(34) int local34 = (int) (Math.atan2((double) arg3, (double) arg1) * 325.949D) & 0x7FF;
-		@Pc(46) ModelLit local46 = Static220.method3800(local34, this.z, arg11, this.x, arg2, this.anInt3424);
+		@Pc(46) ModelLit local46 = Client.method3800(local34, this.z, arg11, this.x, arg2, this.anInt3424);
 		if (local46 == null) {
 			return;
 		}
@@ -343,7 +343,7 @@ public final class ClientPlayer extends ClientEntity {
 
 	@OriginalMember(owner = "client!e", name = "e", descriptor = "(I)Lclient!na;")
 	public final JagString method1264() {
-		@Pc(2) JagString local2 = this.aClass100_364;
+		@Pc(2) JagString local2 = this.name;
 		if (Static103.aClass100Array88 != null) {
 			local2 = JagString.join(new JagString[] { Static103.aClass100Array88[this.anInt1651], local2 });
 		}

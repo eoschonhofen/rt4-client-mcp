@@ -26,7 +26,7 @@ public final class UnderwaterMaterialRenderer implements MaterialRenderer {
 			while (local22 < 8) {
 				local20[local22++] = (byte) (local22 * 159 / 8 + 96);
 			}
-			@Pc(40) GL local40 = Static239.aGL1;
+			@Pc(40) GL local40 = Static239.gl;
 			local40.glGenTextures(1, local17, 0);
 			local40.glBindTexture(GL.GL_TEXTURE_1D, local17[0]);
 			local40.glTexImage1D(GL.GL_TEXTURE_1D, 0, GL.GL_ALPHA, 8, 0, GL.GL_ALPHA, GL.GL_UNSIGNED_BYTE, ByteBuffer.wrap(local20));
@@ -41,7 +41,7 @@ public final class UnderwaterMaterialRenderer implements MaterialRenderer {
 
 	@OriginalMember(owner = "client!wg", name = "d", descriptor = "()V")
 	private void method4606() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		this.anInt5806 = local1.glGenLists(2);
 		local1.glNewList(this.anInt5806, GL.GL_COMPILE);
 		local1.glActiveTexture(GL.GL_TEXTURE1);
@@ -105,7 +105,7 @@ public final class UnderwaterMaterialRenderer implements MaterialRenderer {
 	@OriginalMember(owner = "client!wg", name = "b", descriptor = "()V")
 	@Override
 	public final void method4603() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		local1.glCallList(this.anInt5806);
 	}
 
@@ -118,14 +118,14 @@ public final class UnderwaterMaterialRenderer implements MaterialRenderer {
 	@OriginalMember(owner = "client!wg", name = "a", descriptor = "()V")
 	@Override
 	public final void method4602() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		local1.glCallList(this.anInt5806 + 1);
 	}
 
 	@OriginalMember(owner = "client!wg", name = "a", descriptor = "(I)V")
 	@Override
 	public final void method4604(@OriginalArg(0) int arg0) {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		local1.glActiveTexture(GL.GL_TEXTURE1);
 		if (Static275.aBoolean308 || arg0 >= 0) {
 			local1.glPushMatrix();

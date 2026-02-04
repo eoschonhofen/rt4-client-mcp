@@ -4,6 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static181 {
 
+	@OriginalMember(owner = "client!t", name = "C", descriptor = "Lclient!na;")
+	public static final JagString AUTO_SEPARATOR = JagString.wrap(")3");
 	@OriginalMember(owner = "client!oi", name = "h", descriptor = "Lclient!qf;")
 	public static AbstractPix32 aClass3_Sub2_Sub1_9;
 
@@ -23,8 +25,8 @@ public final class Static181 {
 	}
 
 	@OriginalMember(owner = "client!oi", name = "a", descriptor = "(II)Lclient!na;")
-	public static JagString method3341(@OriginalArg(0) int arg0) {
-		return JagString.join(new JagString[] { JagString.parseInt(arg0 >> 24 & 0xFF), Static233.aClass100_994, JagString.parseInt(arg0 >> 16 & 0xFF), Static233.aClass100_994, JagString.parseInt(arg0 >> 8 & 0xFF), Static233.aClass100_994, JagString.parseInt(arg0 & 0xFF) });
+	public static JagString formatIPv4(@OriginalArg(0) int arg0) {
+		return JagString.join(new JagString[] { JagString.parseInt(arg0 >> 24 & 0xFF), AUTO_SEPARATOR, JagString.parseInt(arg0 >> 16 & 0xFF), AUTO_SEPARATOR, JagString.parseInt(arg0 >> 8 & 0xFF), AUTO_SEPARATOR, JagString.parseInt(arg0 & 0xFF) });
 	}
 
 	@OriginalMember(owner = "client!oi", name = "a", descriptor = "(Lclient!ve;B)V")
@@ -42,7 +44,7 @@ public final class Static181 {
 		@Pc(26) int local26 = local20 * 956 / 503;
 		Static78.aClass3_Sub2_Sub1_3.method1419((GameShell.anInt1448 - local26) / 2, 0, local26, local20);
 		Static243.aClass36_1 = Static40.method1010(Static136.anInt3322, arg0);
-		Static243.aClass36_1.method3336(GameShell.anInt1448 / 2 - Static243.aClass36_1.anInt4270 / 2, 18);
+		Static243.aClass36_1.plotSprite(GameShell.anInt1448 / 2 - Static243.aClass36_1.anInt4270 / 2, 18);
 		Static18.aBoolean40 = true;
 	}
 

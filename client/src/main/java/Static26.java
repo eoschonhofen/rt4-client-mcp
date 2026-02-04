@@ -6,7 +6,7 @@ public final class Static26 {
 	public static int[] anIntArray66;
 
 	@OriginalMember(owner = "client!ca", name = "cb", descriptor = "Lclient!na;")
-	public static final JagString aClass100_160 = Static165.method3165();
+	public static final JagString aClass100_160 = JagString.method3165();
 
 	@OriginalMember(owner = "client!ca", name = "db", descriptor = "I")
 	public static int anInt865 = 0;

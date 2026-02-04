@@ -5,9 +5,6 @@ public final class Static92 {
 	@OriginalMember(owner = "client!hd", name = "e", descriptor = "Lclient!qf;")
 	public static AbstractPix32 aClass3_Sub2_Sub1_6;
 
-	@OriginalMember(owner = "client!hd", name = "g", descriptor = "[J")
-	public static final long[] aLongArray3 = new long[200];
-
 	@OriginalMember(owner = "client!hd", name = "i", descriptor = "I")
 	public static int anInt2433 = 0;
 

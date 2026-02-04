@@ -10,19 +10,6 @@ public final class Static271 {
 	@OriginalMember(owner = "client!wc", name = "i", descriptor = "[B")
 	public static final byte[] aByteArray79 = new byte[520];
 
-	@OriginalMember(owner = "client!wc", name = "a", descriptor = "(Lclient!e;I)V")
-	public static void method4597(@OriginalArg(0) ClientPlayer arg0) {
-		@Pc(10) BgSound local10 = (BgSound) Static93.aClass133_7.find(arg0.aClass100_364.method3158());
-		if (local10 == null) {
-			return;
-		}
-		if (local10.aClass3_Sub3_Sub1_1 != null) {
-			Client.soundMixer.method1347(local10.aClass3_Sub3_Sub1_1);
-			local10.aClass3_Sub3_Sub1_1 = null;
-		}
-		local10.unlink();
-	}
-
 	@OriginalMember(owner = "client!wc", name = "a", descriptor = "(Lclient!wa;I)V")
 	public static void method4598(@OriginalArg(0) Packet arg0) {
 		if (Static121.aClass38_3 != null) {

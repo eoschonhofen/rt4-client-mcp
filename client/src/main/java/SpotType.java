@@ -152,7 +152,7 @@ public final class SpotType {
 	public final ModelLit method1319(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
 		@Pc(13) ModelLit local13 = (ModelLit) aClass99_9.find((long) this.id);
 		if (local13 == null) {
-			@Pc(28) ModelUnlit local28 = Static77.method1686(models, this.anInt1753);
+			@Pc(28) ModelUnlit local28 = ModelUnlit.method1686(models, this.anInt1753);
 			if (local28 == null) {
 				return null;
 			}

@@ -5,7 +5,7 @@ import org.openrs2.deob.annotation.OriginalMember;
 public final class SubInterface extends Linkable {
 
 	@OriginalMember(owner = "client!wk", name = "r", descriptor = "I")
-	public int anInt5878;
+	public int id;
 
 	@OriginalMember(owner = "client!wk", name = "s", descriptor = "I")
 	public int anInt5879;

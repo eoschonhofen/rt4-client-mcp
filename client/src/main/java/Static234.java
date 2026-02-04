@@ -16,21 +16,8 @@ public final class Static234 {
 		if (local9 == null) {
 			return false;
 		} else {
-			Static84.method1770(local9);
+			PixLoader.method1770(local9);
 			return true;
-		}
-	}
-
-	@OriginalMember(owner = "client!ta", name = "a", descriptor = "([Lclient!mm;ILclient!ve;)V")
-	public static void method4018(@OriginalArg(0) Pix32[] arg0, @OriginalArg(2) Js5 arg1) {
-		WorldMap.aClass153_44 = arg1;
-		Static241.aClass3_Sub2_Sub1_Sub1Array13 = arg0;
-		Static258.aBooleanArray130 = new boolean[Static241.aClass3_Sub2_Sub1_Sub1Array13.length];
-		Static228.aClass69_120.method2278();
-		@Pc(25) int local25 = WorldMap.aClass153_44.getGroupId(Static54.aClass100_374);
-		@Pc(30) int[] local30 = WorldMap.aClass153_44.getFileLimit(local25);
-		for (@Pc(32) int local32 = 0; local32 < local30.length; local32++) {
-			Static228.aClass69_120.push(WorldMap.method3713(new Packet(WorldMap.aClass153_44.getFile(local25, local30[local32]))));
 		}
 	}
 

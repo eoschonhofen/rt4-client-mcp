@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static8 {
 
-	@OriginalMember(owner = "client!ea", name = "s", descriptor = "[I")
-	public static final int[] mask = new int[32];
-
 	@OriginalMember(owner = "client!aj", name = "X", descriptor = "F")
 	public static float aFloat1;
 
@@ -15,25 +12,6 @@ public final class Static8 {
 
 	@OriginalMember(owner = "client!aj", name = "R", descriptor = "Lclient!na;")
 	public static final JagString aClass100_32 = JagString.wrap("<col=ff9040>");
-
-	static {
-		@Pc(10) int local10 = 2;
-		for (@Pc(12) int local12 = 0; local12 < 32; local12++) {
-			mask[local12] = local10 - 1;
-			local10 += local10;
-		}
-	}
-
-	@OriginalMember(owner = "client!aj", name = "a", descriptor = "(BILclient!be;)I")
-	public static int method118(@OriginalArg(1) int arg0, @OriginalArg(2) IfType arg1) {
-		if (!Client.method940(arg1).method503(arg0) && arg1.onop == null) {
-			return -1;
-		} else if (arg1.anIntArray39 == null || arg0 >= arg1.anIntArray39.length) {
-			return -1;
-		} else {
-			return arg1.anIntArray39[arg0];
-		}
-	}
 
 	@OriginalMember(owner = "client!aj", name = "a", descriptor = "(IIIZIII)V")
 	public static void method120(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(4) int arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5) {

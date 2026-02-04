@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static52 {
 
-	@OriginalMember(owner = "client!eb", name = "u", descriptor = "I")
-	public static int anInt1695;
-
 	@OriginalMember(owner = "client!eb", name = "t", descriptor = "I")
 	public static int anInt1694 = -1;
 
@@ -29,20 +26,4 @@ public final class Static52 {
 		}
 	}
 
-	@OriginalMember(owner = "client!eb", name = "d", descriptor = "(I)V")
-	public static void method1287() {
-		IfType.list = new IfType[IfType.interfaces.getGroupCount()][];
-		IfType.open = new boolean[IfType.interfaces.getGroupCount()];
-	}
-
-	@OriginalMember(owner = "client!eb", name = "b", descriptor = "(II)Lclient!na;")
-	public static JagString method1288(@OriginalArg(1) int arg0) {
-		if (arg0 < 100000) {
-			return JagString.join(new JagString[] { Static105.aClass100_559, JagString.parseInt(arg0), Static123.aClass100_594 });
-		} else if (arg0 >= 10000000) {
-			return JagString.join(new JagString[] { Static184.aClass100_819, JagString.parseInt(arg0 / 1000000), Text.aClass100_440, Static123.aClass100_594 });
-		} else {
-			return JagString.join(new JagString[] { Static137.aClass100_637, JagString.parseInt(arg0 / 1000), Text.aClass100_218, Static123.aClass100_594 });
-		}
-	}
 }

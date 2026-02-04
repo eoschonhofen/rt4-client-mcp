@@ -5,15 +5,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static80 {
 
-	@OriginalMember(owner = "client!gf", name = "K", descriptor = "I")
-	public static int anInt4696;
-
-	@OriginalMember(owner = "client!gf", name = "O", descriptor = "[[[I")
-	public static int[][][] anIntArrayArrayArray19;
-
-	@OriginalMember(owner = "client!gf", name = "R", descriptor = "I")
-	public static int anInt4701;
-
 	@OriginalMember(owner = "client!gf", name = "T", descriptor = "I")
 	public static int anInt4702;
 
@@ -62,7 +53,7 @@ public final class Static80 {
 		}
 		Static164.anInt3988 = 0;
 		Static141.anInt3474 = 0;
-		Static33.aBoolean63 = false;
+		Client.aBoolean63 = false;
 		Static64.aBoolean111 = true;
 		Static164.aBoolean191 = false;
 		Static127.aBoolean159 = false;

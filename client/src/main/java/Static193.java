@@ -17,30 +17,6 @@ public final class Static193 {
 		local10.aClass100_254 = arg0;
 	}
 
-	@OriginalMember(owner = "client!pi", name = "a", descriptor = "(JI)V")
-	public static void method3500(@OriginalArg(0) long arg0) {
-		if (arg0 == 0L) {
-			return;
-		}
-		for (@Pc(13) int local13 = 0; local13 < Static9.anInt178; local13++) {
-			if (Static92.aLongArray3[local13] == arg0) {
-				Static9.anInt178--;
-				for (@Pc(41) int local41 = local13; local41 < Static9.anInt178; local41++) {
-					Static122.aClass100Array92[local41] = Static122.aClass100Array92[local41 + 1];
-					Static104.anIntArray255[local41] = Static104.anIntArray255[local41 + 1];
-					Static214.aClass100Array170[local41] = Static214.aClass100Array170[local41 + 1];
-					Static92.aLongArray3[local41] = Static92.aLongArray3[local41 + 1];
-					Static106.anIntArray258[local41] = Static106.anIntArray258[local41 + 1];
-					Static3.aBooleanArray135[local41] = Static3.aBooleanArray135[local41 + 1];
-				}
-				Client.friendTransmitNum = Client.transmitNum;
-				Client.out.p1Enc(57);
-				Client.out.p8(arg0);
-				break;
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!pi", name = "a", descriptor = "([[[B[[B[[B[[I[[F[[I[[B[[B[[FI[[F[[I[[I[[II)[Lclient!hg;")
 	public static GlSquare[] method3501(@OriginalArg(0) byte[][][] arg0, @OriginalArg(1) byte[][] arg1, @OriginalArg(2) byte[][] arg2, @OriginalArg(3) int[][] arg3, @OriginalArg(4) float[][] arg4, @OriginalArg(5) int[][] arg5, @OriginalArg(6) byte[][] arg6, @OriginalArg(7) byte[][] arg7, @OriginalArg(8) float[][] arg8, @OriginalArg(9) int arg9, @OriginalArg(10) float[][] arg10, @OriginalArg(11) int[][] arg11, @OriginalArg(12) int[][] arg12, @OriginalArg(13) int[][] arg13) {
 		@Pc(9) int[][] local9 = new int[105][105];
@@ -265,36 +241,4 @@ public final class Static193 {
 		return local1348;
 	}
 
-	@OriginalMember(owner = "client!pi", name = "c", descriptor = "(III)V")
-	public static void method3502(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(13) int local13 = arg0;
-		if (arg0 > 25) {
-			local13 = 25;
-		}
-		arg0--;
-		@Pc(23) int local23 = Client.anIntArray514[arg0];
-		@Pc(27) int local27 = Client.anIntArray209[arg0];
-		if (arg1 == 0) {
-			Client.out.p1Enc(215);
-			Client.out.p1(local13 + local13 + 3);
-		}
-		if (arg1 == 1) {
-			Client.out.p1Enc(39);
-			Client.out.p1(local13 + local13 + 3 + 14);
-		}
-		if (arg1 == 2) {
-			Client.out.p1Enc(77);
-			Client.out.p1(local13 + local13 + 3);
-		}
-		Client.out.method2216(ClientKeyboardListener.keyHeld[82] ? 1 : 0);
-		Client.out.p2(Client.mapBuildBaseX + local23);
-		Client.out.method2209(Client.mapBuildBaseZ + local27);
-		Static84.anInt2255 = Client.anIntArray209[0];
-		Client.anInt2939 = Client.anIntArray514[0];
-		for (@Pc(126) int local126 = 1; local126 < local13; local126++) {
-			arg0--;
-			Client.out.method2216(Client.anIntArray514[arg0] - local23);
-			Client.out.method2169(Client.anIntArray209[arg0] - local27);
-		}
-	}
 }

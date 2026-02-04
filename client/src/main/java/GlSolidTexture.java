@@ -19,7 +19,7 @@ public final class GlSolidTexture extends Linkable2 {
 
 	@OriginalMember(owner = "client!sd", name = "<init>", descriptor = "(I)V")
 	public GlSolidTexture(@OriginalArg(0) int arg0) {
-		@Pc(9) GL local9 = Static239.aGL1;
+		@Pc(9) GL local9 = Static239.gl;
 		@Pc(12) int[] local12 = new int[1];
 		local9.glGenTextures(1, local12, 0);
 		this.anInt5058 = local12[0];

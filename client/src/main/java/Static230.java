@@ -14,12 +14,6 @@ public final class Static230 {
 	@OriginalMember(owner = "client!sj", name = "D", descriptor = "I")
 	public static int anInt5158;
 
-	@OriginalMember(owner = "client!sj", name = "p", descriptor = "I")
-	public static int mapPrevLoadCount = 1;
-
-	@OriginalMember(owner = "client!sj", name = "u", descriptor = "Z")
-	public static boolean aBoolean250 = false;
-
 	@OriginalMember(owner = "client!sj", name = "w", descriptor = "Lclient!na;")
 	public static final JagString aClass100_978 = JagString.wrap("<)4col>");
 
@@ -27,28 +21,6 @@ public final class Static230 {
 	public static void method3947() {
 		Static250.aClass99_33.method3104();
 		Static139.aClass99_21.method3104();
-	}
-
-	@OriginalMember(owner = "client!sj", name = "a", descriptor = "(BII)I")
-	public static int method3949(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
-		if (arg0 == -2) {
-			return 12345678;
-		} else if (arg0 == -1) {
-			if (arg1 < 2) {
-				arg1 = 2;
-			} else if (arg1 > 126) {
-				arg1 = 126;
-			}
-			return arg1;
-		} else {
-			arg1 = (arg0 & 0x7F) * arg1 >> 7;
-			if (arg1 < 2) {
-				arg1 = 2;
-			} else if (arg1 > 126) {
-				arg1 = 126;
-			}
-			return (arg0 & 0xFF80) + arg1;
-		}
 	}
 
 	@OriginalMember(owner = "client!sj", name = "a", descriptor = "(IIBIII)V")

@@ -121,7 +121,7 @@ public final class Static242 {
 
 	@OriginalMember(owner = "client!tj", name = "a", descriptor = "(IIII[[Z[[I)V")
 	public static void method4198(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) boolean[][] arg4, @OriginalArg(5) int[][] arg5) {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		Static239.method4183(1);
 		Static239.method4174(1);
 		Static239.method4150();

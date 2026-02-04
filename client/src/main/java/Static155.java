@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static155 {
 
-	@OriginalMember(owner = "client!me", name = "nb", descriptor = "I")
-	public static int anInt3751;
-
 	@OriginalMember(owner = "client!me", name = "k", descriptor = "I")
 	public static int anInt3718 = -1;
 
@@ -17,7 +14,7 @@ public final class Static155 {
 		@Pc(14) int local14 = 0;
 		for (@Pc(16) int local16 = 0; local16 < ObjType.anInt3245; local16++) {
 			@Pc(27) ObjType local27 = ObjType.list(local16);
-			if ((!arg0 || local27.aBoolean132) && local27.anInt2358 == -1 && local27.anInt2334 == -1 && local27.anInt2370 == 0 && local27.name.method3114().method3131(local12) != -1) {
+			if ((!arg0 || local27.aBoolean132) && local27.anInt2358 == -1 && local27.anInt2334 == -1 && local27.anInt2370 == 0 && local27.name.method3114().indexOf(local12) != -1) {
 				if (local14 >= 250) {
 					Static169.aShortArray52 = null;
 					Static111.anInt2905 = -1;

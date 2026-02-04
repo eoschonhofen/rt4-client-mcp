@@ -76,7 +76,7 @@ public final class Static63 {
 
 	@OriginalMember(owner = "client!fa", name = "c", descriptor = "()V")
 	public static synchronized void method1490() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		@Pc(3) int local3 = 0;
 		while (true) {
 			@Pc(8) IntNode local8 = (IntNode) aClass69_48.popFront();

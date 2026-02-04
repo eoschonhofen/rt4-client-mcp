@@ -22,50 +22,6 @@ public final class Static69 {
 		}
 	}
 
-	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(Lclient!th;IIIII)V")
-	public static void method1544(@OriginalArg(0) ModelSource arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5) {
-		@Pc(1) boolean local1 = true;
-		@Pc(3) int local3 = arg2;
-		@Pc(7) int local7 = arg2 + arg4;
-		@Pc(11) int local11 = arg3 - 1;
-		@Pc(15) int local15 = arg3 + arg5;
-		for (@Pc(17) int local17 = arg1; local17 <= arg1 + 1; local17++) {
-			if (local17 != World.anInt3114) {
-				for (@Pc(28) int local28 = local3; local28 <= local7; local28++) {
-					if (local28 >= 0 && local28 < Static152.anInt3594) {
-						for (@Pc(39) int local39 = local11; local39 <= local15; local39++) {
-							if (local39 >= 0 && local39 < Static99.anInt2550 && (!local1 || local28 >= local7 || local39 >= local15 || local39 < arg3 && local28 != arg2)) {
-								@Pc(71) Square local71 = World.levelTiles[local17][local28][local39];
-								if (local71 != null) {
-									@Pc(158) int local158 = (ClientBuild.groundh[local17][local28][local39] + ClientBuild.groundh[local17][local28 + 1][local39] + ClientBuild.groundh[local17][local28][local39 + 1] + ClientBuild.groundh[local17][local28 + 1][local39 + 1]) / 4 - (ClientBuild.groundh[arg1][arg2][arg3] + ClientBuild.groundh[arg1][arg2 + 1][arg3] + ClientBuild.groundh[arg1][arg2][arg3 + 1] + ClientBuild.groundh[arg1][arg2 + 1][arg3 + 1]) / 4;
-									@Pc(161) Wall local161 = local71.wall;
-									if (local161 != null) {
-										if (local161.aClass8_5.method4543()) {
-											arg0.method4544(local161.aClass8_5, (local28 - arg2) * 128 + (1 - arg4) * 64, local158, (local39 - arg3) * 128 + (1 - arg5) * 64, local1);
-										}
-										if (local161.aClass8_6 != null && local161.aClass8_6.method4543()) {
-											arg0.method4544(local161.aClass8_6, (local28 - arg2) * 128 + (1 - arg4) * 64, local158, (local39 - arg3) * 128 + (1 - arg5) * 64, local1);
-										}
-									}
-									for (@Pc(232) int local232 = 0; local232 < local71.spriteCount; local232++) {
-										@Pc(241) Sprite local241 = local71.sprites[local232];
-										if (local241 != null && local241.model.method4543() && (local28 == local241.anInt1701 || local28 == local3) && (local39 == local241.anInt1696 || local39 == local11)) {
-											@Pc(270) int local270 = local241.anInt1713 + 1 - local241.anInt1701;
-											@Pc(278) int local278 = local241.anInt1698 + 1 - local241.anInt1696;
-											arg0.method4544(local241.model, (local241.anInt1701 - arg2) * 128 + (local270 - arg4) * 64, local158, (local241.anInt1696 - arg3) * 128 + (local278 - arg5) * 64, local1);
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				local3--;
-				local1 = false;
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!fh", name = "a", descriptor = "(BLclient!ek;)V")
 	public static void method1545(@OriginalArg(1) SoftwarePix8 arg0) {
 		@Pc(5) int local5;

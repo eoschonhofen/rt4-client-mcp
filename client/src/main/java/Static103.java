@@ -13,9 +13,6 @@ public final class Static103 {
 	@OriginalMember(owner = "client!i", name = "ac", descriptor = "[I")
 	public static final int[] anIntArray253 = new int[256];
 
-	@OriginalMember(owner = "client!i", name = "ic", descriptor = "Lclient!na;")
-	public static final JagString aClass100_558 = JagString.wrap("m");
-
 	@OriginalMember(owner = "client!i", name = "b", descriptor = "(IIIII)I")
 	public static int method2235(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
 		if (Static222.aBoolean246) {

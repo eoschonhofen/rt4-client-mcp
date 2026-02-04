@@ -6,9 +6,6 @@ public final class Static122 {
 	@OriginalMember(owner = "client!jh", name = "n", descriptor = "Lclient!bd;")
 	public static QuickChatPhrase aClass12_1;
 
-	@OriginalMember(owner = "client!jh", name = "b", descriptor = "[Lclient!na;")
-	public static final JagString[] aClass100Array92 = new JagString[200];
-
 	@OriginalMember(owner = "client!jh", name = "f", descriptor = "D")
 	public static double aDouble1 = -1.0D;
 

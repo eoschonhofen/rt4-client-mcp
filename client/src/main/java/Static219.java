@@ -1,5 +1,4 @@
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static219 {
 
@@ -36,15 +35,4 @@ public final class Static219 {
 	@OriginalMember(owner = "client!rl", name = "Z", descriptor = "I")
 	public static final int anInt4938 = 7759444;
 
-	@OriginalMember(owner = "client!rl", name = "i", descriptor = "(I)V")
-	public static void method3796() {
-		for (@Pc(10) LocChange local10 = (LocChange) Client.aClass69_27.head(); local10 != null; local10 = (LocChange) Client.aClass69_27.next()) {
-			if (local10.endTime == -1) {
-				local10.startTime = 0;
-				Client.locChangeSetOld(local10);
-			} else {
-				local10.unlink();
-			}
-		}
-	}
 }

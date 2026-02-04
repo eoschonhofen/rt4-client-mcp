@@ -1,5 +1,4 @@
 import org.openrs2.deob.annotation.OriginalMember;
-import org.openrs2.deob.annotation.Pc;
 
 public final class Static250 {
 
@@ -30,51 +29,4 @@ public final class Static250 {
 	@OriginalMember(owner = "client!uf", name = "t", descriptor = "I")
 	public static int anInt5444 = 0;
 
-	@OriginalMember(owner = "client!uf", name = "a", descriptor = "(B)V")
-	public static void method4273() {
-		@Pc(14) int local14 = Client.localPlayer.x + Client.anInt3291;
-		@Pc(20) int local20 = Client.localPlayer.z + Client.anInt4774;
-		if (Static81.anInt2223 - local14 < -500 || Static81.anInt2223 - local14 > 500 || Static111.anInt2900 - local20 < -500 || Static111.anInt2900 - local20 > 500) {
-			Static81.anInt2223 = local14;
-			Static111.anInt2900 = local20;
-		}
-		if (Static111.anInt2900 != local20) {
-			Static111.anInt2900 += (local20 - Static111.anInt2900) / 16;
-		}
-		if (Static81.anInt2223 != local14) {
-			Static81.anInt2223 += (local14 - Static81.anInt2223) / 16;
-		}
-		if (Static33.aBoolean63) {
-			for (@Pc(93) int local93 = 0; local93 < Client.keypresses; local93++) {
-				@Pc(104) int local104 = Client.keypressKeycodes[local93];
-				if (local104 == 98) {
-					Client.anInt2031 = Client.anInt2031 + 47 & 0xFFFFFFF0;
-				} else if (local104 == 99) {
-					Client.anInt2031 = Client.anInt2031 - 17 & 0xFFFFFFF0;
-				} else if (local104 == 96) {
-					Client.anInt1747 = Client.anInt1747 - 65 & 0xFFFFFF80;
-				} else if (local104 == 97) {
-					Client.anInt1747 = Client.anInt1747 + 191 & 0xFFFFFF80;
-				}
-			}
-		} else {
-			if (ClientKeyboardListener.keyHeld[98]) {
-				Static56.anInt1743 += (12 - Static56.anInt1743) / 2;
-			} else if (ClientKeyboardListener.keyHeld[99]) {
-				Static56.anInt1743 += (-Static56.anInt1743 - 12) / 2;
-			} else {
-				Static56.anInt1743 /= 2;
-			}
-			if (ClientKeyboardListener.keyHeld[96]) {
-				Static38.anInt1203 += (-Static38.anInt1203 - 24) / 2;
-			} else if (ClientKeyboardListener.keyHeld[97]) {
-				Static38.anInt1203 += (24 - Static38.anInt1203) / 2;
-			} else {
-				Static38.anInt1203 /= 2;
-			}
-			Client.anInt2031 += Static56.anInt1743 / 2;
-			Client.anInt1747 += Static38.anInt1203 / 2;
-		}
-		Client.followCamera();
-	}
 }

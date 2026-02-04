@@ -34,7 +34,7 @@ public final class Shadow {
 
 	@OriginalMember(owner = "client!wm", name = "<init>", descriptor = "()V")
 	public Shadow() {
-		@Pc(9) GL local9 = Static239.aGL1;
+		@Pc(9) GL local9 = Static239.gl;
 		@Pc(12) int[] local12 = new int[1];
 		local9.glGenTextures(1, local12, 0);
 		this.anInt5901 = local12[0];
@@ -154,7 +154,7 @@ public final class Shadow {
 			}
 			local19 += local5 - 128;
 		}
-		@Pc(145) GL local145 = Static239.aGL1;
+		@Pc(145) GL local145 = Static239.gl;
 		@Pc(148) ByteBuffer local148 = ByteBuffer.wrap(aByteArray82);
 		local148.limit(16384);
 		Static239.method4177(this.anInt5901);
@@ -164,7 +164,7 @@ public final class Shadow {
 
 	@OriginalMember(owner = "client!wm", name = "b", descriptor = "()V")
 	public final void method4679() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		Static239.method4177(this.anInt5901);
 		if (this.aClass155_7 == null) {
 			if (Static239.aBoolean271) {

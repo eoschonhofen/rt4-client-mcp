@@ -13,24 +13,11 @@ public final class Static214 {
 	@OriginalMember(owner = "client!rg", name = "r", descriptor = "[Lclient!na;")
 	public static final JagString[] aClass100Array170 = new JagString[200];
 
-	@OriginalMember(owner = "client!rg", name = "s", descriptor = "I")
-	public static int anInt5574 = -1;
-
 	@OriginalMember(owner = "client!rg", name = "A", descriptor = "[I")
 	public static final int[] anIntArray492 = new int[14];
 
 	@OriginalMember(owner = "client!rg", name = "F", descriptor = "I")
 	public static int anInt5581 = 0;
-
-	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(Lclient!e;I)V")
-	public static void method4359(@OriginalArg(0) ClientPlayer arg0) {
-		@Pc(12) BgSound local12 = (BgSound) Static93.aClass133_7.find(arg0.aClass100_364.method3158());
-		if (local12 == null) {
-			BgSound.method2411(arg0.anIntArray317[0], null, 0, null, arg0.anIntArray318[0], Client.minusedlevel, arg0);
-		} else {
-			local12.method1567();
-		}
-	}
 
 	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(IZII)I")
 	public static int method4360(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
@@ -44,11 +31,6 @@ public final class Static214 {
 		} else {
 			return 7 - arg1;
 		}
-	}
-
-	@OriginalMember(owner = "client!rg", name = "d", descriptor = "(B)Lclient!bn;")
-	public static Map method4361() {
-		return WorldMap.aClass3_Sub2_Sub4_2;
 	}
 
 	@OriginalMember(owner = "client!rg", name = "a", descriptor = "(IIIIIIIII)V")

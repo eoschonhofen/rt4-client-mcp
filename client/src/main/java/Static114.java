@@ -19,14 +19,6 @@ public final class Static114 {
 	@OriginalMember(owner = "client!j", name = "M", descriptor = "Lclient!na;")
 	public static final JagString aClass100_1100 = JagString.wrap("::replacecanvas");
 
-	@OriginalMember(owner = "client!j", name = "O", descriptor = "[I")
-	public static final int[] anIntArray565 = new int[] { 1, -1, -1, 1 };
-
-	@OriginalMember(owner = "client!j", name = "c", descriptor = "(I)V")
-	public static void method4625() {
-		ReflectionChecker.checks = new LinkList();
-	}
-
 	@OriginalMember(owner = "client!j", name = "a", descriptor = "([BI)Lclient!dd;")
 	public static PixFont method4635(@OriginalArg(0) byte[] arg0) {
 		if (arg0 == null) {

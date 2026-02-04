@@ -148,7 +148,7 @@ public final class Js5 {
 	}
 
 	@OriginalMember(owner = "client!ve", name = "b", descriptor = "(ILclient!na;)V")
-	public final void method4486(@OriginalArg(1) JagString arg0) {
+	public final void updateCacheHint(@OriginalArg(1) JagString arg0) {
 		if (this.method4484()) {
 			@Pc(13) JagString local13 = arg0.method3114();
 			@Pc(22) int local22 = this.aClass70_2.aClass76_1.find(local13.method3154());
@@ -187,7 +187,7 @@ public final class Js5 {
 				}
 			}
 		}
-		@Pc(64) byte[] local64 = Static138.method2696(this.unpacked[arg0][arg2], false);
+		@Pc(64) byte[] local64 = ByteArrayWrapper.unwrap(this.unpacked[arg0][arg2], false);
 		if (this.discardUnpacked) {
 			this.unpacked[arg0][arg2] = null;
 			if (this.aClass70_2.anIntArray270[arg0] == 1) {
@@ -278,17 +278,17 @@ public final class Js5 {
 			}
 			@Pc(114) byte[] local114;
 			if (arg1 == null || arg1[0] == 0 && arg1[1] == 0 && arg1[2] == 0 && arg1[3] == 0) {
-				local114 = Static138.method2696(this.packed[arg0], false);
+				local114 = ByteArrayWrapper.unwrap(this.packed[arg0], false);
 			} else {
-				local114 = Static138.method2696(this.packed[arg0], true);
+				local114 = ByteArrayWrapper.unwrap(this.packed[arg0], true);
 				@Pc(128) Packet local128 = new Packet(local114);
 				local128.method2196(arg1, local128.data.length);
 			}
 			@Pc(140) byte[] local140;
 			try {
-				local140 = Static162.method3092(local114);
+				local140 = Static162.getUncompressedPacket(local114);
 			} catch (@Pc(142) RuntimeException local142) {
-				System.out.println("T3 - " + (arg1 != null) + "," + arg0 + "," + local114.length + "," + Static71.method1442(local114, local114.length) + "," + Static71.method1442(local114, local114.length - 2) + "," + this.aClass70_2.anIntArray268[arg0] + "," + this.aClass70_2.anInt2911);
+				System.out.println("T3 - " + (arg1 != null) + "," + arg0 + "," + local114.length + "," + Packet.getcrc(local114, local114.length) + "," + Packet.getcrc(local114, local114.length - 2) + "," + this.aClass70_2.anIntArray268[arg0] + "," + this.aClass70_2.anInt2911);
 				local140 = new byte[] { 0 };
 			}
 			if (this.discardPacked) {
@@ -456,7 +456,7 @@ public final class Js5 {
 				}
 			}
 		}
-		return Static138.method2696(this.unpacked[arg1][arg0], false);
+		return ByteArrayWrapper.unwrap(this.unpacked[arg1][arg0], false);
 	}
 
 	@OriginalMember(owner = "client!ve", name = "a", descriptor = "(BI)[I")

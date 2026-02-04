@@ -3,6 +3,8 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 public class WorldMap {
+    @OriginalMember(owner = "client!di", name = "q", descriptor = "[Lclient!na;")
+    public static final JagString[] aClass100Array53 = new JagString[5];
     @OriginalMember(owner = "client!wa", name = "ub", descriptor = "Lclient!bn;")
     public static Map aClass3_Sub2_Sub4_2;
     @OriginalMember(owner = "client!dc", name = "O", descriptor = "I")
@@ -61,6 +63,10 @@ public class WorldMap {
     public static WorldMapFont f26;
     @OriginalMember(owner = "client!mj", name = "n", descriptor = "Lclient!fd;")
     public static WorldMapFont f30;
+    @OriginalMember(owner = "client!tb", name = "X", descriptor = "Lclient!se;")
+    public static MapElementList aClass134_2;
+    @OriginalMember(owner = "client!mh", name = "hb", descriptor = "Lclient!bn;")
+    public static Map aClass3_Sub2_Sub4_3;
 
     @OriginalMember(owner = "client!pa", name = "d", descriptor = "(I)V")
     public static void method3413() {
@@ -221,9 +227,9 @@ public class WorldMap {
                         local72 = 127;
                     }
                     local95 = (local66 & 0x380) + (arg1 + local66 & 0xFC00) + local72;
-                    local53 = Pix3D.anIntArray220[Static230.method3949(local95, 96)];
+                    local53 = Pix3D.anIntArray220[World.getOCol(local95, 96)];
                 } else if (local24 >= 0) {
-                    local53 = Pix3D.anIntArray220[Static230.method3949(Pix3D.anInterface1_2.method3234(local24), 96)];
+                    local53 = Pix3D.anIntArray220[World.getOCol(Pix3D.anInterface1_2.method3234(local24), 96)];
                 } else if (local18.anInt5899 == -1) {
                     local53 = -1;
                 } else {
@@ -235,7 +241,7 @@ public class WorldMap {
                         local72 = 127;
                     }
                     local95 = local72 + (local66 & 0x380) + (local66 + arg1 & 0xFC00);
-                    local53 = Pix3D.anIntArray220[Static230.method3949(local95, 96)];
+                    local53 = Pix3D.anIntArray220[World.getOCol(local95, 96)];
                 }
                 anIntArray330[local11 + 1] = local53;
             }
@@ -690,11 +696,11 @@ public class WorldMap {
                     local82 = aClass134_1.anIntArray444[local11];
                 }
                 if (local84 != null) {
-                    @Pc(211) int local211 = Static114.aClass3_Sub2_Sub9_42.method2867(aClass134_1.aClass100Array153[local11], null, Static45.aClass100Array53);
+                    @Pc(211) int local211 = Static114.aClass3_Sub2_Sub9_42.method2867(aClass134_1.aClass100Array153[local11], null, aClass100Array53);
                     local80 -= local84.method1503() * (local211 - 1) / 2;
                     local80 += local84.method1511() / 2;
                     for (@Pc(231) int local231 = 0; local231 < local211; local231++) {
-                        @Pc(242) JagString local242 = Static45.aClass100Array53[local231];
+                        @Pc(242) JagString local242 = aClass100Array53[local231];
                         if (local211 - 1 > local231) {
                             local242.method3133(local242.length() - 4);
                         }
@@ -825,7 +831,7 @@ public class WorldMap {
                                             local243.anInt4308 = local222.anInt4400;
                                             Static172.aClass69_97.push(local243);
                                         } else {
-                                            Static241.aClass3_Sub2_Sub1_Sub1Array13[local222.anInt4400].method1423(local65 - 7, local144 + -7);
+                                            Static241.aClass3_Sub2_Sub1_Sub1Array13[local222.anInt4400].plotSprite(local65 - 7, local144 + -7);
                                         }
                                     }
                                 }
@@ -840,7 +846,7 @@ public class WorldMap {
             Pix2D.method2502(local285.anInt4307, local285.anInt4314, 13, local11);
             Pix2D.method2502(local285.anInt4307, local285.anInt4314, 11, local11);
             Pix2D.method2502(local285.anInt4307, local285.anInt4314, 9, local11);
-            Static241.aClass3_Sub2_Sub1_Sub1Array13[local285.anInt4308].method1423(local285.anInt4307 - 7, local285.anInt4314 + -7);
+            Static241.aClass3_Sub2_Sub1_Sub1Array13[local285.anInt4308].plotSprite(local285.anInt4307 - 7, local285.anInt4314 + -7);
         }
         Static172.aClass69_97.method2278();
     }
@@ -851,5 +857,199 @@ public class WorldMap {
         if (local7 != -1) {
             Static80.method3616(aClass134_1.aShortArray73[local7], aClass134_1.aShortArray72[local7]);
         }
+    }
+
+    @OriginalMember(owner = "client!dl", name = "a", descriptor = "(IIIIIIIII)V")
+    public static void method1195(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5, @OriginalArg(7) int arg6, @OriginalArg(8) int arg7) {
+        @Pc(13) int local13 = arg2 - arg6;
+        @Pc(17) int local17 = arg3 - arg7;
+        @Pc(26) int local26 = (arg0 - arg1 << 16) / local13;
+        @Pc(35) int local35 = (arg4 - arg5 << 16) / local17;
+        method3991(arg1, arg3, arg2, local35, arg6, local26, arg7, arg5);
+    }
+
+    @OriginalMember(owner = "client!hj", name = "a", descriptor = "(II)V")
+    public static void method1964(@OriginalArg(0) int arg0) {
+        Static217.anInt4901 = -1;
+        Static142.anInt3482 = -1;
+        anInt435 = arg0;
+        method965();
+    }
+
+    @OriginalMember(owner = "client!ab", name = "a", descriptor = "(Lclient!na;I)V")
+    public static void method4656(@OriginalArg(0) JagString arg0) {
+        @Pc(9) int local9 = method3218(arg0);
+        if (local9 != -1) {
+            Static80.method3616(aClass134_1.aShortArray73[local9], aClass134_1.aShortArray72[local9]);
+        }
+    }
+
+    @OriginalMember(owner = "client!jb", name = "a", descriptor = "(IZ)V")
+    public static void method2325(@OriginalArg(1) boolean arg0) {
+        aByteArrayArrayArray8 = null;
+        anIntArrayArrayArray3 = null;
+        Client.aClass13_8 = null;
+        aByteArrayArrayArray3 = null;
+        anIntArray330 = null;
+        aByteArrayArrayArray10 = null;
+        if (arg0 && aClass3_Sub2_Sub4_2 != null) {
+            Static153.aClass100_724 = aClass3_Sub2_Sub4_2.aClass100_138;
+        } else {
+            Static153.aClass100_724 = null;
+        }
+        aByteArrayArrayArray7 = null;
+        aByteArrayArrayArray12 = null;
+        anIntArrayArrayArray5 = null;
+        anIntArrayArrayArray17 = null;
+        stage = 0;
+        aClass3_Sub2_Sub4_2 = null;
+        Static145.aClass69_84.method2278();
+        aClass134_1 = null;
+        Static217.anInt4901 = -1;
+        f22 = null;
+        f30 = null;
+        f12 = null;
+        f26 = null;
+        f11 = null;
+        f14 = null;
+        f17 = null;
+        f19 = null;
+        Static70.aClass3_Sub2_Sub1_2 = null;
+        Static142.anInt3482 = -1;
+        Static153.aClass3_Sub2_Sub1_Sub1_2 = null;
+    }
+
+    @OriginalMember(owner = "client!je", name = "a", descriptor = "(IIIII)V")
+    public static void method2387(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
+        anInt435 = anInt1449 * arg2 / arg0;
+        anInt919 = anInt4296 * arg1 / arg3;
+        Static142.anInt3482 = -1;
+        Static217.anInt4901 = -1;
+        method965();
+    }
+
+    @OriginalMember(owner = "client!je", name = "j", descriptor = "(I)I")
+    public static int method2385() {
+        if (aClass134_1 == null) {
+            return -1;
+        }
+        while (Static232.anInt5212 < aClass134_1.anInt5074) {
+            if (aClass134_1.method3897(Static232.anInt5212)) {
+                return Static232.anInt5212++;
+            }
+            Static232.anInt5212++;
+        }
+        return -1;
+    }
+
+    @OriginalMember(owner = "client!rc", name = "a", descriptor = "(Lclient!na;Z)Lclient!na;")
+    public static JagString method923(@OriginalArg(0) JagString arg0) {
+        @Pc(12) int local12 = method3218(arg0);
+        return local12 == -1 ? Static93.aClass100_517 : aClass134_1.aClass100Array153[local12].method3140(Static101.aClass100_538, Static197.aClass100_872);
+    }
+
+    @OriginalMember(owner = "client!rg", name = "d", descriptor = "(B)Lclient!bn;")
+    public static Map method4361() {
+        return aClass3_Sub2_Sub4_2;
+    }
+
+    @OriginalMember(owner = "client!ta", name = "a", descriptor = "([Lclient!mm;ILclient!ve;)V")
+    public static void method4018(@OriginalArg(0) Pix32[] arg0, @OriginalArg(2) Js5 arg1) {
+        aClass153_44 = arg1;
+        Static241.aClass3_Sub2_Sub1_Sub1Array13 = arg0;
+        Static258.aBooleanArray130 = new boolean[Static241.aClass3_Sub2_Sub1_Sub1Array13.length];
+        Static228.aClass69_120.method2278();
+        @Pc(25) int local25 = aClass153_44.getGroupId(Static54.aClass100_374);
+        @Pc(30) int[] local30 = aClass153_44.getFileLimit(local25);
+        for (@Pc(32) int local32 = 0; local32 < local30.length; local32++) {
+            Static228.aClass69_120.push(method3713(new Packet(aClass153_44.getFile(local25, local30[local32]))));
+        }
+    }
+
+    @OriginalMember(owner = "client!wa", name = "a", descriptor = "(IIIII)V")
+    public static void method2225(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
+        if (stage < 100) {
+            method3413();
+        }
+        if (GameShell.glRenderer) {
+            Static46.method1187(arg0, arg1, arg0 + arg3, arg2 + arg1);
+        } else {
+            Pix2D.method2496(arg0, arg1, arg0 + arg3, arg2 + arg1);
+        }
+        @Pc(50) int local50;
+        @Pc(61) int local61;
+        if (stage < 100) {
+            local50 = arg0 + arg3 / 2;
+            local61 = arg2 / 2 + arg1 - 18 - 20;
+            if (GameShell.glRenderer) {
+                Static46.method1186(arg0, arg1, arg3, arg2, 0);
+                Static46.method1179(local50 - 152, local61, 304, 34, 9179409);
+                Static46.method1179(local50 - 151, local61 + 1, 302, 32, 0);
+                Static46.method1186(local50 - 150, local61 + 2, stage * 3, 30, 9179409);
+                Static46.method1186(local50 + stage * 3 - 150, local61 - -2, 300 - stage * 3, 30, 0);
+            } else {
+                Pix2D.method2495(arg0, arg1, arg3, arg2, 0);
+                Pix2D.method2483(local50 - 152, local61, 304, 34, 9179409);
+                Pix2D.method2483(local50 - 151, local61 + 1, 302, 32, 0);
+                Pix2D.method2495(local50 - 150, local61 + 2, stage * 3, 30, 9179409);
+                Pix2D.method2495(stage * 3 + local50 - 150, local61 - -2, 300 - stage * 3, 30, 0);
+            }
+            Static280.aClass3_Sub2_Sub9_43.method2875(Text.aClass100_349, local50, local61 + 20, 16777215, -1);
+            return;
+        }
+        Static37.anInt1176 = (int) ((float) (arg2 * 2) / aFloat3);
+        Static109.anInt2882 = anInt435 - (int) ((float) arg3 / aFloat3);
+        @Pc(211) int local211 = anInt435 - (int) ((float) arg3 / aFloat3);
+        local50 = anInt919 - (int) ((float) arg2 / aFloat3);
+        Static109.anInt2884 = anInt919 - (int) ((float) arg2 / aFloat3);
+        @Pc(236) int local236 = anInt919 + (int) ((float) arg2 / aFloat3);
+        local61 = (int) ((float) arg3 / aFloat3) + anInt435;
+        Static89.anInt2387 = (int) ((float) (arg3 * 2) / aFloat3);
+        if (GameShell.glRenderer) {
+            if (Static153.aClass3_Sub2_Sub1_Sub1_2 == null || Static153.aClass3_Sub2_Sub1_Sub1_2.anInt1867 != arg3 || Static153.aClass3_Sub2_Sub1_Sub1_2.anInt1859 != arg2) {
+                Static153.aClass3_Sub2_Sub1_Sub1_2 = null;
+                Static153.aClass3_Sub2_Sub1_Sub1_2 = new Pix32(arg3, arg2);
+            }
+            Pix2D.method2491(Static153.aClass3_Sub2_Sub1_Sub1_2.anIntArray20, arg3, arg2);
+            Static214.method4364(arg3, 0, local61, local50, 0, local236, arg2, local211);
+            method1195(arg3, 0, local61, local236, arg2, 0, local211, local50);
+            method959(0, 0, local211, arg3, local236, local50, local61, arg2);
+            Static46.method1178(Static153.aClass3_Sub2_Sub1_Sub1_2.anIntArray20, arg0, arg1, arg3, arg2);
+            Pix2D.anIntArray297 = null;
+        } else {
+            Static214.method4364(arg3 + arg0, arg1, local61, local50, arg0, local236, arg1 + arg2, local211);
+            method1195(arg0 + arg3, arg0, local61, local236, arg2 + arg1, arg1, local211, local50);
+            method959(arg0, arg1, local211, arg0 + arg3, local236, local50, local61, arg2 + arg1);
+        }
+        if (Static201.anInt1864 > 0) {
+            Static91.anInt2428--;
+            if (Static91.anInt2428 == 0) {
+                Static91.anInt2428 = 20;
+                Static201.anInt1864--;
+            }
+        }
+        if (!Static43.aBoolean82) {
+            return;
+        }
+        @Pc(405) int local405 = arg1 + arg2 - 8;
+        @Pc(412) int local412 = arg0 + arg3 - 5;
+        Static215.aClass3_Sub2_Sub9_32.method2864(JagString.join(new JagString[] { Static115.aClass100_579, JagString.parseInt(GameShell.anInt5359) }), local412, local405, 16776960, -1);
+        @Pc(434) Runtime local434 = Runtime.getRuntime();
+        @Pc(443) int local443 = (int) ((local434.totalMemory() - local434.freeMemory()) / 1024L);
+        @Pc(445) int local445 = 16776960;
+        @Pc(446) int local446 = local405 - 15;
+        if (local443 > 65536) {
+            local445 = 16711680;
+        }
+        Static215.aClass3_Sub2_Sub9_32.method2864(JagString.join(new JagString[] { Static203.aClass100_894, JagString.parseInt(local443), Static19.aClass100_112 }), local412, local446, local445, -1);
+        local405 = local446 - 15;
+    }
+
+    @OriginalMember(owner = "client!wi", name = "d", descriptor = "(II)V")
+    public static void method4641(@OriginalArg(1) int arg0) {
+        Static217.anInt4901 = -1;
+        Static217.anInt4901 = -1;
+        anInt919 = arg0;
+        method965();
     }
 }

@@ -23,7 +23,7 @@ public final class Static32 {
 						arg2.aClass147Array3[local30] = null;
 					} else {
 						@Pc(68) SeqType local68 = SeqType.list(local20);
-						@Pc(71) int local71 = local68.anInt5347;
+						@Pc(71) int local71 = local68.duplicatebehavior;
 						@Pc(76) Class147 local76 = arg2.aClass147Array3[local30];
 						if (local76 != null) {
 							if (local20 == local76.anInt5396) {
@@ -35,11 +35,11 @@ public final class Static32 {
 									local76.anInt5399 = 0;
 									local76.anInt5408 = local28;
 									local76.anInt5404 = 0;
-									Static152.method2836(arg2.z, local68, arg2.x, arg2 == Client.localPlayer, 0);
+									Client.method2836(arg2.z, local68, arg2.x, arg2 == Client.localPlayer, 0);
 								} else if (local71 == 2) {
 									local76.anInt5400 = 0;
 								}
-							} else if (local68.anInt5355 >= SeqType.list(local76.anInt5396).anInt5355) {
+							} else if (local68.priority >= SeqType.list(local76.anInt5396).priority) {
 								local76 = arg2.aClass147Array3[local30] = null;
 							}
 						}
@@ -51,7 +51,7 @@ public final class Static32 {
 							local76.anInt5408 = local28;
 							local76.anInt5399 = 0;
 							local76.anInt5400 = 0;
-							Static152.method2836(arg2.z, local68, arg2.x, arg2 == Client.localPlayer, 0);
+							Client.method2836(arg2.z, local68, arg2.x, arg2 == Client.localPlayer, 0);
 						}
 					}
 				}

@@ -7,62 +7,6 @@ public final class Static49 {
 	@OriginalMember(owner = "client!dm", name = "m", descriptor = "I")
 	public static int anInt1459 = 0;
 
-	@OriginalMember(owner = "client!dm", name = "a", descriptor = "(BII[B)Z")
-	public static boolean method1201(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) byte[] arg2) {
-		@Pc(15) boolean local15 = true;
-		@Pc(17) int local17 = -1;
-		@Pc(22) Packet local22 = new Packet(arg2);
-		label70: while (true) {
-			@Pc(26) int local26 = local22.method2199();
-			if (local26 == 0) {
-				return local15;
-			}
-			@Pc(33) int local33 = 0;
-			local17 += local26;
-			@Pc(39) boolean local39 = false;
-			while (true) {
-				@Pc(78) int local78;
-				@Pc(95) LocType local95;
-				do {
-					@Pc(72) int local72;
-					@Pc(68) int local68;
-					do {
-						do {
-							do {
-								do {
-									@Pc(45) int local45;
-									while (local39) {
-										local45 = local22.method2204();
-										if (local45 == 0) {
-											continue label70;
-										}
-										local22.g1();
-									}
-									local45 = local22.method2204();
-									if (local45 == 0) {
-										continue label70;
-									}
-									local33 += local45 - 1;
-									@Pc(58) int local58 = local33 & 0x3F;
-									@Pc(64) int local64 = local33 >> 6 & 0x3F;
-									local68 = arg1 + local58;
-									local72 = arg0 + local64;
-									local78 = local22.g1() >> 2;
-								} while (local72 <= 0);
-							} while (local68 <= 0);
-						} while (local72 >= 103);
-					} while (local68 >= 103);
-					local95 = LocType.list(local17);
-				} while (local78 == 22 && !Static250.aBoolean283 && local95.anInt4429 == 0 && local95.blockwalk != 1 && !local95.aBoolean206);
-				local39 = true;
-				if (!local95.method3426()) {
-					local15 = false;
-					Client.locModelLoadCount++;
-				}
-			}
-		}
-	}
-
 	@OriginalMember(owner = "client!dm", name = "a", descriptor = "(IBIII)V")
 	public static void method1206(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2, @OriginalArg(4) int arg3) {
 		@Pc(15) int local15 = 0;
@@ -93,33 +37,4 @@ public final class Static49 {
 		}
 	}
 
-	@OriginalMember(owner = "client!dm", name = "a", descriptor = "(Lclient!be;III)V")
-	public static void method1207(@OriginalArg(0) IfType arg0, @OriginalArg(2) int arg1, @OriginalArg(3) int arg2) {
-		if (Client.menuNumEntries < 2 && Static260.anInt5014 == 0 && !Client.targetMode) {
-			return;
-		}
-		@Pc(24) JagString local24 = Static13.method471();
-		if (arg0 == null) {
-			@Pc(40) int local40 = Static280.aClass3_Sub2_Sub9_43.method2859(local24, arg2 + 4, arg1 - -15, Static39.aRandom1, Static60.anInt1895);
-			Client.dirtyArea(arg2 + 4, Static280.aClass3_Sub2_Sub9_43.method2858(local24) + local40, arg1, 15);
-			return;
-		}
-		@Pc(59) PixFontGeneric local59 = arg0.getFont(Static159.aClass36Array12);
-		if (local59 == null) {
-			local59 = Static280.aClass3_Sub2_Sub9_43;
-		}
-		local59.method2878(local24, arg2, arg1, arg0.anInt445, arg0.anInt459, arg0.colour, arg0.shadowColour, arg0.hAlign, arg0.vAlign, Static39.aRandom1, Static60.anInt1895, Static50.anIntArray132);
-		Client.dirtyArea(Static50.anIntArray132[0], Static50.anIntArray132[2], Static50.anIntArray132[1], Static50.anIntArray132[3]);
-	}
-
-	@OriginalMember(owner = "client!dm", name = "d", descriptor = "(I)V")
-	public static void method1208() {
-		Client.networkError = false;
-		Static231.anInt5202 = 0;
-		Client.worldHopError = -3;
-		Client.loginWaitingTime = 0;
-		Client.loginStep = 1;
-		Client.loginFailCount = 0;
-		Static204.anInt4765 = -1;
-	}
 }

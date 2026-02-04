@@ -64,7 +64,7 @@ public final class GlPix8 extends Pix8 {
 			local22 += (this.anInt4287 - this.anInt4270) * 4;
 		}
 		@Pc(93) ByteBuffer local93 = ByteBuffer.wrap(local20);
-		@Pc(95) GL local95 = Static239.aGL1;
+		@Pc(95) GL local95 = Static239.gl;
 		if (this.anInt4281 == -1) {
 			@Pc(102) int[] local102 = new int[1];
 			local95.glGenTextures(1, local102, 0);
@@ -83,7 +83,7 @@ public final class GlPix8 extends Pix8 {
 		Static239.method4155();
 		@Pc(5) int local5 = arg0 + this.anInt4280;
 		@Pc(10) int local10 = arg1 + this.anInt4273;
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		Static239.method4177(this.anInt4281);
 		this.method3338();
 		local12.glColor4f(1.0F, 1.0F, 1.0F, (float) arg2 / 256.0F);
@@ -96,7 +96,7 @@ public final class GlPix8 extends Pix8 {
 	private void method3338() {
 		if (this.anInt4283 != 1) {
 			this.anInt4283 = 1;
-			@Pc(9) GL local9 = Static239.aGL1;
+			@Pc(9) GL local9 = Static239.gl;
 			local9.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_NEAREST);
 			local9.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAG_FILTER, GL.GL_NEAREST);
 		}
@@ -104,11 +104,11 @@ public final class GlPix8 extends Pix8 {
 
 	@OriginalMember(owner = "client!oh", name = "a", descriptor = "(II)V")
 	@Override
-	public final void method3336(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
+	public final void plotSprite(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		Static239.method4149();
 		@Pc(5) int local5 = arg0 + this.anInt4280;
 		@Pc(10) int local10 = arg1 + this.anInt4273;
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		Static239.method4177(this.anInt4281);
 		this.method3338();
 		local12.glTranslatef((float) local5, (float) (Static239.anInt5329 - local10), 0.0F);
@@ -135,7 +135,7 @@ public final class GlPix8 extends Pix8 {
 	private void method3339() {
 		@Pc(7) float local7 = (float) this.anInt4270 / (float) this.anInt4287;
 		@Pc(15) float local15 = (float) this.anInt4278 / (float) this.anInt4286;
-		@Pc(17) GL local17 = Static239.aGL1;
+		@Pc(17) GL local17 = Static239.gl;
 		if (this.anInt4282 == -1) {
 			this.anInt4282 = local17.glGenLists(1);
 			this.anInt4285 = Static63.anInt1943;

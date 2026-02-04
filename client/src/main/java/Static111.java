@@ -43,19 +43,18 @@ public final class Static111 {
 		} else {
 			arg0.anInt523 = arg2 - (arg2 * arg0.dataX >> 14) - arg0.anInt445;
 		}
-		if (!Static121.aBoolean154 || Client.method940(arg0).eventCode == 0 && arg0.type != 0) {
-			return;
-		}
-		if (arg0.anInt469 < 0) {
-			arg0.anInt469 = 0;
-		} else if (arg0.anInt459 + arg0.anInt469 > arg1) {
-			arg0.anInt469 = arg1 - arg0.anInt459;
-		}
-		if (arg0.anInt523 < 0) {
-			arg0.anInt523 = 0;
-		} else if (arg2 < arg0.anInt523 + arg0.anInt445) {
-			arg0.anInt523 = arg2 - arg0.anInt445;
-		}
-	}
+        if (Client.aBoolean154 && (Client.getActive(arg0).eventCode != 0 || arg0.type == 0)) {
+            if (arg0.anInt469 < 0) {
+                arg0.anInt469 = 0;
+            } else if (arg0.anInt459 + arg0.anInt469 > arg1) {
+                arg0.anInt469 = arg1 - arg0.anInt459;
+            }
+            if (arg0.anInt523 < 0) {
+                arg0.anInt523 = 0;
+            } else if (arg2 < arg0.anInt523 + arg0.anInt445) {
+                arg0.anInt523 = arg2 - arg0.anInt445;
+            }
+        }
+    }
 
 }

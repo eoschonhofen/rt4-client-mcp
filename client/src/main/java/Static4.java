@@ -16,9 +16,6 @@ public final class Static4 {
 	@OriginalMember(owner = "client!ac", name = "m", descriptor = "Lclient!na;")
 	public static final JagString aClass100_7 = JagString.wrap("overlay");
 
-	@OriginalMember(owner = "client!ac", name = "p", descriptor = "Lclient!be;")
-	public static IfType aClass13_1 = null;
-
 	@OriginalMember(owner = "client!ac", name = "a", descriptor = "([J[Ljava/lang/Object;I)V")
 	public static void method23(@OriginalArg(0) long[] arg0, @OriginalArg(1) Object[] arg1) {
 		Static228.method3909(arg0.length - 1, arg0, 0, arg1);
@@ -36,7 +33,7 @@ public final class Static4 {
 			return -1;
 		}
 		for (@Pc(20) int local20 = 0; local20 < Static9.anInt178; local20++) {
-			if (arg0.method3111(Static122.aClass100Array92[local20])) {
+			if (arg0.equalsIgnoreCase(Client.aClass100Array92[local20])) {
 				return local20;
 			}
 		}

@@ -6,12 +6,6 @@ public final class Static232 {
 	@OriginalMember(owner = "client!sm", name = "b", descriptor = "I")
 	public static int anInt5208;
 
-	@OriginalMember(owner = "client!sm", name = "e", descriptor = "[[[B")
-	public static byte[][][] aByteArrayArrayArray13;
-
-	@OriginalMember(owner = "client!sm", name = "k", descriptor = "Lsignlink!im;")
-	public static PrivilegedRequest aClass212_5;
-
 	@OriginalMember(owner = "client!sm", name = "m", descriptor = "I")
 	public static int anInt5212;
 

@@ -1,5 +1,3 @@
-import java.awt.Container;
-import java.awt.Insets;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
@@ -14,51 +12,6 @@ public final class Static203 {
 
 	@OriginalMember(owner = "client!qh", name = "i", descriptor = "Lclient!na;")
 	public static final JagString aClass100_894 = JagString.wrap("Mem:");
-
-	@OriginalMember(owner = "client!qh", name = "a", descriptor = "(Z)V")
-	public static void method3662() {
-		@Pc(8) Container local8;
-		if (GameShell.aFrame2 != null) {
-			local8 = GameShell.aFrame2;
-		} else if (GameShell.frame == null) {
-			local8 = GameShell.signlink.applet;
-		} else {
-			local8 = GameShell.frame;
-		}
-		GameShell.canvasWid = local8.getSize().width;
-		GameShell.canvasHei = local8.getSize().height;
-		@Pc(35) Insets local35;
-		if (local8 == GameShell.frame) {
-			local35 = GameShell.frame.getInsets();
-			GameShell.canvasHei -= local35.bottom + local35.top;
-			GameShell.canvasWid -= local35.right + local35.left;
-		}
-		if (Static144.method2736() >= 2) {
-			GameShell.anInt1448 = GameShell.canvasWid;
-			GameShell.anInt3497 = 0;
-			GameShell.anInt4246 = 0;
-			GameShell.anInt5554 = GameShell.canvasHei;
-		} else {
-			GameShell.anInt4246 = 0;
-			GameShell.anInt3497 = (GameShell.canvasWid - 765) / 2;
-			GameShell.anInt5554 = 503;
-			GameShell.anInt1448 = 765;
-		}
-		if (GameShell.glRenderer) {
-			Static239.method4181(GameShell.anInt1448, GameShell.anInt5554);
-		}
-		GameShell.canvas.setSize(GameShell.anInt1448, GameShell.anInt5554);
-		if (local8 == GameShell.frame) {
-			local35 = GameShell.frame.getInsets();
-			GameShell.canvas.setLocation(local35.left + GameShell.anInt3497, GameShell.anInt4246 + local35.top);
-		} else {
-			GameShell.canvas.setLocation(GameShell.anInt3497, GameShell.anInt4246);
-		}
-		if (Client.toplevelinterface != -1) {
-			Client.method3712(true);
-		}
-		GameShell.method2704();
-	}
 
 	@OriginalMember(owner = "client!qh", name = "a", descriptor = "(Lsignlink!ll;B)V")
 	public static void method3663(@OriginalArg(0) SignLink arg0) {

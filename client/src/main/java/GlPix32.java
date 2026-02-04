@@ -59,7 +59,7 @@ public class GlPix32 extends AbstractPix32 {
 			return;
 		}
 		this.anInt1873 = arg0;
-		@Pc(9) GL local9 = Static239.aGL1;
+		@Pc(9) GL local9 = Static239.gl;
 		if (arg0 == 2) {
 			local9.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MIN_FILTER, GL.GL_LINEAR);
 			local9.glTexParameteri(GL.GL_TEXTURE_2D, GL.GL_TEXTURE_MAG_FILTER, GL.GL_LINEAR);
@@ -77,7 +77,7 @@ public class GlPix32 extends AbstractPix32 {
 		Static239.method4149();
 		Static239.method4177(arg2.anInt1872);
 		arg2.method1424(1);
-		@Pc(11) GL local11 = Static239.aGL1;
+		@Pc(11) GL local11 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		local11.glActiveTexture(GL.GL_TEXTURE1);
@@ -117,7 +117,7 @@ public class GlPix32 extends AbstractPix32 {
 	@OriginalMember(owner = "client!cf", name = "c", descriptor = "(IIIII)V")
 	public final void method1426(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4) {
 		Static239.method4155();
-		@Pc(2) GL local2 = Static239.aGL1;
+		@Pc(2) GL local2 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		@Pc(16) float local16 = (float) this.anInt1867 / (float) this.anInt1870;
@@ -150,7 +150,7 @@ public class GlPix32 extends AbstractPix32 {
 		Static239.method4149();
 		Static239.method4177(arg8.anInt1872);
 		arg8.method1424(1);
-		@Pc(11) GL local11 = Static239.aGL1;
+		@Pc(11) GL local11 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		local11.glActiveTexture(GL.GL_TEXTURE1);
@@ -205,7 +205,7 @@ public class GlPix32 extends AbstractPix32 {
 		Static239.method4149();
 		@Pc(5) int local5 = arg0 + this.anInt1863;
 		@Pc(10) int local10 = arg1 + this.anInt1861;
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		local12.glTranslatef((float) local5, (float) (Static239.anInt5329 - local10), 0.0F);
@@ -226,11 +226,11 @@ public class GlPix32 extends AbstractPix32 {
 
 	@OriginalMember(owner = "client!cf", name = "e", descriptor = "(II)V")
 	@Override
-	public final void method1423(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
+	public final void plotSprite(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		Static239.method4149();
 		@Pc(5) int local5 = arg0 + this.anInt1863;
 		@Pc(10) int local10 = arg1 + this.anInt1861;
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		local12.glTranslatef((float) local5, (float) (Static239.anInt5329 - local10), 0.0F);
@@ -241,7 +241,7 @@ public class GlPix32 extends AbstractPix32 {
 	@OriginalMember(owner = "client!cf", name = "b", descriptor = "(IIIIII)V")
 	public final void method1428(@OriginalArg(2) int arg0, @OriginalArg(3) int arg1, @OriginalArg(4) int arg2) {
 		Static239.method4149();
-		@Pc(2) GL local2 = Static239.aGL1;
+		@Pc(2) GL local2 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(2);
 		@Pc(15) int local15 = 240 - (this.anInt1863 << 4);
@@ -285,7 +285,7 @@ public class GlPix32 extends AbstractPix32 {
 		if (local11 < local21) {
 			arg3 = ((local11 << 16) + local33 - local15 - 1) / local33;
 		}
-		@Pc(123) GL local123 = Static239.aGL1;
+		@Pc(123) GL local123 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(2);
 		@Pc(132) float local132 = (float) arg0;
@@ -312,7 +312,7 @@ public class GlPix32 extends AbstractPix32 {
 		Static239.method4149();
 		@Pc(5) int local5 = arg0 + this.anInt1863;
 		@Pc(10) int local10 = arg1 + this.anInt1861;
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		local12.glTranslatef((float) local5, (float) (Static239.anInt5329 - local10), 0.0F);
@@ -339,7 +339,7 @@ public class GlPix32 extends AbstractPix32 {
 	@Override
 	protected final void method1416(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3, @OriginalArg(4) int arg4, @OriginalArg(5) int arg5) {
 		Static239.method4149();
-		@Pc(2) GL local2 = Static239.aGL1;
+		@Pc(2) GL local2 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		@Pc(15) int local15 = arg0 - (this.anInt1863 << 4);
@@ -386,7 +386,7 @@ public class GlPix32 extends AbstractPix32 {
 		if (local11 < local21) {
 			arg3 = ((local11 << 16) + local33 - local15 - 1) / local33;
 		}
-		@Pc(123) GL local123 = Static239.aGL1;
+		@Pc(123) GL local123 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		@Pc(132) float local132 = (float) arg0;
@@ -412,7 +412,7 @@ public class GlPix32 extends AbstractPix32 {
 	@OriginalMember(owner = "client!cf", name = "b", descriptor = "(IIII)V")
 	public final void method1429(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(2) int arg2, @OriginalArg(3) int arg3) {
 		Static239.method4149();
-		@Pc(2) GL local2 = Static239.aGL1;
+		@Pc(2) GL local2 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		@Pc(16) float local16 = (float) this.anInt1867 / (float) this.anInt1870;
@@ -458,7 +458,7 @@ public class GlPix32 extends AbstractPix32 {
 			local22 += local32;
 		}
 		@Pc(91) ByteBuffer local91 = ByteBuffer.wrap(local20);
-		@Pc(93) GL local93 = Static239.aGL1;
+		@Pc(93) GL local93 = Static239.gl;
 		if (this.anInt1872 == -1) {
 			@Pc(100) int[] local100 = new int[1];
 			local93.glGenTextures(1, local100, 0);
@@ -477,7 +477,7 @@ public class GlPix32 extends AbstractPix32 {
 		Static239.method4155();
 		@Pc(5) int local5 = arg0 + this.anInt1863;
 		@Pc(10) int local10 = arg1 + this.anInt1861;
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		Static239.method4177(this.anInt1872);
 		this.method1424(1);
 		local12.glColor4f(1.0F, 1.0F, 1.0F, (float) arg2 / 256.0F);
@@ -490,7 +490,7 @@ public class GlPix32 extends AbstractPix32 {
 	private void method1431() {
 		@Pc(7) float local7 = (float) this.anInt1867 / (float) this.anInt1870;
 		@Pc(15) float local15 = (float) this.anInt1859 / (float) this.anInt1874;
-		@Pc(17) GL local17 = Static239.aGL1;
+		@Pc(17) GL local17 = Static239.gl;
 		if (this.anInt1871 == -1) {
 			this.anInt1871 = local17.glGenLists(1);
 			this.anInt1875 = Static63.anInt1943;

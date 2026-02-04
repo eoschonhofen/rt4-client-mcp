@@ -22,7 +22,7 @@ public final class Static5 {
 
 	@OriginalMember(owner = "client!af", name = "b", descriptor = "(B)V")
 	public static void method34() {
-		Static116.method2325(false);
+		WorldMap.method2325(false);
 		System.gc();
 		Client.setMainState(25);
 	}

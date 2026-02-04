@@ -2,9 +2,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static45 {
 
-	@OriginalMember(owner = "client!di", name = "q", descriptor = "[Lclient!na;")
-	public static final JagString[] aClass100Array53 = new JagString[5];
-
 	@OriginalMember(owner = "client!di", name = "F", descriptor = "Lclient!bf;")
 	public static final ServerActive aClass3_Sub4_2 = new ServerActive(0, -1);
 

@@ -12,6 +12,12 @@ public final class ObjType {
 	public static final SoftLruCache aClass99_32 = new SoftLruCache(50);
 	@OriginalMember(owner = "client!jd", name = "c", descriptor = "Lclient!n;")
 	public static final SoftLruCache aClass99_16 = new SoftLruCache(100);
+	@OriginalMember(owner = "client!kl", name = "u", descriptor = "Lclient!na;")
+	public static final JagString aClass100_637 = JagString.wrap("<col=ffffff>");
+	@OriginalMember(owner = "client!ol", name = "Y", descriptor = "Lclient!na;")
+	public static final JagString aClass100_819 = JagString.wrap("<col=00ff80>");
+	@OriginalMember(owner = "client!ib", name = "g", descriptor = "Lclient!na;")
+	public static final JagString aClass100_559 = JagString.wrap("<col=ffff00>");
 
 	@OriginalMember(owner = "client!nd", name = "n", descriptor = "Lclient!ve;")
 	public static Js5 objConfig;
@@ -267,6 +273,98 @@ public final class ObjType {
 		}
 	}
 
+    @OriginalMember(owner = "client!eb", name = "b", descriptor = "(II)Lclient!na;")
+    public static JagString method1288(@OriginalArg(1) int arg0) {
+        if (arg0 < 100000) {
+            return JagString.join(new JagString[] { aClass100_559, JagString.parseInt(arg0), Static123.aClass100_594 });
+        } else if (arg0 >= 10000000) {
+            return JagString.join(new JagString[] { aClass100_819, JagString.parseInt(arg0 / 1000000), Text.aClass100_440, Static123.aClass100_594 });
+        } else {
+            return JagString.join(new JagString[] { aClass100_637, JagString.parseInt(arg0 / 1000), Text.aClass100_218, Static123.aClass100_594 });
+        }
+    }
+
+	@OriginalMember(owner = "client!na", name = "a", descriptor = "(IBZIZIIZ)Lclient!qf;")
+	public static AbstractPix32 method3150(@OriginalArg(0) int arg0, @OriginalArg(2) boolean arg1, @OriginalArg(3) int arg2, @OriginalArg(4) boolean arg3, @OriginalArg(5) int arg4, @OriginalArg(6) int arg5, @OriginalArg(7) boolean arg6) {
+		@Pc(5) ObjType local5 = list(arg2);
+		if (arg5 > 1 && local5.anIntArray214 != null) {
+			@Pc(15) int local15 = -1;
+			for (@Pc(17) int local17 = 0; local17 < 10; local17++) {
+				if (arg5 >= local5.anIntArray212[local17] && local5.anIntArray212[local17] != 0) {
+					local15 = local5.anIntArray214[local17];
+				}
+			}
+			if (local15 != -1) {
+				local5 = list(local15);
+			}
+		}
+		@Pc(60) SoftwareModelLit local60 = local5.method1834();
+		if (local60 == null) {
+			return null;
+		}
+		@Pc(71) Pix32 local71 = null;
+		if (local5.anInt2358 != -1) {
+			local71 = (Pix32) method3150(0, true, local5.anInt2356, false, 1, 10, true);
+			if (local71 == null) {
+				return null;
+			}
+		} else if (local5.anInt2334 != -1) {
+			local71 = (Pix32) method3150(arg0, true, local5.anInt2363, false, arg4, arg5, false);
+			if (local71 == null) {
+				return null;
+			}
+		}
+		@Pc(118) int[] local118 = Pix2D.anIntArray297;
+		@Pc(120) int local120 = Pix2D.anInt3144;
+		@Pc(122) int local122 = Pix2D.anInt3146;
+		@Pc(125) int[] local125 = new int[4];
+		Pix2D.method2497(local125);
+		@Pc(133) Pix32 local133 = new Pix32(36, 32);
+		Pix2D.method2491(local133.anIntArray20, 36, 32);
+		Pix3D.method1908();
+		Pix3D.method1919(16, 16);
+		@Pc(145) int local145 = local5.anInt2375;
+		Pix3D.aBoolean136 = false;
+		if (arg6) {
+			local145 = (int) ((double) local145 * 1.5D);
+		} else if (arg4 == 2) {
+			local145 = (int) ((double) local145 * 1.04D);
+		}
+		@Pc(176) int local176 = Pix3D.cosTable[local5.anInt2353] * local145 >> 16;
+		@Pc(185) int local185 = Pix3D.sinTable[local5.anInt2353] * local145 >> 16;
+		local60.method4571(local5.anInt2369, local5.anInt2339, local5.anInt2353, local5.anInt2359, local185 + local5.anInt2319 - local60.calcBoundingCylinder() / 2, local5.anInt2319 + local176, -1L);
+		if (arg4 >= 1) {
+			local133.addOutline(1);
+			if (arg4 >= 2) {
+				local133.addOutline(16777215);
+			}
+			Pix2D.method2491(local133.anIntArray20, 36, 32);
+		}
+		if (arg0 != 0) {
+			local133.addShadow(arg0);
+		}
+		if (local5.anInt2358 != -1) {
+			local71.plotSprite(0, 0);
+		} else if (local5.anInt2334 != -1) {
+			Pix2D.method2491(local71.anIntArray20, 36, 32);
+			local133.plotSprite(0, 0);
+			local133 = local71;
+		}
+		if (arg3 && (local5.anInt2336 == 1 || arg5 != 1) && arg5 != -1) {
+			aClass3_Sub2_Sub9_Sub1_1.method2857(method1288(arg5), 0, 9, 16776960, 1);
+		}
+		Pix2D.method2491(local118, local120, local122);
+		Pix2D.method2488(local125);
+		Pix3D.method1908();
+		Pix3D.aBoolean136 = true;
+		return GameShell.glRenderer && !arg1 ? new GlPix32(local133) : local133;
+	}
+
+	@OriginalMember(owner = "client!rc", name = "a", descriptor = "(Z)V")
+	public static void method924() {
+		aClass99_32.method3104();
+	}
+
 	@OriginalMember(owner = "client!h", name = "a", descriptor = "(ZZ)Z")
 	public final boolean method1816(@OriginalArg(0) boolean arg0) {
 		@Pc(6) int local6 = this.anInt2372;
@@ -400,7 +498,7 @@ public final class ObjType {
 		}
 		@Pc(76) ModelLit local76 = (ModelLit) aClass99_32.find((long) this.id);
 		if (local76 == null) {
-			@Pc(85) ModelUnlit local85 = Static77.method1686(aClass153_95, this.anInt2320);
+			@Pc(85) ModelUnlit local85 = ModelUnlit.method1686(aClass153_95, this.anInt2320);
 			if (local85 == null) {
 				return null;
 			}
@@ -488,7 +586,7 @@ public final class ObjType {
 			this.anInt2361 = arg0.g2();
 		} else if (arg1 >= 30 && arg1 < 35) {
 			this.aClass100Array72[arg1 - 30] = arg0.gjstr();
-			if (this.aClass100Array72[arg1 - 30].method3111(Text.aClass100_64)) {
+			if (this.aClass100Array72[arg1 - 30].equalsIgnoreCase(Text.aClass100_64)) {
 				this.aClass100Array72[arg1 - 30] = null;
 			}
 		} else if (arg1 >= 35 && arg1 < 40) {
@@ -625,9 +723,9 @@ public final class ObjType {
 		if (local17 == -1) {
 			return null;
 		}
-		@Pc(36) ModelUnlit local36 = Static77.method1686(aClass153_95, local17);
+		@Pc(36) ModelUnlit local36 = ModelUnlit.method1686(aClass153_95, local17);
 		if (local4 != -1) {
-			@Pc(44) ModelUnlit local44 = Static77.method1686(aClass153_95, local4);
+			@Pc(44) ModelUnlit local44 = ModelUnlit.method1686(aClass153_95, local4);
 			@Pc(55) ModelUnlit[] local55 = new ModelUnlit[] { local36, local44 };
 			local36 = new ModelUnlit(local55, 2);
 		}
@@ -658,14 +756,14 @@ public final class ObjType {
 		if (local4 == -1) {
 			return null;
 		}
-		@Pc(43) ModelUnlit local43 = Static77.method1686(aClass153_95, local4);
+		@Pc(43) ModelUnlit local43 = ModelUnlit.method1686(aClass153_95, local4);
 		if (local18 != -1) {
-			@Pc(54) ModelUnlit local54 = Static77.method1686(aClass153_95, local18);
+			@Pc(54) ModelUnlit local54 = ModelUnlit.method1686(aClass153_95, local18);
 			if (local21 == -1) {
 				@Pc(68) ModelUnlit[] local68 = new ModelUnlit[] { local43, local54 };
 				local43 = new ModelUnlit(local68, 2);
 			} else {
-				@Pc(81) ModelUnlit local81 = Static77.method1686(aClass153_95, local21);
+				@Pc(81) ModelUnlit local81 = ModelUnlit.method1686(aClass153_95, local21);
 				@Pc(96) ModelUnlit[] local96 = new ModelUnlit[] { local43, local54, local81 };
 				local43 = new ModelUnlit(local96, 3);
 			}
@@ -712,7 +810,7 @@ public final class ObjType {
 
 	@OriginalMember(owner = "client!h", name = "d", descriptor = "(I)Lclient!w;")
 	public final SoftwareModelLit method1834() {
-		@Pc(11) ModelUnlit local11 = Static77.method1686(aClass153_95, this.anInt2320);
+		@Pc(11) ModelUnlit local11 = ModelUnlit.method1686(aClass153_95, this.anInt2320);
 		if (local11 == null) {
 			return null;
 		}

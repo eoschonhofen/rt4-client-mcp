@@ -5,9 +5,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static25 {
 
-	@OriginalMember(owner = "client!c", name = "bb", descriptor = "[Lclient!ec;")
-	public static Sprite[] aClass31Array2;
-
 	@OriginalMember(owner = "client!c", name = "Y", descriptor = "Lclient!na;")
 	public static final JagString aClass100_154 = JagString.wrap("Mem:");
 

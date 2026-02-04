@@ -172,7 +172,7 @@ public final class GlTexture extends Linkable2 {
 		if (!this.aClass88_1.method2729(arg1, arg0)) {
 			return false;
 		}
-		@Pc(22) GL local22 = Static239.aGL1;
+		@Pc(22) GL local22 = Static239.gl;
 		@Pc(28) int local28 = arg2 ? 64 : 128;
 		@Pc(31) int local31 = Static56.method1314();
 		if ((local31 & 0x1) == 0) {

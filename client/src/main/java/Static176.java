@@ -62,9 +62,9 @@ public final class Static176 {
 			@Pc(33) int local33 = (arg5 - arg3) * (local17 - local19) / arg1 + local19;
 			local47 = local15 + (local13 - local15) * (arg4 - arg0) / arg2;
 			if (Client.targetMode && (Static274.anInt4999 & 0x40) != 0) {
-				@Pc(61) IfType local61 = Static201.method1418(Static98.anInt2512, Static15.anInt506);
+				@Pc(61) IfType local61 = IfType.method1418(Static98.anInt2512, Static15.anInt506);
 				if (local61 == null) {
-					Static53.method1294();
+					Client.method1294();
 				} else {
 					Client.addMenuOption(Static246.anInt5393, 0L, Static225.aClass100_961, local33, (short) 11, Static102.aClass100_545, local47);
 				}
@@ -154,10 +154,10 @@ public final class Static176 {
 							local514 = local502.x + 64 - local502.aClass96_1.anInt3713 * 64;
 							local526 = local502.z + 64 - local502.aClass96_1.anInt3713 * 64;
 							if (local502 != null && local421 != local502 && local514 >= local479 && local421.aClass96_1.anInt3713 - (local514 - local479 >> 7) >= local502.aClass96_1.anInt3713 && local240 <= local526 && local502.aClass96_1.anInt3713 <= local421.aClass96_1.anInt3713 - (local526 - local240 >> 7)) {
-								Static246.method4240(local502.aClass96_1, local47, Client.npcIds[local493], local147);
+								Client.method4240(local502.aClass96_1, local47, Client.npcIds[local493], local147);
 							}
 						}
-						for (local493 = 0; local493 < Client.anInt5774; local493++) {
+						for (local493 = 0; local493 < Client.playerCount; local493++) {
 							local597 = Client.players[Client.playerIds[local493]];
 							local514 = local597.x + 64 - local597.method2693() * 64;
 							local526 = local597.z + 64 - local597.method2693() * 64;
@@ -166,7 +166,7 @@ public final class Static176 {
 							}
 						}
 					}
-					Static246.method4240(local421.aClass96_1, local47, local140, local147);
+					Client.method4240(local421.aClass96_1, local47, local140, local147);
 				}
 				if (local133 == 0) {
 					@Pc(688) ClientPlayer local688 = Client.players[local140];
@@ -178,10 +178,10 @@ public final class Static176 {
 							local514 = local502.x + 64 - local502.aClass96_1.anInt3713 * 64;
 							local526 = local502.z + 64 - local502.aClass96_1.anInt3713 * 64;
 							if (local502 != null && local514 >= local479 && local502.aClass96_1.anInt3713 <= local688.method2693() - (local514 - local479 >> 7) && local526 >= local240 && local502.aClass96_1.anInt3713 <= local688.method2693() - (local526 - local240 >> 7)) {
-								Static246.method4240(local502.aClass96_1, local47, Client.npcIds[local493], local147);
+								Client.method4240(local502.aClass96_1, local47, Client.npcIds[local493], local147);
 							}
 						}
-						for (local493 = 0; local493 < Client.anInt5774; local493++) {
+						for (local493 = 0; local493 < Client.playerCount; local493++) {
 							local597 = Client.players[Client.playerIds[local493]];
 							local514 = local597.x - (local597.method2693() - 1) * 64;
 							local526 = local597.z + 64 - local597.method2693() * 64;

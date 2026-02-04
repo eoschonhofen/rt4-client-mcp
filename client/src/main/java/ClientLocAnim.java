@@ -101,7 +101,7 @@ public final class ClientLocAnim extends ModelSource {
 			}
 			this.anInt1317 = 1;
 			this.anInt1320 = Client.loopCycle - 1;
-			if (this.anim.anInt5347 == 0 && arg8 != null && arg8 instanceof ClientLocAnim) {
+			if (this.anim.duplicatebehavior == 0 && arg8 != null && arg8 instanceof ClientLocAnim) {
 				@Pc(142) ClientLocAnim local142 = (ClientLocAnim) arg8;
 				if (this.anim == local142.anim) {
 					this.animFrame = local142.animFrame;
@@ -197,7 +197,7 @@ public final class ClientLocAnim extends ModelSource {
 			}
 		}
 		while (local10 > this.anim.delay[this.animFrame]) {
-			Static152.method2836(arg0, this.anim, arg1, false, this.animFrame);
+			Client.method2836(arg0, this.anim, arg1, false, this.animFrame);
 			local10 -= this.anim.delay[this.animFrame];
 			this.animFrame++;
 			if (this.anim.frames.length <= this.animFrame) {
@@ -221,7 +221,7 @@ public final class ClientLocAnim extends ModelSource {
 
 	@OriginalMember(owner = "client!dc", name = "a", descriptor = "(ZI)Lclient!th;")
 	private ModelSource method1048(@OriginalArg(0) boolean arg0) {
-		@Pc(12) boolean local12 = Static107.anIntArrayArrayArray10 != ClientBuild.groundh;
+		@Pc(12) boolean local12 = World.normalGroundh != World.groundh;
 		@Pc(19) LocType local19 = LocType.list(this.anInt1299);
 		@Pc(22) int local22 = local19.anInt4430;
 		if (local19.anIntArray380 != null) {
@@ -273,15 +273,15 @@ public final class ClientLocAnim extends ModelSource {
 		if (arg0 && !local256) {
 			return null;
 		}
-		@Pc(267) int[][] local267 = ClientBuild.groundh[this.anInt1303];
+		@Pc(267) int[][] local267 = World.groundh[this.anInt1303];
 		@Pc(293) int local293 = local267[local178][local201] + local267[local185][local201] + local267[local185][local192] + local267[local178][local192] >> 2;
 		@Pc(302) int local302 = (local160 << 6) + (this.anInt1308 << 7);
 		@Pc(311) int local311 = (local157 << 6) + (this.anInt1300 << 7);
 		@Pc(314) int[][] local314 = null;
 		if (local12) {
-			local314 = Static107.anIntArrayArrayArray10[0];
+			local314 = World.normalGroundh[0];
 		} else if (this.anInt1303 < 3) {
-			local314 = ClientBuild.groundh[this.anInt1303 + 1];
+			local314 = World.groundh[this.anInt1303 + 1];
 		}
 		if (GameShell.glRenderer && local256) {
 			Static242.method4207(this.aClass36_Sub1_2, this.anInt1296, this.anInt1294, this.anInt1319);
@@ -302,7 +302,7 @@ public final class ClientLocAnim extends ModelSource {
 			}
 			@Pc(429) int local429 = 0;
 			if (this.anInt1303 != 0) {
-				@Pc(439) int[][] local439 = ClientBuild.groundh[0];
+				@Pc(439) int[][] local439 = World.groundh[0];
 				local429 = local293 - (local439[local178][local192] + local439[local185][local192] + local439[local185][local201] + local439[local178][local201] >> 2);
 			}
 			@Pc(471) SoftwarePix8 local471 = local389.aClass36_Sub1_3;

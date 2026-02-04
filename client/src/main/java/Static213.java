@@ -6,9 +6,6 @@ public final class Static213 {
 	@OriginalMember(owner = "client!re", name = "w", descriptor = "[Lclient!qf;")
 	public static AbstractPix32[] aClass3_Sub2_Sub1Array8;
 
-	@OriginalMember(owner = "client!re", name = "y", descriptor = "I")
-	public static int anInt4851;
-
 	@OriginalMember(owner = "client!re", name = "b", descriptor = "(I)[Lclient!qf;")
 	public static AbstractPix32[] method3730() {
 		@Pc(14) AbstractPix32[] local14 = new AbstractPix32[Static165.anInt4038];

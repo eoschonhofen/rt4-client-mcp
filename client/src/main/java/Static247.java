@@ -3,9 +3,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 
 public final class Static247 {
 
-	@OriginalMember(owner = "client!ub", name = "h", descriptor = "[Lclient!pe;")
-	public static Occlude[] aClass120Array2;
-
 	@OriginalMember(owner = "client!ub", name = "m", descriptor = "I")
 	public static int anInt5405;
 

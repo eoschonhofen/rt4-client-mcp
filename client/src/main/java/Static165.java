@@ -13,12 +13,6 @@ public final class Static165 {
 	@OriginalMember(owner = "client!nb", name = "o", descriptor = "I")
 	public static int anInt4042;
 
-	@OriginalMember(owner = "client!nb", name = "a", descriptor = "Lclient!na;")
-	public static final JagString aClass100_772 = JagString.wrap("um");
-
-	@OriginalMember(owner = "client!nb", name = "d", descriptor = "I")
-	public static int anInt4035 = 0;
-
 	@OriginalMember(owner = "client!nb", name = "e", descriptor = "Lclient!na;")
 	public static final JagString aClass100_775 = JagString.wrap("::breakcon");
 
@@ -87,12 +81,4 @@ public final class Static165 {
 		return local40 + 1;
 	}
 
-	@OriginalMember(owner = "client!nb", name = "a", descriptor = "(II)Lclient!na;")
-	public static JagString method3165() {
-		@Pc(21) JagString local21 = new JagString();
-		local21.anInt4030 = 1;
-		local21.aByteArray52 = new byte[1];
-		local21.aByteArray52[0] = -96;
-		return local21;
-	}
 }

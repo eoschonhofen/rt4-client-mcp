@@ -274,7 +274,7 @@ public final class SoftwarePix8 extends Pix8 {
 
 	@OriginalMember(owner = "client!ek", name = "a", descriptor = "(II)V")
 	@Override
-	public final void method3336(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
+	public final void plotSprite(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1) {
 		arg0 += this.anInt4280;
 		arg1 += this.anInt4273;
 		@Pc(15) int local15 = arg0 + arg1 * Pix2D.anInt3144;

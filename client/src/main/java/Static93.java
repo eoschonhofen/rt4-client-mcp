@@ -4,9 +4,6 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static93 {
 
-	@OriginalMember(owner = "client!he", name = "ab", descriptor = "Lclient!sc;")
-	public static final HashTable aClass133_7 = new HashTable(16);
-
 	@OriginalMember(owner = "client!he", name = "db", descriptor = "Lclient!na;")
 	public static final JagString aClass100_517 = JagString.wrap("");
 

@@ -4,14 +4,8 @@ import org.openrs2.deob.annotation.Pc;
 
 public final class Static172 {
 
-	@OriginalMember(owner = "client!nj", name = "j", descriptor = "[I")
-	public static int[] anIntArray366;
-
 	@OriginalMember(owner = "client!nj", name = "k", descriptor = "I")
 	public static int anInt4165;
-
-	@OriginalMember(owner = "client!nj", name = "a", descriptor = "Z")
-	public static boolean aBoolean199 = false;
 
 	@OriginalMember(owner = "client!nj", name = "h", descriptor = "Lclient!ih;")
 	public static final LinkList aClass69_97 = new LinkList();

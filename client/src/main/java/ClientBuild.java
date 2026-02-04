@@ -13,6 +13,12 @@ public class ClientBuild {
     public static final int[] anIntArray219 = new int[1000];
     @OriginalMember(owner = "client!ph", name = "b", descriptor = "[[Lclient!li;")
     public static final Environment[][] aClass92ArrayArray1 = new Environment[13][13];
+    @OriginalMember(owner = "client!ck", name = "d", descriptor = "[I")
+    public static final int[] anIntArray80 = new int[] { 1, 0, -1, 0 };
+    @OriginalMember(owner = "client!te", name = "B", descriptor = "[I")
+    public static final int[] anIntArray469 = new int[] { 0, -1, 0, 1 };
+    @OriginalMember(owner = "client!j", name = "O", descriptor = "[I")
+    public static final int[] anIntArray565 = new int[] { 1, -1, -1, 1 };
 
     @OriginalMember(owner = "client!s", name = "i", descriptor = "[I")
     public static int[] huetot;
@@ -55,8 +61,6 @@ public class ClientBuild {
     public static int ligOff = (int) (Math.random() * 17.0D) - 8;
     @OriginalMember(owner = "client!ta", name = "B", descriptor = "I")
     public static int anInt5245 = 0;
-    @OriginalMember(owner = "client!gj", name = "m", descriptor = "[[[I")
-    public static int[][][] groundh;
     @OriginalMember(owner = "client!ug", name = "m", descriptor = "I")
     public static int anInt5454 = 0;
     @OriginalMember(owner = "client!ef", name = "j", descriptor = "Lclient!mm;")
@@ -167,8 +171,8 @@ public class ClientBuild {
                 local173 = local168 * 768 >> 8;
                 for (local178 = 1; local178 < 103; local178++) {
                     for (local194 = 1; local194 < 103; local194++) {
-                        local209 = groundh[local152][local194][local178 + 1] - groundh[local152][local194][local178 - 1];
-                        local202 = groundh[local152][local194 + 1][local178] - groundh[local152][local194 - 1][local178];
+                        local209 = World.groundh[local152][local194][local178 + 1] - World.groundh[local152][local194][local178 - 1];
+                        local202 = World.groundh[local152][local194 + 1][local178] - World.groundh[local152][local194 - 1][local178];
                         local349 = (int) Math.sqrt((double) (local202 * local202 + local209 * local209 + 65536));
                         local267 = (local209 << 8) / local349;
                         local254 = -65536 / local349;
@@ -193,8 +197,8 @@ public class ClientBuild {
                 local200 = local194 * 1024 >> 8;
                 for (local202 = 1; local202 < 103; local202++) {
                     for (local209 = 1; local209 < 103; local209++) {
-                        local234 = groundh[local152][local209 + 1][local202] - groundh[local152][local209 - 1][local202];
-                        local254 = groundh[local152][local209][local202 + 1] - groundh[local152][local209][local202 - 1];
+                        local234 = World.groundh[local152][local209 + 1][local202] - World.groundh[local152][local209 - 1][local202];
+                        local254 = World.groundh[local152][local209][local202 + 1] - World.groundh[local152][local209][local202 - 1];
                         local267 = (int) Math.sqrt((double) (local234 * local234 + local254 * local254 + 65536));
                         local273 = (local234 << 8) / local267;
                         local322 = (local159[local209][local202 + 1] >> 3) + (local159[local209][local202 - 1] >> 2) + (local159[local209 - 1][local202] >> 2) + (local159[local209 + 1][local202] >> 3) + (local159[local209][local202] >> 1);
@@ -271,17 +275,17 @@ public class ClientBuild {
             }
             for (local168 = 1; local168 < 103; local168++) {
                 label771: for (local173 = 1; local173 < 103; local173++) {
-                    if (arg1 || Static138.method2697() || (mapl[0][local168][local173] & 0x2) != 0 || (mapl[local152][local168][local173] & 0x10) == 0 && method22(local173, local168, local152) == Static41.anInt1316) {
+                    if (arg1 || Client.highDetail() || (mapl[0][local168][local173] & 0x2) != 0 || (mapl[local152][local168][local173] & 0x10) == 0 && method22(local173, local168, local152) == Static41.anInt1316) {
                         if (minusedlevel > local152) {
                             minusedlevel = local152;
                         }
                         local178 = floort1[local152][local168][local173] & 0xFF;
                         local194 = aByteArrayArrayArray14[local152][local168][local173] & 0xFF;
                         if (local178 > 0 || local194 > 0) {
-                            local202 = groundh[local152][local168 + 1][local173];
-                            local200 = groundh[local152][local168][local173];
-                            local349 = groundh[local152][local168][local173 + 1];
-                            local209 = groundh[local152][local168 + 1][local173 + 1];
+                            local202 = World.groundh[local152][local168 + 1][local173];
+                            local200 = World.groundh[local152][local168][local173];
+                            local349 = World.groundh[local152][local168][local173 + 1];
+                            local209 = World.groundh[local152][local168 + 1][local173 + 1];
                             if (local152 > 0) {
                                 @Pc(1067) boolean local1067 = true;
                                 if (local178 == 0 && aByteArrayArrayArray11[local152][local168][local173] != 0) {
@@ -315,7 +319,7 @@ public class ClientBuild {
                             if (local194 == 0) {
                                 World.method3305(local152, local168, local173, 0, 0, -1, local200, local202, local209, local349, method1814(local267, local234), method1814(local273, local234), method1814(local326, local234), method1814(local332, local234), 0, 0, 0, 0, local254, 0);
                                 if (GameShell.glRenderer && local152 > 0 && local234 != -1 && FluType.list(local178 - 1).aBoolean198) {
-                                    Static242.method4197(0, 0, true, false, local168, local173, local200 - groundh[0][local168][local173], -groundh[0][local168 + 1][local173] + local202, local209 - groundh[0][local168 + 1][local173 + 1], local349 - groundh[0][local168][local173 + 1]);
+                                    Static242.method4197(0, 0, true, false, local168, local173, local200 - World.groundh[0][local168][local173], -World.groundh[0][local168 + 1][local173] + local202, local209 - World.groundh[0][local168 + 1][local173 + 1], local349 - World.groundh[0][local168][local173 + 1]);
                                 }
                                 if (GameShell.glRenderer && !arg1 && World.anIntArrayArray11 != null && local152 == 0) {
                                     for (local322 = local168 - 1; local322 <= local168 + 1; local322++) {
@@ -368,7 +372,7 @@ public class ClientBuild {
                                 @Pc(1429) int local1429;
                                 if (local1288 >= 0) {
                                     local1301 = -1;
-                                    local1353 = Pix3D.anIntArray220[Static230.method3949(Pix3D.anInterface1_2.method3234(local1288), 96)];
+                                    local1353 = Pix3D.anIntArray220[World.getOCol(Pix3D.anInterface1_2.method3234(local1288), 96)];
                                 } else if (local1248.anInt5899 == -1) {
                                     local1301 = -2;
                                     local1353 = 0;
@@ -381,7 +385,7 @@ public class ClientBuild {
                                         local1429 = 127;
                                     }
                                     local1458 = (local1301 & 0x380) + ((local1301 + local10 & 0xFC00) + local1429);
-                                    local1353 = Pix3D.anIntArray220[Static230.method3949(local1458, 96)];
+                                    local1353 = Pix3D.anIntArray220[World.getOCol(local1458, 96)];
                                 }
                                 if (local1248.anInt5894 >= 0) {
                                     local1429 = local1248.anInt5894;
@@ -392,11 +396,11 @@ public class ClientBuild {
                                         local1458 = 127;
                                     }
                                     @Pc(1529) int local1529 = (local1429 & 0x380) + ((local1429 + local10 & 0xFC00) + local1458);
-                                    local1353 = Pix3D.anIntArray220[Static230.method3949(local1529, 96)];
+                                    local1353 = Pix3D.anIntArray220[World.getOCol(local1529, 96)];
                                 }
-                                World.method3305(local152, local168, local173, local322, local1242, local1288, local200, local202, local209, local349, method1814(local267, local234), method1814(local273, local234), method1814(local326, local234), method1814(local332, local234), Static230.method3949(local1301, local267), Static230.method3949(local1301, local273), Static230.method3949(local1301, local326), Static230.method3949(local1301, local332), local254, local1353);
+                                World.method3305(local152, local168, local173, local322, local1242, local1288, local200, local202, local209, local349, method1814(local267, local234), method1814(local273, local234), method1814(local326, local234), method1814(local332, local234), World.getOCol(local1301, local267), World.getOCol(local1301, local273), World.getOCol(local1301, local326), World.getOCol(local1301, local332), local254, local1353);
                                 if (GameShell.glRenderer && local152 > 0) {
-                                    Static242.method4197(local322, local1242, local1301 == -2 || !local1248.aBoolean311, local234 == -1 || !FluType.list(local178 - 1).aBoolean198, local168, local173, local200 - groundh[0][local168][local173], local202 - groundh[0][local168 + 1][local173], local209 - groundh[0][local168 + 1][local173 + 1], -groundh[0][local168][local173 + 1] + local349);
+                                    Static242.method4197(local322, local1242, local1301 == -2 || !local1248.aBoolean311, local234 == -1 || !FluType.list(local178 - 1).aBoolean198, local168, local173, local200 - World.groundh[0][local168][local173], local202 - World.groundh[0][local168 + 1][local173], local209 - World.groundh[0][local168 + 1][local173 + 1], -World.groundh[0][local168][local173 + 1] + local349);
                                 }
                             }
                         }
@@ -405,7 +409,7 @@ public class ClientBuild {
             }
             if (GameShell.glRenderer) {
                 @Pc(1888) float[][] local1888 = new float[105][105];
-                @Pc(1892) int[][] local1892 = groundh[local152];
+                @Pc(1892) int[][] local1892 = World.groundh[local152];
                 @Pc(1896) float[][] local1896 = new float[105][105];
                 @Pc(1900) float[][] local1900 = new float[105][105];
                 local200 = 1;
@@ -413,12 +417,12 @@ public class ClientBuild {
                     if (local200 > 103) {
                         @Pc(2025) GlSquare[] local2025;
                         if (arg1) {
-                            local2025 = Static193.method3501(mapl, aByteArrayArrayArray11[local152], floort1[local152], local146, local1896, World.anIntArrayArray11, aByteArrayArrayArray14[local152], aByteArrayArrayArray1[local152], local1888, local152, local1900, local142, groundh[local152], Static107.anIntArrayArrayArray10[0]);
+                            local2025 = Static193.method3501(mapl, aByteArrayArrayArray11[local152], floort1[local152], local146, local1896, World.anIntArrayArray11, aByteArrayArrayArray14[local152], aByteArrayArrayArray1[local152], local1888, local152, local1900, local142, World.groundh[local152], World.normalGroundh[0]);
                             Static110.method2280(local152, local2025);
                             break;
                         }
-                        local2025 = Static193.method3501(mapl, aByteArrayArrayArray11[local152], floort1[local152], local146, local1896, null, aByteArrayArrayArray14[local152], aByteArrayArrayArray1[local152], local1888, local152, local1900, local142, groundh[local152], null);
-                        @Pc(2049) GlSquare[] local2049 = Static1.method2(local1896, local1888, groundh[local152], local152, local1900, aByteArrayArrayArray1[local152], local146, aByteArrayArrayArray11[local152], floort1[local152], aByteArrayArrayArray14[local152], mapl);
+                        local2025 = Static193.method3501(mapl, aByteArrayArrayArray11[local152], floort1[local152], local146, local1896, null, aByteArrayArrayArray14[local152], aByteArrayArrayArray1[local152], local1888, local152, local1900, local142, World.groundh[local152], null);
+                        @Pc(2049) GlSquare[] local2049 = Static1.method2(local1896, local1888, World.groundh[local152], local152, local1900, aByteArrayArrayArray1[local152], local146, aByteArrayArrayArray11[local152], floort1[local152], aByteArrayArrayArray14[local152], mapl);
                         @Pc(2057) GlSquare[] local2057 = new GlSquare[local2025.length + local2049.length];
                         for (local349 = 0; local349 < local2025.length; local349++) {
                             local2057[local349] = local2025[local349];
@@ -427,7 +431,7 @@ public class ClientBuild {
                             local2057[local2025.length + local349] = local2049[local349];
                         }
                         Static110.method2280(local152, local2057);
-                        Static221.method3393(local1900, floort1[local152], aByteArrayArrayArray1[local152], World.aClass51Array1, local152, World.anInt3034, local1896, aByteArrayArrayArray11[local152], aByteArrayArrayArray14[local152], groundh[local152], local1888);
+                        Static221.method3393(local1900, floort1[local152], aByteArrayArrayArray1[local152], World.aClass51Array1, local152, World.anInt3034, local1896, aByteArrayArrayArray11[local152], aByteArrayArrayArray14[local152], World.groundh[local152], local1888);
                         break;
                     }
                     for (local202 = 1; local202 <= 103; local202++) {
@@ -447,7 +451,7 @@ public class ClientBuild {
             aByteArrayArrayArray1[local152] = null;
             shadow[local152] = null;
         }
-        Static220.method3801();
+        World.method3801();
         if (arg1) {
             return;
         }
@@ -487,8 +491,8 @@ public class ClientBuild {
                         }
                         local202 = (local200 + 1 - local194) * (-local173 + (local178 - -1));
                         if (local202 >= 8) {
-                            local349 = groundh[local200][local168][local173] - 240;
-                            local234 = groundh[local194][local168][local173];
+                            local349 = World.groundh[local200][local168][local173] - 240;
+                            local234 = World.groundh[local194][local168][local173];
                             World.method4647(1, local168 * 128, local168 * 128, local173 * 128, local178 * 128 + 128, local349, local234);
                             for (local254 = local194; local254 <= local200; local254++) {
                                 for (local267 = local173; local267 <= local178; local267++) {
@@ -522,8 +526,8 @@ public class ClientBuild {
                         }
                         local202 = (local178 + 1 - local173) * (-local194 + local200 - -1);
                         if (local202 >= 8) {
-                            local349 = groundh[local200][local173][local2204] - 240;
-                            local234 = groundh[local194][local173][local2204];
+                            local349 = World.groundh[local200][local173][local2204] - 240;
+                            local234 = World.groundh[local194][local173][local2204];
                             World.method4647(2, local173 * 128, local178 * 128 + 128, local2204 * 128, local2204 * 128, local349, local234);
                             for (local254 = local194; local254 <= local200; local254++) {
                                 for (local267 = local173; local267 <= local178; local267++) {
@@ -556,7 +560,7 @@ public class ClientBuild {
                             local178++;
                         }
                         if ((local178 + 1 - local173) * (local200 - (local194 - 1)) >= 4) {
-                            local202 = groundh[local152][local173][local194];
+                            local202 = World.groundh[local152][local173][local194];
                             World.method4647(4, local173 * 128, local178 * 128 + 128, local194 * 128, local200 * 128 + 128, local202, local202);
                             for (local209 = local173; local209 <= local178; local209++) {
                                 for (local349 = local194; local349 <= local200; local349++) {
@@ -633,10 +637,10 @@ public class ClientBuild {
                 local76 = 4 * 512 * (103 - local37) + 24628;
                 for (local80 = 1; local80 < 103; local80++) {
                     if ((mapl[arg0][local80][local37] & 0x18) == 0) {
-                        Static152.method2835(local32, local76, arg0, local80, local37);
+                        World.method2835(local32, local76, arg0, local80, local37);
                     }
                     if (arg0 < 3 && (mapl[arg0 + 1][local80][local37] & 0x8) != 0) {
-                        Static152.method2835(local32, local76, arg0 + 1, local80, local37);
+                        World.method2835(local32, local76, arg0 + 1, local80, local37);
                     }
                     local76 += 4;
                 }
@@ -664,7 +668,7 @@ public class ClientBuild {
                             @Pc(237) int local237 = local76;
                             local194 = local37;
                             if (local187 != 22 && local187 != 29 && local187 != 34 && local187 != 36 && local187 != 46 && local187 != 47 && local187 != 48) {
-                                @Pc(269) int[][] local269 = Client.levelCollisionMap[Client.minusedlevel].anIntArrayArray30;
+                                @Pc(269) int[][] local269 = Client.levelCollisionMap[Client.minusedlevel].flags;
                                 for (@Pc(271) int local271 = 0; local271 < 10; local271++) {
                                     @Pc(281) int local281 = (int) (Math.random() * 4.0D);
                                     if (local281 == 0 && local194 > 0 && local37 - 3 < local194 && (local269[local194 - 1][local237] & 0x12C0108) == 0) {
@@ -695,19 +699,19 @@ public class ClientBuild {
         local35 = (int) (Math.random() * 20.0D) + 238 - 10 << 16;
         for (local37 = 1; local37 < 103; local37++) {
             for (local76 = 1; local76 < 103; local76++) {
-                if ((mapl[arg0][local76][local37] & 0x18) == 0 && !Static164.method3109(local76, local455, local37, local35, arg0)) {
+                if ((mapl[arg0][local76][local37] & 0x18) == 0 && !World.method3109(local76, local455, local37, local35, arg0)) {
                     if (GameShell.glRenderer) {
                         Pix2D.anIntArray297 = null;
                     } else {
-                        Static260.drawArea.method4189();
+                        GameShell.drawArea.method4189();
                     }
                     return false;
                 }
-                if (arg0 < 3 && (mapl[arg0 + 1][local76][local37] & 0x8) != 0 && !Static164.method3109(local76, local455, local37, local35, arg0 + 1)) {
+                if (arg0 < 3 && (mapl[arg0 + 1][local76][local37] & 0x8) != 0 && !World.method3109(local76, local455, local37, local35, arg0 + 1)) {
                     if (GameShell.glRenderer) {
                         Pix2D.anIntArray297 = null;
                     } else {
-                        Static260.drawArea.method4189();
+                        GameShell.drawArea.method4189();
                     }
                     return false;
                 }
@@ -728,7 +732,7 @@ public class ClientBuild {
         if (GameShell.glRenderer) {
             Pix2D.anIntArray297 = null;
         } else {
-            Static260.drawArea.method4189();
+            GameShell.drawArea.method4189();
         }
         aClass3_Sub2_Sub1_Sub1_1 = null;
         return true;
@@ -736,7 +740,7 @@ public class ClientBuild {
 
     @OriginalMember(owner = "client!p", name = "a", descriptor = "(IZIZLclient!mj;IIIBII)V")
     public static void method3397(@OriginalArg(0) int arg0, @OriginalArg(1) boolean arg1, @OriginalArg(2) int arg2, @OriginalArg(3) boolean arg3, @OriginalArg(4) CollisionMap arg4, @OriginalArg(5) int arg5, @OriginalArg(6) int arg6, @OriginalArg(7) int arg7, @OriginalArg(9) int arg8, @OriginalArg(10) int arg9) {
-        if (arg1 && !Static138.method2697() && (mapl[0][arg7][arg8] & 0x2) == 0) {
+        if (arg1 && !Client.highDetail() && (mapl[0][arg7][arg8] & 0x2) == 0) {
             if ((mapl[arg2][arg7][arg8] & 0x10) != 0) {
                 return;
             }
@@ -778,22 +782,22 @@ public class ClientBuild {
             local129 = (local81 >> 1) + arg8;
             local133 = arg8 + (local81 + 1 >> 1);
         }
-        @Pc(153) int[][] local153 = groundh[arg0];
+        @Pc(153) int[][] local153 = World.groundh[arg0];
         @Pc(165) int local165 = (local84 << 6) + (arg7 << 7);
         @Pc(173) int local173 = (local81 << 6) + (arg8 << 7);
         @Pc(199) int local199 = local153[local103][local133] + local153[local112][local129] + local153[local103][local129] + local153[local112][local133] >> 2;
         @Pc(201) int local201 = 0;
         @Pc(213) int[][] local213;
         if (GameShell.glRenderer && arg0 != 0) {
-            local213 = groundh[0];
+            local213 = World.groundh[0];
             local201 = local199 - (local213[local112][local133] + local213[local112][local129] + local213[local103][local129] + local213[local103][local133] >> 2);
         }
         local213 = null;
         @Pc(261) long local261 = (long) (arg7 | 0x40000000 | arg8 << 7 | arg6 << 14 | arg9 << 20);
         if (arg3) {
-            local213 = Static107.anIntArrayArrayArray10[0];
+            local213 = World.normalGroundh[0];
         } else if (arg0 < 3) {
-            local213 = groundh[arg0 + 1];
+            local213 = World.groundh[arg0 + 1];
         }
         if (local62.anInt4429 == 0 || arg3) {
             local261 |= Long.MIN_VALUE;
@@ -1062,13 +1066,13 @@ public class ClientBuild {
                     if (local62.anInt4430 == -1 && local62.anIntArray380 == null && !local62.aBoolean214) {
                         local1950 = local62.method3428(arg9, local165, local153, 4, local199, local213, arg1, null, local330, local173);
                         if (GameShell.glRenderer && local330) {
-                            Static242.method4211(local1950.aClass36_Sub1_3, local165 - Static34.anIntArray80[arg9] * 8, local201, local173 - Static238.anIntArray469[arg9] * 8);
+                            Static242.method4211(local1950.aClass36_Sub1_3, local165 - anIntArray80[arg9] * 8, local201, local173 - anIntArray469[arg9] * 8);
                         }
                         local1934 = local1950.aClass8_10;
                     } else {
                         local1934 = new ClientLocAnim(arg5, 4, arg9, arg0, arg7, arg8, local62.anInt4430, local62.aBoolean209, null);
                     }
-                    World.method1880(arg2, arg7, arg8, local199, local1934, null, Static267.anIntArray517[arg9], 0, local1226 * Static34.anIntArray80[arg9], Static238.anIntArray469[arg9] * local1226, local261);
+                    World.method1880(arg2, arg7, arg8, local199, local1934, null, Static267.anIntArray517[arg9], 0, local1226 * anIntArray80[arg9], anIntArray469[arg9] * local1226, local261);
                 } else if (arg6 == 6) {
                     local1226 = 8;
                     local1889 = World.method4521(arg2, arg7, arg8);
@@ -1078,13 +1082,13 @@ public class ClientBuild {
                     if (local62.anInt4430 == -1 && local62.anIntArray380 == null && !local62.aBoolean214) {
                         local1950 = local62.method3428(arg9 + 4, local165, local153, 4, local199, local213, arg1, null, local330, local173);
                         if (GameShell.glRenderer && local330) {
-                            Static242.method4211(local1950.aClass36_Sub1_3, local165 - Static114.anIntArray565[arg9] * 8, local201, local173 - Static64.anIntArray154[arg9] * 8);
+                            Static242.method4211(local1950.aClass36_Sub1_3, local165 - anIntArray565[arg9] * 8, local201, local173 - Static64.anIntArray154[arg9] * 8);
                         }
                         local1934 = local1950.aClass8_10;
                     } else {
                         local1934 = new ClientLocAnim(arg5, 4, arg9 + 4, arg0, arg7, arg8, local62.anInt4430, local62.aBoolean209, null);
                     }
-                    World.method1880(arg2, arg7, arg8, local199, local1934, null, 256, arg9, local1226 * Static114.anIntArray565[arg9], local1226 * Static64.anIntArray154[arg9], local261);
+                    World.method1880(arg2, arg7, arg8, local199, local1934, null, 256, arg9, local1226 * anIntArray565[arg9], local1226 * Static64.anIntArray154[arg9], local261);
                 } else if (arg6 == 7) {
                     @Pc(2137) int local2137 = arg9 + 2 & 0x3;
                     if (local62.anInt4430 == -1 && local62.anIntArray380 == null && !local62.aBoolean214) {
@@ -1107,7 +1111,7 @@ public class ClientBuild {
                     @Pc(2289) ModelSource local2289;
                     if (local62.anInt4430 == -1 && local62.anIntArray380 == null && !local62.aBoolean214) {
                         @Pc(2297) int local2297 = Static64.anIntArray154[arg9] * 8;
-                        @Pc(2303) int local2303 = Static114.anIntArray565[arg9] * 8;
+                        @Pc(2303) int local2303 = anIntArray565[arg9] * 8;
                         @Pc(2319) Class139 local2319 = local62.method3428(arg9 + 4, local165, local153, 4, local199, local213, arg1, null, local330, local173);
                         if (GameShell.glRenderer && local330) {
                             Static242.method4211(local2319.aClass36_Sub1_3, local165 - local2303, local201, local173 - local2297);
@@ -1122,7 +1126,7 @@ public class ClientBuild {
                         local1934 = new ClientLocAnim(arg5, 4, arg9 + 4, arg0, arg7, arg8, local62.anInt4430, local62.aBoolean209, null);
                         local2289 = new ClientLocAnim(arg5, 4, local2244 + 4, arg0, arg7, arg8, local62.anInt4430, local62.aBoolean209, null);
                     }
-                    World.method1880(arg2, arg7, arg8, local199, local1934, local2289, 256, arg9, local1226 * Static114.anIntArray565[arg9], Static64.anIntArray154[arg9] * local1226, local261);
+                    World.method1880(arg2, arg7, arg8, local199, local1934, local2289, 256, arg9, local1226 * anIntArray565[arg9], Static64.anIntArray154[arg9] * local1226, local261);
                 }
             }
         }
@@ -1180,7 +1184,7 @@ public class ClientBuild {
             for (@Pc(10) int local10 = 0; local10 < 8; local10++) {
                 for (local17 = 0; local17 < 8; local17++) {
                     if (arg1 + local10 > 0 && local10 + arg1 < 103 && local17 + arg4 > 0 && arg4 + local17 < 103) {
-                        arg3[arg2].anIntArrayArray30[local10 + arg1][local17 + arg4] &= 0xFEFFFFFF;
+                        arg3[arg2].flags[local10 + arg1][local17 + arg4] &= 0xFEFFFFFF;
                     }
                 }
             }
@@ -1247,7 +1251,7 @@ public class ClientBuild {
                         }
                         while (local237 > local232) {
                             while (local417 < local255) {
-                                Static232.aByteArrayArrayArray13[arg2][local232][local417] = 0;
+                                World.aByteArrayArrayArray13[arg2][local232][local417] = 0;
                                 local417++;
                             }
                             local232++;
@@ -1264,7 +1268,7 @@ public class ClientBuild {
                                             local316 = arg1 + Static214.method4360(arg0, local266 & 0x7, local255 & 0x7);
                                             @Pc(328) int local328 = Static202.method3659(arg0, local255 & 0x7, local266 & 0x7) + arg4;
                                             if (local316 >= 0 && local316 < 104 && local328 >= 0 && local328 < 104) {
-                                                Static232.aByteArrayArrayArray13[arg2][local316][local328] = local246;
+                                                World.aByteArrayArrayArray13[arg2][local316][local328] = local246;
                                             }
                                         }
                                     }
@@ -1308,14 +1312,14 @@ public class ClientBuild {
                     local255 = local517.anInt2245 >> 7;
                     if (arg6 == local517.anInt2241 && local417 >= arg8 && arg8 + 8 > local417 && arg7 <= local255 && arg7 + 8 > local255) {
                         local266 = Static204.method3675(arg0, local517.anInt2240 & 0x3FF, local517.anInt2245 & 0x3FF) + (arg1 << 7);
-                        local316 = Static184.method3388(local517.anInt2240 & 0x3FF, arg0, local517.anInt2245 & 0x3FF) + (arg4 << 7);
+                        local316 = method3388(local517.anInt2240 & 0x3FF, arg0, local517.anInt2245 & 0x3FF) + (arg4 << 7);
                         local517.anInt2240 = local266;
                         local517.anInt2245 = local316;
                         local417 = local517.anInt2240 >> 7;
                         local255 = local517.anInt2245 >> 7;
                         if (local417 >= 0 && local255 >= 0 && local417 < 104 && local255 < 104) {
                             local517.aBoolean125 = (mapl[1][local417][local255] & 0x2) != 0;
-                            local517.anInt2235 = groundh[local517.anInt2241][local417][local255] - local517.anInt2235;
+                            local517.anInt2235 = World.groundh[local517.anInt2241][local417][local255] - local517.anInt2235;
                             World.method2389(local517);
                         }
                     }
@@ -1326,7 +1330,7 @@ public class ClientBuild {
         local108 = arg4 + 7;
         for (local497 = arg1; local497 < local103; local497++) {
             for (local232 = arg4; local232 < local108; local232++) {
-                Static232.aByteArrayArrayArray13[arg2][local497][local232] = 0;
+                World.aByteArrayArrayArray13[arg2][local497][local232] = 0;
             }
         }
     }
@@ -1340,7 +1344,7 @@ public class ClientBuild {
                 for (local14 = 0; local14 < 64; local14++) {
                     for (local21 = 0; local21 < 64; local21++) {
                         if (arg4 + local14 > 0 && local14 + arg4 < 103 && arg3 + local21 > 0 && local21 + arg3 < 103) {
-                            arg0[local9].anIntArrayArray30[local14 + arg4][arg3 + local21] &= 0xFEFFFFFF;
+                            arg0[local9].flags[local14 + arg4][arg3 + local21] &= 0xFEFFFFFF;
                         }
                     }
                 }
@@ -1401,7 +1405,7 @@ public class ClientBuild {
                     }
                     while (local243 < local188) {
                         while (local190 < local194) {
-                            Static232.aByteArrayArrayArray13[local117][local243][local190] = 0;
+                            World.aByteArrayArrayArray13[local117][local243][local190] = 0;
                             local190++;
                         }
                         local243++;
@@ -1413,7 +1417,7 @@ public class ClientBuild {
                             for (local194 = local243 + arg4; local194 < arg4 + local243 + 4; local194++) {
                                 for (@Pc(320) int local320 = arg3 + local188; local320 < arg3 + local188 + 4; local320++) {
                                     if (local194 >= 0 && local194 < 104 && local320 >= 0 && local320 < 104) {
-                                        Static232.aByteArrayArrayArray13[local117][local194][local320] = local305;
+                                        World.aByteArrayArrayArray13[local117][local194][local320] = local305;
                                     }
                                 }
                             }
@@ -1446,7 +1450,7 @@ public class ClientBuild {
                     }
                     while (local188 > local243) {
                         while (local190 < local194) {
-                            Static232.aByteArrayArrayArray13[local117][local243][local190] = Static232.aByteArrayArrayArray13[local117 - 1][local243][local190];
+                            World.aByteArrayArrayArray13[local117][local243][local190] = World.aByteArrayArrayArray13[local117 - 1][local243][local190];
                             local190++;
                         }
                         local243++;
@@ -1497,7 +1501,7 @@ public class ClientBuild {
                     local190 = local529.anInt2240 >> 7;
                     if (local190 >= 0 && local194 >= 0 && local190 < 104 && local194 < 104) {
                         local529.aBoolean125 = (mapl[1][local190][local194] & 0x2) != 0;
-                        local529.anInt2235 = groundh[local529.anInt2241][local190][local194] - local529.anInt2235;
+                        local529.anInt2235 = World.groundh[local529.anInt2241][local190][local194] - local529.anInt2235;
                         World.method2389(local529);
                     }
                 }
@@ -1512,7 +1516,7 @@ public class ClientBuild {
                     local243 = (arg4 >> 2) + local117;
                     local188 = local515 + (arg3 >> 2);
                     if (local243 >= 0 && local243 < 26 && local188 >= 0 && local188 < 26) {
-                        Static232.aByteArrayArrayArray13[local21][local243][local188] = 0;
+                        World.aByteArrayArrayArray13[local21][local243][local188] = 0;
                     }
                 }
             }
@@ -1545,26 +1549,26 @@ public class ClientBuild {
             local32 = arg3.g1();
             if (local32 == 0) {
                 if (arg2) {
-                    groundh[0][arg5][arg4] = Static107.anIntArrayArrayArray10[0][arg5][arg4];
+                    World.groundh[0][arg5][arg4] = World.normalGroundh[0][arg5][arg4];
                 } else if (arg7 == 0) {
-                    groundh[0][arg5][arg4] = -perlinNoise(arg4 + arg1 + 556238, arg0 + arg5 + 932731) * 8;
+                    World.groundh[0][arg5][arg4] = -perlinNoise(arg4 + arg1 + 556238, arg0 + arg5 + 932731) * 8;
                 } else {
-                    groundh[arg7][arg5][arg4] = groundh[arg7 - 1][arg5][arg4] - 240;
+                    World.groundh[arg7][arg5][arg4] = World.groundh[arg7 - 1][arg5][arg4] - 240;
                 }
                 break;
             }
             if (local32 == 1) {
                 @Pc(111) int local111 = arg3.g1();
                 if (arg2) {
-                    groundh[0][arg5][arg4] = Static107.anIntArrayArrayArray10[0][arg5][arg4] + local111 * 8;
+                    World.groundh[0][arg5][arg4] = World.normalGroundh[0][arg5][arg4] + local111 * 8;
                 } else {
                     if (local111 == 1) {
                         local111 = 0;
                     }
                     if (arg7 == 0) {
-                        groundh[0][arg5][arg4] = -local111 * 8;
+                        World.groundh[0][arg5][arg4] = -local111 * 8;
                     } else {
-                        groundh[arg7][arg5][arg4] = groundh[arg7 - 1][arg5][arg4] - local111 * 8;
+                        World.groundh[arg7][arg5][arg4] = World.groundh[arg7 - 1][arg5][arg4] - local111 * 8;
                     }
                 }
                 break;
@@ -1663,5 +1667,83 @@ public class ClientBuild {
         @Pc(20) int local20 = local14 ^ local14 << 13;
         @Pc(34) int local34 = Integer.MAX_VALUE & (local20 * local20 * 15731 + 789221) * local20 + 1376312589;
         return local34 >> 19 & 0xFF;
+    }
+
+    @OriginalMember(owner = "client!fm", name = "a", descriptor = "(ZII)V")
+    public static void loadGround(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1) {
+        Static85.anInt2263 = aClass92ArrayArray1[arg1][arg0].anInt3530;
+        Static159.anInt3893 = aClass92ArrayArray1[arg1][arg0].anInt3528;
+        Static148.anInt3534 = aClass92ArrayArray1[arg1][arg0].anInt3527;
+        Static161.method3063((float) Static85.anInt2263, (float) Static159.anInt3893, (float) Static148.anInt3534);
+    }
+
+    @OriginalMember(owner = "client!dm", name = "a", descriptor = "(BII[B)Z")
+    public static boolean checkLocations(@OriginalArg(1) int arg0, @OriginalArg(2) int arg1, @OriginalArg(3) byte[] arg2) {
+        @Pc(15) boolean local15 = true;
+        @Pc(17) int local17 = -1;
+        @Pc(22) Packet local22 = new Packet(arg2);
+        label70: while (true) {
+            @Pc(26) int local26 = local22.method2199();
+            if (local26 == 0) {
+                return local15;
+            }
+            @Pc(33) int local33 = 0;
+            local17 += local26;
+            @Pc(39) boolean local39 = false;
+            while (true) {
+                @Pc(78) int local78;
+                @Pc(95) LocType local95;
+                do {
+                    @Pc(72) int local72;
+                    @Pc(68) int local68;
+                    do {
+                        do {
+                            do {
+                                do {
+                                    @Pc(45) int local45;
+                                    while (local39) {
+                                        local45 = local22.method2204();
+                                        if (local45 == 0) {
+                                            continue label70;
+                                        }
+                                        local22.g1();
+                                    }
+                                    local45 = local22.method2204();
+                                    if (local45 == 0) {
+                                        continue label70;
+                                    }
+                                    local33 += local45 - 1;
+                                    @Pc(58) int local58 = local33 & 0x3F;
+                                    @Pc(64) int local64 = local33 >> 6 & 0x3F;
+                                    local68 = arg1 + local58;
+                                    local72 = arg0 + local64;
+                                    local78 = local22.g1() >> 2;
+                                } while (local72 <= 0);
+                            } while (local68 <= 0);
+                        } while (local72 >= 103);
+                    } while (local68 >= 103);
+                    local95 = LocType.list(local17);
+                } while (local78 == 22 && !Static250.aBoolean283 && local95.anInt4429 == 0 && local95.blockwalk != 1 && !local95.aBoolean206);
+                local39 = true;
+                if (!local95.method3426()) {
+                    local15 = false;
+                    Client.locModelLoadCount++;
+                }
+            }
+        }
+    }
+
+    @OriginalMember(owner = "client!ol", name = "a", descriptor = "(IIZI)I")
+    public static int method3388(@OriginalArg(0) int arg0, @OriginalArg(1) int arg1, @OriginalArg(3) int arg2) {
+        @Pc(3) int local3 = arg1 & 0x3;
+        if (local3 == 0) {
+            return arg2;
+        } else if (local3 == 1) {
+            return 1023 - arg0;
+        } else if (local3 == 2) {
+            return 1023 - arg2;
+        } else {
+            return arg0;
+        }
     }
 }

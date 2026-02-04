@@ -14,6 +14,6 @@ public final class Static130 {
 
 	@OriginalMember(owner = "client!kc", name = "a", descriptor = "(ILclient!ve;I)Lclient!qf;")
 	public static AbstractPix32 method2514(@OriginalArg(1) Js5 arg0, @OriginalArg(2) int arg1) {
-		return Static254.method4346(arg0, arg1) ? Static82.method1764() : null;
+		return PixLoader.method4346(arg0, arg1) ? Static82.method1764() : null;
 	}
 }

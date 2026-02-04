@@ -42,7 +42,7 @@ public final class GlAlphaPix32 extends GlPix32 {
 			local22 += local32;
 		}
 		@Pc(94) ByteBuffer local94 = ByteBuffer.wrap(local20);
-		@Pc(96) GL local96 = Static239.aGL1;
+		@Pc(96) GL local96 = Static239.gl;
 		if (this.anInt1872 == -1) {
 			@Pc(103) int[] local103 = new int[1];
 			local96.glGenTextures(1, local103, 0);

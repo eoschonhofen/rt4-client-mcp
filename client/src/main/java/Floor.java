@@ -214,7 +214,7 @@ public final class Floor {
 			Static108.anIntArray264[local15] = this.anIntArray261[local15];
 		}
 		local15 = Static108.anIntArray267[this.anInt2880 - 1];
-		@Pc(40) int local40 = Static204.bitsRequired(local15 - 1);
+		@Pc(40) int local40 = MathTool.bitsRequired(local15 - 1);
 		Static108.anIntArray266[0] = JagVorbis.readBits(local40);
 		Static108.anIntArray266[1] = JagVorbis.readBits(local40);
 		@Pc(52) int local52 = 2;

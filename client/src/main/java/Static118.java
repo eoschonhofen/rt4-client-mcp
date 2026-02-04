@@ -7,7 +7,7 @@ public final class Static118 {
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(B)I")
 	public static int method2352() {
 		Static232.anInt5212 = 0;
-		return Static119.method2385();
+		return WorldMap.method2385();
 	}
 
 	@OriginalMember(owner = "client!jd", name = "a", descriptor = "(IB)V")

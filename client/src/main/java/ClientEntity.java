@@ -79,7 +79,7 @@ public abstract class ClientEntity extends ModelSource {
 	public int anInt3431;
 
 	@OriginalMember(owner = "client!fe", name = "w", descriptor = "[I")
-	public final int[] anIntArray317 = new int[10];
+	public final int[] routeZ = new int[10];
 
 	@OriginalMember(owner = "client!fe", name = "z", descriptor = "I")
 	public int anInt3358 = 0;
@@ -91,7 +91,7 @@ public abstract class ClientEntity extends ModelSource {
 	public final int[] anIntArray319 = new int[4];
 
 	@OriginalMember(owner = "client!fe", name = "K", descriptor = "[I")
-	public final int[] anIntArray318 = new int[10];
+	public final int[] routeX = new int[10];
 
 	@OriginalMember(owner = "client!fe", name = "B", descriptor = "I")
 	public int anInt3360 = 0;
@@ -269,30 +269,30 @@ public abstract class ClientEntity extends ModelSource {
 			this.anInt3369 = -1;
 		}
 		if (!arg3) {
-			@Pc(32) int local32 = arg1 - this.anIntArray318[0];
-			@Pc(40) int local40 = arg2 - this.anIntArray317[0];
+			@Pc(32) int local32 = arg1 - this.routeX[0];
+			@Pc(40) int local40 = arg2 - this.routeZ[0];
 			if (local32 >= -8 && local32 <= 8 && local40 >= -8 && local40 <= 8) {
 				if (this.anInt3409 < 9) {
 					this.anInt3409++;
 				}
 				for (@Pc(72) int local72 = this.anInt3409; local72 > 0; local72--) {
-					this.anIntArray318[local72] = this.anIntArray318[local72 - 1];
-					this.anIntArray317[local72] = this.anIntArray317[local72 - 1];
+					this.routeX[local72] = this.routeX[local72 - 1];
+					this.routeZ[local72] = this.routeZ[local72 - 1];
 					this.aByteArray48[local72] = this.aByteArray48[local72 - 1];
 				}
 				this.aByteArray48[0] = 1;
-				this.anIntArray318[0] = arg1;
-				this.anIntArray317[0] = arg2;
+				this.routeX[0] = arg1;
+				this.routeZ[0] = arg2;
 				return;
 			}
 		}
 		this.anInt3417 = 0;
-		this.anIntArray318[0] = arg1;
-		this.anIntArray317[0] = arg2;
+		this.routeX[0] = arg1;
+		this.routeZ[0] = arg2;
 		this.anInt3409 = 0;
 		this.anInt3405 = 0;
-		this.z = arg0 * 64 + this.anIntArray317[0] * 128;
-		this.x = arg0 * 64 + this.anIntArray318[0] * 128;
+		this.z = arg0 * 64 + this.routeZ[0] * 128;
+		this.x = arg0 * 64 + this.routeX[0] * 128;
 		if (GameShell.glRenderer && Client.localPlayer == this) {
 			Static86.method1799();
 		}
@@ -300,8 +300,8 @@ public abstract class ClientEntity extends ModelSource {
 
 	@OriginalMember(owner = "client!fe", name = "a", descriptor = "(IBI)V")
 	public final void method2684(@OriginalArg(0) int arg0, @OriginalArg(2) int arg1) {
-		@Pc(10) int local10 = this.anIntArray318[0];
-		@Pc(15) int local15 = this.anIntArray317[0];
+		@Pc(10) int local10 = this.routeX[0];
+		@Pc(15) int local15 = this.routeZ[0];
 		if (arg1 == 0) {
 			local10--;
 			local15++;
@@ -313,8 +313,8 @@ public abstract class ClientEntity extends ModelSource {
 			this.anInt3409++;
 		}
 		for (@Pc(50) int local50 = this.anInt3409; local50 > 0; local50--) {
-			this.anIntArray318[local50] = this.anIntArray318[local50 - 1];
-			this.anIntArray317[local50] = this.anIntArray317[local50 - 1];
+			this.routeX[local50] = this.routeX[local50 - 1];
+			this.routeZ[local50] = this.routeZ[local50 - 1];
 			this.aByteArray48[local50] = this.aByteArray48[local50 - 1];
 		}
 		if (arg1 == 1) {
@@ -342,8 +342,8 @@ public abstract class ClientEntity extends ModelSource {
 			local15--;
 			local10++;
 		}
-		this.anIntArray318[0] = local10;
-		this.anIntArray317[0] = local15;
+		this.routeX[0] = local10;
+		this.routeZ[0] = local15;
 	}
 
 	@OriginalMember(owner = "client!fe", name = "a", descriptor = "(BLclient!ak;I)V")

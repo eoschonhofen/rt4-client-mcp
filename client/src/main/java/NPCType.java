@@ -209,7 +209,12 @@ public final class NPCType {
 		aClass99_35.clear();
 	}
 
-	@OriginalMember(owner = "client!me", name = "a", descriptor = "(B)Lclient!me;")
+    @OriginalMember(owner = "client!wj", name = "b", descriptor = "(I)V")
+    public static void method4649() {
+        aClass99_18.method3104();
+    }
+
+    @OriginalMember(owner = "client!me", name = "a", descriptor = "(B)Lclient!me;")
 	public final NPCType method2932() {
 		@Pc(5) int local5 = -1;
 		if (this.anInt3723 != -1) {
@@ -302,7 +307,7 @@ public final class NPCType {
 			@Pc(84) ModelUnlit[] local84 = new ModelUnlit[this.anIntArray356.length];
 			for (@Pc(86) int local86 = 0; local86 < this.anIntArray356.length; local86++) {
 				if (this.anIntArray356[local86] != -1) {
-					local84[local86] = Static77.method1686(Static86.aClass153_37, this.anIntArray356[local86]);
+					local84[local86] = ModelUnlit.method1686(Static86.aClass153_37, this.anIntArray356[local86]);
 					if (this.anIntArrayArray29 != null && this.anIntArrayArray29[local86] != null && local84[local86] != null) {
 						local84[local86].method1672(this.anIntArrayArray29[local86][0], this.anIntArrayArray29[local86][1], this.anIntArrayArray29[local86][2]);
 					}
@@ -576,7 +581,7 @@ public final class NPCType {
 				}
 				@Pc(82) ModelUnlit[] local82 = new ModelUnlit[this.anIntArray354.length];
 				for (@Pc(84) int local84 = 0; local84 < this.anIntArray354.length; local84++) {
-					local82[local84] = Static77.method1686(Static86.aClass153_37, this.anIntArray354[local84]);
+					local82[local84] = ModelUnlit.method1686(Static86.aClass153_37, this.anIntArray354[local84]);
 				}
 				@Pc(119) ModelUnlit local119;
 				if (local82.length == 1) {
@@ -628,7 +633,7 @@ public final class NPCType {
 			this.anInt3713 = arg1.g1();
 		} else if (arg0 >= 30 && arg0 < 35) {
 			this.aClass100Array116[arg0 - 30] = arg1.gjstr();
-			if (this.aClass100Array116[arg0 - 30].method3111(Text.aClass100_64)) {
+			if (this.aClass100Array116[arg0 - 30].equalsIgnoreCase(Text.aClass100_64)) {
 				this.aClass100Array116[arg0 - 30] = null;
 			}
 		} else if (arg0 == 40) {

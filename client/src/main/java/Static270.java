@@ -15,9 +15,6 @@ public final class Static270 {
 	@OriginalMember(owner = "client!wb", name = "c", descriptor = "I")
 	public static int anInt5794 = -1;
 
-	@OriginalMember(owner = "client!wb", name = "e", descriptor = "Lclient!na;")
-	public static final JagString aClass100_1090 = JagString.wrap("l");
-
 	@OriginalMember(owner = "client!wb", name = "f", descriptor = "Lclient!wa;")
 	public static final Packet aClass3_Sub15_9 = new Packet(new byte[5000]);
 

@@ -29,7 +29,7 @@ public final class WaterMaterialRenderer implements MaterialRenderer {
 	@OriginalMember(owner = "client!pd", name = "d", descriptor = "()V")
 	private void method3435() {
 		@Pc(2) byte[] local2 = new byte[] { 0, -1 };
-		@Pc(12) GL local12 = Static239.aGL1;
+		@Pc(12) GL local12 = Static239.gl;
 		@Pc(15) int[] local15 = new int[1];
 		local12.glGenTextures(1, local15, 0);
 		local12.glBindTexture(GL.GL_TEXTURE_1D, local15[0]);
@@ -42,7 +42,7 @@ public final class WaterMaterialRenderer implements MaterialRenderer {
 
 	@OriginalMember(owner = "client!pd", name = "f", descriptor = "()V")
 	private void method3437() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		this.anInt4440 = local1.glGenLists(2);
 		local1.glNewList(this.anInt4440, GL.GL_COMPILE);
 		local1.glTexEnvi(GL.GL_TEXTURE_ENV, GL.GL_OPERAND0_RGB, GL.GL_SRC_COLOR);
@@ -106,13 +106,13 @@ public final class WaterMaterialRenderer implements MaterialRenderer {
 	@OriginalMember(owner = "client!pd", name = "a", descriptor = "()V")
 	@Override
 	public final void method4602() {
-		Static239.aGL1.glCallList(this.anInt4440 + 1);
+		Static239.gl.glCallList(this.anInt4440 + 1);
 	}
 
 	@OriginalMember(owner = "client!pd", name = "a", descriptor = "(I)V")
 	@Override
 	public final void method4604(@OriginalArg(0) int arg0) {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		local1.glActiveTexture(GL.GL_TEXTURE1);
 		local1.glTexEnvfv(GL.GL_TEXTURE_ENV, GL.GL_TEXTURE_ENV_COLOR, Static257.aFloatArray2, 0);
 		local1.glActiveTexture(GL.GL_TEXTURE0);
@@ -141,7 +141,7 @@ public final class WaterMaterialRenderer implements MaterialRenderer {
 	@OriginalMember(owner = "client!pd", name = "b", descriptor = "()V")
 	@Override
 	public final void method4603() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		Static239.method4183(2);
 		Static239.method4174(2);
 		Static239.method4150();

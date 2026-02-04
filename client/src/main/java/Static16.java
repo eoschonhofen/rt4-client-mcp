@@ -17,7 +17,7 @@ public final class Static16 {
 		if (!GameShell.glRenderer || Static231.aBoolean252) {
 			return;
 		}
-		@Pc(14) Square[][][] local14 = World.levelTiles;
+		@Pc(14) Square[][][] local14 = World.activeTiles;
 		for (@Pc(22) int local22 = 0; local22 < local14.length; local22++) {
 			@Pc(30) Square[][] local30 = local14[local22];
 			for (@Pc(32) int local32 = 0; local32 < local30.length; local32++) {

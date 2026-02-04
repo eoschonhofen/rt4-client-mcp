@@ -53,27 +53,27 @@ public final class Static151 {
 		@Pc(4) GL local4;
 		@Pc(11) int[] local11;
 		if (anInt3587 != -1) {
-			local4 = Static239.aGL1;
+			local4 = Static239.gl;
 			local11 = new int[] { anInt3587 };
 			local4.glDeleteTextures(1, local11, 0);
 			anInt3587 = -1;
 			Static63.anInt1942 -= aByteBuffer7.limit() * 2;
 		}
 		if (anIntArray341 != null) {
-			local4 = Static239.aGL1;
+			local4 = Static239.gl;
 			local4.glDeleteTextures(64, anIntArray341, 0);
 			anIntArray341 = null;
 			Static63.anInt1942 -= aByteBuffer7.limit() * 2;
 		}
 		if (anInt3588 != -1) {
-			local4 = Static239.aGL1;
+			local4 = Static239.gl;
 			local11 = new int[] { anInt3588 };
 			local4.glDeleteTextures(1, local11, 0);
 			anInt3588 = -1;
 			Static63.anInt1942 -= aByteBuffer6.limit() * 2;
 		}
 		if (anIntArray340 != null) {
-			local4 = Static239.aGL1;
+			local4 = Static239.gl;
 			local4.glDeleteTextures(64, anIntArray340, 0);
 			anIntArray340 = null;
 			Static63.anInt1942 -= aByteBuffer6.limit() * 2;
@@ -90,7 +90,7 @@ public final class Static151 {
 
 	@OriginalMember(owner = "client!lm", name = "e", descriptor = "()V")
 	private static void method2811() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		if (aBoolean176) {
 			@Pc(6) int[] local6 = new int[1];
 			local1.glGenTextures(1, local6, 0);
@@ -117,7 +117,7 @@ public final class Static151 {
 
 	@OriginalMember(owner = "client!lm", name = "f", descriptor = "()V")
 	private static void method2812() {
-		@Pc(1) GL local1 = Static239.aGL1;
+		@Pc(1) GL local1 = Static239.gl;
 		if (aBoolean176) {
 			@Pc(6) int[] local6 = new int[1];
 			local1.glGenTextures(1, local6, 0);
