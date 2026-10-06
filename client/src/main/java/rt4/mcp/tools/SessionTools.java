@@ -19,10 +19,18 @@ import rt4.mcp.Tools;
 
 /**
  * MCP-10 — {@code login} and {@code logout}.
+ *
+ * <p>MCP-21 — the logout tab is interface 182; its logout button is child 6 (see the 530
+ * {@code script_1104}). That explicit match comes first, then {@code clientCode == 205}
+ * ({@code MiniMenu.handleSpecialButtonAction}), then conservative text/option heuristics.</p>
  */
 public final class SessionTools {
-	/** {@code MiniMenu.LOGOUT_ACTION}: the logout button's action code. */
-	private static final int LOGOUT_BUTTON_TYPE = 5;
+	/** The 530 logout tab. */
+	static final int LOGOUT_INTERFACE = 182;
+	/** Its logout button, whose option the cs2 sets to "Logout" (or "Exit to Lobby" at the lobby). */
+	static final int LOGOUT_CHILD = 6;
+	/** {@code MiniMenu.handleSpecialButtonAction}: the real logout control. */
+	private static final int LOGOUT_CLIENT_CODE = 205;
 
 	private SessionTools() {
 	}
@@ -72,7 +80,8 @@ public final class SessionTools {
 
 					LogoutButton button = findLogoutButton();
 					if (button == null) {
-						throw new ToolException("no logout button is open; open the logout tab first");
+						throw new ToolException("no logout button is open; open the logout tab "
+								+ "(the wrench/settings icon, interface " + LOGOUT_INTERFACE + ") first");
 					}
 					MenuSynth.act(button.target, button.op, null);
 					rt4.mcp.nav.NavTask.cancel("cancelled by logout");
@@ -97,10 +106,15 @@ public final class SessionTools {
 	}
 
 	/**
-	 * Finds the logout trigger in any open interface. The client marks it with
-	 * {@code clientCode == 205} (see {@code MiniMenu.handleSpecialButtonAction}); the 530 logout
-	 * tab also uses {@code buttonType == 5} ("Click here to logout" is a plain button whose text
-	 * says what it does).
+	 * Finds the logout trigger in any open interface, most explicit match first:
+	 * <ol>
+	 * <li>interface 182 child 6, the 530 logout button the cs2 builds;</li>
+	 * <li>{@code clientCode == 205}, which {@code MiniMenu.handleSpecialButtonAction} routes to
+	 * the real logout;</li>
+	 * <li>a component whose option/op list says "Logout", or a button whose label does.</li>
+	 * </ol>
+	 * A bare {@code buttonType == 5} is a select/radio control (action 51, misleadingly named
+	 * {@code LOGOUT_ACTION}) and is deliberately not matched any more.
 	 */
 	static LogoutButton findLogoutButton() {
 		for (int rank = 0; rank < 3; rank++) {
@@ -127,7 +141,7 @@ public final class SessionTools {
 			if (child == null || child.overlayer != parentId) {
 				continue;
 			}
-			if (matchesRank(child, rank)) {
+			if (matchesRank(child, interfaceId, rank)) {
 				String op = Names.plain(child.option);
 				if (op == null || op.isEmpty()) {
 					op = "Ok";
@@ -142,16 +156,30 @@ public final class SessionTools {
 		return null;
 	}
 
-	private static boolean matchesRank(Component component, int rank) {
+	private static boolean matchesRank(Component component, int interfaceId, int rank) {
 		if (rank == 0) {
-			return component.clientCode == 205;
+			return interfaceId == LOGOUT_INTERFACE && (component.id & 0xFFFF) == LOGOUT_CHILD;
 		}
 		if (rank == 1) {
-			return component.buttonType == LOGOUT_BUTTON_TYPE;
+			return component.clientCode == LOGOUT_CLIENT_CODE;
 		}
-		String text = Names.plain(component.text);
-		return component.buttonType != 0 && text != null
-				&& text.toLowerCase(java.util.Locale.ROOT).contains("logout");
+		if (containsLogout(component.option)) {
+			return true;
+		}
+		if (component.ops != null) {
+			for (JagString op : component.ops) {
+				if (containsLogout(op)) {
+					return true;
+				}
+			}
+		}
+		// A plain button whose label says what it does.
+		return component.buttonType == 1 && containsLogout(component.text);
+	}
+
+	private static boolean containsLogout(JagString value) {
+		String text = Names.plain(value);
+		return text != null && text.toLowerCase(java.util.Locale.ROOT).contains("logout");
 	}
 
 }
