@@ -252,6 +252,14 @@ public final class client extends GameShell {
 
       System.out.println("Loading config path " + configPath);
       GlobalJsonConfig.load(configPath);
+      try {
+        rt4.mcp.McpConfig mcpConfig = rt4.mcp.McpConfig.resolve(configPath);
+        if (mcpConfig.enabled) {
+          mcpConfig.logStartup();
+        }
+      } catch (Throwable mcpError) {
+        System.err.println("[MCP] configuration failed: " + mcpError);
+      }
     } catch (Exception ex) {
       ex.printStackTrace();
     }

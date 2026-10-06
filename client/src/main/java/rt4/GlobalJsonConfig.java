@@ -27,4 +27,9 @@ public class GlobalJsonConfig {
 	int js5_port;
 	boolean mouseWheelZoom = GlobalConfig.MOUSEWHEEL_ZOOM;
 	public String pluginsFolder = "plugins";
+
+	// MCP server (see docs/mcp). Gson leaves missing keys at these Java defaults.
+	public boolean mcp_enabled = true;
+	public int mcp_port = 43600;
+	public String mcp_token = "";
 }
