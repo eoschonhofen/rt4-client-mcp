@@ -130,10 +130,13 @@ public final class MenuSynth {
 			Player player = Targets.resolvePlayer(playerTarget);
 			MiniMenu.addPlayerEntries(playerTarget.index, player.movementQueueY[0], player, player.movementQueueX[0]);
 		} else if (target instanceof LocTarget) {
-			Targets.ResolvedLoc loc = Targets.resolveLoc((LocTarget) target);
+			LocTarget locTarget = (LocTarget) target;
+			requireSamePlane(locTarget.plane);
+			Targets.ResolvedLoc loc = Targets.resolveLoc(locTarget);
 			MiniMenu.addLocEntries(loc.key, loc.sceneX, loc.sceneY);
 		} else if (target instanceof ObjTarget) {
 			ObjTarget objTarget = (ObjTarget) target;
+			requireSamePlane(objTarget.plane);
 			int sceneX = Coords.sceneX(objTarget.x);
 			int sceneY = Coords.sceneY(objTarget.y);
 			if (!Coords.validPlane(objTarget.plane) || !Coords.inScene(sceneX, sceneY)) {
@@ -147,6 +150,16 @@ public final class MenuSynth {
 			populateComponent((ComponentTarget) target);
 		} else {
 			throw new ToolException("this target kind is not supported yet: " + target.format());
+		}
+	}
+
+	/**
+	 * MCP-26 — the loc and obj menu builders read {@code Player.plane}, not the target's, so a
+	 * target on another plane would silently build the menu for the wrong tile.
+	 */
+	private static void requireSamePlane(int targetPlane) throws ToolException {
+		if (targetPlane != Player.plane) {
+			throw new ToolException("target is on plane " + targetPlane + ", you are on plane " + Player.plane);
 		}
 	}
 

@@ -24,6 +24,7 @@ class NavTaskTest {
 		int originY;
 		int pressSeq;
 		int tick;
+		int plane;
 		CollisionSource collision;
 		final Map<Integer, DoorIndex.Door> doors = new HashMap<Integer, DoorIndex.Door>();
 		final Set<Integer> passable = new HashSet<Integer>();
@@ -42,7 +43,7 @@ class NavTaskTest {
 
 		@Override
 		public int plane() {
-			return 0;
+			return plane;
 		}
 
 		@Override
@@ -319,6 +320,22 @@ class NavTaskTest {
 
 		assertTrue(NavTask.isFinished(first.id()), "the cancelled task id must stay queryable");
 		assertFalse(NavTask.isFinished(second.id()));
+	}
+
+	@Test
+	void aPlaneChangeFailsTheTask() {
+		driver.collision = open(30);
+		NavTask.setDriver(driver);
+
+		NavTask task = NavTask.start(20, 0, 0, 0);
+		NavTask.step();
+		assertFalse(NavTask.isFinished(task.id()), "the walk starts on the goal plane");
+
+		driver.plane = 1;
+		NavTask.step();
+
+		assertEquals(NavTask.State.FAILED, task.state());
+		assertEquals("plane changed", task.reason());
 	}
 
 	@Test

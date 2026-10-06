@@ -207,6 +207,12 @@ public final class NavTask {
 			return;
 		}
 
+		// MCP-26 — a climb or teleport mid-walk leaves the path pointing at another plane.
+		if (current.plane() != goalPlane) {
+			finish(State.FAILED, "plane changed");
+			return;
+		}
+
 		int originX = current.originX();
 		int originY = current.originY();
 		if (originX != lastOriginX || originY != lastOriginY) {
