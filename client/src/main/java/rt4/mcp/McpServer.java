@@ -57,6 +57,10 @@ public final class McpServer {
 		rt4.mcp.tools.InputTools.register(registry);
 		rt4.mcp.tools.SessionTools.register(registry);
 		rt4.mcp.tools.ScreenshotTool.register(registry);
+		rt4.mcp.tools.WaitTool.register(registry);
+
+		// Run the wait_for registry every frame, after the task queue.
+		GameThread.waiterTick = Waiters::evaluate;
 	}
 
 	public static McpHttpServer running() {

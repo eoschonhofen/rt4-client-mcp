@@ -19,6 +19,7 @@ import rt4.mcp.Coords;
 import rt4.mcp.Dialogue;
 import rt4.mcp.MenuSynth;
 import rt4.mcp.Names;
+import rt4.mcp.TickTracker;
 import rt4.mcp.Targets;
 import rt4.mcp.Tool;
 import rt4.mcp.ToolException;
@@ -66,6 +67,8 @@ public final class StatusTools {
 
 					out.addProperty("logged_in", loggedIn);
 					out.addProperty("game_state", client.gameState);
+					out.addProperty("tick", TickTracker.tick());
+					out.addProperty("ticks_approximate", TickTracker.APPROXIMATE);
 					out.add("open_interfaces", openInterfaceIds());
 					out.addProperty("dialogue_open", Dialogue.isOpen());
 
