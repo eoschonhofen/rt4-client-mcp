@@ -31,7 +31,8 @@ public final class McpProtocol {
 					+ "Discover targets with find_entities, inspect what they offer with list_actions, "
 					+ "then act with do_action. Actions are only acknowledged: the packet is queued, "
 					+ "the server has not necessarily accepted it. Follow an action with wait_for(...) "
-					+ "and read state (get_status, get_inventory, get_chat) to confirm what happened.";
+					+ "and read state (get_status, get_inventory, get_chat) to confirm what happened. "
+					+ "To start: get_account -> login(name, token) -> wait_for(logged_in).";
 
 	private final ToolRegistry tools;
 

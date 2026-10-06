@@ -14,7 +14,7 @@ class ToolRegistryTest {
 			"get_status", "get_inventory", "get_equipment", "get_skills", "get_chat",
 			"find_entities", "list_actions", "do_action", "cancel_selection", "get_interfaces",
 			"type_text", "press_key", "drag_item", "camera", "mouse_click",
-			"login", "logout", "get_screenshot", "wait_for",
+			"login", "logout", "get_account", "get_screenshot", "wait_for",
 			"walk_to", "nav_status", "nav_cancel",
 			"interact", "continue_dialogue", "choose_option");
 

@@ -56,6 +56,7 @@ public final class McpServer {
 		rt4.mcp.tools.InterfaceTools.register(registry);
 		rt4.mcp.tools.InputTools.register(registry);
 		rt4.mcp.tools.SessionTools.register(registry);
+		rt4.mcp.tools.AccountTools.register(registry);
 		rt4.mcp.tools.ScreenshotTool.register(registry);
 		rt4.mcp.tools.WaitTool.register(registry);
 		rt4.mcp.tools.WalkTool.register(registry);

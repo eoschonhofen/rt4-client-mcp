@@ -48,8 +48,8 @@ public final class SessionTools {
 		Tools.require(schema, "username", "password");
 
 		return Tools.gameTool("login",
-				"Log in from the title screen. The local server accepts any credentials when auth is "
-						+ "off. This only starts the login; follow it with wait_for(logged_in).",
+				"Log in from the title screen. The password is the account's token from "
+						+ "get_account. This only starts the login; follow it with wait_for(logged_in).",
 				schema,
 				args -> {
 					if (client.gameState != 10) {
