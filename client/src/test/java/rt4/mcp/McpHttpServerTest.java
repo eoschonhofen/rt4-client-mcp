@@ -13,11 +13,14 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -407,6 +410,79 @@ class McpHttpServerTest {
 	void theSessionTableIsCapped() throws IOException {
 		for (int i = 0; i < McpHttpServer.MAX_SESSIONS + 3; i++) {
 			assertEquals(200, initialize().status);
+		}
+
+		assertEquals(McpHttpServer.MAX_SESSIONS, server.sessionCount());
+	}
+
+	/** Starts {@code count} blocking tool calls and waits until each is parked inside its tool. */
+	private ExecutorService park(int count, String session) throws Exception {
+		ExecutorService callers = Executors.newFixedThreadPool(count);
+		for (int i = 0; i < count; i++) {
+			callers.submit(() -> {
+				post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\","
+						+ "\"params\":{\"name\":\"block\",\"arguments\":{}}}", session);
+				return null;
+			});
+		}
+		long deadline = System.currentTimeMillis() + 5000L;
+		while (BLOCKING.get() < count && System.currentTimeMillis() < deadline) {
+			Thread.sleep(10L);
+		}
+		assertEquals(count, BLOCKING.get(), "every blocking call should be inside its tool");
+		return callers;
+	}
+
+	@Test
+	void aFullCapRejectsToolCallsButNotControlTraffic() throws Exception {
+		server.setToolCallLimit(2);
+		String session = initialize().header("mcp-session-id");
+
+		ExecutorService callers = park(2, session);
+		try {
+			Resp third = post("{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\","
+					+ "\"params\":{\"name\":\"echo\",\"arguments\":{}}}", session);
+			assertEquals(503, third.status, "a tool call past the cap is rejected");
+
+			assertEquals(200, post("{\"jsonrpc\":\"2.0\",\"id\":4,\"method\":\"ping\"}", session).status);
+			assertEquals(200, post("{\"jsonrpc\":\"2.0\",\"id\":5,\"method\":\"tools/list\"}", session).status);
+			Resp cancel = post("{\"jsonrpc\":\"2.0\",\"id\":6,\"method\":\"tools/call\","
+					+ "\"params\":{\"name\":\"nav_cancel\",\"arguments\":{}}}", session);
+			assertEquals(200, cancel.status, "nav_cancel never waits for a slot");
+		} finally {
+			callers.shutdownNow();
+		}
+	}
+
+	@Test
+	void authIsCheckedBeforeTheCap() throws Exception {
+		server.setToolCallLimit(1);
+		String session = initialize().header("mcp-session-id");
+
+		ExecutorService callers = park(1, session);
+		try {
+			Resp anonymous = send("POST", "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\","
+					+ "\"params\":{\"name\":\"echo\",\"arguments\":{}}}", session, null, null, null);
+			assertEquals(401, anonymous.status, "an unauthenticated request is refused, not counted");
+		} finally {
+			callers.shutdownNow();
+		}
+	}
+
+	@Test
+	void concurrentInitializesNeverOvershootTheSessionCap() throws Exception {
+		int attempts = McpHttpServer.MAX_SESSIONS * 2;
+		ExecutorService callers = Executors.newFixedThreadPool(16);
+		try {
+			List<Future<Resp>> results = new ArrayList<Future<Resp>>();
+			for (int i = 0; i < attempts; i++) {
+				results.add(callers.submit(this::initialize));
+			}
+			for (Future<Resp> result : results) {
+				assertEquals(200, result.get(10L, TimeUnit.SECONDS).status);
+			}
+		} finally {
+			callers.shutdownNow();
 		}
 
 		assertEquals(McpHttpServer.MAX_SESSIONS, server.sessionCount());

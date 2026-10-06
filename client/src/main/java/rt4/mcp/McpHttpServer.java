@@ -12,7 +12,11 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -29,9 +33,11 @@ import java.util.function.LongSupplier;
  * server-to-client requests, so there is no SSE stream.</p>
  *
  * <p>MCP-25 — a cached daemon pool serves every request on its own thread, and a semaphore caps
- * how many run at once. Tools that block for tens of seconds therefore cannot starve a short
- * call such as {@code ping}. Sessions expire after {@link #SESSION_TTL_NANOS} of idleness and
- * the table is capped at {@link #MAX_SESSIONS}.</p>
+ * how many tool calls run at once. Only authenticated {@code tools/call} requests take a slot,
+ * and the cheap control tools in {@link #UNCAPPED_TOOLS} never do, so {@code ping},
+ * {@code tools/list} and {@code nav_cancel} answer even when every slot is held by a long
+ * {@code wait_for}. Sessions expire after {@link #SESSION_TTL_NANOS} of idleness and the table
+ * is capped at {@link #MAX_SESSIONS}.</p>
  */
 public final class McpHttpServer {
 	public static final String CONTEXT = "/mcp";
@@ -41,15 +47,20 @@ public final class McpHttpServer {
 	static final long SESSION_TTL_NANOS = TimeUnit.MINUTES.toNanos(30);
 	/** The most sessions kept at once; the oldest is evicted to make room. */
 	static final int MAX_SESSIONS = 64;
-	/** The most requests served at once, so a storm cannot spawn unbounded work. */
+	/** The most tool calls served at once, so a storm cannot spawn unbounded work. */
 	static final int MAX_CONCURRENT_REQUESTS = 32;
+	/** Short control tools that must stay usable while the cap is full. */
+	static final Set<String> UNCAPPED_TOOLS = Collections.unmodifiableSet(new HashSet<String>(
+			Arrays.asList("nav_cancel", "nav_status", "get_status")));
 
 	private final HttpServer server;
 	private final McpProtocol protocol;
 	private final McpConfig config;
 	private final ExecutorService executor;
 	private final ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<String, Session>();
-	private final Semaphore slots = new Semaphore(MAX_CONCURRENT_REQUESTS);
+	/** Guards the evict-then-insert on initialize, so concurrent inits cannot overshoot the cap. */
+	private final Object sessionLock = new Object();
+	private volatile Semaphore slots = new Semaphore(MAX_CONCURRENT_REQUESTS);
 	private final int port;
 	/** The clock the session TTL is measured against; a test seam. */
 	private volatile LongSupplier clock = new LongSupplier() {
@@ -125,16 +136,7 @@ public final class McpHttpServer {
 
 	private void handle(HttpExchange exchange) throws IOException {
 		try {
-			if (!slots.tryAcquire()) {
-				sendText(exchange, 503, "server busy; " + MAX_CONCURRENT_REQUESTS
-						+ " requests are already in flight");
-				return;
-			}
-			try {
-				handleRequest(exchange);
-			} finally {
-				slots.release();
-			}
+			handleRequest(exchange);
 		} catch (Throwable error) {
 			System.err.println("[MCP] request failed: " + error);
 			safeError(exchange);
@@ -184,8 +186,10 @@ public final class McpHttpServer {
 
 		if (initialize) {
 			sessionId = UUID.randomUUID().toString();
-			evictOldestSessionIfFull();
-			sessions.put(sessionId, new Session(sessionId, now));
+			synchronized (sessionLock) {
+				evictOldestSessionIfFull();
+				sessions.put(sessionId, new Session(sessionId, now));
+			}
 		} else if (sessionId == null || sessionId.isEmpty()) {
 			sendJson(exchange, 400, JsonRpc.error(message.id, JsonRpc.INVALID_REQUEST,
 					"missing " + SESSION_HEADER + "; send initialize first"));
@@ -200,7 +204,22 @@ public final class McpHttpServer {
 			session.lastSeenNanos = now;
 		}
 
-		JsonObject response = protocol.handle(message);
+		JsonObject response;
+		if (takesSlot(message)) {
+			Semaphore held = slots;
+			if (!held.tryAcquire()) {
+				sendText(exchange, 503, "server busy; " + MAX_CONCURRENT_REQUESTS
+						+ " tool calls are already in flight");
+				return;
+			}
+			try {
+				response = protocol.handle(message);
+			} finally {
+				held.release();
+			}
+		} else {
+			response = protocol.handle(message);
+		}
 		if (response == null) {
 			// Notification or response: accepted, no body.
 			if (initialize) {
@@ -231,6 +250,21 @@ public final class McpHttpServer {
 		sendEmpty(exchange, 200);
 	}
 
+	/**
+	 * MCP-25 — whether a message counts against the concurrency cap: every {@code tools/call}
+	 * except the control tools. Lifecycle, {@code ping} and {@code tools/list} are cheap.
+	 */
+	static boolean takesSlot(JsonRpc.Message message) {
+		if (!"tools/call".equals(message.method)) {
+			return false;
+		}
+		JsonObject params = message.params;
+		if (params == null || !params.has("name") || !params.get("name").isJsonPrimitive()) {
+			return true;
+		}
+		return !UNCAPPED_TOOLS.contains(params.get("name").getAsString());
+	}
+
 	/** MCP-25 — drop every session untouched for longer than the TTL. Called on each request. */
 	private void evictIdleSessions(long now) {
 		for (Map.Entry<String, Session> entry : sessions.entrySet()) {
@@ -240,7 +274,7 @@ public final class McpHttpServer {
 		}
 	}
 
-	/** MCP-25 — make room for a new session by dropping the least recently used one. */
+	/** MCP-25 — make room for a new session by dropping the least recently used one. Hold {@link #sessionLock}. */
 	private void evictOldestSessionIfFull() {
 		while (sessions.size() >= MAX_SESSIONS) {
 			String oldestId = null;
@@ -261,6 +295,11 @@ public final class McpHttpServer {
 	/** Test seam: the clock the session TTL is measured against. */
 	void setClock(LongSupplier clock) {
 		this.clock = clock;
+	}
+
+	/** Test seam: a smaller tool-call cap, so the 503 path is reachable without 32 threads. */
+	void setToolCallLimit(int limit) {
+		this.slots = new Semaphore(limit);
 	}
 
 	/** Test seam: the number of live sessions. */
