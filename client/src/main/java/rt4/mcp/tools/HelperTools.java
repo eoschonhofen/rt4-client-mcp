@@ -26,6 +26,8 @@ import java.util.concurrent.Callable;
 public final class HelperTools {
 	private static final int POLL_MILLIS = 20;
 	private static final int CHANGE_TIMEOUT_MS = 3000;
+	/** MCP-25 — an overall budget, so max_steps cannot add up to minutes of clicking. */
+	static final long DEADLINE_MS = 30_000L;
 
 	private HelperTools() {
 	}
@@ -160,6 +162,7 @@ public final class HelperTools {
 		return Tools.tool("continue_dialogue",
 				"Click 'continue' through a dialogue, collecting the text, and stop at an option menu "
 						+ "or when the dialogue closes. Use choose_option next when it stops at options. "
+						+ "Stops with stopped='deadline' after 30 seconds even if max_steps is larger. "
 						+ "Returns { transcript, stopped, dialogue }.",
 				schema,
 				args -> {
@@ -167,8 +170,13 @@ public final class HelperTools {
 					JsonArray transcript = new JsonArray();
 					String stopped = "max_steps";
 					JsonObject dialogue = null;
+					long deadline = System.currentTimeMillis() + DEADLINE_MS;
 
 					for (int step = 0; step < maxSteps; step++) {
+						if (System.currentTimeMillis() >= deadline) {
+							stopped = "deadline";
+							break;
+						}
 						dialogue = currentDialogue();
 						if (dialogue == null) {
 							stopped = "closed";
@@ -188,8 +196,8 @@ public final class HelperTools {
 						final String target = cont.get("target").getAsString();
 						final String op = cont.get("op").getAsString();
 						click(target, op);
-						if (!waitForChange(before)) {
-							stopped = "no_change";
+						if (!waitForChange(before, deadline)) {
+							stopped = System.currentTimeMillis() >= deadline ? "deadline" : "no_change";
 							break;
 						}
 					}
@@ -259,8 +267,13 @@ public final class HelperTools {
 
 	/** Polls the dialogue until it changes or closes, up to three seconds. */
 	private static boolean waitForChange(String before) throws ToolException {
-		long deadline = System.currentTimeMillis() + CHANGE_TIMEOUT_MS;
-		while (System.currentTimeMillis() < deadline) {
+		return waitForChange(before, System.currentTimeMillis() + CHANGE_TIMEOUT_MS);
+	}
+
+	/** As above, but never past {@code deadline}, so a step cannot overrun the budget. */
+	private static boolean waitForChange(String before, long deadline) throws ToolException {
+		long limit = Math.min(deadline, System.currentTimeMillis() + CHANGE_TIMEOUT_MS);
+		while (System.currentTimeMillis() < limit) {
 			JsonObject now = currentDialogue();
 			if (now == null || !now.toString().equals(before)) {
 				return true;
