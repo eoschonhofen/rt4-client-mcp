@@ -252,6 +252,7 @@ public final class client extends GameShell {
 
       System.out.println("Loading config path " + configPath);
       GlobalJsonConfig.load(configPath);
+      GlobalJsonConfig.applyRsaModulus();
       try {
         rt4.mcp.McpConfig mcpConfig = rt4.mcp.McpConfig.resolve(configPath);
         if (mcpConfig.enabled) {
