@@ -30,6 +30,12 @@ public final class InputInjector {
 
 	private static final ReleaseQueue PENDING = new ReleaseQueue();
 
+	/**
+	 * AIO-11 — set only while this class is calling the keyboard, on the game thread. A real
+	 * event racing an injection still arrives on the AWT thread and is correctly treated as real.
+	 */
+	public static volatile boolean injecting = false;
+
 	/** One key press waiting for its release deadline. */
 	static final class PendingRelease {
 		final int virtualKey;
@@ -83,6 +89,26 @@ public final class InputInjector {
 	private InputInjector() {
 	}
 
+	/**
+	 * AIO-11 — a key event is synthetic only when this class is injecting *and* the caller is
+	 * the game thread, which is the only thread {@link #typeText}, {@link #pressKey} and
+	 * {@link #tick} run the handlers on.
+	 */
+	public static boolean isSyntheticKey() {
+		return injecting && Thread.currentThread() == GameThread.owner();
+	}
+
+	/** Runs {@code action} with {@link #injecting} set, clearing it even when it throws. */
+	static void withInjection(Runnable action) {
+		boolean previous = injecting;
+		injecting = true;
+		try {
+			action.run();
+		} finally {
+			injecting = previous;
+		}
+	}
+
 	public static Canvas canvas() throws ToolException {
 		Canvas canvas = GameShell.canvas;
 		if (canvas == null) {
@@ -116,10 +142,11 @@ public final class InputInjector {
 			if (keyboard == null) {
 				throw new ToolException("the client is shutting down");
 			}
-			keyboard.keyPressed(keyEvent(canvas, KeyEvent.KEY_PRESSED, modifiers, virtualKey, KeyEvent.CHAR_UNDEFINED));
-			keyboard.keyTyped(keyEvent(canvas, KeyEvent.KEY_TYPED, modifiers, KeyEvent.VK_UNDEFINED, (char) KeyMap.clientChar(c)));
-			keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, modifiers, virtualKey, KeyEvent.CHAR_UNDEFINED));
-		}
+			withInjection(() -> {
+				keyboard.keyPressed(keyEvent(canvas, KeyEvent.KEY_PRESSED, modifiers, virtualKey, KeyEvent.CHAR_UNDEFINED));
+				keyboard.keyTyped(keyEvent(canvas, KeyEvent.KEY_TYPED, modifiers, KeyEvent.VK_UNDEFINED, (char) KeyMap.clientChar(c)));
+				keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, modifiers, virtualKey, KeyEvent.CHAR_UNDEFINED));
+			});		}
 		if (enter) {
 			pressKey("enter", 0L);
 		}
@@ -136,9 +163,9 @@ public final class InputInjector {
 		if (keyboard == null) {
 			throw new ToolException("the client is shutting down");
 		}
-		keyboard.keyPressed(keyEvent(canvas, KeyEvent.KEY_PRESSED, 0, virtualKey, KeyEvent.CHAR_UNDEFINED));
+		withInjection(() -> keyboard.keyPressed(keyEvent(canvas, KeyEvent.KEY_PRESSED, 0, virtualKey, KeyEvent.CHAR_UNDEFINED)));
 		if (holdMs <= 0L) {
-			keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, 0, virtualKey, KeyEvent.CHAR_UNDEFINED));
+			withInjection(() -> keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, 0, virtualKey, KeyEvent.CHAR_UNDEFINED)));
 			return;
 		}
 		long frames = Math.max(1L, holdMs / MILLIS_PER_FRAME);
@@ -161,7 +188,7 @@ public final class InputInjector {
 			return;
 		}
 		for (PendingRelease release : PENDING.due(frame)) {
-			keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, 0, release.virtualKey, KeyEvent.CHAR_UNDEFINED));
+			withInjection(() -> keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, 0, release.virtualKey, KeyEvent.CHAR_UNDEFINED)));
 		}
 	}
 

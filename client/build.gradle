@@ -60,3 +60,17 @@ jar {
     from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
+
+// AIO-11 — bake the lockdown flag into the build. `-PaiOnly=false` makes a development
+// client; anything else, including no property at all, locks it (fail closed).
+def aiOnly = (findProperty('aiOnly') ?: 'true').toString()
+
+processResources {
+    inputs.property('aiOnly', aiOnly)
+    doLast {
+        def aionlyDir = new File(destinationDir, 'rt4/aionly')
+        aionlyDir.mkdirs()
+        def lockdown = aiOnly.equalsIgnoreCase('false') ? 'false' : 'true'
+        new File(aionlyDir, 'build.properties').text = "lockdown=${lockdown}\n"
+    }
+}

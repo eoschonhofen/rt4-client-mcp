@@ -65,6 +65,12 @@ public class PluginRepository {
     }
 
     public static void Init() {
+        // AIO-11 — under lockdown no plugin runs: some add Swing panels that take real
+        // input outside the canvas, and others hook key events directly.
+        if (rt4.aionly.Lockdown.ENABLED) {
+            System.out.println("AI-only lockdown: plugins are disabled.");
+            return;
+        }
         if (GlobalJsonConfig.instance == null)
             return;
         File pluginsDirectory = new File(GlobalJsonConfig.instance.pluginsFolder);

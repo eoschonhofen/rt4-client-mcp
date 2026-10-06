@@ -3,6 +3,7 @@ package rt4.mcp;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import rt4.aionly.IdleKeepAlive;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -131,13 +132,26 @@ public final class McpProtocol {
 		try {
 			ToolResult result = tool.call(arguments);
 			logCall(name, started, false);
+			resetIdleIfActing(name);
 			return JsonRpc.result(id, result == null ? ToolResult.text("").toJson() : result.toJson());
 		} catch (ToolException expected) {
 			logCall(name, started, true);
+			resetIdleIfActing(name);
 			return JsonRpc.result(id, ToolResult.error(expected.getMessage()).toJson());
 		} catch (RuntimeException unexpected) {
 			logCall(name, started, true);
+			resetIdleIfActing(name);
 			return JsonRpc.result(id, ToolResult.error(unexpected.toString()).toJson());
+		}
+	}
+
+	/**
+	 * AIO-11 — an acting tool call is activity, so the client does not idle-logout an agent
+	 * mid-task. A read-only tool is deliberately excluded: watching is not playing.
+	 */
+	private static void resetIdleIfActing(String tool) {
+		if (!rt4.aionly.ToolKinds.isReadOnly(tool)) {
+			IdleKeepAlive.reset();
 		}
 	}
 
