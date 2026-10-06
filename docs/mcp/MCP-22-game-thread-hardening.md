@@ -22,7 +22,8 @@
 ## Implementation
 - Wrap each hook in its own `try { … } catch (Throwable t)`.
   - Log once per distinct message, rate-limited, with `[MCP]` and the stack trace.
-  - On a nav failure: `NavTask.cancel("internal error: " + t)`, so the agent sees FAILED instead of a hang.
+  - On a nav failure: `NavTask.fail("internal error: " + t)` (a new helper that finishes the task as FAILED,
+    not CANCELLED), so the agent sees FAILED instead of a hang.
   - On a waiter failure: complete that waiter with reason `"internal error"`. This needs per-waiter
     try/catch inside `Waiters.evaluate`.
 - Use `task.cancel(false)` instead of `cancel(true)`. A task already running finishes normally, and only a

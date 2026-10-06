@@ -2,6 +2,7 @@ package rt4.mcp.nav;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import rt4.mcp.GameThread;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -336,6 +337,38 @@ class NavTaskTest {
 
 		assertEquals(NavTask.State.FAILED, task.state());
 		assertEquals("plane changed", task.reason());
+	}
+
+	@Test
+	void aThrowingStepFailsTheTaskWithoutEscapingTheFrame() {
+		driver.collision = new CollisionSource() {
+			@Override
+			public int flags(int x, int y) {
+				throw new IllegalStateException("scene boom");
+			}
+
+			@Override
+			public int width() {
+				return 30;
+			}
+
+			@Override
+			public int height() {
+				return 30;
+			}
+		};
+		NavTask.setDriver(driver);
+		NavTask task = NavTask.start(20, 0, 0, 0);
+		GameThread.navigationStep = NavTask::step;
+		try {
+			GameThread.drain(); // MCP-22 — must swallow the failure
+
+			assertEquals(NavTask.State.FAILED, task.state(), "nav_status must show FAILED, not CANCELLED");
+			assertTrue(task.reason().startsWith("internal error: "), task.reason());
+			assertTrue(task.reason().contains("scene boom"), task.reason());
+		} finally {
+			GameThread.reset();
+		}
 	}
 
 	@Test

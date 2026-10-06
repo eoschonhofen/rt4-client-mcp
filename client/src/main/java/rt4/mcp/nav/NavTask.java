@@ -165,6 +165,13 @@ public final class NavTask {
 		}
 	}
 
+	/** MCP-22 — ends the running task as FAILED, e.g. when its per-frame step threw. */
+	public static synchronized void fail(String reason) {
+		if (active != null) {
+			active.finish(State.FAILED, reason);
+		}
+	}
+
 	/** Runs every frame on the game thread. A no-op when nothing is walking. */
 	public static void step() {
 		NavTask current = active;

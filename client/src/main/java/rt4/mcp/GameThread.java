@@ -113,7 +113,7 @@ public final class GameThread {
 			} catch (Throwable failure) {
 				reportHookFailure("navigation", failure);
 				try {
-					rt4.mcp.nav.NavTask.cancel("internal error: " + failure);
+					rt4.mcp.nav.NavTask.fail("internal error: " + failure);
 				} catch (Throwable ignored) {
 					// the nav task is already broken; nothing else to do
 				}
