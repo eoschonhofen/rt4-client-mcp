@@ -7,8 +7,11 @@ package rt4.aionly;
  * each finished server reply and performs the {@link Action} it returns; the tests drive it
  * with fake replies.</p>
  *
- * <p>The native CS2 only ever sees the busy reply until the very end, so its DOB, country and
- * password screens are never reached. From its point of view a single create succeeded.</p>
+ * <p>The native CS2 sees the busy reply for the name check while the token is generated,
+ * checked and stored, then the final ok. That ok is what advances it off the username screen,
+ * so the terms and password screens it queues afterwards are not part of this flow:
+ * {@code CreateManager} returns the title screen to its main menu as soon as the account is
+ * published, and a human never types a password.</p>
  */
 public final class TokenCreateFlow {
 	public enum State { IDLE, NAME_CHECK, INFO, CREATE, DONE, FAILED }

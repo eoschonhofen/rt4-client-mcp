@@ -8,6 +8,8 @@ import rt4.aionly.Accounts;
 import rt4.aionly.Lockdown;
 import rt4.aionly.TokenCreateFlow;
 import rt4.aionly.TokenPanel;
+import rt4.mcp.InputInjector;
+import rt4.mcp.ToolException;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -157,6 +159,7 @@ public class CreateManager {
 				break;
 			case DONE:
 				publishCreatedAccount(decision.token, decision.encodedName);
+				abandonNativeCreateFlow();
 				break;
 			default:
 				// The server's own reply is left in `reply`, so the native screen shows its message.
@@ -172,6 +175,20 @@ public class CreateManager {
 		String username = Base37.decode37(encodedName).toString().replace(" ", "_").toLowerCase();
 		Accounts.store().add(AccountStore.Account.create(username, token, Accounts.host()));
 		TokenPanel.show(username, token);
+	}
+
+	/**
+	 * AIO-08 — the account already exists once the token flow finishes, so the native terms
+	 * and password screens the CS2 queues after a successful name check are not part of it.
+	 * Escape is what the title screen uses to drop the create form and return to the main
+	 * menu; the token panel stays up over it.
+	 */
+	private static void abandonNativeCreateFlow() {
+		try {
+			InputInjector.pressKey("escape", 0L);
+		} catch (ToolException ignored) {
+			// No canvas yet: the human can still press Escape, or read the panel.
+		}
 	}
 
 	@OriginalMember(owner = "client!gd", name = "a", descriptor = "(JI)V")
