@@ -275,4 +275,36 @@ class WaitersTest {
 		assertTrue(outcome.timedOut);
 		assertFalse(outcome.toJson().has("status"), "the HTTP thread must not build a status block");
 	}
+
+	// ------------------------------------------------------------------ MCP-22
+
+	@Test
+	void aThrowingConditionOnlyFailsItsOwnWaiter() throws Exception {
+		FakeGameView view = new FakeGameView() {
+			@Override
+			public int itemCount(int itemId) {
+				throw new IllegalStateException("boom");
+			}
+
+			@Override
+			public boolean dialogueOpen() {
+				return true;
+			}
+		};
+		Waiters.setView(view);
+
+		Waiters.Waiter bad = Waiters.register(
+				conditions("{\"condition\":\"item_count\",\"id\":995,\"op\":\">=\",\"n\":1}"),
+				Conditions.Mode.ANY, 60000L);
+		Waiters.Waiter good = Waiters.register(
+				conditions("{\"condition\":\"dialogue_open\"}"), Conditions.Mode.ANY, 60000L);
+
+		Waiters.evaluate();
+
+		Waiters.Outcome badOutcome = bad.future.get();
+		assertFalse(badOutcome.met);
+		assertTrue(badOutcome.reason != null && badOutcome.reason.contains("internal error"), badOutcome.reason);
+		assertTrue(good.future.get().met, "a healthy waiter must still complete");
+		assertEquals(0, Waiters.activeWaiters());
+	}
 }

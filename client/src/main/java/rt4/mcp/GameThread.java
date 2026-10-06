@@ -3,7 +3,10 @@ package rt4.mcp;
 import rt4.PlayerList;
 import rt4.client;
 
+import java.util.Collections;
+import java.util.Set;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
@@ -28,6 +31,11 @@ public final class GameThread {
 	private static final ConcurrentLinkedQueue<FutureTask<?>> queue = new ConcurrentLinkedQueue<FutureTask<?>>();
 	private static volatile Thread owner;
 	private static volatile long frame;
+
+	/** MCP-22 — distinct hook failures already logged, so a per-frame error cannot spam the log. */
+	private static final Set<String> REPORTED_HOOK_FAILURES =
+			Collections.newSetFromMap(new ConcurrentHashMap<String, Boolean>());
+	private static final int MAX_HOOK_REPORTS = 32;
 
 	/** Set by MCP-13; runs after the task queue, before the waiters. */
 	public static volatile Runnable navigationStep;
@@ -61,9 +69,12 @@ public final class GameThread {
 		try {
 			return task.get(timeoutMs, TimeUnit.MILLISECONDS);
 		} catch (TimeoutException timedOut) {
-			queue.remove(task);
-			task.cancel(true);
-			throw new ToolException("game thread did not respond in " + timeoutMs + "ms (loading or frozen?)");
+			boolean wasQueued = queue.remove(task);
+			// MCP-22 — never interrupt the game thread: a task that already started finishes
+			// normally, only a queued one is dropped.
+			task.cancel(false);
+			throw new ToolException("game thread did not respond in " + timeoutMs + "ms (loading or frozen?); the task "
+					+ (wasQueued ? "was still queued, so it did not run" : "was already running, so it may have executed"));
 		} catch (ExecutionException failed) {
 			Throwable cause = failed.getCause();
 			if (cause instanceof ToolException) {
@@ -97,13 +108,40 @@ public final class GameThread {
 
 		Runnable navigation = navigationStep;
 		if (navigation != null) {
-			navigation.run();
+			try {
+				navigation.run();
+			} catch (Throwable failure) {
+				reportHookFailure("navigation", failure);
+				try {
+					rt4.mcp.nav.NavTask.cancel("internal error: " + failure);
+				} catch (Throwable ignored) {
+					// the nav task is already broken; nothing else to do
+				}
+			}
 		}
 		Runnable waiters = waiterTick;
 		if (waiters != null) {
-			waiters.run();
+			try {
+				waiters.run();
+			} catch (Throwable failure) {
+				reportHookFailure("waiters", failure);
+			}
 		}
-		InputInjector.tick();
+		try {
+			InputInjector.tick();
+		} catch (Throwable failure) {
+			reportHookFailure("input", failure);
+		}
+	}
+
+	/** MCP-22 — log the first occurrence of each distinct hook failure, with its stack trace. */
+	private static void reportHookFailure(String hook, Throwable failure) {
+		String message = "[MCP] " + hook + " hook failed: " + failure;
+		if (REPORTED_HOOK_FAILURES.size() >= MAX_HOOK_REPORTS || !REPORTED_HOOK_FAILURES.add(message)) {
+			return;
+		}
+		System.err.println(message);
+		failure.printStackTrace();
 	}
 
 	/** Frames drained so far, i.e. one per rendered frame. */
@@ -130,11 +168,12 @@ public final class GameThread {
 	}
 
 	/** Test support: forget the owner, the queue and the frame counter. */
-	static void reset() {
+	public static void reset() {
 		queue.clear();
 		owner = null;
 		frame = 0L;
 		navigationStep = null;
 		waiterTick = null;
+		REPORTED_HOOK_FAILURES.clear();
 	}
 }

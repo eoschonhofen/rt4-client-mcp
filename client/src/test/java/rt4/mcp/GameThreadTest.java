@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -187,5 +188,54 @@ class GameThreadTest {
 	void drainDoesNotDeadlockWithoutHooks() {
 		GameThread.drain();
 		assertEquals(0, GameThread.pending());
+	}
+
+	// ------------------------------------------------------------------ MCP-22
+
+	@Test
+	void throwingNavigationHookDoesNotEscapeDrain() throws Exception {
+		List<String> ran = new CopyOnWriteArrayList<String>();
+		GameThread.navigationStep = () -> {
+			throw new IllegalStateException("nav boom");
+		};
+		GameThread.waiterTick = () -> ran.add("waiters");
+
+		GameThread.drain(); // must swallow the hook failure
+
+		assertEquals(1, ran.size(), "the waiters hook must still run that frame");
+	}
+
+	@Test
+	void timeoutMessageSaysTheTaskWasStillQueued() {
+		ToolException error = assertThrows(ToolException.class, () -> GameThread.call(() -> "never", 60L));
+
+		assertTrue(error.getMessage().contains("still queued"), error.getMessage());
+		assertTrue(error.getMessage().contains("did not run"), error.getMessage());
+	}
+
+	@Test
+	void timedOutRunningTaskDoesNotInterruptTheDrainingThread() throws Exception {
+		CountDownLatch started = new CountDownLatch(1);
+		Future<String> caller = http.submit(() -> {
+			try {
+				return GameThread.call(() -> {
+					started.countDown();
+					long end = System.nanoTime() + 300_000_000L;
+					while (System.nanoTime() < end) {
+						// busy wait, deliberately ignoring interrupts
+					}
+					return "done";
+				}, 80L);
+			} catch (ToolException timedOut) {
+				return "timed out";
+			}
+		});
+		awaitPending(1);
+
+		GameThread.drain();
+
+		assertTrue(started.await(1, TimeUnit.SECONDS), "the task must have run on the draining thread");
+		assertEquals("timed out", caller.get(3, TimeUnit.SECONDS));
+		assertFalse(Thread.interrupted(), "the draining thread must never be interrupted");
 	}
 }

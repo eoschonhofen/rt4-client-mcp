@@ -8,7 +8,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /** A settable {@link Conditions.GameView} shared by the MCP-12 tests. */
-final class FakeGameView implements Conditions.GameView {
+class FakeGameView implements Conditions.GameView {
 	boolean loggedIn = true;
 	boolean loggedOut = false;
 	boolean idle = true;

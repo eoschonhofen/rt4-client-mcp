@@ -176,24 +176,30 @@ public final class Waiters {
 		long now = System.nanoTime();
 
 		for (Waiter waiter : ACTIVE.values()) {
-			if (now >= waiter.deadlineNanos) {
-				complete(waiter, new Outcome(false, true, null, new ArrayList<String>(),
-						waiter.ticksWaited(current.tick()), status()));
-				continue;
-			}
-			if (loggedOut && !waiter.startedLoggedOut && !waiter.expectsLoggedOut()) {
-				complete(waiter, new Outcome(false, false, "logged_out", new ArrayList<String>(),
-						waiter.ticksWaited(current.tick()), status()));
-				continue;
-			}
+			// MCP-22 — one bad condition must complete only its own waiter, never the frame.
+			try {
+				if (now >= waiter.deadlineNanos) {
+					complete(waiter, new Outcome(false, true, null, new ArrayList<String>(),
+							waiter.ticksWaited(current.tick()), status()));
+					continue;
+				}
+				if (loggedOut && !waiter.startedLoggedOut && !waiter.expectsLoggedOut()) {
+					complete(waiter, new Outcome(false, false, "logged_out", new ArrayList<String>(),
+							waiter.ticksWaited(current.tick()), status()));
+					continue;
+				}
 
-			boolean[] results = new boolean[waiter.conditions.size()];
-			for (int i = 0; i < results.length; i++) {
-				results[i] = Conditions.evaluate(waiter.conditions.get(i), current);
-			}
-			if (Conditions.combine(waiter.mode, results)) {
-				complete(waiter, new Outcome(true, false, null, Conditions.which(waiter.conditions, results),
-						waiter.ticksWaited(current.tick()), status()));
+				boolean[] results = new boolean[waiter.conditions.size()];
+				for (int i = 0; i < results.length; i++) {
+					results[i] = Conditions.evaluate(waiter.conditions.get(i), current);
+				}
+				if (Conditions.combine(waiter.mode, results)) {
+					complete(waiter, new Outcome(true, false, null, Conditions.which(waiter.conditions, results),
+							waiter.ticksWaited(current.tick()), status()));
+				}
+			} catch (Throwable failure) {
+				complete(waiter, new Outcome(false, false, "internal error: " + failure,
+						new ArrayList<String>(), waiter.elapsedTicks(), null));
 			}
 		}
 	}
