@@ -103,6 +103,7 @@ public final class GameThread {
 		if (waiters != null) {
 			waiters.run();
 		}
+		InputInjector.tick();
 	}
 
 	/** Frames drained so far, i.e. one per rendered frame. */

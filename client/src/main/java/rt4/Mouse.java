@@ -51,6 +51,15 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!wl", name = "u", descriptor = "I")
 	public static int lastHandledClickY = 0;
 
+	/**
+	 * MCP-10/MCP-13 — set while {@code rt4.mcp.InputInjector} is delivering synthetic mouse
+	 * events, so automation is never mistaken for a human click.
+	 */
+	public static volatile boolean syntheticPress = false;
+
+	/** MCP-13 — incremented on every real (non-synthetic) button press. */
+	public static volatile int realPressSeq = 0;
+
 	@OriginalMember(owner = "client!sc", name = "a", descriptor = "(ILjava/awt/Component;)V")
 	public static void stop(@OriginalArg(1) Component component) {
 		component.removeMouseListener(instance);
@@ -179,6 +188,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 
 		if (instance != null) {
 			idleLoops = 0;
+			if (!syntheticPress) {
+				realPressSeq++;
+			}
 			pendingClickX = event.getX();
 			pendingClickY = event.getY();
 			pendingClickTime = MonotonicClock.currentTimeMillis();

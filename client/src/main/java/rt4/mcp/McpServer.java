@@ -54,6 +54,8 @@ public final class McpServer {
 		rt4.mcp.tools.FindEntities.register(registry);
 		rt4.mcp.tools.ActionTools.register(registry);
 		rt4.mcp.tools.InterfaceTools.register(registry);
+		rt4.mcp.tools.InputTools.register(registry);
+		rt4.mcp.tools.SessionTools.register(registry);
 	}
 
 	public static McpHttpServer running() {
