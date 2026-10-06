@@ -98,6 +98,10 @@ public final class SceneScan {
 			JsonObject extra = new JsonObject();
 			extra.addProperty("combat_level", type.combatLevel);
 			extra.addProperty("animation", npc.seqId);
+			String says = overheadChat(npc);
+			if (says != null) {
+				extra.addProperty("says", says);
+			}
 			String interacting = rt4.mcp.tools.StatusTools.interacting(npc.faceEntity);
 			if (interacting != null) {
 				extra.addProperty("interacting", interacting);
@@ -137,6 +141,10 @@ public final class SceneScan {
 
 			JsonObject extra = new JsonObject();
 			extra.addProperty("combat_level", player.combatLevel);
+			String says = overheadChat(player);
+			if (says != null) {
+				extra.addProperty("says", says);
+			}
 
 			out.add(new EntityFilter.Entity(Targets.player(index), "player", index, Names.plain(player.getName()),
 					Coords.worldX(sceneX), Coords.worldY(sceneY), plane, distance, opsOf(Player.options), extra));
@@ -284,6 +292,19 @@ public final class SceneScan {
 
 	private static int playerSceneY() {
 		return PlayerList.self.movementQueueY[0];
+	}
+
+	/**
+	 * The text currently drawn above an entity's head, or null when nothing is. Forced NPC
+	 * chat never reaches the chatbox, so this is the only place an agent can read it.
+	 * {@code OverheadChat.loop} clears {@code chatMessage} when the loop counter runs out.
+	 */
+	public static String overheadChat(rt4.PathingEntity entity) {
+		if (entity == null || entity.chatMessage == null || entity.chatLoops <= 0) {
+			return null;
+		}
+		String text = Names.plain(entity.chatMessage);
+		return text == null || text.isEmpty() ? null : text;
 	}
 
 	/** Chebyshev distance from a tile to a box, 0 when the tile is inside it. */

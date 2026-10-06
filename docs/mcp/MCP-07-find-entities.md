@@ -20,8 +20,9 @@ Input:
 - Results are sorted by distance. `limit` defaults to 20, max 100.
 
 Output: `[{ target, type, id, name, x, y, plane, distance, ops: [...], extra }]`
-- NPC `extra`: `{ combat_level, hp_ratio?, animation, interacting }`.
-- Player `extra`: `{ combat_level }`.
+- NPC `extra`: `{ combat_level, hp_ratio?, animation, interacting, says? }`.
+- Player `extra`: `{ combat_level, says? }`.
+- `says` is the overhead chat text (forced NPC chat, player public chat) while it is still on screen; omitted when there is none. Forced NPC chat never reaches the chatbox, so this is the only way to read it.
 - Obj `extra`: `{ count }`.
 - Loc `extra`: `{ shape, rotation, size_x, size_y }`.
 
