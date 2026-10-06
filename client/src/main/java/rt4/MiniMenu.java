@@ -1180,6 +1180,118 @@ public class MiniMenu {
 		}
 	}
 
+	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(JII)V")
+	public static void addLocEntries(@OriginalArg(2) long pickKey, @OriginalArg(0) int x, @OriginalArg(1) int y) {
+		if (!SceneGraph.isLocValid(Player.plane, x, y, pickKey)) {
+			return;
+		}
+		@Pc(172) int entityId = (int) (pickKey >>> 32) & Integer.MAX_VALUE;
+		@Pc(172) LocType locType = LocTypeList.get(entityId);
+		if (locType.multiLocs != null) {
+			locType = locType.getMultiLoc();
+		}
+		if (locType == null) {
+			return;
+		}
+		if (itemTargetMode == 1) {
+			add(MiniMap.useCursor, pickKey, JagString.concatenate(new JagString[]{selectedObjText, ARROW_CYAN, locType.name}), x, (short) 14, LocalizedText.USE, y);
+		} else if (isTargeting) {
+			@Pc(363) ParamType paramType = targetParamId == -1 ? null : ParamTypeList.get(targetParamId);
+			if ((targetMask & 0x4) != 0 && (paramType == null || locType.getParam(paramType.defaultInt, targetParamId) != paramType.defaultInt)) {
+				add(targetCursorId, pickKey, JagString.concatenate(new JagString[]{targetOpBase, ARROW_CYAN, locType.name}), x, (short) 38, targetVerb, y);
+			}
+		} else {
+			@Pc(228) JagString[] locOps = locType.ops;
+			if (DEBUG_OPS) {
+				locOps = annotateOps(locOps);
+			}
+			if (locOps != null) {
+				for (int j = 4; j >= 0; j--) {
+					if (locOps[j] != null) {
+						@Pc(254) short actionId = 0;
+						if (j == 0) {
+							actionId = 42;
+						}
+						if (j == 1) {
+							actionId = 50;
+						}
+						@Pc(268) int cursorId = -1;
+						if (j == 2) {
+							actionId = 49;
+						}
+						if (locType.cursor1Op == j) {
+							cursorId = locType.cursor1;
+						}
+						if (j == 3) {
+							actionId = 46;
+						}
+						if (j == locType.cursor2Op) {
+							cursorId = locType.cursor2;
+						}
+						if (j == 4) {
+							actionId = 1001;
+						}
+						add(cursorId, pickKey, JagString.concatenate(new JagString[]{COLOR_CYAN, locType.name}), x, actionId, locOps[j], y);
+					}
+				}
+			}
+			add(MiniMap.examineCursor, locType.id, JagString.concatenate(new JagString[]{COLOR_CYAN, locType.name}), x, (short) 1004, LocalizedText.EXAMINE, y);
+		}
+	}
+
+	@OriginalMember(owner = "client!ob", name = "b", descriptor = "(II)V")
+	public static void addObjStackEntries(@OriginalArg(0) int x, @OriginalArg(1) int y) {
+		@Pc(931) LinkedList objStacks = SceneGraph.objStacks[Player.plane][x][y];
+		if (objStacks != null) {
+			for (@Pc(940) ObjStackNode node = (ObjStackNode) objStacks.tail(); node != null; node = (ObjStackNode) objStacks.prev()) {
+				int j = node.value.type;
+				@Pc(951) ObjType objType = ObjTypeList.get(j);
+				if (itemTargetMode == 1) {
+					add(MiniMap.useCursor, j, JagString.concatenate(new JagString[]{selectedObjText, ARROW_ORANGE, objType.name}), x, (short) 33, LocalizedText.USE, y);
+				} else if (isTargeting) {
+					@Pc(1142) ParamType paramType = targetParamId == -1 ? null : ParamTypeList.get(targetParamId);
+					if ((targetMask & 0x1) != 0 && (paramType == null || objType.getParam(paramType.defaultInt, targetParamId) != paramType.defaultInt)) {
+						add(targetCursorId, j, JagString.concatenate(new JagString[]{targetOpBase, ARROW_ORANGE, objType.name}), x, (short) 39, targetVerb, y);
+					}
+				} else {
+					@Pc(997) JagString[] objOps = objType.ops;
+					if (DEBUG_OPS) {
+						objOps = annotateOps(objOps);
+					}
+					for (int otherFineX = 4; otherFineX >= 0; otherFineX--) {
+						if (objOps != null && objOps[otherFineX] != null) {
+							@Pc(1025) byte actionCode = 0;
+							if (otherFineX == 0) {
+								actionCode = 21;
+							}
+							if (otherFineX == 1) {
+								actionCode = 34;
+							}
+							@Pc(1041) int cursorId = -1;
+							if (otherFineX == objType.cursor1Op) {
+								cursorId = objType.cursor1;
+							}
+							if (otherFineX == 2) {
+								actionCode = 18;
+							}
+							if (objType.cursor2Op == otherFineX) {
+								cursorId = objType.cursor2;
+							}
+							if (otherFineX == 3) {
+								actionCode = 20;
+							}
+							if (otherFineX == 4) {
+								actionCode = 24;
+							}
+							add(cursorId, j, JagString.concatenate(new JagString[]{COLOR_ITEM_ORANGE, objType.name}), x, actionCode, objOps[otherFineX], y);
+						}
+					}
+					add(MiniMap.examineCursor, j, JagString.concatenate(new JagString[]{COLOR_ITEM_ORANGE, objType.name}), x, (short) 1002, LocalizedText.EXAMINE, y);
+				}
+			}
+		}
+	}
+
 	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(IIIIIIB)V")
 	public static void addEntries(@OriginalArg(0) int screenY, @OriginalArg(1) int width, @OriginalArg(2) int height, @OriginalArg(3) int screenX, @OriginalArg(4) int mouseY, @OriginalArg(5) int mouseX) {
 		@Pc(15) int i;
@@ -1215,58 +1327,8 @@ public class MiniMenu {
 			if (pickKey != lastKey) {
 				lastKey = pickKey;
 				@Pc(240) int j;
-				if (entityType == 2 && SceneGraph.isLocValid(Player.plane, x, y, pickKey)) {
-					@Pc(172) LocType locType = LocTypeList.get(entityId);
-					if (locType.multiLocs != null) {
-						locType = locType.getMultiLoc();
-					}
-					if (locType == null) {
-						continue;
-					}
-					if (itemTargetMode == 1) {
-						add(MiniMap.useCursor, pickKey, JagString.concatenate(new JagString[]{selectedObjText, ARROW_CYAN, locType.name}), x, (short) 14, LocalizedText.USE, y);
-					} else if (isTargeting) {
-						@Pc(363) ParamType paramType = targetParamId == -1 ? null : ParamTypeList.get(targetParamId);
-						if ((targetMask & 0x4) != 0 && (paramType == null || locType.getParam(paramType.defaultInt, targetParamId) != paramType.defaultInt)) {
-							add(targetCursorId, pickKey, JagString.concatenate(new JagString[]{targetOpBase, ARROW_CYAN, locType.name}), x, (short) 38, targetVerb, y);
-						}
-					} else {
-						@Pc(228) JagString[] locOps = locType.ops;
-						if (DEBUG_OPS) {
-							locOps = annotateOps(locOps);
-						}
-						if (locOps != null) {
-							for (j = 4; j >= 0; j--) {
-								if (locOps[j] != null) {
-									@Pc(254) short actionId = 0;
-									if (j == 0) {
-										actionId = 42;
-									}
-									if (j == 1) {
-										actionId = 50;
-									}
-									@Pc(268) int cursorId = -1;
-									if (j == 2) {
-										actionId = 49;
-									}
-									if (locType.cursor1Op == j) {
-										cursorId = locType.cursor1;
-									}
-									if (j == 3) {
-										actionId = 46;
-									}
-									if (j == locType.cursor2Op) {
-										cursorId = locType.cursor2;
-									}
-									if (j == 4) {
-										actionId = 1001;
-									}
-									add(cursorId, pickKey, JagString.concatenate(new JagString[]{COLOR_CYAN, locType.name}), x, actionId, locOps[j], y);
-								}
-							}
-						}
-						add(MiniMap.examineCursor, locType.id, JagString.concatenate(new JagString[]{COLOR_CYAN, locType.name}), x, (short) 1004, LocalizedText.EXAMINE, y);
-					}
+				if (entityType == 2) {
+					addLocEntries(pickKey, x, y);
 				}
 				@Pc(514) int otherFineX;
 				@Pc(526) int otherFineY;
@@ -1323,55 +1385,7 @@ public class MiniMenu {
 					addPlayerEntries(entityId, y, player, x);
 				}
 				if (entityType == 3) {
-					@Pc(931) LinkedList objStacks = SceneGraph.objStacks[Player.plane][x][y];
-					if (objStacks != null) {
-						for (@Pc(940) ObjStackNode node = (ObjStackNode) objStacks.tail(); node != null; node = (ObjStackNode) objStacks.prev()) {
-							j = node.value.type;
-							@Pc(951) ObjType objType = ObjTypeList.get(j);
-							if (itemTargetMode == 1) {
-								add(MiniMap.useCursor, j, JagString.concatenate(new JagString[]{selectedObjText, ARROW_ORANGE, objType.name}), x, (short) 33, LocalizedText.USE, y);
-							} else if (isTargeting) {
-								@Pc(1142) ParamType paramType = targetParamId == -1 ? null : ParamTypeList.get(targetParamId);
-								if ((targetMask & 0x1) != 0 && (paramType == null || objType.getParam(paramType.defaultInt, targetParamId) != paramType.defaultInt)) {
-									add(targetCursorId, j, JagString.concatenate(new JagString[]{targetOpBase, ARROW_ORANGE, objType.name}), x, (short) 39, targetVerb, y);
-								}
-							} else {
-								@Pc(997) JagString[] objOps = objType.ops;
-								if (DEBUG_OPS) {
-									objOps = annotateOps(objOps);
-								}
-								for (otherFineX = 4; otherFineX >= 0; otherFineX--) {
-									if (objOps != null && objOps[otherFineX] != null) {
-										@Pc(1025) byte actionCode = 0;
-										if (otherFineX == 0) {
-											actionCode = 21;
-										}
-										if (otherFineX == 1) {
-											actionCode = 34;
-										}
-										@Pc(1041) int cursorId = -1;
-										if (otherFineX == objType.cursor1Op) {
-											cursorId = objType.cursor1;
-										}
-										if (otherFineX == 2) {
-											actionCode = 18;
-										}
-										if (objType.cursor2Op == otherFineX) {
-											cursorId = objType.cursor2;
-										}
-										if (otherFineX == 3) {
-											actionCode = 20;
-										}
-										if (otherFineX == 4) {
-											actionCode = 24;
-										}
-										add(cursorId, j, JagString.concatenate(new JagString[]{COLOR_ITEM_ORANGE, objType.name}), x, actionCode, objOps[otherFineX], y);
-									}
-								}
-								add(MiniMap.examineCursor, j, JagString.concatenate(new JagString[]{COLOR_ITEM_ORANGE, objType.name}), x, (short) 1002, LocalizedText.EXAMINE, y);
-							}
-						}
-					}
+					addObjStackEntries(x, y);
 				}
 			}
 		}
