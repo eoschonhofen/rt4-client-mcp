@@ -265,6 +265,12 @@ public final class client extends GameShell {
         rt4.mcp.McpConfig mcpConfig = rt4.mcp.McpConfig.resolve(configPath);
         if (mcpConfig.enabled) {
           rt4.mcp.McpServer.start(mcpConfig);
+          // AIO-13 — in a locked build, no MCP means the client cannot be controlled at all.
+          if (rt4.aionly.Lockdown.ENABLED && rt4.mcp.McpServer.boundPort() < 0) {
+            rt4.aionly.TitleMessage.showPersistent("MCP unavailable: ports " + mcpConfig.port + "-"
+                + (mcpConfig.port + rt4.mcp.McpServer.PORT_SEARCH_SPAN)
+                + " busy. Close a client and restart this one.");
+          }
         }
       } catch (Throwable mcpError) {
         System.err.println("[MCP] configuration failed: " + mcpError);

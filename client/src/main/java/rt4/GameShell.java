@@ -732,6 +732,11 @@ public abstract class GameShell extends Applet implements Runnable, FocusListene
                     modeString += " - " + name.toString();
                 else modeString += " - At Login";
             }
+            // AIO-13 — say which MCP port this window bound, so several clients stay tellable apart.
+            if (rt4.mcp.McpServer.enabled()) {
+                int mcpPort = rt4.mcp.McpServer.boundPort();
+                modeString += mcpPort >= 0 ? " — MCP :" + mcpPort : " — MCP unavailable";
+            }
             if (frame != null)
                 frame.setTitle(modeString);
         }

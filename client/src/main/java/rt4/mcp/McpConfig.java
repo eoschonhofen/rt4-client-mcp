@@ -37,6 +37,11 @@ public final class McpConfig {
 		this.configPath = configPath;
 	}
 
+	/** AIO-13 — these settings on a different port, for the auto-port search. */
+	McpConfig withPort(int port) {
+		return new McpConfig(enabled, port, token, configPath);
+	}
+
 	/**
 	 * Reads the settings, generating and persisting a token if there is none yet.
 	 * A missing {@link GlobalJsonConfig#instance} means "all defaults".
