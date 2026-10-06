@@ -33,4 +33,19 @@ class InputInjectorTest {
 		assertEquals(KEY_A, late.get(0).virtualKey);
 		assertTrue(queue.isEmpty());
 	}
+
+	@Test
+	void releasesDueOnTheSameFrameKeepTheirHoldOrder() {
+		InputInjector.ReleaseQueue queue = new InputInjector.ReleaseQueue();
+		for (int key = 0; key < 20; key++) {
+			queue.add(new InputInjector.PendingRelease(KEY_A + key, 5L));
+		}
+
+		List<InputInjector.PendingRelease> due = queue.due(5L);
+
+		assertEquals(20, due.size());
+		for (int i = 0; i < due.size(); i++) {
+			assertEquals(KEY_A + i, due.get(i).virtualKey, "first held, first released");
+		}
+	}
 }

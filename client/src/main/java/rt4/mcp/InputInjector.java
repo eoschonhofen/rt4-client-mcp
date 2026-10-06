@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * MCP-10 — injects synthetic keyboard and mouse input through the client's own listeners,
@@ -30,10 +31,14 @@ public final class InputInjector {
 
 	private static final ReleaseQueue PENDING = new ReleaseQueue();
 
+	/** Breaks ties between releases due on the same frame: first held, first released. */
+	private static final AtomicLong NEXT_SEQUENCE = new AtomicLong();
+
 	/** One key press waiting for its release deadline. */
 	static final class PendingRelease {
 		final int virtualKey;
 		final long releaseFrame;
+		final long sequence = NEXT_SEQUENCE.getAndIncrement();
 
 		PendingRelease(int virtualKey, long releaseFrame) {
 			this.virtualKey = virtualKey;
@@ -42,7 +47,7 @@ public final class InputInjector {
 	}
 
 	/**
-	 * MCP-26 — releases in deadline order. A plain FIFO stopped at the first entry that was not
+	 * MCP-26 — releases in deadline order, and in hold order on the same frame. A plain FIFO stopped at the first entry that was not
 	 * due yet, so a short hold queued behind a long one waited for the long one to expire.
 	 */
 	static final class ReleaseQueue {
@@ -50,7 +55,8 @@ public final class InputInjector {
 				new Comparator<PendingRelease>() {
 					@Override
 					public int compare(PendingRelease left, PendingRelease right) {
-						return Long.compare(left.releaseFrame, right.releaseFrame);
+						int byFrame = Long.compare(left.releaseFrame, right.releaseFrame);
+						return byFrame != 0 ? byFrame : Long.compare(left.sequence, right.sequence);
 					}
 				});
 
