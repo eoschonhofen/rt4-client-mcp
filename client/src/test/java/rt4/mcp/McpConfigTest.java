@@ -132,6 +132,18 @@ class McpConfigTest {
 	}
 
 	@Test
+	void loopbackCoversEverySpellingOfThisMachine() {
+		for (String local : new String[]{null, "", " ", "localhost", "LOCALHOST", "127.0.0.1", "127.0.1.1",
+				"127.255.255.254", "::1", "[::1]", "0:0:0:0:0:0:0:1", "0000:0000:0000:0000:0000:0000:0000:0001"}) {
+			assertTrue(McpConfig.isLoopback(local), "should be loopback: " + local);
+		}
+		for (String remote : new String[]{"test.2009scape.org", "192.168.0.10", "128.0.0.1", "127.0.0",
+				"127.0.0.1.example.com", "::2", "[2001:db8::1]"}) {
+			assertFalse(McpConfig.isLoopback(remote), "should not be loopback: " + remote);
+		}
+	}
+
+	@Test
 	void existingTokenIsNotRegenerated() throws Exception {
 		Path path = tempDir.resolve("config.json");
 		String existing = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";

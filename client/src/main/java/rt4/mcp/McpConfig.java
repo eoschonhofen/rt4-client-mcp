@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import rt4.GlobalJsonConfig;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -59,7 +61,8 @@ public final class McpConfig {
 			}
 			if (enabled && !isLoopback(config.ipAddress())) {
 				System.err.println("[MCP] warning: ip_address is " + config.ipAddress()
-						+ ", not loopback; driving a live server with MCP breaks its rules");
+						+ ", not loopback; an MCP agent can play on that server. Only connect to servers"
+						+ " that allow automated play, such as an AI-only world");
 			}
 		}
 
@@ -160,12 +163,32 @@ public final class McpConfig {
 		void move(Path from, Path to) throws Exception;
 	}
 
-	/** MCP-26 — whether the client is pointed at this machine. A blank address says nothing. */
-	private static boolean isLoopback(String address) {
-		return address == null || address.isEmpty()
-				|| "127.0.0.1".equals(address)
-				|| "localhost".equalsIgnoreCase(address)
-				|| "::1".equals(address)
-				|| "0:0:0:0:0:0:0:1".equals(address);
+	/**
+	 * MCP-26 — whether the client is pointed at this machine: {@code localhost}, anything in
+	 * {@code 127.0.0.0/8}, or {@code ::1} in any spelling, bracketed or not. A blank address says
+	 * nothing. Host names are not resolved, so this never touches DNS.
+	 */
+	static boolean isLoopback(String address) {
+		if (address == null) {
+			return true;
+		}
+		String host = address.trim();
+		if (host.startsWith("[") && host.endsWith("]")) {
+			host = host.substring(1, host.length() - 1);
+		}
+		if (host.isEmpty() || "localhost".equalsIgnoreCase(host)) {
+			return true;
+		}
+		if (host.matches("127(\\.\\d{1,3}){3}")) {
+			return true;
+		}
+		if (host.indexOf(':') >= 0 && host.matches("[0-9A-Fa-f:]+")) {
+			try {
+				return InetAddress.getByName(host).isLoopbackAddress(); // a literal: no lookup
+			} catch (UnknownHostException malformed) {
+				return false;
+			}
+		}
+		return false;
 	}
 }
