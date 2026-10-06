@@ -9,8 +9,10 @@ import java.awt.EventQueue;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
 
 /**
  * MCP-10 — injects synthetic keyboard and mouse input through the client's own listeners,
@@ -26,15 +28,55 @@ public final class InputInjector {
 	public static final int MAX_TEXT_LENGTH = 80;
 	public static final long MILLIS_PER_FRAME = 20L;
 
-	private static final Queue<PendingRelease> PENDING = new ConcurrentLinkedQueue<PendingRelease>();
+	private static final ReleaseQueue PENDING = new ReleaseQueue();
 
-	private static final class PendingRelease {
+	/** One key press waiting for its release deadline. */
+	static final class PendingRelease {
 		final int virtualKey;
 		final long releaseFrame;
 
 		PendingRelease(int virtualKey, long releaseFrame) {
 			this.virtualKey = virtualKey;
 			this.releaseFrame = releaseFrame;
+		}
+	}
+
+	/**
+	 * MCP-26 — releases in deadline order. A plain FIFO stopped at the first entry that was not
+	 * due yet, so a short hold queued behind a long one waited for the long one to expire.
+	 */
+	static final class ReleaseQueue {
+		private final PriorityQueue<PendingRelease> queue = new PriorityQueue<PendingRelease>(
+				new Comparator<PendingRelease>() {
+					@Override
+					public int compare(PendingRelease left, PendingRelease right) {
+						return Long.compare(left.releaseFrame, right.releaseFrame);
+					}
+				});
+
+		synchronized void add(PendingRelease release) {
+			queue.add(release);
+		}
+
+		synchronized boolean isEmpty() {
+			return queue.isEmpty();
+		}
+
+		synchronized int size() {
+			return queue.size();
+		}
+
+		synchronized void clear() {
+			queue.clear();
+		}
+
+		/** Removes and returns every release due at or before {@code frame}, earliest first. */
+		synchronized List<PendingRelease> due(long frame) {
+			List<PendingRelease> released = new ArrayList<PendingRelease>();
+			while (!queue.isEmpty() && queue.peek().releaseFrame <= frame) {
+				released.add(queue.poll());
+			}
+			return released;
 		}
 	}
 
@@ -118,12 +160,7 @@ public final class InputInjector {
 			PENDING.clear();
 			return;
 		}
-		PendingRelease release;
-		while ((release = PENDING.peek()) != null) {
-			if (release.releaseFrame > frame) {
-				break;
-			}
-			PENDING.poll();
+		for (PendingRelease release : PENDING.due(frame)) {
 			keyboard.keyReleased(keyEvent(canvas, KeyEvent.KEY_RELEASED, 0, release.virtualKey, KeyEvent.CHAR_UNDEFINED));
 		}
 	}
