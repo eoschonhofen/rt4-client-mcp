@@ -1717,6 +1717,9 @@ public final class client extends GameShell {
 		audioLoop();
 		Keyboard.loop();
 		Mouse.loop();
+		// MCP tool calls run here: after input is polled, before the game logic, so their
+		// packets leave in this frame's flush exactly like real input.
+		rt4.mcp.GameThread.drain();
 		if (GlRenderer.enabled) {
 			GlCleaner.process();
 		}
