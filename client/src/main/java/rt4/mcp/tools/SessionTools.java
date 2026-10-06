@@ -2,8 +2,6 @@ package rt4.mcp.tools;
 
 import com.google.gson.JsonObject;
 import rt4.Component;
-import rt4.ComponentPointer;
-import rt4.HashTableIterator;
 import rt4.InterfaceList;
 import rt4.JagString;
 import rt4.LoginManager;
@@ -72,44 +70,47 @@ public final class SessionTools {
 				args -> {
 					GameThread.requireLoggedIn();
 
-					ComponentTarget button = findLogoutButton();
+					LogoutButton button = findLogoutButton();
 					if (button == null) {
 						throw new ToolException("no logout button is open; open the logout tab first");
 					}
-					Component component = Targets.resolveComponent(button);
-					String op = Names.plain(component.option);
-					if (op == null || op.isEmpty()) {
-						op = "Logout";
-					}
-					MenuSynth.act(button, op, null);
+					MenuSynth.act(button.target, button.op, null);
 					rt4.mcp.nav.NavTask.cancel("cancelled by logout");
 
 					JsonObject out = new JsonObject();
 					out.addProperty("ok", true);
-					out.addProperty("target", button.format());
-					out.addProperty("op", op);
+					out.addProperty("target", button.target.format());
+					out.addProperty("op", button.op);
 					return ToolResult.json(out);
 				});
 	}
 
-	/** The logout button is the open component with {@code buttonType == 5}. */
-	static ComponentTarget findLogoutButton() {
-		int top = InterfaceList.topLevelInterface;
-		if (top != -1) {
-			ComponentTarget found = findLogoutIn(InterfaceList.components == null || top >= InterfaceList.components.length
-					? null : InterfaceList.components[top], top);
-			if (found != null) {
-				return found;
-			}
+	/** The logout button and the op that clicks it. */
+	static final class LogoutButton {
+		final ComponentTarget target;
+		final String op;
+
+		LogoutButton(ComponentTarget target, String op) {
+			this.target = target;
+			this.op = op;
 		}
-		if (InterfaceList.openInterfaces != null) {
-			HashTableIterator iterator = new HashTableIterator(InterfaceList.openInterfaces);
-			for (ComponentPointer pointer = (ComponentPointer) iterator.first(); pointer != null; pointer = (ComponentPointer) iterator.next()) {
-				int interfaceId = pointer.interfaceId;
+	}
+
+	/**
+	 * Finds the logout trigger in any open interface. The client marks it with
+	 * {@code clientCode == 205} (see {@code MiniMenu.handleSpecialButtonAction}); the 530 logout
+	 * tab also uses {@code buttonType == 5} ("Click here to logout" is a plain button whose text
+	 * says what it does).
+	 */
+	static LogoutButton findLogoutButton() {
+		for (int rank = 0; rank < 3; rank++) {
+			com.google.gson.JsonArray open = StatusTools.openInterfaceIds();
+			for (int i = 0; i < open.size(); i++) {
+				int interfaceId = open.get(i).getAsInt();
 				if (InterfaceList.components == null || interfaceId < 0 || interfaceId >= InterfaceList.components.length) {
 					continue;
 				}
-				ComponentTarget found = findLogoutIn(InterfaceList.components[interfaceId], interfaceId);
+				LogoutButton found = findLogoutIn(InterfaceList.components[interfaceId], -1, interfaceId, 1, rank);
 				if (found != null) {
 					return found;
 				}
@@ -118,15 +119,39 @@ public final class SessionTools {
 		return null;
 	}
 
-	private static ComponentTarget findLogoutIn(Component[] children, int interfaceId) {
-		if (children == null) {
+	private static LogoutButton findLogoutIn(Component[] all, int parentId, int interfaceId, int depth, int rank) {
+		if (all == null || depth > 12) {
 			return null;
 		}
-		for (Component child : children) {
-			if (child != null && child.buttonType == LOGOUT_BUTTON_TYPE) {
-				return ComponentTarget.component(interfaceId, child.id & 0xFFFF);
+		for (Component child : all) {
+			if (child == null || child.overlayer != parentId) {
+				continue;
+			}
+			if (matchesRank(child, rank)) {
+				String op = Names.plain(child.option);
+				if (op == null || op.isEmpty()) {
+					op = "Ok";
+				}
+				return new LogoutButton(ComponentTarget.component(interfaceId, child.id & 0xFFFF), op);
+			}
+			LogoutButton nested = findLogoutIn(all, child.id, interfaceId, depth + 1, rank);
+			if (nested != null) {
+				return nested;
 			}
 		}
 		return null;
 	}
+
+	private static boolean matchesRank(Component component, int rank) {
+		if (rank == 0) {
+			return component.clientCode == 205;
+		}
+		if (rank == 1) {
+			return component.buttonType == LOGOUT_BUTTON_TYPE;
+		}
+		String text = Names.plain(component.text);
+		return component.buttonType != 0 && text != null
+				&& text.toLowerCase(java.util.Locale.ROOT).contains("logout");
+	}
+
 }

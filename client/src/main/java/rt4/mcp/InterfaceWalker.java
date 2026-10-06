@@ -233,7 +233,7 @@ public final class InterfaceWalker {
 		}
 
 		JsonArray components = new JsonArray();
-		collectComponents(children, includeHidden, maxDepth, 1, components);
+		collectComponents(children, -1, includeHidden, maxDepth, 1, components);
 
 		JsonObject entry = new JsonObject();
 		entry.addProperty("id", interfaceId);
@@ -244,17 +244,18 @@ public final class InterfaceWalker {
 		return entry;
 	}
 
-	private static void collectComponents(Component[] children, boolean includeHidden, int maxDepth, int depth,
-										  JsonArray out) {
-		if (children == null || depth > maxDepth) {
+	/**
+	 * Walks the component tree. An interface's component array is flat, so a component's
+	 * children are the entries whose {@code overlayer} is that component's id; roots have
+	 * {@code overlayer == -1}.
+	 */
+	private static void collectComponents(Component[] all, int parentId, boolean includeHidden, int maxDepth,
+										  int depth, JsonArray out) {
+		if (all == null || depth > maxDepth) {
 			return;
 		}
-		for (Component child : children) {
-			if (child == null) {
-				continue;
-			}
-			if (child.overlayer != -1) {
-				// Belongs to another component's layer; it is walked from its parent.
+		for (Component child : all) {
+			if (child == null || child.overlayer != parentId) {
 				continue;
 			}
 			if (!includeHidden && InterfaceList.isHidden(child)) {
@@ -264,6 +265,7 @@ public final class InterfaceWalker {
 			if (json != null) {
 				out.add(json);
 			}
+			collectComponents(all, child.id, includeHidden, maxDepth, depth + 1, out);
 		}
 	}
 

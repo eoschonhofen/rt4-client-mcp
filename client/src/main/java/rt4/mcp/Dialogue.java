@@ -209,24 +209,32 @@ public final class Dialogue {
 		if (InterfaceList.components == null || interfaceId < 0 || interfaceId >= InterfaceList.components.length) {
 			return views;
 		}
-		Component[] children = InterfaceList.components[interfaceId];
-		if (children == null) {
-			return views;
+		collectViews(InterfaceList.components[interfaceId], -1, views, 1);
+		return views;
+	}
+
+	/**
+	 * Flattens the component tree. The interface's array is flat, so children are the
+	 * entries whose {@code overlayer} is the parent's id; roots have {@code overlayer == -1}.
+	 */
+	private static void collectViews(Component[] all, int parentId, List<InterfaceWalker.ComponentView> out, int depth) {
+		if (all == null || depth > 12) {
+			return;
 		}
-		for (Component child : children) {
-			if (child == null || child.overlayer != -1) {
+		for (Component child : all) {
+			if (child == null || child.overlayer != parentId) {
 				continue;
 			}
-			views.add(new LiveView(child));
+			out.add(new LiveView(child));
+			collectViews(all, child.id, out, depth + 1);
 			if (child.createdComponents != null) {
 				for (Component created : child.createdComponents) {
 					if (created != null) {
-						views.add(new LiveView(created));
+						out.add(new LiveView(created));
 					}
 				}
 			}
 		}
-		return views;
 	}
 
 	/** Adapts a live {@link Component} to the walker view the classifier reads. */
