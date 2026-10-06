@@ -99,6 +99,7 @@ public final class Dialogue {
 		out.addProperty("kind", kindOf(interfaceId));
 		out.addProperty("interface", interfaceId);
 
+		boolean optionsMenu = OPTIONS.contains(interfaceId);
 		JsonArray lines = new JsonArray();
 		JsonArray options = new JsonArray();
 		JsonObject continueTarget = null;
@@ -108,29 +109,33 @@ public final class Dialogue {
 				continue;
 			}
 			String text = view.textValue();
-			if (text != null && !text.trim().isEmpty()) {
-				lines.add(text.trim());
+			if (text != null) {
+				text = text.trim();
+			}
+			String advanceOp = view.continueOp();
+
+			// In an option menu the choice is the clickable text itself, and the op that
+			// fires it is the component's continue action (not its label).
+			if (optionsMenu && advanceOp != null && text != null && !text.isEmpty()) {
+				addOption(options, text, view.targetId(), advanceOp);
+				continue;
+			}
+
+			if (text != null && !text.isEmpty()) {
+				lines.add(text);
 			}
 			List<String> optionTexts = view.optionTexts();
 			if (optionTexts != null) {
 				for (String option : optionTexts) {
-					if (option == null || option.trim().isEmpty()) {
-						continue;
+					if (option != null && !option.trim().isEmpty()) {
+						addOption(options, option.trim(), view.targetId(), option.trim());
 					}
-					JsonObject entry = new JsonObject();
-					entry.addProperty("index", options.size() + 1);
-					entry.addProperty("text", option.trim());
-					entry.add("target", Tools.text(view.targetId()));
-					options.add(entry);
 				}
 			}
-			if (continueTarget == null) {
-				String continueOp = view.continueOp();
-				if (continueOp != null && !continueOp.trim().isEmpty()) {
-					continueTarget = new JsonObject();
-					continueTarget.add("target", Tools.text(view.targetId()));
-					continueTarget.addProperty("op", continueOp.trim());
-				}
+			if (continueTarget == null && advanceOp != null && !advanceOp.trim().isEmpty()) {
+				continueTarget = new JsonObject();
+				continueTarget.add("target", Tools.text(view.targetId()));
+				continueTarget.addProperty("op", advanceOp.trim());
 			}
 		}
 
@@ -139,14 +144,21 @@ public final class Dialogue {
 		}
 		if (options.size() > 0) {
 			out.add("options", options);
-			if (!"options".equals(out.get("kind").getAsString())) {
-				out.addProperty("kind", "options");
-			}
+			out.addProperty("kind", "options");
 		}
 		if (continueTarget != null) {
 			out.add("continue", continueTarget);
 		}
 		return out;
+	}
+
+	private static void addOption(JsonArray options, String text, String target, String op) {
+		JsonObject entry = new JsonObject();
+		entry.addProperty("index", options.size() + 1);
+		entry.addProperty("text", text);
+		entry.add("target", Tools.text(target));
+		entry.addProperty("op", op);
+		options.add(entry);
 	}
 
 	/** Case-insensitive substring match, or a 1-based index. */

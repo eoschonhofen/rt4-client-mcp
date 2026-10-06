@@ -42,6 +42,11 @@ class DialogueTest {
 			return new View(target, null, Collections.<String>emptyList(), op);
 		}
 
+		/** A clickable choice: visible text plus the action that fires it. */
+		static View choice(String target, String text, String op) {
+			return new View(target, text, Collections.<String>emptyList(), op);
+		}
+
 		@Override
 		public boolean hidden() {
 			return false;
@@ -176,6 +181,25 @@ class DialogueTest {
 				View.line("if:241:1", "  "),
 				View.line("if:241:2", "Real line")));
 		assertEquals(1, dialogue.getAsJsonArray("lines").size());
+	}
+
+	@Test
+	void choicesCarryTheirOwnOpWhenTheTextDiffers() {
+		// 530 option menus are clickable text with a continue action, not if3 ops.
+		JsonObject dialogue = Dialogue.classify(228, Arrays.<InterfaceWalker.ComponentView>asList(
+				View.line("if:228:1", "Select an Option"),
+				View.choice("if:228:2", "Yes, I'd like to skip the tutorial.", "Continue"),
+				View.choice("if:228:3", "No, thanks.", "Continue")));
+
+		assertEquals("options", dialogue.get("kind").getAsString());
+		assertEquals(1, dialogue.getAsJsonArray("lines").size(), "choices must not leak into the transcript");
+		assertEquals("Select an Option", dialogue.getAsJsonArray("lines").get(0).getAsString());
+		JsonArray options = dialogue.getAsJsonArray("options");
+		assertEquals(2, options.size());
+		assertEquals("Yes, I'd like to skip the tutorial.",
+				options.get(0).getAsJsonObject().get("text").getAsString());
+		assertEquals("Continue", options.get(0).getAsJsonObject().get("op").getAsString());
+		assertEquals("if:228:2", options.get(0).getAsJsonObject().get("target").getAsString());
 	}
 
 	@Test

@@ -224,7 +224,8 @@ public final class HelperTools {
 					JsonObject option = Dialogue.findOption(options, text, index);
 
 					String before = dialogue.toString();
-					click(option.get("target").getAsString(), option.get("text").getAsString());
+					String optionOp = option.has("op") ? option.get("op").getAsString() : option.get("text").getAsString();
+					click(option.get("target").getAsString(), optionOp);
 					waitForChange(before);
 
 					JsonObject out = new JsonObject();
