@@ -78,6 +78,21 @@ class McpConfigTest {
 	}
 
 	@Test
+	void aFailedWriteLeavesNoTempFile() throws Exception {
+		Path path = tempDir.resolve("config.json");
+		Files.write(path, "{\"mcp_token\": \"\"}\n".getBytes(StandardCharsets.UTF_8));
+
+		boolean written = McpConfig.writeToken(path.toString(), "abcdef", (from, to) -> {
+			throw new java.io.IOException("simulated move failure");
+		});
+
+		assertFalse(written);
+		try (java.util.stream.Stream<Path> files = Files.list(tempDir)) {
+			assertEquals(1L, files.count(), "the temp file must be deleted when the write fails");
+		}
+	}
+
+	@Test
 	void existingTokenIsNotRegenerated() throws Exception {
 		Path path = tempDir.resolve("config.json");
 		String existing = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";

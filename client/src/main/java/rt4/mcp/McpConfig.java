@@ -89,11 +89,17 @@ public final class McpConfig {
 	 * there is no file, it cannot be parsed as an object, or the write fails.
 	 */
 	static boolean writeToken(String configPath, String token) {
+		return writeToken(configPath, token, null);
+	}
+
+	/** Test seam: {@code mover} replaces the real move, so a failure can be simulated. */
+	static boolean writeToken(String configPath, String token, TokenMove mover) {
 		if (configPath == null || configPath.isEmpty()) {
 			return false;
 		}
 
 		Path target = Paths.get(configPath);
+		Path tmp = null;
 		try {
 			if (!Files.isRegularFile(target)) {
 				return false;
@@ -113,17 +119,40 @@ public final class McpConfig {
 			String pretty = new GsonBuilder().setPrettyPrinting().create().toJson(root) + System.lineSeparator();
 
 			Path parent = target.toAbsolutePath().getParent();
-			Path tmp = Files.createTempFile(parent, "config.json.", ".tmp");
+			tmp = Files.createTempFile(parent, "config.json.", ".tmp");
 			Files.write(tmp, pretty.getBytes(StandardCharsets.UTF_8));
-			try {
-				Files.move(tmp, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
-			} catch (Exception atomicUnsupported) {
-				Files.move(tmp, target, StandardCopyOption.REPLACE_EXISTING);
-			}
+			moveIntoPlace(tmp, target, mover);
+			tmp = null; // The move consumed it; there is nothing left to clean up.
 			return true;
 		} catch (Exception ex) {
 			System.err.println("[MCP] token write-back failed: " + ex);
 			return false;
+		} finally {
+			if (tmp != null) {
+				try {
+					Files.deleteIfExists(tmp);
+				} catch (Exception ignored) {
+					// Already gone, or the directory refuses deletes.
+				}
+			}
 		}
+	}
+
+	/** Moves the finished temp file over the config, atomically when the filesystem allows. */
+	private static void moveIntoPlace(Path tmp, Path target, TokenMove mover) throws Exception {
+		if (mover != null) {
+			mover.move(tmp, target);
+			return;
+		}
+		try {
+			Files.move(tmp, target, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+		} catch (Exception atomicUnsupported) {
+			Files.move(tmp, target, StandardCopyOption.REPLACE_EXISTING);
+		}
+	}
+
+	/** How a finished temp file replaces the config; a test seam for a failed write. */
+	interface TokenMove {
+		void move(Path from, Path to) throws Exception;
 	}
 }
