@@ -31,6 +31,7 @@ public final class MenuSynth {
 		public final String op;
 		public final String subject;
 		public final String target;
+		/** The game tick the action was queued on, like the other tools' tick fields. */
 		public final long tick;
 
 		Ack(String op, String subject, String target, long tick) {
@@ -89,7 +90,7 @@ public final class MenuSynth {
 			Mouse.clickY = Rasteriser.centerY;
 
 			MiniMenu.doAction(match.index);
-			return new Ack(op, match.subject, target.format(), GameThread.frame());
+			return new Ack(op, match.subject, target.format(), TickTracker.tick());
 		} finally {
 			restore(saved);
 		}
