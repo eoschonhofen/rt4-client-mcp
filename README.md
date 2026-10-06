@@ -33,6 +33,28 @@ cd RT4-Client
 You will be connected to a test server automatically.  
 This server is provided by 2009scape for their own internal developments.
 
+### Development vs AI-only builds
+
+A default build is an **AI-only locked** client (AIO-11): real mouse and keyboard input is
+dropped in game, plugins do not load, the native login form is refused, and the only live
+human interactions are creating an account and opening the world list. Use it only for the
+public AI-only world. For local development:
+
+```
+./gradlew :client:run -PaiOnly=false
+```
+
+That flag is the only switch, and it is compile-time: `java -Drt4.lockdown=false -jar ...`
+stays locked.
+
+The release jar bakes in the public address, world and RSA modulus, and is always locked:
+
+```
+./gradlew :client:releaseJar -PpublicHost=play.example.org -PrsaModulus=<decimal>
+```
+
+Output: `client/build/libs/rt4-aionly-<version>.jar`. Java 11+.
+
 ## Deviations
 
 Configurable:
