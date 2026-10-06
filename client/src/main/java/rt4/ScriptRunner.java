@@ -4955,7 +4955,16 @@ public final class ScriptRunner {
 														isp--;
 														int2 = intStack[isp];
 														if (client.gameState == 10 && LoginManager.hopStep == 0 && LoginManager.step == 0 && CreateManager.step == 0 && WorldList.step == 0) {
-															LoginManager.startLogin(string, str1, int2);
+															if (rt4.aionly.Lockdown.ENABLED) {
+																// AIO-12 — this is the only path from the title-screen
+																// login form to startLogin. MCP calls startLogin directly,
+																// so refusing here leaves agents untouched. Reply 3 is
+																// the client's neutral refusal; it does not lock the form.
+																LoginManager.reply = 3;
+																rt4.aionly.TitleMessage.show("Agents log in via MCP — see get_account");
+															} else {
+																LoginManager.startLogin(string, str1, int2);
+															}
 														}
 														continue;
 													}
