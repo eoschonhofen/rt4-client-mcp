@@ -63,12 +63,19 @@ public final class Waiters {
 		public final long id;
 		public final List<Conditions.Condition> conditions;
 		public final Conditions.Mode mode;
+		/**
+		 * Whether the player was already logged out when the wait started. A wait begun on the
+		 * title screen must survive the logout guard, otherwise wait_for(logged_in) could never
+		 * succeed.
+		 */
+		final boolean startedLoggedOut;
 		final CompletableFuture<Outcome> future = new CompletableFuture<Outcome>();
 
-		Waiter(long id, List<Conditions.Condition> conditions, Conditions.Mode mode) {
+		Waiter(long id, List<Conditions.Condition> conditions, Conditions.Mode mode, boolean startedLoggedOut) {
 			this.id = id;
 			this.conditions = conditions;
 			this.mode = mode;
+			this.startedLoggedOut = startedLoggedOut;
 		}
 
 		boolean expectsLoggedOut() {
@@ -104,7 +111,7 @@ public final class Waiters {
 		for (Conditions.Condition condition : conditions) {
 			Conditions.snapshot(condition, current);
 		}
-		Waiter waiter = new Waiter(NEXT_ID.getAndIncrement(), conditions, mode);
+		Waiter waiter = new Waiter(NEXT_ID.getAndIncrement(), conditions, mode, current.loggedOut());
 		ACTIVE.put(waiter.id, waiter);
 		return waiter;
 	}
@@ -137,7 +144,7 @@ public final class Waiters {
 		boolean loggedOut = current.loggedOut();
 
 		for (Waiter waiter : ACTIVE.values()) {
-			if (loggedOut && !waiter.expectsLoggedOut()) {
+			if (loggedOut && !waiter.startedLoggedOut && !waiter.expectsLoggedOut()) {
 				complete(waiter, new Outcome(false, false, "logged_out", new ArrayList<String>(),
 						current.tick(), status()));
 				continue;
@@ -174,6 +181,7 @@ public final class Waiters {
 	public static JsonObject status() {
 		Conditions.GameView current = view;
 		JsonObject status = new JsonObject();
+		status.addProperty("logged_in", current.loggedIn());
 		if (current.loggedIn()) {
 			JsonObject position = new JsonObject();
 			position.addProperty("x", current.x());

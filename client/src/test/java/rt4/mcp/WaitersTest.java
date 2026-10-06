@@ -157,6 +157,24 @@ class WaitersTest {
 	}
 
 	@Test
+	void waitForLoggedInSurvivesTheLogoutGuard() throws Exception {
+		FakeGameView view = new FakeGameView();
+		view.loggedIn = false;
+		view.loggedOut = true;
+		Waiters.setView(view);
+
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"logged_in\"}"), Conditions.Mode.ANY);
+		Waiters.evaluate();
+		assertFalse(waiter.future.isDone(), "a wait that starts on the title screen must not be aborted");
+
+		view.loggedOut = false;
+		view.loggedIn = true;
+		Waiters.evaluate();
+
+		assertTrue(waiter.future.get().met);
+	}
+
+	@Test
 	void cancelAllAbortsEverything() throws Exception {
 		FakeGameView view = new FakeGameView();
 		Waiters.setView(view);
