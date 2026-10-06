@@ -71,7 +71,8 @@ public final class ToolResult {
 	}
 
 	/** A tool error: the agent sees the text and {@code isError: true}. */
-	public static ToolResult error(String message) {		ToolResult result = text(message);
+	public static ToolResult error(String message) {
+		ToolResult result = text(message);
 		result.error = true;
 		return result;
 	}

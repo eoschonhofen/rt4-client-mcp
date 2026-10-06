@@ -96,7 +96,8 @@ public final class MenuSynth {
 	}
 
 	/** Clears "Use item" and spell targeting. */
-	public static void cancelSelection() {		MiniMenu.cancelTargeting();
+	public static void cancelSelection() {
+		MiniMenu.cancelTargeting();
 		MiniMenu.itemTargetMode = 0;
 		MiniMenu.selectedObjId = 0;
 		MiniMenu.selectedObjSlot = 0;
