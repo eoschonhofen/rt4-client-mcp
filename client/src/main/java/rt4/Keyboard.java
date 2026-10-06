@@ -4,6 +4,8 @@ import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
+import rt4.aionly.InputGate;
+import rt4.mcp.InputInjector;
 
 import java.awt.Component;
 import java.awt.event.FocusEvent;
@@ -299,6 +301,14 @@ public final class Keyboard implements KeyListener, FocusListener {
 	@OriginalMember(owner = "client!uf", name = "keyPressed", descriptor = "(Ljava/awt/event/KeyEvent;)V")
 	@Override
 	public final synchronized void keyPressed(@OriginalArg(0) KeyEvent event) {
+		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState)) {
+			return;
+		}
+		// AIO-09 — Enter dismisses the token panel instead of reaching the title screen.
+		if (client.gameState == InputGate.TITLE_SCREEN_STATE
+				&& rt4.aionly.TokenPanel.handleKey(event.getKeyCode())) {
+			return;
+		}
 		if (instance == null) {
 			return;
 		}
@@ -340,6 +350,9 @@ public final class Keyboard implements KeyListener, FocusListener {
 	@OriginalMember(owner = "client!uf", name = "keyTyped", descriptor = "(Ljava/awt/event/KeyEvent;)V")
 	@Override
 	public final void keyTyped(@OriginalArg(0) KeyEvent event) {
+		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState)) {
+			return;
+		}
 		if (instance != null) {
 			@Pc(9) int c = getKeyChar(event);
 			if (c >= 0) {
@@ -365,6 +378,9 @@ public final class Keyboard implements KeyListener, FocusListener {
 	@OriginalMember(owner = "client!uf", name = "keyReleased", descriptor = "(Ljava/awt/event/KeyEvent;)V")
 	@Override
 	public final synchronized void keyReleased(@OriginalArg(0) KeyEvent event) {
+		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState)) {
+			return;
+		}
 		if (instance != null) {
 			idleLoops = 0;
 			@Pc(11) int c = event.getKeyCode();

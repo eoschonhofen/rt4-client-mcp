@@ -8,3 +8,8 @@ dump/
 
 __pycache__/
 *.pyc
+
+# AIO-07 — local account/token store, written next to config.json
+accounts.json
+accounts.json.bad-*
+accounts.json.tmp

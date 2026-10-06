@@ -3,6 +3,9 @@ package rt4.mcp;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import rt4.aionly.IdleKeepAlive;
+import rt4.aionly.SpectatorOverlay;
+import rt4.aionly.ToolKinds;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -31,7 +34,8 @@ public final class McpProtocol {
 					+ "Discover targets with find_entities, inspect what they offer with list_actions, "
 					+ "then act with do_action. Actions are only acknowledged: the packet is queued, "
 					+ "the server has not necessarily accepted it. Follow an action with wait_for(...) "
-					+ "and read state (get_status, get_inventory, get_chat) to confirm what happened.";
+					+ "and read state (get_status, get_inventory, get_chat) to confirm what happened. "
+					+ "To start: get_account -> login(name, token) -> wait_for(logged_in).";
 
 	private final ToolRegistry tools;
 
@@ -130,13 +134,28 @@ public final class McpProtocol {
 		try {
 			ToolResult result = tool.call(arguments);
 			logCall(name, started, false);
+			noteActingCall(name, arguments);
 			return JsonRpc.result(id, result == null ? ToolResult.text("").toJson() : result.toJson());
 		} catch (ToolException expected) {
 			logCall(name, started, true);
+			noteActingCall(name, arguments);
 			return JsonRpc.result(id, ToolResult.error(expected.getMessage()).toJson());
 		} catch (RuntimeException unexpected) {
 			logCall(name, started, true);
+			noteActingCall(name, arguments);
 			return JsonRpc.result(id, ToolResult.error(unexpected.toString()).toJson());
+		}
+	}
+
+	/**
+	 * AIO-11 / AIO-14 — a call that changes something is activity: it resets the idle-logout
+	 * counters and becomes the spectator overlay's "last action". A read-only tool is
+	 * deliberately excluded from both: watching is not playing.
+	 */
+	private static void noteActingCall(String tool, JsonObject arguments) {
+		SpectatorOverlay.record(tool, arguments);
+		if (!ToolKinds.isReadOnly(tool)) {
+			IdleKeepAlive.reset();
 		}
 	}
 

@@ -21,8 +21,11 @@ On startup the client prints a ready-to-paste command:
 [MCP] claude mcp add --transport http rt4 http://127.0.0.1:43600/mcp --header "Authorization: Bearer <token>"
 ```
 
-If the port is taken the client logs `[MCP] port 43600 in use, MCP disabled` and the game
-starts normally.
+If the port is taken the client walks up to `mcp_port + 9` and says so in the log and the
+window title (`— MCP :43601`). Only when all ten are busy does it log
+`[MCP] ports 43600-43609 are all in use, MCP disabled; close a client and restart this one`
+and start the game normally. The server name in the printed command carries the port from the
+second one on (`rt4-43601`), so several clients on one machine do not collide.
 
 ## 2. Keep the token out of git
 
@@ -60,7 +63,20 @@ The server speaks plain JSON (no SSE) on `POST /mcp`. Requests must carry the be
 `Origin`, if present, must be loopback; the `Host` header must name `127.0.0.1:<port>` or
 `localhost:<port>`. `GET` is a `405`; `DELETE` with the session header ends a session.
 
-## 4. Tool catalogue
+## 4. Logging in with an agent token
+
+An AI-only (locked) build refuses the native login form on purpose, so logging in is:
+
+1. `get_account` — lists the accounts this client created for the server it points at:
+   `{name, token, created}` per account. With `name` it returns just that one.
+2. `login(username=<name>, password=<token>)`.
+3. `wait_for(logged_in)`.
+
+The token is the account password. A human creates the account from the title screen and the
+client saves `{name, token, host, created}` to `accounts.json` next to `config.json`; the token
+is also shown once on screen. Never type a token into chat, and keep `accounts.json` private.
+
+## 5. Tool catalogue
 
 Generated with `python3 -I scripts/mcp-smoke.py --print-tools` against a running client:
 
@@ -80,7 +96,8 @@ Generated with `python3 -I scripts/mcp-smoke.py --print-tools` against a running
 | `drag_item` | Move an item between two slots (packet 231). |
 | `camera` | Read and set yaw, pitch and zoom. |
 | `mouse_click` | Raw mouse event at a canvas pixel (escape hatch; pair with `get_screenshot`). |
-| `login` · `logout` | Title-screen login and the real logout button. |
+| `login` · `logout` | Title-screen login and the real logout button. The password is the account's token from `get_account`. |
+| `get_account` | The accounts this client saved for this server: name, token, created. The token is the password for `login`. |
 | `get_screenshot` | PNG of the last frame, software or HD mode. |
 | `wait_for` | Block on up to 16 conditions instead of polling. |
 | `walk_to` · `nav_status` · `nav_cancel` | Background A* walking that opens doors. After a walk, `nav_status` keeps `last_state`, `last_reason` and `last_doors_opened`. |
@@ -88,7 +105,7 @@ Generated with `python3 -I scripts/mcp-smoke.py --print-tools` against a running
 | `continue_dialogue` | Click through a dialogue and collect the transcript. |
 | `choose_option` | Pick a dialogue option by text or index. |
 
-## 5. The agent loop
+## 6. The agent loop
 
 ```
 find_entities(type="npc", name="Banker", has_op="Bank")   -> target
@@ -102,7 +119,7 @@ do_action(target="if:548:6:0", op="Withdraw-10")
 and a state read. Every action cancels an active `walk_to`, and a real mouse click cancels it
 too, so you can take over at any time.
 
-## 6. Limits
+## 7. Limits
 
 * `walk_to` works on one plane. Stairs, ladders, agility shortcuts, teleports and ferries
   fail with a reason instead of guessing.
@@ -112,7 +129,7 @@ too, so you can take over at any time.
   tick), so they are close but not exact. Responses say `ticks_approximate: true`.
 * Tools have a 2 second budget per game-thread hop; `wait_for` may block up to 60 s.
 
-## 7. Smoke test
+## 8. Smoke test
 
 With the server and client running:
 
@@ -129,7 +146,14 @@ A walk must end `ARRIVED`. A walk that fails `stuck`, or a door walk that never 
 is a FAIL. The walk step skips only when the chat shows the server refused the walk packet,
 for example on Tutorial Island while a modal blocks movement.
 
-## 8. Warning
+For the AI-only path (create account → `get_account` → `login` → walk → logout → a wrong token
+is refused) there is a second script:
+
+```bash
+python3 -I scripts/aionly-smoke.py --url http://127.0.0.1:43600/mcp --token <token>
+```
+
+## 9. Warning
 
 There is no target-server gate. Pointing `ip_address` at a live 2009Scape server and letting
 an agent play there is botting: it breaks their rules and gets accounts banned. This is built

@@ -50,7 +50,9 @@ public final class ScreenshotTool {
 						+ "Prefer the text tools; images are expensive. The text line reports the size, the "
 						+ "scale the image was actually encoded at, the region origin and the source frame "
 						+ "size; convert an image pixel to a canvas coordinate with "
-						+ "canvas = (region_x, region_y) + pixel / scale.",
+						+ "canvas = (region_x, region_y) + pixel / scale. "
+						+ "In an AI-only (locked) build the top-left 200x36 pixels are the spectator "
+						+ "overlay, not game content.",
 				schema,
 				args -> {
 					final double requested = Screenshot.clampScale(

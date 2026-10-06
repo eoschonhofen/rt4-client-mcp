@@ -4,6 +4,7 @@ import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
+import rt4.aionly.InputGate;
 
 import javax.swing.*;
 import java.awt.Component;
@@ -117,6 +118,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseMoved", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseMoved(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
 		if (instance != null) {
 			idleLoops = 0;
 			currentMouseX = event.getX();
@@ -135,6 +139,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseDragged", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseDragged(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
 		int x = event.getX();
 		int y = event.getY();
 
@@ -150,6 +157,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseReleased", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseReleased(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
 		if (instance != null) {
 			idleLoops = 0;
 			pendingPressedButton = 0;
@@ -169,6 +179,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseClicked", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final void mouseClicked(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
 		if (event.isPopupTrigger()) {
 			event.consume();
 		}
@@ -182,6 +195,16 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mousePressed", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mousePressed(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
+		// AIO-09 — while the token panel is open it swallows every title-screen click, so a
+		// human cannot click through it into the login form.
+		if (client.gameState == InputGate.TITLE_SCREEN_STATE && rt4.aionly.TokenPanel.isOpen()
+				&& rt4.aionly.TokenPanel.handleClick(event.getX(), event.getY(),
+						GameShell.canvasWidth, GameShell.canvasHeight)) {
+			return;
+		}
 		if (SwingUtilities.isMiddleMouseButton(event)) {
 			return;
 		}
@@ -217,6 +240,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseExited", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseExited(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
 		if (instance != null) {
 			idleLoops = 0;
 			currentMouseX = -1;
@@ -227,6 +253,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseEntered", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseEntered(@OriginalArg(0) MouseEvent event) {
+		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+			return;
+		}
 		if (instance != null) {
 			idleLoops = 0;
 			currentMouseX = event.getX();

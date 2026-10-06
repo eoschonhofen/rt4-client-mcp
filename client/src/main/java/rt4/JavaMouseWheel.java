@@ -4,6 +4,7 @@ import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
+import rt4.aionly.InputGate;
 
 import java.awt.Component;
 import java.awt.event.MouseWheelEvent;
@@ -35,6 +36,9 @@ public final class JavaMouseWheel extends MouseWheel implements MouseWheelListen
 	@OriginalMember(owner = "client!o", name = "mouseWheelMoved", descriptor = "(Ljava/awt/event/MouseWheelEvent;)V")
 	@Override
 	public final synchronized void mouseWheelMoved(@OriginalArg(0) MouseWheelEvent event) {
+		if (!InputGate.allowMouse(false, client.gameState)) {
+			return;
+		}
 		this.previousRotation = this.currentRotation;
 		this.currentRotation += event.getWheelRotation();
 	}

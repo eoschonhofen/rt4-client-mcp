@@ -251,11 +251,26 @@ public final class client extends GameShell {
       }
 
       System.out.println("Loading config path " + configPath);
+      // AIO-15 — the release jar bundles a default config; first run copies it into place so
+      // McpConfig has a real file to write the generated token back into.
+      try {
+        rt4.aionly.ConfigBootstrap.ensureConfig(java.nio.file.Paths.get(configPath));
+      } catch (Exception configError) {
+        System.err.println("[config] could not write a default config: " + configError);
+      }
       GlobalJsonConfig.load(configPath);
+      GlobalJsonConfig.applyRsaModulus();
+      rt4.aionly.Accounts.init(configPath);
       try {
         rt4.mcp.McpConfig mcpConfig = rt4.mcp.McpConfig.resolve(configPath);
         if (mcpConfig.enabled) {
           rt4.mcp.McpServer.start(mcpConfig);
+          // AIO-13 — in a locked build, no MCP means the client cannot be controlled at all.
+          if (rt4.aionly.Lockdown.ENABLED && rt4.mcp.McpServer.boundPort() < 0) {
+            rt4.aionly.TitleMessage.showPersistent("MCP unavailable: ports " + mcpConfig.port + "-"
+                + (mcpConfig.port + rt4.mcp.McpServer.PORT_SEARCH_SPAN)
+                + " busy. Close a client and restart this one.");
+          }
         }
       } catch (Throwable mcpError) {
         System.err.println("[MCP] configuration failed: " + mcpError);
@@ -896,6 +911,10 @@ public final class client extends GameShell {
 			LoginManager.processInterface();
 		} else if (gameState == 40) {
 			Fonts.drawTextOnScreen(false, JagString.concatenate(new JagString[]{LocalizedText.CONLOST, JagString.LINE_BREAK, LocalizedText.ATTEMPT_TO_REESTABLISH}));
+		}
+		// AIO-09/12/14 — Java-side overlays go on after the interfaces, before the present.
+		if (gameState == 10 || gameState == 30) {
+			rt4.aionly.Overlays.draw();
 		}
 		if (GlRenderer.enabled && gameState != 0) {
 			GlRenderer.swapBuffers();
