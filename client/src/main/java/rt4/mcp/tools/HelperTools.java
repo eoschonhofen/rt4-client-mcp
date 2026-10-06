@@ -29,6 +29,17 @@ public final class HelperTools {
 	/** MCP-25 — an overall budget, so max_steps cannot add up to minutes of clicking. */
 	static final long DEADLINE_MS = 30_000L;
 
+	/** Test seam: the {@code continue_dialogue} budget. */
+	static volatile long deadlineMs = DEADLINE_MS;
+	/** Test seam: reads the open dialogue (on the game thread in production). */
+	static volatile Callable<JsonObject> dialogueSource = Dialogue::current;
+	/** Test seam: clicks a dialogue control (on the game thread in production). */
+	static volatile Clicker clicker = (target, op) -> MenuSynth.act(Targets.parse(target), op, null);
+
+	interface Clicker {
+		void click(String target, String op) throws Exception;
+	}
+
 	private HelperTools() {
 	}
 
@@ -170,7 +181,7 @@ public final class HelperTools {
 					JsonArray transcript = new JsonArray();
 					String stopped = "max_steps";
 					JsonObject dialogue = null;
-					long deadline = System.currentTimeMillis() + DEADLINE_MS;
+					long deadline = System.currentTimeMillis() + deadlineMs;
 
 					for (int step = 0; step < maxSteps; step++) {
 						if (System.currentTimeMillis() >= deadline) {
@@ -247,19 +258,14 @@ public final class HelperTools {
 	// ------------------------------------------------------------------ shared plumbing
 
 	private static JsonObject currentDialogue() throws ToolException {
-		return GameThread.call(new Callable<JsonObject>() {
-			@Override
-			public JsonObject call() {
-				return Dialogue.current();
-			}
-		});
+		return GameThread.call(dialogueSource);
 	}
 
 	private static void click(final String target, final String op) throws ToolException {
 		GameThread.call(new Callable<Void>() {
 			@Override
 			public Void call() throws Exception {
-				MenuSynth.act(Targets.parse(target), op, null);
+				clicker.click(target, op);
 				return null;
 			}
 		});
