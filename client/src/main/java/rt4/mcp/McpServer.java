@@ -49,7 +49,8 @@ public final class McpServer {
 
 	/** Tools are added here, one register line per class, as each ticket lands. */
 	private static void registerTools(ToolRegistry registry) {
-		// MCP-06 … MCP-14 register their tools here.
+		rt4.mcp.tools.StatusTools.register(registry);
+		rt4.mcp.tools.ChatTools.register(registry);
 	}
 
 	public static McpHttpServer running() {
