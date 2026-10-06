@@ -48,7 +48,7 @@ public final class McpServer {
 	}
 
 	/** Tools are added here, one register line per class, as each ticket lands. */
-	private static void registerTools(ToolRegistry registry) {
+	static void registerTools(ToolRegistry registry) {
 		rt4.mcp.tools.StatusTools.register(registry);
 		rt4.mcp.tools.ChatTools.register(registry);
 		rt4.mcp.tools.FindEntities.register(registry);
