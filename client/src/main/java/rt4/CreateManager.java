@@ -3,6 +3,11 @@ package rt4;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
+import rt4.aionly.AccountStore;
+import rt4.aionly.Accounts;
+import rt4.aionly.Lockdown;
+import rt4.aionly.TokenCreateFlow;
+import rt4.aionly.TokenPanel;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -38,6 +43,7 @@ public class CreateManager {
 				if (errors >= 1) {
 					reply = -5;
 					step = 0;
+					driveTokenFlow(-5);
 					return;
 				}
 				step = 1;
@@ -82,6 +88,7 @@ public class CreateManager {
 					step = 0;
 					Protocol.socket.close();
 					Protocol.socket = null;
+					driveTokenFlow(response);
 					return;
 				}
 				step = 3;
@@ -106,6 +113,7 @@ public class CreateManager {
 				step = 0;
 				Protocol.socket.close();
 				Protocol.socket = null;
+				driveTokenFlow(21);
 			}
 		} catch (@Pc(238) IOException ignored) {
 			if (Protocol.socket != null) {
@@ -124,12 +132,54 @@ public class CreateManager {
 			} else {
 				reply = -4;
 				step = 0;
+				driveTokenFlow(-4);
 			}
 		}
 	}
 
+	/**
+	 * AIO-08 — once a request finishes, the token flow decides what happens next. It only
+	 * runs in a locked build, so the native multi-step flow is untouched in development.
+	 */
+	private static void driveTokenFlow(int reply) {
+		if (!Lockdown.ENABLED || !TokenCreateFlow.active()) {
+			return;
+		}
+		TokenCreateFlow.Decision decision = TokenCreateFlow.onReply(reply);
+		CreateManager.reply = decision.reply;
+		switch (decision.action) {
+			case CHECK_INFO:
+				checkInfo(TokenCreateFlow.YEAR, TokenCreateFlow.COUNTRY, TokenCreateFlow.DAY, TokenCreateFlow.MONTH);
+				break;
+			case CREATE_ACCOUNT:
+				createAccount(TokenCreateFlow.DAY, TokenCreateFlow.COUNTRY, TokenCreateFlow.MONTH,
+					JagString.parse(TokenCreateFlow.token()), TokenCreateFlow.encodedName(), TokenCreateFlow.YEAR);
+				break;
+			case DONE:
+				publishCreatedAccount(decision.token, decision.encodedName);
+				break;
+			default:
+				// The server's own reply is left in `reply`, so the native screen shows its message.
+				break;
+		}
+	}
+
+	/** AIO-08 — keep the credentials in accounts.json and show them once on screen. */
+	private static void publishCreatedAccount(String token, long encodedName) {
+		if (token == null) {
+			return;
+		}
+		String username = Base37.decode37(encodedName).toString().replace(" ", "_").toLowerCase();
+		Accounts.store().add(AccountStore.Account.create(username, token, Accounts.host()));
+		TokenPanel.show(username, token);
+	}
+
 	@OriginalMember(owner = "client!gd", name = "a", descriptor = "(JI)V")
 	public static void checkName(@OriginalArg(0) long name) {
+		// AIO-08 — in a locked build the name the human typed starts the token flow.
+		if (Lockdown.ENABLED) {
+			TokenCreateFlow.begin(name);
+		}
 		Protocol.outboundBuffer.offset = 0;
 		Protocol.outboundBuffer.p1(186);
 		if (GlobalConfig.LOGIN_USE_STRINGS) {
