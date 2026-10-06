@@ -30,7 +30,7 @@ public final class McpConfig {
 	public final String token;
 	public final String configPath;
 
-	private McpConfig(boolean enabled, int port, String token, String configPath) {
+	McpConfig(boolean enabled, int port, String token, String configPath) {
 		this.enabled = enabled;
 		this.port = port;
 		this.token = token;

@@ -255,7 +255,7 @@ public final class client extends GameShell {
       try {
         rt4.mcp.McpConfig mcpConfig = rt4.mcp.McpConfig.resolve(configPath);
         if (mcpConfig.enabled) {
-          mcpConfig.logStartup();
+          rt4.mcp.McpServer.start(mcpConfig);
         }
       } catch (Throwable mcpError) {
         System.err.println("[MCP] configuration failed: " + mcpError);

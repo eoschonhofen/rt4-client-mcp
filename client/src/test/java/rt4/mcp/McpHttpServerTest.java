@@ -1,0 +1,298 @@
+package rt4.mcp;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class McpHttpServerTest {
+	private static final String TOKEN = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+
+	private McpHttpServer server;
+	private int port;
+
+	@BeforeEach
+	void startServer() throws Exception {
+		ToolRegistry registry = new ToolRegistry().register(new Tool() {
+			@Override
+			public String name() {
+				return "echo";
+			}
+
+			@Override
+			public String description() {
+				return "echoes";
+			}
+
+			@Override
+			public JsonObject inputSchema() {
+				JsonObject schema = new JsonObject();
+				schema.addProperty("type", "object");
+				return schema;
+			}
+
+			@Override
+			public ToolResult call(JsonObject args) {
+				return ToolResult.json(args);
+			}
+		});
+
+		server = McpHttpServer.start(new McpConfig(true, 0, TOKEN, null), registry);
+		port = server.port();
+	}
+
+	@AfterEach
+	void stopServer() {
+		if (server != null) {
+			server.stop();
+		}
+	}
+
+	private static final class Resp {
+		final int status;
+		final String body;
+		final Map<String, String> headers;
+
+		Resp(int status, String body, Map<String, String> headers) {
+			this.status = status;
+			this.body = body;
+			this.headers = headers;
+		}
+
+		String header(String name) {
+			return headers.get(name.toLowerCase());
+		}
+
+		JsonObject json() {
+			return JsonParser.parseString(body).getAsJsonObject();
+		}
+	}
+
+	/**
+	 * A raw HTTP/1.1 request. {@link java.net.HttpURLConnection} treats {@code Origin} as a
+	 * restricted header and drops it, and we also want to control {@code Host}.
+	 */
+	private Resp send(String method, String body, String session, String bearer, String origin, String host)
+			throws IOException {
+		try (Socket socket = new Socket(InetAddress.getLoopbackAddress(), port)) {
+			socket.setSoTimeout(5000);
+
+			StringBuilder head = new StringBuilder();
+			head.append(method).append(" /mcp HTTP/1.1\r\n");
+			head.append("Host: ").append(host != null ? host : "127.0.0.1:" + port).append("\r\n");
+			if (bearer != null) {
+				head.append("Authorization: ").append(bearer).append("\r\n");
+			}
+			if (session != null) {
+				head.append("Mcp-Session-Id: ").append(session).append("\r\n");
+			}
+			if (origin != null) {
+				head.append("Origin: ").append(origin).append("\r\n");
+			}
+			byte[] bodyBytes = body == null ? new byte[0] : body.getBytes(StandardCharsets.UTF_8);
+			if (body != null) {
+				head.append("Content-Type: application/json\r\n");
+			}
+			head.append("Content-Length: ").append(bodyBytes.length).append("\r\n");
+			head.append("Connection: close\r\n\r\n");
+
+			OutputStream out = socket.getOutputStream();
+			out.write(head.toString().getBytes(StandardCharsets.UTF_8));
+			if (bodyBytes.length > 0) {
+				out.write(bodyBytes);
+			}
+			out.flush();
+
+			InputStream in = socket.getInputStream();
+			ByteArrayOutputStream raw = new ByteArrayOutputStream();
+			byte[] buffer = new byte[4096];
+			int read;
+			while ((read = in.read(buffer)) != -1) {
+				raw.write(buffer, 0, read);
+			}
+
+			String response = new String(raw.toByteArray(), StandardCharsets.ISO_8859_1);
+			int headerEnd = response.indexOf("\r\n\r\n");
+			if (headerEnd < 0) {
+				throw new IOException("no HTTP header terminator in response: " + response);
+			}
+
+			String[] lines = response.substring(0, headerEnd).split("\r\n");
+			int status = Integer.parseInt(lines[0].split(" ")[1]);
+			Map<String, String> headers = new LinkedHashMap<String, String>();
+			for (int i = 1; i < lines.length; i++) {
+				int colon = lines[i].indexOf(':');
+				if (colon > 0) {
+					headers.put(lines[i].substring(0, colon).trim().toLowerCase(),
+							lines[i].substring(colon + 1).trim());
+				}
+			}
+			return new Resp(status, response.substring(headerEnd + 4), headers);
+		}
+	}
+
+	private Resp post(String body, String session) throws IOException {
+		return send("POST", body, session, "Bearer " + TOKEN, null, null);
+	}
+
+	private Resp initialize() throws IOException {
+		return post("{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\","
+				+ "\"params\":{\"protocolVersion\":\"2025-06-18\",\"capabilities\":{},"
+				+ "\"clientInfo\":{\"name\":\"test\",\"version\":\"1\"}}}", null);
+	}
+
+	@Test
+	void fullHandshake() throws IOException {
+		Resp init = initialize();
+		assertEquals(200, init.status);
+		assertNotNull(init.header("mcp-session-id"));
+		assertEquals("2025-06-18", init.json().getAsJsonObject("result").get("protocolVersion").getAsString());
+
+		Resp initialized = post("{\"jsonrpc\":\"2.0\",\"method\":\"notifications/initialized\"}",
+				init.header("mcp-session-id"));
+		assertEquals(202, initialized.status);
+		assertEquals("", initialized.body);
+
+		Resp list = post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\"}", init.header("mcp-session-id"));
+		assertEquals(200, list.status);
+		assertEquals("echo", list.json().getAsJsonObject("result").getAsJsonArray("tools")
+				.get(0).getAsJsonObject().get("name").getAsString());
+	}
+
+	@Test
+	void toolsCallOverHttp() throws IOException {
+		Resp init = initialize();
+		Resp call = post("{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/call\","
+				+ "\"params\":{\"name\":\"echo\",\"arguments\":{\"a\":1}}}", init.header("mcp-session-id"));
+
+		assertEquals(200, call.status);
+		assertEquals("{\"a\":1}", call.json().getAsJsonObject("result")
+				.getAsJsonArray("content").get(0).getAsJsonObject().get("text").getAsString());
+	}
+
+	@Test
+	void missingTokenIsUnauthorized() throws IOException {
+		Resp response = send("POST", "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\"}",
+				null, null, null, null);
+
+		assertEquals(401, response.status);
+		assertEquals("Bearer", response.header("www-authenticate"));
+	}
+
+	@Test
+	void wrongTokenIsUnauthorized() throws IOException {
+		Resp response = send("POST", "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\"}",
+				null, "Bearer nope", null, null);
+		assertEquals(401, response.status);
+	}
+
+	@Test
+	void crossOriginIsForbidden() throws IOException {
+		Resp response = send("POST", "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\"}",
+				null, "Bearer " + TOKEN, "http://evil.com", null);
+
+		assertEquals(403, response.status);
+	}
+
+	@Test
+	void loopbackOriginIsAllowed() throws IOException {
+		Resp response = send("POST", "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\"}",
+				null, "Bearer " + TOKEN, "http://localhost:3000", null);
+
+		assertEquals(200, response.status);
+	}
+
+	@Test
+	void badHostIsForbidden() throws IOException {
+		Resp response = send("POST", "{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\"}",
+				null, "Bearer " + TOKEN, null, "evil.com:" + port);
+
+		assertEquals(403, response.status);
+	}
+
+	@Test
+	void getIsMethodNotAllowed() throws IOException {
+		Resp response = send("GET", null, null, "Bearer " + TOKEN, null, null);
+		assertEquals(405, response.status);
+	}
+
+	@Test
+	void requestWithoutSessionIsBadRequest() throws IOException {
+		Resp response = post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\"}", null);
+
+		assertEquals(400, response.status);
+		assertEquals(JsonRpc.INVALID_REQUEST, response.json().getAsJsonObject("error").get("code").getAsInt());
+	}
+
+	@Test
+	void unknownSessionIsNotFound() throws IOException {
+		Resp response = post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\"}", "not-a-session");
+
+		assertEquals(404, response.status);
+	}
+
+	@Test
+	void deleteTerminatesTheSession() throws IOException {
+		Resp init = initialize();
+		String session = init.header("mcp-session-id");
+
+		Resp deleted = send("DELETE", null, session, "Bearer " + TOKEN, null, null);
+		assertEquals(200, deleted.status);
+
+		Resp after = post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\"}", session);
+		assertEquals(404, after.status);
+	}
+
+	@Test
+	void malformedJsonIsBadRequestWithParseError() throws IOException {
+		Resp response = post("{not json", null);
+
+		assertEquals(400, response.status);
+		assertEquals(JsonRpc.PARSE_ERROR, response.json().getAsJsonObject("error").get("code").getAsInt());
+	}
+
+	@Test
+	void batchIsBadRequest() throws IOException {
+		Resp response = post("[{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"ping\"}]", null);
+
+		assertEquals(400, response.status);
+		assertEquals(JsonRpc.INVALID_REQUEST, response.json().getAsJsonObject("error").get("code").getAsInt());
+	}
+
+	@Test
+	void deleteWithoutSessionIsBadRequest() throws IOException {
+		Resp response = send("DELETE", null, null, "Bearer " + TOKEN, null, null);
+		assertEquals(400, response.status);
+	}
+
+	@Test
+	void pingWorksAfterInitialize() throws IOException {
+		Resp init = initialize();
+		Resp ping = post("{\"jsonrpc\":\"2.0\",\"id\":9,\"method\":\"ping\"}", init.header("mcp-session-id"));
+
+		assertEquals(200, ping.status);
+		assertTrue(ping.json().getAsJsonObject("result").entrySet().isEmpty());
+	}
+
+	@Test
+	void sessionHeaderIsAbsentOnInitializeError() throws IOException {
+		Resp response = send("POST", "{oops", null, "Bearer " + TOKEN, null, null);
+		assertNull(response.header("mcp-session-id"));
+	}
+}
