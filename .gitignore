@@ -8,3 +8,8 @@ dump/
 
 __pycache__/
 *.pyc
+
+# Build output of plugin-playground's buildPlugins task, copied from the
+# tracked sources under plugin-playground/src. Regenerate with:
+#   ./gradlew :plugin-playground:buildPlugins
+client/plugins/
