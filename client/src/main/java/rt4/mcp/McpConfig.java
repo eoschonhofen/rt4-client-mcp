@@ -1,8 +1,5 @@
 package rt4.mcp;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import rt4.GlobalJsonConfig;
 
 import java.net.InetAddress;
@@ -12,20 +9,29 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.PosixFilePermission;
 import java.security.SecureRandom;
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * MCP-01 — resolves the MCP settings from {@code config.json}.
  *
- * <p>The three keys ({@code mcp_enabled}, {@code mcp_port}, {@code mcp_token}) live in
- * {@link GlobalJsonConfig}, so a missing key keeps its Java default. When no token is
- * present one is generated with {@link SecureRandom} and written back into the raw JSON
- * object, which preserves any keys this class does not know about.</p>
+ * <p>{@code mcp_enabled} and {@code mcp_port} live in {@link GlobalJsonConfig}, so a missing
+ * key keeps its Java default.</p>
+ *
+ * <p>The bearer token does <em>not</em> live in {@code config.json}: that file is tracked by
+ * git, so a generated secret written into it is one {@code git add} away from being pushed.
+ * The token is kept in a sibling {@link #TOKEN_FILE_NAME} file instead, which is gitignored
+ * and created owner-readable. A {@code mcp_token} still present in {@code config.json} is
+ * honoured for backwards compatibility, with a warning.</p>
  */
 public final class McpConfig {
 	public static final String BIND_ADDRESS = "127.0.0.1";
 	public static final int DEFAULT_PORT = 43600;
 	public static final int TOKEN_BYTES = 32;
+	/** Name of the sidecar token file, kept next to {@code config.json}. */
+	public static final String TOKEN_FILE_NAME = "mcp_token";
 
 	public final boolean enabled;
 	public final int port;
@@ -66,10 +72,18 @@ public final class McpConfig {
 			}
 		}
 
+		if (!token.isEmpty()) {
+			System.err.println("[MCP] warning: mcp_token is set in " + configPath + ", a tracked file."
+					+ " Clear that key and the token will move to the gitignored "
+					+ TOKEN_FILE_NAME + " file beside it");
+		} else {
+			token = readToken(configPath);
+		}
+
 		if (token.isEmpty()) {
 			token = generateToken();
 			if (!writeToken(configPath, token)) {
-				System.err.println("[MCP] could not write the token to " + configPath
+				System.err.println("[MCP] could not write the token to " + tokenFile(configPath)
 						+ "; using an in-memory token for this run");
 			}
 		}
@@ -90,10 +104,42 @@ public final class McpConfig {
 		return hex.toString();
 	}
 
+	/** The sidecar token file beside {@code configPath}; null when there is no usable path. */
+	static Path tokenFile(String configPath) {
+		if (configPath == null || configPath.isEmpty()) {
+			return null;
+		}
+		Path parent = Paths.get(configPath).toAbsolutePath().getParent();
+		return parent == null ? null : parent.resolve(TOKEN_FILE_NAME);
+	}
+
 	/**
-	 * Rewrites {@code configPath} with {@code mcp_token} set. Parses the file as a raw
-	 * {@link JsonObject} so unknown keys survive. Returns false (without throwing) when
-	 * there is no file, it cannot be parsed as an object, or the write fails.
+	 * Reads the sidecar token, or {@code ""} when there is none, it is unreadable, or it does
+	 * not look like a token this class would have written.
+	 */
+	static String readToken(String configPath) {
+		Path file = tokenFile(configPath);
+		if (file == null || !Files.isRegularFile(file)) {
+			return "";
+		}
+		try {
+			String token = new String(Files.readAllBytes(file), StandardCharsets.UTF_8).trim();
+			if (!token.matches("[0-9a-f]{" + TOKEN_BYTES * 2 + "}")) {
+				System.err.println("[MCP] ignoring " + file + ": not a " + TOKEN_BYTES * 2
+						+ "-character hex token");
+				return "";
+			}
+			return token;
+		} catch (Exception ex) {
+			System.err.println("[MCP] could not read " + file + ": " + ex);
+			return "";
+		}
+	}
+
+	/**
+	 * Writes {@code token} to the sidecar file beside {@code configPath}, owner-readable only.
+	 * Returns false (without throwing) when there is no usable path or the write fails.
+	 * {@code config.json} is never modified.
 	 */
 	static boolean writeToken(String configPath, String token) {
 		return writeToken(configPath, token, null);
@@ -101,38 +147,26 @@ public final class McpConfig {
 
 	/** Test seam: {@code mover} replaces the real move, so a failure can be simulated. */
 	static boolean writeToken(String configPath, String token, TokenMove mover) {
-		if (configPath == null || configPath.isEmpty()) {
+		Path target = tokenFile(configPath);
+		if (target == null) {
 			return false;
 		}
 
-		Path target = Paths.get(configPath);
 		Path tmp = null;
 		try {
-			if (!Files.isRegularFile(target)) {
+			Path parent = target.getParent();
+			if (!Files.isDirectory(parent)) {
 				return false;
 			}
 
-			String raw = new String(Files.readAllBytes(target), StandardCharsets.UTF_8);
-			JsonObject root;
-			try {
-				root = JsonParser.parseString(raw).getAsJsonObject();
-			} catch (RuntimeException malformed) {
-				// Not a JSON object we can extend; leave the file alone rather than rewriting it
-				// and losing the keys we cannot see.
-				return false;
-			}
-			root.addProperty("mcp_token", token);
-
-			String pretty = new GsonBuilder().setPrettyPrinting().create().toJson(root) + System.lineSeparator();
-
-			Path parent = target.toAbsolutePath().getParent();
-			tmp = Files.createTempFile(parent, "config.json.", ".tmp");
-			Files.write(tmp, pretty.getBytes(StandardCharsets.UTF_8));
+			tmp = Files.createTempFile(parent, TOKEN_FILE_NAME + ".", ".tmp");
+			restrictToOwner(tmp);
+			Files.write(tmp, (token + System.lineSeparator()).getBytes(StandardCharsets.UTF_8));
 			moveIntoPlace(tmp, target, mover);
 			tmp = null; // The move consumed it; there is nothing left to clean up.
 			return true;
 		} catch (Exception ex) {
-			System.err.println("[MCP] token write-back failed: " + ex);
+			System.err.println("[MCP] token write failed: " + ex);
 			return false;
 		} finally {
 			if (tmp != null) {
@@ -145,7 +179,18 @@ public final class McpConfig {
 		}
 	}
 
-	/** Moves the finished temp file over the config, atomically when the filesystem allows. */
+	/** Best-effort {@code 0600}; silently skipped on a filesystem without POSIX permissions. */
+	private static void restrictToOwner(Path file) {
+		try {
+			Set<PosixFilePermission> ownerOnly = EnumSet.of(PosixFilePermission.OWNER_READ,
+					PosixFilePermission.OWNER_WRITE);
+			Files.setPosixFilePermissions(file, ownerOnly);
+		} catch (Exception unsupported) {
+			// Windows and other non-POSIX filesystems; the token is still outside git.
+		}
+	}
+
+	/** Moves the finished temp file over the token file, atomically when the filesystem allows. */
 	private static void moveIntoPlace(Path tmp, Path target, TokenMove mover) throws Exception {
 		if (mover != null) {
 			mover.move(tmp, target);
@@ -158,7 +203,7 @@ public final class McpConfig {
 		}
 	}
 
-	/** How a finished temp file replaces the config; a test seam for a failed write. */
+	/** How a finished temp file replaces the token file; a test seam for a failed write. */
 	interface TokenMove {
 		void move(Path from, Path to) throws Exception;
 	}

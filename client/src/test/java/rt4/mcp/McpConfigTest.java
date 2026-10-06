@@ -1,7 +1,5 @@
 package rt4.mcp;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -15,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 class McpConfigTest {
 	@TempDir
@@ -54,33 +53,72 @@ class McpConfigTest {
 	}
 
 	@Test
-	void writeBackPreservesUnknownKeys() throws Exception {
+	void aGeneratedTokenLandsInTheSidecarAndLeavesConfigAlone() throws Exception {
 		Path path = tempDir.resolve("config.json");
-		Files.write(path, ("{\n"
-				+ "  \"ip_address\": \"127.0.0.1\",\n"
-				+ "  \"custom_key\": [1, 2, 3],\n"
-				+ "  \"mcp_token\": \"\"\n"
-				+ "}\n").getBytes(StandardCharsets.UTF_8));
+		String original = "{\n  \"ip_address\": \"127.0.0.1\",\n  \"custom_key\": [1, 2, 3]\n}\n";
+		Files.write(path, original.getBytes(StandardCharsets.UTF_8));
 
 		config().mcp_token = "";
 		McpConfig resolved = McpConfig.resolve(path.toString());
 
-		String written = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-		JsonObject root = JsonParser.parseString(written).getAsJsonObject();
-
-		assertEquals(resolved.token, root.get("mcp_token").getAsString());
-		assertEquals("127.0.0.1", root.get("ip_address").getAsString());
-		assertEquals(3, root.getAsJsonArray("custom_key").size());
-		// No temp file left behind.
+		Path sidecar = tempDir.resolve(McpConfig.TOKEN_FILE_NAME);
+		assertEquals(resolved.token,
+				new String(Files.readAllBytes(sidecar), StandardCharsets.UTF_8).trim());
+		// config.json is tracked by git, so the secret must never be written into it.
+		assertEquals(original, new String(Files.readAllBytes(path), StandardCharsets.UTF_8));
+		// Only config.json and the sidecar: no temp file left behind.
 		try (java.util.stream.Stream<Path> files = Files.list(tempDir)) {
-			assertEquals(1L, files.count());
+			assertEquals(2L, files.count());
 		}
+	}
+
+	@Test
+	void theSidecarIsReadableOnlyByItsOwner() throws Exception {
+		Path path = tempDir.resolve("config.json");
+		Files.write(path, "{}\n".getBytes(StandardCharsets.UTF_8));
+
+		config().mcp_token = "";
+		McpConfig.resolve(path.toString());
+
+		Path sidecar = tempDir.resolve(McpConfig.TOKEN_FILE_NAME);
+		assumeTrue(sidecar.getFileSystem().supportedFileAttributeViews().contains("posix"));
+		assertEquals("rw-------",
+				java.nio.file.attribute.PosixFilePermissions.toString(Files.getPosixFilePermissions(sidecar)));
+	}
+
+	@Test
+	void anExistingSidecarTokenIsReused() throws Exception {
+		Path path = tempDir.resolve("config.json");
+		Files.write(path, "{}\n".getBytes(StandardCharsets.UTF_8));
+		String existing = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+		Files.write(tempDir.resolve(McpConfig.TOKEN_FILE_NAME),
+				(existing + "\n").getBytes(StandardCharsets.UTF_8));
+
+		config().mcp_token = "";
+		McpConfig resolved = McpConfig.resolve(path.toString());
+
+		assertEquals(existing, resolved.token);
+	}
+
+	@Test
+	void aJunkSidecarIsIgnoredAndReplaced() throws Exception {
+		Path path = tempDir.resolve("config.json");
+		Files.write(path, "{}\n".getBytes(StandardCharsets.UTF_8));
+		Files.write(tempDir.resolve(McpConfig.TOKEN_FILE_NAME),
+				"not a token\n".getBytes(StandardCharsets.UTF_8));
+
+		config().mcp_token = "";
+		McpConfig resolved = McpConfig.resolve(path.toString());
+
+		assertTrue(resolved.token.matches("[0-9a-f]{64}"));
+		assertEquals(resolved.token, new String(
+				Files.readAllBytes(tempDir.resolve(McpConfig.TOKEN_FILE_NAME)), StandardCharsets.UTF_8).trim());
 	}
 
 	@Test
 	void aFailedWriteLeavesNoTempFile() throws Exception {
 		Path path = tempDir.resolve("config.json");
-		Files.write(path, "{\"mcp_token\": \"\"}\n".getBytes(StandardCharsets.UTF_8));
+		Files.write(path, "{}\n".getBytes(StandardCharsets.UTF_8));
 
 		boolean written = McpConfig.writeToken(path.toString(), "abcdef", (from, to) -> {
 			throw new java.io.IOException("simulated move failure");
@@ -144,17 +182,16 @@ class McpConfigTest {
 	}
 
 	@Test
-	void existingTokenIsNotRegenerated() throws Exception {
+	void aLegacyTokenInConfigIsHonouredAndWarnedAbout() throws Exception {
 		Path path = tempDir.resolve("config.json");
 		String existing = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
 		Files.write(path, ("{\"mcp_token\": \"" + existing + "\"}\n").getBytes(StandardCharsets.UTF_8));
 
 		config().mcp_token = existing;
-		McpConfig resolved = McpConfig.resolve(path.toString());
+		String logged = stderrOf(() -> assertEquals(existing, McpConfig.resolve(path.toString()).token));
 
-		assertEquals(existing, resolved.token);
-		String written = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-		assertTrue(written.contains(existing));
+		assertTrue(logged.contains("a tracked file"), logged);
+		assertFalse(Files.exists(tempDir.resolve(McpConfig.TOKEN_FILE_NAME)));
 	}
 
 	@Test
@@ -179,7 +216,7 @@ class McpConfigTest {
 	}
 
 	@Test
-	void missingFileKeepsInMemoryToken() {
+	void aMissingConfigFileStillGetsASidecarToken() {
 		Path missing = tempDir.resolve("nope.json");
 		config().mcp_token = "";
 
@@ -187,5 +224,16 @@ class McpConfigTest {
 
 		assertEquals(64, resolved.token.length());
 		assertFalse(Files.exists(missing));
+		assertTrue(Files.exists(tempDir.resolve(McpConfig.TOKEN_FILE_NAME)));
+	}
+
+	@Test
+	void anUnusableConfigPathKeepsAnInMemoryToken() {
+		config().mcp_token = "";
+
+		McpConfig resolved = McpConfig.resolve("");
+
+		assertEquals(64, resolved.token.length());
+		assertFalse(McpConfig.writeToken("", resolved.token));
 	}
 }

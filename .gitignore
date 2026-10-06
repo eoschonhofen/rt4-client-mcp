@@ -13,3 +13,7 @@ __pycache__/
 # tracked sources under plugin-playground/src. Regenerate with:
 #   ./gradlew :plugin-playground:buildPlugins
 client/plugins/
+
+# MCP bearer token, generated on first start next to client/config.json.
+# A secret: it is deliberately kept out of the tracked config.json.
+client/mcp_token
