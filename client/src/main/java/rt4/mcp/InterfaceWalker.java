@@ -44,6 +44,26 @@ public final class InterfaceWalker {
 		int itemCount();
 
 		List<ComponentView> children();
+
+		/** The component's target id, e.g. {@code if:241:1}. */
+		default String targetId() {
+			return null;
+		}
+
+		/** The readable text on this component, tags stripped. */
+		default String textValue() {
+			return null;
+		}
+
+		/** Option ops a player can pick (dialogue options, {@code if3} buttons). 1-based order. */
+		default List<String> optionTexts() {
+			return Collections.emptyList();
+		}
+
+		/** The op that advances the dialogue, or null when this is not a continue button. */
+		default String continueOp() {
+			return null;
+		}
 	}
 
 	/** One inventory slot. */
