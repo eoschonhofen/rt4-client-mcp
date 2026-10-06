@@ -5,6 +5,7 @@ import plugin.api.API;
 import rt4.Component;
 import rt4.InterfaceList;
 import rt4.Protocol;
+import rt4.ServerActiveProperties;
 import rt4.VarpDomain;
 import rt4.mcp.DragPackets;
 import rt4.mcp.GameThread;
@@ -91,9 +92,10 @@ public final class InputTools {
 		Tools.require(schema, "from_slot", "to_slot");
 
 		return Tools.gameTool("drag_item",
-				"Drag an item between two slots of an inventory (backpack, bank, ...). The swap happens "
-						+ "locally and the server is told with packet 231, exactly like a real drag. "
-						+ "Component-to-component drags are not supported.",
+				"Drag an item between two slots of an inventory (backpack, bank, ...). The local update "
+						+ "matches a real drag — swap, bank insert mode (the slots in between shift) or the "
+						+ "replace mode — and the server is told with packet 231. Component-to-component "
+						+ "drags are not supported.",
 				schema,
 				args -> {
 					GameThread.requireLoggedIn();
@@ -103,13 +105,32 @@ public final class InputTools {
 					if (fromSlot < 0 || toSlot < 0) {
 						throw new ToolException("slots must be non-negative");
 					}
+					if (fromSlot == toSlot) {
+						throw new ToolException("from_slot and to_slot must differ");
+					}
 					Integer interfaceId = Tools.has(args, "interface_id") ? Tools.getInt(args, "interface_id") : null;
 
 					Component component = inventoryComponent(interfaceId, Math.max(fromSlot, toSlot));
+					int slots = StatusTools.slotCount(component);
+					if (fromSlot >= slots || toSlot >= slots) {
+						throw new ToolException("slot " + Math.max(fromSlot, toSlot) + " is outside this inventory ("
+								+ slots + " slots)");
+					}
+					if (component.objTypes[fromSlot] <= 0) {
+						throw new ToolException("slot " + fromSlot + " is empty");
+					}
+
+					ServerActiveProperties properties = InterfaceList.getServerActiveProperties(component);
+					if (!properties.isObjSwapEnabled() && !properties.isObjReplaceEnabled()) {
+						throw new ToolException("this interface does not allow dragging items between slots");
+					}
+
+					boolean replace = properties.isObjReplaceEnabled();
 					int sourceObjId = component.objTypes[fromSlot] - 1;
 					int inserting = DragPackets.insertFlag(VarpDomain.inserting, component.clientCode, sourceObjId);
 
-					component.swapObjs(fromSlot, toSlot);
+					DragPackets.applyLocal(component.objTypes, component.objCounts, fromSlot, toSlot,
+							replace, inserting == 1);
 					Protocol.outboundBuffer.p1isaac(DragPackets.DRAG_OPCODE);
 					Protocol.outboundBuffer.pdata(
 							DragPackets.encode(toSlot, component.id, fromSlot, inserting), DragPackets.PAYLOAD_LENGTH);
@@ -120,6 +141,7 @@ public final class InputTools {
 					out.addProperty("to_slot", toSlot);
 					out.addProperty("component_id", component.id);
 					out.addProperty("inserting", inserting);
+					out.addProperty("replaced", replace);
 					return ToolResult.json(out);
 				});
 	}

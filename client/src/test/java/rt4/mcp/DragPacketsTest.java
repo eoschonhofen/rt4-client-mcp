@@ -65,4 +65,53 @@ class DragPacketsTest {
 		assertEquals(0, DragPackets.insertFlag(1, 206, -1));
 		assertEquals(0, DragPackets.insertFlag(1, 206, 0));
 	}
+
+	// ------------------------------------------------------------------ MCP-24
+
+	private static void assertSlots(int[] expectedTypes, int[] expectedCounts, int[] types, int[] counts) {
+		for (int i = 0; i < expectedTypes.length; i++) {
+			assertEquals(expectedTypes[i], types[i], "type at slot " + i);
+			assertEquals(expectedCounts[i], counts[i], "count at slot " + i);
+		}
+	}
+
+	@Test
+	void applyLocalSwapsByDefault() {
+		int[] types = {10, 20, 0, 30};
+		int[] counts = {1, 2, 0, 3};
+
+		DragPackets.applyLocal(types, counts, 0, 1, false, false);
+
+		assertSlots(new int[]{20, 10, 0, 30}, new int[]{2, 1, 0, 3}, types, counts);
+	}
+
+	@Test
+	void applyLocalInsertForwardShiftsTheSlotsLeft() {
+		int[] types = {10, 20, 30, 40};
+		int[] counts = {1, 2, 3, 4};
+
+		DragPackets.applyLocal(types, counts, 0, 2, false, true);
+
+		assertSlots(new int[]{20, 30, 10, 40}, new int[]{2, 3, 1, 4}, types, counts);
+	}
+
+	@Test
+	void applyLocalInsertBackwardShiftsTheSlotsRight() {
+		int[] types = {10, 20, 30, 40};
+		int[] counts = {1, 2, 3, 4};
+
+		DragPackets.applyLocal(types, counts, 3, 1, false, true);
+
+		assertSlots(new int[]{10, 40, 20, 30}, new int[]{1, 4, 2, 3}, types, counts);
+	}
+
+	@Test
+	void applyLocalReplaceMovesTheTargetIntoTheSourceAndClearsIt() {
+		int[] types = {10, 20, 30, 40};
+		int[] counts = {1, 2, 3, 4};
+
+		DragPackets.applyLocal(types, counts, 1, 3, true, false);
+
+		assertSlots(new int[]{10, 40, 30, -1}, new int[]{1, 4, 3, 0}, types, counts);
+	}
 }
