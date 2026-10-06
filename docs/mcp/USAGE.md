@@ -71,7 +71,7 @@ Generated with `python3 -I scripts/mcp-smoke.py --print-tools` against a running
 | `login` · `logout` | Title-screen login and the real logout button. |
 | `get_screenshot` | PNG of the last frame, software or HD mode. |
 | `wait_for` | Block on up to 16 conditions instead of polling. |
-| `walk_to` · `nav_status` · `nav_cancel` | Background A* walking that opens doors. |
+| `walk_to` · `nav_status` · `nav_cancel` | Background A* walking that opens doors. After a walk, `nav_status` keeps `last_state`, `last_reason` and `last_doors_opened`. |
 | `interact` | `find_entities` + `do_action` in one call, with a backpack fallback. |
 | `continue_dialogue` | Click through a dialogue and collect the transcript. |
 | `choose_option` | Pick a dialogue option by text or index. |
@@ -108,12 +108,18 @@ With the server and client running:
 python3 -I scripts/mcp-smoke.py --url http://127.0.0.1:43600/mcp --token <token>
 ```
 
-It checks auth, the handshake, the tool list, login, state reads, `find_entities`, `walk_to`,
-a door, dialogue, admin item spawning, chat, a screenshot and logout, printing PASS/FAIL/SKIP
-with timings. Any failure exits non-zero.
+It checks auth, the handshake, the tool list, login, state reads, `find_entities`, a 15-tile
+`walk_to`, a `walk_to` through a closed door and back, a raw door open, dialogue, admin item
+spawning, chat, a screenshot and logout, then checks every tool result it saw against the MCP
+result schema. It prints PASS/FAIL/SKIP with timings, and any failure exits non-zero.
+
+A walk must end `ARRIVED`. A walk that fails `stuck`, or a door walk that never opens the door,
+is a FAIL. The walk step skips only when the chat shows the server refused the walk packet,
+for example on Tutorial Island while a modal blocks movement.
 
 ## 8. Warning
 
 There is no target-server gate. Pointing `ip_address` at a live 2009Scape server and letting
 an agent play there is botting: it breaks their rules and gets accounts banned. This is built
-for a local server you run yourself.
+for a local server you run yourself, or a server that allows automated play. The client logs a
+warning at startup when `ip_address` is not this machine.

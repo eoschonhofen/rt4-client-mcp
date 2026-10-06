@@ -40,6 +40,9 @@ per bullet group.
 - `mcp_enabled` defaults to `true`, and the server binds on every client start, including against a live
   server. Consider defaulting to `false`, so it is opt-in, and logging a warning when `ip_address` isn't
   loopback. This is a policy decision: confirm before changing it.
+- **Decision (2026-10-06):** keep `true`. The AI-only world plan (`docs/ai-only/`) points the client at a
+  remote server on purpose, so opt-in would only add a step. The client logs a warning at startup when
+  `ip_address` is not loopback (`localhost`, `127.0.0.0/8` or `::1`).
 
 ## Tests
 - `InputInjector`: two holds, 500 ms then 40 ms, release in deadline order.
