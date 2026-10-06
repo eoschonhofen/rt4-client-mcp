@@ -439,11 +439,11 @@ class NavTaskTest {
 		NavTask task = NavTask.start(59, 0, 0, 0);
 		NavTask.step();
 
-		driver.tick = NavTask.STUCK_TICKS; // 8 ticks: not yet "more than 8"
+		driver.tick = NavTask.STUCK_TICKS; // not yet "more than STUCK_TICKS"
 		NavTask.step();
 		assertEquals(NavTask.State.WALKING, task.state());
 
-		driver.tick = NavTask.STUCK_TICKS + 1; // 9 ticks: one re-plan
+		driver.tick = NavTask.STUCK_TICKS + 1; // one tick past: one re-plan
 		NavTask.step();
 		assertEquals(NavTask.State.WALKING, task.state());
 		NavTask.step(); // the re-plan runs and issues a fresh leg
@@ -467,11 +467,11 @@ class NavTaskTest {
 		NavTask task = NavTask.start(59, 0, 0, 0);
 		NavTask.step();
 
-		driver.tick = 9;
+		driver.tick = NavTask.STUCK_TICKS + 1;
 		NavTask.step(); // stuck -> re-plan requested
 		NavTask.step(); // re-plan runs, the timer restarts
 
-		driver.tick = 9 + NavTask.STUCK_TICKS; // 8 ticks since the re-plan, not more
+		driver.tick = NavTask.STUCK_TICKS + 1 + NavTask.STUCK_TICKS; // STUCK_TICKS since the re-plan, not more
 		NavTask.step();
 		assertEquals(NavTask.State.WALKING, task.state(), "the re-plan must grant a full grace period");
 	}

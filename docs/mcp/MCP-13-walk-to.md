@@ -38,7 +38,7 @@ States: `PLANNING → WALKING → OPENING_DOOR → WALKING … → ARRIVED | FAI
    Issue the walk the way the UI does: `do_action(tile:x,y, "Walk here")`, which goes through `MenuSynth`.
    The real `doAction` WALK_HERE branch then calls `PathFinder` and sends the packet.
 3. **Progress:** each tick, check the player's position. When within 2 tiles of the leg end (or the leg end is reached), start the next leg.
-   No progress for 8 ticks → re-plan once, then `FAILED("stuck at x,y")`.
+   No progress for 8 ticks → re-plan once (`STUCK_TICKS`, see MCP-16), then `FAILED("stuck at x,y")`.
 4. **Doors:** at a door edge, run `do_action(loc:…, "Open")`.
    Wait until the collision flag clears (the server sends a loc change, and `SceneGraph` updates the collision map), or 6 ticks pass.
    Then re-plan. A door that stays shut after 2 attempts → `FAILED("door at x,y won't open")`.

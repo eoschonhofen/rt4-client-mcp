@@ -65,7 +65,11 @@ public final class NavTask {
 	}
 
 	public static final int MAX_LEG = 20;
-	public static final int STUCK_TICKS = 8;
+	/**
+	 * More than this many ticks without a tile change counts as stuck: 8 ticks (4.8 s) trigger
+	 * the one re-plan, 8 more fail the walk, so a blocked walk fails in about 10 s (MCP-16).
+	 */
+	public static final int STUCK_TICKS = 7;
 	public static final int DOOR_WAIT_TICKS = 6;
 	public static final int MAX_DOOR_ATTEMPTS = 2;
 	/** How many finished task outcomes to remember for {@code wait_for(nav_done)}. */

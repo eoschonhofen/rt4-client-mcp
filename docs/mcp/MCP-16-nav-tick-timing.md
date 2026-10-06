@@ -25,7 +25,9 @@ test (`scripts/mcp-smoke.py`, `step_walk`) then falls into its "server refused i
 ## Implementation
 1. Add `int tick()` to `NavTask.Driver`. `LiveNavDriver` returns `TickTracker.tick()`, and the test fake
    advances it explicitly.
-2. Rename the constants to `STUCK_TICKS = 8` and `DOOR_WAIT_TICKS = 6`.
+2. Rename the constants to `STUCK_TICKS = 7` and `DOOR_WAIT_TICKS = 6`. Stuck means *more than*
+   `STUCK_TICKS`, so 8 idle ticks (4.8 s) re-plan and 8 more fail: about 10 s in total, which meets the
+   acceptance criterion below (8 would give about 11 s).
 3. Stuck detection: store `lastProgressTick` (the tick at which the player tile last changed, or at which
    the current leg was issued). Treat it as stuck when `driver.tick() - lastProgressTick > STUCK_TICKS`.
 4. Reset the progress tick on every `issueLeg` and after the re-plan. Without that, the first leg has no
@@ -42,6 +44,7 @@ test (`scripts/mcp-smoke.py`, `step_walk`) then falls into its "server refused i
 ## Tests
 - `NavTaskTest`, with a fake driver whose tick advances once every 30 `step()` calls:
   - no stuck failure while the player moves one tile per tick
-  - stuck failure only after more than 8 ticks without movement, with exactly one re-plan before it
+  - stuck failure only after more than `STUCK_TICKS` ticks without movement, with exactly one re-plan
+    before it
   - the re-plan resets the timer
   - the door wait spans 6 ticks, not 6 steps
