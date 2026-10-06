@@ -44,6 +44,18 @@ claude mcp add --transport http rt4 http://127.0.0.1:43600/mcp \
   --header "Authorization: Bearer <token>"
 ```
 
+Or use the stdio bridge in `scripts/rt4-mcp.py`. It reads the token from `config.json`, probes
+ports 43600–43609, and re-initializes when the client restarts, so nothing has to be pasted:
+
+```bash
+claude mcp add rt4 -s user -- python3 -I /abs/path/to/client/scripts/rt4-mcp.py bridge
+```
+
+Add `--port 43601` before `bridge` to pin one of several clients. The same script works as a
+shell client: `ports`, `tools -v`, and `call <tool> [key=value ... | '{json}']`. The project skill
+`.claude/skills/rt4-play` teaches an agent the play loop and falls back to that shell client when
+the MCP tools aren't loaded.
+
 The server speaks plain JSON (no SSE) on `POST /mcp`. Requests must carry the bearer token;
 `Origin`, if present, must be loopback; the `Host` header must name `127.0.0.1:<port>` or
 `localhost:<port>`. `GET` is a `405`; `DELETE` with the session header ends a session.
