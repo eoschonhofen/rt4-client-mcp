@@ -32,4 +32,9 @@ public class GlobalJsonConfig {
 	public boolean mcp_enabled = true;
 	public int mcp_port = 43600;
 	public String mcp_token = "";
+
+	/** MCP-26 — the game server this client points at, for the non-loopback warning. */
+	public String ipAddress() {
+		return ip_address;
+	}
 }

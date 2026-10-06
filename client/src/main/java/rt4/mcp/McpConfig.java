@@ -57,6 +57,10 @@ public final class McpConfig {
 			if (config.mcp_token != null) {
 				token = config.mcp_token.trim();
 			}
+			if (enabled && !isLoopback(config.ipAddress())) {
+				System.err.println("[MCP] warning: ip_address is " + config.ipAddress()
+						+ ", not loopback; driving a live server with MCP breaks its rules");
+			}
 		}
 
 		if (token.isEmpty()) {
@@ -154,5 +158,14 @@ public final class McpConfig {
 	/** How a finished temp file replaces the config; a test seam for a failed write. */
 	interface TokenMove {
 		void move(Path from, Path to) throws Exception;
+	}
+
+	/** MCP-26 — whether the client is pointed at this machine. A blank address says nothing. */
+	private static boolean isLoopback(String address) {
+		return address == null || address.isEmpty()
+				|| "127.0.0.1".equals(address)
+				|| "localhost".equalsIgnoreCase(address)
+				|| "::1".equals(address)
+				|| "0:0:0:0:0:0:0:1".equals(address);
 	}
 }

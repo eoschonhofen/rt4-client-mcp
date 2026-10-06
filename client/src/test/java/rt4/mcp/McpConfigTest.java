@@ -92,6 +92,45 @@ class McpConfigTest {
 		}
 	}
 
+	/** Runs {@code action} with System.err captured, and returns everything it logged. */
+	private static String stderrOf(Runnable action) throws Exception {
+		java.io.PrintStream original = System.err;
+		java.io.ByteArrayOutputStream captured = new java.io.ByteArrayOutputStream();
+		System.setErr(new java.io.PrintStream(captured, true, "UTF-8"));
+		try {
+			action.run();
+		} finally {
+			System.setErr(original);
+		}
+		return captured.toString("UTF-8");
+	}
+
+	@Test
+	void aRemoteServerIsWarnedAboutAtStartup() throws Exception {
+		Path path = tempDir.resolve("config.json");
+		String token = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+		Files.write(path, ("{\"ip_address\": \"test.2009scape.org\", \"mcp_enabled\": true,"
+				+ " \"mcp_token\": \"" + token + "\"}\n").getBytes(StandardCharsets.UTF_8));
+		GlobalJsonConfig.load(path.toString());
+
+		String logged = stderrOf(() -> McpConfig.resolve(path.toString()));
+
+		assertTrue(logged.contains("not loopback"), logged);
+	}
+
+	@Test
+	void aLoopbackServerIsNotWarnedAbout() throws Exception {
+		Path path = tempDir.resolve("config.json");
+		String token = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+		Files.write(path, ("{\"ip_address\": \"127.0.0.1\", \"mcp_enabled\": true,"
+				+ " \"mcp_token\": \"" + token + "\"}\n").getBytes(StandardCharsets.UTF_8));
+		GlobalJsonConfig.load(path.toString());
+
+		String logged = stderrOf(() -> McpConfig.resolve(path.toString()));
+
+		assertFalse(logged.contains("not loopback"), logged);
+	}
+
 	@Test
 	void existingTokenIsNotRegenerated() throws Exception {
 		Path path = tempDir.resolve("config.json");
