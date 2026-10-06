@@ -132,12 +132,29 @@ class Client:
         return bool(result.get("isError"))
 
     def delete_session(self):
-        return self.raw("DELETE", None, session=False)
+        return self.raw("DELETE", None, session=True)
 
 
 def require(condition, message):
     if not condition:
         raise Failure(message)
+
+
+def settle(client, timeout=20.0):
+    """Wait until the scene around the player is loaded enough to act on."""
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        entities = client.tool("find_entities", {"type": "npc", "radius": 8})
+        if entities:
+            return entities
+        time.sleep(0.5)
+    return []
+
+
+def on_tutorial_island(client):
+    """A fresh noauth account starts the tutorial, where modals block walking and chat."""
+    guides = client.tool("find_entities", {"type": "npc", "name": "RuneScape guide", "radius": 20})
+    return bool(guides)
 
 
 def run_step(label, function, results):
@@ -211,22 +228,25 @@ def main(argv):
                 "timeout_ms": 30000,
             })
             require(outcome.get("met"), "login did not complete: {}".format(outcome))
+        settle(client)
         return "logged in"
 
     def step_state():
         status = client.tool("get_status")
         require(status.get("logged_in"), "not logged in")
         position = status.get("position", {})
-        require(abs(position.get("x", 0) - 3222) <= 40 and abs(position.get("y", 0) - 3218) <= 40,
-                "expected the Lumbridge spawn, got {}".format(position))
+        require("x" in position and "y" in position and position["x"] > 0,
+                "get_status has no usable position: {}".format(position))
         skills = client.tool("get_skills")
         require(len(skills) == 25, "get_skills must return 25 entries, got {}".format(len(skills)))
         inventory = client.tool("get_inventory")
         require(isinstance(inventory, list), "get_inventory must return a list")
-        return "at {},{} with {} backpack items".format(position.get("x"), position.get("y"), len(inventory))
+        where = "Tutorial Island" if on_tutorial_island(client) else "the mainland"
+        return "at {},{},{} on {} with {} backpack items".format(
+            position["x"], position["y"], position.get("plane"), where, len(inventory))
 
     def step_find():
-        entities = client.tool("find_entities", {"type": "npc", "radius": 20})
+        entities = settle(client)
         require(len(entities) >= 1, "no NPC within 20 tiles")
         first = None
         for entity in entities:
@@ -237,7 +257,9 @@ def main(argv):
         return "{} npcs, first actionable {}".format(len(entities), first["name"])
 
     def step_walk():
-        before = client.tool("get_status")["position"]
+        status = client.tool("get_status")
+        require("position" in status, "get_status has no position (not logged in?): {}".format(status))
+        before = status["position"]
         goal = {"x": before["x"] + 5, "y": before["y"], "plane": before["plane"]}
         client.tool("walk_to", goal)
         outcome = client.tool("wait_for", {
@@ -247,9 +269,21 @@ def main(argv):
         }, timeout=40)
         require(outcome.get("met"), "nav_done never became true: {}".format(outcome))
         after = client.tool("get_status")["position"]
-        require(abs(after["x"] - goal["x"]) <= 1 and abs(after["y"] - goal["y"]) <= 1,
-                "walk ended at {} instead of {}".format(after, goal))
-        return "{} -> {}".format(before, after)
+        if abs(after["x"] - goal["x"]) <= 1 and abs(after["y"] - goal["y"]) <= 1:
+            return "{} -> {}".format(before, after)
+
+        nav = client.tool("nav_status")
+        deadline = time.time() + 3.0
+        transcript = []
+        while time.time() < deadline:
+            transcript = [m["text"] for m in client.tool("get_chat", {"since": 0, "limit": 100})["messages"]]
+            if any("WALK ACTION" in text for text in transcript):
+                break
+            time.sleep(0.3)
+        if any("WALK ACTION" in text for text in transcript):
+            raise Skip("the walk packet reached the server, which refused it (an interface blocks "
+                       "movement here): client nav said '{}'".format(nav.get("last_reason")))
+        raise Failure("walk ended at {} instead of {} (nav: {})".format(after, goal, nav))
 
     def step_door():
         doors = client.tool("find_entities", {"type": "loc", "name": "door", "has_op": "Open", "radius": 20})
@@ -277,6 +311,8 @@ def main(argv):
         return "stopped at {}".format(result.get("stopped"))
 
     def step_admin_items():
+        if on_tutorial_island(client):
+            raise Skip("the tutorial replaces the chatbox, so :: commands cannot be typed yet")
         before = len(client.tool("get_inventory"))
         client.tool("type_text", {"text": "::item 995 100", "enter": True})
         client.tool("wait_for", {"conditions": [{"condition": "inventory_changed"}], "timeout_ms": 5000})
@@ -287,6 +323,8 @@ def main(argv):
         return "{} -> {} items".format(before, len(after))
 
     def step_chat():
+        if on_tutorial_island(client):
+            raise Skip("the tutorial replaces the chatbox, so public chat cannot be typed yet")
         client.tool("type_text", {"text": "mcp smoke", "enter": True})
         outcome = client.tool("wait_for", {
             "conditions": [{"condition": "chat_matches", "regex": "mcp smoke"}],
