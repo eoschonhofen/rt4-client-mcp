@@ -63,6 +63,14 @@ public final class Waiters {
 		public final long id;
 		public final List<Conditions.Condition> conditions;
 		public final Conditions.Mode mode;
+		/** MCP-20 — the tick the wait began, so {@code ticks_waited} is relative. */
+		final int startTick;
+		final long startNanos;
+		/**
+		 * MCP-20 — when {@link #evaluate()} should expire this wait. Expiry happens on the game
+		 * thread, so the timeout path can read game state safely.
+		 */
+		final long deadlineNanos;
 		/**
 		 * Whether the player was already logged out when the wait started. A wait begun on the
 		 * title screen must survive the logout guard, otherwise wait_for(logged_in) could never
@@ -71,11 +79,15 @@ public final class Waiters {
 		final boolean startedLoggedOut;
 		final CompletableFuture<Outcome> future = new CompletableFuture<Outcome>();
 
-		Waiter(long id, List<Conditions.Condition> conditions, Conditions.Mode mode, boolean startedLoggedOut) {
+		Waiter(long id, List<Conditions.Condition> conditions, Conditions.Mode mode, boolean startedLoggedOut,
+			   int startTick, long timeoutMs) {
 			this.id = id;
 			this.conditions = conditions;
 			this.mode = mode;
 			this.startedLoggedOut = startedLoggedOut;
+			this.startTick = startTick;
+			this.startNanos = System.nanoTime();
+			this.deadlineNanos = this.startNanos + Math.max(0L, timeoutMs) * 1_000_000L;
 		}
 
 		boolean expectsLoggedOut() {
@@ -86,10 +98,22 @@ public final class Waiters {
 			}
 			return false;
 		}
+
+		/** Ticks elapsed since the wait began, read on the game thread. */
+		int ticksWaited(int nowTick) {
+			return Math.max(0, nowTick - startTick);
+		}
+
+		/** A wall-clock fallback for the rare case where the game thread never ran. */
+		int elapsedTicks() {
+			return (int) ((System.nanoTime() - startNanos) / TickTracker.TICK_NANOS);
+		}
 	}
 
 	private static final AtomicLong NEXT_ID = new AtomicLong(1L);
 	private static final Map<Long, Waiter> ACTIVE = new ConcurrentHashMap<Long, Waiter>();
+	/** How long {@link #await} waits past the deadline for the game thread to expire the waiter. */
+	static final long SLACK_MS = 250L;
 
 	private static volatile Conditions.GameView view = new LiveGameView();
 
@@ -106,32 +130,39 @@ public final class Waiters {
 	}
 
 	/** Takes the snapshot and starts waiting. Must run on the game thread. */
-	public static Waiter register(List<Conditions.Condition> conditions, Conditions.Mode mode) {
+	public static Waiter register(List<Conditions.Condition> conditions, Conditions.Mode mode, long timeoutMs) {
 		Conditions.GameView current = view;
 		for (Conditions.Condition condition : conditions) {
 			Conditions.snapshot(condition, current);
 		}
-		Waiter waiter = new Waiter(NEXT_ID.getAndIncrement(), conditions, mode, current.loggedOut());
+		Waiter waiter = new Waiter(NEXT_ID.getAndIncrement(), conditions, mode, current.loggedOut(),
+				current.tick(), timeoutMs);
 		ACTIVE.put(waiter.id, waiter);
 		return waiter;
 	}
 
-	/** Blocks the calling (HTTP) thread until the waiter completes or the timeout expires. */
+	/**
+	 * Blocks the calling (HTTP) thread until the waiter completes or the timeout expires. The
+	 * deadline is enforced by {@link #evaluate()} on the game thread, so a timeout still carries a
+	 * status block; this method only waits a little past the deadline as a safety net.
+	 */
 	public static Outcome await(Waiter waiter, long timeoutMs) {
 		try {
-			return waiter.future.get(timeoutMs, TimeUnit.MILLISECONDS);
+			return waiter.future.get(timeoutMs + SLACK_MS, TimeUnit.MILLISECONDS);
 		} catch (TimeoutException timedOut) {
 			ACTIVE.remove(waiter.id);
 			waiter.future.cancel(false);
-			return new Outcome(false, true, null, new ArrayList<String>(), 0, status());
+			// The game thread never expired it (loading or frozen). No status here: reading game
+			// state off the game thread is exactly what MCP-20 forbids.
+			return new Outcome(false, true, null, new ArrayList<String>(), waiter.elapsedTicks(), null);
 		} catch (InterruptedException interrupted) {
 			Thread.currentThread().interrupt();
 			ACTIVE.remove(waiter.id);
 			waiter.future.cancel(false);
-			return new Outcome(false, false, "interrupted", new ArrayList<String>(), 0, status());
+			return new Outcome(false, false, "interrupted", new ArrayList<String>(), waiter.elapsedTicks(), null);
 		} catch (Exception failure) {
 			ACTIVE.remove(waiter.id);
-			return new Outcome(false, false, failure.toString(), new ArrayList<String>(), 0, status());
+			return new Outcome(false, false, failure.toString(), new ArrayList<String>(), waiter.elapsedTicks(), null);
 		}
 	}
 
@@ -142,11 +173,17 @@ public final class Waiters {
 		}
 		Conditions.GameView current = view;
 		boolean loggedOut = current.loggedOut();
+		long now = System.nanoTime();
 
 		for (Waiter waiter : ACTIVE.values()) {
+			if (now >= waiter.deadlineNanos) {
+				complete(waiter, new Outcome(false, true, null, new ArrayList<String>(),
+						waiter.ticksWaited(current.tick()), status()));
+				continue;
+			}
 			if (loggedOut && !waiter.startedLoggedOut && !waiter.expectsLoggedOut()) {
 				complete(waiter, new Outcome(false, false, "logged_out", new ArrayList<String>(),
-						current.tick(), status()));
+						waiter.ticksWaited(current.tick()), status()));
 				continue;
 			}
 
@@ -156,7 +193,7 @@ public final class Waiters {
 			}
 			if (Conditions.combine(waiter.mode, results)) {
 				complete(waiter, new Outcome(true, false, null, Conditions.which(waiter.conditions, results),
-						current.tick(), status()));
+						waiter.ticksWaited(current.tick()), status()));
 			}
 		}
 	}

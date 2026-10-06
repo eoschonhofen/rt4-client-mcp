@@ -40,7 +40,7 @@ class WaitersTest {
 		view.chatSize = 11;
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY, 60000L);
 
 		assertEquals(42, waiter.conditions.get(0).startTick);
 		assertEquals(7, waiter.conditions.get(0).startHash);
@@ -54,7 +54,7 @@ class WaitersTest {
 		view.inventoryHash = 1;
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY, 60000L);
 		Waiters.evaluate();
 		assertFalse(waiter.future.isDone());
 
@@ -78,7 +78,7 @@ class WaitersTest {
 
 		Waiters.Waiter waiter = Waiters.register(conditions(
 				"{\"condition\":\"interface_open\",\"id\":149}",
-				"{\"condition\":\"dialogue_open\"}"), Conditions.Mode.ALL);
+				"{\"condition\":\"dialogue_open\"}"), Conditions.Mode.ALL, 60000L);
 
 		Waiters.evaluate();
 		assertFalse(waiter.future.isDone());
@@ -99,7 +99,7 @@ class WaitersTest {
 
 		Waiters.Waiter waiter = Waiters.register(conditions(
 				"{\"condition\":\"ticks\",\"n\":5}",
-				"{\"condition\":\"hp_below\",\"n\":5}"), Conditions.Mode.ANY);
+				"{\"condition\":\"hp_below\",\"n\":5}"), Conditions.Mode.ANY, 60000L);
 
 		Waiters.evaluate();
 
@@ -113,7 +113,7 @@ class WaitersTest {
 		FakeGameView view = new FakeGameView();
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY, 60000L);
 		Waiters.Outcome outcome = Waiters.await(waiter, 40L);
 
 		assertFalse(outcome.met);
@@ -129,7 +129,7 @@ class WaitersTest {
 		view.loggedOut = false;
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY, 60000L);
 		view.loggedOut = true;
 		view.loggedIn = false;
 		Waiters.evaluate();
@@ -146,7 +146,7 @@ class WaitersTest {
 		view.loggedOut = false;
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"logged_out\"}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"logged_out\"}"), Conditions.Mode.ANY, 60000L);
 		view.loggedOut = true;
 		view.loggedIn = false;
 		Waiters.evaluate();
@@ -163,7 +163,7 @@ class WaitersTest {
 		view.loggedOut = true;
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"logged_in\"}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"logged_in\"}"), Conditions.Mode.ANY, 60000L);
 		Waiters.evaluate();
 		assertFalse(waiter.future.isDone(), "a wait that starts on the title screen must not be aborted");
 
@@ -179,8 +179,8 @@ class WaitersTest {
 		FakeGameView view = new FakeGameView();
 		Waiters.setView(view);
 
-		Waiters.Waiter first = Waiters.register(conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY);
-		Waiters.Waiter second = Waiters.register(conditions("{\"condition\":\"dialogue_open\"}"), Conditions.Mode.ANY);
+		Waiters.Waiter first = Waiters.register(conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY, 60000L);
+		Waiters.Waiter second = Waiters.register(conditions("{\"condition\":\"dialogue_open\"}"), Conditions.Mode.ANY, 60000L);
 
 		Waiters.cancelAll("shutting down");
 
@@ -207,7 +207,7 @@ class WaitersTest {
 		view.idle = true;
 		Waiters.setView(view);
 
-		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY);
+		Waiters.Waiter waiter = Waiters.register(conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY, 60000L);
 		view.inventoryHash = 5;
 		Waiters.evaluate();
 
@@ -218,5 +218,61 @@ class WaitersTest {
 		assertEquals(3222, status.getAsJsonObject("position").get("x").getAsInt());
 		assertEquals(9, status.getAsJsonObject("hp").get("current").getAsInt());
 		assertTrue(status.get("idle").getAsBoolean());
+	}
+
+	// ------------------------------------------------------------------ MCP-20
+
+	@Test
+	void ticksWaitedIsRelativeToTheWait() throws Exception {
+		FakeGameView view = new FakeGameView();
+		view.tick = 1000;
+		view.inventoryHash = 1;
+		Waiters.setView(view);
+
+		Waiters.Waiter waiter = Waiters.register(
+				conditions("{\"condition\":\"inventory_changed\"}"), Conditions.Mode.ANY, 60000L);
+		view.inventoryHash = 2;
+		view.tick = 1005;
+		Waiters.evaluate();
+
+		Waiters.Outcome outcome = waiter.future.get();
+		assertTrue(outcome.met);
+		assertEquals(5, outcome.ticksWaited, "ticks_waited must be relative to the wait, not absolute");
+	}
+
+	@Test
+	void timeoutIsEnforcedOnTheGameThreadWithAStatus() throws Exception {
+		FakeGameView view = new FakeGameView();
+		view.tick = 1000;
+		view.x = 3222;
+		Waiters.setView(view);
+
+		Waiters.Waiter waiter = Waiters.register(
+				conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY, 0L);
+		view.tick = 1005;
+		Waiters.evaluate(); // the game thread expires it
+
+		Waiters.Outcome outcome = Waiters.await(waiter, 50L);
+
+		assertFalse(outcome.met);
+		assertTrue(outcome.timedOut);
+		assertEquals(5, outcome.ticksWaited);
+		JsonObject json = outcome.toJson();
+		assertTrue(json.has("status"), "a timeout enforced on the game thread still carries a status");
+		assertEquals(3222, json.getAsJsonObject("status").getAsJsonObject("position").get("x").getAsInt());
+	}
+
+	@Test
+	void timeoutWithoutTheGameThreadDoesNotReadGameState() throws Exception {
+		FakeGameView view = new FakeGameView();
+		view.x = 3222;
+		Waiters.setView(view);
+
+		Waiters.Waiter waiter = Waiters.register(
+				conditions("{\"condition\":\"ticks\",\"n\":999}"), Conditions.Mode.ANY, 60000L);
+		Waiters.Outcome outcome = Waiters.await(waiter, 20L); // evaluate() never runs
+
+		assertTrue(outcome.timedOut);
+		assertFalse(outcome.toJson().has("status"), "the HTTP thread must not build a status block");
 	}
 }

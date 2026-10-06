@@ -78,13 +78,12 @@ public final class WaitTool {
 					final int timeoutMs = Conditions.clampTimeout(Tools.optInt(args, "timeout_ms", 10000));
 
 					// Snapshot and register on the game thread, then block here.
-					final Waiters.Waiter waiter = GameThread.call(() -> Waiters.register(conditions, mode));
+					final Waiters.Waiter waiter = GameThread.call(() -> Waiters.register(conditions, mode, timeoutMs));
 					Waiters.Outcome outcome = Waiters.await(waiter, timeoutMs);
 
+					// MCP-20 — the status block is filled in by the game thread (on success, on the
+					// timeout it enforces, or on logout). Never read game state from this thread.
 					JsonObject json = outcome.toJson();
-					if (!json.has("status")) {
-						json.add("status", Waiters.status());
-					}
 					if (TickTracker.APPROXIMATE) {
 						json.addProperty("ticks_approximate", true);
 					}

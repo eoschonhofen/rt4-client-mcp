@@ -3,6 +3,8 @@ package rt4.mcp.nav;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -56,6 +58,8 @@ public final class NavTask {
 	public static final int STUCK_FRAMES = 8;
 	public static final int DOOR_WAIT_FRAMES = 6;
 	public static final int MAX_DOOR_ATTEMPTS = 2;
+	/** How many finished task outcomes to remember for {@code wait_for(nav_done)}. */
+	static final int FINISHED_HISTORY = 16;
 
 	private static volatile NavTask active;
 	private static volatile int lastFinishedId = -1;
@@ -63,6 +67,15 @@ public final class NavTask {
 	private static volatile String lastFinishedReason;
 	private static volatile Driver driver = new LiveNavDriver();
 	private static int nextId = 1;
+
+	/** MCP-20 — the ids (and states) of recently finished tasks, newest last. */
+	private static final Map<Integer, String> FINISHED = Collections.synchronizedMap(
+			new LinkedHashMap<Integer, String>() {
+				@Override
+				protected boolean removeEldestEntry(Map.Entry<Integer, String> eldest) {
+					return size() > FINISHED_HISTORY;
+				}
+			});
 
 	private final int id;
 	private final int goalSceneX;
@@ -129,11 +142,10 @@ public final class NavTask {
 
 	/** {@code task < 0} asks about any task. */
 	public static boolean isFinished(int task) {
-		NavTask current = active;
 		if (task < 0) {
-			return current == null;
+			return active == null;
 		}
-		return current == null && lastFinishedId == task;
+		return FINISHED.containsKey(task);
 	}
 
 	public static synchronized void cancel(String reason) {
@@ -346,6 +358,7 @@ public final class NavTask {
 		lastFinishedId = id;
 		lastFinishedState = endState.name();
 		lastFinishedReason = endReason;
+		FINISHED.put(id, endState.name());
 		if (active == this) {
 			active = null;
 		}
