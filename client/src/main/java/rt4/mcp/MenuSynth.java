@@ -1,6 +1,8 @@
 package rt4.mcp;
 
+import rt4.Component;
 import rt4.Cs1ScriptRunner;
+import rt4.InterfaceList;
 import rt4.JagString;
 import rt4.LocalizedText;
 import rt4.MiniMenu;
@@ -44,6 +46,8 @@ public final class MenuSynth {
 	private static final class Snapshot {
 		int size;
 		boolean menuOpen;
+		Component mouseOverInventory;
+		int clickedInventoryIndex;
 		final JagString[] ops = new JagString[CAPACITY];
 		final JagString[] opBases = new JagString[CAPACITY];
 		final short[] actions = new short[CAPACITY];
@@ -135,9 +139,34 @@ public final class MenuSynth {
 			keepOnlyObjEntries(objTarget.id);
 		} else if (target instanceof TileTarget) {
 			populateTile((TileTarget) target);
+		} else if (target instanceof ComponentTarget) {
+			populateComponent((ComponentTarget) target);
 		} else {
 			throw new ToolException("this target kind is not supported yet: " + target.format());
 		}
+	}
+
+	/**
+	 * A component or an inventory slot inside one. {@code addComponentEntries} picks the slot
+	 * from the mouse position, which it expects relative to the component origin, so a slot
+	 * target passes that slot's cell centre and a plain component target its top-left corner.
+	 */
+	private static void populateComponent(ComponentTarget target) throws ToolException {
+		Component component = Targets.resolveComponent(target);
+		int mouseX = 1;
+		int mouseY = 1;
+		if (target.isSlot()) {
+			int slotCount = Math.max(0, component.baseWidth * component.baseHeight);
+			if (component.type != 2 || target.slot >= slotCount) {
+				throw new ToolException("no slot " + target.slot + " in " + target.format()
+						+ "; this component has " + slotCount + " slots");
+			}
+			int[] centre = InterfaceWalker.slotCentre(component, target.slot);
+			mouseX = centre[0];
+			mouseY = centre[1];
+		}
+		InterfaceList.mouseOverInventoryInterface = null;
+		MiniMenu.addComponentEntries(mouseY, mouseX, component);
 	}
 
 	/**
@@ -187,6 +216,8 @@ public final class MenuSynth {
 		Snapshot saved = new Snapshot();
 		saved.size = MiniMenu.size;
 		saved.menuOpen = Cs1ScriptRunner.isMenuOpen;
+		saved.mouseOverInventory = InterfaceList.mouseOverInventoryInterface;
+		saved.clickedInventoryIndex = MiniMenu.clickedInventoryIndex;
 		if (saved.size > 0) {
 			System.arraycopy(MiniMenu.ops, 0, saved.ops, 0, saved.size);
 			System.arraycopy(MiniMenu.opBases, 0, saved.opBases, 0, saved.size);
@@ -211,6 +242,8 @@ public final class MenuSynth {
 		}
 		MiniMenu.size = saved.size;
 		Cs1ScriptRunner.isMenuOpen = saved.menuOpen;
+		InterfaceList.mouseOverInventoryInterface = saved.mouseOverInventory;
+		MiniMenu.clickedInventoryIndex = saved.clickedInventoryIndex;
 	}
 
 	/** The subject line the UI would show for an item stack, used by the helper tools. */
@@ -239,6 +272,22 @@ public final class MenuSynth {
 			String subject = Names.plain(MiniMenu.targetOpBase);
 			return "casting " + (verb == null ? "a spell" : verb) + " on " + (subject == null ? "a target" : subject)
 					+ "; the next do_action consumes it (cancel_selection clears it)";
+		}
+		return null;
+	}
+
+	/** The pending selection as {@code { kind: "item|spell", name }}, or null. */
+	public static com.google.gson.JsonObject selection() {
+		com.google.gson.JsonObject out = new com.google.gson.JsonObject();
+		if (MiniMenu.itemTargetMode == 1) {
+			out.addProperty("kind", "item");
+			out.addProperty("name", Names.plain(MiniMenu.selectedObjText));
+			return out;
+		}
+		if (MiniMenu.isTargeting) {
+			out.addProperty("kind", "spell");
+			out.addProperty("name", Names.plain(MiniMenu.targetOpBase));
+			return out;
 		}
 		return null;
 	}

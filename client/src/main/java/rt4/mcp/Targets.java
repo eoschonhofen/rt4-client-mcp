@@ -225,11 +225,24 @@ public final class Targets {
 	}
 
 	public static Component resolveComponent(ComponentTarget target) throws ToolException {
-		Component component = InterfaceList.getComponent(target.interfaceId, target.childId);
-		if (component == null) {
+		Component resolved = findComponent(target.interfaceId, target.childId);
+		if (resolved == null) {
 			throw new ToolException("target gone: " + target.format());
 		}
-		return component;
+		return resolved;
+	}
+
+	/**
+	 * {@code if:<interfaceId>:<childId>} where the first number is a real interface id (the
+	 * packed component id is {@code (interfaceId << 16) | childId}), or
+	 * {@code if:<parentComponentId>:<createdChildIndex>} when the first number is already a
+	 * packed component id, as CS2-created children are addressed.
+	 */
+	public static Component findComponent(int interfaceId, int childId) {
+		if (interfaceId > 0xFFFF) {
+			return InterfaceList.getComponent(interfaceId, childId);
+		}
+		return InterfaceList.getComponent((interfaceId << 16) | childId);
 	}
 
 	public static ResolvedLoc resolveLoc(LocTarget target) throws ToolException {

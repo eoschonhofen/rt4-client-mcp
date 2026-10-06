@@ -17,6 +17,7 @@ import rt4.VarpDomain;
 import rt4.client;
 import rt4.mcp.Coords;
 import rt4.mcp.Dialogue;
+import rt4.mcp.MenuSynth;
 import rt4.mcp.Names;
 import rt4.mcp.Targets;
 import rt4.mcp.Tool;
@@ -89,6 +90,11 @@ public final class StatusTools {
 							out.addProperty("interacting", interacting);
 						}
 						out.addProperty("idle", isIdle(self));
+
+						JsonObject selection = MenuSynth.selection();
+						if (selection != null) {
+							out.add("selection", selection);
+						}
 					}
 
 					return ToolResult.json(out);
