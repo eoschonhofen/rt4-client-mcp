@@ -8,7 +8,7 @@ wouldn't allow.
 ## Problem
 `tools/InputTools.java:112` always calls `component.swapObjs(fromSlot, toSlot)`. The real drag handler
 (`Protocol.java` around 2740-2767) has three cases:
-- `isObjReplaceEnabled()` → move the item into the target slot and clear the source
+- `isObjReplaceEnabled()` → copy the target slot's item into the source slot and clear the target
 - `inserting == 1` (bank insert mode) → shift the slots in between
 - otherwise → swap
 
