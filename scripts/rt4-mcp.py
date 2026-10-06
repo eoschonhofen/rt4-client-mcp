@@ -3,7 +3,7 @@
 
 Stdlib only, so run it with:  python3 -I scripts/rt4-mcp.py <command>
 
-It finds the server by itself: the token comes from the client's config.json and the
+It finds the server by itself: the token comes from the mcp_token file beside the client's config.json and the
 port is probed from mcp_port up to mcp_port + 9, so nobody has to paste the bearer token.
 
 Commands:
@@ -73,6 +73,38 @@ def config_candidates(explicit):
     return paths
 
 
+TOKEN_FILE_NAME = "mcp_token"
+
+
+def read_token_file(directory):
+    """The sidecar token written by the client, or "" when there is none."""
+    try:
+        with open(os.path.join(directory, TOKEN_FILE_NAME), encoding="utf-8") as handle:
+            return handle.read().strip()
+    except FileNotFoundError:
+        return ""
+    except OSError as error:
+        raise McpError("cannot read the token file: {}".format(error))
+
+
+def load_token(explicit_config, config_path, config):
+    """The bearer token: the sidecar file beside config.json, or a legacy mcp_token key."""
+    legacy = (config.get("mcp_token") or "").strip()
+    if legacy:
+        return legacy
+    directories = []
+    if config_path:
+        directories.append(os.path.dirname(os.path.abspath(config_path)))
+    else:
+        directories = [os.path.dirname(os.path.abspath(path))
+                       for path in config_candidates(explicit_config)]
+    for directory in directories:
+        token = read_token_file(directory)
+        if token:
+            return token
+    return ""
+
+
 def load_config(explicit):
     for path in config_candidates(explicit):
         try:
@@ -92,7 +124,8 @@ class Target:
 
     def __init__(self, args):
         self.config_path, config = load_config(getattr(args, "config", None))
-        self.token = args.token or os.environ.get("RT4_MCP_TOKEN") or (config.get("mcp_token") or "").strip()
+        self.token = (args.token or os.environ.get("RT4_MCP_TOKEN")
+                      or load_token(getattr(args, "config", None), self.config_path, config))
         url = args.url or os.environ.get("RT4_MCP_URL")
         port = args.port or os.environ.get("RT4_MCP_PORT")
         if url:
@@ -117,7 +150,7 @@ class Target:
     def require_token(self):
         if not self.token:
             raise McpError(
-                "no bearer token: start the client once so it writes mcp_token into config.json, "
+                "no bearer token: start the client once so it writes the mcp_token file beside config.json, "
                 "or pass --token / --config (looked in: {})".format(", ".join(config_candidates(None))))
 
 
@@ -180,7 +213,7 @@ class Session:
         status, body, data = self.post({"jsonrpc": "2.0", "id": 0, "method": "initialize", "params": params},
                                        timeout=timeout)
         if status == 401:
-            raise McpError("{} rejected the bearer token (401); check mcp_token in config.json".format(self.url))
+            raise McpError("{} rejected the bearer token (401); check the mcp_token file beside config.json".format(self.url))
         if status != 200 or not body or "result" not in body:
             raise Unreachable("{} is not an RT4 MCP server (HTTP {}: {!r})".format(self.url, status, data[:120]))
         self.server_info = body["result"].get("serverInfo")
@@ -313,7 +346,7 @@ class Bridge:
                 problems.append(str(error))
                 continue
             if status == 401:
-                raise McpError("{} rejected the bearer token (401); check mcp_token in config.json".format(session.url))
+                raise McpError("{} rejected the bearer token (401); check the mcp_token file beside config.json".format(session.url))
             if status != 200 or not body or "result" not in body:
                 problems.append("{}: HTTP {}".format(session.url, status))
                 continue
@@ -484,7 +517,7 @@ def build_parser():
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--url", help="Full endpoint, e.g. http://127.0.0.1:43601/mcp. Skips port probing.")
     parser.add_argument("--port", type=int, help="Use this port only instead of probing mcp_port .. +9.")
-    parser.add_argument("--token", help="Bearer token. Defaults to mcp_token from config.json.")
+    parser.add_argument("--token", help="Bearer token. Defaults to the mcp_token file beside config.json.")
     parser.add_argument("--config", help="Path to the client's config.json.")
     commands = parser.add_subparsers(dest="command")
 
