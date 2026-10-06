@@ -51,6 +51,26 @@ game autonomously, doing everything the UI can do.
     └─────────────────────────────────────── 15
 ```
 
+## Follow-up tickets (review, 2026-10-06)
+
+Bugs and refactors found reviewing MCP-01…15. Order: 16 → 17 → 18 first (`walk_to` is unreliable until
+all three land), then 19 (client interop), then the rest.
+
+| ID | Type | Severity | Title | Depends on |
+|---|---|---|---|---|
+| [MCP-16](MCP-16-nav-tick-timing.md) | 🐛 bug | high | `walk_to` stuck/door timers count frames, not ticks | 13 |
+| [MCP-17](MCP-17-astar-collision-masks.md) | 🐛 bug | high | A* uses large-NPC masks and skips the diagonal tile | 13 |
+| [MCP-18](MCP-18-door-crossing.md) | 🐛 bug | high | Doors: "opened" never detected, crossing is one-way | 17 |
+| [MCP-19](MCP-19-structured-content-object.md) | 🐛 bug | high | `structuredContent` must be a JSON object | 03 |
+| [MCP-20](MCP-20-wait-for-fixes.md) | 🐛 bug | medium | `wait_for`: wrong `ticks_waited`, off-thread status | 12 |
+| [MCP-21](MCP-21-logout-button-fallback.md) | 🐛 bug | medium | `logout` fallback clicks select buttons | 10 |
+| [MCP-22](MCP-22-game-thread-hardening.md) | 🐛 bug | medium | Unguarded per-frame hooks, `cancel(true)` on game thread | 04 |
+| [MCP-23](MCP-23-screenshot-scale-and-threading.md) | 🐛 bug | medium | Screenshot reports wrong scale, encodes on game thread | 11 |
+| [MCP-24](MCP-24-drag-item-parity.md) | 🐛 bug | low | `drag_item` ignores insert/replace modes | 10 |
+| [MCP-25](MCP-25-transport-capacity.md) | ♻️ refactor | medium | HTTP thread starvation, unbounded sessions | 03 |
+| [MCP-26](MCP-26-cleanup.md) | ♻️ refactor | low | Dead code, naming, key-release order, plane checks | — |
+| [MCP-27](MCP-27-e2e-coverage-docs.md) | ✅ test/docs | low | Smoke test catches these; update SETUP.md | 16–19 |
+
 ## Code layout
 
 New package `client/src/main/java/rt4/mcp/`:
