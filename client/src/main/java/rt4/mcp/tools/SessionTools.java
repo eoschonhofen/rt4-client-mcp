@@ -54,6 +54,7 @@ public final class SessionTools {
 					String password = Tools.getString(args, "password");
 
 					LoginManager.startLogin(JagString.parse(username), JagString.parse(password), 0);
+					rt4.mcp.nav.NavTask.cancel("cancelled by login");
 
 					JsonObject out = new JsonObject();
 					out.addProperty("ok", true);
@@ -81,6 +82,7 @@ public final class SessionTools {
 						op = "Logout";
 					}
 					MenuSynth.act(button, op, null);
+					rt4.mcp.nav.NavTask.cancel("cancelled by logout");
 
 					JsonObject out = new JsonObject();
 					out.addProperty("ok", true);

@@ -58,8 +58,10 @@ public final class McpServer {
 		rt4.mcp.tools.SessionTools.register(registry);
 		rt4.mcp.tools.ScreenshotTool.register(registry);
 		rt4.mcp.tools.WaitTool.register(registry);
+		rt4.mcp.tools.WalkTool.register(registry);
 
-		// Run the wait_for registry every frame, after the task queue.
+		// Run the wait_for registry and the nav driver every frame, after the task queue.
+		GameThread.navigationStep = rt4.mcp.nav.NavTask::step;
 		GameThread.waiterTick = Waiters::evaluate;
 	}
 

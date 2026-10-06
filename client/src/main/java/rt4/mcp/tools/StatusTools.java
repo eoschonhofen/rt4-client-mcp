@@ -99,6 +99,7 @@ public final class StatusTools {
 							out.add("selection", selection);
 						}
 					}
+					out.add("nav", rt4.mcp.nav.NavTask.statusJson());
 
 					return ToolResult.json(out);
 				});

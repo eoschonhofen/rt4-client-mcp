@@ -94,6 +94,8 @@ public final class ActionTools {
 					String subject = Tools.optString(args, "subject", null);
 
 					MenuSynth.Ack ack = MenuSynth.act(target, op, subject);
+					// A deliberate action cancels any background walk (NavTask drives MenuSynth itself).
+					rt4.mcp.nav.NavTask.cancel("cancelled by do_action");
 
 					JsonObject out = new JsonObject();
 					out.addProperty("ok", true);
