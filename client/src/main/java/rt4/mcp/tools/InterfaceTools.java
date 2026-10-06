@@ -30,7 +30,7 @@ public final class InterfaceTools {
 
 		return Tools.gameTool("get_interfaces",
 				"Every open interface (dialogue, bank, shop, tabs, prayer book, spellbook, GE) as "
-						+ "[{ id, parent?, components }]. Each component has a target id "
+						+ "{ interfaces: [{ id, parent?, components }] }. Each component has a target id "
 						+ "(if:<interface>:<child>, or if:<interface>:<child>:<slot> for an inventory slot), "
 						+ "plus text, ops, a button (ok/close/toggle/continue/select/logout), a single obj "
 						+ "or its inventory slots. Use the slot targets with do_action, e.g. "
@@ -46,7 +46,9 @@ public final class InterfaceTools {
 					boolean includeHidden = Tools.optBool(args, "include_hidden", false);
 					int maxDepth = Tools.optInt(args, "max_depth", InterfaceWalker.DEFAULT_MAX_DEPTH);
 
-					return ToolResult.json(InterfaceWalker.describe(only, includeHidden, maxDepth));
+					JsonObject out = new JsonObject();
+					out.add("interfaces", InterfaceWalker.describe(only, includeHidden, maxDepth));
+					return ToolResult.json(out);
 				});
 	}
 }

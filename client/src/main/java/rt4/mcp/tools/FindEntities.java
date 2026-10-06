@@ -1,6 +1,7 @@
 package rt4.mcp.tools;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import rt4.mcp.EntityFilter;
 import rt4.mcp.GameThread;
 import rt4.mcp.SceneScan;
@@ -36,9 +37,10 @@ public final class FindEntities {
 
 		registry.register(Tools.gameTool("find_entities",
 				"Find NPCs, players, locs (objects) and ground items around you. Filter by name, "
-						+ "kind, distance and available op. Returns [{ target, type, id, name, x, y, plane, "
-						+ "distance, ops, extra }] sorted nearest-first; 'target' is the id to pass to "
-						+ "list_actions/do_action/interact. Coordinates are world coordinates.",
+						+ "kind, distance and available op. Returns { entities: [...], count: n } sorted "
+						+ "nearest-first; each entity is { target, type, id, name, x, y, plane, distance, "
+						+ "ops, extra } and 'target' is the id to pass to list_actions/do_action/interact. "
+						+ "Coordinates are world coordinates.",
 				schema,
 				args -> {
 					GameThread.requireLoggedIn();
@@ -58,7 +60,10 @@ public final class FindEntities {
 					for (EntityFilter.Entity entity : selected) {
 						result.add(entity.toJson());
 					}
-					return ToolResult.json(result);
+					JsonObject out = new JsonObject();
+					out.add("entities", result);
+					out.addProperty("count", result.size());
+					return ToolResult.json(out);
 				}));
 	}
 

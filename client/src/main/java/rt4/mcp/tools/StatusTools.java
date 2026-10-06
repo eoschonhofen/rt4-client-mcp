@@ -152,11 +152,16 @@ public final class StatusTools {
 
 	private static Tool inventory() {
 		return Tools.gameTool("get_inventory",
-				"Backpack contents (inventory 93). Only non-empty slots are returned. Each entry has "
-						+ "slot, id, name, count, the item's ops (exactly the strings do_action accepts) and "
-						+ "its inventory-slot target id, e.g. do_action(target='if:149:0:3', op='Wield').",
+				"Backpack contents (inventory 93), as { items: [...] }. Only non-empty slots are "
+						+ "returned. Each entry has slot, id, name, count, the item's ops (exactly the "
+						+ "strings do_action accepts) and its inventory-slot target id, e.g. "
+						+ "do_action(target='if:149:0:3', op='Wield').",
 				Tools.obj(),
-				args -> ToolResult.json(inventoryContents()));
+				args -> {
+					JsonObject out = new JsonObject();
+					out.add("items", inventoryContents());
+					return ToolResult.json(out);
+				});
 	}
 
 	/** The backpack as a JSON array, shared with the helper and smoke tools. */
@@ -245,8 +250,8 @@ public final class StatusTools {
 
 	private static Tool equipment() {
 		return Tools.gameTool("get_equipment",
-				"Worn equipment (inventory 94) by 530 slot name: head, cape, neck, weapon, body, "
-						+ "shield, legs, hands, feet, ring, ammo. Empty slots are omitted.",
+				"Worn equipment (inventory 94) as { items: [...] }, by 530 slot name: head, cape, "
+						+ "neck, weapon, body, shield, legs, hands, feet, ring, ammo. Empty slots are omitted.",
 				Tools.obj(),
 				args -> {
 					JsonArray items = new JsonArray();
@@ -268,7 +273,9 @@ public final class StatusTools {
 							items.add(item);
 						}
 					}
-					return ToolResult.json(items);
+					JsonObject out = new JsonObject();
+					out.add("items", items);
+					return ToolResult.json(out);
 				});
 	}
 
@@ -279,8 +286,8 @@ public final class StatusTools {
 		Tools.prop(schema, "skill", Tools.string("Optional skill name, case-insensitive, e.g. 'Woodcutting'."));
 
 		return Tools.gameTool("get_skills",
-				"All 25 skills as { name, level, base, xp }; level is the boosted level and base the "
-						+ "real one. Pass 'skill' to get a single entry.",
+				"All 25 skills as { skills: [{ name, level, base, xp }] }; level is the boosted "
+						+ "level and base the real one. Pass 'skill' to get a single entry.",
 				schema,
 				args -> {
 					String wanted = Tools.optString(args, "skill", null);
@@ -306,7 +313,9 @@ public final class StatusTools {
 						entry.addProperty("enabled", PlayerSkillXpTable.ENABLED_SKILLS[skill]);
 						result.add(entry);
 					}
-					return ToolResult.json(result);
+					JsonObject out = new JsonObject();
+					out.add("skills", result);
+					return ToolResult.json(out);
 				});
 	}
 }

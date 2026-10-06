@@ -193,4 +193,36 @@ class McpProtocolTest {
 		JsonElement id = response.get("id");
 		assertEquals("abc", id.getAsString());
 	}
+
+	/**
+	 * MCP-19 — the schema defines {@code structuredContent} as an object. Tools that cannot run
+	 * without the game throw, which is fine; every result that is produced must obey the schema.
+	 */
+	@Test
+	void everyToolStructuredContentIsAnObject() {
+		ToolRegistry registry = new ToolRegistry();
+		McpServer.registerTools(registry);
+		try {
+			GameThread.drain(); // this thread becomes the owner, so gameTool bodies run inline
+			for (Tool tool : registry.tools()) {
+				ToolResult result;
+				try {
+					result = tool.call(new JsonObject());
+				} catch (Throwable notRunnableWithoutTheGame) {
+					continue;
+				}
+				if (result == null) {
+					continue;
+				}
+				JsonObject json = result.toJson();
+				if (!json.has("structuredContent")) {
+					continue;
+				}
+				assertTrue(json.get("structuredContent").isJsonObject(),
+						tool.name() + " returned a non-object structuredContent");
+			}
+		} finally {
+			GameThread.reset();
+		}
+	}
 }

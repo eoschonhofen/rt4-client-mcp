@@ -144,7 +144,7 @@ def settle(client, timeout=20.0):
     """Wait until the scene around the player is loaded enough to act on."""
     deadline = time.time() + timeout
     while time.time() < deadline:
-        entities = client.tool("find_entities", {"type": "npc", "radius": 8})
+        entities = client.tool("find_entities", {"type": "npc", "radius": 8}).get("entities", [])
         if entities:
             return entities
         time.sleep(0.5)
@@ -154,7 +154,7 @@ def settle(client, timeout=20.0):
 def on_tutorial_island(client):
     """A fresh noauth account starts the tutorial, where modals block walking and chat."""
     guides = client.tool("find_entities", {"type": "npc", "name": "RuneScape guide", "radius": 20})
-    return bool(guides)
+    return bool(guides.get("entities"))
 
 
 def run_step(label, function, results):
@@ -237,10 +237,10 @@ def main(argv):
         position = status.get("position", {})
         require("x" in position and "y" in position and position["x"] > 0,
                 "get_status has no usable position: {}".format(position))
-        skills = client.tool("get_skills")
+        skills = client.tool("get_skills").get("skills", [])
         require(len(skills) == 25, "get_skills must return 25 entries, got {}".format(len(skills)))
-        inventory = client.tool("get_inventory")
-        require(isinstance(inventory, list), "get_inventory must return a list")
+        inventory = client.tool("get_inventory").get("items", [])
+        require(isinstance(inventory, list), "get_inventory must return a list of items")
         where = "Tutorial Island" if on_tutorial_island(client) else "the mainland"
         return "at {},{},{} on {} with {} backpack items".format(
             position["x"], position["y"], position.get("plane"), where, len(inventory))
@@ -286,7 +286,7 @@ def main(argv):
         raise Failure("walk ended at {} instead of {} (nav: {})".format(after, goal, nav))
 
     def step_door():
-        doors = client.tool("find_entities", {"type": "loc", "name": "door", "has_op": "Open", "radius": 20})
+        doors = client.tool("find_entities", {"type": "loc", "name": "door", "has_op": "Open", "radius": 20}).get("entities", [])
         if not doors:
             raise Skip("no closed door within 20 tiles")
         client.tool("do_action", {"target": doors[0]["target"], "op": "Open"})
@@ -294,9 +294,9 @@ def main(argv):
         return "opened {}".format(doors[0]["target"])
 
     def step_dialogue():
-        guide = client.tool("find_entities", {"type": "npc", "name": "Lumbridge Guide", "has_op": "Talk-to", "radius": 20})
+        guide = client.tool("find_entities", {"type": "npc", "name": "Lumbridge Guide", "has_op": "Talk-to", "radius": 20}).get("entities", [])
         if not guide:
-            guide = client.tool("find_entities", {"type": "npc", "has_op": "Talk-to", "radius": 10})
+            guide = client.tool("find_entities", {"type": "npc", "has_op": "Talk-to", "radius": 10}).get("entities", [])
         if not guide:
             raise Skip("no talkable NPC nearby")
         client.tool("interact", {"name": guide[0]["name"], "op": "Talk-to", "type": "npc", "radius": 20})
@@ -313,10 +313,10 @@ def main(argv):
     def step_admin_items():
         if on_tutorial_island(client):
             raise Skip("the tutorial replaces the chatbox, so :: commands cannot be typed yet")
-        before = len(client.tool("get_inventory"))
+        before = len(client.tool("get_inventory").get("items", []))
         client.tool("type_text", {"text": "::item 995 100", "enter": True})
         client.tool("wait_for", {"conditions": [{"condition": "inventory_changed"}], "timeout_ms": 5000})
-        after = client.tool("get_inventory")
+        after = client.tool("get_inventory").get("items", [])
         if len(after) == before:
             raise Skip("the server did not accept ::item (admin command name may differ)")
         client.tool("drag_item", {"from_slot": after[0]["slot"], "to_slot": 27})

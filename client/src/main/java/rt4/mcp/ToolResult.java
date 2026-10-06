@@ -2,19 +2,21 @@ package rt4.mcp;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.Base64;
 
 /**
  * MCP-03 — the MCP content block(s) a tool returns.
+ *
+ * <p>MCP-19 — {@code structuredContent} is always a JSON object, as the MCP schema requires.
+ * Tools that naturally return a list wrap it under a descriptive key.</p>
  */
 public final class ToolResult {
 	private static final Gson COMPACT = new Gson();
 
 	private final JsonArray content = new JsonArray();
-	private JsonElement structured;
+	private JsonObject structured;
 	private boolean error;
 
 	private ToolResult() {
@@ -30,15 +32,11 @@ public final class ToolResult {
 		return result;
 	}
 
-	/** Compact JSON as text, plus the same value as {@code structuredContent}. */
-	public static ToolResult json(JsonElement value) {
+	/** Compact JSON as text, plus the same object as {@code structuredContent}. */
+	public static ToolResult json(JsonObject value) {
 		ToolResult result = text(COMPACT.toJson(value));
 		result.structured = value;
 		return result;
-	}
-
-	public static ToolResult json(JsonObject value) {
-		return json((JsonElement) value);
 	}
 
 	/** A PNG image content block, base64 encoded. */
@@ -79,7 +77,7 @@ public final class ToolResult {
 	}
 
 	/** A tool error with a structured payload alongside the message. */
-	public static ToolResult error(String message, JsonElement structured) {
+	public static ToolResult error(String message, JsonObject structured) {
 		ToolResult result = error(message);
 		result.structured = structured;
 		return result;
