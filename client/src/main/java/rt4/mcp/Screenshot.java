@@ -25,6 +25,8 @@ public final class Screenshot {
 	public static final double MIN_SCALE = 0.25D;
 	public static final double MAX_SCALE = 1.0D;
 	public static final double DEFAULT_SCALE = 0.5D;
+	/** MCP-23 — the last-resort encode scale when even the minimum requested scale is too big. */
+	public static final double MIN_ENCODE_SCALE = 0.125D;
 	/** MCP tools/call responses get unwieldy above roughly this much base64. */
 	public static final int MAX_BASE64 = 1_500_000;
 
@@ -127,6 +129,36 @@ public final class Screenshot {
 		} catch (Exception failure) {
 			throw new ToolException("could not encode the screenshot as PNG: " + failure);
 		}
+	}
+
+	/** MCP-23 — an encoded screenshot plus the scale it was actually encoded at. */
+	public static final class Encoded {
+		public final BufferedImage image;
+		public final byte[] png;
+		public final double scale;
+
+		Encoded(BufferedImage image, byte[] png, double scale) {
+			this.image = image;
+			this.png = png;
+			this.scale = scale;
+		}
+	}
+
+	/**
+	 * MCP-23 — scales and encodes, halving the scale until the base64 fits {@code maxBase64} or
+	 * the floor {@link #MIN_ENCODE_SCALE} is reached. Reports the scale it really used, so the
+	 * agent can convert image pixels back to canvas coordinates.
+	 */
+	public static Encoded encodeToFit(BufferedImage image, double requestedScale, int maxBase64) throws ToolException {
+		double scale = requestedScale;
+		BufferedImage scaled = scale(image, scale);
+		byte[] png = toPng(scaled);
+		while (ToolResult.base64Length(png) > maxBase64 && scale > MIN_ENCODE_SCALE) {
+			scale = Math.max(MIN_ENCODE_SCALE, scale / 2.0D);
+			scaled = scale(image, scale);
+			png = toPng(scaled);
+		}
+		return new Encoded(scaled, png, scale);
 	}
 
 	public static double clampScale(double scale) {

@@ -117,6 +117,32 @@ class ScreenshotTest {
 		assertTrue(ToolResult.base64Length(png) > 0);
 	}
 
+	// ------------------------------------------------------------------ MCP-23
+
+	@Test
+	void encodeToFitKeepsTheScaleWhenItFits() throws Exception {
+		BufferedImage image = new BufferedImage(64, 64, BufferedImage.TYPE_INT_RGB);
+
+		Screenshot.Encoded encoded = Screenshot.encodeToFit(image, 0.5D, Integer.MAX_VALUE);
+
+		assertEquals(0.5D, encoded.scale, 1e-9);
+		assertEquals(32, encoded.image.getWidth());
+		assertEquals(32, encoded.image.getHeight());
+	}
+
+	@Test
+	void encodeToFitHalvesUntilItFitsOrHitsTheFloor() throws Exception {
+		BufferedImage image = new BufferedImage(200, 100, BufferedImage.TYPE_INT_RGB);
+
+		Screenshot.Encoded encoded = Screenshot.encodeToFit(image, 1.0D, 0);
+
+		assertEquals(Screenshot.MIN_ENCODE_SCALE, encoded.scale, 1e-9);
+		assertEquals(Math.round(image.getWidth() * encoded.scale), encoded.image.getWidth());
+		// The reported scale is the one that was actually encoded, within pixel rounding.
+		assertTrue(Math.abs(encoded.scale - encoded.image.getWidth() / (double) image.getWidth()) <= 1.0 / image.getWidth(),
+				"reported scale " + encoded.scale + " does not match the encoded image");
+	}
+
 	private static void assertArrayEqualsInts(int[] expected, int[] actual) {
 		assertEquals(expected.length, actual.length);
 		for (int i = 0; i < expected.length; i++) {
