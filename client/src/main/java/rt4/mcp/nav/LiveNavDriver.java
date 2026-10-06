@@ -8,9 +8,11 @@ import rt4.mcp.Coords;
 import rt4.mcp.MenuSynth;
 import rt4.mcp.Target;
 import rt4.mcp.Targets;
+import rt4.mcp.TickTracker;
 import rt4.mcp.TileTarget;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * MCP-13 — the live {@link NavTask.Driver}: reads positions and collision from the client and
@@ -45,13 +47,18 @@ public final class LiveNavDriver implements NavTask.Driver {
 	}
 
 	@Override
+	public int tick() {
+		return TickTracker.tick();
+	}
+
+	@Override
 	public CollisionSource collision() {
 		return new SceneCollision(Player.plane);
 	}
 
 	@Override
-	public Map<Integer, DoorIndex.Door> doors() {
-		return DoorIndex.doors(DOOR_SCAN_RADIUS);
+	public Set<Integer> doorTiles() {
+		return DoorIndex.doors(DOOR_SCAN_RADIUS).keySet();
 	}
 
 	@Override
@@ -65,11 +72,16 @@ public final class LiveNavDriver implements NavTask.Driver {
 		MenuSynth.act(Targets.parse(target), "Open", null);
 	}
 
+	/**
+	 * MCP-18 — the crossing is passable once the collision allows the step, or once the "Open"
+	 * loc is gone because the server rotated the door to its closed form.
+	 */
 	@Override
-	public boolean doorPassable(int sceneX, int sceneY) {
-		CollisionSource collision = collision();
-		// The server clears the wall flags when the door opens.
-		return (collision.flags(sceneX, sceneY) & (AStar.WEST_MASK | AStar.EAST_MASK | AStar.NORTH_MASK | AStar.SOUTH_MASK)) == 0;
+	public boolean doorPassable(int fromX, int fromY, int toX, int toY) {
+		if (AStar.canStep(collision(), fromX, fromY, toX - fromX, toY - fromY, null)) {
+			return true;
+		}
+		return doorTarget(fromX, fromY) == null && doorTarget(toX, toY) == null;
 	}
 
 	@Override
@@ -79,7 +91,7 @@ public final class LiveNavDriver implements NavTask.Driver {
 
 	@Override
 	public String doorTarget(int sceneX, int sceneY) {
-		Map<Integer, DoorIndex.Door> doors = doors();
+		Map<Integer, DoorIndex.Door> doors = DoorIndex.doors(DOOR_SCAN_RADIUS);
 		DoorIndex.Door door = doors.get(AStar.key(sceneX, sceneY));
 		if (door != null) {
 			return door.target;

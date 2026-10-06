@@ -2,9 +2,12 @@ package rt4.mcp.nav;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,6 +29,30 @@ class AStarTest {
 					flags[x][y] = rows[y].charAt(x) == '#' ? 0x100 : 0;
 				}
 			}
+		}
+
+		private Grid(int[][] raw) {
+			flags = raw;
+		}
+
+		static Grid raw(int[][] raw) {
+			return new Grid(raw);
+		}
+
+		/** Sets the raw flags of one tile, so a single wall edge bit can be placed. */
+		Grid set(int x, int y, int value) {
+			flags[x][y] = value;
+			return this;
+		}
+
+		Grid add(int x, int y, int bits) {
+			flags[x][y] |= bits;
+			return this;
+		}
+
+		Grid clear(int x, int y, int bits) {
+			flags[x][y] &= ~bits;
+			return this;
 		}
 
 		@Override
@@ -134,7 +161,8 @@ class AStarTest {
 
 		AStar.Path through = AStar.find(0, 1, 2, 1, grid, door(1, 1));
 		assertNotNull(through);
-		assertTrue(through.doors.contains(AStar.key(1, 1)), "the door tile must be marked on the path");
+		assertNotNull(through.crossingAt(0), "the door crossing must be recorded on the path");
+		assertEquals(AStar.key(1, 1), through.crossingAt(0).doorKey);
 		assertEquals(3, through.tiles.size());
 	}
 
@@ -194,5 +222,168 @@ class AStarTest {
 		Grid grid = new Grid(". #".replace(" ", ""));
 		AStar.Path found = AStar.find(0, 0, 2, 0, grid, Collections.<Integer>emptySet());
 		assertNull(found);
+	}
+
+	// ------------------------------------------------------------------ MCP-17
+
+	@Test
+	void walkingParallelToAWallSucceedsInAStraightLine() {
+		// Every tile of the row has a wall on its south edge (bit 0x2): walking east is fine.
+		Grid grid = new Grid(".....");
+		for (int x = 0; x < 5; x++) {
+			grid.add(x, 0, 0x2);
+		}
+		List<int[]> tiles = path(0, 0, 4, 0, grid, null);
+
+		assertNotNull(tiles);
+		assertEquals(5, tiles.size());
+	}
+
+	@Test
+	void enteringThroughAWalledEdgeIsBlockedAndAnOpenEdgeIsAllowed() {
+		Grid grid = new Grid(
+				"..",
+				"..");
+		grid.set(1, 0, 0x80); // an east-edge wall bit on (1,0)
+
+		assertFalse(AStar.canStep(grid, 0, 0, 1, 0, null), "the walled edge must block the step");
+		assertTrue(AStar.canStep(grid, 0, 1, 1, 0, null), "the open edge below must allow it");
+	}
+
+	@Test
+	void diagonalIntoABlockedTileIsRefusedEvenWhenBothOrthogonalsAreClear() {
+		Grid grid = new Grid(
+				"..",
+				"..");
+		grid.set(1, 1, 0x100);
+
+		assertTrue(AStar.canStep(grid, 0, 0, 1, 0, null), "the east neighbour is clear");
+		assertTrue(AStar.canStep(grid, 0, 0, 0, 1, null), "the north neighbour is clear");
+		assertFalse(AStar.canStep(grid, 0, 0, 1, 1, null), "the diagonal tile is blocked");
+	}
+
+	@Test
+	void masksMatchTheClientPathFinder() {
+		Random random = new Random(1234L);
+		int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {1, -1}, {-1, 1}, {1, 1}};
+		for (int trial = 0; trial < 25; trial++) {
+			int width = 10;
+			int height = 10;
+			int[][] raw = new int[width][height];
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
+					raw[x][y] = random.nextInt() & 0x7FFFFFFF;
+				}
+			}
+			Grid grid = Grid.raw(raw);
+			for (int x = 0; x < width; x++) {
+				for (int y = 0; y < height; y++) {
+					for (int[] direction : directions) {
+						assertEquals(referenceCanStep(grid, x, y, direction[0], direction[1]),
+								AStar.canStep(grid, x, y, direction[0], direction[1], null),
+								"step " + direction[0] + "," + direction[1] + " from " + x + "," + y);
+					}
+				}
+			}
+		}
+	}
+
+	/** A direct port of {@code PathFinder.findPath1}'s size-1 player checks. */
+	private static boolean referenceCanStep(Grid grid, int x, int y, int dx, int dy) {
+		int toX = x + dx;
+		int toY = y + dy;
+		if (toX < 0 || toY < 0 || toX >= grid.width() || toY >= grid.height()) {
+			return false;
+		}
+		if (dx == 0) {
+			int mask = dy == -1 ? 0x12C0102 : 0x12C0120;
+			return (grid.flags(toX, toY) & mask) == 0;
+		}
+		if (dy == 0) {
+			int mask = dx == -1 ? 0x12C0108 : 0x12C0180;
+			return (grid.flags(toX, toY) & mask) == 0;
+		}
+		int corner;
+		if (dx == -1 && dy == -1) {
+			corner = 0x12C010E;
+		} else if (dx == 1 && dy == -1) {
+			corner = 0x12C0183;
+		} else if (dx == -1 && dy == 1) {
+			corner = 0x12C0138;
+		} else {
+			corner = 0x12C01E0;
+		}
+		return (grid.flags(toX, toY) & corner) == 0
+				&& (grid.flags(toX, y) & (dx == -1 ? 0x12C0108 : 0x12C0180)) == 0
+				&& (grid.flags(x, toY) & (dy == -1 ? 0x12C0102 : 0x12C0120)) == 0;
+	}
+
+	// ------------------------------------------------------------------ MCP-18
+
+	@Test
+	void doorOnTheNearTileIsCrossedInBothDirections() {
+		Grid grid = wallBetween(1, 0, 2, 0);
+
+		AStar.Path east = AStar.find(0, 0, 3, 0, grid, door(1, 0));
+		assertNotNull(east);
+		assertEquals(1, east.crossingAt(1).fromIndex);
+		assertEquals(AStar.key(1, 0), east.crossingAt(1).doorKey);
+
+		AStar.Path west = AStar.find(3, 0, 0, 0, grid, door(1, 0));
+		assertNotNull(west);
+		assertNotNull(west.crossingAt(1), "crossing back must be recorded too");
+	}
+
+	@Test
+	void doorOnTheFarTileIsCrossedInBothDirections() {
+		Grid grid = wallBetween(1, 0, 2, 0);
+
+		AStar.Path east = AStar.find(0, 0, 3, 0, grid, door(2, 0));
+		assertNotNull(east);
+		assertNotNull(east.crossingAt(1));
+		assertEquals(AStar.key(2, 0), east.crossingAt(1).doorKey);
+
+		AStar.Path west = AStar.find(3, 0, 0, 0, grid, door(2, 0));
+		assertNotNull(west);
+		assertNotNull(west.crossingAt(1));
+	}
+
+	@Test
+	void noDoorCrossingOnDiagonals() {
+		Grid grid = new Grid(
+				"..",
+				"..");
+		grid.set(1, 1, AStar.DIAG_NE);
+
+		assertFalse(AStar.canStep(grid, 0, 0, 1, 1, door(1, 1)), "a diagonal must not waive a door");
+	}
+
+	@Test
+	void doorCrossingCostAppliesOnce() {
+		Grid grid = wallBetween(1, 0, 2, 0);
+
+		AStar.Path found = AStar.find(0, 0, 2, 0, grid, door(2, 0));
+
+		assertNotNull(found);
+		assertEquals(10 + 10 + AStar.DOOR_COST * 10, found.cost, "two steps and one door crossing");
+	}
+
+	/** A row of four tiles with a mirrored single-edge wall bit between {@code (ax,ay)} and {@code (bx,by)}. */
+	private static Grid wallBetween(int ax, int ay, int bx, int by) {
+		Grid grid = new Grid("....");
+		grid.add(ax, ay, 0x8); // entering the near tile from the east is blocked
+		grid.add(bx, by, 0x80); // entering the far tile from the west is blocked
+		return grid;
+	}
+
+	@Test
+	void crossingAtFindsTheRightCrossing() {
+		Grid grid = wallBetween(1, 0, 2, 0);
+		AStar.Path found = AStar.find(0, 0, 3, 0, grid, door(1, 0));
+
+		assertNotNull(found);
+		assertNull(found.crossingAt(0), "no crossing before the door");
+		assertNotNull(found.crossingAt(1));
+		assertNull(found.crossingAt(2));
 	}
 }

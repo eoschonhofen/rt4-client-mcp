@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,10 @@ import java.util.Set;
  * <p>States: {@code PLANNING -> WALKING -> OPENING_DOOR -> WALKING ... -> ARRIVED | FAILED |
  * CANCELLED}. All game access goes through {@link Driver}, so the state machine is tested
  * with a fake.</p>
+ *
+ * <p>MCP-16 — the stuck and door timers count game ticks (600 ms), not frames. MCP-18 — legs
+ * end on the tile in front of a door crossing, which is always reachable, and passability is
+ * re-checked after opening the door.</p>
  */
 public final class NavTask {
 	public enum State {
@@ -39,15 +44,20 @@ public final class NavTask {
 
 		int originY();
 
+		/** The current game tick (600 ms each). */
+		int tick();
+
 		CollisionSource collision();
 
-		Map<Integer, DoorIndex.Door> doors();
+		/** The tiles that hold a door loc offering "Open", keyed by {@link AStar#key}. */
+		Set<Integer> doorTiles();
 
 		void walk(int sceneX, int sceneY) throws Exception;
 
 		void open(String target) throws Exception;
 
-		boolean doorPassable(int sceneX, int sceneY);
+		/** Whether the step {@code from -> to} is passable now that the door was opened. */
+		boolean doorPassable(int fromX, int fromY, int toX, int toY);
 
 		int realPressSeq();
 
@@ -55,8 +65,8 @@ public final class NavTask {
 	}
 
 	public static final int MAX_LEG = 20;
-	public static final int STUCK_FRAMES = 8;
-	public static final int DOOR_WAIT_FRAMES = 6;
+	public static final int STUCK_TICKS = 8;
+	public static final int DOOR_WAIT_TICKS = 6;
 	public static final int MAX_DOOR_ATTEMPTS = 2;
 	/** How many finished task outcomes to remember for {@code wait_for(nav_done)}. */
 	static final int FINISHED_HISTORY = 16;
@@ -89,14 +99,14 @@ public final class NavTask {
 	private AStar.Path path;
 	private int legFrom;
 	private int legEnd;
-	private int legDoorKey = -1;
+	private AStar.Crossing legCrossing;
 	private int legsDone;
 	private int doorsOpened;
-	private int stuckFrames;
 	private int replans;
 	private int doorAttempts;
-	private int doorWaitFrames;
-	private int doorKey = -1;
+	private int doorOpenedTick;
+	private AStar.Crossing doorCrossing;
+	private int lastProgressTick;
 	private int lastX = Integer.MIN_VALUE;
 	private int lastY = Integer.MIN_VALUE;
 	private int lastOriginX = Integer.MIN_VALUE;
@@ -132,6 +142,7 @@ public final class NavTask {
 		NavTask task = new NavTask(nextId++, goalSceneX, goalSceneY, plane, radius, current.realPressSeq());
 		task.lastOriginX = current.originX();
 		task.lastOriginY = current.originY();
+		task.lastProgressTick = current.tick();
 		active = task;
 		return task;
 	}
@@ -231,10 +242,14 @@ public final class NavTask {
 			finish(State.FAILED, "the collision map is not loaded yet");
 			return false;
 		}
-		Map<Integer, DoorIndex.Door> doors = current.doors();
-		Set<Integer> doorTiles = doors == null ? java.util.Collections.<Integer>emptySet() : doors.keySet();
+		// The doors the server currently offers to open.
+		Set<Integer> planDoors = new HashSet<Integer>();
+		Set<Integer> doors = current.doorTiles();
+		if (doors != null) {
+			planDoors.addAll(doors);
+		}
 
-		AStar.Path found = AStar.find(px, py, goalSceneX, goalSceneY, collision, doorTiles);
+		AStar.Path found = AStar.find(px, py, goalSceneX, goalSceneY, collision, planDoors);
 		if (found == null) {
 			finish(State.FAILED, "no path on plane " + goalPlane + "; may need stairs/ladder/shortcut");
 			return false;
@@ -251,9 +266,10 @@ public final class NavTask {
 			finish(State.FAILED, "empty path");
 			return;
 		}
-		legEnd = legEnd(path.tiles, legFrom, path.doors, MAX_LEG);
+		legEnd = legEnd(path.tiles, legFrom, path.crossings, MAX_LEG);
+		legCrossing = path.crossingAt(legEnd);
 		int[] target = path.tiles.get(legEnd);
-		legDoorKey = path.doors.contains(AStar.key(target[0], target[1])) ? AStar.key(target[0], target[1]) : -1;
+		lastProgressTick = current.tick();
 		try {
 			current.walk(target[0], target[1]);
 		} catch (Exception failure) {
@@ -273,17 +289,18 @@ public final class NavTask {
 			return;
 		}
 
+		int now = current.tick();
+		if (px != lastX || py != lastY) {
+			lastX = px;
+			lastY = py;
+			lastProgressTick = now;
+		}
+
 		int[] target = path.tiles.get(legEnd);
 		if (chebyshev(px, py, target[0], target[1]) <= 2) {
-			if (legDoorKey >= 0) {
-				String doorTargetId = current.doorTarget(legDoorKey >> 8, legDoorKey & 0xFF);
-				if (doorTargetId == null) {
-					replanRequested = true;
-					return;
-				}
-				doorKey = legDoorKey;
+			if (legCrossing != null) {
+				doorCrossing = legCrossing;
 				doorAttempts = 1;
-				doorWaitFrames = 0;
 				doorAttempted = false;
 				state = State.OPENING_DOOR;
 				return;
@@ -293,18 +310,11 @@ public final class NavTask {
 			return;
 		}
 
-		if (px == lastX && py == lastY) {
-			stuckFrames++;
-		} else {
-			stuckFrames = 0;
-		}
-		lastX = px;
-		lastY = py;
-
-		if (stuckFrames > STUCK_FRAMES) {
+		if (now - lastProgressTick > STUCK_TICKS) {
 			if (replans == 0) {
 				replans++;
 				replanRequested = true;
+				lastProgressTick = now;
 			} else {
 				finish(State.FAILED, "stuck at " + worldX(current, px) + "," + worldY(current, py));
 			}
@@ -312,12 +322,25 @@ public final class NavTask {
 	}
 
 	private void tickDoor(Driver current, int px, int py) {
-		int doorX = doorKey >> 8;
-		int doorY = doorKey & 0xFF;
+		AStar.Crossing crossing = doorCrossing;
+		if (crossing == null || path == null || crossing.toIndex >= path.tiles.size()) {
+			replanRequested = true;
+			state = State.WALKING;
+			return;
+		}
+		int doorX = crossing.doorX();
+		int doorY = crossing.doorY();
+		int[] from = path.tiles.get(crossing.fromIndex);
+		int[] to = path.tiles.get(crossing.toIndex);
 
 		if (!doorAttempted) {
 			String targetId = current.doorTarget(doorX, doorY);
 			if (targetId == null) {
+				// The loc is already gone (someone opened it, or it opened on our first try).
+				if (current.doorPassable(from[0], from[1], to[0], to[1])) {
+					opened(current, crossing);
+					return;
+				}
 				finish(State.FAILED, "door at " + worldX(current, doorX) + "," + worldY(current, doorY) + " won't open");
 				return;
 			}
@@ -328,28 +351,38 @@ public final class NavTask {
 				return;
 			}
 			doorAttempted = true;
+			doorOpenedTick = current.tick();
 			return;
 		}
 
-		doorWaitFrames++;
-		if (current.doorPassable(doorX, doorY)) {
-			doorsOpened++;
-			legFrom = legEnd;
-			doorAttempted = false;
-			replanRequested = true;
-			state = State.WALKING;
+		if (current.doorPassable(from[0], from[1], to[0], to[1])) {
+			opened(current, crossing);
 			return;
 		}
-		if (doorWaitFrames < DOOR_WAIT_FRAMES) {
+		if (current.tick() - doorOpenedTick < DOOR_WAIT_TICKS) {
 			return;
 		}
 		if (doorAttempts < MAX_DOOR_ATTEMPTS) {
 			doorAttempts++;
-			doorWaitFrames = 0;
 			doorAttempted = false;
 			return;
 		}
+		// The second attempt is spent; re-check passability before giving up.
+		if (current.doorPassable(from[0], from[1], to[0], to[1])) {
+			opened(current, crossing);
+			return;
+		}
 		finish(State.FAILED, "door at " + worldX(current, doorX) + "," + worldY(current, doorY) + " won't open");
+	}
+
+	/** The crossing was opened: remember it, then re-plan from where we stand. */
+	private void opened(Driver current, AStar.Crossing crossing) {
+		doorsOpened++;
+		doorCrossing = null;
+		doorAttempted = false;
+		replanRequested = true;
+		lastProgressTick = current.tick();
+		state = State.WALKING;
 	}
 
 	private void finish(State endState, String endReason) {
@@ -367,16 +400,15 @@ public final class NavTask {
 	// ------------------------------------------------------------------ helpers
 
 	/**
-	 * The index the next leg walks to: up to {@code maxLength} tiles ahead, or the first
-	 * door edge, whichever comes first.
+	 * The index the next leg walks to: up to {@code maxLength} tiles ahead, or the tile in
+	 * front of the first door crossing, whichever comes first.
 	 */
-	public static int legEnd(List<int[]> tiles, int from, Set<Integer> doors, int maxLength) {
+	public static int legEnd(List<int[]> tiles, int from, List<AStar.Crossing> crossings, int maxLength) {
 		int limit = Math.min(tiles.size() - 1, from + maxLength);
-		if (doors != null) {
-			for (int i = from + 1; i <= limit; i++) {
-				int[] tile = tiles.get(i);
-				if (doors.contains(AStar.key(tile[0], tile[1]))) {
-					return i;
+		if (crossings != null) {
+			for (AStar.Crossing crossing : crossings) {
+				if (crossing.fromIndex >= from && crossing.fromIndex <= limit) {
+					return crossing.fromIndex;
 				}
 			}
 		}
