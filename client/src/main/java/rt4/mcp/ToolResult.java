@@ -52,9 +52,28 @@ public final class ToolResult {
 		return result;
 	}
 
+	/** A PNG image plus a text line describing it, e.g. its size. */
+	public static ToolResult imageWithText(byte[] png, String text) {
+		ToolResult result = new ToolResult();
+		JsonObject block = new JsonObject();
+		block.addProperty("type", "image");
+		block.addProperty("data", Base64.getEncoder().encodeToString(png));
+		block.addProperty("mimeType", "image/png");
+		result.content.add(block);
+
+		JsonObject note = new JsonObject();
+		note.addProperty("type", "text");
+		note.addProperty("text", text == null ? "" : text);
+		result.content.add(note);
+		return result;
+	}
+
+	public static int base64Length(byte[] png) {
+		return Base64.getEncoder().encodeToString(png).length();
+	}
+
 	/** A tool error: the agent sees the text and {@code isError: true}. */
-	public static ToolResult error(String message) {
-		ToolResult result = text(message);
+	public static ToolResult error(String message) {		ToolResult result = text(message);
 		result.error = true;
 		return result;
 	}
