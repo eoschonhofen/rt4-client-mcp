@@ -912,6 +912,10 @@ public final class client extends GameShell {
 		} else if (gameState == 40) {
 			Fonts.drawTextOnScreen(false, JagString.concatenate(new JagString[]{LocalizedText.CONLOST, JagString.LINE_BREAK, LocalizedText.ATTEMPT_TO_REESTABLISH}));
 		}
+		// AIO-09/12/14 — Java-side overlays go on after the interfaces, before the present.
+		if (gameState == 10 || gameState == 30) {
+			rt4.aionly.Overlays.draw();
+		}
 		if (GlRenderer.enabled && gameState != 0) {
 			GlRenderer.swapBuffers();
 			for (w = 0; w < InterfaceList.rectangles; w++) {
