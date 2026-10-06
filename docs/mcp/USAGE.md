@@ -12,7 +12,7 @@ The server is on by default. These keys in `client/config.json` control it:
 |---|---|---|
 | `mcp_enabled` | `true` | Start the listener (loopback only). |
 | `mcp_port` | `43600` | TCP port on `127.0.0.1`. |
-| `mcp_token` | `""` | Bearer token. Left empty, one is generated and written back. |
+| `mcp_token` | — | Deprecated. The bearer token lives in the `mcp_token` *file* beside `config.json`. A token still set in this key is honoured, with a warning. |
 
 On startup the client prints a ready-to-paste command:
 
@@ -26,14 +26,24 @@ starts normally.
 
 ## 2. Keep the token out of git
 
-`client/config.json` also holds your local IPs and now the token, so it is marked
-`skip-worktree` and git ignores changes to it:
+The token is a secret, and `client/config.json` is tracked, so the client never writes the
+token there. On first start it generates one into `client/mcp_token`, a plain-text file beside
+the config, created `0600` and listed in `.gitignore`.
+
+`client/config.json` still holds your local IPs, so it is also marked `skip-worktree` to keep
+those edits out of commits:
 
 ```bash
 git update-index --skip-worktree client/config.json
 ```
 
-The client writes the generated token back into that file, preserving every other key.
+Upgrading from an older build: move the value out of `config.json` by hand, or just delete the
+`mcp_token` key and let the client generate a fresh token into the new file.
+
+```bash
+printf '%s\n' "$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1])).get("mcp_token",""))' client/config.json)" > client/mcp_token
+chmod 600 client/mcp_token
+```
 
 ## 3. Connect a host
 
@@ -44,7 +54,7 @@ claude mcp add --transport http rt4 http://127.0.0.1:43600/mcp \
   --header "Authorization: Bearer <token>"
 ```
 
-Or use the stdio bridge in `scripts/rt4-mcp.py`. It reads the token from `config.json`, probes
+Or use the stdio bridge in `scripts/rt4-mcp.py`. It reads the token from `client/mcp_token`, probes
 ports 43600–43609, and re-initializes when the client restarts, so nothing has to be pasted:
 
 ```bash

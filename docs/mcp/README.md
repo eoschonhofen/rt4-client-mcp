@@ -16,7 +16,7 @@ game autonomously, doing everything the UI can do.
 | Return model | Actions return an ack once their packet is sent. `wait_for(condition, timeout)` blocks separately |
 | Helpers | `walk_to` (scene A*, opens doors, same plane, runs as a background task), dialogue helpers, name-based `interact` |
 | Safety | No target-server gate (accepted risk). Loopback bind, `Origin` check, bearer token |
-| Config | `config.json` keys `mcp_enabled`, `mcp_port`, `mcp_token`. The token is auto-generated and written back. The file is marked `skip-worktree` |
+| Config | `config.json` keys `mcp_enabled`, `mcp_port` (marked `skip-worktree`). The bearer token is auto-generated into the gitignored `client/mcp_token` file beside it, never into the tracked config |
 | Human input | Stays live. A real mouse click cancels an active `walk_to` |
 | Tests | JUnit 5 for pure logic, plus an e2e smoke run against the local server |
 | Git | Branch `mcp-server` in `client/`. Atomic gitmoji commits, no attribution, no push |
