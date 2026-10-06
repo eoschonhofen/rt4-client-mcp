@@ -62,6 +62,11 @@ public final class LiveNavDriver implements NavTask.Driver {
 	}
 
 	@Override
+	public Map<Integer, Integer> doorEdges() {
+		return DoorIndex.edges(DoorIndex.doors(DOOR_SCAN_RADIUS));
+	}
+
+	@Override
 	public void walk(int sceneX, int sceneY) throws Exception {
 		Target target = new TileTarget(Coords.worldX(sceneX), Coords.worldY(sceneY), Player.plane);
 		MenuSynth.act(target, "Walk here", null);

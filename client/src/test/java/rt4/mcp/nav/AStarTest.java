@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -385,5 +387,62 @@ class AStarTest {
 		assertNull(found.crossingAt(0), "no crossing before the door");
 		assertNotNull(found.crossingAt(1));
 		assertNull(found.crossingAt(2));
+	}
+
+	// ------------------------------------------------------------------ MCP-18 door edges
+
+	private static Map<Integer, Integer> doorOn(int x, int y, int edges) {
+		Map<Integer, Integer> doors = new HashMap<Integer, Integer>();
+		doors.put(AStar.key(x, y), edges);
+		return doors;
+	}
+
+	@Test
+	void aDoorOnlyCrossesTheEdgeItStandsOn() {
+		// (1,1) has a plain wall on its west edge and a door on its north edge.
+		Grid grid = new Grid("...", "...", "...")
+				.add(1, 1, 0x80).add(0, 1, 0x8)
+				.add(1, 1, 0x2).add(1, 2, 0x20);
+		Map<Integer, Integer> door = doorOn(1, 1, AStar.EDGE_N);
+
+		assertFalse(AStar.canStepThroughDoors(grid, 0, 1, 1, 0, door), "the west wall is not the door");
+		assertTrue(AStar.canStep(grid, 0, 1, 1, 0, door(1, 1)), "without edges any edge counts, as before");
+		assertTrue(AStar.canStepThroughDoors(grid, 1, 1, 0, 1, door), "leaving through the door's edge");
+		assertTrue(AStar.canStepThroughDoors(grid, 1, 2, 0, -1, door), "entering through the door's edge");
+	}
+
+	@Test
+	void aDoorDoesNotExplainABlockedDestination() {
+		Grid grid = new Grid("...")
+				.add(1, 0, 0x80).add(0, 0, 0x8)
+				.add(1, 0, 0x100); // a solid loc on the door tile too
+		assertFalse(AStar.canStepThroughDoors(grid, 0, 0, 1, 0, doorOn(1, 0, AStar.EDGE_W)));
+	}
+
+	@Test
+	void wallEdgesMatchCollisionMapFlagWall() {
+		assertEquals(AStar.EDGE_W, AStar.wallEdges(0, 0));
+		assertEquals(AStar.EDGE_N, AStar.wallEdges(0, 1));
+		assertEquals(AStar.EDGE_E, AStar.wallEdges(0, 2));
+		assertEquals(AStar.EDGE_S, AStar.wallEdges(0, 3));
+		assertEquals(AStar.EDGE_W | AStar.EDGE_N, AStar.wallEdges(2, 0));
+		assertEquals(AStar.EDGE_N | AStar.EDGE_E, AStar.wallEdges(2, 1));
+		assertEquals(AStar.EDGE_E | AStar.EDGE_S, AStar.wallEdges(2, 2));
+		assertEquals(AStar.EDGE_S | AStar.EDGE_W, AStar.wallEdges(2, 3));
+		assertEquals(AStar.EDGE_ANY, AStar.wallEdges(9, 0), "other shapes do not narrow the edges");
+	}
+
+	@Test
+	void aPathAvoidsCrossingAWallBesideADoor() {
+		// A wall runs between x=1 and x=2; only (2,1) holds a door, on its west edge.
+		Grid grid = new Grid("....", "....", "....");
+		for (int y = 0; y < 3; y++) {
+			grid.add(2, y, 0x80).add(1, y, 0x8);
+		}
+		AStar.Path path = AStar.findThroughDoors(0, 0, 3, 0, grid, doorOn(2, 1, AStar.EDGE_W));
+
+		assertNotNull(path);
+		assertEquals(1, path.crossings.size());
+		assertEquals(AStar.key(2, 1), path.crossings.get(0).doorKey);
 	}
 }

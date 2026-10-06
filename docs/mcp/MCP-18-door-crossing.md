@@ -24,7 +24,11 @@ either direction.
 
 ## Implementation
 - **Door edges, not door tiles.** A blocked *straight* step `from → to` counts as a door crossing when
-  `from` or `to` holds a door loc with "Open". Diagonal steps never cross doors.
+  `from` or `to` holds a door loc with "Open" *on the edge being crossed*. The edge comes from the loc's
+  shape and rotation (`CollisionMap.flagWall`: a straight wall stands on edge `rotation`, an L wall on that
+  edge and the next one clockwise). Doors of any other shape may be crossed on any edge. A destination
+  blocked as a whole tile (loc or floor) is only explained by a door of unknown shape on that tile.
+  Diagonal steps never cross doors.
 - **Path records crossings.** `Path.doors` becomes a list of step indices (or `(fromKey, toKey)` pairs) plus
   the door tile, instead of a set of tile keys.
 - **Legs.** A leg ends on the tile *before* a crossing, which is always reachable. At the leg end, enter

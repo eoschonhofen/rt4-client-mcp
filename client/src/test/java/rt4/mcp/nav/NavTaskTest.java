@@ -602,4 +602,28 @@ class NavTaskTest {
 		assertEquals(NavTask.State.WALKING, task.state());
 		assertTrue(task.status().get("doors_opened").getAsInt() >= 1);
 	}
+
+	@Test
+	void aDoorSomeoneElseOpenedIsNotCounted() {
+		AStarTest.Grid collision = doorWall(20, 5);
+		driver.collision = collision;
+		driver.doors.put(AStar.key(5, 0), door("loc:1516@0,0,0"));
+		NavTask.setDriver(driver);
+
+		NavTask task = NavTask.start(19, 0, 0, 0);
+		NavTask.step();
+		driver.px = 4;
+		NavTask.step();
+		assertEquals(NavTask.State.OPENING_DOOR, task.state());
+
+		// Another player opens it before we send anything.
+		driver.doors.remove(AStar.key(5, 0));
+		collision.clear(5, 0, 0x80);
+		collision.clear(4, 0, 0x8);
+		NavTask.step();
+
+		assertEquals(NavTask.State.WALKING, task.state());
+		assertTrue(driver.opens.isEmpty(), "nothing was sent");
+		assertEquals(0, task.status().get("doors_opened").getAsInt(), "doors_opened counts only our opens");
+	}
 }

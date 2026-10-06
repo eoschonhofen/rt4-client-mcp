@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +51,14 @@ public final class NavTask {
 
 		/** The tiles that hold a door loc offering "Open", keyed by {@link AStar#key}. */
 		Set<Integer> doorTiles();
+
+		/**
+		 * MCP-18 — the same doors with the edges they stand on ({@link AStar#wallEdges}). The
+		 * default does not know the edges, so any edge of a door tile counts.
+		 */
+		default Map<Integer, Integer> doorEdges() {
+			return AStar.anyEdge(doorTiles());
+		}
 
 		void walk(int sceneX, int sceneY) throws Exception;
 
@@ -259,14 +267,14 @@ public final class NavTask {
 			finish(State.FAILED, "the collision map is not loaded yet");
 			return false;
 		}
-		// The doors the server currently offers to open.
-		Set<Integer> planDoors = new HashSet<Integer>();
-		Set<Integer> doors = current.doorTiles();
+		// The doors the server currently offers to open, with the edges they stand on.
+		Map<Integer, Integer> planDoors = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> doors = current.doorEdges();
 		if (doors != null) {
-			planDoors.addAll(doors);
+			planDoors.putAll(doors);
 		}
 
-		AStar.Path found = AStar.find(px, py, goalSceneX, goalSceneY, collision, planDoors);
+		AStar.Path found = AStar.findThroughDoors(px, py, goalSceneX, goalSceneY, collision, planDoors);
 		if (found == null) {
 			finish(State.FAILED, "no path on plane " + goalPlane + "; may need stairs/ladder/shortcut");
 			return false;
@@ -353,9 +361,10 @@ public final class NavTask {
 		if (!doorAttempted) {
 			String targetId = current.doorTarget(doorX, doorY);
 			if (targetId == null) {
-				// The loc is already gone (someone opened it, or it opened on our first try).
+				// The loc is already gone: someone else opened it, or it opened after our last
+				// try. Only count it when we sent an open for it.
 				if (current.doorPassable(from[0], from[1], to[0], to[1])) {
-					opened(current, crossing);
+					opened(current, doorAttempts > 1);
 					return;
 				}
 				finish(State.FAILED, "door at " + worldX(current, doorX) + "," + worldY(current, doorY) + " won't open");
@@ -373,7 +382,7 @@ public final class NavTask {
 		}
 
 		if (current.doorPassable(from[0], from[1], to[0], to[1])) {
-			opened(current, crossing);
+			opened(current, true);
 			return;
 		}
 		if (current.tick() - doorOpenedTick < DOOR_WAIT_TICKS) {
@@ -386,15 +395,20 @@ public final class NavTask {
 		}
 		// The second attempt is spent; re-check passability before giving up.
 		if (current.doorPassable(from[0], from[1], to[0], to[1])) {
-			opened(current, crossing);
+			opened(current, true);
 			return;
 		}
 		finish(State.FAILED, "door at " + worldX(current, doorX) + "," + worldY(current, doorY) + " won't open");
 	}
 
-	/** The crossing was opened: remember it, then re-plan from where we stand. */
-	private void opened(Driver current, AStar.Crossing crossing) {
-		doorsOpened++;
+	/**
+	 * The crossing is passable: re-plan from where we stand. {@code byUs} is false when the door
+	 * was already open before we sent anything, so {@code doors_opened} only counts our opens.
+	 */
+	private void opened(Driver current, boolean byUs) {
+		if (byUs) {
+			doorsOpened++;
+		}
 		doorCrossing = null;
 		doorAttempted = false;
 		replanRequested = true;

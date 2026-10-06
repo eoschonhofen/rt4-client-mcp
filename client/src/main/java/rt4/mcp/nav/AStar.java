@@ -1,8 +1,10 @@
 package rt4.mcp.nav;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -14,9 +16,10 @@ import java.util.Set;
  * theirs, which forbids corner cutting exactly like {@code findPath1}.</p>
  *
  * <p>Doors are edges, not tiles (MCP-18): a blocked straight step {@code from -> to} is a
- * crossing when either end holds a door loc that offers "Open". Diagonal steps never cross a
- * door. Every crossing is recorded on the {@link Path} so the walker can stop in front of it
- * and open it.</p>
+ * crossing when either end holds a door loc that offers "Open" <em>on the edge being
+ * crossed</em> (see {@link #wallEdges}), and the destination is not blocked by anything a door
+ * could not explain. Diagonal steps never cross a door. Every crossing is recorded on the
+ * {@link Path} so the walker can stop in front of it and open it.</p>
  *
  * <p>Pure: all state comes from the {@link CollisionSource}, so it is unit-tested with a
  * character-grid fixture.</p>
@@ -37,6 +40,17 @@ public final class AStar {
 	public static final int DIAG_NE = 0x12C01E0;
 
 	public static final int DOOR_COST = 5;
+
+	/** Tile edges, as a bitmask. A straight wall loc's rotation {@code r} sits on edge {@code 1 << r}. */
+	public static final int EDGE_W = 1;
+	public static final int EDGE_N = 2;
+	public static final int EDGE_E = 4;
+	public static final int EDGE_S = 8;
+	/** Used when a door's shape is not a straight or L wall, or is unknown: any edge may be its own. */
+	public static final int EDGE_ANY = EDGE_W | EDGE_N | EDGE_E | EDGE_S;
+
+	/** The wall bits of a tile's four edges; everything else in a step mask blocks the tile itself. */
+	private static final int WALL_EDGE_BITS = 0x2 | 0x8 | 0x20 | 0x80;
 
 	private static final int[] DX = {-1, 1, 0, 0, -1, 1, -1, 1};
 	private static final int[] DY = {0, 0, -1, 1, -1, -1, 1, 1};
@@ -136,11 +150,56 @@ public final class AStar {
 		return dy == -1 ? DIAG_SE : DIAG_NE;
 	}
 
+	/** The edge of the {@code from} tile that a straight step {@code (dx, dy)} leaves through. */
+	public static int edge(int dx, int dy) {
+		if (dx == -1) {
+			return EDGE_W;
+		}
+		if (dx == 1) {
+			return EDGE_E;
+		}
+		if (dy == -1) {
+			return EDGE_S;
+		}
+		return EDGE_N;
+	}
+
+	/**
+	 * The edges a wall loc of this shape and rotation stands on ({@code CollisionMap.flagWall}):
+	 * a straight wall (shape 0) on edge {@code 1 << rotation}, an L wall (shape 2) on that edge
+	 * and the next one clockwise. Any other shape answers {@link #EDGE_ANY}.
+	 */
+	public static int wallEdges(int shape, int rotation) {
+		int r = rotation & 0x3;
+		if (shape == 0) {
+			return 1 << r;
+		}
+		if (shape == 2) {
+			return (1 << r) | (1 << ((r + 1) & 0x3));
+		}
+		return EDGE_ANY;
+	}
+
+	/** Door tiles whose edges are unknown, so any edge counts. */
+	public static Map<Integer, Integer> anyEdge(Set<Integer> doorTiles) {
+		if (doorTiles == null || doorTiles.isEmpty()) {
+			return Collections.emptyMap();
+		}
+		Map<Integer, Integer> edges = new HashMap<Integer, Integer>();
+		for (Integer tile : doorTiles) {
+			edges.put(tile, EDGE_ANY);
+		}
+		return edges;
+	}
+
 	/**
 	 * The door this blocked straight step crosses, as a tile key, or -1 when the step is clear
-	 * or no door permits it. Diagonal steps never cross a door.
+	 * or no door permits it. The door must stand on the crossed edge. When the destination is
+	 * also blocked as a whole tile (a loc or the floor), only a door on that tile whose edges are
+	 * unknown can explain it, e.g. a diagonal door, which flags its whole tile. Diagonal steps
+	 * never cross a door.
 	 */
-	static int crossingKey(CollisionSource source, int fromX, int fromY, int dx, int dy, Set<Integer> doors) {
+	static int crossingKey(CollisionSource source, int fromX, int fromY, int dx, int dy, Map<Integer, Integer> doors) {
 		if (doors == null || doors.isEmpty() || (dx != 0 && dy != 0)) {
 			return -1;
 		}
@@ -149,22 +208,33 @@ public final class AStar {
 		if (!inBounds(source, toX, toY)) {
 			return -1;
 		}
-		if ((source.flags(toX, toY) & straightMask(dx, dy)) == 0) {
+		int mask = straightMask(dx, dy);
+		int flags = source.flags(toX, toY);
+		if ((flags & mask) == 0) {
 			return -1;
 		}
+		boolean tileBlocked = (flags & mask & ~WALL_EDGE_BITS) != 0;
 		int toKey = key(toX, toY);
-		if (doors.contains(toKey)) {
+		Integer toEdges = doors.get(toKey);
+		if (toEdges != null && (toEdges & edge(-dx, -dy)) != 0 && (!tileBlocked || toEdges == EDGE_ANY)) {
 			return toKey;
 		}
 		int fromKey = key(fromX, fromY);
-		if (doors.contains(fromKey)) {
+		Integer fromEdges = doors.get(fromKey);
+		if (fromEdges != null && (fromEdges & edge(dx, dy)) != 0 && !tileBlocked) {
 			return fromKey;
 		}
 		return -1;
 	}
 
-	/** Whether a single orthogonal/diagonal step is allowed (doors at extra cost). */
+	/** Whether a single orthogonal/diagonal step is allowed; door tiles may be crossed on any edge. */
 	public static boolean canStep(CollisionSource source, int fromX, int fromY, int dx, int dy, Set<Integer> doors) {
+		return canStepThroughDoors(source, fromX, fromY, dx, dy, doors == null ? null : anyEdge(doors));
+	}
+
+	/** Whether a single orthogonal/diagonal step is allowed (doors on their own edges, at extra cost). */
+	public static boolean canStepThroughDoors(CollisionSource source, int fromX, int fromY, int dx, int dy,
+											  Map<Integer, Integer> doors) {
 		int toX = fromX + dx;
 		int toY = fromY + dy;
 		if (!inBounds(source, toX, toY)) {
@@ -176,7 +246,8 @@ public final class AStar {
 			if ((source.flags(toX, toY) & diagonalMask(dx, dy)) != 0) {
 				return false;
 			}
-			return canStep(source, fromX, fromY, dx, 0, null) && canStep(source, fromX, fromY, 0, dy, null);
+			return canStepThroughDoors(source, fromX, fromY, dx, 0, null)
+					&& canStepThroughDoors(source, fromX, fromY, 0, dy, null);
 		}
 		if ((source.flags(toX, toY) & straightMask(dx, dy)) == 0) {
 			return true;
@@ -190,6 +261,12 @@ public final class AStar {
 	 * approximate. Returns null when nothing is reachable.
 	 */
 	public static Path find(int srcX, int srcY, int dstX, int dstY, CollisionSource source, Set<Integer> doorTiles) {
+		return findThroughDoors(srcX, srcY, dstX, dstY, source, anyEdge(doorTiles));
+	}
+
+	/** As {@link #find}, with each door tile's edges ({@link #wallEdges}) keyed by {@link #key}. */
+	public static Path findThroughDoors(int srcX, int srcY, int dstX, int dstY, CollisionSource source,
+										Map<Integer, Integer> doorEdges) {
 		if (!inBounds(source, srcX, srcY)) {
 			return null;
 		}
@@ -214,7 +291,7 @@ public final class AStar {
 		java.util.Arrays.fill(costs, Integer.MAX_VALUE);
 		java.util.Arrays.fill(doorUsed, -1);
 
-		Set<Integer> doors = doorTiles == null ? new HashSet<Integer>() : doorTiles;
+		Map<Integer, Integer> doors = doorEdges == null ? Collections.<Integer, Integer>emptyMap() : doorEdges;
 		java.util.PriorityQueue<Node> open = new java.util.PriorityQueue<Node>();
 		int startIndex = index(srcX, srcY, width);
 		costs[startIndex] = 0;
@@ -244,7 +321,7 @@ public final class AStar {
 			for (int direction = 0; direction < DX.length; direction++) {
 				int dx = DX[direction];
 				int dy = DY[direction];
-				if (!canStep(source, cx, cy, dx, dy, doors)) {
+				if (!canStepThroughDoors(source, cx, cy, dx, dy, doors)) {
 					continue;
 				}
 				int nx = cx + dx;

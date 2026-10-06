@@ -1,5 +1,6 @@
 package rt4.mcp.nav;
 
+import com.google.gson.JsonObject;
 import rt4.mcp.Coords;
 import rt4.mcp.EntityFilter;
 import rt4.mcp.SceneScan;
@@ -21,12 +22,19 @@ public final class DoorIndex {
 		public final int sceneX;
 		public final int sceneY;
 		public final int plane;
+		/** MCP-18 — the tile edges the door stands on ({@link AStar#wallEdges}). */
+		public final int edges;
 
 		Door(String target, int sceneX, int sceneY, int plane) {
+			this(target, sceneX, sceneY, plane, AStar.EDGE_ANY);
+		}
+
+		Door(String target, int sceneX, int sceneY, int plane, int edges) {
 			this.target = target;
 			this.sceneX = sceneX;
 			this.sceneY = sceneY;
 			this.plane = plane;
+			this.edges = edges;
 		}
 	}
 
@@ -46,9 +54,27 @@ public final class DoorIndex {
 			if (!Coords.inScene(sceneX, sceneY)) {
 				continue;
 			}
-			doors.put(AStar.key(sceneX, sceneY), new Door(loc.target, sceneX, sceneY, loc.plane));
+			doors.put(AStar.key(sceneX, sceneY), new Door(loc.target, sceneX, sceneY, loc.plane, edgesOf(loc)));
 		}
 		return doors;
+	}
+
+	/** Each door tile's edges, keyed by {@link AStar#key}, for {@link AStar#findThroughDoors}. */
+	public static Map<Integer, Integer> edges(Map<Integer, Door> doors) {
+		Map<Integer, Integer> edges = new HashMap<Integer, Integer>();
+		for (Map.Entry<Integer, Door> entry : doors.entrySet()) {
+			edges.put(entry.getKey(), entry.getValue().edges);
+		}
+		return edges;
+	}
+
+	/** The edges a door loc stands on, from the shape and rotation {@code SceneScan} reports. */
+	static int edgesOf(EntityFilter.Entity loc) {
+		JsonObject extra = loc.extra;
+		if (extra == null || !extra.has("shape") || !extra.has("rotation")) {
+			return AStar.EDGE_ANY;
+		}
+		return AStar.wallEdges(extra.get("shape").getAsInt(), extra.get("rotation").getAsInt());
 	}
 
 	public static Set<Integer> tiles(int radius) {
