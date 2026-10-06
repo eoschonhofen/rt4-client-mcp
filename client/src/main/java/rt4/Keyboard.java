@@ -304,6 +304,11 @@ public final class Keyboard implements KeyListener, FocusListener {
 		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState)) {
 			return;
 		}
+		// AIO-09 — Enter dismisses the token panel instead of reaching the title screen.
+		if (client.gameState == InputGate.TITLE_SCREEN_STATE
+				&& rt4.aionly.TokenPanel.handleKey(event.getKeyCode())) {
+			return;
+		}
 		if (instance == null) {
 			return;
 		}

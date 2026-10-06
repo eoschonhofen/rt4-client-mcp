@@ -198,6 +198,13 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
+		// AIO-09 — while the token panel is open it swallows every title-screen click, so a
+		// human cannot click through it into the login form.
+		if (client.gameState == InputGate.TITLE_SCREEN_STATE && rt4.aionly.TokenPanel.isOpen()
+				&& rt4.aionly.TokenPanel.handleClick(event.getX(), event.getY(),
+						GameShell.canvasWidth, GameShell.canvasHeight)) {
+			return;
+		}
 		if (SwingUtilities.isMiddleMouseButton(event)) {
 			return;
 		}
