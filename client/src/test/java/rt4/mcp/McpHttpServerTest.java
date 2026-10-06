@@ -15,6 +15,11 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -23,6 +28,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class McpHttpServerTest {
 	private static final String TOKEN = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+	/** MCP-25 — the blocking tool parks every caller here until the server is stopped. */
+	private static final CountDownLatch BLOCKED = new CountDownLatch(1);
+	private static final AtomicInteger BLOCKING = new AtomicInteger();
 
 	private McpHttpServer server;
 	private int port;
@@ -52,6 +60,38 @@ class McpHttpServerTest {
 				return ToolResult.json(args);
 			}
 		});
+
+		registry.register(new Tool() {
+			@Override
+			public String name() {
+				return "block";
+			}
+
+			@Override
+			public String description() {
+				return "parks the calling request until the test ends";
+			}
+
+			@Override
+			public JsonObject inputSchema() {
+				JsonObject schema = new JsonObject();
+				schema.addProperty("type", "object");
+				return schema;
+			}
+
+			@Override
+			public ToolResult call(JsonObject args) throws ToolException {
+				BLOCKING.incrementAndGet();
+				try {
+					BLOCKED.await(30L, TimeUnit.SECONDS);
+				} catch (InterruptedException stopped) {
+					Thread.currentThread().interrupt();
+					throw new ToolException("interrupted");
+				}
+				return ToolResult.json(args);
+			}
+		});
+		BLOCKING.set(0);
 
 		server = McpHttpServer.start(new McpConfig(true, 0, TOKEN, null), registry);
 		port = server.port();
@@ -294,5 +334,81 @@ class McpHttpServerTest {
 	void sessionHeaderIsAbsentOnInitializeError() throws IOException {
 		Resp response = send("POST", "{oops", null, "Bearer " + TOKEN, null, null);
 		assertNull(response.header("mcp-session-id"));
+	}
+
+	// ------------------------------------------------------------------ MCP-25
+
+	@Test
+	void aBlockedCallDoesNotStarvePing() throws Exception {
+		Resp init = initialize();
+		String session = init.header("mcp-session-id");
+		// Warm the HTTP path up, so the measured ping is not the first request.
+		assertEquals(200, post("{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"ping\"}", session).status);
+
+		int pending = 5;
+		ExecutorService callers = Executors.newFixedThreadPool(pending);
+		try {
+			for (int i = 0; i < pending; i++) {
+				callers.submit(() -> {
+					post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/call\","
+							+ "\"params\":{\"name\":\"block\",\"arguments\":{}}}", session);
+					return null;
+				});
+			}
+
+			long startDeadline = System.currentTimeMillis() + 5000L;
+			while (BLOCKING.get() < pending && System.currentTimeMillis() < startDeadline) {
+				Thread.sleep(10L);
+			}
+			assertEquals(pending, BLOCKING.get(), "every blocking call should be inside its tool");
+
+			long start = System.nanoTime();
+			Resp ping = post("{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"ping\"}", session);
+			long millis = (System.nanoTime() - start) / 1_000_000L;
+
+			assertEquals(200, ping.status);
+			assertTrue(millis < 100L, "ping took " + millis + "ms while " + pending + " calls were blocked");
+		} finally {
+			callers.shutdownNow();
+		}
+	}
+
+	@Test
+	void idleSessionsAreEvictedAfterTheTtl() throws IOException {
+		long[] now = {0L};
+		server.setClock(() -> now[0]);
+
+		Resp init = initialize();
+		String session = init.header("mcp-session-id");
+		assertEquals(1, server.sessionCount());
+
+		now[0] = McpHttpServer.SESSION_TTL_NANOS + 1L;
+		Resp after = post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"tools/list\"}", session);
+
+		assertEquals(404, after.status, "an idle session must be evicted after the TTL");
+		assertEquals(0, server.sessionCount());
+	}
+
+	@Test
+	void anActiveSessionSurvivesPastTheTtl() throws IOException {
+		long[] now = {0L};
+		server.setClock(() -> now[0]);
+		String session = initialize().header("mcp-session-id");
+
+		now[0] += TimeUnit.MINUTES.toNanos(20);
+		assertEquals(200, post("{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"ping\"}", session).status);
+
+		now[0] += TimeUnit.MINUTES.toNanos(20);
+		assertEquals(200, post("{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"tools/list\"}", session).status,
+				"a request must refresh the session's last-seen time");
+	}
+
+	@Test
+	void theSessionTableIsCapped() throws IOException {
+		for (int i = 0; i < McpHttpServer.MAX_SESSIONS + 3; i++) {
+			assertEquals(200, initialize().status);
+		}
+
+		assertEquals(McpHttpServer.MAX_SESSIONS, server.sessionCount());
 	}
 }

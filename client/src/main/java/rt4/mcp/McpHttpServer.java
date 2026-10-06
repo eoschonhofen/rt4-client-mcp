@@ -12,34 +12,60 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
 /**
  * MCP-03 — the Streamable HTTP endpoint. One context, {@code /mcp}, bound to loopback.
  *
  * <p>Only plain JSON responses are used: the spec permits them and this server never sends
  * server-to-client requests, so there is no SSE stream.</p>
+ *
+ * <p>MCP-25 — a cached daemon pool serves every request on its own thread, and a semaphore caps
+ * how many run at once. Tools that block for tens of seconds therefore cannot starve a short
+ * call such as {@code ping}. Sessions expire after {@link #SESSION_TTL_NANOS} of idleness and
+ * the table is capped at {@link #MAX_SESSIONS}.</p>
  */
 public final class McpHttpServer {
 	public static final String CONTEXT = "/mcp";
 	public static final String SESSION_HEADER = "Mcp-Session-Id";
+
+	/** How long a session may stay idle before the next request evicts it. */
+	static final long SESSION_TTL_NANOS = TimeUnit.MINUTES.toNanos(30);
+	/** The most sessions kept at once; the oldest is evicted to make room. */
+	static final int MAX_SESSIONS = 64;
+	/** The most requests served at once, so a storm cannot spawn unbounded work. */
+	static final int MAX_CONCURRENT_REQUESTS = 32;
 
 	private final HttpServer server;
 	private final McpProtocol protocol;
 	private final McpConfig config;
 	private final ExecutorService executor;
 	private final ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<String, Session>();
+	private final Semaphore slots = new Semaphore(MAX_CONCURRENT_REQUESTS);
 	private final int port;
+	/** The clock the session TTL is measured against; a test seam. */
+	private volatile LongSupplier clock = new LongSupplier() {
+		@Override
+		public long getAsLong() {
+			return System.nanoTime();
+		}
+	};
 
 	private static final class Session {
 		final String id;
+		volatile long lastSeenNanos;
 
-		Session(String id) {
+		Session(String id, long lastSeenNanos) {
 			this.id = id;
+			this.lastSeenNanos = lastSeenNanos;
 		}
 	}
 
@@ -55,7 +81,9 @@ public final class McpHttpServer {
 	public static McpHttpServer start(McpConfig config, ToolRegistry tools) throws IOException {
 		InetSocketAddress address = new InetSocketAddress(InetAddress.getLoopbackAddress(), config.port);
 		HttpServer server = HttpServer.create(address, 0);
-		ExecutorService executor = Executors.newFixedThreadPool(4, daemonFactory());
+		// MCP-25 — a cached pool gives every request a thread; the semaphore in handle() is what
+		// bounds concurrent work, so a blocked wait_for cannot starve ping.
+		ExecutorService executor = Executors.newCachedThreadPool(daemonFactory());
 		server.setExecutor(executor);
 		McpHttpServer wrapper = new McpHttpServer(server, config, tools, executor);
 		server.createContext(CONTEXT, wrapper::handle);
@@ -97,32 +125,45 @@ public final class McpHttpServer {
 
 	private void handle(HttpExchange exchange) throws IOException {
 		try {
-			if (!Auth.bearerMatches(exchange.getRequestHeaders().getFirst("Authorization"), config.token)) {
-				sendText(exchange, 401, "missing or invalid bearer token", "WWW-Authenticate", "Bearer");
+			if (!slots.tryAcquire()) {
+				sendText(exchange, 503, "server busy; " + MAX_CONCURRENT_REQUESTS
+						+ " requests are already in flight");
 				return;
 			}
-			if (!Auth.originAllowed(exchange.getRequestHeaders().getFirst("Origin"))) {
-				sendText(exchange, 403, "forbidden origin");
-				return;
-			}
-			if (!Auth.hostAllowed(exchange.getRequestHeaders().getFirst("Host"), port)) {
-				sendText(exchange, 403, "forbidden host");
-				return;
-			}
-
-			String method = exchange.getRequestMethod();
-			if ("POST".equals(method)) {
-				handlePost(exchange);
-			} else if ("DELETE".equals(method)) {
-				handleDelete(exchange);
-			} else {
-				sendText(exchange, 405, "method not allowed; use POST", "Allow", "POST, DELETE");
+			try {
+				handleRequest(exchange);
+			} finally {
+				slots.release();
 			}
 		} catch (Throwable error) {
 			System.err.println("[MCP] request failed: " + error);
 			safeError(exchange);
 		} finally {
 			exchange.close();
+		}
+	}
+
+	private void handleRequest(HttpExchange exchange) throws IOException {
+		if (!Auth.bearerMatches(exchange.getRequestHeaders().getFirst("Authorization"), config.token)) {
+			sendText(exchange, 401, "missing or invalid bearer token", "WWW-Authenticate", "Bearer");
+			return;
+		}
+		if (!Auth.originAllowed(exchange.getRequestHeaders().getFirst("Origin"))) {
+			sendText(exchange, 403, "forbidden origin");
+			return;
+		}
+		if (!Auth.hostAllowed(exchange.getRequestHeaders().getFirst("Host"), port)) {
+			sendText(exchange, 403, "forbidden host");
+			return;
+		}
+
+		String method = exchange.getRequestMethod();
+		if ("POST".equals(method)) {
+			handlePost(exchange);
+		} else if ("DELETE".equals(method)) {
+			handleDelete(exchange);
+		} else {
+			sendText(exchange, 405, "method not allowed; use POST", "Allow", "POST, DELETE");
 		}
 	}
 
@@ -138,17 +179,25 @@ public final class McpHttpServer {
 		boolean initialize = message.isRequest() && McpProtocol.createsSession(message.method);
 		String sessionId = exchange.getRequestHeaders().getFirst(SESSION_HEADER);
 
+		long now = clock.getAsLong();
+		evictIdleSessions(now);
+
 		if (initialize) {
 			sessionId = UUID.randomUUID().toString();
-			sessions.put(sessionId, new Session(sessionId));
+			evictOldestSessionIfFull();
+			sessions.put(sessionId, new Session(sessionId, now));
 		} else if (sessionId == null || sessionId.isEmpty()) {
 			sendJson(exchange, 400, JsonRpc.error(message.id, JsonRpc.INVALID_REQUEST,
 					"missing " + SESSION_HEADER + "; send initialize first"));
 			return;
-		} else if (!sessions.containsKey(sessionId)) {
-			sendJson(exchange, 404, JsonRpc.error(message.id, JsonRpc.INVALID_REQUEST,
-					"unknown " + SESSION_HEADER + "; re-initialize"));
-			return;
+		} else {
+			Session session = sessions.get(sessionId);
+			if (session == null) {
+				sendJson(exchange, 404, JsonRpc.error(message.id, JsonRpc.INVALID_REQUEST,
+						"unknown " + SESSION_HEADER + "; re-initialize"));
+				return;
+			}
+			session.lastSeenNanos = now;
 		}
 
 		JsonObject response = protocol.handle(message);
@@ -180,6 +229,43 @@ public final class McpHttpServer {
 			return;
 		}
 		sendEmpty(exchange, 200);
+	}
+
+	/** MCP-25 — drop every session untouched for longer than the TTL. Called on each request. */
+	private void evictIdleSessions(long now) {
+		for (Map.Entry<String, Session> entry : sessions.entrySet()) {
+			if (now - entry.getValue().lastSeenNanos > SESSION_TTL_NANOS) {
+				sessions.remove(entry.getKey(), entry.getValue());
+			}
+		}
+	}
+
+	/** MCP-25 — make room for a new session by dropping the least recently used one. */
+	private void evictOldestSessionIfFull() {
+		while (sessions.size() >= MAX_SESSIONS) {
+			String oldestId = null;
+			long oldestSeen = Long.MAX_VALUE;
+			for (Map.Entry<String, Session> entry : sessions.entrySet()) {
+				if (entry.getValue().lastSeenNanos <= oldestSeen) {
+					oldestSeen = entry.getValue().lastSeenNanos;
+					oldestId = entry.getKey();
+				}
+			}
+			if (oldestId == null) {
+				return;
+			}
+			sessions.remove(oldestId);
+		}
+	}
+
+	/** Test seam: the clock the session TTL is measured against. */
+	void setClock(LongSupplier clock) {
+		this.clock = clock;
+	}
+
+	/** Test seam: the number of live sessions. */
+	int sessionCount() {
+		return sessions.size();
 	}
 
 	private static String readBody(InputStream in) throws IOException {
