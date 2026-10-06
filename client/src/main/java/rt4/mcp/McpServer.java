@@ -51,6 +51,7 @@ public final class McpServer {
 	private static void registerTools(ToolRegistry registry) {
 		rt4.mcp.tools.StatusTools.register(registry);
 		rt4.mcp.tools.ChatTools.register(registry);
+		rt4.mcp.tools.FindEntities.register(registry);
 	}
 
 	public static McpHttpServer running() {
