@@ -5,3 +5,6 @@
 bin/
 build/
 dump/
+
+__pycache__/
+*.pyc
