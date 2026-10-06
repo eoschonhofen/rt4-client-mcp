@@ -104,8 +104,8 @@ public final class McpConfig {
 			try {
 				root = JsonParser.parseString(raw).getAsJsonObject();
 			} catch (RuntimeException malformed) {
-				// Not a JSON object we can extend; fall back to a fresh one rather than
-				// destroying whatever is there.
+				// Not a JSON object we can extend; leave the file alone rather than rewriting it
+				// and losing the keys we cannot see.
 				return false;
 			}
 			root.addProperty("mcp_token", token);
@@ -125,16 +125,5 @@ public final class McpConfig {
 			System.err.println("[MCP] token write-back failed: " + ex);
 			return false;
 		}
-	}
-
-	public String url() {
-		return "http://" + BIND_ADDRESS + ":" + port + "/mcp";
-	}
-
-	/** The one-time stderr block a human copies into their MCP host. */
-	public void logStartup() {
-		System.err.println("[MCP] listening on " + url());
-		System.err.println("[MCP] claude mcp add --transport http rt4 " + url()
-				+ " --header \"Authorization: Bearer " + token + "\"");
 	}
 }
