@@ -13,3 +13,6 @@ __pycache__/
 accounts.json
 accounts.json.bad-*
 accounts.json.tmp
+
+# Plugins copied in by plugin-playground builds
+/client/plugins/
