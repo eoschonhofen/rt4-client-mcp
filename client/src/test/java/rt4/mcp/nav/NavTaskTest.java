@@ -551,6 +551,10 @@ class NavTaskTest {
 
 		assertEquals(NavTask.State.WALKING, task.state());
 		assertTrue(task.status().get("doors_opened").getAsInt() >= 1);
+
+		NavTask.cancel("done");
+		assertEquals(1, NavTask.statusJson().get("last_doors_opened").getAsInt(),
+				"the count must outlive the task, so a caller can read it after nav_done");
 	}
 
 	@Test

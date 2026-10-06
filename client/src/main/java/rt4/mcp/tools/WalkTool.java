@@ -81,7 +81,8 @@ public final class WalkTool {
 		return Tools.gameTool("nav_status",
 				"The state of the background walk: task id, state (PLANNING/WALKING/OPENING_DOOR/"
 						+ "ARRIVED/FAILED/CANCELLED), reason on failure, your position, the goal, tiles "
-						+ "remaining, legs done and doors opened.",
+						+ "remaining, legs done and doors opened. When no walk is active it reports the last "
+						+ "one as last_task, last_state, last_reason and last_doors_opened.",
 				schema,
 				args -> {
 					JsonObject status = NavTask.statusJson();

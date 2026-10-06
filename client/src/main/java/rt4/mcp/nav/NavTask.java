@@ -87,6 +87,7 @@ public final class NavTask {
 	private static volatile int lastFinishedId = -1;
 	private static volatile String lastFinishedState;
 	private static volatile String lastFinishedReason;
+	private static volatile int lastFinishedDoorsOpened;
 	private static volatile Driver driver = new LiveNavDriver();
 	private static int nextId = 1;
 
@@ -207,6 +208,7 @@ public final class NavTask {
 				if (lastFinishedReason != null) {
 					idle.addProperty("last_reason", lastFinishedReason);
 				}
+				idle.addProperty("last_doors_opened", lastFinishedDoorsOpened);
 			}
 			return idle;
 		}
@@ -422,6 +424,7 @@ public final class NavTask {
 		lastFinishedId = id;
 		lastFinishedState = endState.name();
 		lastFinishedReason = endReason;
+		lastFinishedDoorsOpened = doorsOpened;
 		FINISHED.put(id, endState.name());
 		if (active == this) {
 			active = null;
