@@ -49,6 +49,8 @@ public final class MenuSynth {
 		boolean menuOpen;
 		Component mouseOverInventory;
 		int clickedInventoryIndex;
+		int clickX;
+		int clickY;
 		final JagString[] ops = new JagString[CAPACITY];
 		final JagString[] opBases = new JagString[CAPACITY];
 		final short[] actions = new short[CAPACITY];
@@ -220,6 +222,8 @@ public final class MenuSynth {
 		saved.menuOpen = Cs1ScriptRunner.isMenuOpen;
 		saved.mouseOverInventory = InterfaceList.mouseOverInventoryInterface;
 		saved.clickedInventoryIndex = MiniMenu.clickedInventoryIndex;
+		saved.clickX = Mouse.clickX;
+		saved.clickY = Mouse.clickY;
 		if (saved.size > 0) {
 			System.arraycopy(MiniMenu.ops, 0, saved.ops, 0, saved.size);
 			System.arraycopy(MiniMenu.opBases, 0, saved.opBases, 0, saved.size);
@@ -246,6 +250,8 @@ public final class MenuSynth {
 		Cs1ScriptRunner.isMenuOpen = saved.menuOpen;
 		InterfaceList.mouseOverInventoryInterface = saved.mouseOverInventory;
 		MiniMenu.clickedInventoryIndex = saved.clickedInventoryIndex;
+		Mouse.clickX = saved.clickX;
+		Mouse.clickY = saved.clickY;
 	}
 
 	/** The subject line the UI would show for an item stack, used by the helper tools. */
