@@ -74,3 +74,85 @@ processResources {
         new File(aionlyDir, 'build.properties').text = "lockdown=${lockdown}\n"
     }
 }
+
+// AIO-15 — the AI-only release jar. `-PpublicHost=<host>` is required, `-PpublicWorld` and
+// `-PrsaModulus` are optional, and the build is always locked: passing -PaiOnly=false fails.
+def releaseHost = providers.gradleProperty('publicHost')
+def releaseWorld = providers.gradleProperty('publicWorld').getOrElse('1')
+def releaseModulus = providers.gradleProperty('rsaModulus').getOrElse('')
+
+tasks.register('generateDefaultConfig') {
+    def outputDir = layout.buildDirectory.dir('generated/aionly')
+    outputs.dir(outputDir)
+    doLast {
+        def host = releaseHost
+        if (!host.isPresent() || host.get().trim().isEmpty()) {
+            throw new GradleException('releaseJar requires -PpublicHost=<host>')
+        }
+        def file = outputDir.get().file('rt4/aionly/default-config.json').asFile
+        file.parentFile.mkdirs()
+        def json = new groovy.json.JsonBuilder([
+            ip_management: host.get().trim(),
+            ip_address   : host.get().trim(),
+            world        : releaseWorld.toInteger(),
+            server_port  : 43594,
+            wl_port      : 43595,
+            js5_port     : 43595,
+            rsa_modulus  : releaseModulus,
+            mcp_enabled  : true,
+            mcp_port     : 43600,
+            mcp_token    : ""
+        ]).toPrettyString()
+        file.text = json + System.lineSeparator()
+    }
+}
+
+tasks.register('releaseJar', Jar) {
+    group = 'distribution'
+    description = 'Builds the locked AI-only client jar with the public server baked in.'
+    dependsOn tasks.named('classes'), tasks.named('generateDefaultConfig')
+    archiveBaseName = 'rt4-aionly'
+    archiveVersion = project.version.toString()
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    manifest {
+        attributes 'Main-Class': "$mainClassName"
+    }
+    // No plugin sources: lockdown skips plugins anyway (AIO-11).
+    from sourceSets.main.output
+    from tasks.named('generateDefaultConfig')
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    doFirst {
+        if (aiOnly.equalsIgnoreCase('false')) {
+            throw new GradleException('releaseJar is always locked; remove -PaiOnly=false')
+        }
+    }
+}
+
+// The ticket asks for a build-level check that the jar really carries the AI-only files.
+tasks.register('verifyReleaseJar') {
+    group = 'verification'
+    description = 'Checks the release jar for the lockdown flag and the baked-in host.'
+    dependsOn tasks.named('releaseJar')
+    doLast {
+        def jar = tasks.releaseJar.archiveFile.get().asFile
+        def zip = new java.util.zip.ZipFile(jar)
+        try {
+            def props = zip.getEntry('rt4/aionly/build.properties')
+            def config = zip.getEntry('rt4/aionly/default-config.json')
+            if (props == null || config == null) {
+                throw new GradleException("${jar.name} is missing the AI-only resources")
+            }
+            def propsText = zip.getInputStream(props).getText('UTF-8')
+            if (!propsText.contains('lockdown=true')) {
+                throw new GradleException("${jar.name} is not locked: ${propsText.trim()}")
+            }
+            def host = releaseHost.get().trim()
+            def configText = zip.getInputStream(config).getText('UTF-8')
+            if (!configText.contains(host)) {
+                throw new GradleException("${jar.name} does not bake in ${host}")
+            }
+        } finally {
+            zip.close()
+        }
+    }
+}

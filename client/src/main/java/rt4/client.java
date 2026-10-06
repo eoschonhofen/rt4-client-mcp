@@ -251,6 +251,13 @@ public final class client extends GameShell {
       }
 
       System.out.println("Loading config path " + configPath);
+      // AIO-15 — the release jar bundles a default config; first run copies it into place so
+      // McpConfig has a real file to write the generated token back into.
+      try {
+        rt4.aionly.ConfigBootstrap.ensureConfig(java.nio.file.Paths.get(configPath));
+      } catch (Exception configError) {
+        System.err.println("[config] could not write a default config: " + configError);
+      }
       GlobalJsonConfig.load(configPath);
       GlobalJsonConfig.applyRsaModulus();
       rt4.aionly.Accounts.init(configPath);
