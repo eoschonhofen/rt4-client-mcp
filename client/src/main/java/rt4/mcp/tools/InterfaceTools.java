@@ -30,11 +30,15 @@ public final class InterfaceTools {
 
 		return Tools.gameTool("get_interfaces",
 				"Every open interface (dialogue, bank, shop, tabs, prayer book, spellbook, GE) as "
-						+ "{ interfaces: [{ id, parent?, components }] }. Each component has a target id "
+						+ "{ interfaces: [{ id, name, parent?, components }] }, where an interface's name is the "
+						+ "cache's (192 is MAGIC). Each component has a target id "
 						+ "(if:<interface>:<child>, or if:<interface>:<child>:<slot> for an inventory slot), "
-						+ "plus text, ops, a button (ok/close/toggle/continue/select/logout), a single obj "
-						+ "or its inventory slots. Use the slot targets with do_action, e.g. "
-						+ "do_action('if:149:0:3', 'Wield'). Pass interface_id to dump just one interface.",
+						+ "plus name, text, ops, a button (ok/close/toggle/continue/select/logout), a "
+						+ "single obj or its inventory slots. 'name' is what the ops act on, and is "
+						+ "often the only name a thing has: a spell, a prayer or a tab carries no text, so a "
+						+ "spellbook component reads { name: 'Wind Strike', ops: ['Cast'] }. Use the slot "
+						+ "targets with do_action, e.g. do_action('if:149:0:3', 'Wield'). Pass interface_id "
+						+ "to dump just one interface.",
 				schema,
 				args -> {
 					GameThread.requireLoggedIn();

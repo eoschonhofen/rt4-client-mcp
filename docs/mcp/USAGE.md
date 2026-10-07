@@ -91,7 +91,7 @@ Generated with `python3 -I scripts/mcp-smoke.py --print-tools` against a running
 | `list_actions` | The minimenu a right-click on a target would show. |
 | `do_action` | Run one of those actions; the packet is byte-identical to a click. |
 | `cancel_selection` | Clear a pending "Use item" or spell. |
-| `get_interfaces` | Open interfaces, their components, buttons and inventory slots. |
+| `get_interfaces` | Open interfaces, their components, names, buttons and inventory slots. Each interface carries the cache's name for it (`192` is `MAGIC`), and a component's `name` is what its ops act on — the only name a spell, prayer or tab has. |
 | `type_text` · `press_key` | Chat, "Enter amount", key presses, held arrow keys. |
 | `drag_item` | Move an item between two slots (packet 231). |
 | `camera` | Read and set yaw, pitch and zoom. |
