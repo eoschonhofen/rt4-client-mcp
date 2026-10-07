@@ -115,6 +115,9 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 		}
 	}
 
+	private int middleDragX = -1;
+	private int middleDragY;
+
 	@OriginalMember(owner = "client!ug", name = "mouseMoved", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseMoved(@OriginalArg(0) MouseEvent event) {
@@ -139,13 +142,23 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseDragged", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseDragged(@OriginalArg(0) MouseEvent event) {
-		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+		if (!SwingUtilities.isMiddleMouseButton(event) && !InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
 		int x = event.getX();
 		int y = event.getY();
 
-		if (SwingUtilities.isMiddleMouseButton(event)) return;
+		if (SwingUtilities.isMiddleMouseButton(event)) {
+			// A middle-button drag turns the camera; it is not a game click, so it passes in a locked build.
+			if (client.gameState == 30 && middleDragX >= 0) {
+				Camera.yawTarget += (x - middleDragX) * 1.5d;
+				Camera.pitchTarget -= (y - middleDragY) * 1.5d;
+				Camera.clampCameraAngle();
+			}
+			middleDragX = x;
+			middleDragY = y;
+			return;
+		}
 
 		if (instance != null) {
 			idleLoops = 0;
@@ -157,6 +170,10 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseReleased", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseReleased(@OriginalArg(0) MouseEvent event) {
+		if (SwingUtilities.isMiddleMouseButton(event)) {
+			middleDragX = -1;
+			return;
+		}
 		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
@@ -195,7 +212,7 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mousePressed", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mousePressed(@OriginalArg(0) MouseEvent event) {
-		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+		if (!SwingUtilities.isMiddleMouseButton(event) && !InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
 		// AIO-09 — while the token panel is open it swallows every title-screen click, so a
@@ -206,6 +223,8 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 			return;
 		}
 		if (SwingUtilities.isMiddleMouseButton(event)) {
+			middleDragX = event.getX();
+			middleDragY = event.getY();
 			return;
 		}
 
