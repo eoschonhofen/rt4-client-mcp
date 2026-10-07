@@ -118,7 +118,7 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseMoved", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseMoved(@OriginalArg(0) MouseEvent event) {
-		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+		if (!InputGate.allowPassiveMouse() && !InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
 		if (instance != null) {
@@ -240,7 +240,7 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseExited", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseExited(@OriginalArg(0) MouseEvent event) {
-		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+		if (!InputGate.allowPassiveMouse() && !InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
 		if (instance != null) {
@@ -253,7 +253,7 @@ public final class Mouse implements MouseListener, MouseMotionListener, FocusLis
 	@OriginalMember(owner = "client!ug", name = "mouseEntered", descriptor = "(Ljava/awt/event/MouseEvent;)V")
 	@Override
 	public final synchronized void mouseEntered(@OriginalArg(0) MouseEvent event) {
-		if (!InputGate.allowMouse(syntheticPress, client.gameState)) {
+		if (!InputGate.allowPassiveMouse() && !InputGate.allowMouse(syntheticPress, client.gameState)) {
 			return;
 		}
 		if (instance != null) {

@@ -301,7 +301,7 @@ public final class Keyboard implements KeyListener, FocusListener {
 	@OriginalMember(owner = "client!uf", name = "keyPressed", descriptor = "(Ljava/awt/event/KeyEvent;)V")
 	@Override
 	public final synchronized void keyPressed(@OriginalArg(0) KeyEvent event) {
-		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState)) {
+		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState, event.getKeyCode())) {
 			return;
 		}
 		// AIO-09 — Enter dismisses the token panel instead of reaching the title screen.
@@ -378,7 +378,7 @@ public final class Keyboard implements KeyListener, FocusListener {
 	@OriginalMember(owner = "client!uf", name = "keyReleased", descriptor = "(Ljava/awt/event/KeyEvent;)V")
 	@Override
 	public final synchronized void keyReleased(@OriginalArg(0) KeyEvent event) {
-		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState)) {
+		if (!InputGate.allowKey(InputInjector.isSyntheticKey(), client.gameState, event.getKeyCode())) {
 			return;
 		}
 		if (instance != null) {

@@ -33,4 +33,13 @@ class InputGateTest {
 		Assertions.assertTrue(InputGate.allow(true, 25, true));
 		Assertions.assertTrue(InputGate.allow(true, 30, true));
 	}
+
+	@Test
+	void locked_build_lets_a_human_move_the_camera_and_hover_but_not_type() {
+		Assertions.assertTrue(InputGate.allowPassiveMouse());
+		Assertions.assertTrue(InputGate.isCameraKey(java.awt.event.KeyEvent.VK_LEFT));
+		Assertions.assertTrue(InputGate.isCameraKey(java.awt.event.KeyEvent.VK_PAGE_UP));
+		Assertions.assertFalse(InputGate.isCameraKey(java.awt.event.KeyEvent.VK_A));
+		Assertions.assertFalse(InputGate.isCameraKey(java.awt.event.KeyEvent.VK_ENTER));
+	}
 }

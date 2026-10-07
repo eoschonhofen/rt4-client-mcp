@@ -36,7 +36,7 @@ public final class JavaMouseWheel extends MouseWheel implements MouseWheelListen
 	@OriginalMember(owner = "client!o", name = "mouseWheelMoved", descriptor = "(Ljava/awt/event/MouseWheelEvent;)V")
 	@Override
 	public final synchronized void mouseWheelMoved(@OriginalArg(0) MouseWheelEvent event) {
-		if (!InputGate.allowMouse(false, client.gameState)) {
+		if (!InputGate.allowPassiveMouse() && !InputGate.allowMouse(false, client.gameState)) {
 			return;
 		}
 		this.previousRotation = this.currentRotation;
