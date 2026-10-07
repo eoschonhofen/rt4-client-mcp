@@ -15,10 +15,12 @@ Input: `{ "interface_id": 149?, "include_hidden": false, "max_depth": 6 }`
 - No `interface_id` → walk every **open** interface:
   `InterfaceList.topLevelInterface` plus the sub-interfaces in `InterfaceList.openInterfaces` (a `HashTable` of `ComponentPointer`, keyed by parent component id).
 - Output per interface:
-  `{ id, parent: "if:548:77"?, components: [...] }`. Each component is
-  `{ target: "if:149:0", type, text?, ops?, obj?: {id,name,count}, slots?: [...], button?: "continue|ok|toggle|select" }`.
+  `{ id, name: "MAGIC"?, parent: "if:548:77"?, components: [...] }`. Each component is
+  `{ target: "if:149:0", type, name?, text?, ops?, obj?: {id,name,count}, slots?: [...], button?: "continue|ok|toggle|select" }`.
+  `name` is the subject the minimenu puts after the op, and `ops` includes the button op and
+  the use verb (see MCP-28).
 - Only emit components that carry something actionable or readable:
-  non-empty `text`, non-null `ops`, `buttonType != 0`, `objId != -1`, or an inventory type with items.
+  non-empty `name` or `text`, non-null `ops`, `buttonType != 0`, `objId != -1`, or an inventory type with items.
   Skip invisible ones (`hidden` or a hidden parent) unless `include_hidden`. This keeps a bank dump to inventory slots plus buttons.
 - Inventory-type components (`type == 2`, `objTypes`/`objCounts`):
   `slots: [{ slot, target: "if:P:C:slot", id, name, count, ops }]`.

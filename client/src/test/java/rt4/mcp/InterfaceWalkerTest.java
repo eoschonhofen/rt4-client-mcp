@@ -17,6 +17,7 @@ class InterfaceWalkerTest {
 		final String label;
 		boolean hidden;
 		boolean inventory;
+		boolean name;
 		boolean text;
 		boolean ops;
 		int buttonType;
@@ -26,6 +27,11 @@ class InterfaceWalkerTest {
 
 		Fake(String label) {
 			this.label = label;
+		}
+
+		Fake withName() {
+			name = true;
+			return this;
 		}
 
 		Fake withText() {
@@ -67,6 +73,11 @@ class InterfaceWalkerTest {
 		@Override
 		public boolean inventory() {
 			return inventory;
+		}
+
+		@Override
+		public boolean hasName() {
+			return name;
 		}
 
 		@Override
@@ -114,14 +125,17 @@ class InterfaceWalkerTest {
 		Fake withText = new Fake("text").withText();
 		Fake withOps = new Fake("ops").withOps();
 		Fake withButton = new Fake("button").withButton(1);
+		Fake withName = new Fake("name").withName();
 		Fake emptyInventory = new Fake("empty-inv").withInventory(0);
 		Fake filledInventory = new Fake("filled-inv").withInventory(3);
 
 		List<InterfaceWalker.ComponentView> kept = InterfaceWalker.filter(
-				Arrays.<InterfaceWalker.ComponentView>asList(plain, withText, withOps, withButton, emptyInventory, filledInventory),
+				Arrays.<InterfaceWalker.ComponentView>asList(plain, withText, withOps, withButton, withName, emptyInventory, filledInventory),
 				false, 6);
 
-		assertEquals(Arrays.asList("text", "ops", "button", "filled-inv"), labels(kept));
+		// A spell or a tab carries nothing but a name, and is the whole point of reading
+		// the spellbook: it must not be filtered away as an empty sprite.
+		assertEquals(Arrays.asList("text", "ops", "button", "name", "filled-inv"), labels(kept));
 	}
 
 	@Test

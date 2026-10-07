@@ -7,6 +7,7 @@ import rt4.ComponentPointer;
 import rt4.HashTableIterator;
 import rt4.InterfaceList;
 import rt4.JagString;
+import rt4.LocalizedText;
 import rt4.ObjType;
 import rt4.ObjTypeList;
 
@@ -50,6 +51,16 @@ public final class InterfaceWalker {
 			return null;
 		}
 
+		/**
+		 * Whether the component names what its ops act on ({@code optionBase} is set).
+		 *
+		 * <p>This is the only name a spell, a prayer or a tab has: the menu reads
+		 * "Cast" + "Wind Strike", and the second half lives here, not in {@code text}.</p>
+		 */
+		default boolean hasName() {
+			return false;
+		}
+
 		/** The readable text on this component, tags stripped. */
 		default String textValue() {
 			return null;
@@ -87,12 +98,12 @@ public final class InterfaceWalker {
 	// ------------------------------------------------------------------ pure filtering
 
 	/**
-	 * Whether a component is worth reporting: some text, ops, a button, an item, or an
-	 * inventory that actually holds something.
+	 * Whether a component is worth reporting: a name, some text, ops, a button, an item, or
+	 * an inventory that actually holds something.
 	 */
 	public static boolean isActionable(ComponentView view) {
-		return view.hasText() || view.hasOps() || view.buttonType() != 0 || view.hasItem()
-				|| (view.inventory() && view.itemCount() > 0);
+		return view.hasName() || view.hasText() || view.hasOps() || view.buttonType() != 0
+				|| view.hasItem() || (view.inventory() && view.itemCount() > 0);
 	}
 
 	/**
@@ -237,6 +248,10 @@ public final class InterfaceWalker {
 
 		JsonObject entry = new JsonObject();
 		entry.addProperty("id", interfaceId);
+		String name = InterfaceNames.of(interfaceId);
+		if (name != null) {
+			entry.addProperty("name", name);
+		}
 		if (parent != null) {
 			entry.addProperty("parent", parent);
 		}
@@ -274,6 +289,11 @@ public final class InterfaceWalker {
 		json.addProperty("target", Targets.component(component.id >>> 16, component.id & 0xFFFF));
 		json.addProperty("type", component.type);
 
+		String name = name(component);
+		if (name != null) {
+			json.addProperty("name", name);
+		}
+
 		String text = Names.plain(component.text);
 		boolean hasText = text != null && !text.isEmpty();
 		if (hasText) {
@@ -293,6 +313,8 @@ public final class InterfaceWalker {
 				}
 			}
 		}
+		addOp(ops, useVerb(component));
+		addOp(ops, buttonOp(component));
 		if (ops.size() > 0) {
 			json.add("ops", ops);
 		}
@@ -339,8 +361,8 @@ public final class InterfaceWalker {
 			}
 		}
 
-		boolean useful = json.has("text") || json.has("ops") || json.has("button") || json.has("obj")
-				|| json.has("slots") || json.has("children");
+		boolean useful = json.has("name") || json.has("text") || json.has("ops") || json.has("button")
+				|| json.has("obj") || json.has("slots") || json.has("children");
 		return useful ? json : null;
 	}
 
@@ -377,6 +399,23 @@ public final class InterfaceWalker {
 		return slots;
 	}
 
+	/** Adds one op, unless it is empty or already there. */
+	private static void addOp(JsonArray out, String op) {
+		if (op == null) {
+			return;
+		}
+		for (int i = 0; i < out.size(); i++) {
+			if (op.equals(out.get(i).getAsString())) {
+				return;
+			}
+		}
+		out.add(op);
+	}
+
+	private static String trimmedOrNull(String value) {
+		return value == null || value.trim().isEmpty() ? null : value.trim();
+	}
+
 	private static void addOps(JsonArray out, JagString[] ops) {
 		if (ops == null) {
 			return;
@@ -390,6 +429,68 @@ public final class InterfaceWalker {
 				out.add(text);
 			}
 		}
+	}
+
+	/**
+	 * What the component's ops act on, as the minimenu would name it.
+	 *
+	 * <p>{@code MiniMenu.addComponentEntries} passes {@code optionBase} as the subject of
+	 * every entry it adds, so the menu line reads "Cast" + "Wind Strike". A spell, a prayer
+	 * or a tab carries no {@code text} at all, which is why one read of the spellbook used
+	 * to come back as a list of nameless sprites.</p>
+	 */
+	public static String name(Component component) {
+		// A select button (type 2) is the one whose subject is the suffix, not the base;
+		// that is the pairing addComponentEntries uses for it.
+		if (component.buttonType == 2) {
+			String suffix = trimmedOrNull(Names.plain(component.optionSuffix));
+			if (suffix != null) {
+				return suffix;
+			}
+		}
+		return trimmedOrNull(Names.plain(component.optionBase));
+	}
+
+	/**
+	 * The verb for using this component on something else — "Cast", "Use" — which is an op
+	 * the UI offers and nothing else in the dump reports.
+	 *
+	 * <p>Read the way {@code MiniMap.getTargetVerb} reads it, minus its QA-cheat branch:
+	 * no target mask means the component cannot be used on anything.</p>
+	 */
+	public static String useVerb(Component component) {
+		if (InterfaceList.getServerActiveProperties(component).getTargetMask() == 0) {
+			return null;
+		}
+		return trimmedOrNull(Names.plain(component.optionCircumfix));
+	}
+
+	/**
+	 * The op a button is pressed with, exactly as {@code addComponentEntries} names it.
+	 *
+	 * <p>{@code button} said what kind of button it is; this says what to call it. Button
+	 * types 1, 4, 5 and 6 are pressed with {@code option} — the field they decode, and the
+	 * reason "Click here to continue" is pressed with `Continue`; type 3 with the localized
+	 * `Close`; and a resume-pause component with the localized `Continue`. Any other
+	 * component carries {@code option}'s default, so naming it would invent an "Ok" that
+	 * nothing offers.</p>
+	 */
+	public static String buttonOp(Component component) {
+		switch (component.buttonType) {
+			case 1:
+			case 4:
+			case 5:
+			case 6:
+				return trimmedOrNull(Names.plain(component.option));
+			case 3:
+				return trimmedOrNull(Names.plain(LocalizedText.CLOSE));
+			default:
+				break;
+		}
+		if (InterfaceList.getServerActiveProperties(component).isResumePauseButtonEnabled()) {
+			return trimmedOrNull(Names.plain(LocalizedText.CONTINUE));
+		}
+		return null;
 	}
 
 	/** The button meaning {@code MiniMenu.addComponentEntries} would emit. */
