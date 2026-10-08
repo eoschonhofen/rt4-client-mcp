@@ -581,7 +581,9 @@ public class LoginManager {
 			hopErrors = 0;
 			reply = -3;
 			hopStep = 1;
-			@Pc(43) Buffer hopBuffer = new Buffer(128);
+			// rsaenc rewrites this buffer as a length byte plus the ciphertext: 128 bytes, or 129
+			// with the sign byte BigInteger.toByteArray() adds. That is more than 128.
+			@Pc(43) Buffer hopBuffer = new Buffer(256);
 			hopBuffer.p1(10);
 			hopBuffer.p2((int) (Math.random() * 99999.0D));
 			hopBuffer.p2(530);
