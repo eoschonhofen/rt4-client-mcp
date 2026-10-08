@@ -82,7 +82,7 @@ Generated with `python3 -I scripts/mcp-smoke.py --print-tools` against a running
 
 | Tool | What it does |
 |---|---|
-| `get_status` | Login state, world position, hp/prayer, run, animation, idle, open interfaces, dialogue, nav state. Works logged out. |
+| `get_status` | Login state, world position, hp/prayer, run, animation, idle, open interfaces, dialogue, nav state, `appearance` (the identikit id of the hair, jaw, torso, arms, wrists, legs and feet, and the five colour indices; `-1` is an empty slot). Works logged out. |
 | `get_inventory` | Backpack contents with ops and slot targets. |
 | `get_equipment` | Worn equipment by 530 slot name. |
 | `get_skills` | All 25 skills, or one. |

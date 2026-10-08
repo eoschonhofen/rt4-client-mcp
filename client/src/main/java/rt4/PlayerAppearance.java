@@ -234,6 +234,36 @@ public final class PlayerAppearance {
 		return this.npcId == -1 ? (this.identikit[8] << 10) + ((this.colors[0] << 25) + (this.colors[4] << 20)) + (this.identikit[0] << 15) + (this.identikit[11] << 5) + this.identikit[1] : NpcTypeList.get(this.npcId).id + 305419896;
 	}
 
+	/**
+	 * The identikit id in one of the 12 appearance slots, or {@code -1} when the
+	 * slot holds nothing, which is not the same as holding the first id.
+	 *
+	 * A slot keeps the id with a flag on top of it -- the high bit for a body
+	 * part, the one below for something worn -- so the low bits are the id. The
+	 * slot order is the server's payload order, which is also the order
+	 * {@code Appearance.prepareBodyData} fills: hair in 8, jaw in 11, torso in 4,
+	 * arms in 6, wrists in 9, legs in 7, feet in 10.
+	 */
+	public final int identikitId(@OriginalArg(0) int slot) {
+		if (this.identikit == null || slot < 0 || slot >= this.identikit.length || this.identikit[slot] == 0) {
+			return -1;
+		}
+		return this.identikit[slot] & 0x3FFFFFFF;
+	}
+
+	/** One of the five colour indices, hair first: hair, torso, legs, feet, skin. */
+	public final int colour(@OriginalArg(0) int slot) {
+		if (this.colors == null || slot < 0 || slot >= this.colors.length) {
+			return -1;
+		}
+		return this.colors[slot];
+	}
+
+	/** Which body this is; the field itself means female. */
+	public final boolean isFemale() {
+		return this.gender;
+	}
+
 	@OriginalMember(owner = "client!hh", name = "a", descriptor = "(III)V")
 	public final void setIdentikit(@OriginalArg(0) int featureIndex, @OriginalArg(1) int identikit) {
 		@Pc(7) int part = BASE_PART_MAP[featureIndex];
