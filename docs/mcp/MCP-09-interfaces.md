@@ -24,6 +24,13 @@ Input: `{ "interface_id": 149?, "include_hidden": false, "max_depth": 6 }`
   `slots: [{ slot, target: "if:P:C:slot", id, name, count, ops }]`.
   Ops come from the component's `ops` merged with the item's inventory ops. That's exactly how the UI builds them; reuse the builder in step 2 to get them.
 - Dynamic children (`createdComponentId`, CS2-created) appear under their parent, with the child index in the target.
+  A created child **shares its parent's packed id**, so the id must be kept packed:
+  `if:<packedParentId>:<createdIndex>`, e.g. `if:12255233:0` for the first track of the music
+  player. Unpacking it — `if:187:1` — gives every one of the 647 tracks the same target, and none of
+  them can be told apart or clicked. `Targets.findComponent` already resolves the packed form.
+- A read lists at most `MAX_CREATED_CHILDREN * (max_depth - DEFAULT_MAX_DEPTH + 1)` created children
+  (40 by default), and reports `children_shown`, `children_total` and a `children_note` when it cut
+  the list, so a long list says it is long instead of quietly looking complete.
 
 ## Component actions via `MenuSynth`
 1. Add to `MenuSynth.build` for `if:` targets:

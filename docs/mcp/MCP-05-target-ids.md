@@ -20,6 +20,7 @@ All coordinates the agent sees are **world** coordinates.
 | Tile | `tile:<x>,<y>[,<plane>]` | `tile:3222,3218` | Walk target (plane defaults to the current one) |
 | Component | `if:<interfaceId>:<childId>` | `if:149:0` | `InterfaceList.getComponent(parent, child)` |
 | Inventory slot | `if:<interfaceId>:<childId>:<slot>` | `if:149:0:3` | Slot in an inventory-type component |
+| CS2-created child | `if:<packedParentId>:<createdIndex>` | `if:12255233:0` | Track 0 of the music player (interface 187) |
 
 - NPC and player indexes are what the server uses, and they're stable while the entity stays in view.
   If one goes stale (null, or a different type id than last reported), the tool throws `target gone: npc:1423`.

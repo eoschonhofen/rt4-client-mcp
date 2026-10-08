@@ -22,6 +22,15 @@ import java.util.List;
  * traversal of the live {@code Component}s is in {@link #describe}.</p>
  */
 public final class InterfaceWalker {
+	/**
+	 * How many created children an ordinary read lists. A music player holds
+	 * hundreds of tracks; pasting all of them buries everything else on screen.
+	 * The allowance grows with {@code max_depth}, which is the parameter that
+	 * already means "walk the CS2-created children further", so the note left
+	 * behind when a list is cut is a real instruction rather than an apology.
+	 */
+	private static final int MAX_CREATED_CHILDREN = 40;
+
 	public static final int DEFAULT_MAX_DEPTH = 6;
 	public static final int MAX_DEPTH = 12;
 
@@ -270,8 +279,37 @@ public final class InterfaceWalker {
 	}
 
 	private static JsonObject describeComponent(Component component, boolean includeHidden, int maxDepth, int depth) {
+		return describeComponent(component, includeHidden, maxDepth, depth, -1);
+	}
+
+	/**
+	 * @param createdIndex the index of this component in its parent's
+	 *     {@code createdComponents}, or {@code -1} for an ordinary component.
+	 *
+	 *     A CS2-created child shares its parent's packed id, so unpacking the id
+	 *     gives every one of them the same target — which is what made a music
+	 *     list of 574 tracks a wall of identical `if:187:1` entries that could not
+	 *     be told apart, let alone clicked. A created child is addressed as
+	 *     {@code if:<packedParentId>:<childIndex>}, so the packed id has to stay
+	 *     packed. See {@code Targets.findComponent}.
+	 */
+	private static void addOp(JsonArray out, String op) {
+		if (op == null || op.isEmpty()) {
+			return;
+		}
+		for (int i = 0; i < out.size(); i++) {
+			if (op.equals(out.get(i).getAsString())) {
+				return;
+			}
+		}
+		out.add(op);
+	}
+
+	private static JsonObject describeComponent(Component component, boolean includeHidden, int maxDepth, int depth, int createdIndex) {
 		JsonObject json = new JsonObject();
-		json.addProperty("target", Targets.component(component.id >>> 16, component.id & 0xFFFF));
+		json.addProperty("target", createdIndex >= 0
+				? Targets.component(component.id, createdIndex)
+				: Targets.component(component.id >>> 16, component.id & 0xFFFF));
 		json.addProperty("type", component.type);
 
 		String text = Names.plain(component.text);
@@ -287,10 +325,7 @@ public final class InterfaceWalker {
 		}
 		if (component.if3) {
 			for (int i = 0; i < 10; i++) {
-				String op = Names.plain(InterfaceList.getOp(component, i));
-				if (op != null && !op.isEmpty()) {
-					ops.add(op);
-				}
+				addOp(ops, Names.plain(InterfaceList.getOp(component, i)));
 			}
 		}
 		if (ops.size() > 0) {
@@ -320,6 +355,10 @@ public final class InterfaceWalker {
 		// CS2-created children appear under their parent, with the child index in the target.
 		if (component.createdComponents != null && depth < maxDepth) {
 			JsonArray created = new JsonArray();
+			int shown = 0;
+			int available = 0;
+			int allowance = MAX_CREATED_CHILDREN
+					* Math.max(1, maxDepth - DEFAULT_MAX_DEPTH + 1);
 			for (int i = 0; i < component.createdComponents.length; i++) {
 				Component child = component.createdComponents[i];
 				if (child == null) {
@@ -328,13 +367,26 @@ public final class InterfaceWalker {
 				if (!includeHidden && InterfaceList.isHidden(child)) {
 					continue;
 				}
-				JsonObject childJson = describeComponent(child, includeHidden, maxDepth, depth + 1);
+				available++;
+				if (shown >= allowance) {
+					continue;
+				}
+				JsonObject childJson = describeComponent(child, includeHidden, maxDepth, depth + 1, i);
 				if (childJson != null) {
 					childJson.addProperty("created_index", i);
 					created.add(childJson);
+					shown++;
 				}
 			}
 			if (created.size() > 0) {
+				// Say how many there are. A list read silently in half is worse
+				// than one that admits it was cut.
+				if (available > shown) {
+					json.addProperty("children_shown", shown);
+					json.addProperty("children_total", available);
+					json.addProperty("children_note",
+							(available - shown) + " more are here; read again with a larger max_depth");
+				}
 				json.add("children", created);
 			}
 		}
@@ -377,6 +429,7 @@ public final class InterfaceWalker {
 		return slots;
 	}
 
+	/** Adds the ops not already listed. The same action arrives from several sources. */
 	private static void addOps(JsonArray out, JagString[] ops) {
 		if (ops == null) {
 			return;
@@ -385,10 +438,7 @@ public final class InterfaceWalker {
 			if (op == null) {
 				continue;
 			}
-			String text = Names.plain(op);
-			if (text != null && !text.isEmpty()) {
-				out.add(text);
-			}
+			addOp(out, Names.plain(op));
 		}
 	}
 
