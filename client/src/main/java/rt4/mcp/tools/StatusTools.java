@@ -17,6 +17,7 @@ import rt4.VarpDomain;
 import rt4.client;
 import rt4.mcp.Coords;
 import rt4.mcp.Dialogue;
+import rt4.mcp.Looks;
 import rt4.mcp.MenuSynth;
 import rt4.mcp.Names;
 import rt4.mcp.TickTracker;
@@ -58,6 +59,9 @@ public final class StatusTools {
 		return Tools.gameTool("get_status",
 				"Current player state: login state, world position, hp/prayer, run energy, animation, "
 						+ "whether you are idle, the open interfaces and whether a dialogue is open. "
+						+ "appearance says what the character looks like -- the hair, jaw, torso, arms, "
+						+ "wrists, legs and feet styles as identikit ids, and the five colour indices -- "
+						+ "so a style chosen on a panel can be read back instead of guessed at. "
 						+ "Works logged out (logged_in=false, no player fields). "
 						+ "Call it after acting and after wait_for to see what changed.",
 				Tools.obj(),
@@ -93,6 +97,10 @@ public final class StatusTools {
 							out.addProperty("interacting", interacting);
 						}
 						out.addProperty("idle", isIdle(self));
+
+						if (self.appearance != null) {
+							out.add("appearance", Looks.of(self.appearance));
+						}
 
 						JsonObject selection = MenuSynth.selection();
 						if (selection != null) {
