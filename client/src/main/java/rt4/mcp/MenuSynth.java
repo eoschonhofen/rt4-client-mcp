@@ -164,6 +164,24 @@ public final class MenuSynth {
 	}
 
 	/**
+	 * MCP-30 — why a slot target names no slot, in words that stop an agent trying more indexes.
+	 *
+	 * <p>A component that is not an inventory has no slots at all, but the message used to report
+	 * {@code baseWidth * baseHeight} of them anyway: the emotes tab icon said "this component has
+	 * 1188 slots" and a trailer panel said "268664881 slots". Both read as "the slots exist, pick
+	 * another index", which is how one run spent fifty turns guessing.</p>
+	 */
+	public static String slotRefusal(ComponentTarget target, int type, int slots) {
+		String component = Targets.component(target.interfaceId, target.childId);
+		if (type != 2) {
+			return component + " is not an inventory, so " + target.format() + " names no slot;"
+					+ " list_actions on " + component + " shows what it offers";
+		}
+		return "no slot " + target.slot + " in " + target.format()
+				+ "; this inventory has " + slots + " slots";
+	}
+
+	/**
 	 * A component or an inventory slot inside one. {@code addComponentEntries} picks the slot
 	 * from the mouse position, which it expects relative to the component origin, so a slot
 	 * target passes that slot's cell centre and a plain component target its top-left corner.
@@ -175,8 +193,7 @@ public final class MenuSynth {
 		if (target.isSlot()) {
 			int slotCount = Math.max(0, component.baseWidth * component.baseHeight);
 			if (component.type != 2 || target.slot >= slotCount) {
-				throw new ToolException("no slot " + target.slot + " in " + target.format()
-						+ "; this component has " + slotCount + " slots");
+				throw new ToolException(slotRefusal(target, component.type, slotCount));
 			}
 			int[] centre = InterfaceWalker.slotCentre(component, target.slot);
 			mouseX = centre[0];
