@@ -173,6 +173,14 @@ public class Buffer extends Node {
 		@Pc(23) BigInteger plaintext = new BigInteger(plaintextBytes);
 		@Pc(28) BigInteger ciphertext = plaintext.modPow(exp, mod);
 		@Pc(38) byte[] ciphertextBytes = ciphertext.toByteArray();
+		// The rewritten buffer holds a length byte plus the ciphertext, not the plaintext: one byte
+		// more than the modulus, or two when BigInteger.toByteArray() adds a sign byte. A caller that
+		// sizes its buffer from the plaintext is therefore always too small, so grow it here and take
+		// the block size from the ciphertext alone (AIO-08, AIO-16).
+		@Pc(40) int block = ciphertextBytes.length + 1;
+		if (this.data.length < block) {
+			this.data = new byte[block];
+		}
 		this.offset = 0;
 		this.p1(ciphertextBytes.length);
 		this.pdata(ciphertextBytes, ciphertextBytes.length);
