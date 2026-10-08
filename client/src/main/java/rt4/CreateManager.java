@@ -226,7 +226,10 @@ public class CreateManager {
 
 	@OriginalMember(owner = "client!da", name = "a", descriptor = "(IIIILclient!na;JI)V")
 	public static void createAccount(@OriginalArg(0) int day, @OriginalArg(2) int country, @OriginalArg(3) int month, @OriginalArg(4) JagString password, @OriginalArg(5) long name, @OriginalArg(6) int year) {
-		@Pc(8) Buffer buffer = new Buffer(GlobalConfig.LOGIN_USE_STRINGS ? 129 : 128);
+		// rsaenc rewrites this buffer as a length byte plus the ciphertext: 128 bytes, or 129
+		// when BigInteger.toByteArray() adds a sign byte (the server reads it back signed, so
+		// it has to stay). That is 130 bytes, more than the plaintext ever needed.
+		@Pc(8) Buffer buffer = new Buffer(256);
 		buffer.p1(10);
 		buffer.p2((int) (Math.random() * 99999.0D));
 		buffer.p2(530);
