@@ -163,6 +163,21 @@ public final class AStar {
 		return -1;
 	}
 
+	/**
+	 * What a single step from a tile is: {@code "clear"} (walkable), {@code "door"}
+	 * (walkable only by opening a door) or {@code "blocked"} (a wall or obstacle).
+	 *
+	 * This is the compass an agent needs to "follow the path": a corridor reads as
+	 * one clear direction and blocked walls, and a door is the thing to open rather
+	 * than to keep pressing when nothing moves.
+	 */
+	public static String classifyStep(CollisionSource source, int fromX, int fromY, int dx, int dy, Set<Integer> doors) {
+		if (!canStep(source, fromX, fromY, dx, dy, doors)) {
+			return "blocked";
+		}
+		return crossingKey(source, fromX, fromY, dx, dy, doors) >= 0 ? "door" : "clear";
+	}
+
 	/** Whether a single orthogonal/diagonal step is allowed (doors at extra cost). */
 	public static boolean canStep(CollisionSource source, int fromX, int fromY, int dx, int dy, Set<Integer> doors) {
 		int toX = fromX + dx;

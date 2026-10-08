@@ -8,6 +8,10 @@ import rt4.HashTableIterator;
 import rt4.InterfaceList;
 import rt4.Inv;
 import rt4.JagString;
+import rt4.MapMarker;
+import rt4.MiniMap;
+import rt4.Npc;
+import rt4.NpcList;
 import rt4.ObjType;
 import rt4.ObjTypeList;
 import rt4.Player;
@@ -18,6 +22,9 @@ import rt4.client;
 import rt4.mcp.Coords;
 import rt4.mcp.Dialogue;
 import rt4.mcp.MenuSynth;
+import rt4.mcp.nav.AStar;
+import rt4.mcp.nav.DoorIndex;
+import rt4.mcp.nav.SceneCollision;
 import rt4.mcp.Names;
 import rt4.mcp.TickTracker;
 import rt4.mcp.Targets;
@@ -101,8 +108,116 @@ public final class StatusTools {
 					}
 					out.add("nav", rt4.mcp.nav.NavTask.statusJson());
 
+					JsonArray hints = hints();
+					if (hints.size() > 0) {
+						out.add("hints", hints);
+					}
+
+					JsonObject around = around();
+					if (around.size() > 0) {
+						out.add("around", around);
+					}
+
 					return ToolResult.json(out);
 				});
+	}
+
+	/**
+	 * The eight directions around the agent, and whether each is {@code clear},
+	 * {@code door} or {@code blocked}.
+	 *
+	 * "Follow the path" is impossible to act on without this: an agent can see
+	 * the ground in front of it is not a wall, but not that every other way is.
+	 * This is the compass that turns a corridor into a direction.
+	 */
+	private static JsonObject around() {
+		JsonObject out = new JsonObject();
+		SceneCollision collision = new SceneCollision(Player.plane);
+		if (!collision.ready()) {
+			return out;
+		}
+
+		int x = PlayerList.self.movementQueueX[0];
+		int y = PlayerList.self.movementQueueY[0];
+		java.util.Set<Integer> doors = DoorIndex.doors(12).keySet();
+
+		String[][] directions = {
+				{ "north", "0", "1" }, { "north_east", "1", "1" }, { "east", "1", "0" },
+				{ "south_east", "1", "-1" }, { "south", "0", "-1" }, { "south_west", "-1", "-1" },
+				{ "west", "-1", "0" }, { "north_west", "-1", "1" },
+		};
+		for (String[] direction : directions) {
+			int dx = Integer.parseInt(direction[1]);
+			int dy = Integer.parseInt(direction[2]);
+			out.addProperty(direction[0],
+					AStar.classifyStep(collision, x, y, dx, dy, doors));
+		}
+		return out;
+	}
+
+	/**
+	 * The marks the world is pointing with — the flashing arrows on the map.
+	 *
+	 * Tutorial Island says "go here" with one of these rather than in words, and
+	 * a player reads it off the minimap without thinking. An agent cannot: there
+	 * is nothing in the interface tree that carries it, so without this it is
+	 * told to go somewhere and never told where. {@code targetX}/{@code targetY}
+	 * are world coordinates, the same space as {@code position}, because the
+	 * minimap subtracts {@code Camera.origin} from them when it draws.
+	 *
+	 * {@code flashing} mirrors the blink the client draws ({@code loop % 20 < 10}),
+	 * which is what makes the mark noticeable to a person at all.
+	 */
+	private static JsonArray hints() {
+		JsonArray out = new JsonArray();
+		for (MapMarker marker : MiniMap.hintMapMarkers) {
+			if (marker == null || marker.type == 0) {
+				continue;
+			}
+
+			JsonObject hint = new JsonObject();
+			hint.addProperty("flashing", client.loop % 20 < 10);
+			hint.addProperty("marker_type", marker.type);
+
+			// Types 1 and 10 both carry an actor index; 2-6 carry a place; anything
+			// else points off the edge of the map and is nothing to walk to.
+			if (marker.type == 1 || marker.type == 10) {
+				// Pointing at somebody. Only drawn when that somebody is loaded —
+				// `MiniMap` skips the marker entirely otherwise — so only reported
+				// when loaded, or the agent chases a mark no player can see. A
+				// hint icon whose NPC has since gone leaves a marker pointing at a
+				// stale slot, and that is precisely the case worth not reporting.
+				Npc npc = marker.actorTargetId >= 0 && marker.actorTargetId < NpcList.npcs.length
+						? NpcList.npcs[marker.actorTargetId] : null;
+				if (npc == null || npc.type == null) {
+					continue;
+				}
+				hint.addProperty("kind", "actor");
+				hint.addProperty("index", marker.actorTargetId);
+				String name = Names.plain(npc.type.name);
+				if (name != null) {
+					hint.addProperty("name", name);
+				}
+				// The same conversion the entity scan uses, so a hint and a
+				// `find_entities` result name the same tile.
+				hint.addProperty("x", Coords.worldX(npc.movementQueueX[0]));
+				hint.addProperty("y", Coords.worldY(npc.movementQueueY[0]));
+				hint.addProperty("plane", Player.plane);
+			} else if (marker.type >= 2 && marker.type <= 6) {
+				hint.addProperty("kind", "tile");
+				hint.addProperty("x", marker.targetX);
+				hint.addProperty("y", marker.targetY);
+				hint.addProperty("plane", Player.plane);
+				if (marker.targetHeight != 0) {
+					hint.addProperty("height", marker.targetHeight);
+				}
+			} else {
+				continue;
+			}
+
+			out.add(hint);
+		}
+		return out;
 	}
 
 	/** The MCP-12 {@code idle} predicate, also exposed through {@code get_status.idle}. */

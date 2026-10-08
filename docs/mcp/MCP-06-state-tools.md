@@ -23,6 +23,37 @@
   "open_interfaces": [149, 548], "dialogue_open": false,
   "tick": 1834 }
 ```
+There is also `around`, the eight directions about the player and whether each is `clear`, `door`
+or `blocked`:
+```json
+"around": { "north": "clear", "east": "blocked", "south": "clear", "south_west": "clear", ... }
+```
+- From the client's collision map (`PathFinder.collisionMaps[plane]` via `SceneCollision`), classified
+  with `AStar.classifyStep` and `DoorIndex.doors(12)`. `clear` is a walkable step, `door` is walkable
+  only by opening a door, `blocked` is a wall or obstacle.
+- This is what turns "follow the path" into a direction: a corridor reads as one clear way and
+  blocked walls, and a door is the thing to open rather than to keep pressing when nothing moves.
+
+There is also `hints`, present only when the world is pointing somewhere:
+```json
+"hints": [ { "kind": "tile", "x": 3098, "y": 3107, "plane": 0, "flashing": true, "marker_type": 2 } ]
+```
+- The flashing arrows on the minimap (`MiniMap.hintMapMarkers`, filled by `ServerProt.HINT_ARROW`).
+  Tutorial Island uses these to say *where to go* without ever saying it in words, so an agent that
+  cannot read them is told to go somewhere and never told where.
+- `targetX`/`targetY` are **world** coordinates, the same space as `position` — the minimap
+  subtracts `Camera.origin` from them when it draws, so they need no conversion here.
+- `flashing` mirrors the blink the client draws (`client.loop % 20 < 10`).
+- **Only marks a player can actually see are reported.** An actor marker (types 1 and 10) is
+  reported only when its NPC is loaded, because `MiniMap` does not draw it otherwise. A hint icon
+  whose NPC has since gone leaves a marker pointing at a stale index, and nothing on the server
+  clears it — `HintIconManager` only clears on logout — so reporting it sends the agent to a place
+  no player would go. Types 2-6 carry a place; anything else points off the map edge and is skipped.
+- The type-10 form is easy to miss: `Protocol` treats `type == 1 || type == 10` as an actor.
+- The packet carries no NPC type for an actor (`HintIcon.java` writes three bytes of zero padding
+  after the index), so the name comes from the loaded NPC, never from the marker.
+- Change the server side only by agreement: content belongs upstream, and the arrow's shape is the
+  530 protocol's, not ours.
 - HP and prayer come from `PlayerSkillXpTable.boostedLevels`/`baseLevels`. Indexes: hitpoints 3, prayer 5.
 - `run.enabled`: varp 173. Read it through `VarpDomain`; confirm the varp id against the server source while implementing.
 - `Player.runEnergy`, `Player.weight`.
