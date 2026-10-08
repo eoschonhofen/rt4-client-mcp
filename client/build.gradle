@@ -83,6 +83,12 @@ def releaseModulus = providers.gradleProperty('rsaModulus').getOrElse('')
 
 tasks.register('generateDefaultConfig') {
     def outputDir = layout.buildDirectory.dir('generated/aionly')
+    // The output is a function of these properties, so a later releaseJar with another host has to
+    // regenerate it. Without this Gradle calls the task up to date and the jar silently bakes the
+    // previous host, which verifyReleaseJar then rejects.
+    inputs.property('publicHost', releaseHost.getOrElse(''))
+    inputs.property('publicWorld', releaseWorld)
+    inputs.property('rsaModulus', releaseModulus)
     outputs.dir(outputDir)
     doLast {
         def host = releaseHost
