@@ -30,8 +30,19 @@ import time
 import urllib.parse
 
 DEFAULT_TIMEOUT = 70.0
-# The tile next to the default spawn (3222,3218).
-WALK_X, WALK_Y = 3222, 3217
+# `client.gameState` of the title screen, the only state that takes a login.
+TITLE_SCREEN = 10
+# `get_status` reports the tile under `position`; a walked step is one tile away from it.
+STEP_TILES = ((1, 0), (0, 1), (-1, 0), (0, -1))
+# The AI-only profile spawns new characters here (aionly-local.conf new_player_location), in the
+# tutorial's first room, where the game refuses to walk until the first screens are done.
+TUTORIAL_SPAWN = (3094, 3107)
+
+
+def position_of(state):
+    """The (x, y) of a `get_status` answer, or (None, None) while logged out."""
+    position = state.get("position") or {}
+    return position.get("x"), position.get("y")
 
 
 class Skip(Exception):
@@ -166,6 +177,26 @@ def main():
             raise Failure("initialize failed: %s" % json.dumps(result)[:200])
         return result["result"]["serverInfo"]["name"]
 
+    def step_title():
+        # A freshly launched client answers with errors while it loads, so wait here instead of
+        # letting the first real step race it.
+        deadline = time.time() + 180.0
+        last = {}
+        last_error = ""
+        while time.time() < deadline:
+            try:
+                last, _ = mcp.tool("get_status")
+                last_error = ""
+            except Failure as error:
+                last_error = str(error)
+                time.sleep(1.0)
+                continue
+            if last.get("game_state") == TITLE_SCREEN:
+                return "game_state=%s" % last.get("game_state")
+            time.sleep(1.0)
+        raise Failure("the client never reached the title screen: %s / %s"
+                      % (json.dumps(last)[:120], last_error[:80]))
+
     def step_create():
         if args.create_x is None or args.create_y is None:
             raise Skip("pass --create-x/--create-y to drive registration")
@@ -207,9 +238,24 @@ def main():
         return "logged in as %s" % account_name
 
     def step_walk():
-        mcp.tool("walk_to", x=WALK_X, y=WALK_Y)
-        state = wait_for_state(mcp, lambda s: s.get("x") == WALK_X and s.get("y") == WALK_Y, timeout=60.0)
-        return "arrived at %s,%s" % (state.get("x"), state.get("y"))
+        # A tile next to wherever the character stands: a fresh AI-only character starts on
+        # Tutorial Island, so a fixed mainland target would never be reached.
+        before, _ = mcp.tool("get_status")
+        x, y = position_of(before)
+        if x is None or y is None:
+            raise Failure("the status has no position while logged in")
+        if (x, y) == TUTORIAL_SPAWN:
+            raise Skip("the character has not started the tutorial yet (fresh spawn at %s,%s)"
+                       % TUTORIAL_SPAWN)
+        for dx, dy in STEP_TILES:
+            target = (x + dx, y + dy)
+            mcp.tool("walk_to", x=target[0], y=target[1])
+            try:
+                state = wait_for_state(mcp, lambda s: position_of(s) == target, timeout=20.0)
+            except Failure:
+                continue
+            return "walked from %s,%s to %s,%s" % (x, y, state.get("position")["x"], state.get("position")["y"])
+        raise Failure("walk_to never arrived on a tile next to %s,%s" % (x, y))
 
     def step_logout():
         mcp.tool("logout")
@@ -230,10 +276,11 @@ def main():
     steps = [
         ("initialize", step_initialize),
         ("tools/list", step_tools),
+        ("wait for the title screen", step_title),
         ("create account (title screen)", step_create),
         ("get_account", step_account),
         ("login(name, token)", step_login),
-        ("walk_to %d,%d" % (WALK_X, WALK_Y), step_walk),
+        ("walk_to a step away", step_walk),
         ("logout", step_logout),
         ("login with a wrong token fails", step_bad_token),
     ]
