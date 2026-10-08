@@ -72,6 +72,7 @@ all three land), then 19 (client interop), then the rest.
 | [MCP-27](MCP-27-e2e-coverage-docs.md) | ✅ test/docs | low | Smoke test catches these; update SETUP.md | 16–19 |
 | [MCP-28](MCP-28-component-names.md) | 🐛 bug | high | Components had no name: spells, prayers and tabs read as nameless sprites | 09 |
 | [MCP-29](MCP-29-character-appearance.md) | 🐛 bug | high | The character never said what it looked like: a designer that could not see its own hairstyle stayed bald | 06 |
+| [MCP-30](MCP-30-slot-on-a-non-inventory.md) | 🐛 bug | medium | A slot target on a component that is not an inventory reported thousands of slots | 09 |
 
 ## Code layout
 
