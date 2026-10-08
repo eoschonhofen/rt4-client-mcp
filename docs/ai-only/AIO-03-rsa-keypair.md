@@ -20,8 +20,10 @@ decrypt the token. Generating a new key pair fixes this.
 ## Implementation
 ### Server
 1. Generate a 1024-bit pair with the existing `RSAKeyGen`. It writes `rsapriv`/`rsapub`; check their format and
-   adapt if needed. 1024 bits matches the client's block size (128-byte buffer in
-   `CreateManager.createAccount`). Don't change the size.
+   adapt if needed. 1024 bits is what the client's packet framing assumes: the RSA block travels as one
+   length byte plus the ciphertext, and `Buffer.rsaenc` now sizes the buffer from the ciphertext itself
+   (AIO-08 fix), so a 2048-bit key would put 256 or 257 bytes behind a single length byte and break
+   registration rather than crash it. Don't change the size.
 2. Store the pair in `Server/data/rsa/` (gitignored, mode 600).
 3. New config key `server.rsa_key_path`. When set, `ServerConfigParser` loads `MODULUS` and `EXPONENT` from it.
    When unset, keep today's hardcoded defaults, so `default.conf` dev keeps working with stock clients.

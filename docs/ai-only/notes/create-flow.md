@@ -56,14 +56,19 @@ so the CS2 can only drive the flow from the title screen.
    `AccountRegister` reads all four on `147` and re-reads them on `36` without validating
    them, so any in-range value works.
 5. **A 20-character `[a-z0-9]` password survives.**
-   `LOGIN_USE_STRINGS = true` makes `Buffer.pjstr` write a length byte plus the bytes, and
-   `CreateManager.createAccount` allocates 129 bytes for the RSA block.
+   `LOGIN_USE_STRINGS = true` makes `Buffer.pjstr` write a length byte plus the bytes.
    The plaintext before `rsaenc` is:
    `p1` 1 + `p2` 2 + `p2` 2 + `pjstr(username)` 13 + `p4` 4 + `pjstr(password)` 21 +
    `p4` 4 + `p2(affiliate)` 2 + `p1(day)` 1 + `p1(month)` 1 + `p4` 4 + `p2(year)` 2 +
-   `p2(country)` 2 + `p4` 4 = **63 bytes**, well inside the 128-byte 1024-bit block, so the
-   ciphertext always fits the 128-byte buffer and the length byte.
-   `JagString.parse` accepts lowercase letters and digits unchanged.
+   `p2(country)` 2 + `p4` 4 = **63 bytes**, well inside the 1024-bit block.
+   **Corrected (AIO-16):** the *block* is not the plaintext, and it is what the buffer has to hold.
+   `rsaenc` rewrites the buffer as a length byte plus `BigInteger.toByteArray()`, and that adds a
+   sign byte whenever the ciphertext's top bit is set — with this modulus (top byte `0x8a`) about one
+   ciphertext in fourteen, so 1 + 129 = **130 bytes**. Sizing the buffer from the plaintext (the 129
+   bytes `createAccount` used) therefore crashed the client with `ArrayIndexOutOfBoundsException`
+   roughly one registration in fourteen; the world-hop block in `LoginManager.startLogin` allocated
+   128 and crashed on every hop. `Buffer.rsaenc` now grows the buffer to the block it writes, so
+   callers no longer guess. `JagString.parse` accepts lowercase letters and digits unchanged.
 
 ## The takeover used by AIO-08
 
